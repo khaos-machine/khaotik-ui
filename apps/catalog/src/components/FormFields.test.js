@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
 import { createRawSnippet, tick } from 'svelte'
 import TextField from '@khaos-machine/khaotik-ui/components/svelte/TextField.svelte'
+import TextAreaField from '@khaos-machine/khaotik-ui/components/svelte/TextAreaField.svelte'
 import PasswordField from '@khaos-machine/khaotik-ui/components/svelte/PasswordField.svelte'
 import CodeField from '@khaos-machine/khaotik-ui/components/svelte/CodeField.svelte'
 import FormStack from '@khaos-machine/khaotik-ui/components/svelte/FormStack.svelte'
@@ -51,6 +52,45 @@ describe('TextField', () => {
     render(TextField, { props: { label: 'Email', oninput } })
     await fireEvent.input(screen.getByLabelText('Email'), { target: { value: 'k@khaos' } })
     expect(oninput).toHaveBeenCalledWith('k@khaos')
+  })
+})
+
+describe('TextAreaField', () => {
+  it('is a labelled multiline input carrying name, rows and required', () => {
+    render(TextAreaField, { props: { label: 'Notes', name: 'notes', rows: 4, required: true } })
+    const area = screen.getByLabelText(/Notes/)
+    expect(area.tagName).toBe('TEXTAREA')
+    expect(area).toHaveAttribute('name', 'notes')
+    expect(area).toHaveAttribute('rows', '4')
+    expect(area).toBeRequired()
+  })
+
+  it('marks the textarea invalid and reads the hint and error out', () => {
+    render(TextAreaField, { props: { label: 'Logline', hint: 'One or two sentences.', error: 'Add a logline.' } })
+    const area = screen.getByLabelText('Logline')
+    expect(area).toHaveAttribute('aria-invalid', 'true')
+    expect(describedBy(area)).toEqual(['One or two sentences.', 'Add a logline.'])
+  })
+
+  it('reports every input, and Enter alone opens a line rather than submitting', async () => {
+    const user = userEvent.setup()
+    const oninput = vi.fn()
+    const onsubmit = vi.fn()
+    render(TextAreaField, { props: { label: 'Notes', oninput, onsubmit } })
+    await user.type(screen.getByLabelText('Notes'), 'a{Enter}b')
+    expect(oninput).toHaveBeenLastCalledWith('a\nb')
+    expect(onsubmit).not.toHaveBeenCalled()
+  })
+
+  it('submits on Cmd+Enter and on Ctrl+Enter, but not with Alt held', async () => {
+    const onsubmit = vi.fn()
+    render(TextAreaField, { props: { label: 'Notes', value: 'draft', onsubmit } })
+    const area = screen.getByLabelText('Notes')
+    await fireEvent.keyDown(area, { key: 'Enter', metaKey: true })
+    await fireEvent.keyDown(area, { key: 'Enter', ctrlKey: true })
+    await fireEvent.keyDown(area, { key: 'Enter', ctrlKey: true, altKey: true })
+    expect(onsubmit).toHaveBeenCalledTimes(2)
+    expect(onsubmit).toHaveBeenCalledWith('draft')
   })
 })
 

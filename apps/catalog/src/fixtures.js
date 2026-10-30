@@ -53,6 +53,7 @@ import ProviderSheet from './components/foundation/ProviderSheet.svelte'
 import Button from '@khaos-machine/khaotik-ui/components/svelte/Button.svelte'
 import FilterField from '@khaos-machine/khaotik-ui/components/svelte/FilterField.svelte'
 import TextField from '@khaos-machine/khaotik-ui/components/svelte/TextField.svelte'
+import TextAreaField from '@khaos-machine/khaotik-ui/components/svelte/TextAreaField.svelte'
 import PasswordField from '@khaos-machine/khaotik-ui/components/svelte/PasswordField.svelte'
 import CodeField from '@khaos-machine/khaotik-ui/components/svelte/CodeField.svelte'
 import FormStack from '@khaos-machine/khaotik-ui/components/svelte/FormStack.svelte'
@@ -2784,6 +2785,15 @@ export const fixtures = [
       { label: 'Email', props: { label: 'Email', type: 'email', name: 'email', autocomplete: 'email', required: true, value: '' } },
       { label: 'With hint', props: { label: 'Display name', name: 'name', autocomplete: 'nickname', hint: 'Shown to collaborators on shared projects.', value: '' } },
       { label: 'Invalid', props: { label: 'Email', type: 'email', name: 'email', autocomplete: 'email', required: true, value: 'k@', error: 'Enter a full email address.' } },
+    ],
+  },
+  {
+    // Khaos Cloud's multiline fields. The text is ILLUSTRATIVE STATE (D62).
+    id: 'text-area-field', name: 'TextAreaField', kind: 'component', section: 'components', group: 'fields', component: TextAreaField,
+    examples: [
+      { label: 'Empty', props: { label: 'Notes', name: 'notes', value: '' } },
+      { label: 'With hint', props: { label: 'Logline', name: 'logline', rows: 2, hint: 'One or two sentences. Cmd+Enter saves.', value: '' } },
+      { label: 'Invalid', props: { label: 'Logline', name: 'logline', rows: 2, required: true, value: '', error: 'Add a logline before saving.' } },
     ],
   },
   {

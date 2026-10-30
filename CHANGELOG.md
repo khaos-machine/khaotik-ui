@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.165.0] — 2026-10-30
+
+### Added
+
+- `TextAreaField`: a labelled multiline input on Ark UI's Field textarea, with the same API as `TextField` (`label`, `name`, `value` with `oninput`, `required`, `hint`, `error`) plus `rows`. It grows to fit its text. Enter opens a line, and Cmd+Enter (Ctrl+Enter off Apple) calls `onsubmit` with the text.
+
 ## [0.164.1] — 2026-10-30
 
 ### Fixed

@@ -1,6 +1,6 @@
 {
   "name": "@khaos-machine/khaotik-ui",
-  "version": "0.164.1",
+  "version": "0.165.0",
   "type": "module",
   "description": "Khaos-branded component library — tokens, atoms, components and compositions, built and maintained here and shared with every Khaos app. Also hosts the catalog (apps/catalog) for device playtesting.",
   "workspaces": [
