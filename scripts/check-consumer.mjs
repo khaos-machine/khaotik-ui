@@ -28,7 +28,8 @@
 // Exit 1 = at least one check failed.
 // Exit 2 = the check could not run (a missing input is never a pass).
 
-import { readdirSync, readFileSync, existsSync, writeFileSync, rmSync } from 'node:fs'
+import { readdirSync, readFileSync, existsSync, writeFileSync, rmSync, mkdtempSync, mkdirSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { join, dirname, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { execFileSync } from 'node:child_process'
@@ -345,6 +346,64 @@ if (undocumented.length) {
       `      ${undocumented.slice(0, 20).join(', ')}` +
       (undocumented.length > 20 ? `\n      …and ${undocumented.length - 20} more` : ''),
   )
+}
+
+// ------------------------------------------------- a fresh install builds
+//
+// Everything above resolves the package through this repo's node_modules, so
+// it sees the lockfile's dependency versions and never what a consumer's
+// fresh install resolves. 0.163.0 and 0.164.0 shipped `"@ark-ui/svelte":
+// "^5.23.0"`; ark-ui 5.25.0 then shipped with SvelteKit's `$lib/` imports
+// unrewritten, and every fresh consumer's `vite build` failed while this gate
+// passed. So: every dependency is exact, and the packed tarball is installed
+// into an empty Vite + Svelte app with no lockfile and built.
+
+const ranged = Object.entries(pkg.dependencies ?? {}).filter(([, v]) => !/^\d+\.\d+\.\d+$/.test(v))
+if (ranged.length) {
+  fail(
+    `dependencies must be exact, or a consumer installs whatever upstream ships next:\n` +
+      `      ${ranged.map(([n, v]) => `${n}@${v}`).join(', ')}`,
+  )
+}
+
+const fresh = mkdtempSync(join(tmpdir(), 'khaotik-consumer-'))
+try {
+  const run = (cmd, args) => execFileSync(cmd, args, { cwd: fresh, encoding: 'utf8', stdio: 'pipe' })
+  const tarball = join(fresh, run('npm', ['pack', ROOT, '--silent']).trim().split('\n').pop())
+  mkdirSync(join(fresh, 'src'))
+  writeFileSync(join(fresh, 'package.json'), '{"name":"consumer","private":true,"type":"module"}')
+  writeFileSync(
+    join(fresh, 'vite.config.js'),
+    "import { svelte } from '@sveltejs/vite-plugin-svelte'\nexport default { plugins: [svelte()], logLevel: 'error' }\n",
+  )
+  writeFileSync(join(fresh, 'index.html'), '<script type="module" src="/src/main.js"></script>\n')
+  writeFileSync(
+    join(fresh, 'src/main.js'),
+    [
+      `import * as kit from '${PKG}/components/svelte'`,
+      `import '${PKG}/tokens/tokens.css'`,
+      `import '${PKG}/tokens/tokens-extra.css'`,
+      `import '${PKG}/tokens/utilities.css'`,
+      `import '${PKG}/assets/icons/phosphor.css'`,
+      'console.log(Object.keys(kit).length)',
+    ].join('\n'),
+  )
+  try {
+    run('npm', ['install', '--no-audit', '--no-fund', '--no-package-lock', tarball, 'svelte', 'vite', '@sveltejs/vite-plugin-svelte'])
+  } catch (e) {
+    cannotRun(`npm install in a fresh consumer failed:\n${e.stderr || e.message}`)
+  }
+  try {
+    run('npx', ['vite', 'build'])
+    notes.push('a fresh install of the packed tarball builds with vite')
+  } catch (e) {
+    const out = `${e.stdout ?? ''}${e.stderr ?? ''}`
+    const lines = out.split('\n').filter((l) => l.trim())
+    const why = lines.find((l) => /failed to resolve/i.test(l)) ?? lines.find((l) => /error/i.test(l)) ?? out.slice(0, 400)
+    fail(`a fresh install of the packed tarball does not build with vite:\n      ${why.trim()}`)
+  }
+} finally {
+  rmSync(fresh, { recursive: true, force: true })
 }
 
 // ------------------------------------------------------------------ report

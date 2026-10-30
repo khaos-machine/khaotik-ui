@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.164.1] — 2026-10-30
+
+### Fixed
+
+- A fresh install builds again. `@ark-ui/svelte` was a range (`^5.23.0`), so new consumers got 5.25.0, which ships SvelteKit `$lib/` imports that no bundler resolves, and `vite build` failed. Every dependency is now an exact version (`@ark-ui/svelte` 5.24.3, `@phosphor-icons/web` 2.1.2), and `check-consumer` installs the packed tarball into an empty Vite app with no lockfile and builds it.
+
 ## [0.164.0] — 2026-10-30
 
 ### Added
