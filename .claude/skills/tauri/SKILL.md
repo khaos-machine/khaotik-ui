@@ -122,12 +122,10 @@ honest empty state; a missing field is a gap to report, never a fabricated value
 ## Release — signing + notarization
 
 **CI runs this. Do not run it yourself.** Pushing a `v*` tag triggers
-`.github/workflows/catalog-release.yml` on the self-hosted macOS runner
-(`loswf-mini`), which holds the signing certificate, the Apple notarization
-credentials, the Tauri updater key and the AWS profile that owns the buckets.
-Andrew does not have that account access, and an agent should not either — a
-local run either fails the account guard or publishes from a machine whose state
-nobody can reproduce. See `.claude/skills/publishing/SKILL.md` for the trigger
+`.github/workflows/catalog-release.yml` on a GitHub-hosted `macos-latest` runner,
+with the signing certificate, the Apple notarization credentials, the Tauri
+updater key and the AWS keys held as secrets. A local run either fails the
+account guard or publishes from a machine whose state nobody can reproduce. See `.claude/skills/publishing/SKILL.md` for the trigger
 and the verify-before-you-tag loop.
 
 The section below documents **what CI executes and why**, because the reasoning
@@ -215,15 +213,11 @@ footer / Settings sheet), which calls `check()` from
 ## CI — and the two deploy-web.sh scripts
 
 `.github/workflows/catalog-release.yml` runs on `push` of a `v*` tag or
-`workflow_dispatch` (`:18-21`), on `runs-on: [self-hosted, macOS, ARM64]`
-(`:28`) — the mini. Credentials are org-level `loswf` secrets (`:29-34`,
-`:50-54`). It does not use `actions/setup-node`: that downloads its own Node and
-hangs on this runner (`:39-40`).
+`workflow_dispatch`, on `macos-latest`, after the same gates a pull request runs.
+Its credentials are secrets, listed at the top of the workflow.
 
-Because the LaunchAgent runner cannot unlock the login keychain, CI imports the
-Developer ID cert into an ephemeral keychain under `$RUNNER_TEMP` and
-`set-key-partition-list`s it (`:56-78`). Then it runs
-`bash apps/catalog/scripts/release.sh` (`:81`).
+CI imports the Developer ID cert into an ephemeral keychain under `$RUNNER_TEMP`
+and `set-key-partition-list`s it, then runs `bash apps/catalog/scripts/release.sh`.
 
 **There is one `deploy-web.sh` now, and it belongs to the catalog:**
 

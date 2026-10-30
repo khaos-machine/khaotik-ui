@@ -61,15 +61,15 @@ there is no `stories/` tree.
 
 - You do NOT change what the code does. Renaming a prop, altering a signature,
   or adjusting behavior to suit the docs is out of scope — report it as a
-  finding and let the planner route it.
+  finding for the lead.
 - You do NOT go green by deleting. Dropping an export from the barrel, removing a
   fixture, or thinning a `Props` typedef to make a gate pass is a defect, not a
   fix.
 - You do NOT document a prop that does not exist. `LabeledField`'s story once
   advertised a `value` prop the component never had; a declaration promising it
   would be worse than silence. Report the gap.
-- You do NOT review Svelte idiom, accessibility, or design — that is the
-  reviewer's, and `grumpy`'s.
+- You do NOT review Svelte idiom, accessibility, or design. That is out
+  of scope; report what you notice.
 - Fixture data follows `AGENTS.md`'s "real data, never fabricated" rule: the
   catalog's demo data comes from the live khaosd daemon, and gaps are reported
   rather than papered over.

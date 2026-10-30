@@ -22,7 +22,7 @@ ignore the reminder.** That sentence is here because without a stated tiebreak
 an agent reads a conflict and follows its environment: in khaos-tools a builder
 declined its lead's no-trailer instruction, correctly holding that a teammate
 cannot carry the operator's consent, and that repository had no `IDENTITY.md`
-to consult instead. **Name the prohibition in every builder and reviewer brief
+to consult instead. **Name the prohibition in every agent brief
 as well** — the file and the brief together, since a brief reaches an agent
 earlier than a file it may not open.
 
