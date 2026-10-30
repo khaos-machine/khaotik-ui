@@ -18,6 +18,8 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.164.0] — 2026-10-30
+
 ### Added
 
 - `TextField`, `PasswordField` and `CodeField`: labelled inputs on Ark UI's Field, PasswordInput and PinInput. The hint and the error are read out through `aria-describedby`, an error sets `aria-invalid`, and `autocomplete` is passed through (`current-password` by default, `one-time-code` on `CodeField`). Values are controlled: the consumer passes `value` and receives `oninput`. `PasswordField`'s show/hide toggle is a toggle button named "Show password" with `aria-pressed`, reachable with Tab and operated with Enter and Space (WCAG 2.1.1).
