@@ -17,6 +17,14 @@ name: ci
 on:
   pull_request:
 
+# gates.yml asks for these, and a called workflow may not ask for more than its
+# caller grants. This org.s default token is read-only for contents alone, so
+# the caller states them.
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
 # A superseded run tells you about code nobody is merging any more.
 concurrency:
   group: ci-${{ github.ref }}
