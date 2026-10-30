@@ -25,13 +25,12 @@ describe('IconSheet', () => {
     render(IconSheet)
 
     // One copy control per glyph, named by the glyph — the sheet exists to
-    // answer "which icon do I want", so the names have to be reachable.
-    for (const { name } of icons) {
-      expect(
-        screen.getByRole('button', { name: `Copy ${name}` }),
-        `${name} is in the inventory but not on the sheet`,
-      ).toBeInTheDocument()
-    }
+    // answer "which icon do I want", so the names have to be reachable. One
+    // role query, not one per glyph: each walks the whole sheet's accessibility
+    // tree, and per glyph that outran the timeout on a hosted runner.
+    const named = new Set(screen.getAllByRole('button', { name: /^Copy / }).map((b) => b.getAttribute('aria-label')))
+    const missing = icons.map(({ name }) => name).filter((name) => !named.has(`Copy ${name}`))
+    expect(missing, 'in the inventory but not on the sheet').toEqual([])
   })
 
   it('invents no glyph — every name on the sheet resolves in Phosphor', () => {
