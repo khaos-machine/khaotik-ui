@@ -1,0 +1,128 @@
+/* The BrandKit's shared surface — catalog-local, never shipped.
+ *
+ * These are not design decisions. Every value here is a kit token; what is
+ * shared is the RULE, which six screens had each written for themselves. The
+ * duplication was measured, not guessed: identical rule bodies appearing in
+ * more than one file. The focus ring stood in nine places across five screens,
+ * the mono spec value in five across four, and Layout and Shape had written the
+ * same four-rule spec row byte for byte.
+ *
+ * Catalog-local on purpose. A consumer of @khaos-machine/khaotik-ui never renders a
+ * BrandKit screen, so promoting these to components/svelte would add public API
+ * — and story, catalog and taxonomy gate obligations — for markup only this app
+ * draws. The kit ships the tokens; the catalog ships how it documents them.
+ *
+ * Global rather than scoped: Svelte scopes a component's own <style>, so a rule
+ * shared BETWEEN components has to live outside all of them. Imported once in
+ * main.js.
+ */
+
+/* ---- the spec row: name · visual · value, as a copyable button ---- */
+
+/* A column of spec rows. 820px is the reading measure the brand screens use for
+   prose- and row-shaped sections; the comparison tables opt out and take the
+   full canvas. */
+.spec-column {
+  display: flex;
+  flex-direction: column;
+  max-width: 820px;
+}
+
+/* The row itself. These live here rather than in SpecStep.svelte because Svelte
+ * prunes a scoped selector it cannot statically see matched: `.spec-step +
+ * .spec-step` describes two INSTANCES of the component, which the compiler
+ * never sees as siblings, so the separator compiled away to nothing and the
+ * scale rendered as one undivided block. A rule about the relationship BETWEEN
+ * components cannot live inside one of them.
+ */
+.spec-step {
+  display: grid;
+  /* the bar column is 1fr and left-aligned, so every bar starts on the same
+     edge — a centred one would make the lengths incomparable */
+  grid-template-columns: 168px 1fr 72px;
+  align-items: center;
+  gap: var(--spacing-md);
+  width: 100%;
+  padding: var(--spacing-2xs) 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* A hairline between rows, not around them: the scale is one object and the
+   rules are its internal divisions, so the first row has no top edge. Sibling
+   selectors work across instances because every instance carries the same
+   scope class. */
+.spec-step + .spec-step {
+  border-top: var(--size-stroke-hairline) solid var(--border-hairline);
+}
+
+.spec-step__bar {
+  height: var(--spacing-xs);
+  border-radius: 2px;
+  background: var(--action-primary);
+}
+
+/* A radius or a stroke is a measure ACROSS the row, so it is drawn that way
+   and given a fixed width to be read against. 96px is a reference length for
+   the eye, not a spacing step — it is deliberately NOT a token, because
+   nothing about the kit says how long a ruler should be. */
+.spec-step__bar--tall {
+  width: 96px;
+}
+
+.spec-step__value {
+  text-align: right;
+}
+
+.copied {
+  color: var(--text-brand);
+}
+
+/* ---- text ---- */
+
+/* A token's own name. Mono because the kit's rule is that mono is for anything
+   transcribed — a MAC, an SSID, a version, an ID (tokens.json, primitive.font).
+   A custom-property name is transcribed. */
+.spec-name {
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+/* A token's value. Tabular figures so a column of them aligns on the digit
+   rather than the glyph — the whole point of setting them in a column. */
+.spec-value {
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* Where the value can outrun its column — a resolved var() chain rather than a
+   literal. Truncation is the exception, so it is opt-in. */
+.spec-value--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- marks ---- */
+
+/* The colour chip beside a semantic token, showing what it resolves to. The
+   raised background is the fallback that shows when there is nothing to paint:
+   a token whose value is a length, or a color-mix() the parser cannot resolve
+   to a hex. Both screens had written that fallback for themselves.
+   NOTE: the 2px radius is not a kit value — the scale starts at --radius-sm
+   (4px), which is visibly round at 14px. Left raw and reported rather than
+   rounded up or invented as a token. */
+.spec-chip {
+  width: 14px;
+  height: 14px;
+  border: var(--size-stroke-hairline) solid var(--border-hairline);
+  border-radius: 2px;
+  background: var(--surface-raised);
+}

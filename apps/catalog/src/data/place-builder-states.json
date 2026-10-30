@@ -1,0 +1,409 @@
+{
+  "_provenance": "khaosd GET /api/v1/locations/builder — B4P — the place name, its states, the default state, and the preparation areas and evidence, verbatim.",
+  "name": "DESMOND'S APARTMENT",
+  "state": "EXT|NIGHT|",
+  "states": [
+    {
+      "key": "EXT|NIGHT|",
+      "setting": "EXT",
+      "timeOfDay": "NIGHT",
+      "objectIds": [],
+      "sceneIds": [
+        "scene_01M5MJB4BPSSDQ0W6QE18MWZ2D"
+      ],
+      "sceneNumbers": [
+        19
+      ],
+      "label": "Exterior · Night",
+      "designId": "design_446BQH4Z3JAR8REKY5V55BSW5K"
+    },
+    {
+      "key": "INT|NIGHT|",
+      "setting": "INT",
+      "timeOfDay": "NIGHT",
+      "objectIds": [],
+      "sceneIds": [
+        "scene_01M5MJB4BPTXD787D417FJ62ZN",
+        "scene_01M5MJB4BP30913DAXDB5XGQR3",
+        "scene_01M5MJB4BP4EGCJ5RY2V21M7HF",
+        "scene_01M5MJB4BPWK78147NGFDBY1FK",
+        "scene_01M5MJB4BP4S4N3R6V1R8339EW"
+      ],
+      "sceneNumbers": [
+        20,
+        27,
+        29,
+        46,
+        48
+      ],
+      "label": "Interior · Night",
+      "designId": "design_0G0Q1EW3N13B6AW2FPCZ3421WS"
+    },
+    {
+      "key": "INT|DAY|",
+      "setting": "INT",
+      "timeOfDay": "DAY",
+      "objectIds": [],
+      "sceneIds": [
+        "scene_01M5MJB4BPF8KTR1YS8QA6XWDH",
+        "scene_01M5MJB4BPMD97WJF63E7F1TJ2",
+        "scene_01M5MJB4BP4HDPHPPJN1595PS2",
+        "scene_01M5MJB4BP9X7PPBMEAQM8K42K"
+      ],
+      "sceneNumbers": [
+        22,
+        32,
+        35,
+        51
+      ],
+      "label": "Interior · Day",
+      "designId": "design_45DKFX9TF09TC0T29VGZZMWXSF"
+    },
+    {
+      "key": "|NIGHT|",
+      "setting": "",
+      "timeOfDay": "NIGHT",
+      "objectIds": [],
+      "sceneIds": [
+        "scene_01M5MJB4BPMKW5PAE4MD9SVYSH"
+      ],
+      "sceneNumbers": [
+        44
+      ],
+      "label": "Setting not stated · Night",
+      "designId": "design_2976GN9BAQT992ZN1AFV0MSGY4"
+    }
+  ],
+  "preparation": {
+    "areas": [
+      {
+        "name": "Kitchen",
+        "brief": {
+          "spatialDescription": "A kitchen in Desmond's apartment.",
+          "fixedFeatures": [
+            "The kitchen has a counter.",
+            "There is a window in the bedroom, described as open."
+          ],
+          "dressing": "A .45 caliber handgun is placed on the kitchen counter.; A drawer contains tools; Desmond takes a roofing ax from it.; A cereal bowl is present.; An answering machine is present.; Groceries are brought into the apartment.",
+          "lighting": "The kitchen lights are turned on.; Sun beams through the open bedroom window.",
+          "unknowns": []
+        },
+        "cited": [
+          {
+            "field": "space",
+            "detail": "A kitchen in Desmond's apartment.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN",
+              "scene_01M5MJB4BPF8KTR1YS8QA6XWDH",
+              "scene_01M5MJB4BP4HDPHPPJN1595PS2",
+              "scene_01M5MJB4BPMKW5PAE4MD9SVYSH"
+            ]
+          },
+          {
+            "field": "fixedFeature",
+            "detail": "The kitchen has a counter.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN"
+            ]
+          },
+          {
+            "field": "fixedFeature",
+            "detail": "There is a window in the bedroom, described as open.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMD97WJF63E7F1TJ2"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A .45 caliber handgun is placed on the kitchen counter.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A drawer contains tools; Desmond takes a roofing ax from it.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A cereal bowl is present.",
+            "sceneIds": [
+              "scene_01M5MJB4BPF8KTR1YS8QA6XWDH",
+              "scene_01M5MJB4BP4HDPHPPJN1595PS2"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "An answering machine is present.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMKW5PAE4MD9SVYSH",
+              "scene_01M5MJB4BP9X7PPBMEAQM8K42K"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "Groceries are brought into the apartment.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMKW5PAE4MD9SVYSH"
+            ]
+          },
+          {
+            "field": "lighting",
+            "detail": "The kitchen lights are turned on.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN"
+            ]
+          },
+          {
+            "field": "lighting",
+            "detail": "Sun beams through the open bedroom window.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMD97WJF63E7F1TJ2"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Living room",
+        "brief": {
+          "spatialDescription": "A living room in Desmond's apartment.",
+          "fixedFeatures": [],
+          "dressing": "A sofa is present.; A bottle of Jack Daniels is present.; A discman and headphones are present.; A television is present.",
+          "lighting": "",
+          "unknowns": []
+        },
+        "cited": [
+          {
+            "field": "space",
+            "detail": "A living room in Desmond's apartment.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN",
+              "scene_01M5MJB4BP30913DAXDB5XGQR3"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A sofa is present.",
+            "sceneIds": [
+              "scene_01M5MJB4BP30913DAXDB5XGQR3",
+              "scene_01M5MJB4BPWK78147NGFDBY1FK",
+              "scene_01M5MJB4BP4S4N3R6V1R8339EW"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A bottle of Jack Daniels is present.",
+            "sceneIds": [
+              "scene_01M5MJB4BP30913DAXDB5XGQR3"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A discman and headphones are present.",
+            "sceneIds": [
+              "scene_01M5MJB4BP30913DAXDB5XGQR3"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A television is present.",
+            "sceneIds": [
+              "scene_01M5MJB4BPWK78147NGFDBY1FK",
+              "scene_01M5MJB4BP4S4N3R6V1R8339EW"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Bedroom",
+        "brief": {
+          "spatialDescription": "Desmond's bedroom, described as very neat.",
+          "fixedFeatures": [
+            "A window is described as open."
+          ],
+          "dressing": "A bed is present.; A dresser is present.; A stuffed dog is held on the couch.",
+          "lighting": "Sun beams through the open window.",
+          "unknowns": []
+        },
+        "cited": [
+          {
+            "field": "space",
+            "detail": "Desmond's bedroom, described as very neat.",
+            "sceneIds": [
+              "scene_01M5MJB4BPF8KTR1YS8QA6XWDH",
+              "scene_01M5MJB4BPMD97WJF63E7F1TJ2"
+            ]
+          },
+          {
+            "field": "fixedFeature",
+            "detail": "A window is described as open.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMD97WJF63E7F1TJ2"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A bed is present.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMD97WJF63E7F1TJ2",
+              "scene_01M5MJB4BP9X7PPBMEAQM8K42K"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A dresser is present.",
+            "sceneIds": [
+              "scene_01M5MJB4BPF8KTR1YS8QA6XWDH"
+            ]
+          },
+          {
+            "field": "dressing",
+            "detail": "A stuffed dog is held on the couch.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMD97WJF63E7F1TJ2"
+            ]
+          },
+          {
+            "field": "lighting",
+            "detail": "Sun beams through the open window.",
+            "sceneIds": [
+              "scene_01M5MJB4BPMD97WJF63E7F1TJ2"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Bathroom",
+        "brief": {
+          "spatialDescription": "A bathroom in Desmond's apartment.",
+          "fixedFeatures": [],
+          "dressing": "",
+          "lighting": "",
+          "unknowns": []
+        },
+        "cited": [
+          {
+            "field": "space",
+            "detail": "A bathroom in Desmond's apartment.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN",
+              "scene_01M5MJB4BP30913DAXDB5XGQR3"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Hallway",
+        "brief": {
+          "spatialDescription": "A long hallway in Desmond's apartment.",
+          "fixedFeatures": [],
+          "dressing": "",
+          "lighting": "",
+          "unknowns": []
+        },
+        "cited": [
+          {
+            "field": "space",
+            "detail": "A long hallway in Desmond's apartment.",
+            "sceneIds": [
+              "scene_01M5MJB4BPTXD787D417FJ62ZN"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Apartment entrance and exterior steps",
+        "brief": {
+          "spatialDescription": "Desmond's apartment is in a brownstone; stairs lead to it.",
+          "fixedFeatures": [],
+          "dressing": "",
+          "lighting": "",
+          "unknowns": []
+        },
+        "cited": [
+          {
+            "field": "space",
+            "detail": "Desmond's apartment is in a brownstone; stairs lead to it.",
+            "sceneIds": [
+              "scene_01M5MJB4BPSSDQ0W6QE18MWZ2D"
+            ]
+          }
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "detail": "Desmond's apartment is in a brownstone.",
+        "sceneNumbers": [
+          19,
+          22
+        ]
+      },
+      {
+        "detail": "The apartment contains a kitchen, living room, bedroom, bathroom, and a long hallway.",
+        "sceneNumbers": [
+          20,
+          22,
+          27,
+          32,
+          35,
+          44
+        ]
+      },
+      {
+        "detail": "The bedroom is very neat.",
+        "sceneNumbers": [
+          22
+        ]
+      },
+      {
+        "detail": "The bedroom has an open window.",
+        "sceneNumbers": [
+          32
+        ]
+      },
+      {
+        "detail": "A sofa is present in the living room.",
+        "sceneNumbers": [
+          27,
+          46,
+          48
+        ]
+      },
+      {
+        "detail": "A bottle of Jack Daniels is present in the living room.",
+        "sceneNumbers": [
+          27
+        ]
+      },
+      {
+        "detail": "A discman and headphones are present.",
+        "sceneNumbers": [
+          27
+        ]
+      },
+      {
+        "detail": "The television is on mute.",
+        "sceneNumbers": [
+          46
+        ]
+      },
+      {
+        "detail": "The apartment has an answering machine.",
+        "sceneNumbers": [
+          44,
+          51
+        ]
+      },
+      {
+        "detail": "Blood stains are visible on the brownstone steps.",
+        "sceneNumbers": [
+          22
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,243 @@
+[
+  {
+    "id": "ollama",
+    "isReady": true,
+    "capabilities": [
+      "analysis.text",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "lmstudio",
+    "isReady": true,
+    "capabilities": [
+      "analysis.text",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "openai",
+    "isReady": true,
+    "capabilities": [
+      "analysis.text",
+      "media.image",
+      "media.voice",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "anthropic",
+    "isReady": false,
+    "capabilities": [
+      "analysis.text",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "mistral",
+    "isReady": false,
+    "capabilities": [
+      "analysis.text",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "groq",
+    "isReady": false,
+    "capabilities": [
+      "analysis.text",
+      "media.voice",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "elevenlabs",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "voicebox",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "kittentts",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "polly",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "deepseek",
+    "isReady": false,
+    "capabilities": [
+      "analysis.text",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "openrouter",
+    "isReady": false,
+    "capabilities": [
+      "analysis.text",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "suno",
+    "isReady": false,
+    "capabilities": [
+      "media.voice",
+      "media.music"
+    ]
+  },
+  {
+    "id": "gemini",
+    "isReady": false,
+    "capabilities": [
+      "analysis.text",
+      "media.image",
+      "media.voice",
+      "chat.project",
+      "chat.character"
+    ]
+  },
+  {
+    "id": "nanobanana",
+    "isReady": false,
+    "capabilities": [
+      "media.image"
+    ]
+  },
+  {
+    "id": "cartesia",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "deepgram",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "lmnt",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "edge-tts",
+    "isReady": true,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "kokoro",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "soprano",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "dia",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "spark",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "chatterbox",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "outetts",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "pocket",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "voxcpm",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "marvis",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "vibevoice",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "bark",
+    "isReady": false,
+    "capabilities": [
+      "media.voice"
+    ]
+  },
+  {
+    "id": "magenta-rt",
+    "isReady": false,
+    "capabilities": [
+      "media.music"
+    ]
+  }
+]

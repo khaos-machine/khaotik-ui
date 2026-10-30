@@ -1,0 +1,31 @@
+{
+  "shot": "Through",
+  "resolution": [
+    1536,
+    1024
+  ],
+  "head": {
+    "subject": "Rover",
+    "point": [
+      6.85523,
+      2,
+      1.55015
+    ],
+    "pixel": [
+      768,
+      387.73
+    ]
+  },
+  "corner": {
+    "subject": "Crate",
+    "point": [
+      4.0036,
+      1.06247,
+      0.5
+    ],
+    "pixel": [
+      1321.15,
+      930.02
+    ]
+  }
+}

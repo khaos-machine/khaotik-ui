@@ -1,0 +1,137 @@
+/* Khaotik utilities — the design-system classes the atoms themselves render.
+ *
+ * These live in the kit, not in a consuming app, because library components
+ * reach for them directly: AnalysisCard, SectionHeader, LabeledPill,
+ * CharacterBuilder and VoiceCatalog all emit `class="eyebrow"`, and
+ * CharacterBuilder emits `class="surface"`. They were defined only in
+ * apps/catalog/src/app.css, which the package does not export — so the catalog
+ * was the one surface where the design system looked right, while the published
+ * Storybook and every external consumer rendered every eyebrow as plain body
+ * text. Shipping a component that references a rule you do not ship is a bug
+ * report waiting to happen.
+ *
+ * Hand-authored, like tokens-extra.css. Only tokens.css is generated from
+ * tokens.json by build-tokens.py.
+ *
+ * THIS SHEET IS THE ROSTER. tokens/parse.js parses it into
+ * { name, doc, kind, declarations }, and the catalog's Type screen and
+ * docs/using-the-library.md are both driven from that parse. So every rule
+ * below carries a prose comment and a `@kind` annotation on its own line —
+ * `sample` for a class that can be shown as a rendered specimen, `demo` for one
+ * whose whole effect is that you cannot see it. There is no default: a rule
+ * with no `@kind` reds the catalog's roster test rather than landing quietly.
+ *
+ * Import alongside the tokens:
+ *   import '@khaos-machine/khaotik-ui/tokens/tokens.css'
+ *   import '@khaos-machine/khaotik-ui/tokens/tokens-extra.css'
+ *   import '@khaos-machine/khaotik-ui/tokens/utilities.css'
+ */
+
+/* The browser's own controls follow the theme. Without a color-scheme, WebKit draws every
+   native control in its light style on the dark surfaces: a checkbox as a white box, a
+   select's menu and a scrollbar in white. Dark by default, as tokens.css is, and light
+   under html[data-theme="light"], the selector tokens.css's light block uses. */
+:root {
+  color-scheme: dark;
+}
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Surface: a raised background, not a card. Native sections sit flat on the
+   canvas; separation comes from the header + spacing, never a floating border.
+   @kind sample */
+.surface {
+  background: var(--surface-raised);
+}
+
+/* Eyebrow: the uppercase caption that labels a section or metric.
+   @kind sample */
+.eyebrow {
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  font-weight: var(--caption-weight);
+  letter-spacing: var(--caption-track);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* Note: a quiet line of supporting copy sitting beside the thing it explains.
+   Body size, not caption — the kit's existing answer for secondary supporting
+   copy is EmptyState's description, and the note is its inline sibling.
+   @kind sample */
+.note {
+  margin: 0;
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  font-weight: var(--body-md-weight);
+  color: var(--text-secondary);
+}
+
+/* Visually hidden: takes an element out of sight while leaving it in the
+   accessibility tree. The name a screen reader announces for a control whose
+   only visible mark is an icon — and Icon is aria-hidden by contract, so
+   without this the reader hears the bare value and the icon carries the whole
+   meaning. Absence is the entire effect, so there is no specimen to render.
+   @kind demo */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* A range input, drawn. `accent-color` alone leaves WebKit's own track, which
+   in a desktop webview is a tall white bar on a dark surface. One hairline
+   track and a small thumb, for every slider and scrubber the components
+   render (`class="ui-range"`).
+   @kind demo */
+.ui-range {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 16px;
+  margin: 0;
+  /* The input's own box is white by default once its native look is off. */
+  background: transparent;
+  cursor: pointer;
+}
+
+.ui-range::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 1px;
+  background: var(--border-default);
+}
+
+.ui-range::-moz-range-track {
+  height: 2px;
+  border-radius: 1px;
+  background: var(--border-default);
+}
+
+.ui-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  margin-top: -4px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--action-primary);
+}
+
+.ui-range::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--action-primary);
+}
+
+.ui-range:disabled {
+  cursor: default;
+  opacity: 0.5;
+}

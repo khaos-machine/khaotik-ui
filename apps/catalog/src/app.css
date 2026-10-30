@@ -1,0 +1,31 @@
+/* Khaotik tokens come from the library — @khaos-machine/khaotik-ui/tokens/tokens.css
+   (the warm pro-gray/silver Quiet-Pro palette, tight radii, dense type, and
+   the accent/skipped status scale) plus tokens-extra.css (the seven-way
+   --tone-* StatusTone bridge) plus utilities.css (.eyebrow / .surface). This
+   file is the catalog's consumer layer only: the body paint. No palette,
+   radius or type overrides live here any more — those moved into the library's
+   tokens.json (D-005, the indigo/eggplant deprecation), and the two utilities
+   moved into the library's utilities.css because the atoms themselves render
+   those classes, so every consumer needs them and not just this app. */
+
+:root {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  color: var(--text-primary);
+  background: var(--surface-base);
+}
+
+
+/* An example that opens a modal must not lock the catalog. Ark's modal dialog sets
+   `pointer-events: none` on <body> so nothing outside the dialog takes a click, which in a
+   catalog meant no way to leave the example (measured 2026-10-22 on ProviderSetup's disclosure
+   and FinishSetupConfirm). The catalog's own root takes pointer events back; the dialog still
+   behaves as a modal inside the canvas frame, which DeviceFrame contains. */
+#app {
+  pointer-events: auto;
+}

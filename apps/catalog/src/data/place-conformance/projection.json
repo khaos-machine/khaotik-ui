@@ -1,0 +1,17 @@
+{
+  "camera": "Corner",
+  "fixture": "Sofa",
+  "point": [
+    2.5,
+    3.65,
+    0.85
+  ],
+  "resolution": [
+    1536,
+    1024
+  ],
+  "pixel": [
+    1077.72,
+    541.51
+  ]
+}

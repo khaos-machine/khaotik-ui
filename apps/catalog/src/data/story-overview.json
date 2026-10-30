@@ -1,0 +1,2410 @@
+{
+  "_provenance": "khaosd GET /api/v1/premise, /structure (less profile), /coverage/status, /coverage/report (less scenes and sourcePath) and /story-analysis/preflight — B4P — verbatim.",
+  "premise": {
+    "premise": {
+      "logline": {
+        "value": "After prison, a grieving mother seeks her estranged son and a second chance with her former partner, while debt, violence, and their shared losses threaten both.",
+        "source": "llm",
+        "confidence": "medium",
+        "model": "gpt-6-luna"
+      },
+      "synopsis": {
+        "value": "In New York, Madison’s life is upended by eviction and her partner Jason’s infidelity. Elsewhere, Jetta leaves prison carrying grief over her family and the son she cannot see; Desmond, mourning his baby brother, is drawn back into obligation when Madison calls for help. He also cares for Fifth, whose despair leads him to escape a mental hospital and attempt a rooftop leap before Madison takes responsibility for his care. Jetta reunites with Desmond, but a gunpoint debt threat and the loss of her son to the police keep her future precarious.\n\nAs Jetta finds work and asks Desmond to help locate Marlon, he promises to change and later vows to reunite them. Fifth finds renewed hope and love with Sidney, while Ray’s violence toward Madison draws Desmond into a rescue. Jetta reconnects with Marlon and leaves to be with him; Fifth and Sidney’s engagement is interrupted when their car is struck by a truck, leaving Madison injured. Desmond admits his guilt and fears about Fifth, then takes Ray toward an abandoned factory, his intentions unresolved.",
+        "source": "llm",
+        "confidence": "medium",
+        "model": "gpt-6-luna"
+      }
+    }
+  },
+  "structure": {
+    "_provenance": {
+      "input": {
+        "analyses": [
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP3V9BCJA6MJ97ZJQC",
+            "fingerprint": "sha256:40b2ac01b32446748af9ece28c854cb2996a151b8f8f3a6092639f89fa253dea"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP6MAW126BF1RDZ6PX",
+            "fingerprint": "sha256:738f9060e0a2f14a50b00af8b925a21f30d837037767ffc12a6ecdd2c0ce818a"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP226JPB65702JZ0N2",
+            "fingerprint": "sha256:b2a82c15a17454be326b29977cf81c6971b011d5af4d077abc23eaf7ebf80ec5"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPE03PC70EQPBFP49D",
+            "fingerprint": "sha256:677081a86af3133da664fe684fa00d30ba596f45b32c69e8b8f3c81f473f3b00"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPZHFKS4MCKMVZ5W0F",
+            "fingerprint": "sha256:91f63951f9a30bebc38ea3d16580267234f57d04c8d9fe1bf04f46b7b8b3d886"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPA97JK3E91BBF8SVV",
+            "fingerprint": "sha256:2acc1c26085e39ed01bde29979f7ce9f9223a386ab83d381693c2f2cfff0ea57"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPP6FZV3CSFRK0JSCX",
+            "fingerprint": "sha256:8f2c5fb68713cd00021171d4a4fc1e9df4ddbfaa33a5e0436aeec12ee6f081f9"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPY8ENJ024E2NXAJVK",
+            "fingerprint": "sha256:32fa728a5c73b5871064e3e212f3f5e34696c50d95e3b0b42946e689839e5550"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP4BZVM7ZYV3J84AZ6",
+            "fingerprint": "sha256:88d283aeeb3f16755bed726c7f44d415b0db1b16ad09ce57fdf04cca10181eef"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPG644DWN1QMQCCDH3",
+            "fingerprint": "sha256:d2bc08f4c23f5e6ab69f902a4a95b42f451c573a360fc0e84313e65b5b7be1d3"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP89CQ2RW5C500K95X",
+            "fingerprint": "sha256:958dbbfb00d7caef4e6f28c457f1a7ba8f1b3f1d6a9127eac7dc801617a4959a"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPMH6BG9S4W5BKDAVX",
+            "fingerprint": "sha256:d07a30fe831afa66a82c1e649e0aa66d686e0049c25746f1dd106c2181207f5f"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPB2W33RD90ZB75E97",
+            "fingerprint": "sha256:d50bf08355e37afab590a0879432d394e51ef6bd77f4514e051cfc60dfe72f6e"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPDM5AD6CY7HGEYS5H",
+            "fingerprint": "sha256:aa06936c79b2869d5704b515dda11ba14b14158da98aadf347cebf16837da4b9"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPZZ7AE4PHWA92CCNQ",
+            "fingerprint": "sha256:a79ae4c0633de1a6ec593d47cfa16b80d2dcedc67ab77960680843b0260b018c"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPWEC1JRY49NNEFE8Z",
+            "fingerprint": "sha256:0684f6518523686076a922b7835391c9dba7c364033f2ddc2acf0289e5101bfa"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPYK2F0GPMKKD1CK5X",
+            "fingerprint": "sha256:32b26a283c78ed57a491dcee5abc10f141b65da38a268f568b2fed66f1f85e2d"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP3ZDMGP9SVFYMBDH6",
+            "fingerprint": "sha256:154d6c98869a07cc94e878c303cdd7a55b084f6e0813a12ef2f0b9a1435900d2"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPSSDQ0W6QE18MWZ2D",
+            "fingerprint": "sha256:ac58d8a7464a165a17516645b791f01fe6cb7f2f28f515dac2d8515753b279ee"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPTXD787D417FJ62ZN",
+            "fingerprint": "sha256:caacdc889d9f8d712e97ba4942d26ed4257698722fb50eda0c1b12c83c867988"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPE6GAZHH16BR3E82Z",
+            "fingerprint": "sha256:6e822238c88fed51694a7f50d1fbd1a9782059ad21f6e2126935c3a954b2b840"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPF8KTR1YS8QA6XWDH",
+            "fingerprint": "sha256:1b1da9a1a320f44da9bf76631541a4da750004ca47a81fb2a762f67e9326cf62"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP6CWPT5X5E30SRG7N",
+            "fingerprint": "sha256:e19add590f7183730520e7cfe132dd1e5ee2ba0dbae0f4b605d71663cfd002fa"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPPWG4Z59H3A31QPER",
+            "fingerprint": "sha256:e78f6f7f0249e761dade97d59cd382608a5329c54f3502a6de98224909823762"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP7RXFDRCDSSDJQ20H",
+            "fingerprint": "sha256:45749371eb8e3391a49426cd41985c12cf4f327bd3bcb269ddf58e45ac5170e8"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP6ZZTMBF5G4P9ZJ8D",
+            "fingerprint": "sha256:1b8605da890f7d89029493c6195b004ab5f6e08a860174199eb207e3ba4f34d3"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP30913DAXDB5XGQR3",
+            "fingerprint": "sha256:cbeaab45677d86cab13986e99048ad63382d8cdddbeb066ee87ce9a972848c3f"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP8GYS430YN01NG5DE",
+            "fingerprint": "sha256:948f7e43f1b7b0be38c3072ec0a469fc1fbfd1cfe3bd2dc0fd835de85f29200c"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP4EGCJ5RY2V21M7HF",
+            "fingerprint": "sha256:3f7eae6111023db50a62f516c397f57510322cb18dc7bf324b73c1ca3b449b91"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPGS768N4DEAFHQK59",
+            "fingerprint": "sha256:7d2205839496567ad13e420e8b3ea3ca4b8ddf4a33e1fe4fb39f760ed884f19a"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP7MF2W8H661EVP1DG",
+            "fingerprint": "sha256:ee80e07a1cd33f2631b240aa0873f85cd8f5b51123a12c983f39b3a03290680d"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPMD97WJF63E7F1TJ2",
+            "fingerprint": "sha256:991898ee0ad3b19a01e4771bfd4dedb2e3e32d500fa7384debfaa3e8e314e367"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPXJ4A2AXAK958QXFX",
+            "fingerprint": "sha256:f65a4d7800bd0d1a9f85a040a654d9686f4d030dc477abb46951de0136b5ecbc"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPA544D0PJJ3PT0MHQ",
+            "fingerprint": "sha256:b23da481f1aaf8284cd7e16cb73790f4f5b2551bc4daa3965a1fcc93be0bfc69"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP4HDPHPPJN1595PS2",
+            "fingerprint": "sha256:d3f277334ce88ec9801a04ebf9a255f8a07fb200cd3431d4b300597c0daf4e15"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPKAD71RCZHMMHZS0V",
+            "fingerprint": "sha256:b8d804c2018c7309d9210b58c1dec06293b22354c9192faa806e3f9d675ed12a"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPSQ25E3Q3QKPQSPT9",
+            "fingerprint": "sha256:0a609fe1719d65990c031a3a5dd1e892e29762594197ebc93d6a2fe48c946de7"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPM1YGQJNK2JZ72QQ5",
+            "fingerprint": "sha256:132c351aa59316e665e4bd2c3764f09cca77752e67be39127e10331c98a6bc73"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPSNZKKEK95RQ3XJXF",
+            "fingerprint": "sha256:da20dfb495997a50f8a319faa491d74cd377527a38ff0fa3bb573b2d3a2da1c7"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPJWQACS02XXT1FCKD",
+            "fingerprint": "sha256:7f8e9bfc657c99eacc431745274c72deb1878b30663bcc2b04b617d9f086cd26"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPFY1W1R50ARQP4Y1E",
+            "fingerprint": "sha256:70dbc9ac34bb1c7cfb0589710ac88aa3a3e3cfb54ddecc23085ba506074ffc81"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPHY3G5H2GJHVCD06Z",
+            "fingerprint": "sha256:f6e25caaf18a2c0a26a28f8ee37a946fa9478a32869db6c8d7ba6cd6406569b6"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPFS64MAE0VFV726D3",
+            "fingerprint": "sha256:f25fcb27062f76d71b9c5159195871d40a70880561337792cda5e008fd1412e5"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPMKW5PAE4MD9SVYSH",
+            "fingerprint": "sha256:c4f29f9f0c21c265021a766229f35eca203da811587e5e01650a79e7a9bdb9eb"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPM95AFS8SR1XWE25C",
+            "fingerprint": "sha256:c1698fb7cfade40083be40ad1f0efd3fbf350c291acbbe217483050616f047ed"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPWK78147NGFDBY1FK",
+            "fingerprint": "sha256:bf8fa7c3214a0da93e9f9a3a752c8f56197b71b065bf2e1b059986c118e43205"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPBJP4TDSZKMW1R5J7",
+            "fingerprint": "sha256:9774fa845438741682a55a52c3342c8d5b8de4dbb5ef78dd72c00df4aa5ffc2d"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP4S4N3R6V1R8339EW",
+            "fingerprint": "sha256:8a865d979f7a935862e69a84ba71b0eb2ab6d8b9ce1bc9b1c0aafd9f7d8c310a"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPZNNBGFQT3E2C3898",
+            "fingerprint": "sha256:4819fa48da900af5ad99e0350c5ed9b57d5b1ea28f02bf434e91349424115828"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPKE1M0EA5X8ZXRKKE",
+            "fingerprint": "sha256:0f9244bd3d192a155f1305dcbc4e0b256b0dc0452c9f416e32a169617f0866b9"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP9X7PPBMEAQM8K42K",
+            "fingerprint": "sha256:ca5cfe7f8840705a15d541fe73fea5affe021c8989eec0a95452283c40c40a68"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPQJEVGGC16N46PWW5",
+            "fingerprint": "sha256:f2db68f9ec5817118801e57d50921a6d030101e94ff0248b04906eaea7596b58"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPQAAG31HT2H90DX2C",
+            "fingerprint": "sha256:1d2a7767c3943fe7e14cb78bd90696a97647cb40b32948e3e51756fea95eee03"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPY6D9F64S3KBNBXSP",
+            "fingerprint": "sha256:aa3b9bad21bc1eaff33cb14ff76f2b6cdb3a22eb26dec8f8e420fbe4f417043c"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPG8MPRF1JCDGPRPB3",
+            "fingerprint": "sha256:daab135eb108ff5c49c6abafcff0b0944e07a44bd20ccd815b826669f62be846"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BP67SM5CYWJGZJGTDK",
+            "fingerprint": "sha256:f0b1cb2211e8065c7261a72ec562ec0b82579fc7f366b4b6f547cfc850141ff4"
+          },
+          {
+            "kind": "scene",
+            "id": "scene_01M5MJB4BPYF8G4E1S4KQEMJ0T",
+            "fingerprint": "sha256:eb85831ba0ebadb61242ccd17fd648f2fc5436e1d8b5d884c4e608abcddf06b8"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BP213E38VE49DE53VG",
+            "fingerprint": "sha256:d957552fb3737df5b448fb8681557057ec34419859c6910cee1ac1a50509714b"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BP24HT24BC5WGY6CC8",
+            "fingerprint": "sha256:92c4e81e4e75ac934dd2e95b16923c12493e44c31256472c940021896497e2f8"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BP32J9FDX9Q52V0QAZ",
+            "fingerprint": "sha256:d5dbecc736d12ff1eebfb48cec80bcffb3ec724a5c48a099db24bd5166c7cde3"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BP8NXM2482P1MHX4FQ",
+            "fingerprint": "sha256:8987d9103d480fac3d32b8899b54b778c97b22233471eb3bff8d9e644db78cfa"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BP8SHSBR4A4FJ5BQJ0",
+            "fingerprint": "sha256:d9fc3b127900ccfb74d6e8ea6870517ae011dae15747b44d655338732a3172b1"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BP9BCRFGYV3PMDK00P",
+            "fingerprint": "sha256:9c7418e4ba33bef10725720bdd0d14b543ed9f8611a3963249cac038f9bf9a62"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BP9XBQFX635G4D65VS",
+            "fingerprint": "sha256:9b630cd08189afd26e72dc0b1b1ecf09e73af1104e7c3ca7c950db5e27b84d68"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPG4A91Z0VA31YZTYB",
+            "fingerprint": "sha256:307bbed2fd853e4459d48627edf2bce1a319f84407cf376634e05c51af1fa2c2"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPGFVQWR993THE9VDV",
+            "fingerprint": "sha256:8e5a47bf5a6417d89507517f88e3d37ad662e3509702a4230b0fb5ab71c87599"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPGFY7MD20DGM8W6SY",
+            "fingerprint": "sha256:c6f3a2487e5bfbe53f8d5b97b484a03db8d9d643c14d3a6c357f3bfdcf11075e"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPGM8F3H18NQJ218V7",
+            "fingerprint": "sha256:69ebd517bfc04f657e356f4fcb965031deb68eafc9ba8277b4fc10ae41a27c49"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPGX566CWF5PN9W4K3",
+            "fingerprint": "sha256:8198e046768cf2a99df95c9143dab5d3aaa1f2e441c27012d8b6c1bf949b52ae"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPH2JJKQX8PZ6B1TTK",
+            "fingerprint": "sha256:14621cf1a19eece528ebef42c2c8060ff77ac297d41482798d951f3c34defd80"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPHET549HH5MBQE9QY",
+            "fingerprint": "sha256:ab2e1780b957f4463c16521fd9e802c426bca12887431c96fbb3c06996faad6c"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPHQCEV0DPRV1YA90K",
+            "fingerprint": "sha256:594edb3e649d6571c51c87f612d9b6e2f43f447ea22e6c532c174755745a0a9c"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPJKEQ6MM5R90R15NM",
+            "fingerprint": "sha256:3f97740f0c461601602e6b4b0974a2a9ff18082f547dd6d7ad1ba76473139adc"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPKCX2DKWC2297V824",
+            "fingerprint": "sha256:800d4628541745eab798aa2a3eaa21099ea9e4cfee930a6173141c61f4a4dda7"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPKGFXJB272HWPWPHT",
+            "fingerprint": "sha256:996660c6cbce9ba8eedcc96a962e560c3c27b1474e42c73f295c7fe0185d9da9"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPKM2W7N1Z0MVTBZKQ",
+            "fingerprint": "sha256:212a752e527e6871855a18e23cbd8deaf8354a8a7352653071fc2a61217306e8"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPMKBE8RBA24Z4NTMD",
+            "fingerprint": "sha256:041c19f0381fc3cb80e43749c01f2967e84ff7ccde8f45c19b4d1abc5b948704"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPP8N5BPNH4P2RMSPJ",
+            "fingerprint": "sha256:a6b22df29644514b708c40160652d88de8f67fa5e8e94719273b77425b14005a"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPRXJ5EC4VGYCJZXZ9",
+            "fingerprint": "sha256:4aaec37431de91cfaa18cb7e4e264bdff3db8d6f3bb5fdb68f8aefec1c151911"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPS07S51DY5TX630JA",
+            "fingerprint": "sha256:704c3ebb05d1fca198534ce0bade4c6727a022e1c0c152f479c6db07f4900f86"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPSPQCJAVTFR2PQEPC",
+            "fingerprint": "sha256:2148955f32cb153bf4d9ff235c6a829fbcaaded44da9f88aa8e46562fa77680e"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPWV5XPZYGAE5J5670",
+            "fingerprint": "sha256:026cc2433ad8d56da03c7570e8bb803baa1c436ce15be7efb619ce171a1c4c35"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPYFZ9HQ214BN6D035",
+            "fingerprint": "sha256:47c82f9b43daf0f70b230c548b74644b0d282643c32510e33ea891b2dd75149e"
+          },
+          {
+            "kind": "character",
+            "id": "character_01M5MJB4BPYNBD6KN1DE9VV36R",
+            "fingerprint": "sha256:d0346bfaf666d43e03261671b51839099bfd23cd632d314d1c2f53917b31d09d"
+          }
+        ],
+        "story_sha256": "sha256:ce5da3ff0c845937b74aa4f50201b548731688e0f04f198226688822f2a76fc5",
+        "lenses_sha256": "sha256:9551a2cc9a679ee0075d352aec6bcab22f4db33b1600a1f4955c061cd50883e2"
+      },
+      "fingerprint": "sha256:97f7c96d3ae6cd346085dd3d2668706134f64d7d1fa29313fd6866fe44b9a89c",
+      "made_by": {
+        "provider": "openai-codex",
+        "model": "gpt-6-luna",
+        "producer_version": "khaos-tools 0.118.0",
+        "usage": {
+          "billing": "subscription",
+          "medium": "text",
+          "attempts": [
+            {
+              "outcome": "completed",
+              "finish_reason": "completed",
+              "generation_id": "resp_0c7c37002281053f016adb928a149881989b4bd99c45254b6f",
+              "reasoning": "default",
+              "served_reasoning": "effort:medium",
+              "service_tier": "default",
+              "price": {
+                "source": "https://developers.openai.com/api/docs/pricing",
+                "as_of": "2026-10-22",
+                "input_per_mtok": "0.10",
+                "output_per_mtok": "0.50",
+                "cached_input_per_mtok": "0.01"
+              },
+              "input_tokens": 5969,
+              "cached_input_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1219,
+              "reasoning_tokens": 0,
+              "cost_usd": "not_reported",
+              "estimated_cost_usd": "0.0012064"
+            }
+          ],
+          "total": {
+            "attempts": 1,
+            "truncated": 0,
+            "failed": 0,
+            "input_tokens": 5969,
+            "cached_input_tokens": 0,
+            "cache_write_tokens": 0,
+            "output_tokens": 1219,
+            "reasoning_tokens": 0,
+            "cost_usd": "not_reported",
+            "estimated_cost_usd": "0.0012064"
+          }
+        }
+      }
+    },
+    "fit": {
+      "outcome": "ambiguous",
+      "reason": "Story Spine and Three-Act Structure both fit, and the evidence does not separate them (margin p 0.211).",
+      "alpha": 0.05,
+      "minAttainableP": 0.017543859649122806,
+      "seed": 5346895747046617,
+      "iterations": 57,
+      "lenses": [
+        {
+          "id": "three-act",
+          "version": "1",
+          "source": "story-graph docs/LENS_FRAMEWORKS_GUIDE.md:33 (Inciting Incident, 25%), :41 (Midpoint, 50%), :49 (Climax, 75%), as khaos-tools#445 §6.1 adopted",
+          "beats": [
+            {
+              "name": "Inciting Incident",
+              "position": 0.25,
+              "tolerance": 0.05
+            },
+            {
+              "name": "Midpoint",
+              "position": 0.5,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Climax",
+              "position": 0.75,
+              "tolerance": 0.05
+            }
+          ],
+          "axisCoverage": 0.34000000000000014,
+          "score": 0.5133000152391021,
+          "excess": 0.12272731092986139,
+          "p": 0.19298245614035087
+        },
+        {
+          "id": "heros-journey",
+          "version": "1",
+          "source": "Christopher Vogler's 12 stages, ordinary_world … return_with_elixir (story-graph domain/lens_hero_journey.go:35-48), with beats at the 11 stage boundaries (:92-114)",
+          "beats": [
+            {
+              "name": "Call to Adventure",
+              "position": 0.08,
+              "tolerance": 0.05
+            },
+            {
+              "name": "Refusal of the Call",
+              "position": 0.15,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Meeting the Mentor",
+              "position": 0.2,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Crossing the Threshold",
+              "position": 0.25,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Tests, Allies and Enemies",
+              "position": 0.3,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Approach to the Inmost Cave",
+              "position": 0.5,
+              "tolerance": 0.07
+            },
+            {
+              "name": "The Ordeal",
+              "position": 0.6,
+              "tolerance": 0.07
+            },
+            {
+              "name": "The Reward",
+              "position": 0.7,
+              "tolerance": 0.07
+            },
+            {
+              "name": "The Road Back",
+              "position": 0.75,
+              "tolerance": 0.07
+            },
+            {
+              "name": "The Resurrection",
+              "position": 0.85,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Return with the Elixir",
+              "position": 0.95,
+              "tolerance": 0.05
+            }
+          ],
+          "axisCoverage": 0.91,
+          "score": 0.510381865234753,
+          "excess": 0.018636456782172517,
+          "p": 0.3508771929824561
+        },
+        {
+          "id": "story-spine",
+          "version": "1",
+          "source": "Kenn Adams' Story Spine in the 7-beat wording once_upon_a_time … and_ever_since (story-graph domain/lens_story_spine.go:34-42), with beats at the 6 boundaries 0.10, 0.25, 0.35, 0.55, 0.70, 0.90 (:87-97). Attributed to Adams, whose wording it is",
+          "beats": [
+            {
+              "name": "And every day",
+              "position": 0.1,
+              "tolerance": 0.05
+            },
+            {
+              "name": "Until one day",
+              "position": 0.25,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Because of that",
+              "position": 0.35,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Because of that, again",
+              "position": 0.55,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Until finally",
+              "position": 0.7,
+              "tolerance": 0.07
+            },
+            {
+              "name": "And ever since",
+              "position": 0.9,
+              "tolerance": 0.05
+            }
+          ],
+          "axisCoverage": 0.7200000000000003,
+          "score": 0.6603323847881476,
+          "excess": 0.25769117706485406,
+          "p": 0.017543859649122806
+        },
+        {
+          "id": "save-the-cat",
+          "version": "1",
+          "source": "Blake Snyder, Save the Cat! (2005), ch. 4, the 15-beat sheet on its 110-page model. Each beat's position is its start page / 110; pages keeps the range as cited",
+          "beats": [
+            {
+              "name": "Opening Image",
+              "position": 0.009091,
+              "tolerance": 0.05
+            },
+            {
+              "name": "Theme Stated",
+              "position": 0.045455,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Set-Up",
+              "position": 0.009091,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Catalyst",
+              "position": 0.109091,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Debate",
+              "position": 0.109091,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Break into Two",
+              "position": 0.227273,
+              "tolerance": 0.07
+            },
+            {
+              "name": "B Story",
+              "position": 0.272727,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Fun and Games",
+              "position": 0.272727,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Midpoint",
+              "position": 0.5,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Bad Guys Close In",
+              "position": 0.5,
+              "tolerance": 0.07
+            },
+            {
+              "name": "All Is Lost",
+              "position": 0.681818,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Dark Night of the Soul",
+              "position": 0.681818,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Break into Three",
+              "position": 0.772727,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Finale",
+              "position": 0.772727,
+              "tolerance": 0.07
+            },
+            {
+              "name": "Final Image",
+              "position": 1,
+              "tolerance": 0.05
+            }
+          ],
+          "axisCoverage": 0.7636360000000002,
+          "score": 0.5336009798239213,
+          "excess": 0.054378169051344405,
+          "p": 0.15789473684210525
+        }
+      ]
+    },
+    "names": {
+      "state": "named",
+      "points": [
+        {
+          "sceneId": "scene_01M5MJB4BP6MAW126BF1RDZ6PX",
+          "name": "Betrayal Meets Retaliation",
+          "turn": "Madison turns from discovering Jason’s infidelity to violently confronting him and leaving."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP226JPB65702JZ0N2",
+          "name": "Grief Interrupted",
+          "turn": "Desmond’s mourning is interrupted when Madison calls for his help, pulling him briefly back into obligation."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPE03PC70EQPBFP49D",
+          "name": "Jetta Claims Her Exit",
+          "turn": "Jetta turns a threatened prison send-off into a show of force and prepares to leave on her own terms."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPA97JK3E91BBF8SVV",
+          "name": "Freedom Still Out of Reach",
+          "turn": "Jetta’s release brings her back into the world, but her grief over her family and Desmond’s vow of revenge complicate the reunion."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPP6FZV3CSFRK0JSCX",
+          "name": "Jetta Pulls the Trigger",
+          "turn": "Mr. Gathers’s pleas turn into a final confrontation when Jetta shoots him."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPY8ENJ024E2NXAJVK",
+          "name": "Family Torn Apart",
+          "turn": "Jetta’s attempt to hold onto her son ends with police taking him and arresting her."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPG644DWN1QMQCCDH3",
+          "name": "Fifth Turns the Tables",
+          "turn": "Fifth exploits Blaine’s attempt to persuade him, escapes his restraints, and flees the hospital."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP89CQ2RW5C500K95X",
+          "name": "The Fall Is Caught",
+          "turn": "Fifth’s leap appears to be a suicide attempt but ends with firefighters catching him in a net."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPMH6BG9S4W5BKDAVX",
+          "name": "Madison Takes Responsibility",
+          "turn": "Madison agrees to take charge of Fifth’s care by signing him out of the hospital."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPWEC1JRY49NNEFE8Z",
+          "name": "Marlon’s Absence Resurfaces",
+          "turn": "Fifth’s questions about his family expose Jetta’s grief over the son she cannot discuss."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPSSDQ0W6QE18MWZ2D",
+          "name": "Debt Becomes a Threat",
+          "turn": "Bubble turns a demand for repayment into a gunpoint threat against Jetta, forcing Desmond to agree."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPE6GAZHH16BR3E82Z",
+          "name": "Reasons Fail to Reach Fifth",
+          "turn": "Madison realizes that her appeals to family and purpose cannot persuade Fifth to value his life."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP7RXFDRCDSSDJQ20H",
+          "name": "Jetta Wins the Job",
+          "turn": "Jetta’s defense of herself impresses Tony enough to earn her a job and drive Nacho away."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP6ZZTMBF5G4P9ZJ8D",
+          "name": "Marcos Accepts the Risk",
+          "turn": "Desmond’s pressure moves Marcos from refusing the dangerous lead to agreeing to help."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP30913DAXDB5XGQR3",
+          "name": "Desmond Chooses to Change",
+          "turn": "Jetta’s challenge leads Desmond to promise he will try to turn his life around."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPGS768N4DEAFHQK59",
+          "name": "Desmond Fires a Warning",
+          "turn": "Desmond’s frustration over losing a parking space erupts into gunfire, shocking the people with him."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP7MF2W8H661EVP1DG",
+          "name": "Madison Reaches Desmond",
+          "turn": "Madison offers Desmond hope and companionship as he reveals the drinking and loss behind his despair."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP4HDPHPPJN1595PS2",
+          "name": "A Promise to Find Marlon",
+          "turn": "Jetta admits how deeply she misses her son, and Desmond promises to help reunite them."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPKAD71RCZHMMHZS0V",
+          "name": "Sidney Opens Up",
+          "turn": "Sidney’s intimacy with Fifth turns into a more personal exchange when she asks about his bandaged wrist."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPSQ25E3Q3QKPQSPT9",
+          "name": "Fifth Is Missing",
+          "turn": "Madison’s affectionate goodbye with Ray gives way to alarm when she finds Fifth gone from the loft."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPM1YGQJNK2JZ72QQ5",
+          "name": "Sidney Offers Faith",
+          "turn": "Sidney responds to Fifth’s account of despair with reassurance and affection."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPJWQACS02XXT1FCKD",
+          "name": "Madison Discovers the Affair",
+          "turn": "Madison realizes Fifth and Sidney are having sex and leaves amused rather than alarmed."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPFY1W1R50ARQP4Y1E",
+          "name": "Jetta Seeks Her Son",
+          "turn": "Jetta openly claims her past and asks Marcos to help her find Marlon."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPHY3G5H2GJHVCD06Z",
+          "name": "Fifth Sees a Future",
+          "turn": "Fifth credits Sidney with renewing his faith and agrees to share ordinary life with her."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPM95AFS8SR1XWE25C",
+          "name": "Love Meets Caution",
+          "turn": "Fifth celebrates his new love while Madison warns that love can also bring bitterness."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPWK78147NGFDBY1FK",
+          "name": "Old Love Reopens",
+          "turn": "Jetta and Desmond acknowledge their lingering love, but Jetta asks for time before deciding what it means."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPBJP4TDSZKMW1R5J7",
+          "name": "Madison Tests Ray",
+          "turn": "Madison questions Ray about the violence behind his business before their flirtation turns intimate."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPZNNBGFQT3E2C3898",
+          "name": "Ray Attacks Madison",
+          "turn": "Ray’s overhearing Madison’s call turns their encounter violent, and Desmond rushes in to rescue her."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP9X7PPBMEAQM8K42K",
+          "name": "Jetta Reconnects with Marlon",
+          "turn": "Jetta finally speaks with Marlon and learns she can see him, renewing their bond."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPQJEVGGC16N46PWW5",
+          "name": "Fifth Lets Sidney In",
+          "turn": "Fifth admits the truth about his father and declares his love for Sidney, inviting her into what comes next."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPQAAG31HT2H90DX2C",
+          "name": "Proposal Ends in Collision",
+          "turn": "Fifth and Sidney’s engagement is abruptly overturned when their car is struck by a truck."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPG8MPRF1JCDGPRPB3",
+          "name": "Desmond Accepts His Guilt",
+          "turn": "Desmond admits he blames himself for Madison’s injury and fears for Fifth’s stability."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP67SM5CYWJGZJGTDK",
+          "name": "Jetta Leaves a Choice",
+          "turn": "Jetta departs for Marlon while urging Desmond to make the right choice about their future."
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPYF8G4E1S4KQEMJ0T",
+          "name": "Ray Faces Desmond",
+          "turn": "Desmond reveals that Ray survived and takes him toward the abandoned factory, leaving his intentions unresolved."
+        }
+      ]
+    }
+  },
+  "coverage/status": {
+    "exists": true,
+    "generatedAt": "2026-10-23T17:00:27Z",
+    "sizeBytes": 138946
+  },
+  "coverage/report": {
+    "reportId": "ac51d8ca-fecb-4e7f-8c56-d0778eec6651",
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-10-23T17:00:27Z",
+    "logline": {
+      "value": "As a volatile widower helps his newly released former lover find her son, his circle’s crises of despair, violence, and love force him to choose between revenge and change.",
+      "source": "llm",
+      "confidence": "medium",
+      "model": "gpt-6-luna"
+    },
+    "synopsis": {
+      "value": "In New York, Madison faces eviction from her artist space and discovers her partner Jason’s infidelity, while Desmond grieves his baby brother at a funeral. A call from Madison pulls Desmond back into obligation just as Jetta is released from prison; her attempt to keep her son Marlon ends with police separating them and arresting her. Meanwhile, Desmond’s brother Fifth escapes a mental hospital after a suicidal crisis, and Madison agrees to care for him, drawing the characters into an uneasy network of grief, need, and responsibility.\n\nAs Jetta finds work and admits how deeply she misses Marlon, Desmond promises to help reunite them, even as a gunpoint debt and his own escalating anger threaten his efforts to change. Fifth begins to imagine a future with Sidney, while Madison’s relationship with Ray turns violent and leaves her injured; Fifth and Sidney’s engagement is then shattered by a truck collision. Jetta reconnects with Marlon and leaves to be with him, asking Desmond to make the right choice about their future. Desmond acknowledges his guilt and fear for Fifth, then reveals Ray has survived and drives him toward an abandoned factory, leaving the final confrontation unresolved.",
+      "source": "llm",
+      "confidence": "medium",
+      "model": "gpt-6-luna"
+    },
+    "genre": {
+      "value": "Ensemble Drama / Crime Drama",
+      "source": "llm",
+      "confidence": "medium",
+      "model": "gpt-6-luna"
+    },
+    "tone": {
+      "value": "Earnest, melodramatic, and volatile, shifting between intimate grief and sudden, high-stakes violence.",
+      "source": "llm",
+      "confidence": "medium",
+      "model": "gpt-6-luna"
+    },
+    "rubric": {
+      "dimensions": [
+        {
+          "name": "Premise",
+          "score": {
+            "value": 6,
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          },
+          "summary": {
+            "value": "The intersection of an ex-con mother searching for her son, a grieving man pursuing revenge, and a suicidal musician in recovery offers potent emotional material. Its familiar urban-crime and redemption ingredients become less distinctive because the central hook and protagonist focus are diffuse.",
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          }
+        },
+        {
+          "name": "Structure",
+          "score": {
+            "value": 5,
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          },
+          "summary": {
+            "value": "The measured analysis finds both Story Spine and Three-Act Structure plausible without distinguishing them, and the sequence of turns is active from the outset. Yet multiple early pivots and a late succession of crises, capped by an unresolved Ray confrontation, make the overall shape feel crowded and incomplete.",
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          }
+        },
+        {
+          "name": "Character",
+          "score": {
+            "value": 5,
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          },
+          "summary": {
+            "value": "Jetta’s pursuit of Marlon and Desmond’s grief-fueled volatility provide promising trajectories, while Madison and Fifth have consequential relational choices. With character-journey intelligence absent and relationship arcs limited to co-appearance, arc completeness is less securely evidenced; the rapid recovery and unresolved endings remain concerns.",
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          }
+        },
+        {
+          "name": "Dialogue",
+          "score": {
+            "value": 5,
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          },
+          "summary": {
+            "value": "Available character evidence points to distinct modes of speech, from Jetta’s confrontational resolve to the pleading at Fifth’s hospital bedside, and several scenes hinge on direct emotional disclosure. The supplied evidence is too thin to establish consistent subtext or dialogue efficiency across the whole script, and the many crises risk explanatory exchanges.",
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          }
+        },
+        {
+          "name": "Theme",
+          "score": {
+            "value": 6,
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          },
+          "summary": {
+            "value": "The plot repeatedly places family obligation, grief, recovery, and the possibility of change under pressure, especially in the funeral home, the hospital, and the airport. Those ideas are not yet unified by a clear moral reckoning with the violence or an earned account of Fifth’s recovery.",
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          }
+        },
+        {
+          "name": "Emotional Engagement",
+          "score": {
+            "value": 6,
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          },
+          "summary": {
+            "value": "The funeral-home interruption, Jetta’s separation from Marlon, Fifth’s rooftop leap, and the airport farewell all carry strong emotional potential. The accumulating crises and abrupt resolutions can blunt that impact, particularly when the car collision and Ray’s return displace sustained aftermath.",
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          }
+        },
+        {
+          "name": "Production Practicality",
+          "score": {
+            "value": 0,
+            "source": "none",
+            "confidence": "none"
+          },
+          "summary": {
+            "value": "Production practicality is computed deterministically by the pipeline and is not assessed here.",
+            "source": "llm",
+            "confidence": "medium",
+            "model": "gpt-6-luna"
+          }
+        }
+      ],
+      "verdict": {
+        "value": "consider",
+        "source": "derived",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "rubric",
+            "citation": "mean of 6 scored rubric dimensions: 7.5 or above recommend, 5.0 or above consider, else pass"
+          }
+        ]
+      }
+    },
+    "structure": {
+      "estimatedRuntimeMs": {
+        "value": 4641360,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "structure",
+            "citation": "57 scenes → 4641360 ms estimated runtime"
+          }
+        ]
+      },
+      "pageCount": {
+        "value": 52,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "structure",
+            "citation": "57 scenes parsed from screenplay.json"
+          }
+        ]
+      },
+      "sceneCount": {
+        "value": 57,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "structure",
+            "citation": "57 scenes parsed from screenplay.json"
+          }
+        ]
+      },
+      "measured": {
+        "outcome": "ambiguous",
+        "reason": "Story Spine and Three-Act Structure both fit, and the evidence does not separate them (margin p 0.211).",
+        "document": "analysis/structure/structure.json"
+      },
+      "pacingNotes": {
+        "value": "The opening accelerates through betrayal, prison release, the classroom shooting, and the hospital escape, establishing danger quickly but also loading several unrelated crises before the audience has a stable center. The middle alternates reflective relationship scenes with abrupt violent turns; the final run moves rapidly from the car crash to the airport and Ray reveal, leaving little room for consequences to land.",
+        "source": "llm",
+        "confidence": "medium",
+        "model": "gpt-6-luna"
+      }
+    },
+    "characters": [
+      {
+        "name": "BLAINE",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BP213E38VE49DE53VG",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.012333965844402278,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BP213E38VE49DE53VG",
+              "citation": "BLAINE: 13 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "BUBBLE",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPKM2W7N1Z0MVTBZKQ",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.006641366223908918,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPKM2W7N1Z0MVTBZKQ",
+              "citation": "BUBBLE: 7 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "CORRECTION OFFICER",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPKCX2DKWC2297V824",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0009487666034155598,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPKCX2DKWC2297V824",
+              "citation": "CORRECTION OFFICER: 1 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "DESMOND",
+        "importance": {
+          "value": "main",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPGX566CWF5PN9W4K3",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "Desmond begins in acute grief over his baby brother and is pulled back into responsibility by Madison’s call. His efforts to help Jetta find Marlon and confront Ray’s violence coexist with drinking, reckless anger, guilt over Madison’s injury, and an unresolved final choice about Ray.",
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "dialogueWeight": {
+          "value": 0.2836812144212524,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPGX566CWF5PN9W4K3",
+              "citation": "DESMOND: 299 dialogue lines in 30 scenes"
+            }
+          ]
+        },
+        "sceneCount": 30,
+        "strengths": {
+          "value": [
+            "The funeral-home opening establishes grief and obligation in a vivid collision.",
+            "His gunfire over a parking dispute sharply exposes how volatile his coping has become.",
+            "The airport farewell gives his relationship with Jetta emotional ambiguity rather than an easy reunion."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "concerns": {
+          "value": [
+            "His movement from retaliatory violence and despair toward change is not fully resolved by the final confrontation with Ray."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        }
+      },
+      {
+        "name": "DR. MITCHELL",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPSPQCJAVTFR2PQEPC",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.004743833017077799,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPSPQCJAVTFR2PQEPC",
+              "citation": "DR. MITCHELL: 5 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "ER DOCTOR",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPGM8F3H18NQJ218V7",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0018975332068311196,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPGM8F3H18NQJ218V7",
+              "citation": "ER DOCTOR: 2 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "FEMALE INMATE",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPH2JJKQX8PZ6B1TTK",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0009487666034155598,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPH2JJKQX8PZ6B1TTK",
+              "citation": "FEMALE INMATE: 1 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "FIFTH",
+        "importance": {
+          "value": "main",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPS07S51DY5TX630JA",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "Fifth begins in a mental-health crisis, escaping restraint and refusing Madison’s attempts to persuade him that life has value. Sidney’s affection helps him imagine ordinary life and commit to a future, but a truck collision after their engagement abruptly reopens the question of his stability.",
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "dialogueWeight": {
+          "value": 0.150853889943074,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPS07S51DY5TX630JA",
+              "citation": "FIFTH: 159 dialogue lines in 28 scenes"
+            }
+          ]
+        },
+        "sceneCount": 28,
+        "strengths": {
+          "value": [
+            "The rooftop escape and firefighters’ net give his crisis a striking visual expression without making the attempted leap a resolution.",
+            "His inability to be reached by family-based appeals gives the early care scenes painful specificity.",
+            "Sidney’s patient intimacy offers a clear counterpoint to Madison’s more interventionist approach."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "concerns": {
+          "value": [
+            "His rapid passage from suicidal despair to romance, engagement, and renewed faith risks making recovery feel too easy; the collision then substitutes external shock for a fully developed emotional test."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        }
+      },
+      {
+        "name": "GUARD",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BP9XBQFX635G4D65VS",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.004743833017077799,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BP9XBQFX635G4D65VS",
+              "citation": "GUARD: 5 dialogue lines in 2 scenes"
+            }
+          ]
+        },
+        "sceneCount": 2,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "JASON",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPHQCEV0DPRV1YA90K",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0018975332068311196,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPHQCEV0DPRV1YA90K",
+              "citation": "JASON: 2 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "JEHOVA WITNESS",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPWV5XPZYGAE5J5670",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0018975332068311196,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPWV5XPZYGAE5J5670",
+              "citation": "JEHOVA WITNESS: 2 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "JETTA",
+        "importance": {
+          "value": "supporting",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPGFVQWR993THE9VDV",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "Jetta returns from prison determined to reclaim her life, but the attempt to hold onto her son ends in another separation. She gradually finds work, allows herself to seek help locating Marlon, and reconnects with him; she leaves for him while keeping a future with Desmond open.",
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "dialogueWeight": {
+          "value": 0.20208728652751423,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPGFVQWR993THE9VDV",
+              "citation": "JETTA: 213 dialogue lines in 28 scenes"
+            }
+          ]
+        },
+        "sceneCount": 28,
+        "strengths": {
+          "value": [
+            "Her prison release and failed attempt to keep Marlon create immediate, consequential stakes.",
+            "The tattoo-shop encounter turns her self-possession into a concrete opportunity and a memorable public reversal.",
+            "Her airport departure makes choosing her child an active resolution rather than a sentimental speech."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "concerns": {
+          "value": [
+            "The early shooting of Mr. Gathers and the later maternal longing need clearer connective tissue so her extreme violence and capacity for care feel psychologically integrated."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        }
+      },
+      {
+        "name": "MADISON",
+        "importance": {
+          "value": "supporting",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPJKEQ6MM5R90R15NM",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "Madison enters as an artist facing eviction and betrayal, then becomes the person who takes responsibility for Fifth when he escapes the hospital and rejects appeals to value his life. Her relationship with Fifth and subsequent intimacy with Ray complicate her role as caretaker, and Ray’s assault leaves her gravely injured.",
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "dialogueWeight": {
+          "value": 0.14516129032258066,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPJKEQ6MM5R90R15NM",
+              "citation": "MADISON: 153 dialogue lines in 23 scenes"
+            }
+          ]
+        },
+        "sceneCount": 23,
+        "strengths": {
+          "value": [
+            "The locked, eviction-notice door efficiently establishes material precarity alongside her personal betrayal.",
+            "Signing Fifth out of the hospital makes her care consequential rather than merely verbal.",
+            "Her interrogation of Ray before intimacy plants danger before his later attack."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        },
+        "concerns": {
+          "value": [
+            "Her shift from Fifth’s caregiver to a sexual relationship with Ray, despite testing his violence, needs stronger motivation and consequence to avoid feeling like a plot device."
+          ],
+          "source": "llm",
+          "confidence": "medium",
+          "model": "gpt-6-luna"
+        }
+      },
+      {
+        "name": "MARCOS",
+        "importance": {
+          "value": "supporting",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPRXJ5EC4VGYCJZXZ9",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.031309297912713474,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPRXJ5EC4VGYCJZXZ9",
+              "citation": "MARCOS: 33 dialogue lines in 3 scenes"
+            }
+          ]
+        },
+        "sceneCount": 3,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "MARLON",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPGFY7MD20DGM8W6SY",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.003795066413662239,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPGFY7MD20DGM8W6SY",
+              "citation": "MARLON: 4 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "MR. GATHERS",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BP24HT24BC5WGY6CC8",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0018975332068311196,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BP24HT24BC5WGY6CC8",
+              "citation": "MR. GATHERS: 2 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "MR. PEACLE",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPP8N5BPNH4P2RMSPJ",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.012333965844402278,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPP8N5BPNH4P2RMSPJ",
+              "citation": "MR. PEACLE: 13 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "MRS. PEACLE",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPYNBD6KN1DE9VV36R",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.007590132827324478,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPYNBD6KN1DE9VV36R",
+              "citation": "MRS. PEACLE: 8 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "NACHO",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPKGFXJB272HWPWPHT",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.009487666034155597,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPKGFXJB272HWPWPHT",
+              "citation": "NACHO: 10 dialogue lines in 2 scenes"
+            }
+          ]
+        },
+        "sceneCount": 2,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "NURSE",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BP9BCRFGYV3PMDK00P",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0018975332068311196,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BP9BCRFGYV3PMDK00P",
+              "citation": "NURSE: 2 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "PARK BYSTANDER",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BP32J9FDX9Q52V0QAZ",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0009487666034155598,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BP32J9FDX9Q52V0QAZ",
+              "citation": "PARK BYSTANDER: 1 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "RAY",
+        "importance": {
+          "value": "supporting",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BP8NXM2482P1MHX4FQ",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.025616698292220113,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BP8NXM2482P1MHX4FQ",
+              "citation": "RAY: 27 dialogue lines in 7 scenes"
+            }
+          ]
+        },
+        "sceneCount": 7,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "RAY'S GIRL",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPHET549HH5MBQE9QY",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0009487666034155598,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPHET549HH5MBQE9QY",
+              "citation": "RAY'S GIRL: 1 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "SIDNEY",
+        "importance": {
+          "value": "supporting",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPYFZ9HQ214BN6D035",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0683111954459203,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPYFZ9HQ214BN6D035",
+              "citation": "SIDNEY: 72 dialogue lines in 13 scenes"
+            }
+          ]
+        },
+        "sceneCount": 13,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "STEVEN",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPMKBE8RBA24Z4NTMD",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.006641366223908918,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPMKBE8RBA24Z4NTMD",
+              "citation": "STEVEN: 7 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "TONY",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BP8SHSBR4A4FJ5BQJ0",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.009487666034155597,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BP8SHSBR4A4FJ5BQJ0",
+              "citation": "TONY: 10 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      },
+      {
+        "name": "YUPPIE",
+        "importance": {
+          "value": "minor",
+          "source": "llm",
+          "confidence": "medium",
+          "evidence": [
+            {
+              "ref": "analysis/character/character_01M5MJB4BPG4A91Z0VA31YZTYB",
+              "citation": "Stage 2 character analysis"
+            }
+          ],
+          "model": "gpt-6-luna"
+        },
+        "arcSummary": {
+          "value": "",
+          "source": "none",
+          "confidence": "none"
+        },
+        "dialogueWeight": {
+          "value": 0.0018975332068311196,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "character_01M5MJB4BPG4A91Z0VA31YZTYB",
+              "citation": "YUPPIE: 2 dialogue lines in 1 scenes"
+            }
+          ]
+        },
+        "sceneCount": 1,
+        "strengths": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        },
+        "concerns": {
+          "value": [],
+          "source": "none",
+          "confidence": "none"
+        }
+      }
+    ],
+    "viability": {
+      "uniqueLocations": 26,
+      "castSize": 27,
+      "speakingRoles": 17,
+      "interiorExteriorRatio": 0.7368421052631579,
+      "dayNightRatio": 0.631578947368421,
+      "complexityTier": {
+        "value": "high",
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "viability",
+            "citation": "26 unique locations, 17 speaking roles → high"
+          }
+        ]
+      },
+      "productionFlags": {
+        "extrasOrCrowdScenes": false,
+        "actionHeavyScenes": true,
+        "vfxOrStuntsSignals": false,
+        "periodSetting": false,
+        "childRoles": true,
+        "animalRoles": false,
+        "containedLocationPct": {
+          "value": 0.45614035087719296,
+          "source": "deterministic",
+          "confidence": "high",
+          "evidence": [
+            {
+              "ref": "locations",
+              "citation": "46% of scenes in top-3 locations"
+            }
+          ]
+        }
+      }
+    },
+    "assessment": {
+      "strengths": {
+        "value": [
+          "The funeral-home scene makes Desmond’s grief tangible, then immediately tests it when Madison calls for help.",
+          "Jetta’s release followed by the classroom shooting and the police taking Marlon creates an arresting, painful contradiction between freedom and maternal loss.",
+          "Fifth’s rooftop leap ending in firefighters’ net is a memorable visual crisis, while Madison signing him out makes the family response concrete.",
+          "Jetta’s tattoo-shop encounter lets her defend herself, earn Tony’s respect, and secure work through action rather than exposition.",
+          "The airport farewell—Jetta leaving for Marlon while holding Desmond’s ring—creates a bittersweet image of love deferred instead of conveniently settled."
+        ],
+        "source": "llm",
+        "confidence": "medium",
+        "model": "gpt-6-luna"
+      },
+      "concerns": {
+        "value": [
+          "The narrative is distributed across Desmond, Jetta, Madison, and Fifth, with several parallel crises competing for the film’s central dramatic question; clarify whose choices drive the spine.",
+          "The closing sequence stacks major reversals—the car collision, Madison’s injury and Desmond’s guilt, Jetta’s departure, and Ray’s survival—then ends on an unresolved threat. Rework the climax so the principal conflict reaches a legible emotional or dramatic resolution.",
+          "Fifth’s movement from suicidal despair to an engagement needs intermediate behavioral evidence of recovery and a more sustained reckoning with relapse risk.",
+          "Jetta’s shooting of Mr. Gathers and Desmond’s revenge trajectory invite serious moral scrutiny, but the supplied evidence does not establish enough consequence or accountability to make the violence feel fully integrated.",
+          "The structure read is ambiguous between Story Spine and Three-Act Structure, while the supplied relationship arcs are co-appearance only; clarify the causal links between the intersecting personal plots rather than relying on proximity."
+        ],
+        "source": "llm",
+        "confidence": "medium",
+        "model": "gpt-6-luna"
+      },
+      "notes": {
+        "value": "This has the breadth and intersecting personal crises of an ensemble urban melodrama, with a crime-thriller edge in Desmond’s pursuit of Ray; the strongest commercial hook is the emotionally charged reunion-and-revenge knot. The rooftop rescue, grief at the funeral home, and airport farewell suggest a vivid emotional register, but revision should prioritize one protagonist’s causal spine and provide a decisive payoff for Ray’s return.",
+        "source": "llm",
+        "confidence": "medium",
+        "model": "gpt-6-luna"
+      }
+    },
+    "madeBy": {
+      "provider": "openai-codex",
+      "model": "gpt-6-luna",
+      "producer_version": "khaos-tools 0.118.0",
+      "usage": {
+        "billing": "subscription",
+        "medium": "text",
+        "attempts": [
+          {
+            "outcome": "completed",
+            "finish_reason": "completed",
+            "generation_id": "resp_0f980e95d3d6cef2016adb92ac86608199ac0cd828eef7e2fc",
+            "reasoning": "default",
+            "served_reasoning": "effort:medium",
+            "service_tier": "default",
+            "price": {
+              "source": "https://developers.openai.com/api/docs/pricing",
+              "as_of": "2026-10-22",
+              "input_per_mtok": "0.10",
+              "output_per_mtok": "0.50",
+              "cached_input_per_mtok": "0.01"
+            },
+            "input_tokens": 129344,
+            "cached_input_tokens": 0,
+            "cache_write_tokens": 0,
+            "output_tokens": 1884,
+            "reasoning_tokens": 0,
+            "cost_usd": "not_reported",
+            "estimated_cost_usd": "0.0138764"
+          }
+        ],
+        "total": {
+          "attempts": 1,
+          "truncated": 0,
+          "failed": 0,
+          "input_tokens": 129344,
+          "cached_input_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 1884,
+          "reasoning_tokens": 0,
+          "cost_usd": "not_reported",
+          "estimated_cost_usd": "0.0138764"
+        }
+      }
+    },
+    "sourceHash": "9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+    "promptVersion": "2.1.0",
+    "incompleteSections": [
+      "character-journey"
+    ],
+    "warnings": [
+      "coverage synthesis was not grounded in: character-journey",
+      "coverage synthesis grounding: 0 journeys, 0 synthesized relationships, 8 co-appearance relationships, 26 locations"
+    ]
+  },
+  "story-analysis/preflight": {
+    "coverage": {
+      "ready": true,
+      "refusal": null,
+      "maxCalls": 3
+    },
+    "premise": {
+      "ready": true,
+      "refusal": null,
+      "maxCalls": 3
+    },
+    "structureNaming": {
+      "ready": true,
+      "refusal": null,
+      "maxCalls": 3
+    }
+  }
+}

@@ -1,0 +1,2686 @@
+{
+  "_provenance": "khaosd GET /api/coverage/report — the coverage report. sourcePath is the API's own field and keeps whatever path it returned.",
+  "reportId": "e225f891-7992-4def-800f-e3bfb968921b",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-23T00:25:06Z",
+  "sourcePath": "/Users/k/khaos/projects/broken in 4 places.kspd/story/story.json",
+  "logline": {
+    "value": "",
+    "source": "llm",
+    "confidence": "low"
+  },
+  "synopsis": {
+    "value": "",
+    "source": "llm",
+    "confidence": "low"
+  },
+  "genre": {
+    "value": "",
+    "source": "llm",
+    "confidence": "low"
+  },
+  "tone": {
+    "value": "",
+    "source": "llm",
+    "confidence": "low"
+  },
+  "rubric": {
+    "verdict": {
+      "value": "",
+      "source": "llm",
+      "confidence": "low"
+    }
+  },
+  "structure": {
+    "estimatedRuntime": {
+      "value": 54,
+      "source": "deterministic",
+      "confidence": "high",
+      "evidence": [
+        {
+          "ref": "structure",
+          "citation": "54 scenes → 54 min estimated runtime"
+        }
+      ]
+    },
+    "pageCount": {
+      "value": 54,
+      "source": "deterministic",
+      "confidence": "high",
+      "evidence": [
+        {
+          "ref": "structure",
+          "citation": "54 scenes parsed from story.json"
+        }
+      ]
+    },
+    "sceneCount": {
+      "value": 54,
+      "source": "deterministic",
+      "confidence": "high",
+      "evidence": [
+        {
+          "ref": "structure",
+          "citation": "54 scenes parsed from story.json"
+        }
+      ]
+    },
+    "acts": [
+      {
+        "name": "Act I",
+        "percentage": 0.24074074074074073,
+        "sceneCount": 13,
+        "duration": 13
+      },
+      {
+        "name": "Act II",
+        "percentage": 0.5,
+        "sceneCount": 27,
+        "duration": 27
+      },
+      {
+        "name": "Act III",
+        "percentage": 0.25925925925925924,
+        "sceneCount": 14,
+        "duration": 14
+      }
+    ],
+    "pacingNotes": {
+      "value": "",
+      "source": "llm",
+      "confidence": "low"
+    }
+  },
+  "scenes": [
+    {
+      "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJQ2J46ZYSRJA3TMA6",
+            "citation": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "slugline": "INT. JASON'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJT0EET74WP7GN649N"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ96JDZEG8Z5K6W2F4",
+            "citation": "INT. JASON'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "slugline": "INT. FUNERAL HOME - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ2DFN31PTW7TYCHDB",
+            "citation": "INT. FUNERAL HOME - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "slugline": "INT. WOMENS PENITENTIARY - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJRZ8E10NKXVVKGN69",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJB309K16V7RP5TTVG"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ7H75K3JG7KDBM7NF",
+            "citation": "INT. WOMENS PENITENTIARY - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "slugline": "EXT. SPEEDING CAR - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJ2SA4VJ7QN36YZY0P"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJETACTY7FJQDTRDFS",
+            "citation": "EXT. SPEEDING CAR - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "slugline": "INT. DESMOND'S CAR - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJW50TGYDF6M7CGT0K",
+            "citation": "INT. DESMOND'S CAR - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "slugline": "INT. CLASSROOM - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJRR4BKPAKKSMV4KYE",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJXMYHDF5VRTJG73GQ",
+            "citation": "INT. CLASSROOM - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "slugline": "INT. JETTA'S HOUSE - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ5ZA9KP2K3YRJTCXP",
+            "citation": "INT. JETTA'S HOUSE - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "slugline": "EXT. AIRPORT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJCMDD4247TFJ7VRJG",
+            "citation": "EXT. AIRPORT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "slugline": "INT. MENTAL HOSPITAL - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJE40YYHH8TYKSKW3K",
+        "chr_01KJXTKAMJJRX0D5BBD3X4PXTK",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJWVDRBP1AH34CS7DE",
+            "citation": "INT. MENTAL HOSPITAL - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "slugline": "EXT. ROOFTOP - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJCB6R9VY68RR6Y6S5",
+            "citation": "EXT. ROOFTOP - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "slugline": "INT. DESMOND'S CAR - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ71SVHGDF8WN09JS9",
+            "citation": "INT. DESMOND'S CAR - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 12,
+      "slugline": "INT. HOSPITAL - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJH4NZVESK79CF8GEF",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJZS6BJXWEV7A5WAQ4",
+            "citation": "INT. HOSPITAL - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 13,
+      "slugline": "INT. HOSPITAL WAITING ROOM - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJH4NZVESK79CF8GEF"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJCHR8AKJAYE1DMEBQ",
+            "citation": "INT. HOSPITAL WAITING ROOM - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "slugline": "EXT. HOSPITAL - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJQQN5C0AZ2KDXS2MF",
+            "citation": "EXT. HOSPITAL - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "slugline": "INT. DESMOND'S CAR - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJZVP0PFBDZH7BHPQ4",
+            "citation": "INT. DESMOND'S CAR - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "slugline": "INT. FRENCH CAFE - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJMVAM733GXPTYN5FF",
+            "citation": "INT. FRENCH CAFE - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 17,
+      "slugline": "EXT. FIFTH'S LOFT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJMSR4VTF6E94WSEN5",
+            "citation": "EXT. FIFTH'S LOFT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "slugline": "EXT. DESMOND'S APARTMENT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJB39DNVB2KCR0E9DX"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJCD8EZWV43P7ZGNZ6",
+            "citation": "EXT. DESMOND'S APARTMENT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 19,
+      "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJQACC317FDW2VY7RB",
+            "citation": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "slugline": "INT/EXT. FIFTH'S LOFT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJDH2E50PZ4J7S6484",
+            "citation": "INT/EXT. FIFTH'S LOFT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 21,
+      "slugline": "INT. DESMOND'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ3C3RT6CT1XTVFXZM",
+            "citation": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 22,
+      "slugline": "INT. FIFTH'S LOFT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ4B2EGCS05MWQ832C",
+            "citation": "INT. FIFTH'S LOFT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 23,
+      "slugline": "EXT. CITY STREET - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ0140GQR0Z5JK1ASE",
+            "citation": "EXT. CITY STREET - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 24,
+      "slugline": "EXT. HELL'S KITCHEN - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJ07TZA2P6ZBJKSJ52",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJD8ZYBH57ZH5W99QN"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJRX4CZE949VJ9JEYY",
+            "citation": "EXT. HELL'S KITCHEN - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 25,
+      "slugline": "INT. COFFEE SHOP - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJ2SA4VJ7QN36YZY0P"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJAABT2GHA4VF6QRT4",
+            "citation": "INT. COFFEE SHOP - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 26,
+      "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMJ1BYAKWY7VTKS6CNG",
+            "citation": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 27,
+      "slugline": "INT. SPEEDING CAR - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJKQNDT6X6A2W7XT4C"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKZ7WK1DWH8BBZEAN4",
+            "citation": "INT. SPEEDING CAR - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 28,
+      "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKA24YETP4GR61CZNF",
+            "citation": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 29,
+      "slugline": "INT. DESMOND'S CAR - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJ2N6TVE5DWPW3P4XH"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKDJ5P2AN7BGTTSA8E",
+            "citation": "INT. DESMOND'S CAR - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 30,
+      "slugline": "INT. NIGHT CLUB - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJ6G5XXQKDHZETQPKQ",
+        "chr_01KJXTKAMJ9E447MQH82N5GGF9"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK712S8H55JQ1QN4KK",
+            "citation": "INT. NIGHT CLUB - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 31,
+      "slugline": "INT. DESMOND'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK9SHPNJJ6G75RHWDQ",
+            "citation": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 32,
+      "slugline": "INT. FIFTH'S LOFT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJ54550TGVCCJV75H1",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKGQ08CMRECCPHM2AZ",
+            "citation": "INT. FIFTH'S LOFT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 33,
+      "slugline": "INT. DESMOND'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJKSHVG1N3ARP0RETQ",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK13ZVT1873C56Z4TB",
+            "citation": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 34,
+      "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKCN4ZC8GXHQTHGPB6",
+            "citation": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 35,
+      "slugline": "INT. FIFTH'S LOFT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJ9E447MQH82N5GGF9",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKQVD8YXKGPT8V118N",
+            "citation": "INT. FIFTH'S LOFT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 36,
+      "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK18V359W8V3CV8HKA",
+            "citation": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 37,
+      "slugline": "INT. FIFTH'S LOFT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKC8SYCET2E3MAC9W7",
+            "citation": "INT. FIFTH'S LOFT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKKQ4AKNE5FQHME61M",
+            "citation": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 39,
+      "slugline": "EXT. NYC STREETS - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJ2SA4VJ7QN36YZY0P"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK5FKBSNRDWN8HF2X6",
+            "citation": "EXT. NYC STREETS - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 40,
+      "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK8W1YFTMT2JZXKR02",
+            "citation": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 41,
+      "slugline": "EXT. STREETS - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK37FVK0D3C4Z4TKYM",
+            "citation": "EXT. STREETS - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 42,
+      "slugline": "INT. FIFTH'S LOFT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJ9E447MQH82N5GGF9",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKKRKTVKHTYCP42N11",
+            "citation": "INT. FIFTH'S LOFT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 43,
+      "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK067JXHZWYGM5B7E3",
+            "citation": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 44,
+      "slugline": "INT. FIFTH'S LOFT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJ54550TGVCCJV75H1",
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ9E447MQH82N5GGF9"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK0XANXAB74C7PB0P0",
+            "citation": "INT. FIFTH'S LOFT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 45,
+      "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKS22ZM9K48BV2RAFE",
+            "citation": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 46,
+      "slugline": "INT. FIFTH'S LOFT - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJD3ZA246EGWM62G38",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJ9E447MQH82N5GGF9"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKR025W2SHK3XBBT50",
+            "citation": "INT. FIFTH'S LOFT - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 47,
+      "slugline": "INT. EMERGENCY ROOM - NIGHT",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJBHVQXWCFE2FPWBDM",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKN7F7ZWBR7HY51CV9",
+            "citation": "INT. EMERGENCY ROOM - NIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "index": 48,
+      "slugline": "INT. DESMOND'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJVYPYKRV0FA139BBS",
+        "chr_01KJXTKAMJ8M8FC1MSWPGSFHA9"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKKH9DP3VTNYF4DFBH",
+            "citation": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 49,
+      "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKX7T9TN9CHEHMCM0B",
+            "citation": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 50,
+      "slugline": "EXT. FIFTH'S CAR - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+        "chr_01KJXTKAMJ54550TGVCCJV75H1",
+        "chr_01KJXTKAMJNFTWN7121S8TCQ6M",
+        "chr_01KJXTKAMJ4G6HY1AA8QQR9VP0",
+        "chr_01KJXTKAMJ07TZA2P6ZBJKSJ52"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMKHGF61C1MEHVR1SJB",
+            "citation": "EXT. FIFTH'S CAR - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 51,
+      "slugline": "INT. HOSPITAL - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJG7T9VPK44CXAKJ62",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMK58QG5PZBN5AQVDZ7",
+            "citation": "INT. HOSPITAL - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 52,
+      "slugline": "INT. AIRPORT TERMINAL - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMMKBPN48C2HHDHCHX7",
+            "citation": "INT. AIRPORT TERMINAL - DAY"
+          }
+        ]
+      }
+    },
+    {
+      "index": 53,
+      "slugline": "EXT. DESMOND'S CAR - DAY",
+      "summary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "narrativeRole": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "characters": [
+        "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD"
+      ],
+      "duration": {
+        "value": 60,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "scn_01KJXTKAMMCJ3QV2ERPQQEVQAJ",
+            "citation": "EXT. DESMOND'S CAR - DAY"
+          }
+        ]
+      }
+    }
+  ],
+  "characters": [
+    {
+      "name": "MADISON",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.1457142857142857,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJD3ZA246EGWM62G38",
+            "citation": "MADISON: 153 dialogue lines in 21 scenes"
+          }
+        ]
+      },
+      "sceneCount": 21,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "JETTA",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.20285714285714285,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJM5AZDVZFEBWCDW0V",
+            "citation": "JETTA: 213 dialogue lines in 23 scenes"
+          }
+        ]
+      },
+      "sceneCount": 23,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "RAY'S GIRL",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0009523809523809524,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJKSHVG1N3ARP0RETQ",
+            "citation": "RAY'S GIRL: 1 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "MARLON",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0038095238095238095,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ8M8FC1MSWPGSFHA9",
+            "citation": "MARLON: 4 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "MRS. PEACLE",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.007619047619047619,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJNFTWN7121S8TCQ6M",
+            "citation": "MRS. PEACLE: 8 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "NURSE",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0019047619047619048,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJG7T9VPK44CXAKJ62",
+            "citation": "NURSE: 2 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "JASON",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0019047619047619048,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJT0EET74WP7GN649N",
+            "citation": "JASON: 2 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "CORRECTION OFFICER",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0009523809523809524,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJRZ8E10NKXVVKGN69",
+            "citation": "CORRECTION OFFICER: 1 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "FEMALE INMATE",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0009523809523809524,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJB309K16V7RP5TTVG",
+            "citation": "FEMALE INMATE: 1 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "MARCOS",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.03142857142857143,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ2SA4VJ7QN36YZY0P",
+            "citation": "MARCOS: 33 dialogue lines in 3 scenes"
+          }
+        ]
+      },
+      "sceneCount": 3,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "DR. MITCHELL",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.004761904761904762,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJJRX0D5BBD3X4PXTK",
+            "citation": "DR. MITCHELL: 5 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "GUARD",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.004761904761904762,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJH4NZVESK79CF8GEF",
+            "citation": "GUARD: 5 dialogue lines in 2 scenes"
+          }
+        ]
+      },
+      "sceneCount": 2,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "SIDNEY",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.06857142857142857,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ54550TGVCCJV75H1",
+            "citation": "SIDNEY: 72 dialogue lines in 11 scenes"
+          }
+        ]
+      },
+      "sceneCount": 11,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "TONY",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.009523809523809525,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJD8ZYBH57ZH5W99QN",
+            "citation": "TONY: 10 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "DESMOND",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.28285714285714286,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJPG0T4A4DHKVQ3FXD",
+            "citation": "DESMOND: 297 dialogue lines in 29 scenes"
+          }
+        ]
+      },
+      "sceneCount": 29,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "MR. GATHERS",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0019047619047619048,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJRR4BKPAKKSMV4KYE",
+            "citation": "MR. GATHERS: 2 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "BLAINE",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.012380952380952381,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJE40YYHH8TYKSKW3K",
+            "citation": "BLAINE: 13 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "BUBBLE",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.006666666666666667,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJB39DNVB2KCR0E9DX",
+            "citation": "BUBBLE: 7 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "PARK BYSTANDER",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0009523809523809524,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJKQNDT6X6A2W7XT4C",
+            "citation": "PARK BYSTANDER: 1 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "YUPPIE",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0019047619047619048,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ2N6TVE5DWPW3P4XH",
+            "citation": "YUPPIE: 2 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "JEHOVA WITNESS",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0019047619047619048,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ6G5XXQKDHZETQPKQ",
+            "citation": "JEHOVA WITNESS: 2 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "RAY",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.025714285714285714,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ9E447MQH82N5GGF9",
+            "citation": "RAY: 27 dialogue lines in 5 scenes"
+          }
+        ]
+      },
+      "sceneCount": 5,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "FIFTH",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.15047619047619049,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJTR2QRCNGAB7TN6J4",
+            "citation": "FIFTH: 158 dialogue lines in 22 scenes"
+          }
+        ]
+      },
+      "sceneCount": 22,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "NACHO",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.009523809523809525,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ07TZA2P6ZBJKSJ52",
+            "citation": "NACHO: 10 dialogue lines in 2 scenes"
+          }
+        ]
+      },
+      "sceneCount": 2,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "ER DOCTOR",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.0019047619047619048,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJBHVQXWCFE2FPWBDM",
+            "citation": "ER DOCTOR: 2 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "STEVEN",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.006666666666666667,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJVYPYKRV0FA139BBS",
+            "citation": "STEVEN: 7 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    },
+    {
+      "name": "MR. PEACLE",
+      "importance": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "arcSummary": {
+        "value": "",
+        "source": "llm",
+        "confidence": "low"
+      },
+      "dialogueWeight": {
+        "value": 0.011428571428571429,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "chr_01KJXTKAMJ4G6HY1AA8QQR9VP0",
+            "citation": "MR. PEACLE: 12 dialogue lines in 1 scenes"
+          }
+        ]
+      },
+      "sceneCount": 1,
+      "strengths": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      },
+      "concerns": {
+        "value": null,
+        "source": "llm",
+        "confidence": "low"
+      }
+    }
+  ],
+  "viability": {
+    "uniqueLocations": 26,
+    "castSize": 27,
+    "speakingRoles": 17,
+    "interiorExteriorRatio": 0.7777777777777778,
+    "dayNightRatio": 0.6296296296296297,
+    "complexityTier": {
+      "value": "high",
+      "source": "deterministic",
+      "confidence": "high",
+      "evidence": [
+        {
+          "ref": "viability",
+          "citation": "26 unique locations, 17 speaking roles → high"
+        }
+      ]
+    },
+    "productionFlags": {
+      "extrasOrCrowdScenes": false,
+      "actionHeavyScenes": true,
+      "vfxOrStuntsSignals": false,
+      "periodSetting": false,
+      "childRoles": true,
+      "animalRoles": false,
+      "containedLocationPct": {
+        "value": 0.4444444444444444,
+        "source": "deterministic",
+        "confidence": "high",
+        "evidence": [
+          {
+            "ref": "locations",
+            "citation": "44% of scenes in top-3 locations"
+          }
+        ]
+      }
+    }
+  },
+  "assessment": {
+    "strengths": {
+      "value": null,
+      "source": "llm",
+      "confidence": "low"
+    },
+    "concerns": {
+      "value": null,
+      "source": "llm",
+      "confidence": "low"
+    },
+    "notes": {
+      "value": "",
+      "source": "llm",
+      "confidence": "low"
+    }
+  },
+  "sourceHash": "9eedd1d969acccb311ff369df0669612e4289c01b9db4bcf3698f28713dcac94",
+  "promptVersion": "1.0.0"
+}

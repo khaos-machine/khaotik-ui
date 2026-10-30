@@ -1,0 +1,668 @@
+{
+  "_provenance": "khaosd GET /api/v1/readings/readiness — B4P — every scene, the totals and the voices, verbatim.",
+  "scenes": [
+    {
+      "sceneId": "scene_01M5MJB4BP3V9BCJA6MJ97ZJQC",
+      "ready": true,
+      "lines": 7,
+      "newHosted": 7,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP6MAW126BF1RDZ6PX",
+      "ready": true,
+      "lines": 7,
+      "newHosted": 7,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP226JPB65702JZ0N2",
+      "ready": true,
+      "lines": 5,
+      "newHosted": 5,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPE03PC70EQPBFP49D",
+      "ready": true,
+      "lines": 9,
+      "newHosted": 9,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPZHFKS4MCKMVZ5W0F",
+      "ready": true,
+      "lines": 8,
+      "newHosted": 8,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPA97JK3E91BBF8SVV",
+      "ready": true,
+      "lines": 41,
+      "newHosted": 41,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPP6FZV3CSFRK0JSCX",
+      "ready": true,
+      "lines": 6,
+      "newHosted": 6,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPY8ENJ024E2NXAJVK",
+      "ready": true,
+      "lines": 2,
+      "newHosted": 2,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP4BZVM7ZYV3J84AZ6",
+      "ready": true,
+      "lines": 46,
+      "newHosted": 46,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPG644DWN1QMQCCDH3",
+      "ready": true,
+      "lines": 43,
+      "newHosted": 43,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP89CQ2RW5C500K95X",
+      "ready": true,
+      "lines": 3,
+      "newHosted": 3,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPMH6BG9S4W5BKDAVX",
+      "ready": true,
+      "lines": 14,
+      "newHosted": 14,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPB2W33RD90ZB75E97",
+      "ready": true,
+      "lines": 9,
+      "newHosted": 9,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPDM5AD6CY7HGEYS5H",
+      "ready": true,
+      "lines": 24,
+      "newHosted": 24,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPZZ7AE4PHWA92CCNQ",
+      "ready": true,
+      "lines": 4,
+      "newHosted": 4,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPWEC1JRY49NNEFE8Z",
+      "ready": true,
+      "lines": 15,
+      "newHosted": 15,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPYK2F0GPMKKD1CK5X",
+      "ready": true,
+      "lines": 17,
+      "newHosted": 17,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP3ZDMGP9SVFYMBDH6",
+      "ready": true,
+      "lines": 3,
+      "newHosted": 3,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPSSDQ0W6QE18MWZ2D",
+      "ready": true,
+      "lines": 22,
+      "newHosted": 22,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPTXD787D417FJ62ZN",
+      "ready": true,
+      "lines": 19,
+      "newHosted": 19,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPE6GAZHH16BR3E82Z",
+      "ready": true,
+      "lines": 61,
+      "newHosted": 61,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPF8KTR1YS8QA6XWDH",
+      "ready": true,
+      "lines": 21,
+      "newHosted": 21,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP6CWPT5X5E30SRG7N",
+      "ready": true,
+      "lines": 19,
+      "newHosted": 19,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPPWG4Z59H3A31QPER",
+      "ready": true,
+      "lines": 7,
+      "newHosted": 7,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP7RXFDRCDSSDJQ20H",
+      "ready": true,
+      "lines": 48,
+      "newHosted": 48,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP6ZZTMBF5G4P9ZJ8D",
+      "ready": true,
+      "lines": 39,
+      "newHosted": 39,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP30913DAXDB5XGQR3",
+      "ready": true,
+      "lines": 89,
+      "newHosted": 89,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP8GYS430YN01NG5DE",
+      "ready": true,
+      "lines": 22,
+      "newHosted": 22,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP4EGCJ5RY2V21M7HF",
+      "ready": true,
+      "lines": 46,
+      "newHosted": 46,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPGS768N4DEAFHQK59",
+      "ready": true,
+      "lines": 21,
+      "newHosted": 21,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP7MF2W8H661EVP1DG",
+      "ready": true,
+      "lines": 84,
+      "newHosted": 84,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPMD97WJF63E7F1TJ2",
+      "ready": true,
+      "lines": 2,
+      "newHosted": 2,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPXJ4A2AXAK958QXFX",
+      "ready": true,
+      "lines": 6,
+      "newHosted": 6,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPA544D0PJJ3PT0MHQ",
+      "ready": true,
+      "lines": 9,
+      "newHosted": 9,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP4HDPHPPJN1595PS2",
+      "ready": true,
+      "lines": 66,
+      "newHosted": 66,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPKAD71RCZHMMHZS0V",
+      "ready": true,
+      "lines": 16,
+      "newHosted": 16,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPSQ25E3Q3QKPQSPT9",
+      "ready": true,
+      "lines": 7,
+      "newHosted": 7,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPM1YGQJNK2JZ72QQ5",
+      "ready": true,
+      "lines": 13,
+      "newHosted": 13,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPSNZKKEK95RQ3XJXF",
+      "ready": true,
+      "lines": 10,
+      "newHosted": 10,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPJWQACS02XXT1FCKD",
+      "ready": true,
+      "lines": 15,
+      "newHosted": 15,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPFY1W1R50ARQP4Y1E",
+      "ready": true,
+      "lines": 52,
+      "newHosted": 52,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPHY3G5H2GJHVCD06Z",
+      "ready": true,
+      "lines": 30,
+      "newHosted": 30,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPFS64MAE0VFV726D3",
+      "ready": true,
+      "lines": 1,
+      "newHosted": 1,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPMKW5PAE4MD9SVYSH",
+      "ready": true,
+      "lines": 85,
+      "newHosted": 85,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPM95AFS8SR1XWE25C",
+      "ready": true,
+      "lines": 39,
+      "newHosted": 39,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPWK78147NGFDBY1FK",
+      "ready": true,
+      "lines": 35,
+      "newHosted": 35,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPBJP4TDSZKMW1R5J7",
+      "ready": true,
+      "lines": 28,
+      "newHosted": 28,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP4S4N3R6V1R8339EW",
+      "ready": true,
+      "lines": 2,
+      "newHosted": 2,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPZNNBGFQT3E2C3898",
+      "ready": true,
+      "lines": 33,
+      "newHosted": 33,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPKE1M0EA5X8ZXRKKE",
+      "ready": true,
+      "lines": 7,
+      "newHosted": 7,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP9X7PPBMEAQM8K42K",
+      "ready": true,
+      "lines": 25,
+      "newHosted": 25,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPQJEVGGC16N46PWW5",
+      "ready": true,
+      "lines": 45,
+      "newHosted": 45,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPQAAG31HT2H90DX2C",
+      "ready": true,
+      "lines": 82,
+      "newHosted": 82,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPY6D9F64S3KBNBXSP",
+      "ready": true,
+      "lines": 33,
+      "newHosted": 33,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPG8MPRF1JCDGPRPB3",
+      "ready": true,
+      "lines": 34,
+      "newHosted": 34,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BP67SM5CYWJGZJGTDK",
+      "ready": true,
+      "lines": 7,
+      "newHosted": 7,
+      "newLocal": 0,
+      "reused": 0
+    },
+    {
+      "sceneId": "scene_01M5MJB4BPYF8G4E1S4KQEMJ0T",
+      "ready": true,
+      "lines": 6,
+      "newHosted": 6,
+      "newLocal": 0,
+      "reused": 0
+    }
+  ],
+  "totals": {
+    "scenes": 57,
+    "ready": 57,
+    "refused": 0,
+    "lines": 1449,
+    "newHosted": 1449,
+    "newLocal": 0,
+    "reused": 0
+  },
+  "voices": [
+    {
+      "voiceProfileId": "voice_profile_01M4RHTSC56A3BYQMJD5E9FPY5",
+      "name": "FIFTH",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M56BW3HA8S92H702WFJF8RYA",
+      "name": "JETTA",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5MKPZD8GG6PYMDTBDEPH5FF",
+      "name": "RAY",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3EA32853KSKXJPNF02F1G",
+      "name": "BLAINE",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3GXXT394KQ3J5YC2TFESN",
+      "name": "DESMOND",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3J16H91MYH0AMFK34QP3G",
+      "name": "DR. MITCHELL",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3JTRSKY0QDK6N7Q6EKAQ2",
+      "name": "ER DOCTOR",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3MDERRJN6E02ZB9RAEE46",
+      "name": "GUARD",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3NNASA2EYEFS26S681EJ8",
+      "name": "JASON",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3PT7P5MDTXZBKHE30GND8",
+      "name": "JEHOVA WITNESS",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3R2N4QQ88SRFYA160CCGD",
+      "name": "MADISON",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3S8Z4X71A0BH8QN9JC4V1",
+      "name": "MARCOS",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3SZ0NNFW6PW83T8WFXKC8",
+      "name": "MARLON",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3TGJJVCN72N36P39DA1FN",
+      "name": "MR. GATHERS",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3V9KN33WS6M5SSCNQCJ9W",
+      "name": "MR. PEACLE",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3WCZ93R8XXXA2T76PC87M",
+      "name": "MRS. PEACLE",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3XC2HQ4Y0DEN3K5JCQ5Z1",
+      "name": "NURSE",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3Y5F1CVXWKHGCG46CEAKZ",
+      "name": "PARK BYSTANDER",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3Z463H2R2ZBTY1MYXEDZK",
+      "name": "RAY'S GIRL",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N3ZNBGV0CBN60S07VBD8NA",
+      "name": "SIDNEY",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N4117ZD7YCPA507ZEGKKCT",
+      "name": "STEVEN",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N41V6FBS0MTEASYYNGZ63P",
+      "name": "TONY",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N42GTPFJ20TZXEEB4BBXPR",
+      "name": "YUPPIE",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5N432TANE9HRZWKFH6HM4WY",
+      "name": "Narrator",
+      "narrator": true,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5NPCF6VTH4FE2RBV2YAK1D2",
+      "name": "BUBBLE",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5NPDM15MMGFKWVS2A212XVY",
+      "name": "FEMALE INMATE",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5NQ01SNDQHBF2QN0KJ1691V",
+      "name": "CORRECTION OFFICER",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    },
+    {
+      "voiceProfileId": "voice_profile_01M5NQ2JE3GGRKA2B8QB95P5YC",
+      "name": "NACHO",
+      "narrator": false,
+      "locked": true,
+      "providerAvailable": true
+    }
+  ]
+}

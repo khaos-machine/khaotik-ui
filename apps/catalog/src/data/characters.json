@@ -1,0 +1,240 @@
+[
+  {
+    "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+    "name": "Desmond",
+    "dialogue_count": 299,
+    "word_count": 3976,
+    "scene_count": 32
+  },
+  {
+    "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+    "name": "Jetta",
+    "dialogue_count": 213,
+    "word_count": 1979,
+    "scene_count": 28
+  },
+  {
+    "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+    "name": "Fifth",
+    "dialogue_count": 159,
+    "word_count": 1839,
+    "scene_count": 28
+  },
+  {
+    "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+    "name": "Madison",
+    "dialogue_count": 153,
+    "word_count": 1528,
+    "scene_count": 25
+  },
+  {
+    "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+    "name": "Sidney",
+    "dialogue_count": 72,
+    "word_count": 625,
+    "scene_count": 13
+  },
+  {
+    "id": "character_01M4KD5YMZPZHSF5240HQJA307",
+    "name": "Marcos",
+    "dialogue_count": 33,
+    "word_count": 504,
+    "scene_count": 3
+  },
+  {
+    "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+    "name": "Ray",
+    "dialogue_count": 27,
+    "word_count": 306,
+    "scene_count": 7
+  },
+  {
+    "id": "character_01M4KD5YMZGV4HWNVYXNM7S9A9",
+    "name": "Blaine",
+    "dialogue_count": 13,
+    "word_count": 164,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZ3XG182X8X8YA8VK3",
+    "name": "Mr. Peacle",
+    "dialogue_count": 13,
+    "word_count": 197,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZBWG7SKCKQVVNJWYQ",
+    "name": "Nacho",
+    "dialogue_count": 10,
+    "word_count": 94,
+    "scene_count": 2
+  },
+  {
+    "id": "character_01M4KD5YMZPADC0G1FJC6BR6CR",
+    "name": "Tony",
+    "dialogue_count": 10,
+    "word_count": 104,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZ2G3BY8C91XPE40CM",
+    "name": "Mrs. Peacle",
+    "dialogue_count": 8,
+    "word_count": 77,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZSKZVYRP29G8E84M1",
+    "name": "Bubble",
+    "dialogue_count": 7,
+    "word_count": 78,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZQZ5FHMDKM2D888J7",
+    "name": "Steven",
+    "dialogue_count": 7,
+    "word_count": 83,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZEQSZXG7C1THMKMHX",
+    "name": "Dr. Mitchell",
+    "dialogue_count": 5,
+    "word_count": 79,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZHM00HDSD11Q0Y3RX",
+    "name": "Guard",
+    "dialogue_count": 5,
+    "word_count": 81,
+    "scene_count": 2
+  },
+  {
+    "id": "character_01M4KD5YMZ866M2GH9ZPWEMGET",
+    "name": "Marlon",
+    "dialogue_count": 4,
+    "word_count": 28,
+    "scene_count": 2
+  },
+  {
+    "id": "character_01M4KD5YMZP3VAP56PKT5KHEJF",
+    "name": "Er Doctor",
+    "dialogue_count": 2,
+    "word_count": 46,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+    "name": "Jason",
+    "dialogue_count": 2,
+    "word_count": 12,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZ3BH3NCM3NCWAH04K",
+    "name": "Jehova Witness",
+    "dialogue_count": 2,
+    "word_count": 39,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZQ1CDWV03JZGAC7M2",
+    "name": "Mr. Gathers",
+    "dialogue_count": 2,
+    "word_count": 21,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZETDVAP9EKT87437Y",
+    "name": "Nurse",
+    "dialogue_count": 2,
+    "word_count": 13,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZVNB3FQP32C1H1J1G",
+    "name": "Yuppie",
+    "dialogue_count": 2,
+    "word_count": 7,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZCW6V7FBAH8EEA4MR",
+    "name": "Correction Officer",
+    "dialogue_count": 1,
+    "word_count": 20,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZR70W0XCVFFCASTCF",
+    "name": "Female Inmate",
+    "dialogue_count": 1,
+    "word_count": 15,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZ8D72JQ1AQ9KNG1WR",
+    "name": "Park Bystander",
+    "dialogue_count": 1,
+    "word_count": 14,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KD5YMZ3PDN22B9MF5SWW78",
+    "name": "Ray's Girl",
+    "dialogue_count": 1,
+    "word_count": 12,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KHRX6YWBQA5GNJR8QZ3V7J",
+    "name": "A Latin Percussions Band",
+    "dialogue_count": 0,
+    "word_count": 0,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KHT4E9APQ7Y1FF5KMTCT1P",
+    "name": "Black Mourners",
+    "dialogue_count": 0,
+    "word_count": 0,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KVT41EHVDE41WGQCBWFRP3",
+    "name": "City Marshall",
+    "dialogue_count": 0,
+    "word_count": 0,
+    "scene_count": 0
+  },
+  {
+    "id": "character_01M4KHSZ4T0JJEC8PGC7ZE2ZXW",
+    "name": "His Lover",
+    "dialogue_count": 0,
+    "word_count": 0,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4KHRKTKWXZ0450AVTNNMSP3",
+    "name": "Jonesy",
+    "dialogue_count": 0,
+    "word_count": 0,
+    "scene_count": 1
+  },
+  {
+    "id": "character_01M4NJF93XG3JH45FPFVQ4HMXA",
+    "name": "Mr. Mann",
+    "dialogue_count": 0,
+    "word_count": 0,
+    "scene_count": 0
+  },
+  {
+    "id": "character_01M4KHJ4TCQ5XM9AKC3XARCS8R",
+    "name": "Pop",
+    "dialogue_count": 0,
+    "word_count": 0,
+    "scene_count": 1
+  }
+]

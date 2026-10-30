@@ -1,0 +1,39 @@
+name: lib-publish
+
+# Publishes the library to npm as @khaos-machine/khaotik-ui when
+# scripts/release-lib.sh pushes a `lib-*` tag.
+#
+# Trusted publishing: npm exchanges this job's OIDC identity for a short-lived
+# publish credential and attaches a provenance attestation, so no npm token is
+# stored anywhere. It needs the trusted publisher configured on the package's
+# npmjs.com settings (repository khaos-machine/khaotik-ui, workflow
+# lib-publish.yml), npm 11.5.1 or later, and a GitHub-hosted runner
+# (docs.npmjs.com/trusted-publishers, read 2026-10-30).
+
+on:
+  push:
+    tags: ['lib-*']
+
+permissions:
+  contents: read
+  id-token: write # the OIDC token npm exchanges for a publish credential
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org
+
+      - name: npm 11.5.1 or later
+        run: npm install -g npm@^11.5.1
+
+      - name: Tag matches package.json
+        run: test "lib-$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
+
+      - name: Publish to npm
+        run: npm publish

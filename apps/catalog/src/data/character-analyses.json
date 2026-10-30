@@ -1,0 +1,1671 @@
+{
+  "Desmond": {
+    "name": "Desmond",
+    "summary": "Desmond is a man grieving his brother Pop's murder while trying to manage the people around him: Madison, Jetta, and Fifth. He is haunted by his past, including a failed engagement and a life of violence, and he seeks revenge for Pop's death. He ends the story taking Ray to an abandoned factory, implying further violence.",
+    "traits": [],
+    "goals": [
+      "He wants to find and kill whoever murdered his brother Pop, and to help Jetta find her son."
+    ],
+    "relationships": [
+      {
+        "characterName": "Madison",
+        "type": "conflictual but caring"
+      },
+      {
+        "characterName": "Jetta",
+        "type": "romantic and tense"
+      },
+      {
+        "characterName": "Fifth",
+        "type": "frustrated but protective"
+      },
+      {
+        "characterName": "Marcos",
+        "type": "transactional"
+      },
+      {
+        "characterName": "Ray",
+        "type": "hostile"
+      },
+      {
+        "characterName": "Er Doctor",
+        "type": "pleading"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He mourns his brother at the funeral home, answers Madison's call, and arranges to pick her up.",
+      "emotionalJourney": "He learns his brother Pop was killed and vows revenge. He admits he is not the man he used to be, stole a car, and has done too much to deserve happiness. He tells Jetta that Ray Oaklin killed Pop and that Madi set Ray up for him. He tells Jetta he just wants to see her happy; she kisses him, holds the ring, and says she will be back for it if he makes the right choice; she walks away and he cries. He takes Ray, still alive, out of his trunk at an abandoned factory and tells him he wants to show him something.",
+      "endState": "He drives Ray to an abandoned factory, pulls a gun on him, and tells him he wants to show him something.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "main",
+      "importance": "",
+      "plotFunction": "He drives the plot through his search for his brother's killer, his efforts to help Jetta find her son, and his protection of Madison and Fifth."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "male",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Jetta": {
+    "name": "Jetta",
+    "summary": "Jetta is a woman released from prison after serving five years for killing Mr. Gathers, a teacher she believed had touched an innocent child. She reconnects with Desmond, searches for her son Marlon, and gets a job at a tattoo shop. She grows closer to Desmond, but ultimately leaves to see her son, telling Desmond she will return for the ring if he makes the right choice.",
+    "traits": [],
+    "goals": [
+      "Jetta wants to find her son Marlon and to reconnect with Desmond, while also trying to build a new life after prison."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "close, romantic, sometimes confrontational"
+      },
+      {
+        "characterName": "Madison",
+        "type": "friendly, supportive"
+      },
+      {
+        "characterName": "Fifth",
+        "type": "playful, friendly"
+      },
+      {
+        "characterName": "Steven",
+        "type": "supportive"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "She is in the women's penitentiary, complies with the correction officer, and fights off two inmates who threaten her.",
+      "emotionalJourney": "She is released from prison and rides with Desmond; she throws her marriage band out the window and refuses to talk about Marlon. She kills Mr. Gathers in a classroom, then is arrested and separated from her son. She gets a job at a tattoo shop after fighting Nacho and showing Tony her tattoos. She kisses Desmond and tells him she loved him, was scared, and asks him not to get the tattoo. Steven calls and lets her speak to Marlon; she cries and arranges to see her son.",
+      "endState": "She says her final goodbyes to Desmond, thanks him, kisses him, and tells him that if he makes the right choice she will be back for the ring, then walks away.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "main",
+      "importance": "",
+      "plotFunction": "Jetta drives the emotional and romantic core of the story: her release from prison, her search for her son, and her relationship with Desmond. She also provides a key action beat by killing Mr. Gathers, which establishes her past and her willingness to use violence."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "female",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Fifth": {
+    "name": "Fifth",
+    "summary": "Fifth is a wealthy man who attempts suicide, escapes a mental hospital, and is pursued by private investigators. He meets Sidney, falls in love, and proposes, but their car is hit by a moving truck immediately after. He is absent from the aftermath, leaving Desmond unable to reach him.",
+    "traits": [],
+    "goals": [
+      "He wants to escape his suicidal despair and find a reason to live, which he finds in Sidney. He also wants to retrieve money from Desmond to buy an engagement ring."
+    ],
+    "relationships": [
+      {
+        "characterName": "Madison",
+        "type": "close, sometimes tense"
+      },
+      {
+        "characterName": "Desmond",
+        "type": "close, sometimes confrontational"
+      },
+      {
+        "characterName": "Jetta",
+        "type": "playful"
+      },
+      {
+        "characterName": "Sidney",
+        "type": "romantic"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is suicidal, hospitalized, and escapes; he leaps from a roof and is caught by a net.",
+      "emotionalJourney": "He escapes the mental hospital by knocking out Blaine and driving off in a Mustang. He meets Sidney and immediately tells her he loves her, beginning a romantic relationship. He tells Sidney about his suicide attempts and she kisses his bandaged wrists, telling him there are things worth living for. He tells Sidney his faith is restored and that he sees the world through different eyes. He proposes to Sidney and she accepts, but their car is hit by a moving truck immediately after.",
+      "endState": "He proposes to Sidney and she says yes, but as they drive off celebrating, a moving truck slams into the car and totals it.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "main",
+      "importance": "",
+      "plotFunction": "His suicide attempts and escape drive the early plot; his relationship with Sidney and his money provide the emotional and financial stakes; his absence after the crash leaves others to deal with the consequences."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "male",
+      "ageRange": "thirty two",
+      "genderConfidence": "stated",
+      "ageConfidence": "stated"
+    }
+  },
+  "Madison": {
+    "name": "Madison",
+    "summary": "Madison is an artist who is evicted from her studio and turns to her brother Fifth and their friend Desmond. She becomes romantically involved with Ray, who turns out to be the killer of Desmond's brother Pop, and Ray stabs her when she learns the truth. She ends up unconscious in the hospital after surgery.",
+    "traits": [],
+    "goals": [
+      "To get help from Jason, then to reconnect with Desmond and find stability, and later to pursue a romance with Ray."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jason",
+        "type": "hostile"
+      },
+      {
+        "characterName": "Desmond",
+        "type": "conflictual but caring"
+      },
+      {
+        "characterName": "Jetta",
+        "type": "friendly"
+      },
+      {
+        "characterName": "Fifth",
+        "type": "close, concerned"
+      },
+      {
+        "characterName": "Ray",
+        "type": "romantic, then violent"
+      },
+      {
+        "characterName": "Sidney",
+        "type": "friendly"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "Locked out of her art space by an eviction notice and chain, desperate for Jason to answer and help her.",
+      "emotionalJourney": "After finding Jason in bed with his lover, she hesitates at the door, then chooses to open a can of paint and confront them instead of leaving. She learns that Fifth can only be released into her custody and that Desmond expects her to sign him out, shifting her from complaining about Fifth to being responsible for him. She begins a romance with Ray, accepting his invitation to dinner and later sleeping with him. Ray attacks her after overhearing her tell Desmond that Ray confessed; she is stabbed and nearly killed.",
+      "endState": "Unconscious in the hospital after surgery, with a glass fragment still moving inside her; Desmond watches over her and tells her he needs her.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "main",
+      "importance": "",
+      "plotFunction": "Her eviction and need for help set the story in motion; her custody of Fifth drives the hospital release; her romance with Ray leads to the attack that reveals Ray as Pop's killer and puts her in the hospital, motivating Desmond's actions."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "female",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Sidney": {
+    "name": "Sidney",
+    "summary": "Sidney is a photographer and artist who lives downstairs from Fifth. She confronts him about water leaking onto her prints, then quickly becomes romantically involved with him. She is caring, perceptive, and playful, and she helps Fifth regain his faith in life before accepting his marriage proposal.",
+    "traits": [],
+    "goals": [
+      "To connect with Fifth and build a life with him."
+    ],
+    "relationships": [
+      {
+        "characterName": "Fifth",
+        "type": "romantic, playful, caring, perceptive"
+      },
+      {
+        "characterName": "Madison",
+        "type": "friendly"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "She is angry at Fifth for the leak ruining her prints.",
+      "emotionalJourney": "She pulls Fifth into her apartment to confront him about the ruined prints, then he says he loves her. She kisses Fifth and asks about the bandages on his wrist. She tells Fifth there are things worth living for and kisses him. She tells Fifth she knows he is lying about his father. She accepts Fifth's marriage proposal.",
+      "endState": "She accepts Fifth's marriage proposal, then the car is hit by a moving truck.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "She is the romantic interest who pulls Fifth out of his isolation and gives him a reason to live, leading to his proposal and the final crash."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "female",
+      "ageRange": "36",
+      "genderConfidence": "stated",
+      "ageConfidence": "stated"
+    }
+  },
+  "Marcos": {
+    "name": "Marcos",
+    "summary": "Marcos is a private investigator who was hired to tail Fifth and stop him from killing himself. He is also a former cop who owes Desmond a favor and agrees to help find Jetta's son for a fee. He appears in a few scenes, mostly interacting with Desmond and Jetta, and is mentioned as someone who can keep Fifth stable.",
+    "traits": [],
+    "goals": [
+      "To do his job as a private investigator, avoid dangerous leads, and help Desmond and Jetta when he can."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "guarded and businesslike"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is a private investigator trying to stop Fifth from jumping off a roof.",
+      "emotionalJourney": "He admits to Desmond that he cannot follow the lead Desmond gave him because it is too hot and the person too connected. He meets Jetta and agrees to help find her husband and son for five grand, making him and Desmond even.",
+      "endState": "He has agreed to help Jetta find her son for a fee and has told her he will be in touch.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "He provides information about Fifth's past and offers to help find Jetta's son, and is mentioned as a potential solution to Fifth's instability."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "male",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Ray": {
+    "name": "Ray",
+    "summary": "Ray is a charming nightclub owner who approaches Desmond and Madison, begins a romance with Madison, and is later revealed to be the killer of Pop. He attacks Madison when he overhears her on the phone, is stopped by Desmond, and ends up alive in Desmond's trunk.",
+    "traits": [],
+    "goals": [
+      "Ray wants to charm and pursue Madison, and later wants to silence her when he realizes she set him up."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "neutral at first, then hostile"
+      },
+      {
+        "characterName": "Madison",
+        "type": "romantic, then hostile"
+      },
+      {
+        "characterName": "Fifth",
+        "type": "friendly"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "A charming nightclub owner who approaches Desmond and Madison, offers to buy them drinks, and kisses Madison's hand.",
+      "emotionalJourney": "Ray and Madison begin a romance; he kisses her hand and she extends her hand to him. Ray and Madison are shown together in bed, indicating their relationship has become intimate. Ray and Madison end a goodbye kiss and agree to dinner, showing the relationship continuing. Ray overhears Madison on the phone, attacks her, stabs her in the back, and is then hit and shot by Desmond. Ray is revealed to be alive in Desmond's trunk, bleeding from the shoulder, and is taken by Desmond toward an abandoned factory.",
+      "endState": "Still alive and bleeding from the shoulder, pulled from Desmond's trunk and walked toward an abandoned factory at gunpoint.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "Ray's pursuit of Madison and his attack on her drive the story's climax, leading to Desmond's intervention and the final confrontation."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "male",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Blaine": {
+    "name": "Blaine",
+    "summary": "Blaine Wellworth is the cofounder and current President of an investment firm that he started with Fifth. He visits Fifth at a mental hospital to check on him and discuss confidential business. After freeing one of Fifth's hands, Blaine is knocked out, undressed, and left in a straight jacket as Fifth escapes.",
+    "traits": [],
+    "goals": [
+      "To check on Fifth and discuss business."
+    ],
+    "relationships": [
+      {
+        "characterName": "Dr. Mitchell",
+        "type": "guarded"
+      },
+      {
+        "characterName": "Fifth",
+        "type": "hostile"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "Visiting Fifth at a mental hospital to check on him and discuss confidential business.",
+      "emotionalJourney": "Blaine unfastens a strap on Fifth's straight jacket, freeing one hand. Fifth punches Blaine, knocking him out. Fifth undresses Blaine and puts him in the straight jacket. Fifth arranges Blaine in the corner so his face is hidden.",
+      "endState": "Knocked out, undressed, and left in a straight jacket in the corner of Fifth's room.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "Blaine's visit provides the opportunity for Fifth to escape by knocking Blaine out and taking his place."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "male",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Mr. Peacle": {
+    "name": "Mr. Peacle",
+    "summary": "Mr. Peacle is an elderly yet distinguished jeweler who warmly greets Fifth and retrieves a sparkling ring from a safe. He tells Fifth that his mother picked out and paid for the ring, refuses payment, and accepts a thousand-dollar tip. His role is to provide the ring that Fifth uses to propose to Sidney.",
+    "traits": [],
+    "goals": [
+      "To give Fifth the ring his mother paid for."
+    ],
+    "relationships": [
+      {
+        "characterName": "Fifth",
+        "type": "affectionate and supportive"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He warmly greets Fifth and takes him to the back room to retrieve a ring.",
+      "emotionalJourney": "He retrieves the sparkling ring from the safe and hands it to Fifth. He refuses Fifth's payment, saying his mother already paid for the ring. Fifth sticks a thousand-dollar bill in his pocket as a tip.",
+      "endState": "He has given Fifth the ring his mother paid for, refused payment, and accepted a thousand-dollar tip.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "He provides the ring that Fifth uses to propose to Sidney, enabling the romantic climax and the subsequent reversal."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Nacho": {
+    "name": "Nacho",
+    "summary": "Nacho is a heavily tattooed young man who works at a tattoo shop and rudely confronts Jetta when she asks for work. After he attacks her and loses the fight, Tony fires him. He later appears working at Peacle's Jewelry, dressed formally and insisting on being called Nacho.",
+    "traits": [],
+    "goals": [
+      "He wants to get Jetta to leave the tattoo shop and to be called Nacho."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jetta",
+        "type": "hostile"
+      },
+      {
+        "characterName": "Tony",
+        "type": "conflictual"
+      },
+      {
+        "characterName": "Mr. Peacle",
+        "type": "defensive"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is a heavily tattooed young man working at a tattoo shop, rude and aggressive toward Jetta.",
+      "emotionalJourney": "He is fired from the tattoo shop after Tony pays him off.",
+      "endState": "He is working at Peacle's Jewelry, wearing a suit and groomed hair, and insists on being called Nacho.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "He provides early conflict in the tattoo shop and later appears briefly to show a changed appearance and name preference."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Tony": {
+    "name": "Tony",
+    "summary": "Tony is an older, heavily tattooed man who runs a tattoo shop in Hell's Kitchen. He scolds his employee Nacho for being rude to Jetta, then recognizes her tattoo work and offers her a job, firing Nacho when he objects.",
+    "traits": [],
+    "goals": [
+      "To hire Jetta and get rid of Nacho."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jetta",
+        "type": "supportive and appreciative"
+      },
+      {
+        "characterName": "Nacho",
+        "type": "confrontational and dismissive"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is the older tattooed man who appears from the back of the shop and scolds Nacho for being rude to Jetta.",
+      "emotionalJourney": "He decides to offer Jetta a job after seeing her tattoos and learning she did the work herself. He fires Nacho after Nacho threatens to quit if Jetta is hired.",
+      "endState": "He has hired Jetta and fired Nacho, and he laughs with Jetta.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "He provides Jetta with a job and removes Nacho from the shop, enabling Jetta's employment."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "male",
+      "ageRange": "older than Nacho",
+      "genderConfidence": "stated",
+      "ageConfidence": "stated"
+    }
+  },
+  "Mrs. Peacle": {
+    "name": "Mrs. Peacle",
+    "summary": "Mrs. Peacle is a warm and delighted woman who greets Fifth at Peacle's Jewelry. She helps him choose a ring and shares a playful moment with her husband. She beams with pride as Fifth takes the ring.",
+    "traits": [],
+    "goals": [
+      "To welcome Fifth and help him choose a ring."
+    ],
+    "relationships": [
+      {
+        "characterName": "Fifth",
+        "type": "warm"
+      },
+      {
+        "characterName": "Mr. Peacle",
+        "type": "playful"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "She is warm and delighted to welcome Fifth into the store.",
+      "emotionalJourney": "She turns her head so that Fifth's attempted cheek kiss lands on her lips. She pokes her husband after he jokes that the ring could propose to a dozen women at once.",
+      "endState": "She remains warm and delighted, beaming with pride as Fifth takes the ring.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "She helps welcome Fifth and facilitate the ring purchase, adding warmth and a playful moment."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "female",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Bubble": {
+    "name": "Bubble",
+    "summary": "Bubble is a man who waits for Desmond to collect Pop's outstanding debt. He demands payment and, when Desmond steps forward aggressively, reveals a handgun and points it at Jetta. He agrees to let Desmond get the money and tells Jetta not to worry.",
+    "traits": [],
+    "goals": [
+      "To collect payment for Pop's outstanding debt."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "hostile"
+      },
+      {
+        "characterName": "Jetta",
+        "type": "threatening"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is waiting for Desmond to collect Pop's debt.",
+      "emotionalJourney": "He pulls back his jacket to reveal a handgun. He pulls the gun out and points it at Jetta. He tells Jetta not to worry.",
+      "endState": "He has agreed to let Desmond get the money and tells Jetta not to worry.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "He escalates the conflict by demanding payment for Pop's debt and threatening Jetta's life to force Desmond to pay."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Steven": {
+    "name": "Steven",
+    "summary": "Steven is mentioned as Desmond's brother, who is alive and whose release to his sister is being discussed. He later calls Jetta to tell her she can see Marlon and arranges for her to be brought to them at JFK. He puts Marlon on the phone so Jetta and Marlon can speak.",
+    "traits": [],
+    "goals": [
+      "He wants to arrange for Jetta to see Marlon."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jetta",
+        "type": "supportive and reassuring"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is mentioned as Desmond's brother, who is alive and whose release to his sister is being discussed.",
+      "emotionalJourney": "He arranges for Jetta to see Marlon and puts Marlon on the phone with her.",
+      "endState": "He has arranged for Jetta to see Marlon and has put Marlon on the phone with her.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "He arranges for Jetta to see Marlon and connects her with him by phone, enabling the revelation that Marlon is reachable."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Dr. Mitchell": {
+    "name": "Dr. Mitchell",
+    "summary": "Dr. Mitchell is a psychiatrist at a mental hospital who explains Fifth's suicidal condition to Blaine and takes his glasses and pen before he enters Fifth's room. She is later mentioned as the doctor who will sign Fifth over to Madison's care.",
+    "traits": [],
+    "goals": [
+      "Dr. Mitchell wants to inform Blaine of Fifth's condition and ensure safety."
+    ],
+    "relationships": [
+      {
+        "characterName": "Blaine",
+        "type": "professional and guarded"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "Dr. Mitchell is a psychiatrist at a mental hospital who explains Fifth's suicidal condition to Blaine and takes his glasses and pen before he enters Fifth's room.",
+      "emotionalJourney": "Dr. Mitchell takes Blaine's glasses and pen, then walks off after Blaine enters Fifth's room.",
+      "endState": "Dr. Mitchell is not present or mentioned; the record does not show her after S4.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "Dr. Mitchell provides information about Fifth's suicidal state and facilitates Blaine's visit, then signs Fifth over to Madison's care, enabling Fifth's release."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "female",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Guard": {
+    "name": "Guard",
+    "summary": "The Guard is a night watchman at a hospital who is absorbed in music and enforces visiting hours. He checks the release list for Fifth Mann, makes a joke about Black people's names and the names Fifth and Madison, and asks Madison for ID. In the waiting room, he stops Fifth and Jetta from play-fighting.",
+    "traits": [],
+    "goals": [
+      "He wants to enforce hospital rules, including visiting hours and keeping order."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "confrontational"
+      },
+      {
+        "characterName": "Madison",
+        "type": "confrontational"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is a night watchman absorbed in music, startled by Des, and enforces visiting hours.",
+      "emotionalJourney": "He learns the patient's name is Fifth Mann and that Fifth can only be released to Madison Mann, then makes a joke about Black people's names and the names Fifth and Madison. He stops Fifth and Jetta from play-fighting, reasserting hospital rules.",
+      "endState": "He remains in the waiting room, bobbing to his music, and stops Fifth and Jetta from play-fighting by saying, 'Hey they'll be none of that in here. This is a hospital.'",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "He creates a minor obstacle at the hospital by enforcing visiting hours and checking the release list, and later stops Fifth and Jetta from play-fighting."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Marlon": {
+    "name": "Marlon",
+    "summary": "Marlon is Jetta's young son, who is taken from her by police in a flashback and later moved away by his father. He is mostly mentioned as the child Jetta cannot hold, until a phone call in which he speaks to her and asks why she is crying.",
+    "traits": [],
+    "goals": [
+      "Marlon wants to speak to his mother and asks if she is coming to see him and daddy."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jetta",
+        "type": "close"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "Marlon is mentioned only as the son Jetta refuses to talk about.",
+      "emotionalJourney": "Marlon is physically present and taken from Jetta by police. Jetta reveals Marlon will be turning eight and that her husband moved him away after the trial. Marlon speaks to Jetta on the phone and asks why she is crying.",
+      "endState": "Jetta has heard from Marlon and is leaving to see him; Marlon is mentioned only as the reason for her departure.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "Marlon is the son Jetta is separated from; his presence in S2 shows the loss, his mention in S4 gives the search a goal, and his call in S5 provides the revelation that moves Jetta to leave and see him."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Er Doctor": {
+    "name": "Er Doctor",
+    "summary": "The ER Doctor is a medical professional who informs Desmond that all but one fragment of glass has been removed from Madi and that the remaining fragment is moving and must be surgically removed before it causes major damage. He tells Desmond that the surgery should not take longer than an hour and promises to keep him informed. He leaves after Desmond thanks him.",
+    "traits": [],
+    "goals": [
+      "To inform Desmond about the remaining glass fragment and the need for surgery, and to keep him informed about the procedure."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "professional and urgent"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He enters the emergency room to inform Desmond about the remaining glass fragment and the need for surgery.",
+      "emotionalJourney": "He tells Desmond that all but one fragment of glass has been removed, that the remaining fragment is moving, and that they must operate before it causes major damage. He tells Desmond that hopefully the fragment slows down and they can get it fast, that the surgery should not take longer than an hour, and that he will keep Desmond informed.",
+      "endState": "He leaves the room after promising to keep Desmond informed, with Madi taken for surgery.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "He provides the medical information that creates the urgency for Madi's surgery and gives Desmond a timeline and promise of updates."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Jason": {
+    "name": "Jason",
+    "summary": "Jason is a character in the story who is called by Madison in S1 and found in bed with his lover in S2. He tries to explain himself to Madison after she throws paint on him, but she knocks him out with an empty paint can.",
+    "traits": [],
+    "goals": [
+      "To stop Madison and explain himself after she throws paint on him."
+    ],
+    "relationships": [
+      {
+        "characterName": "Madison",
+        "type": "hostile"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "Absent from his apartment; Madison calls him and leaves a desperate message asking him to pick up and saying she needs him.",
+      "emotionalJourney": "Madison finds him in bed with his lover and throws paint all over him and his lover. He calls out to Madison, saying he can explain, but she beams the empty paint can at his head, knocking him out.",
+      "endState": "Knocked out by Madison after she throws an empty paint can at his head.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "supporting",
+      "importance": "",
+      "plotFunction": "His betrayal of Madison triggers her confrontation and violence, and his being knocked out ends the scene."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Jehova Witness": {
+    "name": "Jehova Witness",
+    "summary": "The Jehova Witness is a preacher who appears in a flashback within the night club scene. He approaches Desmond to bear witness that Jehova is the one true God and asks if Desmond is ready to be saved. He also prays for the soul of a sinner to be spared.",
+    "traits": [],
+    "goals": [
+      "The character wants to save Desmond's soul."
+    ],
+    "relationships": [],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "The character begins in the flashback as a preacher who wants to save Desmond's soul.",
+      "emotionalJourney": "The character wants to save Desmond's soul and feels pious.",
+      "endState": "The record ends with the character still in the flashback, preaching for the soul of a sinner.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "The character appears in a flashback to show a moment of attempted salvation in Desmond's past."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Mr. Gathers": {
+    "name": "Mr. Gathers",
+    "summary": "Mr. Gathers is a third grade teacher who is huddled in the corner of his classroom while Jetta aims a large hand gun at him. He insists he did not touch anyone and asks her to put the gun down. He tries to rush Jetta, and she fires shots and hits him in the head, killing him.",
+    "traits": [],
+    "goals": [
+      "To convince Jetta he did not touch anyone and to get her to put the gun down."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jetta",
+        "type": "hostile"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is huddled in the corner of his classroom, terrified, with Jetta aiming a large hand gun at him.",
+      "emotionalJourney": "He tries to rush Jetta, and she fires shots and hits him in the head.",
+      "endState": "He is dead, shot in the head by Jetta after trying to rush her.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "He is the victim of Jetta's shooting, which escalates the scene and results in his death."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Nurse": {
+    "name": "Nurse",
+    "summary": "The nurse appears in one scene at the hospital. When Des drops a vase after a sharp chest pain, the nurse comes over to help him. She asks if he is alright and tells him she will take care of the broken vase and that he should sit down.",
+    "traits": [],
+    "goals": [
+      "The nurse wants to assist Des after his chest pain and the broken vase."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "supportive and professional"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "The nurse is present in the hospital hallway when Des drops the vase.",
+      "emotionalJourney": "The nurse chooses to help Des after his chest pain and the broken vase.",
+      "endState": "The nurse has helped Des and told him to sit down, then disappears from the record.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "The nurse helps Des after his chest pain and the broken vase, allowing him to continue to Madi's room."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Yuppie": {
+    "name": "Yuppie",
+    "summary": "The yuppie is a passenger in a car that backs into a parking spot at dangerous speed, claiming it before Desmond can. When Desmond pulls up beside them, the yuppie apologizes and dismisses him, but after Desmond fires two shots in the air, the yuppie flees in fear.",
+    "traits": [],
+    "goals": [
+      "The yuppie wants to claim the parking spot."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "hostile"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "The yuppie wants to claim the parking spot and feels apologetic.",
+      "emotionalJourney": "The yuppie's situation flips from claiming the spot to fleeing it after Desmond fires two shots in the air.",
+      "endState": "The yuppie has fled the parking spot and is no longer present.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "The yuppie provides the immediate obstacle to Desmond's parking, and their confrontation triggers Desmond's violent escalation."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Correction Officer": {
+    "name": "Correction Officer",
+    "summary": "The correction officer is a prison official who escorts Jetta back to her cell and tells her to pack up her things. The officer leaves and later returns to find the two inmates unconscious and Jetta packed and ready to leave.",
+    "traits": [],
+    "goals": [
+      "The officer wants to process Jetta's release."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jetta",
+        "type": "neutral"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "The officer begins by escorting Jetta back to her cell and telling her to pack up her things.",
+      "emotionalJourney": "The officer leaves Jetta in her cell and later returns to find the two inmates unconscious and Jetta packed and ready to leave.",
+      "endState": "The record ends with the officer having returned to find the two inmates unconscious and Jetta packed and ready to leave.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "The officer processes Jetta's release, which sets up the escalation in the cell."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Female Inmate": {
+    "name": "Female Inmate",
+    "summary": "A female inmate in the women's penitentiary who, with another inmate, slips into Jetta's cell and threatens her with a home-made shank. She is knocked unconscious when Jetta fights back.",
+    "traits": [],
+    "goals": [
+      "To attack Jetta, as shown by her threat and the home-made shank."
+    ],
+    "relationships": [
+      {
+        "characterName": "Jetta",
+        "type": "hostile"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "Threatening Jetta with a home-made shank as Jetta packs to leave.",
+      "emotionalJourney": "The inmate goes from threatening Jetta to being knocked unconscious by Jetta.",
+      "endState": "Unconscious on the floor of Jetta's cell after Jetta fights back.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "Provides the escalation in Jetta's cell, threatening her and then being defeated, which shows Jetta's ability to handle attackers before leaving."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "female",
+      "ageRange": "not stated",
+      "genderConfidence": "stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Park Bystander": {
+    "name": "Park Bystander",
+    "summary": "An elderly bystander at the park after Fifth's car crash. He approaches Fifth to check on him and ask about his driving, but backs away after Fifth stares at him and eats pistachio nuts.",
+    "traits": [],
+    "goals": [
+      "to check on Fifth's well-being after the crash."
+    ],
+    "relationships": [
+      {
+        "characterName": "Fifth",
+        "type": "concerned and bewildered"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "approaches Fifth to check on his well-being after the crash.",
+      "emotionalJourney": "backs away from Fifth after Fifth stares at him and eats a pistachio nut.",
+      "endState": "backs away from Fifth after Fifth stares at him and eats a pistachio nut.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "shows Fifth's unresponsiveness to concern after the crash."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Ray's Girl": {
+    "name": "Ray's Girl",
+    "summary": "Ray's girl is a young woman who has spent the night with Desmond and is leaving his apartment in the morning. She shares a short kiss with him at the door, tells him she had fun, and asks him to call her.",
+    "traits": [],
+    "goals": [
+      "She wants to end the encounter politely and leave."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "romantic"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "She is a young woman who has spent the night with Desmond and is leaving his apartment.",
+      "emotionalJourney": "She ends the encounter and leaves, asking to be called again.",
+      "endState": "She leaves the apartment after a short kiss and a request to be called again.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "She provides a brief romantic encounter that shows Desmond's casual morning and gives Jetta material to tease him about."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "A Latin Percussions Band": {
+    "name": "A Latin Percussions Band",
+    "summary": "A Latin percussions band is heard in the distance as Des and Jetta approach Central Park. The band later walks up to collect tips, and Marcos throws in a five. The band continues playing as the scene ends.",
+    "traits": [],
+    "goals": [
+      "The record does not show what the band wants."
+    ],
+    "relationships": [
+      {
+        "characterName": "Marcos",
+        "type": "neutral"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "The band is heard in the distance as Des and Jetta approach Central Park.",
+      "emotionalJourney": "The band comes by for tips and Marcos throws in a five.",
+      "endState": "The band is still playing as Jetta and Des sit back and people watch.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "The band provides ambient music and a brief interaction for tips, contributing to the scene's atmosphere."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Black Mourners": {
+    "name": "Black Mourners",
+    "summary": "Black mourners are a group gathered at a small, low-lit funeral home, crying and carrying on. They are present when Desmond mourns over his baby brother's coffin and react to his cell phone ringing.",
+    "traits": [],
+    "goals": [
+      "They are shown mourning and crying, but the record does not state what they want."
+    ],
+    "relationships": [],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "They are gathered in a small, low-lit funeral home, crying and carrying on.",
+      "emotionalJourney": "They are shocked when Desmond's cell phone rings, then stare in disbelief after he answers and hangs up.",
+      "endState": "They are still gathered in the funeral home, crying, as Desmond resumes crying loudly and the phone rings again.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "They establish the funeral setting and react to Desmond's phone call, showing the disruption of the mourning."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "City Marshall": {
+    "name": "City Marshall",
+    "summary": "The City Marshall is an off-screen authority who has issued an eviction notice and placed a chain and lock on Madison's industrial artist space. The character never appears or speaks, but the notice and lock are already in place when Madison arrives.",
+    "traits": [],
+    "goals": [
+      "The record does not show what the City Marshall wants."
+    ],
+    "relationships": [],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "The City Marshall is an off-screen authority whose eviction notice and lock are already in place when Madison arrives.",
+      "emotionalJourney": "",
+      "endState": "The City Marshall remains an off-screen force whose eviction notice and lock have taken effect, leaving Madison outside her space.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "The City Marshall's eviction notice and lock create the initial obstacle that sets Madison's story in motion."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "His Lover": {
+    "name": "His Lover",
+    "summary": "The lover is a person in bed with Jason when Madison enters his apartment. They are seen only as the object of Madison's paint-throwing attack and are not given any dialogue or further action.",
+    "traits": [],
+    "goals": [
+      "The record does not show what the lover wants."
+    ],
+    "relationships": [
+      {
+        "characterName": "",
+        "type": "hostile"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "The lover is in bed with Jason when Madison enters and throws paint on them.",
+      "emotionalJourney": "The lover is caught in bed with Jason and is covered in paint when Madison throws it.",
+      "endState": "The record ends with the lover still in the bedroom after being covered in paint; no further change is shown.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "The lover's presence in bed with Jason triggers Madison's discovery and violent reaction, setting the story's initial betrayal in motion."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Jonesy": {
+    "name": "Jonesy",
+    "summary": "Jonesy is a neighbor who is hosing down the sidewalk outside Desmond's Brownstone. He appears only in one scene, where Desmond asks him to spray down his stoop and Jonesy silently agrees.",
+    "traits": [],
+    "goals": [
+      "The record does not show what Jonesy wants."
+    ],
+    "relationships": [
+      {
+        "characterName": "Desmond",
+        "type": "neutral"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is hosing down the sidewalk outside the Brownstone.",
+      "emotionalJourney": "",
+      "endState": "He has agreed to spray down Desmond's stoop and remains hosing the sidewalk.",
+      "quality": "unclear"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "He provides a brief, silent interaction that shows Desmond covering up the blood on his stoop."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Mr. Mann": {
+    "name": "Mr. Mann",
+    "summary": "Mr. Mann is a figure mentioned in two scenes but never appears or speaks. In S1, Marcos invokes his name to stop Fifth from jumping off a roof. In S2, Fifth escapes from a mental hospital after knocking out Blaine, and the record does not show Mr. Mann present.",
+    "traits": [],
+    "goals": [
+      "The record does not show what Mr. Mann wants."
+    ],
+    "relationships": [
+      {
+        "characterName": "",
+        "type": "unclear"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is a figure whose name is invoked by Marcos to stop Fifth from jumping.",
+      "emotionalJourney": "Fifth invokes Mr. Mann's name while escaping, showing that Mr. Mann remains a threat or authority figure.",
+      "endState": "He is still a figure Fifth invokes while escaping, and his authority remains a threat.",
+      "quality": "unclear"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "Mr. Mann is a name invoked to raise the stakes around Fifth's actions, but the record does not show him acting or speaking."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  },
+  "Pop": {
+    "name": "Pop",
+    "summary": "Pop is Desmond's brother, who was shot and killed before the story begins. His death drives Desmond's vow of revenge and leaves an outstanding debt that Bubble demands from Desmond.",
+    "traits": [],
+    "goals": [
+      "Nothing; he is dead."
+    ],
+    "relationships": [
+      {
+        "characterName": "",
+        "type": "close"
+      },
+      {
+        "characterName": "",
+        "type": "close"
+      },
+      {
+        "characterName": "",
+        "type": "close"
+      },
+      {
+        "characterName": "",
+        "type": "hostile"
+      },
+      {
+        "characterName": "",
+        "type": "close"
+      }
+    ],
+    "profile": {
+      "background": "",
+      "stakes": "",
+      "contradictions": "",
+      "strengths": [],
+      "vulnerabilities": []
+    },
+    "arcDetail": {
+      "beginning": "He is dead, and his death is the reason Desmond seeks revenge and owes a debt.",
+      "emotionalJourney": "",
+      "endState": "He is dead, and his death is the reason Desmond seeks revenge and owes a debt.",
+      "quality": "changes"
+    },
+    "thematic": {
+      "themes": [],
+      "role": ""
+    },
+    "narrative": {
+      "role": "minor",
+      "importance": "",
+      "plotFunction": "Pop's death motivates Desmond's revenge and creates a debt that drives conflict."
+    },
+    "dialogue": {
+      "voice": "",
+      "function": ""
+    },
+    "demographics": {
+      "gender": "not stated",
+      "ageRange": "not stated",
+      "genderConfidence": "not stated",
+      "ageConfidence": "not stated"
+    }
+  }
+}

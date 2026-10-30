@@ -1,0 +1,572 @@
+[
+  {
+    "number": 1,
+    "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+    "title": "Eviction Notice",
+    "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 91
+  },
+  {
+    "number": 2,
+    "id": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+    "title": "Paint Can Confrontation",
+    "slugline": "INT. JASON'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 130
+  },
+  {
+    "number": 3,
+    "id": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+    "title": "A Call at the Funeral",
+    "slugline": "INT. FUNERAL HOME - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 152
+  },
+  {
+    "number": 4,
+    "id": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+    "title": "Jetta's Last Cell",
+    "slugline": "INT. WOMENS PENITENTIARY - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 132
+  },
+  {
+    "number": 5,
+    "id": "scene_01M4KD5YMZRJZFYN5T301BH19J",
+    "title": "Fifth Takes the Roof",
+    "slugline": "EXT. SPEEDING CAR - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 196
+  },
+  {
+    "number": 6,
+    "id": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+    "title": "Jetta's Release",
+    "slugline": "INT. DESMOND'S CAR - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 643
+  },
+  {
+    "number": 7,
+    "id": "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+    "title": "Jetta Shoots Mr. Gathers",
+    "slugline": "INT. CLASSROOM - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 112
+  },
+  {
+    "number": 8,
+    "id": "scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+    "title": "Jetta's Arrest",
+    "slugline": "INT. JETTA'S HOUSE - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 32
+  },
+  {
+    "number": 9,
+    "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+    "title": "Airport Pickup",
+    "slugline": "EXT. AIRPORT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "EXT",
+    "word_count": 660
+  },
+  {
+    "number": 10,
+    "id": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+    "title": "The Escape",
+    "slugline": "INT. MENTAL HOSPITAL - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 714
+  },
+  {
+    "number": 11,
+    "id": "scene_01M4KD5YMZXBMH6NTPMBH6TQ94",
+    "title": "The Rooftop Leap",
+    "slugline": "EXT. ROOFTOP - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 93
+  },
+  {
+    "number": 12,
+    "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+    "title": "Desmond's Car to the Mental Hospital",
+    "slugline": "INT. DESMOND'S CAR - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 276
+  },
+  {
+    "number": 13,
+    "id": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+    "title": "Hospital Release Check",
+    "slugline": "INT. HOSPITAL - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 146
+  },
+  {
+    "number": 14,
+    "id": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+    "title": "Fifth Leaves the Hospital",
+    "slugline": "INT. HOSPITAL WAITING ROOM - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 315
+  },
+  {
+    "number": 15,
+    "id": "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+    "title": "Who Gets to Drive",
+    "slugline": "EXT. HOSPITAL - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "EXT",
+    "word_count": 24
+  },
+  {
+    "number": 16,
+    "id": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+    "title": "Jetta's Past",
+    "slugline": "INT. DESMOND'S CAR - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 164
+  },
+  {
+    "number": 17,
+    "id": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+    "title": "Dinner and Lodging",
+    "slugline": "INT. FRENCH CAFE - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 310
+  },
+  {
+    "number": 18,
+    "id": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+    "title": "Good Night",
+    "slugline": "EXT. FIFTH'S LOFT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "EXT",
+    "word_count": 48
+  },
+  {
+    "number": 19,
+    "id": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+    "title": "Bubble's Debt Demand",
+    "slugline": "EXT. DESMOND'S APARTMENT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "EXT",
+    "word_count": 250
+  },
+  {
+    "number": 20,
+    "id": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+    "title": "Bloodied Return",
+    "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 262
+  },
+  {
+    "number": 21,
+    "id": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+    "title": "A Reason to Live",
+    "slugline": "INT/EXT. FIFTH'S LOFT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT/EXT",
+    "word_count": 1044
+  },
+  {
+    "number": 22,
+    "id": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+    "title": "A Morning Interrupted",
+    "slugline": "INT. DESMOND'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 325
+  },
+  {
+    "number": 23,
+    "id": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+    "title": "Dressed to Go",
+    "slugline": "INT. FIFTH'S LOFT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 189
+  },
+  {
+    "number": 24,
+    "id": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+    "title": "Neighborly Advice",
+    "slugline": "EXT. CITY STREET - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 51
+  },
+  {
+    "number": 25,
+    "id": "scene_01M4KD5YMZQS71YP589WR5Q689",
+    "title": "Jetta Gets the Job",
+    "slugline": "EXT. HELL'S KITCHEN - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 631
+  },
+  {
+    "number": 26,
+    "id": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+    "title": "A Dangerous Lead",
+    "slugline": "INT. COFFEE SHOP - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 595
+  },
+  {
+    "number": 27,
+    "id": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+    "title": "Desmond's Despair and Jetta's Hope",
+    "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 1100
+  },
+  {
+    "number": 28,
+    "id": "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+    "title": "Fifth's Reckless Drive",
+    "slugline": "INT. SPEEDING CAR - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 483
+  },
+  {
+    "number": 29,
+    "id": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+    "title": "Cards and a Quarrel",
+    "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 439
+  },
+  {
+    "number": 30,
+    "id": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+    "title": "The Parking Space",
+    "slugline": "INT. DESMOND'S CAR - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 239
+  },
+  {
+    "number": 31,
+    "id": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+    "title": "A Ring and a Night Out",
+    "slugline": "INT. NIGHT CLUB - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 1130
+  },
+  {
+    "number": 32,
+    "id": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF",
+    "title": "Sleep After the Club",
+    "slugline": "INT. DESMOND'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 52
+  },
+  {
+    "number": 33,
+    "id": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+    "title": "Interrupted Bath",
+    "slugline": "INT. FIFTH'S LOFT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 182
+  },
+  {
+    "number": 34,
+    "id": "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+    "title": "The Upstairs Neighbor",
+    "slugline": "EXT/INT. SIDNEY'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT/EXT",
+    "word_count": 175
+  },
+  {
+    "number": 35,
+    "id": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+    "title": "A Promise and a Memory",
+    "slugline": "INT. DESMOND'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 828
+  },
+  {
+    "number": 36,
+    "id": "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+    "title": "Coffee and Questions",
+    "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 194
+  },
+  {
+    "number": 37,
+    "id": "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+    "title": "Dinner and a Search",
+    "slugline": "INT. FIFTH'S LOFT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 90
+  },
+  {
+    "number": 38,
+    "id": "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+    "title": "A Reason to Live",
+    "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 163
+  },
+  {
+    "number": 39,
+    "id": "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+    "title": "Fifth's Message",
+    "slugline": "INT. FIFTH'S LOFT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 169
+  },
+  {
+    "number": 40,
+    "id": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+    "title": "Behind the Door",
+    "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 167
+  },
+  {
+    "number": 41,
+    "id": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+    "title": "A Search for Marlon",
+    "slugline": "EXT. NYC STREETS - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 664
+  },
+  {
+    "number": 42,
+    "id": "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+    "title": "Fate and Errands",
+    "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 268
+  },
+  {
+    "number": 43,
+    "id": "scene_01M4KD5YMZETF6BJR425QMY5TB",
+    "title": "A Ride Together",
+    "slugline": "EXT. STREETS - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 42
+  },
+  {
+    "number": 44,
+    "id": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+    "title": "Jetta's Double Victory",
+    "slugline": "DESMOND'S APARTMENT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "",
+    "word_count": 803
+  },
+  {
+    "number": 45,
+    "id": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+    "title": "Love and Wine",
+    "slugline": "INT. FIFTH'S LOFT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 341
+  },
+  {
+    "number": 46,
+    "id": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+    "title": "A Broken-Heart Confession",
+    "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 384
+  },
+  {
+    "number": 47,
+    "id": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+    "title": "Privacy and Wine",
+    "slugline": "INT. FIFTH'S LOFT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 263
+  },
+  {
+    "number": 48,
+    "id": "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+    "title": "The Ringing Phone",
+    "slugline": "INT. DESMOND'S APARTMENT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 22
+  },
+  {
+    "number": 49,
+    "id": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+    "title": "Madison Under Attack",
+    "slugline": "INT. FIFTH'S LOFT - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 504
+  },
+  {
+    "number": 50,
+    "id": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+    "title": "Waiting for Surgery",
+    "slugline": "INT. EMERGENCY ROOM - NIGHT",
+    "duration": "",
+    "timeOfDay": "NIGHT",
+    "type": "INT",
+    "word_count": 113
+  },
+  {
+    "number": 51,
+    "id": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+    "title": "A Chance to See Marlon",
+    "slugline": "INT. DESMOND'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 264
+  },
+  {
+    "number": 52,
+    "id": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+    "title": "Fifth's Family Secrets",
+    "slugline": "INT. SIDNEY'S APARTMENT - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 498
+  },
+  {
+    "number": 53,
+    "id": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+    "title": "A Proposal and a Collision",
+    "slugline": "EXT. FIFTH'S CAR - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 1160
+  },
+  {
+    "number": 54,
+    "id": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+    "title": "Flowers at Madi's Bed",
+    "slugline": "INT. HOSPITAL - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 408
+  },
+  {
+    "number": 55,
+    "id": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+    "title": "Desmond's Worry on the Drive",
+    "slugline": "DESMOND'S CAR - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "",
+    "word_count": 393
+  },
+  {
+    "number": 56,
+    "id": "scene_01M4KD5YMZZ0SYRMCA56B5BHQP",
+    "title": "A Farewell and a Ring",
+    "slugline": "INT. AIRPORT TERMINAL - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "INT",
+    "word_count": 118
+  },
+  {
+    "number": 57,
+    "id": "scene_01M4KD5YMZS8Y99SK205YKZ1Y2",
+    "title": "The Trunk",
+    "slugline": "EXT. DESMOND'S CAR - DAY",
+    "duration": "",
+    "timeOfDay": "DAY",
+    "type": "EXT",
+    "word_count": 97
+  }
+]

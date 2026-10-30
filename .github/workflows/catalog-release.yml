@@ -1,0 +1,117 @@
+name: catalog-release
+
+# Builds, signs (Developer ID), notarizes, and publishes a GitHub release for the
+# component catalog on a GitHub-hosted macOS runner (the repository is public,
+# so its minutes are free).
+#
+# Requires these secrets in the khaos-machine org or this repository (see
+# apps/catalog/scripts/release.sh): APPLE_ID, APPLE_TEAM_ID,
+# APPLE_APP_SPECIFIC_PASSWORD, KHAOTIK_UPDATER_PRIVATE_KEY,
+# KHAOTIK_UPDATER_KEY_PASSWORD, MACOS_CERTIFICATE_BASE64,
+# MACOS_CERTIFICATE_PASSWORD, APPLE_INTERMEDIATE_CERT_BASE64, and
+# AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_DEFAULT_REGION for the account
+# that owns the loswf-updates-web bucket.
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # gh release create
+  # gates.yml declares `issues: read` and `pull-requests: read` (#146). A called
+  # workflow may not request more than its caller grants, and when it does
+  # GitHub refuses the whole run at startup, before any job, with no log. That
+  # is how v0.19.0's first run died. Keep these two in step with gates.yml.
+  issues: read
+  pull-requests: read
+
+jobs:
+  # The same three gates the pull request ran, from the same file, so the
+  # release cannot be checked against a different set than the one that
+  # cleared the merge (#87). They run first and gate the
+  # release job: a red here costs a re-tag, a red after notarization costs a release that
+  # has already reached users.
+  gates:
+    uses: ./.github/workflows/gates.yml
+
+  release:
+    needs: gates
+    runs-on: macos-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      APPLE_ID: ${{ secrets.APPLE_ID }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+      KHAOTIK_UPDATER_PRIVATE_KEY: ${{ secrets.KHAOTIK_UPDATER_PRIVATE_KEY }}
+      KHAOTIK_UPDATER_KEY_PASSWORD: ${{ secrets.KHAOTIK_UPDATER_KEY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Verify toolchain
+        run: |
+          node --version
+          npm --version
+          cargo --version
+      - name: Install deps (workspace)
+        run: npm ci
+
+      - name: Import Developer ID Application certificate
+        env:
+          MACOS_CERTIFICATE_BASE64: ${{ secrets.MACOS_CERTIFICATE_BASE64 }}
+          MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          APPLE_INTERMEDIATE_CERT_BASE64: ${{ secrets.APPLE_INTERMEDIATE_CERT_BASE64 }}
+        run: |
+          set -euo pipefail
+          # Import the Developer ID Application cert into an ephemeral keychain.
+          KEYCHAIN_PASSWORD="$(openssl rand -hex 16)"
+          KEYCHAIN_PATH="$RUNNER_TEMP/khaotik-signing.keychain-db"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          APP_CERT="$RUNNER_TEMP/app_cert.p12"
+          printf '%s' "$MACOS_CERTIFICATE_BASE64" | base64 --decode > "$APP_CERT"
+          security import "$APP_CERT" -k "$KEYCHAIN_PATH" -P "$MACOS_CERTIFICATE_PASSWORD" \
+            -f pkcs12 -T /usr/bin/codesign
+          if [ -n "${APPLE_INTERMEDIATE_CERT_BASE64:-}" ]; then
+            INTER="$RUNNER_TEMP/inter.cer"
+            printf '%s' "$APPLE_INTERMEDIATE_CERT_BASE64" | base64 --decode > "$INTER"
+            security import "$INTER" -k "$KEYCHAIN_PATH" || true
+            rm -f "$INTER"
+          fi
+          security set-key-partition-list -S apple-tool:,apple:,codesign: \
+            -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH" >/dev/null
+          rm -f "$APP_CERT"
+          # Tauri's bundler, and release.sh's own identity lookup, resolve the signing
+          # identity through the user's keychain search list, so this keychain has to be
+          # on it while release.sh runs. Every runner on the mini shares that list (one
+          # macOS user), so the change happens under a lock held across repos, and only
+          # this keychain is added — and later removed. scripts/signing-keychain-lock.sh
+          # carries the reasoning and citations.
+          bash scripts/signing-keychain-lock.sh acquire
+          bash scripts/signing-keychain-lock.sh add "$KEYCHAIN_PATH"
+
+      - name: Build, sign, notarize, release
+        run: bash apps/catalog/scripts/release.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # There was no cleanup before: the keychain stayed on the shared search list
+      # after every release. `always()` so a failed build cleans up too. remove takes
+      # only this keychain off the list and is a no-op unless this job holds the lock;
+      # a job killed before this step is recovered by the next acquirer, because its
+      # Runner.Worker is gone.
+      - name: Clean up signing keychain
+        if: always()
+        run: |
+          KEYCHAIN_PATH="$RUNNER_TEMP/khaotik-signing.keychain-db"
+          bash scripts/signing-keychain-lock.sh remove "$KEYCHAIN_PATH"
+          security delete-keychain "$KEYCHAIN_PATH" 2>/dev/null || true
+          bash scripts/signing-keychain-lock.sh release

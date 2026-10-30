@@ -1,0 +1,35 @@
+{
+  "_provenance": "khaosd GET /api/v1/settings — the setup block (offered and suggested paths, the path in effect, what Advanced needs, the Advanced switches) and each provider sign-in disclosure, verbatim.",
+  "setup": {
+    "advanced": {
+      "dependencies": [
+        "Homebrew",
+        "curl",
+        "Python",
+        "Apple Silicon",
+        "Hugging Face CLI",
+        "Ollama",
+        "LM Studio",
+        "Speech environment"
+      ],
+      "storage_bytes": null
+    },
+    "advanced_features": {
+      "git_sync": false,
+      "history": false
+    },
+    "offered": [
+      "basic",
+      "advanced"
+    ],
+    "path": "basic",
+    "suggested": "basic"
+  },
+  "disclosures": [
+    {
+      "providerId": "openai-codex",
+      "title": "OpenAI Codex",
+      "text": "Signing in with ChatGPT uses the sign-in OpenAI built for its Codex tool. OpenAI hasn't approved Khaos to use it, so it may change or stop working without notice, and your ChatGPT plan's usage limits apply."
+    }
+  ]
+}

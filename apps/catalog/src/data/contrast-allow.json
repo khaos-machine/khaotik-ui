@@ -1,0 +1,116 @@
+{
+  "note": "The rules that legitimately keep --text-tertiary. THIS FILE IS HAND-AUTHORED AND HAS NO GENERATOR. No script writes it; no command regenerates it; every entry is a reviewed human decision in a PR diff. That absence is the whole guarantee — a comparison set that can be mechanically regenerated from the thing being checked cannot red, and this repo has shipped three vacuous gates already. If contrast-guard.test.js goes red, the fix is to change the CSS or to argue for a new entry here in review; it is never to regenerate this file, because there is nothing to run. Measurements justifying each entry live in contrast-audit.json, which the guard never reads (D64, plan 5c).",
+  "reasonValues": {
+    "size>=24px": "computed size clears the WCAG large-text threshold (24px, or 18.66px bold). KEPT only. ZERO members today, which is correct rather than suspicious: the largest computed size anywhere in the 75-key population is 19.2px.",
+    "decorative": "genuinely decorative content that carries no information. KEPT only.",
+    "inactive-control": "the WCAG SC 1.4.3 exemption for inactive user-interface components. KEPT only.",
+    "non-text": "not text at all — an SVG stroke that paints no glyph. NON_TEXT only. These fall under SC 1.4.11, or are exempt outright as decorative graphics with a text alternative, and a text bar is a category error on them. Carried as issue #76; NOT to be resolved by moving them to --text-secondary, which would remove the evidence of the violation without fixing it.",
+    "ladder-step": "the rule is a third-step site of the type ladder and must KEEP --text-tertiary. RESTORED only. #66 substituted --text-secondary here because --text-tertiary was --warm-400 against both themes and failed 4.5:1 on three of four grounds; #75 repointed it per theme (--warm-350 dark, --warm-450 light) and Andrew's ruling restored these rules. They are on this list so the guard reds if one of them stops declaring the token again -- the `missing` half, not the `offenders` half. That is the live regression risk now: collapsing the ladder back to two steps."
+  },
+  "entries": [
+    {
+      "component": "Menu",
+      "selector": ":global(.ui-menu__trigger .ph)",
+      "occurrence": 0,
+      "reason": "decorative",
+      "verdict": "KEPT",
+      "evidence": "Menu.svelte:100. A Phosphor icon; Icon is aria-hidden by contract (Icon.svelte:29). Computed 13.6px."
+    },
+    {
+      "component": "Toggle",
+      "selector": ":global(.ui-toggle[data-disabled] .ui-toggle__label)",
+      "occurrence": 0,
+      "reason": "inactive-control",
+      "verdict": "KEPT",
+      "evidence": "Toggle.svelte:74. Toggle.svelte:35 passes {disabled} into Ark's SwitchRoot, which renders a genuinely disabled input — verified rather than assumed, because this is the one of the three SC 1.4.3 claims worth doubting. Computed 13px."
+    },
+    {
+      "component": "BarChart",
+      "selector": ".barchart__caption",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "11px/400 caption against .barchart__label and .barchart__value at 13px/400 -- size was the only separator once both sat on secondary. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "BarChart",
+      "selector": ".barchart__value",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "Paired with the caption above; the two must not share a rung. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "BarChart",
+      "selector": ".barchart__empty",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "Empty-state text, third-step by role. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "EditableField",
+      "selector": ":global(.editable__label)",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "One of five label roles the three inspectors collapsed onto identical 11px/400 secondary. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "EditableField",
+      "selector": ".editable__action",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "Paired with the label above. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "LabeledField",
+      "selector": ".labeled-field__label",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "One of the five collapsed label roles; the case D64 nominated from source. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "MetricCard",
+      "selector": ".metric__label",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "One of the five collapsed label roles. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "MetricCard",
+      "selector": ".metric__sub",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "Pairs with .metric__label. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "EditableField",
+      "selector": ":global(.editable__action)",
+      "occurrence": 0,
+      "reason": "ladder-step",
+      "verdict": "RESTORED",
+      "evidence": "The same single declaration as .editable__action above: the rule is written `.editable__action, :global(.editable__action)` and the scanner keys each arm separately, so one CSS declaration needs two entries. Restored by #75 (Andrew, 2026-09-24)."
+    },
+    {
+      "component": "CharacterTable",
+      "selector": ".ui-character-table__avatar",
+      "occurrence": 0,
+      "reason": "decorative",
+      "verdict": "KEPT",
+      "evidence": "CharacterTable.svelte:115. Colours only the Phosphor icon of a character with no headshot; Icon is aria-hidden by contract (Icon.svelte:29), the span holds no text, and its role=img aria-label states the appearance in words. Moved from Khaos App unchanged (T2)."
+    },
+    {
+      "component": "CharacterTable",
+      "selector": ".ui-character-table__voice[data-state='missing']",
+      "occurrence": 0,
+      "reason": "decorative",
+      "verdict": "KEPT",
+      "evidence": "CharacterTable.svelte:119. Colours only the speaker-none Phosphor icon; Icon is aria-hidden by contract (Icon.svelte:29), and the span's role=img aria-label says No voice assigned. Moved from Khaos App unchanged (T2)."
+    }
+  ]
+}

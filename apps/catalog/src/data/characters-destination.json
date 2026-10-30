@@ -1,0 +1,4648 @@
+{
+  "_provenance": "khaosd GET /api/v1/dashboard/characters, and for one character /api/dashboard/detail (.analysis, .graph_context), /api/v1/audio/assets?characterId and /api/v1/dashboard/character-mentions — BROKEN IN 4 PLACES — verbatim.",
+  "characters": [
+    {
+      "id": "character_01M4KD5YMZGV4HWNVYXNM7S9A9",
+      "name": "BLAINE",
+      "scriptName": "BLAINE",
+      "aliases": [
+        "BLAINE",
+        "BLAINE WELLWORTH"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [
+        "BLAINE WELLWORTH"
+      ],
+      "dialogue_lines": 13,
+      "words": 164,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+      "scenes": [
+        "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P"
+      ],
+      "percentage": 1.2333965844402277,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZSKZVYRP29G8E84M1",
+      "name": "BUBBLE",
+      "scriptName": "BUBBLE",
+      "aliases": [
+        "BUBBLE",
+        "Bubbles"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 7,
+      "words": 78,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+      "scenes": [
+        "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ"
+      ],
+      "percentage": 0.6641366223908919,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZCW6V7FBAH8EEA4MR",
+      "name": "CORRECTION OFFICER",
+      "scriptName": "CORRECTION OFFICER",
+      "aliases": [
+        "CORRECTION OFFICER",
+        "The C.O."
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 1,
+      "words": 20,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+      "scenes": [
+        "scene_01M4KD5YMZE8MXRNRXVQ5Q027E"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0.09487666034155598,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+      "name": "DESMOND",
+      "scriptName": "DESMOND",
+      "aliases": [
+        "Des",
+        "DESMOND"
+      ],
+      "authoredAliases": [
+        "Des"
+      ],
+      "introducedAliases": [],
+      "dialogue_lines": 299,
+      "words": 3976,
+      "scene_count": 32,
+      "firstScene": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+      "scenes": [
+        "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+        "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+        "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+        "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+        "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+        "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+        "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+        "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+        "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+        "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+        "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+        "scene_01M4KD5YMZZ0SYRMCA56B5BHQP",
+        "scene_01M4KD5YMZS8Y99SK205YKZ1Y2"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZZ0SYRMCA56B5BHQP",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZS8Y99SK205YKZ1Y2",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+        "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+        "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+        "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+        "scene_01M4KD5YMZQS71YP589WR5Q689",
+        "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+        "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+        "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+        "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+        "scene_01M4KD5YMZZ0SYRMCA56B5BHQP"
+      ],
+      "percentage": 28.368121442125236,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZEQSZXG7C1THMKMHX",
+      "name": "DR. MITCHELL",
+      "scriptName": "DR. MITCHELL",
+      "aliases": [
+        "DR. MITCHELL"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 5,
+      "words": 79,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+      "scenes": [
+        "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+        "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q"
+      ],
+      "percentage": 0.47438330170777987,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZP3VAP56PKT5KHEJF",
+      "name": "ER DOCTOR",
+      "scriptName": "ER DOCTOR",
+      "aliases": [
+        "ER DOCTOR"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 2,
+      "words": 46,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+      "scenes": [
+        "scene_01M4KD5YMZCJCKFSPAJGEGJKXV"
+      ],
+      "appearances": [],
+      "mentionedSceneIds": [],
+      "percentage": 0.18975332068311196,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZR70W0XCVFFCASTCF",
+      "name": "FEMALE INMATE",
+      "scriptName": "FEMALE INMATE",
+      "aliases": [
+        "FEMALE INMATE"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 1,
+      "words": 15,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+      "scenes": [
+        "scene_01M4KD5YMZE8MXRNRXVQ5Q027E"
+      ],
+      "appearances": [],
+      "mentionedSceneIds": [],
+      "percentage": 0.09487666034155598,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+      "name": "FIFTH",
+      "scriptName": "FIFTH",
+      "aliases": [
+        "FIFTH",
+        "Fifth Mann"
+      ],
+      "authoredAliases": [
+        "Fifth Mann"
+      ],
+      "introducedAliases": [],
+      "dialogue_lines": 159,
+      "words": 1839,
+      "scene_count": 28,
+      "firstScene": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+      "scenes": [
+        "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+        "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+        "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+        "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+        "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+        "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+        "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+        "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+        "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+        "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZRJZFYN5T301BH19J",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZXBMH6NTPMBH6TQ94",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZETF6BJR425QMY5TB",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+        "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+        "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+        "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+        "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+        "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+        "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+        "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+        "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+        "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3"
+      ],
+      "percentage": 15.085388994307399,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZHM00HDSD11Q0Y3RX",
+      "name": "GUARD",
+      "scriptName": "GUARD",
+      "aliases": [
+        "GUARD"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 5,
+      "words": 81,
+      "scene_count": 2,
+      "firstScene": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+      "scenes": [
+        "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q"
+      ],
+      "appearances": [],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW"
+      ],
+      "percentage": 0.47438330170777987,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+      "name": "JASON",
+      "scriptName": "JASON",
+      "aliases": [
+        "JASON"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 2,
+      "words": 12,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+      "scenes": [
+        "scene_01M4KD5YMZWBM6MPMVEWBXV98J"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J"
+      ],
+      "percentage": 0.18975332068311196,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ3BH3NCM3NCWAH04K",
+      "name": "JEHOVA WITNESS",
+      "scriptName": "JEHOVA WITNESS",
+      "aliases": [
+        "JEHOVA WITNESS"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 2,
+      "words": 39,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+      "scenes": [
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR"
+      ],
+      "appearances": [],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR"
+      ],
+      "percentage": 0.18975332068311196,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+      "name": "JETTA",
+      "scriptName": "JETTA",
+      "aliases": [
+        "JETTA"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 213,
+      "words": 1979,
+      "scene_count": 28,
+      "firstScene": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+      "scenes": [
+        "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+        "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+        "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+        "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+        "scene_01M4KD5YMZQS71YP589WR5Q689",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+        "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+        "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+        "scene_01M4KD5YMZZ0SYRMCA56B5BHQP"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZQS71YP589WR5Q689",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZZ0SYRMCA56B5BHQP",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+        "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3"
+      ],
+      "percentage": 20.20872865275142,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+      "name": "MADISON",
+      "scriptName": "MADISON",
+      "aliases": [
+        "Madi",
+        "MADISON",
+        "Madison Mann"
+      ],
+      "authoredAliases": [
+        "Madi",
+        "Madison Mann"
+      ],
+      "introducedAliases": [],
+      "dialogue_lines": 153,
+      "words": 1528,
+      "scene_count": 25,
+      "firstScene": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+      "scenes": [
+        "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+        "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+        "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+        "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+        "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+        "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+        "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+        "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+        "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+        "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+        "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+        "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+        "scene_01M4KD5YMZ12C574TT40SCMXTV",
+        "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+        "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+        "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+        "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+        "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3"
+      ],
+      "percentage": 14.516129032258066,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZPZHSF5240HQJA307",
+      "name": "MARCOS",
+      "scriptName": "MARCOS",
+      "aliases": [
+        "MARCOS"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 33,
+      "words": 504,
+      "scene_count": 3,
+      "firstScene": "scene_01M4KD5YMZRJZFYN5T301BH19J",
+      "scenes": [
+        "scene_01M4KD5YMZRJZFYN5T301BH19J",
+        "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+        "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+        "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3"
+      ],
+      "percentage": 3.130929791271347,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ866M2GH9ZPWEMGET",
+      "name": "MARLON",
+      "scriptName": "MARLON",
+      "aliases": [
+        "her son",
+        "MARLON"
+      ],
+      "authoredAliases": [
+        "her son"
+      ],
+      "introducedAliases": [],
+      "dialogue_lines": 4,
+      "words": 28,
+      "scene_count": 2,
+      "firstScene": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+      "scenes": [
+        "scene_01M4KD5YMZBF60NTJBK4EHZJA0"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+        "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+        "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0"
+      ],
+      "percentage": 0.3795066413662239,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZQ1CDWV03JZGAC7M2",
+      "name": "MR. GATHERS",
+      "scriptName": "MR. GATHERS",
+      "aliases": [
+        "MR. GATHERS"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 2,
+      "words": 21,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+      "scenes": [
+        "scene_01M4KD5YMZ1M3TZY2XY5433NVE"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0.18975332068311196,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ3XG182X8X8YA8VK3",
+      "name": "MR. PEACLE",
+      "scriptName": "MR. PEACLE",
+      "aliases": [
+        "MR. PEACLE"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 13,
+      "words": 197,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+      "scenes": [
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 1.2333965844402277,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ2G3BY8C91XPE40CM",
+      "name": "MRS. PEACLE",
+      "scriptName": "MRS. PEACLE",
+      "aliases": [
+        "MRS. PEACLE"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 8,
+      "words": 77,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+      "scenes": [
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "percentage": 0.7590132827324478,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZBWG7SKCKQVVNJWYQ",
+      "name": "NACHO",
+      "scriptName": "NACHO",
+      "aliases": [
+        "NACHO"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 10,
+      "words": 94,
+      "scene_count": 2,
+      "firstScene": "scene_01M4KD5YMZQS71YP589WR5Q689",
+      "scenes": [
+        "scene_01M4KD5YMZQS71YP589WR5Q689",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZQS71YP589WR5Q689",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZQS71YP589WR5Q689",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "percentage": 0.9487666034155597,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZETDVAP9EKT87437Y",
+      "name": "NURSE",
+      "scriptName": "NURSE",
+      "aliases": [
+        "NURSE"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 2,
+      "words": 13,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+      "scenes": [
+        "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0.18975332068311196,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ8D72JQ1AQ9KNG1WR",
+      "name": "PARK BYSTANDER",
+      "scriptName": "PARK BYSTANDER",
+      "aliases": [
+        "PARK BYSTANDER"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 1,
+      "words": 14,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+      "scenes": [
+        "scene_01M4KD5YMZRGZ2EJY5HVSAV44S"
+      ],
+      "appearances": [],
+      "mentionedSceneIds": [],
+      "percentage": 0.09487666034155598,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+      "name": "RAY",
+      "scriptName": "RAY",
+      "aliases": [
+        "RAY",
+        "Ray Oaklin"
+      ],
+      "authoredAliases": [
+        "Ray Oaklin"
+      ],
+      "introducedAliases": [],
+      "dialogue_lines": 27,
+      "words": 306,
+      "scene_count": 7,
+      "firstScene": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+      "scenes": [
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+        "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+        "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZS8Y99SK205YKZ1Y2",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+        "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+        "scene_01M4KD5YMZS8Y99SK205YKZ1Y2"
+      ],
+      "percentage": 2.5616698292220113,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ3PDN22B9MF5SWW78",
+      "name": "RAY'S GIRL",
+      "scriptName": "RAY'S GIRL",
+      "aliases": [
+        "RAY'S GIRL"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 1,
+      "words": 12,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+      "scenes": [
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C"
+      ],
+      "appearances": [],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C"
+      ],
+      "percentage": 0.09487666034155598,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+      "name": "SIDNEY",
+      "scriptName": "SIDNEY",
+      "aliases": [
+        "SIDNEY"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 72,
+      "words": 625,
+      "scene_count": 13,
+      "firstScene": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+      "scenes": [
+        "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+        "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+        "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+        "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+        "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+        "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+        "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZETF6BJR425QMY5TB",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+          "origin": "described"
+        },
+        {
+          "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+        "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+        "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+        "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+        "scene_01M4KD5YMZDS073VTC9DNXADNG",
+        "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+        "scene_01M4KD5YMZDV6ZXPG8VZ67J79E"
+      ],
+      "percentage": 6.83111954459203,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZQZ5FHMDKM2D888J7",
+      "name": "STEVEN",
+      "scriptName": "STEVEN",
+      "aliases": [
+        "STEVEN"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 7,
+      "words": 83,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+      "scenes": [
+        "scene_01M4KD5YMZBF60NTJBK4EHZJA0"
+      ],
+      "appearances": [],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZBF60NTJBK4EHZJA0"
+      ],
+      "percentage": 0.6641366223908919,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZPADC0G1FJC6BR6CR",
+      "name": "TONY",
+      "scriptName": "TONY",
+      "aliases": [
+        "TONY"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 10,
+      "words": 104,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZQS71YP589WR5Q689",
+      "scenes": [
+        "scene_01M4KD5YMZQS71YP589WR5Q689"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZQS71YP589WR5Q689",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZQS71YP589WR5Q689"
+      ],
+      "percentage": 0.9487666034155597,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KD5YMZVNB3FQP32C1H1J1G",
+      "name": "YUPPIE",
+      "scriptName": "YUPPIE",
+      "aliases": [
+        "YUPPIE"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 2,
+      "words": 7,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+      "scenes": [
+        "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A"
+      ],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0.18975332068311196,
+      "origin": "parsed"
+    },
+    {
+      "id": "character_01M4KHJ4TCQ5XM9AKC3XARCS8R",
+      "name": "POP",
+      "aliases": [
+        "his baby brother",
+        "Pop"
+      ],
+      "authoredAliases": [
+        "Pop"
+      ],
+      "introducedAliases": [],
+      "dialogue_lines": 0,
+      "words": 0,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+      "scenes": [],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+        "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+        "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+        "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+        "scene_01M4KD5YMZ1RE80BXE3X9AXXT3"
+      ],
+      "percentage": 0,
+      "origin": "observed"
+    },
+    {
+      "id": "character_01M4KHRKTKWXZ0450AVTNNMSP3",
+      "name": "Jonesy",
+      "aliases": [
+        "Jonesy"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 0,
+      "words": 0,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+      "scenes": [],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0,
+      "origin": "observed"
+    },
+    {
+      "id": "character_01M4KHRX6YWBQA5GNJR8QZ3V7J",
+      "name": "A Latin percussions band",
+      "aliases": [
+        "A Latin percussions band",
+        "the Latin band",
+        "the Latin street band"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 0,
+      "words": 0,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+      "scenes": [],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0,
+      "origin": "observed"
+    },
+    {
+      "id": "character_01M4KHSZ4T0JJEC8PGC7ZE2ZXW",
+      "name": "his lover",
+      "aliases": [
+        "his lover"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 0,
+      "words": 0,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+      "scenes": [],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0,
+      "origin": "observed"
+    },
+    {
+      "id": "character_01M4KHT4E9APQ7Y1FF5KMTCT1P",
+      "name": "Black mourners",
+      "aliases": [
+        "Black mourners"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 0,
+      "words": 0,
+      "scene_count": 1,
+      "firstScene": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+      "scenes": [],
+      "appearances": [
+        {
+          "sceneId": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+          "origin": "described"
+        }
+      ],
+      "mentionedSceneIds": [],
+      "percentage": 0,
+      "origin": "observed"
+    },
+    {
+      "id": "character_01M4KVT41EHVDE41WGQCBWFRP3",
+      "name": "City Marshall",
+      "aliases": [
+        "City Marshall"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 0,
+      "words": 0,
+      "scene_count": 0,
+      "scenes": [],
+      "appearances": [],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J"
+      ],
+      "percentage": 0,
+      "origin": "observed"
+    },
+    {
+      "id": "character_01M4NJF93XG3JH45FPFVQ4HMXA",
+      "name": "Mr. Mann",
+      "aliases": [
+        "Mr. Mann"
+      ],
+      "authoredAliases": [],
+      "introducedAliases": [],
+      "dialogue_lines": 0,
+      "words": 0,
+      "scene_count": 0,
+      "scenes": [],
+      "appearances": [],
+      "mentionedSceneIds": [
+        "scene_01M4KD5YMZRJZFYN5T301BH19J",
+        "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P"
+      ],
+      "percentage": 0,
+      "origin": "observed"
+    }
+  ],
+  "focus": {
+    "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+    "analysis": {
+      "_provenance": {
+        "fingerprint": "sha256:2f2c7d91084a9a9a33a683d11f747a2a7cab215ceb9ef9cfc13483e896ad92d4",
+        "input": {
+          "context_sha256": "sha256:acb42f7fcc6bc57dc6b25f45ef02858000dff7da5689dc07d583430541139bbe",
+          "evidence_scenes": [
+            {
+              "fingerprint": "sha256:77922f356d3142e7ab03facb20e6addf972ee0653584f12d15ce0a48b15b466f",
+              "scene_id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J"
+            },
+            {
+              "fingerprint": "sha256:2f42249a4d8847acdf0251b26274d479decd05e4b222b04fb3bab3184dabbbca",
+              "scene_id": "scene_01M4KD5YMZKRJV38BPG7S64YHG"
+            },
+            {
+              "fingerprint": "sha256:be3bb3c95ff16a973a2da1bf87c61759c8b54e1addde1215b22f6240efcc53b0",
+              "scene_id": "scene_01M4KD5YMZQWGRANY09PHZS6PK"
+            },
+            {
+              "fingerprint": "sha256:6ae899b2eb06fb4c4d8352315f77346c6faac509a614b4072484f842f8e8d5a1",
+              "scene_id": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW"
+            },
+            {
+              "fingerprint": "sha256:e7b3560e350800e633420cd8832622d1161ecbcb22393edf2ab98612dc0925de",
+              "scene_id": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q"
+            },
+            {
+              "fingerprint": "sha256:6958219d4572cca492fea20975b8ae5471200539752ae336cae35f972b4086db",
+              "scene_id": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE"
+            },
+            {
+              "fingerprint": "sha256:9a3d413416b3d3f4a5b7760a793023459770d46711c0cc2b8715715549f32d2e",
+              "scene_id": "scene_01M4KD5YMZW79NB5E8GBGPEXPT"
+            },
+            {
+              "fingerprint": "sha256:99ba7f8d667bc08bb55e27e5292ce42869f48684c175aecd87134a23b1cbea0a",
+              "scene_id": "scene_01M4KD5YMZJ6YVYJ24WWYS9123"
+            },
+            {
+              "fingerprint": "sha256:6aa6bf801ddd7b874419dfaff30c2cd0616c8676ee142a15aafe1f8811d4a0df",
+              "scene_id": "scene_01M4KD5YMZK3P49RMRPK71HHRW"
+            },
+            {
+              "fingerprint": "sha256:f89696aaab545e3e4ac9f56a9cb3fc328c82c880b8b2630f1472714469ecdae8",
+              "scene_id": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78"
+            },
+            {
+              "fingerprint": "sha256:deea8e817a04659a2d3d0ce8550254d14aee8c25d62e41cfd37902e8837b0400",
+              "scene_id": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867"
+            },
+            {
+              "fingerprint": "sha256:a657a34f539bf7d27430ea7c41865602bb60dea37b2149392d08ae16073ac1a1",
+              "scene_id": "scene_01M4KD5YMZ12C574TT40SCMXTV"
+            },
+            {
+              "fingerprint": "sha256:d8cbe47b488a6e5bb12d9816e8ec58802d49cdc81f784432f0fb3d3c470b1eae",
+              "scene_id": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6"
+            },
+            {
+              "fingerprint": "sha256:c0217c2dd42ece8dad1aa97a8340369b16c7bedfa38c03df325e259150d8e2e0",
+              "scene_id": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A"
+            },
+            {
+              "fingerprint": "sha256:1d970c238705c69cb36723e9bde6180951724f201b0fca5c2c5fb2d5bb720d9c",
+              "scene_id": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR"
+            },
+            {
+              "fingerprint": "sha256:fc7ed5fc4f6079680cd8f154b3195da4ef16699b432776ff78d3ad5defd9ceca",
+              "scene_id": "scene_01M4KD5YMZXNVEG5FJWHQ715CV"
+            },
+            {
+              "fingerprint": "sha256:b6bb096e8c152fe0a9ee4505f44046ed1744d14f7cdaaa3c16aa144d7f90628c",
+              "scene_id": "scene_01M4KD5YMZMDCS2EBC8K1N75BN"
+            },
+            {
+              "fingerprint": "sha256:b5d46a9ce03c9f5ea9c1f6d4f8f255697aa3ad4bc64023869eb83d4f0c4472d3",
+              "scene_id": "scene_01M4KD5YMZSQB647Z5AH6DFFAX"
+            },
+            {
+              "fingerprint": "sha256:2e61ebfbed8cbf6aaf56b9a8c2fd1e21a471796b542437e2dd0237e4a3e10656",
+              "scene_id": "scene_01M4KD5YMZDS073VTC9DNXADNG"
+            },
+            {
+              "fingerprint": "sha256:bb21e00547e7159163d8fd684e72dff33c638dbfe37f44cb66c90b6a3aa394ee",
+              "scene_id": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF"
+            },
+            {
+              "fingerprint": "sha256:8f6814d6c5589dd6ad0135c9eaa09e79578b3e3e74f57ef9bc3ba2f6ae25b5fb",
+              "scene_id": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE"
+            }
+          ],
+          "prompt": {
+            "hash": "sha256:40f52df70299d81771a8d4c497fb018bc267f15928be0629f37ca997efa66ccf",
+            "id": "character-story",
+            "version": "1.0.0"
+          }
+        },
+        "made_by": {
+          "model": "deepseek/deepseek-v4.1-flash",
+          "producer_version": "khaos-tools v0.63.0",
+          "provider": "openrouter"
+        },
+        "prompt_bytes": {
+          "system": 164,
+          "user": 104720
+        }
+      },
+      "_response_review": {
+        "casting": [],
+        "story": [],
+        "ties": []
+      },
+      "_scenes": {
+        "S1": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "number": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "S10": {
+          "id": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+          "number": 17,
+          "slugline": "INT. FRENCH CAFE - NIGHT"
+        },
+        "S11": {
+          "id": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+          "number": 18,
+          "slugline": "EXT. FIFTH'S LOFT - NIGHT"
+        },
+        "S12": {
+          "id": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+          "number": 21,
+          "slugline": "INT/EXT. FIFTH'S LOFT - DAY"
+        },
+        "S13": {
+          "id": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+          "number": 23,
+          "slugline": "INT. FIFTH'S LOFT - DAY"
+        },
+        "S14": {
+          "id": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+          "number": 24,
+          "slugline": "EXT. CITY STREET - DAY"
+        },
+        "S15": {
+          "id": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+          "number": 26,
+          "slugline": "INT. COFFEE SHOP - DAY"
+        },
+        "S16": {
+          "id": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "number": 27,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S17": {
+          "id": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "number": 29,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S18": {
+          "id": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+          "number": 30,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "S19": {
+          "id": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "number": 31,
+          "slugline": "INT. NIGHT CLUB - NIGHT"
+        },
+        "S2": {
+          "id": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+          "number": 2,
+          "slugline": "INT. JASON'S APARTMENT - DAY"
+        },
+        "S20": {
+          "id": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+          "number": 33,
+          "slugline": "INT. FIFTH'S LOFT - DAY"
+        },
+        "S21": {
+          "id": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+          "number": 35,
+          "slugline": "INT. DESMOND'S APARTMENT - DAY"
+        },
+        "S22": {
+          "id": "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+          "number": 37,
+          "slugline": "INT. FIFTH'S LOFT - DAY"
+        },
+        "S23": {
+          "id": "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+          "number": 39,
+          "slugline": "INT. FIFTH'S LOFT - DAY"
+        },
+        "S24": {
+          "id": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+          "number": 40,
+          "slugline": "INT. SIDNEY'S APARTMENT - DAY"
+        },
+        "S25": {
+          "id": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+          "number": 45,
+          "slugline": "INT. FIFTH'S LOFT - NIGHT"
+        },
+        "S26": {
+          "id": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+          "number": 46,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S27": {
+          "id": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+          "number": 47,
+          "slugline": "INT. FIFTH'S LOFT - NIGHT"
+        },
+        "S28": {
+          "id": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+          "number": 49,
+          "slugline": "INT. FIFTH'S LOFT - NIGHT"
+        },
+        "S29": {
+          "id": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+          "number": 50,
+          "slugline": "INT. EMERGENCY ROOM - NIGHT"
+        },
+        "S3": {
+          "id": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+          "number": 3,
+          "slugline": "INT. FUNERAL HOME - DAY"
+        },
+        "S30": {
+          "id": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+          "number": 52,
+          "slugline": "INT. SIDNEY'S APARTMENT - DAY"
+        },
+        "S31": {
+          "id": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "number": 53,
+          "slugline": "EXT. FIFTH'S CAR - DAY"
+        },
+        "S32": {
+          "id": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+          "number": 54,
+          "slugline": "INT. HOSPITAL - DAY"
+        },
+        "S33": {
+          "id": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+          "number": 55,
+          "slugline": "DESMOND'S CAR - DAY"
+        },
+        "S4": {
+          "id": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+          "number": 6,
+          "slugline": "INT. DESMOND'S CAR - DAY"
+        },
+        "S5": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "number": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "S6": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "number": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "S7": {
+          "id": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+          "number": 13,
+          "slugline": "INT. HOSPITAL - DAY"
+        },
+        "S8": {
+          "id": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "number": 14,
+          "slugline": "INT. HOSPITAL WAITING ROOM - NIGHT"
+        },
+        "S9": {
+          "id": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+          "number": 16,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        }
+      },
+      "casting": {
+        "appearance": {
+          "casting_note": "A woman in her late twenties to early thirties, urban and expressive, who can move between comic chaos and raw vulnerability. She should read as someone who has been through hard times but still has fight and charm.",
+          "changes": [],
+          "stated": [
+            {
+              "detail": "arms full of paint supplies and groceries",
+              "scenes": [
+                "S1"
+              ]
+            },
+            {
+              "detail": "struggles to retrieve keys from her pocket while juggling supplies",
+              "scenes": [
+                "S2"
+              ]
+            },
+            {
+              "detail": "surrounded by pillows on the sofa",
+              "scenes": [
+                "S12"
+              ]
+            },
+            {
+              "detail": "pulls her panties down and sits on the toilet",
+              "scenes": [
+                "S12"
+              ]
+            },
+            {
+              "detail": "notices heavy bandages on both of Fifth's wrists",
+              "scenes": [
+                "S12"
+              ]
+            },
+            {
+              "detail": "stares at Jetta's tattoo filled arms",
+              "scenes": [
+                "S17"
+              ]
+            },
+            {
+              "detail": "grabs a gold chain with a diamond engagement ring hidden behind Des's shirt",
+              "scenes": [
+                "S19"
+              ]
+            },
+            {
+              "detail": "jaw drops when she sees Ray",
+              "scenes": [
+                "S19"
+              ]
+            },
+            {
+              "detail": "extends her hand to Ray and he kisses it",
+              "scenes": [
+                "S19"
+              ]
+            },
+            {
+              "detail": "lay asleep held by Ray, a satin sheet blown over them",
+              "scenes": [
+                "S20"
+              ]
+            },
+            {
+              "detail": "ending a goodbye kiss with Ray",
+              "scenes": [
+                "S22"
+              ]
+            },
+            {
+              "detail": "Ray takes her hand and kisses it",
+              "scenes": [
+                "S22"
+              ]
+            },
+            {
+              "detail": "eating and talking on the phone in the kitchen",
+              "scenes": [
+                "S23"
+              ]
+            },
+            {
+              "detail": "grabs a robe and walks out the door",
+              "scenes": [
+                "S23"
+              ]
+            },
+            {
+              "detail": "rings the buzzer for a minute or two",
+              "scenes": [
+                "S24"
+              ]
+            },
+            {
+              "detail": "puts her ear to the door",
+              "scenes": [
+                "S24"
+              ]
+            },
+            {
+              "detail": "walks away laughing",
+              "scenes": [
+                "S24"
+              ]
+            },
+            {
+              "detail": "lounging on the sofa with Ray, feeding him grapes",
+              "scenes": [
+                "S25"
+              ]
+            },
+            {
+              "detail": "laughs and slaps hands with Sidney",
+              "scenes": [
+                "S27"
+              ]
+            },
+            {
+              "detail": "empties the bottle in Ray's glass",
+              "scenes": [
+                "S27"
+              ]
+            },
+            {
+              "detail": "leans over and whispers something in Ray's ear",
+              "scenes": [
+                "S27"
+              ]
+            },
+            {
+              "detail": "speaking very low in the living room",
+              "scenes": [
+                "S28"
+              ]
+            },
+            {
+              "detail": "fights for her life, grabs an umbrella and smacks Ray in the head",
+              "scenes": [
+                "S28"
+              ]
+            },
+            {
+              "detail": "thrusts a book into Ray's face, making his nose bleed",
+              "scenes": [
+                "S28"
+              ]
+            },
+            {
+              "detail": "is stabbed in the back with a broken wine bottle",
+              "scenes": [
+                "S28"
+              ]
+            },
+            {
+              "detail": "blood is pouring from her back and her face is bloody",
+              "scenes": [
+                "S28"
+              ]
+            },
+            {
+              "detail": "begins to lose consciousness",
+              "scenes": [
+                "S28"
+              ]
+            },
+            {
+              "detail": "lay on the bed still unconscious",
+              "scenes": [
+                "S29"
+              ]
+            },
+            {
+              "detail": "sleeping in a hospital room",
+              "scenes": [
+                "S32"
+              ]
+            }
+          ],
+          "suggested": [
+            {
+              "detail": "late twenties to early thirties",
+              "rests_on": "She is Fifth's sister and speaks of him as 28 years old in S12; she is likely close in age."
+            },
+            {
+              "detail": "urban, downtown artist look",
+              "rests_on": "She is a painter who had a studio and is evicted in S1; she calls herself an artist in S25."
+            },
+            {
+              "detail": "expressive face and physical energy",
+              "rests_on": "She throws paint, storms out, high-fives, dances, and fights physically across the script."
+            }
+          ]
+        },
+        "demographics": {
+          "age": {
+            "basis": "not stated",
+            "scenes": [],
+            "value": "not stated"
+          },
+          "gender": {
+            "basis": "stated",
+            "scenes": [
+              "S1",
+              "S12"
+            ],
+            "value": "female"
+          }
+        },
+        "voice": {
+          "habits": [
+            "Uses direct address and names people often: Jason, Des, Fifth, Jetta, Ray, Sidney.",
+            "Switches quickly between joking and serious.",
+            "Uses profanity and blunt language when angry or hurt.",
+            "Asks questions and pushes for answers.",
+            "Uses sarcasm and teasing, especially with Des and Fifth.",
+            "Speaks in short bursts when upset, longer when arguing or explaining."
+          ],
+          "manner": "Fast, conversational, emotionally transparent. She can be warm and funny, then sharp and confrontational. She talks over people and does not hide what she thinks.",
+          "scenes": [
+            "S1",
+            "S5",
+            "S6",
+            "S8",
+            "S10",
+            "S12",
+            "S13",
+            "S14",
+            "S16",
+            "S17",
+            "S18",
+            "S19",
+            "S22",
+            "S23",
+            "S24",
+            "S25",
+            "S27",
+            "S28"
+          ]
+        },
+        "voice_profile": {
+          "accent": {
+            "scenes": [],
+            "value": "not stated"
+          },
+          "audition_lines": [
+            {
+              "line": "Shit! I thought I had two more days. Damn it!",
+              "scene": "S1"
+            },
+            {
+              "line": "Fuck you Des. That's not fair. You know I love my brother. You think I want to see him dead. I've going through this shit for years. Since he first tried at fifteen. I was there. You weren't. It's like a sick movie that just keeps dragging on. I'm tired Des. That doesn't mean I don't love my brother.",
+              "scene": "S6"
+            },
+            {
+              "line": "There's suffering in the world Fifth. But it's still a beautiful place. You're trying to take the easy way out. All these people your heart is bleeding for, they live, they struggle and sometimes they triumph. You have a sister, you have a best friend. You have a reason to live.",
+              "scene": "S12"
+            }
+          ],
+          "design_note": "A contemporary, urban American voice: quick, expressive, and grounded. She should sound like someone who has had to fight for what she has, with a laugh never far from anger and a sharp tongue that can turn tender.",
+          "energy": "high",
+          "pace": "quick",
+          "register": "casual",
+          "suggested": [
+            {
+              "detail": "mid-range pitch with a slightly raspy edge",
+              "rests_on": "She is often loud, confrontational, and emotional; a voice that can cut through noise would fit."
+            },
+            {
+              "detail": "New York or urban Northeast accent",
+              "rests_on": "She is in New York and says 'I left New York' in S5; the script does not name an accent."
+            }
+          ],
+          "talks": "a lot"
+        }
+      },
+      "story": {
+        "arc": {
+          "end": {
+            "scenes": [
+              "S28",
+              "S29",
+              "S32"
+            ],
+            "state": "Unconscious in the hospital after surgery, with a glass fragment still moving inside her; Desmond watches over her and tells her he needs her."
+          },
+          "shape": "changes",
+          "start": {
+            "scenes": [
+              "S1"
+            ],
+            "state": "Locked out of her art space by an eviction notice and chain, desperate for Jason to answer and help her."
+          },
+          "turns": [
+            {
+              "change": "After finding Jason in bed with his lover, she hesitates at the door, then chooses to open a can of paint and confront them instead of leaving.",
+              "kind": "decision",
+              "scene": "S2"
+            },
+            {
+              "change": "She learns that Fifth can only be released into her custody and that Desmond expects her to sign him out, shifting her from complaining about Fifth to being responsible for him.",
+              "kind": "realisation",
+              "scene": "S6"
+            },
+            {
+              "change": "She begins a romance with Ray, accepting his invitation to dinner and later sleeping with him.",
+              "kind": "gain",
+              "scene": "S22"
+            },
+            {
+              "change": "Ray attacks her after overhearing her tell Desmond that Ray confessed; she is stabbed and nearly killed.",
+              "kind": "reversal",
+              "scene": "S28"
+            }
+          ]
+        },
+        "relationships": [
+          {
+            "basis": "recurring",
+            "development": "Madison calls Jason from her locked-out art space and leaves a desperate message asking him to pick up and saying she needs him (S1). She then goes to his apartment, finds him in bed with his lover, throws paint on them, and beams the empty paint can at his head, knocking him out (S2).",
+            "name": "JASON",
+            "nature": "hostile",
+            "scenes": [
+              "S1",
+              "S2"
+            ],
+            "with": "C1"
+          },
+          {
+            "basis": "recurring",
+            "development": "Madison argues with Desmond about her borrowing money and her weight, and about Fifth's suicide attempts (S5). He accuses her of only caring when she is broke, and she defends her love for Fifth (S6). She hugs him after learning Pop was killed (S8), and later they reconnect at his apartment and a night club, where she apologizes for leaving without calling and he reveals his failed engagement (S16, S19). After Ray attacks her, Desmond arrives, hits Ray, and carries her out (S28); he later watches over her in the hospital and kisses her head (S32).",
+            "name": "DESMOND",
+            "nature": "conflictual but caring",
+            "scenes": [
+              "S5",
+              "S6",
+              "S8",
+              "S10",
+              "S11",
+              "S16",
+              "S17",
+              "S18",
+              "S19",
+              "S23",
+              "S28",
+              "S32"
+            ],
+            "with": "C2"
+          },
+          {
+            "basis": "recurring",
+            "development": "Jetta defends Madison as a starving artist (S5). They high five after Jetta says 'And ass to shake' (S17), and Madison asks about Jetta's tattoos (S17). Madison tells Jetta that Desmond does not mean it and calls him an incurable jackass (S18).",
+            "name": "JETTA",
+            "nature": "friendly",
+            "scenes": [
+              "S5",
+              "S10",
+              "S16",
+              "S17",
+              "S18"
+            ],
+            "with": "C3"
+          },
+          {
+            "basis": "recurring",
+            "development": "Madison notices Fifth's bandaged wrists and confronts him about his suicide attempts (S12). She helps him get dressed and they walk through the city (S13, S14). She finds him at Sidney's door and hears him with Sidney (S24). Later she welcomes him and Sidney, teases him about being touchy, and says it is great to see him like this (S25).",
+            "name": "FIFTH",
+            "nature": "close, concerned",
+            "scenes": [
+              "S8",
+              "S9",
+              "S12",
+              "S13",
+              "S14",
+              "S24",
+              "S25",
+              "S27"
+            ],
+            "with": "C5"
+          },
+          {
+            "basis": "recurring",
+            "development": "Madison meets Ray at the night club and extends her hand for him to kiss (S19). They begin a romance, ending a goodbye kiss and agreeing to dinner (S22), and later lounge together feeding each other grapes (S25). She urges him to drink more wine and asks about his business (S27). After she tells Desmond that Ray confessed, Ray attacks her, stabs her, and is stopped by Desmond (S28).",
+            "name": "RAY",
+            "nature": "romantic, then violent",
+            "scenes": [
+              "S19",
+              "S20",
+              "S22",
+              "S25",
+              "S27",
+              "S28"
+            ],
+            "with": "C6"
+          },
+          {
+            "basis": "recurring",
+            "development": "Madison meets Sidney when Fifth brings her to the loft; she welcomes Sidney and invites them to join (S25). Later she thanks Sidney and jokes with her, and they slap each other five (S27).",
+            "name": "SIDNEY",
+            "nature": "friendly",
+            "scenes": [
+              "S25",
+              "S27"
+            ],
+            "with": "C7"
+          }
+        ],
+        "role": {
+          "function": "Her eviction and need for help set the story in motion; her custody of Fifth drives the hospital release; her romance with Ray leads to the attack that reveals Ray as Pop's killer and puts her in the hospital, motivating Desmond's actions.",
+          "weight": "main"
+        },
+        "summary": "Madison is an artist who is evicted from her studio and turns to her brother Fifth and their friend Desmond. She becomes romantically involved with Ray, who turns out to be the killer of Desmond's brother Pop, and Ray stabs her when she learns the truth. She ends up unconscious in the hospital after surgery.",
+        "want": {
+          "goal": "To get help from Jason, then to reconnect with Desmond and find stability, and later to pursue a romance with Ray.",
+          "obstacle": "Her eviction and lack of money, Desmond's hostility, Fifth's instability, and Ray's violence.",
+          "scenes": [
+            "S1",
+            "S6",
+            "S19",
+            "S22",
+            "S28"
+          ]
+        }
+      },
+      "ties": {
+        "decision": {
+          "cost": 0.00097314,
+          "milliseconds": 427,
+          "model": "typesafe/jev-1.13-20260917",
+          "questions": 96
+        },
+        "pending": [
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "Madison heads back for the door but hesitates. She puts her supplies down quietly and then opens a large can of paint. She walks to the bedroom, flings the door open and throws the paint all over Jason and his lover.",
+                "wording": "his lover"
+              }
+            ],
+            "people": [
+              {
+                "decided_by": "review",
+                "lines": [
+                  "L1"
+                ],
+                "name": "HIS LOVER",
+                "reading": "character",
+                "who": "C8"
+              }
+            ],
+            "record": "P1",
+            "tie": "lover",
+            "why": "L1: 'his lover' is Jason's lover, not Madison's; the script never names or brings this person on, and the wording does not establish a tie to Madison."
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S6",
+                "speaker": "MADISON",
+                "text": "Fuck you Des. That's not fair. You know I love my brother. You think I want to see him dead. I've going through this shit for years. Since he first tried at fifteen. I was there. You weren't. It's like a sick movie that just keeps dragging on. I'm tired Des. That doesn't mean I don't love my brother.",
+                "wording": "my brother"
+              },
+              {
+                "label": "L2",
+                "scene": "S12",
+                "speaker": "MADISON",
+                "text": "Morning brother dear.",
+                "wording": "brother"
+              },
+              {
+                "label": "L3",
+                "scene": "S12",
+                "speaker": "MADISON",
+                "text": "I don't understand. You're young, women fall all over themselves for you, you were filthy rich and your my brother. You have it all.",
+                "wording": "my brother"
+              },
+              {
+                "label": "L4",
+                "scene": "S14",
+                "speaker": "MADISON",
+                "text": "It's always good to know your neighbors brother dear.",
+                "wording": "brother dear"
+              },
+              {
+                "label": "L5",
+                "scene": "S16",
+                "speaker": "MADISON",
+                "text": "What the hell is wrong with you. You out of booze. Don't worry we'll get you some more. Come on lets go out. My brother and I have been doing up the city.",
+                "wording": "My brother"
+              },
+              {
+                "label": "L6",
+                "scene": "S25",
+                "speaker": "MADISON",
+                "text": "Touchy. It's great to see you like this brother dear",
+                "wording": "brother dear"
+              },
+              {
+                "label": "L7",
+                "scene": "S25",
+                "speaker": "MADISON",
+                "text": "Enjoy it while it last brother. It can be as bitter as it is sweet.",
+                "wording": "brother"
+              },
+              {
+                "label": "L8",
+                "scene": "S19",
+                "text": "Madi looks over at the dance floor to see her brother break-dancing in the center.",
+                "wording": "her brother"
+              }
+            ],
+            "people": [
+              {
+                "decided_by": "decision",
+                "lines": [
+                  "L1",
+                  "L2",
+                  "L3",
+                  "L4",
+                  "L5",
+                  "L6",
+                  "L7",
+                  "L8"
+                ],
+                "name": "FIFTH",
+                "probability": 0.86,
+                "reading": "character",
+                "who": "C5"
+              }
+            ],
+            "record": "P2",
+            "tie": "brother",
+            "why": "L1: Madison says 'my brother' meaning Fifth, who is C5. L2: 'brother dear' is said to Fifth, C5. L3: 'your my brother' is said to Fifth, C5. L4: 'brother dear' is said to Fifth, C5. L5: 'My brother' is said to Fifth, C5. L6: 'brother dear' is said to Fifth, C5. L7: 'brother' is said to Fifth, C5. L8: 'her brother' is Fifth, C5."
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S8",
+                "text": "The orderly removes the restraints from Fifth and he immediately gives his sister a huge hug.",
+                "wording": "gives his sister a huge hug"
+              },
+              {
+                "label": "L2",
+                "scene": "S12",
+                "speaker": "MADISON",
+                "text": "There's suffering in the world Fifth. But it's still a beautiful place. You're trying to take the easy way out. All these people your heart is bleeding for, they live, they struggle and sometimes they triumph. You have a sister, you have a best friend. You have a reason to live.",
+                "wording": "a sister"
+              }
+            ],
+            "people": [
+              {
+                "decided_by": "decision",
+                "lines": [
+                  "L1"
+                ],
+                "name": "FIFTH",
+                "probability": 0.77,
+                "reading": "character",
+                "who": "C5"
+              },
+              {
+                "decided_by": "analysis",
+                "lines": [
+                  "L2"
+                ],
+                "name": "FIFTH",
+                "reading": "character",
+                "who": "C5"
+              }
+            ],
+            "record": "P3",
+            "tie": "sister",
+            "why": "L1: 'his sister' is Madison, but the tie is Fifth's sister, not Madison's sister; the line does not mean a sister of Madison. L2: Madison says 'You have a sister' to Fifth, meaning herself, not a sister of Madison."
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S17",
+                "speaker": "MADISON",
+                "text": "Don't yell at my partner",
+                "wording": "my partner"
+              }
+            ],
+            "people": [
+              {
+                "decided_by": "decision",
+                "lines": [
+                  "L1"
+                ],
+                "name": "JETTA",
+                "probability": 0.92,
+                "reading": "character",
+                "who": "C3"
+              }
+            ],
+            "record": "P4",
+            "tie": "partner",
+            "why": "L1: Madison says 'my partner' meaning Jetta, who is C3."
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S33",
+                "speaker": "JETTA",
+                "text": "Des I know Madi never wanted to get hurt but she's your friend. She wanted to help you and it makes no sense to sit up here and blame yourself for what happened. Did yo tell Fifth",
+                "wording": "she's your friend"
+              }
+            ],
+            "people": [
+              {
+                "decided_by": "analysis",
+                "lines": [
+                  "L1"
+                ],
+                "name": "DESMOND",
+                "reading": "character",
+                "who": "C2"
+              }
+            ],
+            "record": "P5",
+            "tie": "friend",
+            "why": "L1: Jetta says 'she's your friend' to Desmond, meaning Madison is Desmond's friend; the tie is Madison's friend, so it means Desmond, C2."
+          }
+        ]
+      }
+    },
+    "graphContext": {
+      "age_inferred": false,
+      "co_characters": [
+        {
+          "frequency": 12,
+          "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+          "name": "DESMOND",
+          "scenes": [
+            "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+            "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+            "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+            "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+            "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+            "scene_01M4KD5YMZ12C574TT40SCMXTV",
+            "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+            "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+            "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE"
+          ]
+        },
+        {
+          "frequency": 12,
+          "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+          "name": "FIFTH",
+          "scenes": [
+            "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+            "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+            "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+            "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+            "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+            "scene_01M4KD5YMZ12C574TT40SCMXTV",
+            "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+            "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+            "scene_01M4KD5YMZDS073VTC9DNXADNG",
+            "scene_01M4KD5YMZ0G2J0EGM6M66QXXF"
+          ]
+        },
+        {
+          "frequency": 9,
+          "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+          "name": "JETTA",
+          "scenes": [
+            "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+            "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+            "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+            "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+            "scene_01M4KD5YMZ12C574TT40SCMXTV",
+            "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+            "scene_01M4KD5YMZY1HYQF5GY5HB9GAR"
+          ]
+        },
+        {
+          "frequency": 5,
+          "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+          "name": "RAY",
+          "scenes": [
+            "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+            "scene_01M4KD5YMZDS073VTC9DNXADNG",
+            "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+            "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE"
+          ]
+        },
+        {
+          "frequency": 4,
+          "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+          "name": "SIDNEY",
+          "scenes": [
+            "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+            "scene_01M4KD5YMZDS073VTC9DNXADNG",
+            "scene_01M4KD5YMZ0G2J0EGM6M66QXXF"
+          ]
+        },
+        {
+          "frequency": 2,
+          "id": "character_01M4KD5YMZHM00HDSD11Q0Y3RX",
+          "name": "GUARD",
+          "scenes": [
+            "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+            "scene_01M4KD5YMZXNHKJJXTV5PJ839Q"
+          ]
+        },
+        {
+          "frequency": 1,
+          "id": "character_01M4KD5YMZ3BH3NCM3NCWAH04K",
+          "name": "JEHOVA WITNESS",
+          "scenes": [
+            "scene_01M4KD5YMZY1HYQF5GY5HB9GAR"
+          ]
+        },
+        {
+          "frequency": 1,
+          "id": "character_01M4KD5YMZVNB3FQP32C1H1J1G",
+          "name": "YUPPIE",
+          "scenes": [
+            "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A"
+          ]
+        }
+      ],
+      "gender_inferred": false,
+      "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+      "locations": [
+        {
+          "frequency": 8,
+          "id": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+          "name": "FIFTH'S LOFT"
+        },
+        {
+          "frequency": 3,
+          "id": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+          "name": "DESMOND'S CAR"
+        },
+        {
+          "frequency": 2,
+          "id": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+          "name": "DESMOND'S APARTMENT"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZVYHWEFZRS9V61E64",
+          "name": "AIRPORT"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZZ75F57V3PK1WT8CT",
+          "name": "CITY STREET"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZNMDV9RJ8CJ73WEFZ",
+          "name": "FRENCH CAFE"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZXZMQG935FAW524H8",
+          "name": "HOSPITAL"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZ5A3T9DV7S3QX5QJK",
+          "name": "HOSPITAL WAITING ROOM"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZ4BXAEAN41Z6A7BAT",
+          "name": "INDUSTRIAL ARTIST SPACE"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZNANB00W6S5JDSK3Q",
+          "name": "NIGHT CLUB"
+        },
+        {
+          "frequency": 1,
+          "id": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+          "name": "SIDNEY'S APARTMENT"
+        }
+      ],
+      "name": "MADISON"
+    },
+    "recordings": [
+      {
+        "kind": "line",
+        "id": "take_01M4P1JZNGFGZPB7GAAS3KHSC2",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M3M7TSNSG87YFRN9WB4TEK4Z",
+            "name": "Madison"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-11T17:54:04Z",
+        "generationId": "2d520c7dfc0ca25bad64c6e786a2f3cb",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 233856,
+          "provider": "local",
+          "providerModel": "qwen3-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4P1JZNGFGZPB7GAAS3KHSC2/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4P1JZNGFGZPB7GAAS3KHSC2/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4Q1ZM8PFC864CGXS8TRBPSN",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M3M7TSNSG87YFRN9WB4TEK4Z",
+            "name": "Madison"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T03:19:59Z",
+        "generationId": "6de57eab6955a33cb9938ee1c1e1a83f",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 233856,
+          "provider": "local",
+          "providerModel": "qwen3-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4Q1ZM8PFC864CGXS8TRBPSN/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4Q1ZM8PFC864CGXS8TRBPSN/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4RBGYPR1MQJJ9F63CV7TKDC",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M3M7TSNSG87YFRN9WB4TEK4Z",
+            "name": "Madison"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T15:26:06Z",
+        "generationId": "41ae31d6da82110571cd5cf965b78f17",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 233856,
+          "provider": "local",
+          "providerModel": "qwen3-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4RBGYPR1MQJJ9F63CV7TKDC/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4RBGYPR1MQJJ9F63CV7TKDC/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4RK4E9C49DW103MWF93RVN6",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M4RJZGH5S2YYMBXEC50MPEJR",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T17:39:02Z",
+        "generationId": "816609d8e238079dbee61a1d14d6e498",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 178914,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4RK4E9C49DW103MWF93RVN6/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4RK4E9C49DW103MWF93RVN6/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4RRNA975WY7ANCNJ4AHGX1R",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M4RJZGH5S2YYMBXEC50MPEJR",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T19:15:40Z",
+        "generationId": "250cd871a160ded33c57e6d9178328bc",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 201954,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4RRNA975WY7ANCNJ4AHGX1R/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4RRNA975WY7ANCNJ4AHGX1R/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M565QHGDQJF74GJHA2FR7ZJ9",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M4RJZGH5S2YYMBXEC50MPEJR",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T00:14:08Z",
+        "generationId": "e5cdf562da080bba35fd72f57c64e611",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 178916,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M565QHGDQJF74GJHA2FR7ZJ9/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M565QHGDQJF74GJHA2FR7ZJ9/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M566WKGJFDY954YP2RBFTZAF",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M4RJZGH5S2YYMBXEC50MPEJR",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T00:34:22Z",
+        "generationId": "9d4c2338f4f85d21859343ca4c87215e",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 188516,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M566WKGJFDY954YP2RBFTZAF/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M566WKGJFDY954YP2RBFTZAF/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56C16Z8CS5KHV77J65HWNWF",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "kind": "dialogue",
+          "text": "Shit! I thought I had two more days. Damn it!"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:04:20Z",
+        "generationId": "f54eb49feb5384beca75aa9893eaf2fc",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 180836,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56C16Z8CS5KHV77J65HWNWF/audio?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56C16Z8CS5KHV77J65HWNWF/peaks?eventId=dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4PZJJG2MNX4SNBWDP4WQB7Y",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "kind": "dialogue",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M3M7TSNSG87YFRN9WB4TEK4Z",
+            "name": "Madison"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T02:38:04Z",
+        "generationId": "7d0acc89482fddf0158e6d2d2dab127c",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 303404,
+          "provider": "local",
+          "providerModel": "qwen3-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4PZJJG2MNX4SNBWDP4WQB7Y/audio?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4PZJJG2MNX4SNBWDP4WQB7Y/peaks?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4Q1ZMR6P0FVCWGJQ9FJ249G",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "kind": "dialogue",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M3M7TSNSG87YFRN9WB4TEK4Z",
+            "name": "Madison"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T03:19:59Z",
+        "generationId": "d8da3ec7bc0e5e92d8d98f57790d0393",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 303404,
+          "provider": "local",
+          "providerModel": "qwen3-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4Q1ZMR6P0FVCWGJQ9FJ249G/audio?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4Q1ZMR6P0FVCWGJQ9FJ249G/peaks?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4RK4E9C49DW103MWXK3JH80",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "kind": "dialogue",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M4RJZGH5S2YYMBXEC50MPEJR",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T17:39:02Z",
+        "generationId": "d28aee24ba94f01eeb98d5931c4d9b7c",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 294114,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4RK4E9C49DW103MWXK3JH80/audio?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4RK4E9C49DW103MWXK3JH80/peaks?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M4RRNA975WY7ANCNJMBHVPGY",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "kind": "dialogue",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M4RJZGH5S2YYMBXEC50MPEJR",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-12T19:15:40Z",
+        "generationId": "27b9beaf15a6fa183bbc91b54a45b0a6",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 242274,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M4RRNA975WY7ANCNJMBHVPGY/audio?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M4RRNA975WY7ANCNJMBHVPGY/peaks?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M566WKGJFDY954YP36CTR904",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "kind": "dialogue",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M4RJZGH5S2YYMBXEC50MPEJR",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T00:34:22Z",
+        "generationId": "6bc74f7f785a351f240a4875e03edddc",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 223076,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M566WKGJFDY954YP36CTR904/audio?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M566WKGJFDY954YP36CTR904/peaks?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56C16Z8CS5KHV77JMFEG1SA",
+        "scene": {
+          "id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "position": 1,
+          "slugline": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "kind": "dialogue",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:04:20Z",
+        "generationId": "c72258d025bf4d553cbaa1661c858d82",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 257636,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56C16Z8CS5KHV77JMFEG1SA/audio?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56C16Z8CS5KHV77JMFEG1SA/peaks?eventId=dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRND4AYQM67",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ323VYP38GJ1FK0E7",
+          "kind": "dialogue",
+          "text": "You're still driving that old Cadillac Des. It's the Twenty first century. Why don't you get a new car."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "a3d0583c42e449f5e166f979eb49ead4",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 328678,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRND4AYQM67/audio?eventId=dialogue_01M4KD5YMZ323VYP38GJ1FK0E7&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRND4AYQM67/peaks?eventId=dialogue_01M4KD5YMZ323VYP38GJ1FK0E7&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNDC8HS2F1",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ7FV1N08XC2B7JSPP",
+          "kind": "dialogue",
+          "text": "I can't believe how muscular you've gotten Jetta. How did you do that. Yoga?"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "be647dc18f15626394d7ef0bbf0d5f15",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 282598,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNDC8HS2F1/audio?eventId=dialogue_01M4KD5YMZ7FV1N08XC2B7JSPP&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNDC8HS2F1/peaks?eventId=dialogue_01M4KD5YMZ7FV1N08XC2B7JSPP&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNDW67KQXF",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZK7A5S8X7CYC20FYF",
+          "kind": "dialogue",
+          "text": "Oh. I hope it was someone I hate?"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "8c930d8d718c8aa9083bda9e5b0a8c4e",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 180838,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNDW67KQXF/audio?eventId=dialogue_01M4KD5YMZK7A5S8X7CYC20FYF&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNDW67KQXF/peaks?eventId=dialogue_01M4KD5YMZK7A5S8X7CYC20FYF&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNEATDKRD1",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZVF1NV2AMBA16WNSW",
+          "kind": "dialogue",
+          "text": "Oh Des stop playing"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "cf8e28425b0abe3b5e54df2c625c80dc",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 79078,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNEATDKRD1/audio?eventId=dialogue_01M4KD5YMZVF1NV2AMBA16WNSW&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNEATDKRD1/peaks?eventId=dialogue_01M4KD5YMZVF1NV2AMBA16WNSW&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNES3AK8X6",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZTE2FBMSDWBN5RH3Z",
+          "kind": "dialogue",
+          "text": "So then I hit him with the paint can and knocked his sorry ass out. That little hussy of his just sat there."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "087dba233a6d052258abe7033eac6e82",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 332518,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNES3AK8X6/audio?eventId=dialogue_01M4KD5YMZTE2FBMSDWBN5RH3Z&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNES3AK8X6/peaks?eventId=dialogue_01M4KD5YMZTE2FBMSDWBN5RH3Z&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNEWYBDAAM",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ865E133C939F6J9R",
+          "kind": "dialogue",
+          "text": "That's not funny Desmond. I really loved him."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "b209f339c701f1490e87b8ab1f66d8b7",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 203878,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNEWYBDAAM/audio?eventId=dialogue_01M4KD5YMZ865E133C939F6J9R&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNEWYBDAAM/peaks?eventId=dialogue_01M4KD5YMZ865E133C939F6J9R&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNF7EM64SP",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZRV7TKMHRW21K2JRM",
+          "kind": "dialogue",
+          "text": "That's what brings me here.. I was working on my best piece yet when I got evicted from my studio"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "1e259db655d0aaae36503acc7292b863",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 292198,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNF7EM64SP/audio?eventId=dialogue_01M4KD5YMZRV7TKMHRW21K2JRM&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNF7EM64SP/peaks?eventId=dialogue_01M4KD5YMZRV7TKMHRW21K2JRM&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNFSS44EW5",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZE0DT6H0YQHE8TEE1",
+          "kind": "dialogue",
+          "text": "Go to hell Des. Now I know why I left New York."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "6550000a3ea2fbd7bfc517922874e3fa",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 209638,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNFSS44EW5/audio?eventId=dialogue_01M4KD5YMZE0DT6H0YQHE8TEE1&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNFSS44EW5/peaks?eventId=dialogue_01M4KD5YMZE0DT6H0YQHE8TEE1&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNFXQGW1TX",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZM77F1X0H6EXZ55X6",
+          "kind": "dialogue",
+          "text": "You and that crazy ass brother of mine. Speaking of Fifth where is he."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "eab1b523a23e86fcb869037a908f4b3a",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 282598,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNFXQGW1TX/audio?eventId=dialogue_01M4KD5YMZM77F1X0H6EXZ55X6&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNFXQGW1TX/peaks?eventId=dialogue_01M4KD5YMZM77F1X0H6EXZ55X6&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNG62B8VFW",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ6TDSYM5YFE6ENX4Y",
+          "kind": "dialogue",
+          "text": "That's what he has you for Des. I'm not going to raise my blood pressure over Fifth anymore. If he wants to kill himself he's not going to take me with him."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "69e8f560bdfa2e28b51def085c9d2d01",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 393958,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNG62B8VFW/audio?eventId=dialogue_01M4KD5YMZ6TDSYM5YFE6ENX4Y&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNG62B8VFW/peaks?eventId=dialogue_01M4KD5YMZ6TDSYM5YFE6ENX4Y&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNGN3MVV9D",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZK6MHNWEMZQE1DZZ0",
+          "kind": "dialogue",
+          "text": "Four Ph.D. psychologists can't talk since to him but you can Des."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "087c64531432df2e40e14cb001ae1826",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 274918,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNGN3MVV9D/audio?eventId=dialogue_01M4KD5YMZK6MHNWEMZQE1DZZ0&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNGN3MVV9D/peaks?eventId=dialogue_01M4KD5YMZK6MHNWEMZQE1DZZ0&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5DZRVB9WKV42RRNGW1XQZFE",
+        "scene": {
+          "id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "position": 9,
+          "slugline": "EXT. AIRPORT - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZE9MVPN8G1WBX5JGT",
+          "kind": "dialogue",
+          "text": "Well you deserve each other. I told you before and I'll tell you again, it doesn't take ten years to commit suicide. My brother just wants attention."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T01:03:59Z",
+        "generationId": "ebed65a952c90f890172c8c49acf136e",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 457318,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5DZRVB9WKV42RRNGW1XQZFE/audio?eventId=dialogue_01M4KD5YMZE9MVPN8G1WBX5JGT&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5DZRVB9WKV42RRNGW1XQZFE/peaks?eventId=dialogue_01M4KD5YMZE9MVPN8G1WBX5JGT&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56BXHEVW1SZ6PS1PVQ80BDP",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA3E7ZVDN99F1NZ40",
+          "kind": "dialogue",
+          "text": "But Des honey. What makes you think that you can talk Fifth out of killing himself."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:02:15Z",
+        "generationId": "a3c0d78056253804e87406988b1194fe",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 315236,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56BXHEVW1SZ6PS1PVQ80BDP/audio?eventId=dialogue_01M4KD5YMZA3E7ZVDN99F1NZ40&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56BXHEVW1SZ6PS1PVQ80BDP/peaks?eventId=dialogue_01M4KD5YMZA3E7ZVDN99F1NZ40&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56CHS47T7KXP13XTB3WVD60",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZA3E7ZVDN99F1NZ40",
+          "kind": "dialogue",
+          "text": "But Des honey. What makes you think that you can talk Fifth out of killing himself."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:13:21Z",
+        "generationId": "192d989749d6600a4029adc87f6af1d0",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 228836,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56CHS47T7KXP13XTB3WVD60/audio?eventId=dialogue_01M4KD5YMZA3E7ZVDN99F1NZ40&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56CHS47T7KXP13XTB3WVD60/peaks?eventId=dialogue_01M4KD5YMZA3E7ZVDN99F1NZ40&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56BXHEW5F35JEC6VTPQ0Y7N",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZFA83993ZGB7VRDMJ",
+          "kind": "dialogue",
+          "text": "I know you don't want to see your friend die Des but"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:02:15Z",
+        "generationId": "b937706a8dacbcfacb61578d0a948797",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 188516,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56BXHEW5F35JEC6VTPQ0Y7N/audio?eventId=dialogue_01M4KD5YMZFA83993ZGB7VRDMJ&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56BXHEW5F35JEC6VTPQ0Y7N/peaks?eventId=dialogue_01M4KD5YMZFA83993ZGB7VRDMJ&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56CHS47T7KXP13XTMVFMX7G",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZFA83993ZGB7VRDMJ",
+          "kind": "dialogue",
+          "text": "I know you don't want to see your friend die Des but"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:13:21Z",
+        "generationId": "8e1ff3ed10915d7c90e465258bec2cc6",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 157796,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56CHS47T7KXP13XTMVFMX7G/audio?eventId=dialogue_01M4KD5YMZFA83993ZGB7VRDMJ&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56CHS47T7KXP13XTMVFMX7G/peaks?eventId=dialogue_01M4KD5YMZFA83993ZGB7VRDMJ&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56BXHEW5F35JEC6W3BWESYG",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ4BV97D5NT8MBMTDF",
+          "kind": "dialogue",
+          "text": "Fuck you Des. That's not fair. You know I love my brother. You think I want to see him dead. I've going through this shit for years. Since he first tried at fifteen. I was there. You weren't. It's like a sick movie that just keeps dragging on. I'm tired Des. That doesn't mean I don't love my brother."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:02:15Z",
+        "generationId": "a3fc219419b6436b817e146f4d9f4167",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 1035236,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56BXHEW5F35JEC6W3BWESYG/audio?eventId=dialogue_01M4KD5YMZ4BV97D5NT8MBMTDF&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56BXHEW5F35JEC6W3BWESYG/peaks?eventId=dialogue_01M4KD5YMZ4BV97D5NT8MBMTDF&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56CHS47T7KXP13XTXDD9079",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ4BV97D5NT8MBMTDF",
+          "kind": "dialogue",
+          "text": "Fuck you Des. That's not fair. You know I love my brother. You think I want to see him dead. I've going through this shit for years. Since he first tried at fifteen. I was there. You weren't. It's like a sick movie that just keeps dragging on. I'm tired Des. That doesn't mean I don't love my brother."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:13:21Z",
+        "generationId": "cb4b7ba3bd407828c8953d80c14394dc",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 1058276,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56CHS47T7KXP13XTXDD9079/audio?eventId=dialogue_01M4KD5YMZ4BV97D5NT8MBMTDF&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56CHS47T7KXP13XTXDD9079/peaks?eventId=dialogue_01M4KD5YMZ4BV97D5NT8MBMTDF&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56BXHEW5F35JEC6W9QPB4WR",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZQCB62N23FBTA76SX",
+          "kind": "dialogue",
+          "text": "Prove it how."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:02:15Z",
+        "generationId": "00043b2d24acebddd76c00d9ea8b8934",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 75236,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56BXHEW5F35JEC6W9QPB4WR/audio?eventId=dialogue_01M4KD5YMZQCB62N23FBTA76SX&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56BXHEW5F35JEC6W9QPB4WR/peaks?eventId=dialogue_01M4KD5YMZQCB62N23FBTA76SX&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56CHS47T7KXP13XV5FZEARB",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZQCB62N23FBTA76SX",
+          "kind": "dialogue",
+          "text": "Prove it how."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:13:21Z",
+        "generationId": "f8b9bc5d61bd10568cb27d801e202893",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 79076,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56CHS47T7KXP13XV5FZEARB/audio?eventId=dialogue_01M4KD5YMZQCB62N23FBTA76SX&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56CHS47T7KXP13XV5FZEARB/peaks?eventId=dialogue_01M4KD5YMZQCB62N23FBTA76SX&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56BXHEW5F35JEC6WGZEWF8Q",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ1K0REDBVAEQN4E6K",
+          "kind": "dialogue",
+          "text": "What do you mean sign him out."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:02:15Z",
+        "generationId": "902c7ddbf665ee603504b4a81de05c47",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 94436,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56BXHEW5F35JEC6WGZEWF8Q/audio?eventId=dialogue_01M4KD5YMZ1K0REDBVAEQN4E6K&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56BXHEW5F35JEC6WGZEWF8Q/peaks?eventId=dialogue_01M4KD5YMZ1K0REDBVAEQN4E6K&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M56CHS47T7KXP13XVC3JEQ1T",
+        "scene": {
+          "id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "position": 12,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ1K0REDBVAEQN4E6K",
+          "kind": "dialogue",
+          "text": "What do you mean sign him out."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-18T02:13:21Z",
+        "generationId": "e269c052b85b6914d613f080a02daf24",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 111716,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M56CHS47T7KXP13XVC3JEQ1T/audio?eventId=dialogue_01M4KD5YMZ1K0REDBVAEQN4E6K&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M56CHS47T7KXP13XVC3JEQ1T/peaks?eventId=dialogue_01M4KD5YMZ1K0REDBVAEQN4E6K&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5FV9PDRNJ5NJZWKXQDFERRZ",
+        "scene": {
+          "id": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+          "position": 13,
+          "slugline": "INT. HOSPITAL - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZSBMPFXYRSEYX6DKW",
+          "kind": "dialogue",
+          "text": "That's me. I'm Madison Mann"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T18:24:12Z",
+        "generationId": "38056d9b2d63fb8b52e5af1e32d0d2e8",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 113638,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5FV9PDRNJ5NJZWKXQDFERRZ/audio?eventId=dialogue_01M4KD5YMZSBMPFXYRSEYX6DKW&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5FV9PDRNJ5NJZWKXQDFERRZ/peaks?eventId=dialogue_01M4KD5YMZSBMPFXYRSEYX6DKW&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5FVJFBMERYVWJ67D2C7SP1T",
+        "scene": {
+          "id": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+          "position": 13,
+          "slugline": "INT. HOSPITAL - DAY"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZSBMPFXYRSEYX6DKW",
+          "kind": "dialogue",
+          "text": "That's me. I'm Madison Mann"
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T18:29:00Z",
+        "generationId": "19f83d2af42e0f356130ba15eb736b28",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 128998,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5FVJFBMERYVWJ67D2C7SP1T/audio?eventId=dialogue_01M4KD5YMZSBMPFXYRSEYX6DKW&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5FVJFBMERYVWJ67D2C7SP1T/peaks?eventId=dialogue_01M4KD5YMZSBMPFXYRSEYX6DKW&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5FV8H6KDNX1EXYG0SDEAMZN",
+        "scene": {
+          "id": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "position": 14,
+          "slugline": "INT. HOSPITAL WAITING ROOM - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ16XEH16G9ATTNZVT",
+          "kind": "dialogue",
+          "text": "That and other things Fifth. I'm telling you right now you're not going to try no crazy shit with me."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T18:23:41Z",
+        "generationId": "58ffea0aefc2e2085149874ec78fff70",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 284518,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5FV8H6KDNX1EXYG0SDEAMZN/audio?eventId=dialogue_01M4KD5YMZ16XEH16G9ATTNZVT&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5FV8H6KDNX1EXYG0SDEAMZN/peaks?eventId=dialogue_01M4KD5YMZ16XEH16G9ATTNZVT&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5FV8H6KDNX1EXYG12Z98F44",
+        "scene": {
+          "id": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "position": 14,
+          "slugline": "INT. HOSPITAL WAITING ROOM - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZ25RZ5YYZD009WKAP",
+          "kind": "dialogue",
+          "text": "It's good to see you."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T18:23:41Z",
+        "generationId": "f42be8cb013651fe2f3832eab67d1004",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 84838,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5FV8H6KDNX1EXYG12Z98F44/audio?eventId=dialogue_01M4KD5YMZ25RZ5YYZD009WKAP&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5FV8H6KDNX1EXYG12Z98F44/peaks?eventId=dialogue_01M4KD5YMZ25RZ5YYZD009WKAP&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      },
+      {
+        "kind": "line",
+        "id": "take_01M5FVANKVYJ1KK5SYM7KTZXZ6",
+        "scene": {
+          "id": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+          "position": 16,
+          "slugline": "INT. DESMOND'S CAR - NIGHT"
+        },
+        "line": {
+          "eventId": "dialogue_01M4KD5YMZQB6ZG7C7EYVZ37M5",
+          "kind": "dialogue",
+          "text": "I'm going to have a talk with that doctor of yours tomorrow."
+        },
+        "character": {
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "name": "MADISON"
+        },
+        "voices": [
+          {
+            "id": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+            "name": "MADISON"
+          }
+        ],
+        "chosen": false,
+        "stale": false,
+        "createdAt": "2026-10-21T18:24:45Z",
+        "generationId": "a853025e342691345903cb19873e2b5d",
+        "media": {
+          "format": "wav",
+          "sizeBytes": 146278,
+          "provider": "gemini-tts",
+          "providerModel": "gemini-3.8-flash-tts"
+        },
+        "audio": "/api/synth/takes/take_01M5FVANKVYJ1KK5SYM7KTZXZ6/audio?eventId=dialogue_01M4KD5YMZQB6ZG7C7EYVZ37M5&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd",
+        "peaks": "/api/synth/takes/take_01M5FVANKVYJ1KK5SYM7KTZXZ6/peaks?eventId=dialogue_01M4KD5YMZQB6ZG7C7EYVZ37M5&project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd"
+      }
+    ],
+    "mentions": [
+      {
+        "wording": "Madi",
+        "count": 57,
+        "sceneIds": [
+          "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+          "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+          "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+          "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+          "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+          "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+          "scene_01M4KD5YMZDS073VTC9DNXADNG",
+          "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+          "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+          "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+          "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+          "scene_01M4KD5YMZ1RE80BXE3X9AXXT3"
+        ],
+        "occurrences": [
+          {
+            "referenceId": "ref_01M4KD7G447ZCMX8EVW0Q2R74E",
+            "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "lineNumber": 302,
+            "lineText": "Why don't you stop borrowing money from me so I can actually afford a new car Madi. Damn. I forgot how fuckin annoying you are. I still love you. You just annoy the hell out of me."
+          },
+          {
+            "referenceId": "ref_01M4KD7G4487GMMQHCHY0EG495",
+            "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "lineNumber": 340,
+            "lineText": "I'm sorry Madi. How's the painting going."
+          },
+          {
+            "referenceId": "ref_01M4KD7G44VNRT8WY00Q0E6EJR",
+            "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "lineNumber": 349,
+            "lineText": "What happened is Madi doesn't believe in paying her own bills. When are you going to get a real job"
+          },
+          {
+            "referenceId": "ref_01M4KD7G44CZGSJ3RX2Q43W4RR",
+            "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "lineNumber": 355,
+            "lineText": "Artist maybe, starving definitely not. You could stand to lose a few pounds Madi."
+          },
+          {
+            "referenceId": "ref_01M4KD7G44VZSR3KP57EPPN0V7",
+            "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "lineNumber": 367,
+            "lineText": "What do mean where is he? You know damn well he's in the hospital. When's the last time you called the hospital Madi?"
+          },
+          {
+            "referenceId": "ref_01M4KD7G444NKGESJSPRQ50BXQ",
+            "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "lineNumber": 388,
+            "lineText": "As usual Madi you don't know what the hell your talking about. I came this close to losing my best friend today."
+          },
+          {
+            "referenceId": "ref_01M4KD8C5RQ1HZBAJZ8F1N5FX5",
+            "sceneId": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+            "lineNumber": 549,
+            "lineText": "But what Madi. And he's not just my friend. He's your fucking brother. Hell I remember you being a lot more concerned before he gave away all his money. It seems like you always find yourself back here when dead fucking broke."
+          },
+          {
+            "referenceId": "ref_01M4KD8P5YF6NXH29D71KQKZ26",
+            "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+            "lineNumber": 611,
+            "lineText": "This is a surprise Madi. You came to New York to see me."
+          },
+          {
+            "referenceId": "ref_01M4KD8P5Y2RYFTTHS0S84C707",
+            "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+            "lineNumber": 619,
+            "lineText": "I got it Madi. Nothing crazy."
+          },
+          {
+            "referenceId": "ref_01M4KD8P5YHRVJ0HPTYHSEXYSN",
+            "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+            "lineNumber": 641,
+            "lineText": "Pop was shot and killed last week Madi. His funeral was this morning."
+          },
+          {
+            "referenceId": "ref_01M4KHAPA2XBGVA77YZVAP8QB3",
+            "sceneId": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+            "lineNumber": 755,
+            "lineText": "Over my dead body Madi. I've got the keys to Fifth's loft in my pocket. You and superman are going home. Jetta your welcome to crash with me if you want."
+          },
+          {
+            "referenceId": "ref_01M4KD9ZGYAPRYJZYRHRC3GCKA",
+            "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "lineNumber": 931,
+            "lineText": "I know, I know. I'm sorry Madi I know you don't want to see me hurt."
+          },
+          {
+            "referenceId": "ref_01M4KD9ZGYQ85B1SCTQ2GDDF6B",
+            "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "lineNumber": 949,
+            "lineText": "Madi you can't live life for someone else. When I was fifteen I made the decision to end it all. You and Mom interfered and I've been trying ever since. Life simply holds no meaning to me Madi"
+          },
+          {
+            "referenceId": "ref_01M4KD9ZGY59BNZZHD3VC7VT6H",
+            "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "lineNumber": 949,
+            "lineText": "Madi you can't live life for someone else. When I was fifteen I made the decision to end it all. You and Mom interfered and I've been trying ever since. Life simply holds no meaning to me Madi"
+          },
+          {
+            "referenceId": "ref_01M4KD9ZGYNESMPBC85JFZVMG8",
+            "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "lineNumber": 1018,
+            "lineText": "She moved in around the same time as me. I'm not exactly the socializing type Madi. I spend most of my time in a padded room. Besides, she sounds like a hag."
+          },
+          {
+            "referenceId": "ref_01M4KD9ZGYFBZ16PS8W678HZ1Z",
+            "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "lineNumber": 1074,
+            "lineText": "I can't live for you Madi. I can't live for Des. I have to live for me. I just don't see it. I just don't see the purpose."
+          },
+          {
+            "referenceId": "ref_01M4KDBH9GAWXW7VBC51PKT0DY",
+            "sceneId": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+            "lineNumber": 1693,
+            "lineText": "Shut the hell up with all that noise Madi."
+          },
+          {
+            "referenceId": "ref_01M4KDCC9J6KHCC0N8MBQ9EYK9",
+            "sceneId": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "lineNumber": 1834,
+            "lineText": "You hear this Madi. See how short people's memories are."
+          },
+          {
+            "referenceId": "ref_01M4KDCNR5269CZHBD364H6746",
+            "sceneId": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+            "lineNumber": 1963,
+            "lineText": "You can get out and walk at anytime Madi"
+          },
+          {
+            "referenceId": "ref_01M4KDCNR5F76P3FD2C9ECAMR5",
+            "sceneId": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+            "lineNumber": 1966,
+            "lineText": "Des stop it. You don't want Madi walking out there by herself."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MDRYB5XGDZ2XY6H1WX",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2006,
+            "lineText": "Des and Madi grab a booth. A cocktail waitress brings drinks over. Des tips her and she winks at him."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MDH5BE51R93CAMP870",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2036,
+            "lineText": "I've been better Madi. I'm in the freefall now. I don't wanna think about the landing."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MDVDMVBAJDED2841J8",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2042,
+            "lineText": "It's alright Madi. We'll always be family. I know how you get down. You get a man and you disappear."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MDHDS546VG3KB29GZQ",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2048,
+            "lineText": "I went through hell Madi. I'm not sure I'm out yet."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MD9T5XXWSHNAGA8RPG",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2074,
+            "lineText": "After you left for L.A. we got serious. I never felt that way about anyone. It was straight love Madi. It was beautiful. I ran out and got the ring. I was so excited to give it to her. I was smiling ear to ear. But that smile didn't last."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MDFEVFJ8BHV7JGJFWQ",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2142,
+            "lineText": "I stopped having hope a long time ago Madi. Have you ever considered the possibility that things will never get better for some people. I have and I think I'm one of those people."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MD2B14T08B6HMJH546",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2183,
+            "lineText": "Madi let me introduce you to Ray Oaklin. Ray this is my sister Madison Mann."
+          },
+          {
+            "referenceId": "ref_01M4KDDXQ1CEJVWJW5PJHV2NEV",
+            "sceneId": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+            "lineNumber": 2344,
+            "lineText": "Madi"
+          },
+          {
+            "referenceId": "ref_01M4KDEJ5KC2QJXXNFA738VN4E",
+            "sceneId": "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+            "lineNumber": 2617,
+            "lineText": "No I haven't spoke to him Madi. Listen to me. He's not going to try anything stupid around you. If he were to try something stupid he's certainly not going to call me first. Look around, maybe he left a note or something."
+          },
+          {
+            "referenceId": "ref_01M4KDEP5DF8CVJA6QZ59914ZR",
+            "sceneId": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+            "lineNumber": 2639,
+            "lineText": "Madi. You saw my note"
+          },
+          {
+            "referenceId": "ref_01M4KDEP5DDFFYBS1YGV6ZJ3AY",
+            "sceneId": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+            "lineNumber": 2663,
+            "lineText": "Can't talk now Madi. I'll catch you later."
+          },
+          {
+            "referenceId": "ref_01M4KDFY6R2YVV6TYEXE4Z8D1J",
+            "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+            "lineNumber": 3196,
+            "lineText": "Hey Madi, Ray this is Sidney."
+          },
+          {
+            "referenceId": "ref_01M4KDFY6RD73NKRA696T5TQTB",
+            "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+            "lineNumber": 3240,
+            "lineText": "Madi She went to Humanities"
+          },
+          {
+            "referenceId": "ref_01M4KDG4BBV043B5DVF977EWY8",
+            "sceneId": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+            "lineNumber": 3301,
+            "lineText": "What. The tattoo. I think I'll go with the broken heart like Madi."
+          },
+          {
+            "referenceId": "ref_01M4KDGNHFRAWDFGR4CMSVDD38",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3492,
+            "lineText": "Okay Madi. I'll be right over. Don't do"
+          },
+          {
+            "referenceId": "ref_01M4KDGNHFSQ7YJKTA4J8RDVPT",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3504,
+            "lineText": "Madi give me ten minutes. Get off the phone!"
+          },
+          {
+            "referenceId": "ref_01M4KDGNHFVVHX83QS1G09QBNW",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3512,
+            "lineText": "I did what Madi."
+          },
+          {
+            "referenceId": "ref_01M4KDGNHF18R2JF54GRXH3RR3",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3515,
+            "lineText": "Madi. Madi!"
+          },
+          {
+            "referenceId": "ref_01M4KDGNHFN2HCC4SN9Q5FSP87",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3515,
+            "lineText": "Madi. Madi!"
+          },
+          {
+            "referenceId": "ref_01M4KDGNHF6GM341Y8N4ACDVBT",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3560,
+            "lineText": "Oh my god Madi. Madi I'm sorry."
+          },
+          {
+            "referenceId": "ref_01M4KDGNHFDVA6AFP0AX2W7GAV",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3560,
+            "lineText": "Oh my god Madi. Madi I'm sorry."
+          },
+          {
+            "referenceId": "ref_01M4KDGNHFARPKYCRX2BX0BHTV",
+            "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+            "lineNumber": 3566,
+            "lineText": "Madi forget about him we got to get you to the hospital. Where's Fifth"
+          },
+          {
+            "referenceId": "ref_01M4KDH8RJ4GPNX4SS4GRX2J53",
+            "sceneId": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+            "lineNumber": 3678,
+            "lineText": "All the other kids in the neighborhood went to Sunday school. Mom took me and Madi to Bergdorff, then Saks and we finished off at Bloomy's. To her that was spiritual."
+          },
+          {
+            "referenceId": "ref_01M4KDH8RJQ9B3GG3KQ2M2HVCV",
+            "sceneId": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+            "lineNumber": 3739,
+            "lineText": "My mother never told me what happened. Madi told me that my Dad died. She told me he was unhappy."
+          },
+          {
+            "referenceId": "ref_01M4KDHJ03HXBBDYWSNKBZ9X8Y",
+            "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+            "lineNumber": 4024,
+            "lineText": "Yeah. I can't wait to tell Madi and Des Sidney starts up the car and the speed off. She is distracted by the ring and repeatedly takes her eyes off the road to stare at it. Fifth is once again starring up at the clouds."
+          },
+          {
+            "referenceId": "ref_01M4KDJ2ANNDNXDM3N0848V2GV",
+            "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+            "lineNumber": 4063,
+            "lineText": "I'm in the hospital with Madi. There was a problem"
+          },
+          {
+            "referenceId": "ref_01M4KDJ2ANBQXCM1TGW250A2G8",
+            "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+            "lineNumber": 4091,
+            "lineText": "Yes but I have to leave today. Some one will be waiting for me at JFK at 2 o'clock. If I could stay for Madi"
+          },
+          {
+            "referenceId": "ref_01M4KDJ2AN9560HAMBE9PW8DSA",
+            "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+            "lineNumber": 4103,
+            "lineText": "Des you stay with Madi. I'll be fine in a cab"
+          },
+          {
+            "referenceId": "ref_01M4KDJ2ANFH6KV1HS9P9SQKTD",
+            "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+            "lineNumber": 4124,
+            "lineText": "Madi I know you can hear me. You're strong Madi. You can make it through this. I'm so sorry I ever let you talk me into this. You did it though Madi. You helped me. You're my sister and my friend and I need you. Get better."
+          },
+          {
+            "referenceId": "ref_01M4KDJ2AN5RBT003F7ERHX7ZE",
+            "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+            "lineNumber": 4124,
+            "lineText": "Madi I know you can hear me. You're strong Madi. You can make it through this. I'm so sorry I ever let you talk me into this. You did it though Madi. You helped me. You're my sister and my friend and I need you. Get better."
+          },
+          {
+            "referenceId": "ref_01M4KDJ2ANR10X4MRCJ92YFVNW",
+            "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+            "lineNumber": 4124,
+            "lineText": "Madi I know you can hear me. You're strong Madi. You can make it through this. I'm so sorry I ever let you talk me into this. You did it though Madi. You helped me. You're my sister and my friend and I need you. Get better."
+          },
+          {
+            "referenceId": "ref_01M4KDJ9KZAK67KN3RKFV7RSGD",
+            "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+            "lineNumber": 4139,
+            "lineText": "(Leaving a message) Fifth where the hell are you. Can you get out of that girl's face for five minutes to answer the phone. Madi's in the hospital. Call me back. I'm taking Jetta to JFK"
+          },
+          {
+            "referenceId": "ref_01M4KDJ9KZEGMJDBGB6N75ACD7",
+            "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+            "lineNumber": 4179,
+            "lineText": "Madi got on me about how I don't let anyone help me. I told her she was wrong so she said prove it. Now look what happened"
+          },
+          {
+            "referenceId": "ref_01M4KDJ9KZY2ZB48WH0V9041DM",
+            "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+            "lineNumber": 4185,
+            "lineText": "Ray Oaklin killed Pop. I got tipped of last week but I had to be sure. Madi set him up for me. She got him drunk and he told her everything"
+          },
+          {
+            "referenceId": "ref_01M4KDJ9KZFBTJTRVJ7BCKA2Z9",
+            "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+            "lineNumber": 4194,
+            "lineText": "Des I know Madi never wanted to get hurt but she's your friend. She wanted to help you and it makes no sense to sit up here and blame yourself for what happened. Did yo tell Fifth"
+          },
+          {
+            "referenceId": "ref_01M4KDJ9KZBASH7WVEG8EGE762",
+            "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+            "lineNumber": 4203,
+            "lineText": "I don't know. Madi being here made him stable."
+          },
+          {
+            "referenceId": "ref_01M4KDJ9KZ803CRYE6NCTS8X5R",
+            "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+            "lineNumber": 4221,
+            "lineText": "Because they'd have to pay out big time. Everything is in Madi's name. Must be about 5 million."
+          }
+        ]
+      },
+      {
+        "wording": "Madison",
+        "count": 6,
+        "sceneIds": [
+          "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+          "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+          "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+          "scene_01M4KD5YMZY1HYQF5GY5HB9GAR"
+        ],
+        "occurrences": [
+          {
+            "referenceId": "ref_01M4KD66HMZRCT747KYC5CTZF7",
+            "sceneId": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+            "lineNumber": 40,
+            "lineText": "Madison! Is that you honey, wait I can explain."
+          },
+          {
+            "referenceId": "ref_01M4KD6BGGWEV9H1NFVYW0PD27",
+            "sceneId": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+            "lineNumber": 55,
+            "lineText": "Hello. Hey Madison how are you. Oh no what's wrong. That bastard. Listen baby it's really not a good time. You need how much. Alright I got you. Pick you up? When? Alright I'll be there. Alright baby, have a good flight."
+          },
+          {
+            "referenceId": "ref_01M4KD7G44TZEFES83BC15BMZY",
+            "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+            "lineNumber": 267,
+            "lineText": "We're at the airport. We're picking up Madison."
+          },
+          {
+            "referenceId": "ref_01M4KD9ZGYTCRSECCDNJDG3FGZ",
+            "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "lineNumber": 955,
+            "lineText": "That's it all to you Madison. If that's it all then why don't you want that."
+          },
+          {
+            "referenceId": "ref_01M4KD9ZGYSFWBTKW8N7ZN7GY6",
+            "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+            "lineNumber": 973,
+            "lineText": "That's your opinion Madison. I've never criticized the way you live. The jerks you chose to throw your heart at."
+          },
+          {
+            "referenceId": "ref_01M4KHC1MDYXE6JR8D6A4CGPD7",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2186,
+            "lineText": "Your sister. I don't see the resemblance. She's gorgeous and your just you. Madison it's a pleasure"
+          }
+        ]
+      },
+      {
+        "wording": "Madison Mann",
+        "count": 3,
+        "sceneIds": [
+          "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+          "scene_01M4KD5YMZY1HYQF5GY5HB9GAR"
+        ],
+        "occurrences": [
+          {
+            "referenceId": "ref_01M4KD8GMBS7ZHGKSETFHPDAWD",
+            "sceneId": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+            "lineNumber": 588,
+            "lineText": "Fuck me! That is the real name. And I thought Black people had some crazy names. It says here that he can only be released into the custody of Madison Mann. Oh I get it. Fifth and Madison, that's cute."
+          },
+          {
+            "referenceId": "ref_01M4KD8GMBTW2WAXYFVEW91Q6K",
+            "sceneId": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+            "lineNumber": 593,
+            "lineText": "That's me. I'm Madison Mann"
+          },
+          {
+            "referenceId": "ref_01M4KHC1MD49914QH0PFQGHFHV",
+            "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+            "lineNumber": 2183,
+            "lineText": "Madi let me introduce you to Ray Oaklin. Ray this is my sister Madison Mann."
+          }
+        ]
+      },
+      {
+        "wording": "his sister",
+        "count": 2,
+        "sceneIds": [
+          "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+          "scene_01M4KD5YMZVGV56SC2QKJ1NKAC"
+        ],
+        "occurrences": [
+          {
+            "referenceId": "ref_01M4KD6Z5Y13TRXKQ5ZACC0YFJ",
+            "sceneId": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+            "lineNumber": 126,
+            "lineText": "Hello. How are you Dr. Mitchell. What happened now. Ah huh. Ah huh. (Laughing) He did what. Are you shitting me? Ah huh. He's alive? Well listen Dr. Mitchell his sister is flying in tonight and I know she'll want to see him. I see. Is there any chance he can be released to her. With medication. I see. Alright then Dr. Mitchell thank you."
+          },
+          {
+            "referenceId": "ref_01M4KDB795WQVV4PFJ3QGSE7M6",
+            "sceneId": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+            "lineNumber": 1413,
+            "lineText": "Fifth? He's cool. With his sister in town I think he'll chill out for a minute."
+          }
+        ]
+      },
+      {
+        "wording": "MADISON",
+        "count": 1,
+        "sceneIds": [
+          "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW"
+        ],
+        "occurrences": [
+          {
+            "referenceId": "ref_01M4KD8GMBACM7DN67M04BFVRZ",
+            "sceneId": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+            "lineNumber": 588,
+            "lineText": "Fuck me! That is the real name. And I thought Black people had some crazy names. It says here that he can only be released into the custody of Madison Mann. Oh I get it. Fifth and Madison, that's cute."
+          }
+        ]
+      }
+    ]
+  }
+}

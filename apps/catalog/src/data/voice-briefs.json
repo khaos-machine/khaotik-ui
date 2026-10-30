@@ -1,0 +1,51 @@
+{
+  "_provenance": "khaosd GET /api/characters/voice-brief (MADISON) and GET /api/narrator/voice-brief on BROKEN IN 4 PLACES (b4p.kspd), khaosd 0.176.0, 2026-10-23T20:12:39Z",
+  "madison": {
+    "characterId": "character_01M5MJB4BPJKEQ6MM5R90R15NM",
+    "speaks": true,
+    "description": "Female; she refers to herself as Fifth's sister and is described using she/her pronouns., 28 years old (she says this of Fifth, her brother, not herself; Madison's age is not stated).. Mixed register. A plainspoken, conversational voice that moves easily between quick banter, profanity, and sustained earnest emotional appeals. The lines support an expressive, direct delivery, but do not establish a particular accent or vocal quality.",
+    "auditionLines": [
+      {
+        "line": "Fuck you Des. That's not fair. You know I love my brother. You think I want to see him dead. I've going through this shit for years. Since he first tried at fifteen. I was there. You weren't. It's like a sick movie that just keeps dragging on. I'm tired Des. That doesn't mean I don't love my brother.",
+        "scene": "S5"
+      },
+      {
+        "line": "There's suffering in the world Fifth. But it's still a beautiful place. You're trying to take the easy way out. All these people your heart is bleeding for, they live, they struggle and sometimes they triumph. You have a sister, you have a best friend. You have a reason to live.",
+        "scene": "S11"
+      },
+      {
+        "line": "I'm just fuckin with you",
+        "scene": "S17"
+      }
+    ],
+    "suggested": [
+      {
+        "detail": "Pitch, timbre, and any distinctive vocal texture are not specified.",
+        "restsOn": "The dialogue establishes word choice and emotional shifts, not vocal sound."
+      },
+      {
+        "detail": "No accent or dialect is specified.",
+        "restsOn": "The lines do not name or clearly encode a particular accent; references to New York do not establish how she sounds."
+      }
+    ]
+  },
+  "narrator": {
+    "speaks": true,
+    "description": "Narrator of \"BROKEN IN 4 PLACES\", a Ensemble Drama / Crime Drama. After prison, a grieving mother seeks her estranged son and a second chance with her former partner, while debt, violence, and their shared losses threaten both.",
+    "auditionLines": [
+      {
+        "line": "MADISON walks up to her door, arms full of paint supplies and groceries. There's an eviction notice from the City Marshall and a chain and lock on the door.",
+        "scene": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+      },
+      {
+        "line": "Madison drops the supplies on the floor and takes out her cell phone. She makes a call",
+        "scene": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+      },
+      {
+        "line": "SOUND EFFECT: RINGING",
+        "scene": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+      }
+    ],
+    "gaps": []
+  }
+}

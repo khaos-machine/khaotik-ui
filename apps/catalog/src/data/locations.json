@@ -1,0 +1,239 @@
+[
+  {
+    "id": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+    "name": "Desmond's Apartment",
+    "scene_count": 11,
+    "page_count": 18.916000000000004,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+    "name": "Fifth's Loft",
+    "scene_count": 9,
+    "page_count": 11.32,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+    "name": "Desmond's Car",
+    "scene_count": 6,
+    "page_count": 7.248,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+    "name": "Sidney's Apartment",
+    "scene_count": 6,
+    "page_count": 5.86,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZXZMQG935FAW524H8",
+    "name": "Hospital",
+    "scene_count": 3,
+    "page_count": 2.312,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ3FEEW2EQ71YFV4RG",
+    "name": "Speeding Car",
+    "scene_count": 2,
+    "page_count": 2.716,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZVYHWEFZRS9V61E64",
+    "name": "Airport",
+    "scene_count": 1,
+    "page_count": 2.64,
+    "origin": "parsed",
+    "mentionedSceneIds": [
+      "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+      "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+      "scene_01M4KD5YMZ1RE80BXE3X9AXXT3"
+    ]
+  },
+  {
+    "id": "location_01M4KD5YMZ4CZG2K434PPQBYSG",
+    "name": "Airport Terminal",
+    "scene_count": 1,
+    "page_count": 0.472,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZZ75F57V3PK1WT8CT",
+    "name": "City Street",
+    "scene_count": 1,
+    "page_count": 0.204,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZR36AY85WJPJV6TSQ",
+    "name": "Classroom",
+    "scene_count": 1,
+    "page_count": 0.448,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZR5P8Q9N18ZAJ0QB0",
+    "name": "Coffee Shop",
+    "scene_count": 1,
+    "page_count": 2.38,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZKZ9PDHZVN3BP5WZB",
+    "name": "Emergency Room",
+    "scene_count": 1,
+    "page_count": 0.452,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ9SPV5ZQ4VF78CPXJ",
+    "name": "Fifth's Car",
+    "scene_count": 1,
+    "page_count": 4.64,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZNMDV9RJ8CJ73WEFZ",
+    "name": "French Cafe",
+    "scene_count": 1,
+    "page_count": 1.24,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZX5KEN3H8WCDH0SE5",
+    "name": "Funeral Home",
+    "scene_count": 1,
+    "page_count": 0.608,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ5WTCJQFQ2ZRH3CKC",
+    "name": "Hell's Kitchen",
+    "scene_count": 1,
+    "page_count": 2.524,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ5A3T9DV7S3QX5QJK",
+    "name": "Hospital Waiting Room",
+    "scene_count": 1,
+    "page_count": 1.26,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ4BXAEAN41Z6A7BAT",
+    "name": "Industrial Artist Space",
+    "scene_count": 1,
+    "page_count": 0.364,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ2TP4NM67ZYH5S5RX",
+    "name": "Jason's Apartment",
+    "scene_count": 1,
+    "page_count": 0.52,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZAYPQA7NPQPW184M3",
+    "name": "Jetta's House",
+    "scene_count": 1,
+    "page_count": 0.128,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ02TKBT18A4JK4VD4",
+    "name": "Mental Hospital",
+    "scene_count": 1,
+    "page_count": 2.856,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZNANB00W6S5JDSK3Q",
+    "name": "Night Club",
+    "scene_count": 1,
+    "page_count": 4.52,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZE7MPW8FN3038B9E1",
+    "name": "Nyc Streets",
+    "scene_count": 1,
+    "page_count": 2.656,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZ5158WWT85EPQ913D",
+    "name": "Rooftop",
+    "scene_count": 1,
+    "page_count": 0.372,
+    "origin": "parsed",
+    "mentionedSceneIds": [
+      "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+      "scene_01M4KD5YMZ31QDABAMQ2WTC5ES"
+    ]
+  },
+  {
+    "id": "location_01M4KD5YMZZX3QQZSH750Q9P0R",
+    "name": "Streets",
+    "scene_count": 1,
+    "page_count": 0.168,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KD5YMZBV4T7VCE39WB7XPT",
+    "name": "Womens Penitentiary",
+    "scene_count": 1,
+    "page_count": 0.528,
+    "origin": "parsed",
+    "mentionedSceneIds": []
+  },
+  {
+    "id": "location_01M4KW1F0Q16NDJ64J8R7B6RD6",
+    "name": "Bronxville",
+    "scene_count": 0,
+    "page_count": 0,
+    "origin": "observed",
+    "mentionedSceneIds": [
+      "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P"
+    ]
+  },
+  {
+    "id": "location_01M4KJYZGBBGK6RK2716JT3808",
+    "name": "Jail",
+    "scene_count": 0,
+    "page_count": 0,
+    "origin": "observed",
+    "mentionedSceneIds": [
+      "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+      "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+      "scene_01M4KD5YMZJDWNB18D0FKCBKZ6"
+    ]
+  }
+]

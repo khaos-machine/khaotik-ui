@@ -1,0 +1,15 @@
+{
+  "_provenance": "khaosd GET /api/v1/projects/budget — B4P — the story budget, verbatim.",
+  "limits": {
+    "textCalls": 85,
+    "imageCalls": 26,
+    "audioCalls": 28
+  },
+  "spent": {
+    "textCalls": 47,
+    "imageCalls": 2,
+    "audioCalls": 28,
+    "usd": "0.147575335644",
+    "usdUnreported": 61
+  }
+}

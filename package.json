@@ -1,0 +1,63 @@
+{
+  "name": "@khaos-machine/khaotik-ui",
+  "version": "0.163.0",
+  "type": "module",
+  "description": "Khaos-branded component library — tokens, atoms, components and compositions, built and maintained here and shared with every Khaos app. Also hosts the catalog (apps/catalog) for device playtesting.",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "check-catalog": "bash scripts/check-catalog-coverage.sh",
+    "check-taxonomy": "node scripts/check-taxonomy.mjs",
+    "check-consumer": "node scripts/check-consumer.mjs",
+    "check-compile": "npm run build --workspace apps/catalog",
+    "check-coverage": "npm run check-catalog && npm run check-taxonomy && npm run check-consumer && npm run check-compile && npm run check-export-count",
+    "check-citations": "node scripts/check-citations.mjs",
+    "check-issue-refs": "node scripts/check-issue-refs.mjs",
+    "build-types": "node scripts/build-types.mjs",
+    "check-types": "node scripts/build-types.mjs --check",
+    "check-export-count": "node scripts/check-export-count.mjs"
+  },
+  "exports": {
+    "./tokens/*": "./tokens/*",
+    "./components/svelte": {
+      "types": "./components/svelte/index.d.ts",
+      "default": "./components/svelte/index.js"
+    },
+    "./components/svelte/*": {
+      "types": "./components/svelte/*.d.ts",
+      "default": "./components/svelte/*"
+    },
+    "./assets/*": "./assets/*"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "dependencies": {
+    "@ark-ui/svelte": "^5.23.0",
+    "@phosphor-icons/web": "^2.1.2",
+    "pixi-viewport": "6.0.3",
+    "pixi.js": "8.22.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "svelte": "^5.56.9",
+    "svelte2tsx": "^0.7.61",
+    "typescript": "^5.9.3"
+  },
+  "license": "Apache-2.0",
+  "author": "Khaos Studio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khaos-machine/khaotik-ui.git"
+  },
+  "files": [
+    "components",
+    "tokens",
+    "!tokens/build-tokens.py",
+    "assets"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

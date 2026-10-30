@@ -1,0 +1,2673 @@
+{
+  "_provenance": "khaosd GET /api/v1/dashboard/playback, every segment, events and source text for the first two only — BROKEN IN 4 PLACES.",
+  "revision": "change_01M5GNNM3DPM9Q8EJBYQC5RAEX",
+  "segments": [
+    {
+      "kind": "scene",
+      "position": 0,
+      "sceneId": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+      "level": 0,
+      "label": "INT. INDUSTRIAL ARTIST SPACE - DAY",
+      "durationMs": 39760,
+      "startMs": 0,
+      "events": [
+        {
+          "startMs": 0,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZRT108NKAE1KZYV6F",
+          "text": "MADISON walks up to her door, arms full of paint supplies and groceries. There's an eviction notice from the City Marshall and a chain and lock on the door.",
+          "durationMs": 10480
+        },
+        {
+          "startMs": 10980,
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "text": "Shit! I thought I had two more days. Damn it!",
+          "characterId": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "characterName": "MADISON",
+          "durationMs": 3800
+        },
+        {
+          "startMs": 15280,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZ2SX3KC4GBDTDE01H",
+          "text": "Madison drops the supplies on the floor and takes out her cell phone. She makes a call",
+          "durationMs": 5840
+        },
+        {
+          "startMs": 21620,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZW1F7YYSYCSPC6AN4",
+          "text": "SOUND EFFECT: RINGING",
+          "durationMs": 6080
+        },
+        {
+          "startMs": 28200,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZ7AXP37AMVC9EGN6E",
+          "text": "The answering machine picks up.",
+          "durationMs": 2280
+        },
+        {
+          "startMs": 30980,
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there.",
+          "characterId": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "characterName": "MADISON",
+          "durationMs": 4520
+        },
+        {
+          "startMs": 36000,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZEB6C829AM29GDPQD",
+          "text": "Madison puts away the phone and picks up her supplies.",
+          "durationMs": 3760
+        }
+      ],
+      "timing": "read",
+      "estimateMs": 21840,
+      "sourceEvents": [
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZRT108NKAE1KZYV6F",
+          "text": "MADISON walks up to her door, arms full of paint supplies and groceries. There's an eviction notice from the City Marshall and a chain and lock on the door.",
+          "durationMs": 6960
+        },
+        {
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZA13FZ4QFYCZP5D3A",
+          "text": "Shit! I thought I had two more days. Damn it!",
+          "characterId": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "characterName": "MADISON",
+          "durationMs": 2400
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZ2SX3KC4GBDTDE01H",
+          "text": "Madison drops the supplies on the floor and takes out her cell phone. She makes a call",
+          "durationMs": 4080
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZW1F7YYSYCSPC6AN4",
+          "text": "SOUND EFFECT: RINGING",
+          "durationMs": 720
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZ7AXP37AMVC9EGN6E",
+          "text": "The answering machine picks up.",
+          "durationMs": 1200
+        },
+        {
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZTZKZ0M61Z0A3S5HV",
+          "text": "Jason pick up it's me. Jason come on I need you. I know you're there.",
+          "characterId": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "characterName": "MADISON",
+          "durationMs": 3600
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZEB6C829AM29GDPQD",
+          "text": "Madison puts away the phone and picks up her supplies.",
+          "durationMs": 2400
+        },
+        {
+          "elementType": "transition",
+          "elementId": "transition_01M4KD5YMZ7PCT0J0GKHBT76VH",
+          "text": "CUT TO:",
+          "durationMs": 480
+        }
+      ],
+      "reads": [
+        {
+          "id": "scene_take_01M566WKGJFDY954YP2HQ7KJBH",
+          "createdAt": "2026-10-18T00:34:22Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 7
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M566WKGJFDY954YP2HQ7KJBH",
+        "audio": "/api/synth/scene-takes/scene_take_01M566WKGJFDY954YP2HQ7KJBH/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+        "peaks": "/api/synth/scene-takes/scene_take_01M566WKGJFDY954YP2HQ7KJBH/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+        "durationMs": 39760,
+        "stale": true
+      },
+      "context": {
+        "location": "INDUSTRIAL ARTIST SPACE",
+        "timeOfDay": "DAY",
+        "wordCount": 91,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 1,
+      "sceneId": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+      "level": 0,
+      "label": "INT. JASON'S APARTMENT - DAY",
+      "durationMs": 54560,
+      "startMs": 39760,
+      "events": [
+        {
+          "startMs": 0,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZV15YRJK4NF7TH88G",
+          "text": "Madison struggles to retrieve the keys to Jason's apartment out of her pocket while juggling her supplies. She gets the door open.",
+          "durationMs": 8520
+        },
+        {
+          "startMs": 9020,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZQPEC00DGHEQKY131",
+          "text": "As soon as she enters the apartment she hears the unmistakable moans and groans of wild sex coming from the bedroom.",
+          "durationMs": 7960
+        },
+        {
+          "startMs": 17480,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZKWV7BA89Y420F4QY",
+          "text": "Madison heads back for the door but hesitates. She puts her supplies down quietly and then opens a large can of paint. She walks to the bedroom, flings the door open and throws the paint all over Jason and his lover.",
+          "durationMs": 15280
+        },
+        {
+          "startMs": 33260,
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZ8MK9BYRWK57AVR6G",
+          "text": "What the fuck!",
+          "characterId": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+          "characterName": "JASON",
+          "durationMs": 1320
+        },
+        {
+          "startMs": 35080,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZ7DXEMQ7QVK7G95NG",
+          "text": "Jason wipes globs of paint from his face.",
+          "durationMs": 3360
+        },
+        {
+          "startMs": 38940,
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZXYBVVAX697Y45JJ6",
+          "text": "Madison! Is that you honey, wait I can explain.",
+          "characterId": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+          "characterName": "JASON",
+          "parenthetical": "(CONT'D)",
+          "durationMs": 4800
+        },
+        {
+          "startMs": 44240,
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZD1SKQ2ZHTPJM9WZV",
+          "text": "Madison beams the empty paint can directly at Jason's head. It hits the mark and knocks Jason out. Madison storms out of the apartment.",
+          "durationMs": 10320
+        }
+      ],
+      "timing": "read",
+      "estimateMs": 31200,
+      "sourceEvents": [
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZV15YRJK4NF7TH88G",
+          "text": "Madison struggles to retrieve the keys to Jason's apartment out of her pocket while juggling her supplies. She gets the door open.",
+          "durationMs": 5280
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZQPEC00DGHEQKY131",
+          "text": "As soon as she enters the apartment she hears the unmistakable moans and groans of wild sex coming from the bedroom.",
+          "durationMs": 5040
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZKWV7BA89Y420F4QY",
+          "text": "Madison heads back for the door but hesitates. She puts her supplies down quietly and then opens a large can of paint. She walks to the bedroom, flings the door open and throws the paint all over Jason and his lover.",
+          "durationMs": 9840
+        },
+        {
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZ8MK9BYRWK57AVR6G",
+          "text": "What the fuck!",
+          "characterId": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+          "characterName": "JASON",
+          "durationMs": 720
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZ7DXEMQ7QVK7G95NG",
+          "text": "Jason wipes globs of paint from his face.",
+          "durationMs": 1920
+        },
+        {
+          "elementType": "dialogue",
+          "elementId": "dialogue_01M4KD5YMZXYBVVAX697Y45JJ6",
+          "text": "Madison! Is that you honey, wait I can explain.",
+          "characterId": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+          "characterName": "JASON",
+          "parenthetical": "(CONT'D)",
+          "durationMs": 2160
+        },
+        {
+          "elementType": "action",
+          "elementId": "action_01M4KD5YMZD1SKQ2ZHTPJM9WZV",
+          "text": "Madison beams the empty paint can directly at Jason's head. It hits the mark and knocks Jason out. Madison storms out of the apartment.",
+          "durationMs": 5760
+        },
+        {
+          "elementType": "transition",
+          "elementId": "transition_01M4KD5YMZ292DKE7P58X8QA9W",
+          "text": "CUT TO:",
+          "durationMs": 480
+        }
+      ],
+      "reads": [
+        {
+          "id": "scene_take_01M567Y2PRC4EMS7KNQ463AGN2",
+          "createdAt": "2026-10-18T00:52:39Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 7
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M567Y2PRC4EMS7KNQ463AGN2",
+        "audio": "/api/synth/scene-takes/scene_take_01M567Y2PRC4EMS7KNQ463AGN2/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+        "peaks": "/api/synth/scene-takes/scene_take_01M567Y2PRC4EMS7KNQ463AGN2/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+        "durationMs": 54560,
+        "stale": true
+      },
+      "context": {
+        "location": "JASON'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 130,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+            "name": "JASON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0DBF0K7DBX7DHV2PCA7SAMHEDZ"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KHSZ4T0JJEC8PGC7ZE2ZXW",
+            "name": "his lover",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_11S8ABZAHKCBC2FE5YH9TRC0CN"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 2,
+      "sceneId": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+      "level": 0,
+      "label": "INT. FUNERAL HOME - DAY",
+      "durationMs": 68720,
+      "startMs": 94320,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 36480,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M56BT30Z49H2R0H62QTHFZGR",
+          "createdAt": "2026-10-18T02:00:24Z",
+          "chosen": false,
+          "stale": true,
+          "lineCount": 5
+        },
+        {
+          "id": "scene_take_01M5FGTDRABP34RKXS531B6V55",
+          "createdAt": "2026-10-21T15:21:08Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 5
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M5FGTDRABP34RKXS531B6V55",
+        "audio": "/api/synth/scene-takes/scene_take_01M5FGTDRABP34RKXS531B6V55/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+        "peaks": "/api/synth/scene-takes/scene_take_01M5FGTDRABP34RKXS531B6V55/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+        "durationMs": 68720,
+        "stale": true
+      },
+      "context": {
+        "location": "FUNERAL HOME",
+        "timeOfDay": "DAY",
+        "wordCount": 152,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KHJ4TCQ5XM9AKC3XARCS8R",
+            "name": "POP",
+            "role": "present",
+            "portraitReferenceId": ""
+          },
+          {
+            "id": "character_01M4KHT4E9APQ7Y1FF5KMTCT1P",
+            "name": "Black mourners",
+            "role": "present",
+            "portraitReferenceId": ""
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 3,
+      "sceneId": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+      "level": 0,
+      "label": "INT. WOMENS PENITENTIARY - DAY",
+      "durationMs": 48720,
+      "startMs": 163040,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 31680,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M5AJT29EDC234E9G9M2CV1PJ",
+          "createdAt": "2026-10-19T17:19:44Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 9
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M5AJT29EDC234E9G9M2CV1PJ",
+        "audio": "/api/synth/scene-takes/scene_take_01M5AJT29EDC234E9G9M2CV1PJ/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+        "peaks": "/api/synth/scene-takes/scene_take_01M5AJT29EDC234E9G9M2CV1PJ/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+        "durationMs": 48720,
+        "stale": true
+      },
+      "context": {
+        "location": "WOMENS PENITENTIARY",
+        "timeOfDay": "DAY",
+        "wordCount": 132,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCW6V7FBAH8EEA4MR",
+            "name": "CORRECTION OFFICER",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3QF3C56S41372SWWBPEBGTW8KT"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZR70W0XCVFFCASTCF",
+            "name": "FEMALE INMATE",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_1D255C4P9FDSK3ASG9VKGRRJ3S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 4,
+      "sceneId": "scene_01M4KD5YMZRJZFYN5T301BH19J",
+      "level": 0,
+      "label": "EXT. SPEEDING CAR - DAY",
+      "durationMs": 71980,
+      "startMs": 211760,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 47040,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M5AK6QA5N1BYPE2Y1AT9YVW9",
+          "createdAt": "2026-10-19T17:26:34Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 8
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M5AK6QA5N1BYPE2Y1AT9YVW9",
+        "audio": "/api/synth/scene-takes/scene_take_01M5AK6QA5N1BYPE2Y1AT9YVW9/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZRJZFYN5T301BH19J",
+        "peaks": "/api/synth/scene-takes/scene_take_01M5AK6QA5N1BYPE2Y1AT9YVW9/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZRJZFYN5T301BH19J",
+        "durationMs": 71980,
+        "stale": true
+      },
+      "context": {
+        "location": "SPEEDING CAR",
+        "timeOfDay": "DAY",
+        "wordCount": 196,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZPZHSF5240HQJA307",
+            "name": "MARCOS",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0V6WJJSK6Z73HPT028BRQ8P68Q"
+          },
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 5,
+      "sceneId": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+      "level": 0,
+      "label": "INT. DESMOND'S CAR - DAY",
+      "durationMs": 260640,
+      "startMs": 283740,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 154320,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M5D6NK05AZP48GAMC1ZMGW7D",
+          "createdAt": "2026-10-20T17:45:14Z",
+          "chosen": true,
+          "stale": false,
+          "lineCount": 41
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M5D6NK05AZP48GAMC1ZMGW7D",
+        "audio": "/api/synth/scene-takes/scene_take_01M5D6NK05AZP48GAMC1ZMGW7D/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "peaks": "/api/synth/scene-takes/scene_take_01M5D6NK05AZP48GAMC1ZMGW7D/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+        "durationMs": 260640,
+        "stale": false
+      },
+      "context": {
+        "location": "DESMOND'S CAR",
+        "timeOfDay": "DAY",
+        "wordCount": 643,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 6,
+      "sceneId": "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+      "level": 0,
+      "label": "INT. CLASSROOM - DAY",
+      "durationMs": 45820,
+      "startMs": 544380,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 26880,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M5D8REEMQYJZR8YP6421ABYJ",
+          "createdAt": "2026-10-20T18:21:44Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 6
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M5D8REEMQYJZR8YP6421ABYJ",
+        "audio": "/api/synth/scene-takes/scene_take_01M5D8REEMQYJZR8YP6421ABYJ/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+        "peaks": "/api/synth/scene-takes/scene_take_01M5D8REEMQYJZR8YP6421ABYJ/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+        "durationMs": 45820,
+        "stale": true
+      },
+      "context": {
+        "location": "CLASSROOM",
+        "timeOfDay": "DAY",
+        "wordCount": 112,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZQ1CDWV03JZGAC7M2",
+            "name": "MR. GATHERS",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_4546TSE58D5GVNPTMW8Q1EC7QG"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 7,
+      "sceneId": "scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+      "level": 0,
+      "label": "INT. JETTA'S HOUSE - NIGHT",
+      "durationMs": 11220,
+      "startMs": 590200,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 7680,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M56BZ5KF1R3H74NYP48PQ1DH",
+          "createdAt": "2026-10-18T02:03:09Z",
+          "chosen": true,
+          "stale": false,
+          "lineCount": 2
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M56BZ5KF1R3H74NYP48PQ1DH",
+        "audio": "/api/synth/scene-takes/scene_take_01M56BZ5KF1R3H74NYP48PQ1DH/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+        "peaks": "/api/synth/scene-takes/scene_take_01M56BZ5KF1R3H74NYP48PQ1DH/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+        "durationMs": 11220,
+        "stale": false
+      },
+      "context": {
+        "location": "JETTA'S HOUSE",
+        "timeOfDay": "NIGHT",
+        "wordCount": 32,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZ866M2GH9ZPWEMGET",
+            "name": "MARLON",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_1Z1MG5HCG6Q605JX2NNKKPRW59"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 8,
+      "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+      "level": 0,
+      "label": "EXT. AIRPORT - NIGHT",
+      "durationMs": 259860,
+      "startMs": 601420,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 158400,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M5DZRVB9WKV42RRNB6571T0T",
+          "createdAt": "2026-10-21T01:03:59Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 46
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M5DZRVB9WKV42RRNB6571T0T",
+        "audio": "/api/synth/scene-takes/scene_take_01M5DZRVB9WKV42RRNB6571T0T/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "peaks": "/api/synth/scene-takes/scene_take_01M5DZRVB9WKV42RRNB6571T0T/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZKRJV38BPG7S64YHG",
+        "durationMs": 259860,
+        "stale": true
+      },
+      "context": {
+        "location": "AIRPORT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 660,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 9,
+      "sceneId": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+      "level": 0,
+      "label": "INT. MENTAL HOSPITAL - DAY",
+      "durationMs": 171360,
+      "startMs": 861280,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 171360,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "MENTAL HOSPITAL",
+        "timeOfDay": "DAY",
+        "wordCount": 714,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZEQSZXG7C1THMKMHX",
+            "name": "DR. MITCHELL",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_7APM9Y0B0Q4BSCE0N6V01WSGTK"
+          },
+          {
+            "id": "character_01M4KD5YMZGV4HWNVYXNM7S9A9",
+            "name": "BLAINE",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0XQBQMDH86CXHPGG1SNJ1JKCHW"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 10,
+      "sceneId": "scene_01M4KD5YMZXBMH6NTPMBH6TQ94",
+      "level": 0,
+      "label": "EXT. ROOFTOP - DAY",
+      "durationMs": 37560,
+      "startMs": 1032640,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 22320,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M56BKXMHGNQ2BY33C1SWJXBD",
+          "createdAt": "2026-10-18T01:57:01Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 3
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M56BKXMHGNQ2BY33C1SWJXBD",
+        "audio": "/api/synth/scene-takes/scene_take_01M56BKXMHGNQ2BY33C1SWJXBD/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZXBMH6NTPMBH6TQ94",
+        "peaks": "/api/synth/scene-takes/scene_take_01M56BKXMHGNQ2BY33C1SWJXBD/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZXBMH6NTPMBH6TQ94",
+        "durationMs": 37560,
+        "stale": true
+      },
+      "context": {
+        "location": "ROOFTOP",
+        "timeOfDay": "DAY",
+        "wordCount": 93,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 11,
+      "sceneId": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+      "level": 0,
+      "label": "INT. DESMOND'S CAR - NIGHT",
+      "durationMs": 103300,
+      "startMs": 1070200,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 66240,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M56BXHEVW1SZ6PS1PFQP2MZT",
+          "createdAt": "2026-10-18T02:02:15Z",
+          "chosen": false,
+          "stale": false,
+          "lineCount": 14
+        },
+        {
+          "id": "scene_take_01M56CHS47T7KXP13XT2K7DYGK",
+          "createdAt": "2026-10-18T02:13:21Z",
+          "chosen": true,
+          "stale": false,
+          "lineCount": 14
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M56CHS47T7KXP13XT2K7DYGK",
+        "audio": "/api/synth/scene-takes/scene_take_01M56CHS47T7KXP13XT2K7DYGK/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "peaks": "/api/synth/scene-takes/scene_take_01M56CHS47T7KXP13XT2K7DYGK/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZQWGRANY09PHZS6PK",
+        "durationMs": 103300,
+        "stale": false
+      },
+      "context": {
+        "location": "DESMOND'S CAR",
+        "timeOfDay": "NIGHT",
+        "wordCount": 276,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 12,
+      "sceneId": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+      "level": 0,
+      "label": "INT. HOSPITAL - DAY",
+      "durationMs": 59600,
+      "startMs": 1173500,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 35040,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M5FV9PDRNJ5NJZWKX0BNHN27",
+          "createdAt": "2026-10-21T18:24:12Z",
+          "chosen": false,
+          "stale": true,
+          "lineCount": 9
+        },
+        {
+          "id": "scene_take_01M5FVJFBMERYVWJ67C3GCN551",
+          "createdAt": "2026-10-21T18:29:00Z",
+          "chosen": true,
+          "stale": true,
+          "lineCount": 9
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M5FVJFBMERYVWJ67C3GCN551",
+        "audio": "/api/synth/scene-takes/scene_take_01M5FVJFBMERYVWJ67C3GCN551/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+        "peaks": "/api/synth/scene-takes/scene_take_01M5FVJFBMERYVWJ67C3GCN551/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+        "durationMs": 59600,
+        "stale": true
+      },
+      "context": {
+        "location": "HOSPITAL",
+        "timeOfDay": "DAY",
+        "wordCount": 146,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZHM00HDSD11Q0Y3RX",
+            "name": "GUARD",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_5GV2SQS5DNN3ZQ67NZN5QX5RK3"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 13,
+      "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+      "level": 0,
+      "label": "INT. HOSPITAL WAITING ROOM - NIGHT",
+      "durationMs": 75600,
+      "startMs": 1233100,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 75600,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "HOSPITAL WAITING ROOM",
+        "timeOfDay": "NIGHT",
+        "wordCount": 315,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZHM00HDSD11Q0Y3RX",
+            "name": "GUARD",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_5GV2SQS5DNN3ZQ67NZN5QX5RK3"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 14,
+      "sceneId": "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+      "level": 0,
+      "label": "EXT. HOSPITAL - NIGHT",
+      "durationMs": 11700,
+      "startMs": 1308700,
+      "events": [],
+      "timing": "read",
+      "estimateMs": 5760,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M56C7EP6A2SEETEGQ5K9NDGB",
+          "createdAt": "2026-10-18T02:07:43Z",
+          "chosen": true,
+          "stale": false,
+          "lineCount": 4
+        }
+      ],
+      "audio": {
+        "takeId": "scene_take_01M56C7EP6A2SEETEGQ5K9NDGB",
+        "audio": "/api/synth/scene-takes/scene_take_01M56C7EP6A2SEETEGQ5K9NDGB/audio?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+        "peaks": "/api/synth/scene-takes/scene_take_01M56C7EP6A2SEETEGQ5K9NDGB/peaks?project=%2FUsers%2Fk%2Fkhaos%2Fprojects%2Fbroken-in-4-places.kspd&sceneId=scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+        "durationMs": 11700,
+        "stale": false
+      },
+      "context": {
+        "location": "HOSPITAL",
+        "timeOfDay": "NIGHT",
+        "wordCount": 24,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 15,
+      "sceneId": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+      "level": 0,
+      "label": "INT. DESMOND'S CAR - NIGHT",
+      "durationMs": 39360,
+      "startMs": 1320400,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 39360,
+      "sourceEvents": [],
+      "reads": [
+        {
+          "id": "scene_take_01M5FVANKVYJ1KK5SYJW1HPSES",
+          "createdAt": "2026-10-21T18:24:45Z",
+          "chosen": false,
+          "stale": true,
+          "lineCount": 15
+        }
+      ],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S CAR",
+        "timeOfDay": "NIGHT",
+        "wordCount": 164,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 16,
+      "sceneId": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+      "level": 0,
+      "label": "INT. FRENCH CAFE - NIGHT",
+      "durationMs": 74400,
+      "startMs": 1359760,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 74400,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FRENCH CAFE",
+        "timeOfDay": "NIGHT",
+        "wordCount": 310,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 17,
+      "sceneId": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+      "level": 0,
+      "label": "EXT. FIFTH'S LOFT - NIGHT",
+      "durationMs": 11520,
+      "startMs": 1434160,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 11520,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 48,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 18,
+      "sceneId": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+      "level": 0,
+      "label": "EXT. DESMOND'S APARTMENT - NIGHT",
+      "durationMs": 60000,
+      "startMs": 1445680,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 60000,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 250,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZSKZVYRP29G8E84M1",
+            "name": "BUBBLE",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_091R5E1Y875TR4FP63RZXPWE9Q"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 19,
+      "sceneId": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - NIGHT",
+      "durationMs": 62880,
+      "startMs": 1505680,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 62880,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 262,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 20,
+      "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+      "level": 0,
+      "label": "INT/EXT. FIFTH'S LOFT - DAY",
+      "durationMs": 250560,
+      "startMs": 1568560,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 250560,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "DAY",
+        "wordCount": 1044,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 21,
+      "sceneId": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - DAY",
+      "durationMs": 78000,
+      "startMs": 1819120,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 78000,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 325,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KHRKTKWXZ0450AVTNNMSP3",
+            "name": "Jonesy",
+            "role": "present",
+            "portraitReferenceId": ""
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 22,
+      "sceneId": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+      "level": 0,
+      "label": "INT. FIFTH'S LOFT - DAY",
+      "durationMs": 45360,
+      "startMs": 1897120,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 45360,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "DAY",
+        "wordCount": 189,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 23,
+      "sceneId": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+      "level": 0,
+      "label": "EXT. CITY STREET - DAY",
+      "durationMs": 12240,
+      "startMs": 1942480,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 12240,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "CITY STREET",
+        "timeOfDay": "DAY",
+        "wordCount": 51,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 24,
+      "sceneId": "scene_01M4KD5YMZQS71YP589WR5Q689",
+      "level": 0,
+      "label": "EXT. HELL'S KITCHEN - DAY",
+      "durationMs": 151440,
+      "startMs": 1954720,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 151440,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "HELL'S KITCHEN",
+        "timeOfDay": "DAY",
+        "wordCount": 631,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZBWG7SKCKQVVNJWYQ",
+            "name": "NACHO",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_5XNT80D7EEEZD7F3YBB8YW1A8M"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZPADC0G1FJC6BR6CR",
+            "name": "TONY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_7V15PSNY2E96GCK7BJQ4F5WKX5"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 25,
+      "sceneId": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+      "level": 0,
+      "label": "INT. COFFEE SHOP - DAY",
+      "durationMs": 142800,
+      "startMs": 2106160,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 142800,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "COFFEE SHOP",
+        "timeOfDay": "DAY",
+        "wordCount": 595,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZPZHSF5240HQJA307",
+            "name": "MARCOS",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0V6WJJSK6Z73HPT028BRQ8P68Q"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 26,
+      "sceneId": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - NIGHT",
+      "durationMs": 264000,
+      "startMs": 2248960,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 264000,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 1100,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 27,
+      "sceneId": "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+      "level": 0,
+      "label": "INT. SPEEDING CAR - DAY",
+      "durationMs": 115920,
+      "startMs": 2512960,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 115920,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "SPEEDING CAR",
+        "timeOfDay": "DAY",
+        "wordCount": 483,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ8D72JQ1AQ9KNG1WR",
+            "name": "PARK BYSTANDER",
+            "role": "speaking",
+            "portraitReferenceId": ""
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 28,
+      "sceneId": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - NIGHT",
+      "durationMs": 105360,
+      "startMs": 2628880,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 105360,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 439,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 29,
+      "sceneId": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+      "level": 0,
+      "label": "INT. DESMOND'S CAR - NIGHT",
+      "durationMs": 57360,
+      "startMs": 2734240,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 57360,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S CAR",
+        "timeOfDay": "NIGHT",
+        "wordCount": 239,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZVNB3FQP32C1H1J1G",
+            "name": "YUPPIE",
+            "role": "speaking",
+            "portraitReferenceId": ""
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 30,
+      "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+      "level": 0,
+      "label": "INT. NIGHT CLUB - NIGHT",
+      "durationMs": 271200,
+      "startMs": 2791600,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 271200,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "NIGHT CLUB",
+        "timeOfDay": "NIGHT",
+        "wordCount": 1130,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ3BH3NCM3NCWAH04K",
+            "name": "JEHOVA WITNESS",
+            "role": "speaking",
+            "portraitReferenceId": ""
+          },
+          {
+            "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+            "name": "RAY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3A5P950KWZ0Z2NG19P9Q9YJ21N"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 31,
+      "sceneId": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - DAY",
+      "durationMs": 12480,
+      "startMs": 3062800,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 12480,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 52,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 32,
+      "sceneId": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+      "level": 0,
+      "label": "INT. FIFTH'S LOFT - DAY",
+      "durationMs": 43680,
+      "startMs": 3075280,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 43680,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "DAY",
+        "wordCount": 182,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+            "name": "RAY",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_3A5P950KWZ0Z2NG19P9Q9YJ21N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 33,
+      "sceneId": "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+      "level": 0,
+      "label": "EXT/INT. SIDNEY'S APARTMENT - DAY",
+      "durationMs": 42000,
+      "startMs": 3118960,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 42000,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "SIDNEY'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 175,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 34,
+      "sceneId": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - DAY",
+      "durationMs": 198720,
+      "startMs": 3160960,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 198720,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 828,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ3PDN22B9MF5SWW78",
+            "name": "RAY'S GIRL",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_4VRTS791N8ME6V53WJENBYA27A"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 35,
+      "sceneId": "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+      "level": 0,
+      "label": "INT. SIDNEY'S APARTMENT - DAY",
+      "durationMs": 46560,
+      "startMs": 3359680,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 46560,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "SIDNEY'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 194,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 36,
+      "sceneId": "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+      "level": 0,
+      "label": "INT. FIFTH'S LOFT - DAY",
+      "durationMs": 21600,
+      "startMs": 3406240,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 21600,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "DAY",
+        "wordCount": 90,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+            "name": "RAY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3A5P950KWZ0Z2NG19P9Q9YJ21N"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 37,
+      "sceneId": "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+      "level": 0,
+      "label": "INT. SIDNEY'S APARTMENT - DAY",
+      "durationMs": 39120,
+      "startMs": 3427840,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 39120,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "SIDNEY'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 163,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 38,
+      "sceneId": "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+      "level": 0,
+      "label": "INT. FIFTH'S LOFT - DAY",
+      "durationMs": 40560,
+      "startMs": 3466960,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 40560,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "DAY",
+        "wordCount": 169,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 39,
+      "sceneId": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+      "level": 0,
+      "label": "INT. SIDNEY'S APARTMENT - DAY",
+      "durationMs": 40080,
+      "startMs": 3507520,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 40080,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "SIDNEY'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 167,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 40,
+      "sceneId": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+      "level": 0,
+      "label": "EXT. NYC STREETS - DAY",
+      "durationMs": 159360,
+      "startMs": 3547600,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 159360,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "NYC STREETS",
+        "timeOfDay": "DAY",
+        "wordCount": 664,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZPZHSF5240HQJA307",
+            "name": "MARCOS",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0V6WJJSK6Z73HPT028BRQ8P68Q"
+          },
+          {
+            "id": "character_01M4KHRX6YWBQA5GNJR8QZ3V7J",
+            "name": "A Latin percussions band",
+            "role": "present",
+            "portraitReferenceId": ""
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 41,
+      "sceneId": "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+      "level": 0,
+      "label": "INT. SIDNEY'S APARTMENT - DAY",
+      "durationMs": 64320,
+      "startMs": 3706960,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 64320,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "SIDNEY'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 268,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 42,
+      "sceneId": "scene_01M4KD5YMZETF6BJR425QMY5TB",
+      "level": 0,
+      "label": "EXT. STREETS - DAY",
+      "durationMs": 10080,
+      "startMs": 3771280,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 10080,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "STREETS",
+        "timeOfDay": "DAY",
+        "wordCount": 42,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 43,
+      "sceneId": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+      "level": 0,
+      "label": "DESMOND'S APARTMENT - NIGHT",
+      "durationMs": 192720,
+      "startMs": 3781360,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 192720,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 803,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 44,
+      "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+      "level": 0,
+      "label": "INT. FIFTH'S LOFT - NIGHT",
+      "durationMs": 81840,
+      "startMs": 3974080,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 81840,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 341,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+            "name": "RAY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3A5P950KWZ0Z2NG19P9Q9YJ21N"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 45,
+      "sceneId": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - NIGHT",
+      "durationMs": 92160,
+      "startMs": 4055920,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 92160,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 384,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 46,
+      "sceneId": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+      "level": 0,
+      "label": "INT. FIFTH'S LOFT - NIGHT",
+      "durationMs": 63120,
+      "startMs": 4148080,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 63120,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 263,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+            "name": "RAY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3A5P950KWZ0Z2NG19P9Q9YJ21N"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 47,
+      "sceneId": "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - NIGHT",
+      "durationMs": 5280,
+      "startMs": 4211200,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 5280,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 22,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 48,
+      "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+      "level": 0,
+      "label": "INT. FIFTH'S LOFT - NIGHT",
+      "durationMs": 120960,
+      "startMs": 4216480,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 120960,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S LOFT",
+        "timeOfDay": "NIGHT",
+        "wordCount": 504,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+            "name": "RAY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3A5P950KWZ0Z2NG19P9Q9YJ21N"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          },
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 49,
+      "sceneId": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+      "level": 0,
+      "label": "INT. EMERGENCY ROOM - NIGHT",
+      "durationMs": 27120,
+      "startMs": 4337440,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 27120,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "EMERGENCY ROOM",
+        "timeOfDay": "NIGHT",
+        "wordCount": 113,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZP3VAP56PKT5KHEJF",
+            "name": "ER DOCTOR",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0NJKWNWJXD0AV9769N6DYD0Z5M"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 50,
+      "sceneId": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+      "level": 0,
+      "label": "INT. DESMOND'S APARTMENT - DAY",
+      "durationMs": 63360,
+      "startMs": 4364560,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 63360,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 264,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ866M2GH9ZPWEMGET",
+            "name": "MARLON",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_1Z1MG5HCG6Q605JX2NNKKPRW59"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZQZ5FHMDKM2D888J7",
+            "name": "STEVEN",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_1M836Q5233825FAMKMZYVN1DCZ"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 51,
+      "sceneId": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+      "level": 0,
+      "label": "INT. SIDNEY'S APARTMENT - DAY",
+      "durationMs": 119520,
+      "startMs": 4427920,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 119520,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "SIDNEY'S APARTMENT",
+        "timeOfDay": "DAY",
+        "wordCount": 498,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 52,
+      "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+      "level": 0,
+      "label": "EXT. FIFTH'S CAR - DAY",
+      "durationMs": 278400,
+      "startMs": 4547440,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 278400,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "FIFTH'S CAR",
+        "timeOfDay": "DAY",
+        "wordCount": 1160,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+            "name": "FIFTH",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2X3B6MF673GXZN8CD72VZ64E1H"
+          },
+          {
+            "id": "character_01M4KD5YMZ2G3BY8C91XPE40CM",
+            "name": "MRS. PEACLE",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_4WCMA4AN4K9TERVN7009PCYS9T"
+          },
+          {
+            "id": "character_01M4KD5YMZ3XG182X8X8YA8VK3",
+            "name": "MR. PEACLE",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2Q9R3KB7025ASTGHY3KGWKNWBQ"
+          },
+          {
+            "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+            "name": "SIDNEY",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_0S5TNYTVHKBA3ZGKQ49K3N3V9S"
+          },
+          {
+            "id": "character_01M4KD5YMZBWG7SKCKQVVNJWYQ",
+            "name": "NACHO",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_5XNT80D7EEEZD7F3YBB8YW1A8M"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 53,
+      "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+      "level": 0,
+      "label": "INT. HOSPITAL - DAY",
+      "durationMs": 97920,
+      "startMs": 4825840,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 97920,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "HOSPITAL",
+        "timeOfDay": "DAY",
+        "wordCount": 408,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZETDVAP9EKT87437Y",
+            "name": "NURSE",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_2RVPNFF7ASJWWYES3C3C7JHZNP"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          },
+          {
+            "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+            "name": "MADISON",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_49RQZZQP23FX46EPZ15N9QD8HF"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 54,
+      "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+      "level": 0,
+      "label": "DESMOND'S CAR - DAY",
+      "durationMs": 94320,
+      "startMs": 4923760,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 94320,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S CAR",
+        "timeOfDay": "DAY",
+        "wordCount": 393,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 55,
+      "sceneId": "scene_01M4KD5YMZZ0SYRMCA56B5BHQP",
+      "level": 0,
+      "label": "INT. AIRPORT TERMINAL - DAY",
+      "durationMs": 28320,
+      "startMs": 5018080,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 28320,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "AIRPORT TERMINAL",
+        "timeOfDay": "DAY",
+        "wordCount": 118,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+            "name": "JETTA",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_3ADV2NP2WCE8XWEQ5YVFNKZ88N"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "scene",
+      "position": 56,
+      "sceneId": "scene_01M4KD5YMZS8Y99SK205YKZ1Y2",
+      "level": 0,
+      "label": "EXT. DESMOND'S CAR - DAY",
+      "durationMs": 23280,
+      "startMs": 5046400,
+      "events": [],
+      "timing": "estimate",
+      "estimateMs": 23280,
+      "sourceEvents": [],
+      "reads": [],
+      "audio": null,
+      "context": {
+        "location": "DESMOND'S CAR",
+        "timeOfDay": "DAY",
+        "wordCount": 97,
+        "characters": [
+          {
+            "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+            "name": "DESMOND",
+            "role": "speaking",
+            "portraitReferenceId": "visual_reference_27YS9RDZEN7BXPR3X490EGBZ1B"
+          },
+          {
+            "id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+            "name": "RAY",
+            "role": "present",
+            "portraitReferenceId": "visual_reference_3A5P950KWZ0Z2NG19P9Q9YJ21N"
+          }
+        ]
+      }
+    }
+  ],
+  "readyScenes": 13,
+  "refused": []
+}

@@ -1,0 +1,41 @@
+{
+  // Declaration-emit ONLY. Deliberately NOT named `tsconfig.json`: this repo is
+  // JavaScript + Svelte and nothing here is type-checked, so a root
+  // `tsconfig.json` would be picked up by editors and by any tool that walks
+  // upward looking for one (the catalog has none of its own) and would start
+  // reporting errors on code that is not written to satisfy them. `svelte2tsx`
+  // accepts the filename to search for, so the config that drives
+  // `scripts/build-types.mjs` stays invisible to everything else.
+  "compilerOptions": {
+    // The sources are plain `.js` + `.svelte`. `checkJs` stays off for the same
+    // reason as above — we are harvesting the types svelte2tsx infers from
+    // `$props()` defaults, not auditing the implementation.
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+
+    // `bundler` matches how every consumer actually resolves us: extensionless
+    // `.svelte` imports, package `exports` maps, no `.js` extension rewriting.
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "lib": ["esnext", "dom", "dom.iterable"],
+
+    // Nothing ambient should leak into the emitted declarations; svelte2tsx
+    // injects the Svelte shims it needs itself.
+    "types": [],
+    "skipLibCheck": true,
+
+    // Emit keeps `null` only under strict null checks: without it a prop typed
+    // by reference (`ComponentProps<typeof StatusBar>["result"]`) loses its `| null`.
+    "strictNullChecks": true,
+    // An optional property (`[x]`) means it may be absent, not that it may be `undefined`:
+    // without this, strict null checks emit `x?: T | undefined`, which consumers on exact
+    // optional property types refuse.
+    "exactOptionalPropertyTypes": true
+  },
+  // The committed output lives next to the sources, so without this the second
+  // run would feed its own `.d.ts` back in as input.
+  "exclude": ["**/*.d.ts"]
+}

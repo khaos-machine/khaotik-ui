@@ -1,0 +1,1868 @@
+{
+  "_provenance": "khaosd GET /api/dashboard/detail (.analysis, .graph_context) for the place with the most scenes, and /api/v1/locations/headings — BROKEN IN 4 PLACES — verbatim.",
+  "focus": {
+    "id": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+    "analysis": {
+      "_connections_decision": {
+        "cost": 9.45e-05,
+        "milliseconds": 424,
+        "model": "typesafe/jev-1.13-20260917",
+        "questions": 6
+      },
+      "_facts": {
+        "interior_exterior": {
+          "EXT": 1,
+          "INT": 9
+        },
+        "parts": [],
+        "scenes": [
+          {
+            "characters": [
+              "BUBBLE",
+              "DESMOND",
+              "JETTA"
+            ],
+            "label": "S1",
+            "number": 19,
+            "slugline": "EXT. DESMOND'S APARTMENT - NIGHT"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "JETTA"
+            ],
+            "label": "S2",
+            "number": 20,
+            "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "JETTA",
+              "JONESY"
+            ],
+            "label": "S3",
+            "number": 22,
+            "slugline": "INT. DESMOND'S APARTMENT - DAY"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "FIFTH",
+              "JETTA",
+              "MADISON"
+            ],
+            "label": "S4",
+            "number": 27,
+            "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "FIFTH",
+              "JETTA",
+              "MADISON"
+            ],
+            "label": "S5",
+            "number": 29,
+            "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "JETTA"
+            ],
+            "label": "S6",
+            "number": 32,
+            "slugline": "INT. DESMOND'S APARTMENT - DAY"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "JETTA",
+              "RAY'S GIRL"
+            ],
+            "label": "S7",
+            "number": 35,
+            "slugline": "INT. DESMOND'S APARTMENT - DAY"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "FIFTH",
+              "JETTA",
+              "SIDNEY"
+            ],
+            "label": "S8",
+            "number": 44,
+            "slugline": "DESMOND'S APARTMENT - NIGHT"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "JETTA"
+            ],
+            "label": "S9",
+            "number": 46,
+            "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+          },
+          {
+            "characters": [
+              "DESMOND",
+              "JETTA"
+            ],
+            "label": "S10",
+            "number": 48,
+            "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+          },
+          {
+            "characters": [
+              "JETTA",
+              "MARLON",
+              "STEVEN"
+            ],
+            "label": "S11",
+            "number": 51,
+            "slugline": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        ],
+        "spoken_of": [],
+        "time_of_day": {
+          "DAY": 4,
+          "NIGHT": 7
+        }
+      },
+      "_provenance": {
+        "fingerprint": "sha256:fe6fa86059f621a55bff300e9284a198279a298baf9fd1c31c5b0b74e4e527f6",
+        "input": {
+          "context_sha256": "sha256:7dd05ef4ab100b2a847d24b29a6c7d34c01d9cdb30ffdebc5adc0140fa3b8fa6",
+          "evidence_scenes": [
+            {
+              "fingerprint": "sha256:44d0ec34d8acfb8b27ccb6a92aeda2a5a4310a6d3b1d8d4a7bba594c7fbd9368",
+              "scene_id": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ"
+            },
+            {
+              "fingerprint": "sha256:2059f31d8de8cecdf995c86591b2234766c23d586f7b75f6a543c09275ff0892",
+              "scene_id": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5"
+            },
+            {
+              "fingerprint": "sha256:37eaaf0a1c65cfd0421346061fa6cf0816ccabba40f12ebe7efa1e6bd6bbd897",
+              "scene_id": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7"
+            },
+            {
+              "fingerprint": "sha256:a657a34f539bf7d27430ea7c41865602bb60dea37b2149392d08ae16073ac1a1",
+              "scene_id": "scene_01M4KD5YMZ12C574TT40SCMXTV"
+            },
+            {
+              "fingerprint": "sha256:d8cbe47b488a6e5bb12d9816e8ec58802d49cdc81f784432f0fb3d3c470b1eae",
+              "scene_id": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6"
+            },
+            {
+              "fingerprint": "sha256:8120ea03b50cbb2d948f66f3e2972218375fba1e4eb89eccb8dfb308e43f1130",
+              "scene_id": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF"
+            },
+            {
+              "fingerprint": "sha256:213edd9d194f801d9c147cc43f0611d4b5454c15a9dd4d20eb40dd064e21df65",
+              "scene_id": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C"
+            },
+            {
+              "fingerprint": "sha256:08ed4c2f3a052ba32f11af91c76a0de49c56cdbdcd6fade21450f50fbd944d4f",
+              "scene_id": "scene_01M4KD5YMZY2XWYT9MJKQANF0D"
+            },
+            {
+              "fingerprint": "sha256:c677040d7bb688b4793b93cfa5f6af202e1cbc6870218fe01728b19549a871b5",
+              "scene_id": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V"
+            },
+            {
+              "fingerprint": "sha256:22174eb072252159b9ec7f9e446e5c29e5dcc4eb9a9b9e10600d5adee3ba212b",
+              "scene_id": "scene_01M4KD5YMZWVYF23NR5Y76YK43"
+            },
+            {
+              "fingerprint": "sha256:81f5426c005fe27b3201e4cb5f775730341a6be2d018b2bec448df4bb68704e5",
+              "scene_id": "scene_01M4KD5YMZBF60NTJBK4EHZJA0"
+            }
+          ],
+          "prompt": {
+            "hash": "sha256:7823ceb839ce60f4cd3a7a8a6317a340d30c678ede6e0ed43ea35eed717cc807",
+            "id": "location-story",
+            "version": "1.0.0"
+          }
+        },
+        "made_by": {
+          "model": "deepseek/deepseek-v4.1-flash",
+          "producer_version": "khaos-tools dev",
+          "provider": "openrouter"
+        },
+        "prompt_bytes": {
+          "system": 149,
+          "user": 37962
+        }
+      },
+      "_response_review": {
+        "mentions": [
+          "W10 L1: Review bound this wording to JASON'S APARTMENT; in this scene, set at DESMOND'S APARTMENT, it reads as this place",
+          "W10 L2: Review bound this wording to JASON'S APARTMENT; in this scene, set at DESMOND'S APARTMENT, it reads as this place",
+          "W18 L1: Review bound this wording to JASON'S APARTMENT; in this scene, set at DESMOND'S APARTMENT, it reads as part of this place"
+        ],
+        "setting": [],
+        "story": []
+      },
+      "_scenes": {
+        "S1": {
+          "id": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+          "number": 19,
+          "slugline": "EXT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S10": {
+          "id": "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+          "number": 48,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S11": {
+          "id": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+          "number": 51,
+          "slugline": "INT. DESMOND'S APARTMENT - DAY"
+        },
+        "S2": {
+          "id": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+          "number": 20,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S3": {
+          "id": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+          "number": 22,
+          "slugline": "INT. DESMOND'S APARTMENT - DAY"
+        },
+        "S4": {
+          "id": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "number": 27,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S5": {
+          "id": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "number": 29,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        },
+        "S6": {
+          "id": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF",
+          "number": 32,
+          "slugline": "INT. DESMOND'S APARTMENT - DAY"
+        },
+        "S7": {
+          "id": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+          "number": 35,
+          "slugline": "INT. DESMOND'S APARTMENT - DAY"
+        },
+        "S8": {
+          "id": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+          "number": 44,
+          "slugline": "DESMOND'S APARTMENT - NIGHT"
+        },
+        "S9": {
+          "id": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+          "number": 46,
+          "slugline": "INT. DESMOND'S APARTMENT - NIGHT"
+        }
+      },
+      "connections": [
+        {
+          "a": "O10",
+          "a_name": "FIFTH'S LOFT",
+          "b": "O23",
+          "b_name": "SIDNEY'S APARTMENT",
+          "decided_by": "decision",
+          "evidence": [
+            {
+              "scene": "S8",
+              "words": "Sidney's my downstairs neighbor."
+            }
+          ],
+          "probability": 0.96,
+          "relation": "above"
+        }
+      ],
+      "mentions": {
+        "decision": {
+          "cost": 0.000433272,
+          "milliseconds": 351,
+          "model": "typesafe/jev-1.13-20260917",
+          "questions": 30
+        },
+        "wordings": [
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S1",
+                "text": "Des and Jetta get out of the car. As they approach the stairs to the Brownstone they see three figures waiting for them."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 0.89,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W1",
+            "why": "The stairs to the brownstone are the entrance steps belonging to Desmond's apartment building.",
+            "wording": "the stairs to the brownstone"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S1",
+                "text": "Des walks enters the brownstone. Jetta waits outside."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 0.69,
+                "reading": "this_place",
+                "which": ""
+              }
+            ],
+            "record": "W2",
+            "why": "The brownstone is the building that contains Desmond's apartment.",
+            "wording": "the brownstone"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "Des walks into the kitchen and grabs a couple of glasses and a bottle of Jack Daniels. He walks into the living room."
+              },
+              {
+                "label": "L2",
+                "scene": "S2",
+                "text": "He walks back down the long hallway to the door. Minutes later Desmond and Jetta come through the door. Des throws down the roofing ax on the table. It's stained with blood. Jetta goes into the living room."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1",
+                  "L2"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W3",
+            "why": "The living room is a room inside Desmond's apartment.",
+            "wording": "the living room"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "Des walks into his apartment. He turns the lights on in his kitchen. He reaches behind his back and pulls out a .45 Caliber handgun. He places it on the kitchen counter."
+              },
+              {
+                "label": "L2",
+                "scene": "S2",
+                "text": "Des walks into the kitchen and grabs a couple of glasses and a bottle of Jack Daniels. He walks into the living room."
+              },
+              {
+                "label": "L3",
+                "scene": "S3",
+                "text": "Jetta goes into the kitchen to get something to drink"
+              },
+              {
+                "label": "L4",
+                "scene": "S7",
+                "text": "Des opens the door and she walks through. He turns and goes over to the kitchen to prepare himself some cereal."
+              },
+              {
+                "label": "L5",
+                "scene": "S7",
+                "text": "Des gets up with the now empty cereal bowl and carries it to the kitchen."
+              },
+              {
+                "label": "L6",
+                "scene": "S8",
+                "text": "Back in the kitchen Sidney is adding spices to the food and her and Jetta are joking around."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1",
+                  "L2",
+                  "L3",
+                  "L4",
+                  "L5",
+                  "L6"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W4",
+            "why": "The kitchen is a room inside Desmond's apartment.",
+            "wording": "the kitchen"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "He walks back down the long hallway to the door. Minutes later Desmond and Jetta come through the door. Des throws down the roofing ax on the table. It's stained with blood. Jetta goes into the living room."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W5",
+            "why": "The long hallway is a passage inside Desmond's apartment.",
+            "wording": "the long hallway"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "Jetta walks slowly into the bathroom to take a bath."
+              },
+              {
+                "label": "L2",
+                "scene": "S4",
+                "text": "Des gets up and walks towards the bathroom."
+              },
+              {
+                "label": "L3",
+                "scene": "S4",
+                "text": "Des walks into the bathroom."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1",
+                  "L2",
+                  "L3"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W6",
+            "why": "The bathroom is a room inside Desmond's apartment.",
+            "wording": "the bathroom"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "Des walks into his apartment. He turns the lights on in his kitchen. He reaches behind his back and pulls out a .45 Caliber handgun. He places it on the kitchen counter."
+              },
+              {
+                "label": "L2",
+                "scene": "S4",
+                "text": "Des buzzes him in. Then opens the door to his apartment. Moments later Fifth and Madison come through the door animated and loud."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1",
+                  "L2"
+                ],
+                "probability": 0.99,
+                "reading": "this_place",
+                "which": ""
+              }
+            ],
+            "record": "W7",
+            "why": "His apartment is another way of saying Desmond's apartment.",
+            "wording": "his apartment"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "Des walks into his apartment. He turns the lights on in his kitchen. He reaches behind his back and pulls out a .45 Caliber handgun. He places it on the kitchen counter."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W8",
+            "why": "His kitchen is the kitchen inside Desmond's apartment.",
+            "wording": "his kitchen"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S2",
+                "text": "Desmond stumbles to the linen closet and grabs a blanket."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 0.97,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W9",
+            "why": "The linen closet is a storage area inside Desmond's apartment.",
+            "wording": "the linen closet"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "review_bound": "JASON'S APARTMENT",
+                "scene": "S3",
+                "text": "From the window Jetta watches Desmond drive away. She walks around the apartment looking at various things. She wanders into his bedroom which is very neat. She walks over to his dresser."
+              },
+              {
+                "label": "L2",
+                "review_bound": "JASON'S APARTMENT",
+                "scene": "S8",
+                "text": "Des and Jetta walk into the apartment with groceries. Jetta starts to put the groceries away as Des checks the messages on the answering machine."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1",
+                  "L2"
+                ],
+                "probability": 0.99,
+                "reading": "this_place",
+                "which": ""
+              }
+            ],
+            "record": "W10",
+            "why": "The apartment is another way of saying Desmond's apartment.",
+            "wording": "the apartment"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S3",
+                "text": "Des grabs his jacket and rushes out the door. As he walks down the steps of his Brownstone blood stains are visible all over the steps. Desmond spots his neighbor Jonesy hosing down the sidewalk."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "analysis",
+                "lines": [
+                  "L1"
+                ],
+                "reading": "elsewhere",
+                "which": "the sidewalk"
+              }
+            ],
+            "record": "W11",
+            "why": "The sidewalk is an outdoor public walkway outside the building, not one of the listed places.",
+            "wording": "the sidewalk"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S3",
+                "text": "From the window Jetta watches Desmond drive away. She walks around the apartment looking at various things. She wanders into his bedroom which is very neat. She walks over to his dresser."
+              },
+              {
+                "label": "L2",
+                "scene": "S7",
+                "text": "Des walks out of his bedroom in his boxers. Trailing behind him is the fully dressed young women. They stop at the door and share a short kiss."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1",
+                  "L2"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W12",
+            "why": "His bedroom is a room inside Desmond's apartment.",
+            "wording": "his bedroom"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S3",
+                "text": "Des grabs his jacket and rushes out the door. As he walks down the steps of his Brownstone blood stains are visible all over the steps. Desmond spots his neighbor Jonesy hosing down the sidewalk."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 0.77,
+                "reading": "this_place",
+                "which": ""
+              }
+            ],
+            "record": "W13",
+            "why": "His brownstone is the building that contains Desmond's apartment.",
+            "wording": "his brownstone"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S3",
+                "text": "Jonesy nods yes and Desmond crosses the street to hop in his car. There's no ticket. He drives off."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "analysis",
+                "lines": [
+                  "L1"
+                ],
+                "reading": "elsewhere",
+                "which": "the street"
+              }
+            ],
+            "record": "W14",
+            "why": "The street is an outdoor roadway outside the building, not one of the listed places.",
+            "wording": "the street"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S4",
+                "text": "Des is sitting in his living room. He's deep in thought. A bottle of Jack Daniels keeps his company. He puts his hands over his eyes. His thoughts are painful."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W15",
+            "why": "His living room is the living room inside Desmond's apartment.",
+            "wording": "his living room"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S5",
+                "text": "A four-way shouting match ensues with so much cursing and shouting that hardly a word can be understood. This argument transitions into Desmond's car where it maintains it's intensity."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "analysis",
+                "lines": [
+                  "L1"
+                ],
+                "name": "DESMOND'S CAR",
+                "reading": "other_place",
+                "which": "O7"
+              }
+            ],
+            "record": "W16",
+            "why": "Desmond's car is listed as one of the story's other places.",
+            "wording": "desmond's car"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S6",
+                "text": "The sun beams through the open window in Desmond's bedroom. He lays comfortably asleep holding in his arms the young girl that was Ray's escort last night."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W17",
+            "why": "Desmond's bedroom is a room inside Desmond's apartment.",
+            "wording": "desmond's bedroom"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "review_bound": "JASON'S APARTMENT",
+                "scene": "S8",
+                "text": "Des walks into the bedroom. Fifth follows him. In the bedroom Des hands Fifth an envelope filled with bills."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "both",
+                "lines": [
+                  "L1"
+                ],
+                "probability": 1,
+                "reading": "part_of_this_place",
+                "which": ""
+              }
+            ],
+            "record": "W18",
+            "why": "The bedroom is a room inside Desmond's apartment.",
+            "wording": "the bedroom"
+          },
+          {
+            "lines": [
+              {
+                "label": "L1",
+                "scene": "S11",
+                "text": "Jetta slowly rises from the bed. The phone is on the floor. She answers it."
+              }
+            ],
+            "readings": [
+              {
+                "decided_by": "analysis",
+                "lines": [
+                  "L1"
+                ],
+                "reading": "not_a_place",
+                "which": ""
+              }
+            ],
+            "record": "W19",
+            "why": "The floor is a surface, not a place someone can be in or go to.",
+            "wording": "the floor"
+          }
+        ]
+      },
+      "setting": {
+        "atmosphere": "The apartment is a private, intimate refuge that can turn tense and secretive, with quiet domestic moments undercut by violence and unease.",
+        "changes": [],
+        "stated": [
+          {
+            "detail": "a brownstone",
+            "scenes": [
+              "S1",
+              "S3"
+            ]
+          },
+          {
+            "detail": "stairs to the brownstone",
+            "scenes": [
+              "S1"
+            ]
+          },
+          {
+            "detail": "steps of the brownstone",
+            "scenes": [
+              "S3"
+            ]
+          },
+          {
+            "detail": "a kitchen",
+            "scenes": [
+              "S2",
+              "S3",
+              "S7",
+              "S8"
+            ]
+          },
+          {
+            "detail": "kitchen lights",
+            "scenes": [
+              "S2"
+            ]
+          },
+          {
+            "detail": "a kitchen counter",
+            "scenes": [
+              "S2"
+            ]
+          },
+          {
+            "detail": "a living room",
+            "scenes": [
+              "S2",
+              "S4"
+            ]
+          },
+          {
+            "detail": "a long hallway",
+            "scenes": [
+              "S2"
+            ]
+          },
+          {
+            "detail": "a bathroom",
+            "scenes": [
+              "S2",
+              "S4"
+            ]
+          },
+          {
+            "detail": "a linen closet",
+            "scenes": [
+              "S2"
+            ]
+          },
+          {
+            "detail": "a bedroom",
+            "scenes": [
+              "S3",
+              "S6",
+              "S7",
+              "S8"
+            ]
+          },
+          {
+            "detail": "a window",
+            "scenes": [
+              "S3",
+              "S6"
+            ]
+          },
+          {
+            "detail": "a dresser",
+            "scenes": [
+              "S3"
+            ]
+          },
+          {
+            "detail": "a sofa",
+            "scenes": [
+              "S4",
+              "S9",
+              "S10"
+            ]
+          },
+          {
+            "detail": "a desk",
+            "scenes": [
+              "S4"
+            ]
+          },
+          {
+            "detail": "a bed",
+            "scenes": [
+              "S11"
+            ]
+          }
+        ],
+        "suggested": [
+          {
+            "detail": "The apartment feels like a lived-in, private space where domestic routines and personal belongings coexist with hidden danger.",
+            "rests_on": "The script shows a kitchen, living room, bedroom, bathroom, sofa, desk, and dresser, and scenes of eating cereal, listening to music, and holding each other on the sofa."
+          },
+          {
+            "detail": "The brownstone exterior carries a sense of unease and concealed violence.",
+            "rests_on": "The script shows blood stains visible all over the steps of the brownstone and a neighbor hosing down the sidewalk."
+          }
+        ]
+      },
+      "story": {
+        "change": {
+          "kind": "none",
+          "phases": [],
+          "scenes": [],
+          "what": ""
+        },
+        "events": [
+          {
+            "scene": "S1",
+            "what": "Bubble demands five grand for Pop's debt and points a gun at Jetta outside the apartment; Desmond agrees to get the money and enters the brownstone."
+          },
+          {
+            "scene": "S2",
+            "what": "Desmond returns with a .45 and a roofing ax, then he and Jetta come back with the blood-stained ax; he pours whisky and puts off their talk until morning."
+          },
+          {
+            "scene": "S4",
+            "what": "Desmond admits to Jetta that he stole a car and has done too much to deserve happiness; Fifth and Madison arrive and Madison invites him out."
+          },
+          {
+            "scene": "S7",
+            "what": "Desmond tells Jetta he wants her to meet Marcos to help find her son, and says he will kill Pop's killer if he finds him."
+          },
+          {
+            "scene": "S11",
+            "what": "Jetta answers the phone and learns from Steven that she can see Marlon, then speaks with Marlon and cries."
+          }
+        ],
+        "role": {
+          "function": "The apartment is the story's home base for Desmond and Jetta's relationship, their private confrontations, and the respites between outside events.",
+          "weight": "main"
+        },
+        "summary": "Desmond's apartment is the home base where Desmond and Jetta live through the story's turns, from the night Bubble demands payment outside to Jetta's call about her son. It serves as a private space for their arguments, card games, confessions, and brief respites between violent and criminal events elsewhere."
+      }
+    },
+    "graphContext": {
+      "characters": [
+        {
+          "frequency": 9,
+          "id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+          "is_speaking": true,
+          "name": "DESMOND",
+          "scenes": [
+            "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+            "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+            "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+            "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+            "scene_01M4KD5YMZ12C574TT40SCMXTV",
+            "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+            "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+            "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C"
+          ]
+        },
+        {
+          "frequency": 9,
+          "id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+          "is_speaking": true,
+          "name": "JETTA",
+          "scenes": [
+            "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+            "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+            "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+            "scene_01M4KD5YMZ12C574TT40SCMXTV",
+            "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+            "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+            "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+            "scene_01M4KD5YMZBF60NTJBK4EHZJA0"
+          ]
+        },
+        {
+          "frequency": 3,
+          "id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+          "is_speaking": true,
+          "name": "FIFTH",
+          "scenes": [
+            "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "scene_01M4KD5YMZ12C574TT40SCMXTV",
+            "scene_01M4KD5YMZY2XWYT9MJKQANF0D"
+          ]
+        },
+        {
+          "frequency": 2,
+          "id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+          "is_speaking": true,
+          "name": "MADISON",
+          "scenes": [
+            "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+            "scene_01M4KD5YMZ12C574TT40SCMXTV"
+          ]
+        },
+        {
+          "frequency": 1,
+          "id": "character_01M4KD5YMZSKZVYRP29G8E84M1",
+          "is_speaking": true,
+          "name": "BUBBLE",
+          "scenes": [
+            "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ"
+          ]
+        },
+        {
+          "frequency": 1,
+          "id": "character_01M4KD5YMZ866M2GH9ZPWEMGET",
+          "is_speaking": true,
+          "name": "MARLON",
+          "scenes": [
+            "scene_01M4KD5YMZBF60NTJBK4EHZJA0"
+          ]
+        },
+        {
+          "frequency": 1,
+          "id": "character_01M4KD5YMZ3PDN22B9MF5SWW78",
+          "is_speaking": true,
+          "name": "RAY'S GIRL",
+          "scenes": [
+            "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C"
+          ]
+        },
+        {
+          "frequency": 1,
+          "id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+          "is_speaking": true,
+          "name": "SIDNEY",
+          "scenes": [
+            "scene_01M4KD5YMZY2XWYT9MJKQANF0D"
+          ]
+        },
+        {
+          "frequency": 1,
+          "id": "character_01M4KD5YMZQZ5FHMDKM2D888J7",
+          "is_speaking": true,
+          "name": "STEVEN",
+          "scenes": [
+            "scene_01M4KD5YMZBF60NTJBK4EHZJA0"
+          ]
+        }
+      ],
+      "id": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+      "name": "DESMOND'S APARTMENT"
+    }
+  },
+  "headings": {
+    "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+    "occurrences": [
+      {
+        "locationId": "location_01M4KD5YMZ4BXAEAN41Z6A7BAT",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+          "span": {
+            "lineNumber": 5,
+            "lineText": "INT. INDUSTRIAL ARTIST SPACE - DAY",
+            "startByte": 0,
+            "endByte": 34,
+            "sourcePhrase": "INT. INDUSTRIAL ARTIST SPACE - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ2TP4NM67ZYH5S5RX",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+          "span": {
+            "lineNumber": 25,
+            "lineText": "INT. JASON'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 28,
+            "sourcePhrase": "INT. JASON'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZX5KEN3H8WCDH0SE5",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+          "span": {
+            "lineNumber": 48,
+            "lineText": "INT. FUNERAL HOME - DAY",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "INT. FUNERAL HOME - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZBV4T7VCE39WB7XPT",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+          "span": {
+            "lineNumber": 65,
+            "lineText": "INT. WOMENS PENITENTIARY - DAY",
+            "startByte": 0,
+            "endByte": 30,
+            "sourcePhrase": "INT. WOMENS PENITENTIARY - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ3FEEW2EQ71YFV4RG",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZRJZFYN5T301BH19J",
+          "span": {
+            "lineNumber": 96,
+            "lineText": "EXT. SPEEDING CAR - DAY",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "EXT. SPEEDING CAR - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+          "span": {
+            "lineNumber": 119,
+            "lineText": "INT. DESMOND'S CAR - DAY",
+            "startByte": 0,
+            "endByte": 24,
+            "sourcePhrase": "INT. DESMOND'S CAR - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZR36AY85WJPJV6TSQ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+          "span": {
+            "lineNumber": 233,
+            "lineText": "INT. CLASSROOM - DAY",
+            "startByte": 0,
+            "endByte": 20,
+            "sourcePhrase": "INT. CLASSROOM - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZAYPQA7NPQPW184M3",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+          "span": {
+            "lineNumber": 253,
+            "lineText": "INT. JETTA'S HOUSE - NIGHT",
+            "startByte": 0,
+            "endByte": 26,
+            "sourcePhrase": "INT. JETTA'S HOUSE - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZVYHWEFZRS9V61E64",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+          "span": {
+            "lineNumber": 259,
+            "lineText": "EXT. AIRPORT - NIGHT",
+            "startByte": 0,
+            "endByte": 20,
+            "sourcePhrase": "EXT. AIRPORT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ02TKBT18A4JK4VD4",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+          "span": {
+            "lineNumber": 394,
+            "lineText": "INT. MENTAL HOSPITAL - DAY",
+            "startByte": 0,
+            "endByte": 26,
+            "sourcePhrase": "INT. MENTAL HOSPITAL - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ5158WWT85EPQ913D",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZXBMH6NTPMBH6TQ94",
+          "span": {
+            "lineNumber": 519,
+            "lineText": "EXT. ROOFTOP - DAY",
+            "startByte": 0,
+            "endByte": 18,
+            "sourcePhrase": "EXT. ROOFTOP - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+          "span": {
+            "lineNumber": 529,
+            "lineText": "INT. DESMOND'S CAR - NIGHT",
+            "startByte": 0,
+            "endByte": 26,
+            "sourcePhrase": "INT. DESMOND'S CAR - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZXZMQG935FAW524H8",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+          "span": {
+            "lineNumber": 571,
+            "lineText": "INT. HOSPITAL - DAY",
+            "startByte": 0,
+            "endByte": 19,
+            "sourcePhrase": "INT. HOSPITAL - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ5A3T9DV7S3QX5QJK",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+          "span": {
+            "lineNumber": 600,
+            "lineText": "INT. HOSPITAL WAITING ROOM - NIGHT",
+            "startByte": 0,
+            "endByte": 34,
+            "sourcePhrase": "INT. HOSPITAL WAITING ROOM - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZXZMQG935FAW524H8",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+          "span": {
+            "lineNumber": 667,
+            "lineText": "EXT. HOSPITAL - NIGHT",
+            "startByte": 0,
+            "endByte": 21,
+            "sourcePhrase": "EXT. HOSPITAL - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+          "span": {
+            "lineNumber": 680,
+            "lineText": "INT. DESMOND'S CAR - NIGHT",
+            "startByte": 0,
+            "endByte": 26,
+            "sourcePhrase": "INT. DESMOND'S CAR - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZNMDV9RJ8CJ73WEFZ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+          "span": {
+            "lineNumber": 728,
+            "lineText": "INT. FRENCH CAFE - NIGHT",
+            "startByte": 0,
+            "endByte": 24,
+            "sourcePhrase": "INT. FRENCH CAFE - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+          "span": {
+            "lineNumber": 777,
+            "lineText": "EXT. FIFTH'S LOFT - NIGHT",
+            "startByte": 0,
+            "endByte": 25,
+            "sourcePhrase": "EXT. FIFTH'S LOFT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+          "span": {
+            "lineNumber": 786,
+            "lineText": "EXT. DESMOND'S APARTMENT - NIGHT",
+            "startByte": 0,
+            "endByte": 32,
+            "sourcePhrase": "EXT. DESMOND'S APARTMENT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+          "span": {
+            "lineNumber": 852,
+            "lineText": "INT. DESMOND'S APARTMENT - NIGHT",
+            "startByte": 0,
+            "endByte": 32,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+          "span": {
+            "lineNumber": 901,
+            "lineText": "INT/EXT. FIFTH'S LOFT - DAY",
+            "startByte": 0,
+            "endByte": 27,
+            "sourcePhrase": "INT/EXT. FIFTH'S LOFT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+          "span": {
+            "lineNumber": 1084,
+            "lineText": "INT. DESMOND'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 30,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+          "span": {
+            "lineNumber": 1143,
+            "lineText": "INT. FIFTH'S LOFT - DAY",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "INT. FIFTH'S LOFT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZZ75F57V3PK1WT8CT",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+          "span": {
+            "lineNumber": 1204,
+            "lineText": "EXT. CITY STREET - DAY",
+            "startByte": 0,
+            "endByte": 22,
+            "sourcePhrase": "EXT. CITY STREET - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ5WTCJQFQ2ZRH3CKC",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZQS71YP589WR5Q689",
+          "span": {
+            "lineNumber": 1228,
+            "lineText": "EXT. HELL'S KITCHEN - DAY",
+            "startByte": 0,
+            "endByte": 25,
+            "sourcePhrase": "EXT. HELL'S KITCHEN - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZR5P8Q9N18ZAJ0QB0",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+          "span": {
+            "lineNumber": 1360,
+            "lineText": "INT. COFFEE SHOP - DAY",
+            "startByte": 0,
+            "endByte": 22,
+            "sourcePhrase": "INT. COFFEE SHOP - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+          "span": {
+            "lineNumber": 1476,
+            "lineText": "INT. DESMOND'S APARTMENT - NIGHT",
+            "startByte": 0,
+            "endByte": 32,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ3FEEW2EQ71YFV4RG",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+          "span": {
+            "lineNumber": 1741,
+            "lineText": "INT. SPEEDING CAR - DAY",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "INT. SPEEDING CAR - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+          "span": {
+            "lineNumber": 1797,
+            "lineText": "INT. DESMOND'S APARTMENT - NIGHT",
+            "startByte": 0,
+            "endByte": 32,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+          "span": {
+            "lineNumber": 1931,
+            "lineText": "INT. DESMOND'S CAR - NIGHT",
+            "startByte": 0,
+            "endByte": 26,
+            "sourcePhrase": "INT. DESMOND'S CAR - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZNANB00W6S5JDSK3Q",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+          "span": {
+            "lineNumber": 1993,
+            "lineText": "INT. NIGHT CLUB - NIGHT",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "INT. NIGHT CLUB - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF",
+          "span": {
+            "lineNumber": 2238,
+            "lineText": "INT. DESMOND'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 30,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+          "span": {
+            "lineNumber": 2246,
+            "lineText": "INT. FIFTH'S LOFT - DAY",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "INT. FIFTH'S LOFT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+          "span": {
+            "lineNumber": 2262,
+            "lineText": "EXT/INT. SIDNEY'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 33,
+            "sourcePhrase": "EXT/INT. SIDNEY'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+          "span": {
+            "lineNumber": 2292,
+            "lineText": "INT. DESMOND'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 30,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+          "span": {
+            "lineNumber": 2487,
+            "lineText": "INT. SIDNEY'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 29,
+            "sourcePhrase": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+          "span": {
+            "lineNumber": 2537,
+            "lineText": "INT. FIFTH'S LOFT - DAY",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "INT. FIFTH'S LOFT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+          "span": {
+            "lineNumber": 2560,
+            "lineText": "INT. SIDNEY'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 29,
+            "sourcePhrase": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+          "span": {
+            "lineNumber": 2601,
+            "lineText": "INT. FIFTH'S LOFT - DAY",
+            "startByte": 0,
+            "endByte": 23,
+            "sourcePhrase": "INT. FIFTH'S LOFT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+          "span": {
+            "lineNumber": 2634,
+            "lineText": "INT. SIDNEY'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 29,
+            "sourcePhrase": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZE7MPW8FN3038B9E1",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+          "span": {
+            "lineNumber": 2680,
+            "lineText": "EXT. NYC STREETS - DAY",
+            "startByte": 0,
+            "endByte": 22,
+            "sourcePhrase": "EXT. NYC STREETS - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+          "span": {
+            "lineNumber": 2835,
+            "lineText": "INT. SIDNEY'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 29,
+            "sourcePhrase": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZZX3QQZSH750Q9P0R",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZETF6BJR425QMY5TB",
+          "span": {
+            "lineNumber": 2926,
+            "lineText": "EXT. STREETS - DAY",
+            "startByte": 0,
+            "endByte": 18,
+            "sourcePhrase": "EXT. STREETS - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+          "span": {
+            "lineNumber": 2932,
+            "lineText": "DESMOND'S APARTMENT - NIGHT",
+            "startByte": 0,
+            "endByte": 27,
+            "sourcePhrase": "DESMOND'S APARTMENT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+          "span": {
+            "lineNumber": 3177,
+            "lineText": "INT. FIFTH'S LOFT - NIGHT",
+            "startByte": 0,
+            "endByte": 25,
+            "sourcePhrase": "INT. FIFTH'S LOFT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+          "span": {
+            "lineNumber": 3293,
+            "lineText": "INT. DESMOND'S APARTMENT - NIGHT",
+            "startByte": 0,
+            "endByte": 32,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+          "span": {
+            "lineNumber": 3398,
+            "lineText": "INT. FIFTH'S LOFT - NIGHT",
+            "startByte": 0,
+            "endByte": 25,
+            "sourcePhrase": "INT. FIFTH'S LOFT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+          "span": {
+            "lineNumber": 3475,
+            "lineText": "INT. DESMOND'S APARTMENT - NIGHT",
+            "startByte": 0,
+            "endByte": 32,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+          "span": {
+            "lineNumber": 3484,
+            "lineText": "INT. FIFTH'S LOFT - NIGHT",
+            "startByte": 0,
+            "endByte": 25,
+            "sourcePhrase": "INT. FIFTH'S LOFT - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZKZ9PDHZVN3BP5WZB",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+          "span": {
+            "lineNumber": 3575,
+            "lineText": "INT. EMERGENCY ROOM - NIGHT",
+            "startByte": 0,
+            "endByte": 27,
+            "sourcePhrase": "INT. EMERGENCY ROOM - NIGHT"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+          "span": {
+            "lineNumber": 3597,
+            "lineText": "INT. DESMOND'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 30,
+            "sourcePhrase": "INT. DESMOND'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+          "span": {
+            "lineNumber": 3673,
+            "lineText": "INT. SIDNEY'S APARTMENT - DAY",
+            "startByte": 0,
+            "endByte": 29,
+            "sourcePhrase": "INT. SIDNEY'S APARTMENT - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ9SPV5ZQ4VF78CPXJ",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+          "span": {
+            "lineNumber": 3807,
+            "lineText": "EXT. FIFTH'S CAR - DAY",
+            "startByte": 0,
+            "endByte": 22,
+            "sourcePhrase": "EXT. FIFTH'S CAR - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZXZMQG935FAW524H8",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+          "span": {
+            "lineNumber": 4032,
+            "lineText": "INT. HOSPITAL - DAY",
+            "startByte": 0,
+            "endByte": 19,
+            "sourcePhrase": "INT. HOSPITAL - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+          "span": {
+            "lineNumber": 4134,
+            "lineText": "DESMOND'S CAR - DAY",
+            "startByte": 0,
+            "endByte": 19,
+            "sourcePhrase": "DESMOND'S CAR - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZ4CZG2K434PPQBYSG",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZZ0SYRMCA56B5BHQP",
+          "span": {
+            "lineNumber": 4237,
+            "lineText": "INT. AIRPORT TERMINAL - DAY",
+            "startByte": 0,
+            "endByte": 27,
+            "sourcePhrase": "INT. AIRPORT TERMINAL - DAY"
+          }
+        }
+      },
+      {
+        "locationId": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+        "sourceHash": "sha256:9945875ea4d6e90fee50fe56025e8dfe3c421dd47d6ee33a218ec25404e6fc64",
+        "evidence": {
+          "sceneId": "scene_01M4KD5YMZS8Y99SK205YKZ1Y2",
+          "span": {
+            "lineNumber": 4260,
+            "lineText": "EXT. DESMOND'S CAR - DAY",
+            "startByte": 0,
+            "endByte": 24,
+            "sourcePhrase": "EXT. DESMOND'S CAR - DAY"
+          }
+        }
+      }
+    ],
+    "decisions": []
+  }
+}

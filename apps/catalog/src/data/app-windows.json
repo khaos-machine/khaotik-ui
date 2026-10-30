@@ -1,0 +1,176 @@
+{
+  "_provenance": "khaosd GET /api/v1/models (decoded as Khaos App decodes it), and this project's kspd-events and git/status answers — BROKEN IN 4 PLACES.",
+  "models": [
+    {
+      "id": "qwen3-tts-voicedesign",
+      "name": "Qwen3-TTS 1.7B VoiceDesign (MLX, 8-bit)",
+      "kind": "speech",
+      "service": "synth-speech",
+      "enables": "Designed voices",
+      "repo": "mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-8bit",
+      "revision": "f90d617701d9f7f4ca499291e0b57f2b3c2fd2ee",
+      "installed": true,
+      "sizeBytes": 3080140867,
+      "location": "/Users/k/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-VoiceDesign-8bit/snapshots/f90d617701d9f7f4ca499291e0b57f2b3c2fd2ee"
+    },
+    {
+      "id": "qwen3-tts-base",
+      "name": "Qwen3-TTS 1.7B Base (MLX, 8-bit)",
+      "kind": "speech",
+      "service": "synth-speech",
+      "enables": "Cloned voices",
+      "repo": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+      "revision": "e7dd0585652209fa0d7783659aad4e8a324de11c",
+      "installed": true,
+      "sizeBytes": 3104158788,
+      "location": "/Users/k/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-Base-8bit/snapshots/e7dd0585652209fa0d7783659aad4e8a324de11c"
+    },
+    {
+      "id": "qwen3-tts-base-fast",
+      "name": "Qwen3-TTS 0.6B Base (MLX, 8-bit)",
+      "kind": "speech",
+      "service": "synth-speech",
+      "enables": "Faster cloned voices (clone_model: fast)",
+      "repo": "mlx-community/Qwen3-TTS-12Hz-0.6B-Base-8bit",
+      "revision": "50f45ef0047cde7e84c2ef04326acb8ada2436a7",
+      "installed": true,
+      "sizeBytes": 1991299138,
+      "location": "/Users/k/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-0.6B-Base-8bit/snapshots/50f45ef0047cde7e84c2ef04326acb8ada2436a7"
+    },
+    {
+      "id": "qwen3-tts-customvoice",
+      "name": "Qwen3-TTS 1.7B CustomVoice (MLX, 8-bit)",
+      "kind": "speech",
+      "service": "synth-speech",
+      "enables": "Preset voices",
+      "repo": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-8bit",
+      "revision": "41d3337e8b7f2843a75841595fc14e4b9a7a4b96",
+      "installed": true,
+      "sizeBytes": 3080141538,
+      "location": "/Users/k/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-CustomVoice-8bit/snapshots/41d3337e8b7f2843a75841595fc14e4b9a7a4b96"
+    },
+    {
+      "id": "qwen3-tts-emotion-tags",
+      "name": "Qwen3-TTS Emotion Tags",
+      "kind": "speech",
+      "service": "synth-speech",
+      "enables": "Emotion tags on preset voices",
+      "repo": "SpragAI/qwen3-tts-emotion-tags",
+      "revision": "879b35395446f27cbcec2de0a523bcfa87161b76",
+      "installed": true,
+      "sizeBytes": 4523160708,
+      "location": "/Users/k/.cache/huggingface/hub/models--SpragAI--qwen3-tts-emotion-tags/snapshots/879b35395446f27cbcec2de0a523bcfa87161b76"
+    },
+    {
+      "id": "kitten-tts-micro",
+      "name": "Kitten TTS micro 0.8",
+      "kind": "speech",
+      "service": "synth-kitten",
+      "enables": "Eight built-in English voices",
+      "repo": "KittenML/kitten-tts-micro-0.8",
+      "revision": "1ccf72b2c2048fd17efac7de2fab32d10e225084",
+      "installed": true,
+      "sizeBytes": 44664345,
+      "location": "/Users/k/.cache/huggingface/hub/models--KittenML--kitten-tts-micro-0.8/snapshots/1ccf72b2c2048fd17efac7de2fab32d10e225084"
+    },
+    {
+      "id": "pilot-tts",
+      "name": "PilotTTS",
+      "kind": "speech",
+      "service": "synth-pilot",
+      "enables": "Expressive cloned voices (with w2v-BERT 2.0)",
+      "repo": "AmapVoice/PilotTTS",
+      "revision": "95f37771c51baa51b77ba6279f173de74a60d163",
+      "installed": true,
+      "sizeBytes": 5611423313,
+      "location": "/Users/k/.cache/huggingface/hub/models--AmapVoice--PilotTTS/snapshots/95f37771c51baa51b77ba6279f173de74a60d163"
+    },
+    {
+      "id": "w2v-bert-2",
+      "name": "w2v-BERT 2.0",
+      "kind": "speech",
+      "service": "synth-pilot",
+      "enables": "Expressive cloned voices (with PilotTTS)",
+      "repo": "facebook/w2v-bert-2.0",
+      "revision": "da985ba0987f70aaeb84a80f2851cfac8c697a7b",
+      "installed": true,
+      "sizeBytes": 4651204179,
+      "location": "/Users/k/.cache/huggingface/hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b"
+    },
+    {
+      "id": "openmoss-sound-effect",
+      "name": "OpenMOSS Sound Effect (MLX)",
+      "kind": "sfx",
+      "service": "synth-sfx",
+      "enables": "Sound effects (with its audio codec)",
+      "repo": "appautomaton/openmoss-sound-effect-mlx",
+      "revision": "5dcecb4d2cc8f48ba45eab61a61bbc5865a5585a",
+      "installed": true,
+      "sizeBytes": 4716496737,
+      "location": "/Users/k/.cache/huggingface/hub/models--appautomaton--openmoss-sound-effect-mlx/snapshots/5dcecb4d2cc8f48ba45eab61a61bbc5865a5585a"
+    },
+    {
+      "id": "openmoss-audio-tokenizer",
+      "name": "OpenMOSS audio codec (MLX)",
+      "kind": "sfx",
+      "service": "synth-sfx",
+      "enables": "Sound effects (with the sound-effect model)",
+      "repo": "appautomaton/openmoss-audio-tokenizer-mlx",
+      "revision": "3b22b5958c15f807e3ca8faae2cc3b7cc4b74552",
+      "installed": true,
+      "sizeBytes": 2003414094,
+      "location": "/Users/k/.cache/huggingface/hub/models--appautomaton--openmoss-audio-tokenizer-mlx/snapshots/3b22b5958c15f807e3ca8faae2cc3b7cc4b74552"
+    },
+    {
+      "id": "minimax-music3",
+      "name": "MiniMax Music3 (MLX, 4-bit)",
+      "kind": "music",
+      "service": "synth-music",
+      "enables": "Songs from a caption and lyrics",
+      "repo": "mlx-community/MiniMax-Music3-4bit",
+      "revision": "c7ea32923b245fe5afc22d740a1936ad2ac590f3",
+      "installed": true,
+      "sizeBytes": 9210776557,
+      "location": "/Users/k/.cache/huggingface/hub/models--mlx-community--MiniMax-Music3-4bit/snapshots/c7ea32923b245fe5afc22d740a1936ad2ac590f3"
+    },
+    {
+      "id": "flux2-klein-4b",
+      "name": "FLUX.2 Klein 4B (MLX, 4-bit)",
+      "kind": "image",
+      "service": "synth-image",
+      "enables": "Images from a prompt, with LoRAs",
+      "repo": "mlx-community/FLUX.2-Klein-4B-4bit",
+      "revision": "1cebb9b45c21ece14a42615b16bf5fa4de9b56da",
+      "installed": true,
+      "sizeBytes": 4619708418,
+      "location": "/Users/k/.cache/huggingface/hub/models--mlx-community--FLUX.2-Klein-4B-4bit/snapshots/1cebb9b45c21ece14a42615b16bf5fa4de9b56da"
+    },
+    {
+      "id": "flux2-klein-9b",
+      "name": "FLUX.2 Klein 9B (MLX, 8-bit)",
+      "kind": "image",
+      "service": "synth-image",
+      "enables": "Higher-quality images, with LoRAs",
+      "repo": "mlx-community/flux2-klein-9b-8bit",
+      "revision": "07c85fd971952e5959a9314f4f2da446ff1b59b2",
+      "installed": true,
+      "sizeBytes": 17865577446,
+      "location": "/Users/k/.cache/huggingface/hub/models--mlx-community--flux2-klein-9b-8bit/snapshots/07c85fd971952e5959a9314f4f2da446ff1b59b2"
+    }
+  ],
+  "activity": {
+    "error": {
+      "code": "ACTIVITY_SOURCE_MISSING",
+      "message": "this path holds no committed v3 story, so it has no activity"
+    },
+    "ok": false
+  },
+  "history": {
+    "error": {
+      "code": "FEATURE_OFF",
+      "feature": "history",
+      "message": "Saving versions of a project is part of Advanced. Switch to Advanced in Settings to use it."
+    },
+    "ok": false
+  }
+}

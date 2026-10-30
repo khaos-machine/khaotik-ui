@@ -1,0 +1,38 @@
+[package]
+name = "app"
+version = "0.20.0"
+# These are not decoration: Tauri falls back to the [package] fields when the
+# matching bundle key in tauri.conf.json is null, so the scaffold's "A Tauri App"
+# and "you" shipped inside four signed, notarized, publicly distributed builds
+# before anyone read them. bundle-identity.test.js now fails on the scaffold values.
+description = "The Khaos component catalog — playtest the khaotik-ui atoms and compositions against real KSPD data."
+authors = ["Khaos Studio"]
+license = "Apache-2.0"
+repository = "https://github.com/khaos-machine/khaotik-ui"
+edition = "2021"
+rust-version = "1.77.2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[features]
+# Dev-only MCP bridge (see gitty dev/mcp-bridge for the reference): opens a
+# WebSocket on 127.0.0.1 that an MCP server (@hypothesi/tauri-mcp-server) uses
+# to screenshot the window, read the DOM, and run JS. Off by default and gated
+# on debug_assertions at the call site, so it can never reach a release build.
+mcp-bridge = ["dep:tauri-plugin-mcp-bridge"]
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.11.3", features = [] }
+tauri-plugin-log = "2"
+tauri-plugin-updater = "2"
+tauri-plugin-mcp-bridge = { version = "0.13", optional = true }

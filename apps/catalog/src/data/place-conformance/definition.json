@@ -1,0 +1,39 @@
+{
+  "location": "Conformance",
+  "rooms": [
+    {
+      "id": "Room",
+      "outline": [[0, 0], [5, 0], [5, 2.5], [3, 2.5], [3, 4], [0, 4]],
+      "height": 2.7,
+      "ceiling": true
+    }
+  ],
+  "openings": [
+    {"id": "Doorway", "room": "Room", "wall": 0, "offset": 1.2, "width": 0.9, "height": 2.1, "sill": 0, "kind": "door"},
+    {"id": "WindowHole", "room": "Room", "wall": 4, "offset": 1.5, "width": 1.2, "height": 1.0, "sill": 1.0, "kind": "window"}
+  ],
+  "fixtures": [
+    {"id": "Door", "kind": "doorLeaf", "tone": "dark", "opening": "Doorway", "style": "slab", "hinge": "left", "swingDegrees": 60},
+    {"id": "Handle", "kind": "handle", "tone": "mid", "size": [0.12, 0.06, 0.03],
+      "mount": {"leaf": {"fixture": "Door", "face": "inner", "u": 0.8, "v": 1.0}}},
+    {"id": "Window", "kind": "window", "tone": "dark", "opening": "WindowHole", "gridColumns": 2, "gridRows": 2, "bars": 0, "sill": true},
+    {"id": "Desk", "kind": "desk", "tone": "mid", "size": [1.2, 0.6, 0.75],
+      "mount": {"floor": {"position": [3.8, 1.0, 0], "rotationZ": 30}}},
+    {"id": "Sofa", "kind": "sofa", "tone": "mid", "size": [2.0, 0.9, 0.85],
+      "mount": {"floor": {"position": [1.5, 3.2, 0], "rotationZ": 180}}},
+    {"id": "Stool", "kind": "stool", "tone": "light", "size": [0.34, 0.34, 0.5],
+      "mount": {"floor": {"position": [2.2, 1.0, 0], "rotationZ": 0}}},
+    {"id": "Rug", "kind": "rug", "tone": "light", "size": [2.0, 1.4, 0.01],
+      "mount": {"floor": {"position": [1.5, 2.0, 0], "rotationZ": 90}}},
+    {"id": "Shelf", "kind": "wallShelf", "tone": "mid", "size": [1.0, 0.3, 0.2],
+      "mount": {"wall": {"room": "Room", "wall": 1, "offset": 1.2, "height": 1.5, "standoff": 0.05}}},
+    {"id": "Bookshelf", "kind": "bookshelf", "tone": "mid", "size": [0.8, 0.3, 1.8],
+      "mount": {"wall": {"room": "Room", "wall": 3, "offset": 0.75, "height": 0.9, "standoff": 0}}},
+    {"id": "Panel", "kind": "electricalPanel", "tone": "dark", "size": [0.4, 0.12, 0.6],
+      "mount": {"wall": {"room": "Room", "wall": 5, "offset": 2.0, "height": 1.4, "standoff": 0}}}
+  ],
+  "cameras": [
+    {"id": "Corner", "position": [4.6, 0.4, 1.6], "target": [1.5, 3.0, 0.9], "lensMm": 24},
+    {"id": "Back", "position": [1.5, 3.6, 1.5], "target": [1.2, 0, 1.0], "lensMm": 28}
+  ]
+}

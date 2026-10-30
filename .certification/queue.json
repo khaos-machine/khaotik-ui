@@ -1,0 +1,1453 @@
+{
+  "items": [
+    {
+      "unit_id": "ts://components/svelte/EmptyState.svelte.d.ts",
+      "file_path": "components/svelte/EmptyState.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994225-04:00",
+      "updated_at": "2026-08-18T11:11:28.42367-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/LabeledField.svelte.d.ts",
+      "file_path": "components/svelte/LabeledField.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994226-04:00",
+      "updated_at": "2026-08-18T11:11:28.542736-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/PortraitFigure.test.js",
+      "file_path": "apps/catalog/src/components/PortraitFigure.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994226-04:00",
+      "updated_at": "2026-08-18T11:11:28.594919-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/overview.test.js",
+      "file_path": "apps/catalog/src/components/overview.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994226-04:00",
+      "updated_at": "2026-08-18T11:11:28.597338-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/Sidebar.test.js",
+      "file_path": "apps/catalog/src/components/shell/Sidebar.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994227-04:00",
+      "updated_at": "2026-08-18T11:11:28.599847-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/tokens.test.js",
+      "file_path": "apps/catalog/src/tokens.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994227-04:00",
+      "updated_at": "2026-08-18T11:11:28.60292-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/brand/Type.test.js",
+      "file_path": "apps/catalog/src/components/brand/Type.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994227-04:00",
+      "updated_at": "2026-08-18T11:11:28.605667-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/Canvas.test.js",
+      "file_path": "apps/catalog/src/components/shell/Canvas.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994227-04:00",
+      "updated_at": "2026-08-18T11:11:28.607868-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/demo-cover.test.js",
+      "file_path": "apps/catalog/src/demo-cover.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994227-04:00",
+      "updated_at": "2026-08-18T11:11:28.609498-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/token-parse.test.js",
+      "file_path": "apps/catalog/src/token-parse.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994229-04:00",
+      "updated_at": "2026-08-18T11:11:28.61156-04:00"
+    },
+    {
+      "unit_id": "sh://apps/catalog/scripts/fetch-voices.sh",
+      "file_path": "apps/catalog/scripts/fetch-voices.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994229-04:00",
+      "updated_at": "2026-08-18T11:11:28.61367-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Menu.svelte.d.ts",
+      "file_path": "components/svelte/Menu.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994229-04:00",
+      "updated_at": "2026-08-18T11:11:28.615693-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Toggle.svelte.d.ts",
+      "file_path": "components/svelte/Toggle.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994229-04:00",
+      "updated_at": "2026-08-18T11:11:28.617141-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/DialogueList.svelte.d.ts",
+      "file_path": "components/svelte/DialogueList.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994229-04:00",
+      "updated_at": "2026-08-18T11:11:28.618506-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/SceneList.svelte.d.ts",
+      "file_path": "components/svelte/SceneList.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99423-04:00",
+      "updated_at": "2026-08-18T11:11:28.620814-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/identity.js",
+      "file_path": "components/svelte/lib/identity.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99423-04:00",
+      "updated_at": "2026-08-18T11:11:28.622069-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Dashboard.svelte.d.ts",
+      "file_path": "components/svelte/Dashboard.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99423-04:00",
+      "updated_at": "2026-08-18T11:11:28.6238-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/FilterField.svelte.d.ts",
+      "file_path": "components/svelte/FilterField.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99423-04:00",
+      "updated_at": "2026-08-18T11:11:28.625369-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/StoryPlayer.svelte.d.ts",
+      "file_path": "components/svelte/StoryPlayer.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994231-04:00",
+      "updated_at": "2026-08-18T11:11:28.626666-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#build",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994231-04:00",
+      "updated_at": "2026-08-18T11:11:28.629992-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/OutcomeBanner.test.js",
+      "file_path": "apps/catalog/src/components/OutcomeBanner.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994231-04:00",
+      "updated_at": "2026-08-18T11:11:28.631095-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/Settings.test.js",
+      "file_path": "apps/catalog/src/components/Settings.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994232-04:00",
+      "updated_at": "2026-08-18T11:11:28.632226-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/StoryGraph.test.js",
+      "file_path": "apps/catalog/src/components/StoryGraph.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994232-04:00",
+      "updated_at": "2026-08-18T11:11:28.633353-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/series.test.js",
+      "file_path": "apps/catalog/src/series.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994232-04:00",
+      "updated_at": "2026-08-18T11:11:28.634584-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/vitest-setup.js",
+      "file_path": "apps/catalog/src/vitest-setup.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994232-04:00",
+      "updated_at": "2026-08-18T11:11:28.636255-04:00"
+    },
+    {
+      "unit_id": "js://tokens/parse.js",
+      "file_path": "tokens/parse.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994232-04:00",
+      "updated_at": "2026-08-18T11:11:28.637252-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Gallery.svelte.d.ts",
+      "file_path": "components/svelte/Gallery.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994232-04:00",
+      "updated_at": "2026-08-18T11:11:28.638148-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/fixtures.js",
+      "file_path": "apps/catalog/src/fixtures.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994233-04:00",
+      "updated_at": "2026-08-18T11:11:28.639431-04:00"
+    },
+    {
+      "unit_id": "js://scripts/build-types.mjs",
+      "file_path": "scripts/build-types.mjs",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994233-04:00",
+      "updated_at": "2026-08-18T11:11:28.640415-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/AnalysisCard.svelte.d.ts",
+      "file_path": "components/svelte/AnalysisCard.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994233-04:00",
+      "updated_at": "2026-08-18T11:11:28.641856-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/DialogueRow.svelte.d.ts",
+      "file_path": "components/svelte/DialogueRow.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994234-04:00",
+      "updated_at": "2026-08-18T11:11:28.64325-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/LocationWorkspace.svelte.d.ts",
+      "file_path": "components/svelte/LocationWorkspace.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994234-04:00",
+      "updated_at": "2026-08-18T11:11:28.644038-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/SceneRow.svelte.d.ts",
+      "file_path": "components/svelte/SceneRow.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994234-04:00",
+      "updated_at": "2026-08-18T11:11:28.644957-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/brand/Tokens.test.js",
+      "file_path": "apps/catalog/src/components/brand/Tokens.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994234-04:00",
+      "updated_at": "2026-08-18T11:11:28.645853-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/BarChart.svelte.d.ts",
+      "file_path": "components/svelte/BarChart.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994235-04:00",
+      "updated_at": "2026-08-18T11:11:28.646823-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/CharacterBuilder.svelte.d.ts",
+      "file_path": "components/svelte/CharacterBuilder.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994236-04:00",
+      "updated_at": "2026-08-18T11:11:28.647572-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/OutcomeBanner.svelte.d.ts",
+      "file_path": "components/svelte/OutcomeBanner.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994236-04:00",
+      "updated_at": "2026-08-18T11:11:28.648301-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/series.d.ts",
+      "file_path": "components/svelte/lib/series.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994236-04:00",
+      "updated_at": "2026-08-18T11:11:28.649089-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/voice-audio.svelte.d.ts",
+      "file_path": "components/svelte/lib/voice-audio.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994236-04:00",
+      "updated_at": "2026-08-18T11:11:28.649864-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/CharacterInspector.test.js",
+      "file_path": "apps/catalog/src/components/CharacterInspector.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994236-04:00",
+      "updated_at": "2026-08-18T11:11:28.650624-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/ResourceCatalog.test.js",
+      "file_path": "apps/catalog/src/components/ResourceCatalog.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994236-04:00",
+      "updated_at": "2026-08-18T11:11:28.651228-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/SceneInspector.test.js",
+      "file_path": "apps/catalog/src/components/SceneInspector.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994236-04:00",
+      "updated_at": "2026-08-18T11:11:28.651954-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/demographics.js",
+      "file_path": "components/svelte/lib/demographics.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994237-04:00",
+      "updated_at": "2026-08-18T11:11:28.652551-04:00"
+    },
+    {
+      "unit_id": "sh://apps/catalog/scripts/deploy-web.sh",
+      "file_path": "apps/catalog/scripts/deploy-web.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994237-04:00",
+      "updated_at": "2026-08-18T11:11:28.653228-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Launcher.svelte.d.ts",
+      "file_path": "components/svelte/Launcher.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994237-04:00",
+      "updated_at": "2026-08-18T11:11:28.653969-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Portrait.svelte.d.ts",
+      "file_path": "components/svelte/Portrait.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994237-04:00",
+      "updated_at": "2026-08-18T11:11:28.655083-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/SectionHeader.svelte.d.ts",
+      "file_path": "components/svelte/SectionHeader.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994238-04:00",
+      "updated_at": "2026-08-18T11:11:28.655759-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/MetricCard.test.js",
+      "file_path": "apps/catalog/src/components/MetricCard.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994238-04:00",
+      "updated_at": "2026-08-18T11:11:28.656311-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/StatusPill.test.js",
+      "file_path": "apps/catalog/src/components/StatusPill.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994238-04:00",
+      "updated_at": "2026-08-18T11:11:28.656879-04:00"
+    },
+    {
+      "unit_id": "sh://scripts/check-catalog-coverage.sh",
+      "file_path": "scripts/check-catalog-coverage.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994238-04:00",
+      "updated_at": "2026-08-18T11:11:28.657588-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/ServiceStatusList.test.js",
+      "file_path": "apps/catalog/src/components/ServiceStatusList.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994238-04:00",
+      "updated_at": "2026-08-18T11:11:28.658165-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/brand/Layout.test.js",
+      "file_path": "apps/catalog/src/components/brand/Layout.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994238-04:00",
+      "updated_at": "2026-08-18T11:11:28.658826-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/icon-inventory.js",
+      "file_path": "apps/catalog/src/icon-inventory.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994239-04:00",
+      "updated_at": "2026-08-18T11:11:28.65953-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/timeline.js",
+      "file_path": "components/svelte/lib/timeline.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994239-04:00",
+      "updated_at": "2026-08-18T11:11:28.66018-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/SelectableRow.svelte.d.ts",
+      "file_path": "components/svelte/SelectableRow.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994239-04:00",
+      "updated_at": "2026-08-18T11:11:28.660787-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/brand/Shape.test.js",
+      "file_path": "apps/catalog/src/components/brand/Shape.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994239-04:00",
+      "updated_at": "2026-08-18T11:11:28.661414-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/main.js",
+      "file_path": "apps/catalog/src/main.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994239-04:00",
+      "updated_at": "2026-08-18T11:11:28.662041-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/types.js",
+      "file_path": "components/svelte/lib/types.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99424-04:00",
+      "updated_at": "2026-08-18T11:11:28.662786-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Settings.svelte.d.ts",
+      "file_path": "components/svelte/Settings.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99424-04:00",
+      "updated_at": "2026-08-18T11:11:28.663472-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/AnalysisCard.test.js",
+      "file_path": "apps/catalog/src/components/AnalysisCard.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994241-04:00",
+      "updated_at": "2026-08-18T11:11:28.664018-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/frame-container.test.js",
+      "file_path": "apps/catalog/src/components/shell/frame-container.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994241-04:00",
+      "updated_at": "2026-08-18T11:11:28.664923-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/version.test.js",
+      "file_path": "apps/catalog/src/version.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994241-04:00",
+      "updated_at": "2026-08-18T11:11:28.665605-04:00"
+    },
+    {
+      "unit_id": "sh://apps/catalog/scripts/fetch-kspd.sh",
+      "file_path": "apps/catalog/scripts/fetch-kspd.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994241-04:00",
+      "updated_at": "2026-08-18T11:11:28.666334-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/ProviderBadge.svelte.d.ts",
+      "file_path": "components/svelte/ProviderBadge.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994241-04:00",
+      "updated_at": "2026-08-18T11:11:28.666954-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/ServiceStatusList.svelte.d.ts",
+      "file_path": "components/svelte/ServiceStatusList.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994241-04:00",
+      "updated_at": "2026-08-18T11:11:28.667529-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/identity.d.ts",
+      "file_path": "components/svelte/lib/identity.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994242-04:00",
+      "updated_at": "2026-08-18T11:11:28.668027-04:00"
+    },
+    {
+      "unit_id": "sh://apps/catalog/scripts/release.sh",
+      "file_path": "apps/catalog/scripts/release.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994242-04:00",
+      "updated_at": "2026-08-18T11:11:28.668663-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/MetricCard.svelte.d.ts",
+      "file_path": "components/svelte/MetricCard.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994242-04:00",
+      "updated_at": "2026-08-18T11:11:28.66922-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/SegmentedControl.svelte.d.ts",
+      "file_path": "components/svelte/SegmentedControl.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994242-04:00",
+      "updated_at": "2026-08-18T11:11:28.669812-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/StoryGraph.svelte.d.ts",
+      "file_path": "components/svelte/StoryGraph.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994242-04:00",
+      "updated_at": "2026-08-18T11:11:28.670422-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#TokenError",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994243-04:00",
+      "updated_at": "2026-08-18T11:11:28.671949-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/ConfirmDialog.test.js",
+      "file_path": "apps/catalog/src/components/ConfirmDialog.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994243-04:00",
+      "updated_at": "2026-08-18T11:11:28.672555-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/ProjectCover.test.js",
+      "file_path": "apps/catalog/src/components/ProjectCover.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994243-04:00",
+      "updated_at": "2026-08-18T11:11:28.673269-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/list-paging.test.js",
+      "file_path": "apps/catalog/src/components/list-paging.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994243-04:00",
+      "updated_at": "2026-08-18T11:11:28.673786-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/SectionRail.test.js",
+      "file_path": "apps/catalog/src/components/shell/SectionRail.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994243-04:00",
+      "updated_at": "2026-08-18T11:11:28.674338-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/demo-cover.js",
+      "file_path": "apps/catalog/src/demo-cover.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994243-04:00",
+      "updated_at": "2026-08-18T11:11:28.674899-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/graph.js",
+      "file_path": "components/svelte/lib/graph.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994244-04:00",
+      "updated_at": "2026-08-18T11:11:28.675478-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/CharacterInspector.svelte.d.ts",
+      "file_path": "components/svelte/CharacterInspector.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994244-04:00",
+      "updated_at": "2026-08-18T11:11:28.676071-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/index.d.ts",
+      "file_path": "components/svelte/index.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994244-04:00",
+      "updated_at": "2026-08-18T11:11:28.676515-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/LauncherPlate.test.js",
+      "file_path": "apps/catalog/src/components/LauncherPlate.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994244-04:00",
+      "updated_at": "2026-08-18T11:11:28.677128-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/brand/Color.test.js",
+      "file_path": "apps/catalog/src/components/brand/Color.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994244-04:00",
+      "updated_at": "2026-08-18T11:11:28.677724-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/SceneWorkspace.svelte.d.ts",
+      "file_path": "components/svelte/SceneWorkspace.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994244-04:00",
+      "updated_at": "2026-08-18T11:11:28.678286-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/StatusPill.svelte.d.ts",
+      "file_path": "components/svelte/StatusPill.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994244-04:00",
+      "updated_at": "2026-08-18T11:11:28.678802-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/VoiceProfileCard.svelte.d.ts",
+      "file_path": "components/svelte/VoiceProfileCard.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994245-04:00",
+      "updated_at": "2026-08-18T11:11:28.679252-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/types.d.ts",
+      "file_path": "components/svelte/lib/types.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994246-04:00",
+      "updated_at": "2026-08-18T11:11:28.679789-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#var_name",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994246-04:00",
+      "updated_at": "2026-08-18T11:11:28.681653-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/demographics.test.js",
+      "file_path": "apps/catalog/src/demographics.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994246-04:00",
+      "updated_at": "2026-08-18T11:11:28.682183-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/CharacterWorkspace.test.js",
+      "file_path": "apps/catalog/src/components/CharacterWorkspace.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994246-04:00",
+      "updated_at": "2026-08-18T11:11:28.682615-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/ProjectCard.test.js",
+      "file_path": "apps/catalog/src/components/ProjectCard.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994247-04:00",
+      "updated_at": "2026-08-18T11:11:28.683029-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/ViewportPicker.test.js",
+      "file_path": "apps/catalog/src/components/shell/ViewportPicker.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994247-04:00",
+      "updated_at": "2026-08-18T11:11:28.683574-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/shell-type.test.js",
+      "file_path": "apps/catalog/src/components/shell/shell-type.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994247-04:00",
+      "updated_at": "2026-08-18T11:11:28.684083-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/story-tokens.test.js",
+      "file_path": "apps/catalog/src/story-tokens.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994247-04:00",
+      "updated_at": "2026-08-18T11:11:28.684601-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/LocationInspector.svelte.d.ts",
+      "file_path": "components/svelte/LocationInspector.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994247-04:00",
+      "updated_at": "2026-08-18T11:11:28.685084-04:00"
+    },
+    {
+      "unit_id": "rs://apps/catalog/src-tauri/src/main.rs#main",
+      "file_path": "apps/catalog/src-tauri/src/main.rs",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994248-04:00",
+      "updated_at": "2026-08-18T11:11:28.685552-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/StoryPlayer.test.js",
+      "file_path": "apps/catalog/src/components/StoryPlayer.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994248-04:00",
+      "updated_at": "2026-08-18T11:11:28.686125-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/PacingChart.svelte.d.ts",
+      "file_path": "components/svelte/PacingChart.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994248-04:00",
+      "updated_at": "2026-08-18T11:11:28.686623-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/VoiceCatalog.svelte.d.ts",
+      "file_path": "components/svelte/VoiceCatalog.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994248-04:00",
+      "updated_at": "2026-08-18T11:11:28.688207-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/voice-availability.d.ts",
+      "file_path": "components/svelte/lib/voice-availability.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994249-04:00",
+      "updated_at": "2026-08-18T11:11:28.688747-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#watch",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994249-04:00",
+      "updated_at": "2026-08-18T11:11:28.690368-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/foundation/IconSheet.test.js",
+      "file_path": "apps/catalog/src/components/foundation/IconSheet.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994249-04:00",
+      "updated_at": "2026-08-18T11:11:28.691038-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/utilities.test.js",
+      "file_path": "apps/catalog/src/utilities.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994249-04:00",
+      "updated_at": "2026-08-18T11:11:28.691519-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/series.js",
+      "file_path": "components/svelte/lib/series.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994249-04:00",
+      "updated_at": "2026-08-18T11:11:28.692023-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/PacingChart.test.js",
+      "file_path": "apps/catalog/src/components/PacingChart.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99425-04:00",
+      "updated_at": "2026-08-18T11:11:28.692431-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/SceneList.test.js",
+      "file_path": "apps/catalog/src/components/SceneList.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99425-04:00",
+      "updated_at": "2026-08-18T11:11:28.692808-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/data-fixtures.test.js",
+      "file_path": "apps/catalog/src/data-fixtures.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99425-04:00",
+      "updated_at": "2026-08-18T11:11:28.693367-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/voice-availability.js",
+      "file_path": "components/svelte/lib/voice-availability.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99425-04:00",
+      "updated_at": "2026-08-18T11:11:28.693736-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/CharacterWorkspace.svelte.d.ts",
+      "file_path": "components/svelte/CharacterWorkspace.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99425-04:00",
+      "updated_at": "2026-08-18T11:11:28.694256-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#render",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994251-04:00",
+      "updated_at": "2026-08-18T11:11:28.698124-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/timeline.test.js",
+      "file_path": "apps/catalog/src/components/timeline.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994251-04:00",
+      "updated_at": "2026-08-18T11:11:28.698633-04:00"
+    },
+    {
+      "unit_id": "js://scripts/check-taxonomy.mjs",
+      "file_path": "scripts/check-taxonomy.mjs",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994251-04:00",
+      "updated_at": "2026-08-18T11:11:28.699289-04:00"
+    },
+    {
+      "unit_id": "sh://apps/catalog/scripts/fetch-all.sh",
+      "file_path": "apps/catalog/scripts/fetch-all.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994251-04:00",
+      "updated_at": "2026-08-18T11:11:28.699745-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/ResourceCatalog.svelte.d.ts",
+      "file_path": "components/svelte/ResourceCatalog.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994251-04:00",
+      "updated_at": "2026-08-18T11:11:28.700223-04:00"
+    },
+    {
+      "unit_id": "rs://apps/catalog/src-tauri/src/lib.rs#run",
+      "file_path": "apps/catalog/src-tauri/src/lib.rs",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994252-04:00",
+      "updated_at": "2026-08-18T11:11:28.701155-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#main",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994254-04:00",
+      "updated_at": "2026-08-18T11:11:28.702665-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#resolve",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994254-04:00",
+      "updated_at": "2026-08-18T11:11:28.703994-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/regressions.test.js",
+      "file_path": "apps/catalog/src/components/regressions.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994254-04:00",
+      "updated_at": "2026-08-18T11:11:28.704564-04:00"
+    },
+    {
+      "unit_id": "js://stories/components/demo-cover.js",
+      "file_path": "stories/components/demo-cover.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994254-04:00",
+      "updated_at": "2026-08-18T11:11:28.70509-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/Icon.svelte.d.ts",
+      "file_path": "components/svelte/Icon.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994254-04:00",
+      "updated_at": "2026-08-18T11:11:28.705731-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/bundle-identity.test.js",
+      "file_path": "apps/catalog/src/bundle-identity.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994254-04:00",
+      "updated_at": "2026-08-18T11:11:28.70616-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/graph.d.ts",
+      "file_path": "components/svelte/lib/graph.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994255-04:00",
+      "updated_at": "2026-08-18T11:11:28.70659-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/BarChart.test.js",
+      "file_path": "apps/catalog/src/components/BarChart.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994255-04:00",
+      "updated_at": "2026-08-18T11:11:28.707144-04:00"
+    },
+    {
+      "unit_id": "sh://apps/catalog/scripts/lib.sh",
+      "file_path": "apps/catalog/scripts/lib.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994255-04:00",
+      "updated_at": "2026-08-18T11:11:28.70765-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/EditableField.svelte.d.ts",
+      "file_path": "components/svelte/EditableField.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994255-04:00",
+      "updated_at": "2026-08-18T11:11:28.70829-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/RelationshipGraph.svelte.d.ts",
+      "file_path": "components/svelte/RelationshipGraph.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994255-04:00",
+      "updated_at": "2026-08-18T11:11:28.708812-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/SceneInspector.svelte.d.ts",
+      "file_path": "components/svelte/SceneInspector.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994255-04:00",
+      "updated_at": "2026-08-18T11:11:28.709296-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/demographics.d.ts",
+      "file_path": "components/svelte/lib/demographics.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994256-04:00",
+      "updated_at": "2026-08-18T11:11:28.709798-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/RelationshipGraph.test.js",
+      "file_path": "apps/catalog/src/components/RelationshipGraph.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994256-04:00",
+      "updated_at": "2026-08-18T11:11:28.710192-04:00"
+    },
+    {
+      "unit_id": "js://scripts/check-consumer.mjs",
+      "file_path": "scripts/check-consumer.mjs",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994256-04:00",
+      "updated_at": "2026-08-18T11:11:28.710743-04:00"
+    },
+    {
+      "unit_id": "sh://scripts/check-story-coverage.sh",
+      "file_path": "scripts/check-story-coverage.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994256-04:00",
+      "updated_at": "2026-08-18T11:11:28.711237-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/App.test.js",
+      "file_path": "apps/catalog/src/App.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994256-04:00",
+      "updated_at": "2026-08-18T11:11:28.711843-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/EditableField.test.js",
+      "file_path": "apps/catalog/src/components/EditableField.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994256-04:00",
+      "updated_at": "2026-08-18T11:11:28.712367-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/CharacterList.svelte.d.ts",
+      "file_path": "components/svelte/CharacterList.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994257-04:00",
+      "updated_at": "2026-08-18T11:11:28.712856-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/KhaosLogo.svelte.d.ts",
+      "file_path": "components/svelte/KhaosLogo.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994257-04:00",
+      "updated_at": "2026-08-18T11:11:28.713357-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/LocationList.svelte.d.ts",
+      "file_path": "components/svelte/LocationList.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994257-04:00",
+      "updated_at": "2026-08-18T11:11:28.713841-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/lib/voice-audio.svelte.js",
+      "file_path": "components/svelte/lib/voice-audio.svelte.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994258-04:00",
+      "updated_at": "2026-08-18T11:11:28.714336-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/FilterField.test.js",
+      "file_path": "apps/catalog/src/components/FilterField.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994258-04:00",
+      "updated_at": "2026-08-18T11:11:28.714981-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/VoiceProfileCard.test.js",
+      "file_path": "apps/catalog/src/components/VoiceProfileCard.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994258-04:00",
+      "updated_at": "2026-08-18T11:11:28.715411-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/viewports.test.js",
+      "file_path": "apps/catalog/src/components/shell/viewports.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994258-04:00",
+      "updated_at": "2026-08-18T11:11:28.715884-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/icon-inventory.test.js",
+      "file_path": "apps/catalog/src/icon-inventory.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994259-04:00",
+      "updated_at": "2026-08-18T11:11:28.716419-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/LabeledPill.svelte.d.ts",
+      "file_path": "components/svelte/LabeledPill.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994259-04:00",
+      "updated_at": "2026-08-18T11:11:28.716898-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/lib/timeline.d.ts",
+      "file_path": "components/svelte/lib/timeline.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994259-04:00",
+      "updated_at": "2026-08-18T11:11:28.717383-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/DialogueList.test.js",
+      "file_path": "apps/catalog/src/components/DialogueList.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994259-04:00",
+      "updated_at": "2026-08-18T11:11:28.717774-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/lib/brand-view.svelte.js",
+      "file_path": "apps/catalog/src/lib/brand-view.svelte.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994259-04:00",
+      "updated_at": "2026-08-18T11:11:28.718279-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/vite.config.js",
+      "file_path": "apps/catalog/vite.config.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99426-04:00",
+      "updated_at": "2026-08-18T11:11:28.718688-04:00"
+    },
+    {
+      "unit_id": "sh://apps/catalog/scripts/make-og-image.sh",
+      "file_path": "apps/catalog/scripts/make-og-image.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99426-04:00",
+      "updated_at": "2026-08-18T11:11:28.719251-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/ConfirmDialog.svelte.d.ts",
+      "file_path": "components/svelte/ConfirmDialog.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99426-04:00",
+      "updated_at": "2026-08-18T11:11:28.719724-04:00"
+    },
+    {
+      "unit_id": "ts://components/svelte/ProjectCard.svelte.d.ts",
+      "file_path": "components/svelte/ProjectCard.svelte.d.ts",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99426-04:00",
+      "updated_at": "2026-08-18T11:11:28.720111-04:00"
+    },
+    {
+      "unit_id": "rs://apps/catalog/src-tauri/build.rs#main",
+      "file_path": "apps/catalog/src-tauri/build.rs",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.99426-04:00",
+      "updated_at": "2026-08-18T11:11:28.720513-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/Launcher.test.js",
+      "file_path": "apps/catalog/src/components/Launcher.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994261-04:00",
+      "updated_at": "2026-08-18T11:11:28.72107-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/a11y-state.test.js",
+      "file_path": "apps/catalog/src/components/a11y-state.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994261-04:00",
+      "updated_at": "2026-08-18T11:11:28.721467-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/fixtures.test.js",
+      "file_path": "apps/catalog/src/fixtures.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994261-04:00",
+      "updated_at": "2026-08-18T11:11:28.721978-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/token-refs.test.js",
+      "file_path": "apps/catalog/src/token-refs.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994261-04:00",
+      "updated_at": "2026-08-18T11:11:28.722361-04:00"
+    },
+    {
+      "unit_id": "sh://scripts/deploy-web.sh",
+      "file_path": "scripts/deploy-web.sh",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994261-04:00",
+      "updated_at": "2026-08-18T11:11:28.72282-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/LabeledField.test.js",
+      "file_path": "apps/catalog/src/components/LabeledField.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994261-04:00",
+      "updated_at": "2026-08-18T11:11:28.723195-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/shell/viewports.js",
+      "file_path": "apps/catalog/src/components/shell/viewports.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994262-04:00",
+      "updated_at": "2026-08-18T11:11:28.723693-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/CharacterBuilder.test.js",
+      "file_path": "apps/catalog/src/components/CharacterBuilder.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994262-04:00",
+      "updated_at": "2026-08-18T11:11:28.724163-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/props-optionality.test.js",
+      "file_path": "apps/catalog/src/props-optionality.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994262-04:00",
+      "updated_at": "2026-08-18T11:11:28.724542-04:00"
+    },
+    {
+      "unit_id": "js://components/svelte/index.js",
+      "file_path": "components/svelte/index.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994262-04:00",
+      "updated_at": "2026-08-18T11:11:28.72504-04:00"
+    },
+    {
+      "unit_id": "py://tokens/build-tokens.py#comment",
+      "file_path": "tokens/build-tokens.py",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994262-04:00",
+      "updated_at": "2026-08-18T11:11:28.726341-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/src/components/LocationInspector.test.js",
+      "file_path": "apps/catalog/src/components/LocationInspector.test.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994262-04:00",
+      "updated_at": "2026-08-18T11:11:28.726734-04:00"
+    },
+    {
+      "unit_id": "js://apps/catalog/svelte.config.js",
+      "file_path": "apps/catalog/svelte.config.js",
+      "status": "skipped",
+      "reason": "prescreen: no review needed",
+      "retries": 0,
+      "created_at": "2026-08-18T11:11:27.994263-04:00",
+      "updated_at": "2026-08-18T11:11:28.727223-04:00"
+    }
+  ]
+}

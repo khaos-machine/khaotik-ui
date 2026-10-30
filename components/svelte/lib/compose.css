@@ -1,0 +1,73 @@
+/**
+ * The layout a composed document describes.
+ *
+ * SHIPPED AS A STYLESHEET, not as scoped styles inside a component, because TWO
+ * renderers emit these classes: `Composed.svelte`, which is what a consuming app
+ * mounts, and the catalog's editor, which draws the same tree with selection
+ * chrome around every node. Scoped styles would give each of them its own copy
+ * of what `gap` and `columns` mean, and a fix to one would not reach the other —
+ * the drift `tokens/parse.js` exists to prevent.
+ *
+ * This is the arrangement `tokens/utilities.css` already uses and documents: the
+ * classes the components render themselves live in a sheet the consumer imports.
+ * Ship it or every composed page renders as an unstyled column.
+ *
+ *   import '@khaos-machine/khaotik-ui/components/svelte/lib/compose.css'
+ *
+ * EVERY DIMENSION COMES FROM A TOKEN. The three custom properties below are set
+ * per node from token NAMES the document carries (`gap: 'lg'` becomes
+ * `var(--spacing-lg)`), so a document holds no length and a change to the scale
+ * reaches every document already written with no migration.
+ */
+
+.node {
+  min-width: 0;
+  gap: var(--node-gap, 0);
+  padding: var(--node-padding, 0);
+}
+
+/* A stack is one axis. Column by default, because a screen reads down; the row
+   modifier is the exception rather than a second thing. */
+.node--stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* A ROW WRAPS. Without it a row that does not fit does not overflow its track —
+   its children shrink past their own content and the text of one lands on top of
+   the next, which reads as a rendering fault rather than as a layout that ran out
+   of room. Seen at 390: two cards in a 155px grid cell rendered as
+   "S1 SceAnalysed".
+
+   Wrapping is also what every layout tool does here, and it stays portable: it is
+   what a flow layout does on a target with no CSS. */
+.node--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* `minmax(0, 1fr)` and not `1fr`: a child holding a long unbroken string blows a
+   plain `1fr` track past its share and pushes the row wider than the device,
+   which at 390 is the difference between a layout and a horizontal scrollbar.
+
+   THE BRANDKIT DECLARES NO GRID — no column, gutter or container system, and no
+   baseline rhythm (`apps/catalog/src/components/brand/Layout.svelte`). So a grid
+   node takes a column COUNT and a gap TOKEN and asserts nothing else. Drawing a
+   container width or snapping to a baseline here would invent a system nobody
+   decided, which is a BrandKit decision rather than a component one. */
+.node--grid {
+  display: grid;
+  grid-template-columns: repeat(var(--node-columns, 2), minmax(0, 1fr));
+}
+
+/* A gap in the document, named. A renamed component or a broken binding that
+   rendered nothing would read as a layout bug and send someone looking in the
+   wrong place. */
+.node-gap {
+  margin: 0;
+  padding: var(--spacing-2xs) 0;
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  color: var(--tone-danger);
+  text-wrap: pretty;
+}

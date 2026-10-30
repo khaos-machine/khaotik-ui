@@ -1,0 +1,1330 @@
+{
+  "_provenance": "khaosd GET /api/analysis/staleness — BROKEN IN 4 PLACES — each analysis state, with reasons and details for a stale one.",
+  "characters": [
+    {
+      "entity_id": "character_01M4KD5YMZGV4HWNVYXNM7S9A9",
+      "name": "BLAINE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZSKZVYRP29G8E84M1",
+      "name": "BUBBLE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZCW6V7FBAH8EEA4MR",
+      "name": "CORRECTION OFFICER",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+      "name": "DESMOND",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZEQSZXG7C1THMKMHX",
+      "name": "DR. MITCHELL",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZP3VAP56PKT5KHEJF",
+      "name": "ER DOCTOR",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZR70W0XCVFFCASTCF",
+      "name": "FEMALE INMATE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+      "name": "FIFTH",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZHM00HDSD11Q0Y3RX",
+      "name": "GUARD",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+      "name": "JASON",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ3BH3NCM3NCWAH04K",
+      "name": "JEHOVA WITNESS",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+      "name": "JETTA",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+      "name": "MADISON",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZPZHSF5240HQJA307",
+      "name": "MARCOS",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ866M2GH9ZPWEMGET",
+      "name": "MARLON",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZQ1CDWV03JZGAC7M2",
+      "name": "MR. GATHERS",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ3XG182X8X8YA8VK3",
+      "name": "MR. PEACLE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ2G3BY8C91XPE40CM",
+      "name": "MRS. PEACLE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZBWG7SKCKQVVNJWYQ",
+      "name": "NACHO",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZETDVAP9EKT87437Y",
+      "name": "NURSE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ8D72JQ1AQ9KNG1WR",
+      "name": "PARK BYSTANDER",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ3SNA64CSJ9MDFDR1",
+      "name": "RAY",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ3PDN22B9MF5SWW78",
+      "name": "RAY'S GIRL",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+      "name": "SIDNEY",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZQZ5FHMDKM2D888J7",
+      "name": "STEVEN",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZPADC0G1FJC6BR6CR",
+      "name": "TONY",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KD5YMZVNB3FQP32C1H1J1G",
+      "name": "YUPPIE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KHJ4TCQ5XM9AKC3XARCS8R",
+      "name": "POP",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KHRKTKWXZ0450AVTNNMSP3",
+      "name": "Jonesy",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KHRX6YWBQA5GNJR8QZ3V7J",
+      "name": "A Latin percussions band",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KHSZ4T0JJEC8PGC7ZE2ZXW",
+      "name": "his lover",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KHT4E9APQ7Y1FF5KMTCT1P",
+      "name": "Black mourners",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4KVT41EHVDE41WGQCBWFRP3",
+      "name": "City Marshall",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "character_01M4NJF93XG3JH45FPFVQ4HMXA",
+      "name": "Mr. Mann",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    }
+  ],
+  "locations": [
+    {
+      "entity_id": "location_01M4KD5YMZVYHWEFZRS9V61E64",
+      "name": "AIRPORT",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ4CZG2K434PPQBYSG",
+      "name": "AIRPORT TERMINAL",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZZ75F57V3PK1WT8CT",
+      "name": "CITY STREET",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZR36AY85WJPJV6TSQ",
+      "name": "CLASSROOM",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZR5P8Q9N18ZAJ0QB0",
+      "name": "COFFEE SHOP",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZHB5C75MQF8SN1V2S",
+      "name": "DESMOND'S APARTMENT",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZPVEPC6N0P5D8ME8M",
+      "name": "DESMOND'S CAR",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZKZ9PDHZVN3BP5WZB",
+      "name": "EMERGENCY ROOM",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ9SPV5ZQ4VF78CPXJ",
+      "name": "FIFTH'S CAR",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZDZR3D1DYS48QNC2B",
+      "name": "FIFTH'S LOFT",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZNMDV9RJ8CJ73WEFZ",
+      "name": "FRENCH CAFE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZX5KEN3H8WCDH0SE5",
+      "name": "FUNERAL HOME",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ5WTCJQFQ2ZRH3CKC",
+      "name": "HELL'S KITCHEN",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZXZMQG935FAW524H8",
+      "name": "HOSPITAL",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ5A3T9DV7S3QX5QJK",
+      "name": "HOSPITAL WAITING ROOM",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ4BXAEAN41Z6A7BAT",
+      "name": "INDUSTRIAL ARTIST SPACE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ2TP4NM67ZYH5S5RX",
+      "name": "JASON'S APARTMENT",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZAYPQA7NPQPW184M3",
+      "name": "JETTA'S HOUSE",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ02TKBT18A4JK4VD4",
+      "name": "MENTAL HOSPITAL",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZNANB00W6S5JDSK3Q",
+      "name": "NIGHT CLUB",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZE7MPW8FN3038B9E1",
+      "name": "NYC STREETS",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ5158WWT85EPQ913D",
+      "name": "ROOFTOP",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZGED3WBD96QTFT6PQ",
+      "name": "SIDNEY'S APARTMENT",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZ3FEEW2EQ71YFV4RG",
+      "name": "SPEEDING CAR",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZZX3QQZSH750Q9P0R",
+      "name": "STREETS",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KD5YMZBV4T7VCE39WB7XPT",
+      "name": "WOMENS PENITENTIARY",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KJYZGBBGK6RK2716JT3808",
+      "name": "jail",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "entity_id": "location_01M4KW1F0Q16NDJ64J8R7B6RD6",
+      "name": "Bronxville",
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "scene_id": "scene_01M4KD5YMZ6JRG3CGP4RB5TR2J",
+      "index": 0,
+      "state": "stale",
+      "reasons": [
+        "stage 1 story data changed"
+      ],
+      "details": [
+        "the Stage 1 story data could not be read to compare"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZWBM6MPMVEWBXV98J",
+      "index": 1,
+      "state": "stale",
+      "reasons": [
+        "stage 1 story data changed",
+        "context changed upstream"
+      ],
+      "details": [
+        "the Stage 1 story data could not be read to compare",
+        "scene 1 (INT. INDUSTRIAL ARTIST SPACE - DAY) is itself stale, so this scene's context has not caught up"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZXYWHHFR86Q7XGS7V",
+      "index": 2,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZE8MXRNRXVQ5Q027E",
+      "index": 3,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZRJZFYN5T301BH19J",
+      "index": 4,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZBDAZKJKYW23HP8PK",
+      "index": 5,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ1M3TZY2XY5433NVE",
+      "index": 6,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ2Z2ABV0BCERZP4AR",
+      "index": 7,
+      "state": "stale",
+      "reasons": [
+        "stage 1 story data changed",
+        "context changed upstream"
+      ],
+      "details": [
+        "the Stage 1 story data could not be read to compare",
+        "scene 6 (INT. DESMOND'S CAR - DAY) is itself stale, so this scene's context has not caught up"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZKRJV38BPG7S64YHG",
+      "index": 8,
+      "state": "stale",
+      "reasons": [
+        "stage 1 story data changed",
+        "context changed upstream"
+      ],
+      "details": [
+        "the Stage 1 story data could not be read to compare",
+        "scene 5 (EXT. SPEEDING CAR - DAY) is itself stale, so this scene's context has not caught up"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ3JVJDVVAV4W8YW1P",
+      "index": 9,
+      "state": "stale",
+      "reasons": [
+        "stage 1 story data changed",
+        "context changed upstream"
+      ],
+      "details": [
+        "the Stage 1 story data could not be read to compare",
+        "scene 5 (EXT. SPEEDING CAR - DAY) is itself stale, so this scene's context has not caught up"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZXBMH6NTPMBH6TQ94",
+      "index": 10,
+      "state": "stale",
+      "reasons": [
+        "stage 1 story data changed",
+        "context changed upstream"
+      ],
+      "details": [
+        "the Stage 1 story data could not be read to compare",
+        "scene 10 (INT. MENTAL HOSPITAL - DAY) is itself stale, so this scene's context has not caught up"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZQWGRANY09PHZS6PK",
+      "index": 11,
+      "state": "stale",
+      "reasons": [
+        "stage 1 story data changed",
+        "context changed upstream"
+      ],
+      "details": [
+        "the Stage 1 story data could not be read to compare",
+        "scene 6 (INT. DESMOND'S CAR - DAY) is itself stale, so this scene's context has not caught up"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ2AN6VPGVVZF6QWQW",
+      "index": 12,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZXNHKJJXTV5PJ839Q",
+      "index": 13,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZV0DMDCC9X6FZCR1N",
+      "index": 14,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZVWY0WVGFZV1YSSRE",
+      "index": 15,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZW79NB5E8GBGPEXPT",
+      "index": 16,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZJ6YVYJ24WWYS9123",
+      "index": 17,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ1QEG4BDMXG4RRSCJ",
+      "index": 18,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZAWNSWP9XP0H5X8M5",
+      "index": 19,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZK3P49RMRPK71HHRW",
+      "index": 20,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZW4MZQTGAGT5SB2P7",
+      "index": 21,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZDFKT1MGZ53FWCQ78",
+      "index": 22,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ5BVCAVJWNZ9WY867",
+      "index": 23,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZQS71YP589WR5Q689",
+      "index": 24,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZVGV56SC2QKJ1NKAC",
+      "index": 25,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ12C574TT40SCMXTV",
+      "index": 26,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZRGZ2EJY5HVSAV44S",
+      "index": 27,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZJDWNB18D0FKCBKZ6",
+      "index": 28,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZFWD5QV9E2GE6ZP4A",
+      "index": 29,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZY1HYQF5GY5HB9GAR",
+      "index": 30,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ6ZVTZF1NCW0F2JAF",
+      "index": 31,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZCCW36E24TK4SQH1Z",
+      "index": 32,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZA1XFMQC1XEPM6S54",
+      "index": 33,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ5YQM7XZZ60F3CP9C",
+      "index": 34,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZWDYGC5ZZHNN81XMJ",
+      "index": 35,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZXNVEG5FJWHQ715CV",
+      "index": 36,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ31QDABAMQ2WTC5ES",
+      "index": 37,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZMDCS2EBC8K1N75BN",
+      "index": 38,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZSQB647Z5AH6DFFAX",
+      "index": 39,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ0VM7V5YZAKYP4CZD",
+      "index": 40,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZQV23Z5M9KW3PTQ8R",
+      "index": 41,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZETF6BJR425QMY5TB",
+      "index": 42,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZY2XWYT9MJKQANF0D",
+      "index": 43,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZDS073VTC9DNXADNG",
+      "index": 44,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZPTSKJ20NGV5Q4Q6V",
+      "index": 45,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ0G2J0EGM6M66QXXF",
+      "index": 46,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZWVYF23NR5Y76YK43",
+      "index": 47,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZJ02TMQ9JY4RQ94QE",
+      "index": 48,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZCJCKFSPAJGEGJKXV",
+      "index": 49,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZBF60NTJBK4EHZJA0",
+      "index": 50,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ2YP3MKQDE57ND1Q6",
+      "index": 51,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZDV6ZXPG8VZ67J79E",
+      "index": 52,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZFD1D9RT3ASR6BZQ0",
+      "index": 53,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZ1RE80BXE3X9AXXT3",
+      "index": 54,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZZ0SYRMCA56B5BHQP",
+      "index": 55,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    },
+    {
+      "scene_id": "scene_01M4KD5YMZS8Y99SK205YKZ1Y2",
+      "index": 56,
+      "state": "stale",
+      "reasons": [
+        "no recorded fingerprint"
+      ],
+      "details": [
+        "analysis predates input fingerprinting; re-analyse to make it decidable"
+      ]
+    }
+  ]
+}

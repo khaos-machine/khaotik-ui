@@ -1,0 +1,89 @@
+/* Interactive affordances shared by every catalog control — catalog-local.
+ *
+ * Separate from brand.css because the audience is different. brand.css is the
+ * BrandKit's vocabulary for documenting the kit; this is how any control in the
+ * app answers "you can press me" and "you are here". The shell, the BrandKit and
+ * the icon sheet all draw the same two, and each had written them itself: the
+ * hover fill stood in seven places across six files, the inset focus ring in
+ * six across five.
+ *
+ * Global for the same reason brand.css is: Svelte scopes a component's <style>,
+ * so a rule shared BETWEEN components cannot live inside any one of them.
+ */
+
+/* ---- hover ---- */
+
+/* `:not(:disabled)` is part of the affordance, not a detail. Updater's button
+ * had written it and the other six had not, because only that one can be
+ * disabled — a non-button element always matches, so carrying it here costs
+ * nothing and stops the next disabled control from lighting up under the
+ * cursor.
+ *
+ * 6% of the text colour rather than a surface token: the fill has to read on
+ * both the base and raised grounds, and a fixed surface only reads on one.
+ */
+.hover-fill:hover:not(:disabled) {
+  background: color-mix(in oklab, var(--text-primary) 6%, transparent);
+  color: var(--text-primary);
+}
+
+/* One control opts out of the colour half. SidebarNav's group heading sits at
+ * --text-tertiary when idle and lifts to secondary, not primary: it is a
+ * heading that happens to be pressable, and taking it to full primary on hover
+ * would make it outrank the row labels beneath it. It carries .hover-fill for
+ * the fill and overrides the colour in its own scoped rule, which wins because
+ * a Svelte-scoped selector carries the scope class and outranks this one.
+ */
+
+/* ---- focus ---- */
+
+/* Two offsets, and which one is right depends on the control's box rather than
+ * on taste. Outside for a control that owns its edges; inside for one that
+ * fills a cell, a row or a scroll container, where an outer ring is clipped by
+ * the thing it sits in or laps its neighbour. The shell is inset throughout —
+ * every one of its controls fills something.
+ */
+.focus-ring:focus-visible {
+  outline: var(--size-stroke-focus) solid var(--border-focus);
+  outline-offset: var(--size-stroke-focus);
+}
+
+.focus-ring--inset:focus-visible {
+  outline-offset: calc(var(--size-stroke-focus) * -1);
+}
+
+/* The ring belongs on the MARK, not the control, when the control is a wide row
+ * whose subject is a small square — a swatch, a resolved-colour chip, a radius
+ * sample. A ring around the whole row says "this row"; the eye is looking at the
+ * square. Color and Shape had both reached that conclusion and written it three
+ * times between them.
+ *
+ * The control suppresses its own ring rather than never having one, so a
+ * control that loses its mark still shows focus somewhere.
+ */
+.focus-ring--mark:focus-visible {
+  outline: none;
+}
+
+.focus-ring--mark:focus-visible .focus-mark {
+  outline: var(--size-stroke-focus) solid var(--border-focus);
+  outline-offset: var(--size-stroke-focus);
+}
+
+/* ---- selected: deliberately NOT here ----
+ *
+ * The rail, the viewport segments and the nav rows all draw selection as a
+ * raised ground with full-strength ink, and it was extracted here and put back.
+ *
+ * A Svelte-scoped rule carries the component's scope class, so `.rail__item`
+ * compiles to `.rail__item.svelte-10316g6` — specificity (0,2,0). A plain
+ * `.is-selected` is (0,1,0) and loses to the base rule's own `background: none`
+ * every time. Measured, not assumed: the shared rule matched the element and
+ * was overridden.
+ *
+ * Hover and focus survive as globals only because their pseudo-classes pay for
+ * themselves — `.hover-fill:hover:not(:disabled)` is (0,3,0). A state expressed
+ * as a bare class has no such surcharge, so sharing it would mean either a
+ * specificity hack or every consumer remembering not to style its own base. The
+ * duplication is three rules of two declarations; the workaround is worse.
+ */

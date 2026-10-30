@@ -1,0 +1,28 @@
+{
+  "schema": "image-gen-receipt-v1",
+  "ts": "2026-08-21T21:04:13Z",
+  "prompt_raw": "Render a flowchart diagram. Nodes: 'repo' (label \"khaotik-ui\"), 'lib' (label \"library\"), 'cat' (label \"catalog app\"), 'mark' (label \"marks a version\"), 'ship' (label \"signs and publishes\"). Edges: 'repo' -> 'lib'; 'repo' -> 'cat'; 'lib' -> 'mark' labeled \"tag lib-star\"; 'cat' -> 'ship' labeled \"tag v-star\". Use a clean, schematic style. Render every node label and every edge label exactly as written. Do not add or omit any node or edge.",
+  "prompt_final": "The brief injected into every generated image and diagram\n(`scripts/generate_image.py` reads this section by name). It exists so\ngenerated artwork reads as a sibling of the product surfaces rather than as\nstock illustration.\n\nPalette, taken from `khaotik-ui/tokens/tokens.css` \u2014 these are the shipped\nvalues, not approximations:\n\n| Role | Token | Hex |\n| --- | --- | --- |\n| Deep ground | `warm-950` | `#171615` |\n| Ground | `warm-900` | `#1c1b1a` |\n| Raised surface | `warm-800` | `#201f1e` |\n| Light surface | `warm-100` | `#e9e8e6` |\n| Light ground / light text | `warm-50` | `#f5f4f2` |\n| Brand accent | `brand-yellow` | `#FFCC00` |\n\n**The brief:**\n\nDark, high-contrast, warm-neutral. Ground the composition in `#171615` with\nraised elements in `#201f1e` and text in `#f5f4f2`. Flat surfaces, no\ngradients, no glow, no drop shadows, no 3D or isometric treatment. Geometry\nis rectilinear with generous negative space. Lines are thin and confident.\n\n`#FFCC00` is the accent and obeys the same rule it obeys in the product: **at\nmost one instance per image**, marking the single most important element.\nNever as a fill for repeated elements, never as a background, never muted or\ndarkened \u2014 it appears at full value or it does not appear.\n\nNo stock-illustration idioms: no rounded cartoon characters, no floating\ngradient orbs, no glassmorphism, no neon, no purple-on-white SaaS palette.\nNothing that reads as templated. The register is a maker's logbook, not a\nmarketing page \u2014 confident, plain, and made by people who ship.\n\n**For diagrams specifically:** structural accuracy outranks polish. Preserve\nevery node, every edge, every edge label, and the direction of every arrow\nexactly as given. A diagram that looks better and says something different is\na defect, not an improvement.\n\nRender a flowchart diagram. Nodes: 'repo' (label \"khaotik-ui\"), 'lib' (label \"library\"), 'cat' (label \"catalog app\"), 'mark' (label \"marks a version\"), 'ship' (label \"signs and publishes\"). Edges: 'repo' -> 'lib'; 'repo' -> 'cat'; 'lib' -> 'mark' labeled \"tag lib-star\"; 'cat' -> 'ship' labeled \"tag v-star\". Use a clean, schematic style. Render every node label and every edge label exactly as written. Do not add or omit any node or edge.",
+  "prompt_hash": "fbec93155d234d75508860ed15eee65b4d7fdc7c33852a6660321a918a14b09c",
+  "style_injected": true,
+  "no_style": false,
+  "out": "/Users/k/Projects/khaos.machine/khaotik-ui/docs/assets/khaotik-ui-hero.png",
+  "out_path": "khaotik-ui/docs/assets/khaotik-ui-hero.png",
+  "size": "1536x1024",
+  "quality": "high",
+  "model": "gpt-image-2",
+  "cost_estimate": 0.06,
+  "caller_pid": 68689,
+  "ok": true,
+  "error": null,
+  "mode": "mermaid",
+  "mermaid": {
+    "source_path": "/private/tmp/claude-501/-Users-k-Projects-khaos-machine/c836d523-c6e3-4435-8bfe-1a69a0d2b081/scratchpad/heroes/khaotik-ui.mmd",
+    "source_hash": "9422a19645f279fe4c89725745e54aac4ed9ad1e4a0229cda5f5c40d49301fc3",
+    "kind": "flowchart",
+    "node_count": 5,
+    "edge_count": 4,
+    "renderer": null,
+    "reference_image_used": false
+  }
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "characterId": "character_01M4KD5YMZ09JFPGHX980QSWHV",
+    "voiceProfileId": "voice_profile_01M4RHTSC56A3BYQMJD5E9FPY5",
+    "voiceProfileName": "FIFTH",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZ5R0J8W56WCSF8M5T",
+    "voiceProfileId": "voice_profile_01M56BMNHVTXH8WNE10HB6A2Y5",
+    "voiceProfileName": "MADISON",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZ7VAWRF079AEN2PPE",
+    "voiceProfileId": "voice_profile_01M55ADGH47T75ZMN9V9APR8QY",
+    "voiceProfileName": "SIDNEY",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZCMFKPDJX7RM6A9N3",
+    "voiceProfileId": "voice_profile_01M56BQ98AWZNA7TYPKJ27SM2N",
+    "voiceProfileName": "DESMOND",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZCW6V7FBAH8EEA4MR",
+    "voiceProfileId": "voice_profile_01M5AJS06TV1XEWYWG4WXHVAD3",
+    "voiceProfileName": "CORRECTION OFFICER",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZEQSZXG7C1THMKMHX",
+    "voiceProfileId": "voice_profile_01M5DZVFR4SQVK5GRWMWPD7NDP",
+    "voiceProfileName": "DR. MITCHELL",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZGV4HWNVYXNM7S9A9",
+    "voiceProfileId": "voice_profile_01M5FTYPHR7HYMX828HCF53SXH",
+    "voiceProfileName": "BLAINE",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZHM00HDSD11Q0Y3RX",
+    "voiceProfileId": "voice_profile_01M56CG9T07P05Y0S7X2XM4MJZ",
+    "voiceProfileName": "GUARD",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZJYGSBYVNB8KGBZF3",
+    "voiceProfileId": "voice_profile_01M56BW3HA8S92H702WFJF8RYA",
+    "voiceProfileName": "JETTA",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZPZHSF5240HQJA307",
+    "voiceProfileId": "voice_profile_01M5AK4W88GCTAQMZYCPC33TSY",
+    "voiceProfileName": "MARCOS",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZQ1CDWV03JZGAC7M2",
+    "voiceProfileId": "voice_profile_01M4V90C8G34XWZZ7JAXAKSF4D",
+    "voiceProfileName": "Algieba",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "preset",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZR70W0XCVFFCASTCF",
+    "voiceProfileId": "voice_profile_01M57J2J4WN6ADBD86ETZ2B8FJ",
+    "voiceProfileName": "FEMALE INMATE",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  },
+  {
+    "characterId": "character_01M4KD5YMZT78WWPNZ7199PTWF",
+    "voiceProfileId": "voice_profile_01M567WSWCA6F1JJNW663TFTVP",
+    "voiceProfileName": "JASON",
+    "confidence": 0,
+    "manualOverride": true,
+    "voiceKind": "design",
+    "voiceLanguage": "en",
+    "voiceProfileStatus": "resolved"
+  }
+]

@@ -1,0 +1,958 @@
+{
+  "Desmond's Apartment": {
+    "name": "Desmond's Apartment",
+    "summary": "Desmond's apartment is the home base where Desmond and Jetta live through the story's turns, from the night Bubble demands payment outside to Jetta's call about her son. It serves as a private space for their arguments, card games, confessions, and brief respites between violent and criminal events elsewhere.",
+    "mood": "",
+    "traits": [
+      "a brownstone",
+      "stairs to the brownstone",
+      "steps of the brownstone",
+      "a kitchen",
+      "kitchen lights",
+      "a kitchen counter",
+      "a living room",
+      "a long hallway",
+      "a bathroom",
+      "a linen closet",
+      "a bedroom",
+      "a window",
+      "a dresser",
+      "a sofa",
+      "a desk",
+      "a bed"
+    ],
+    "narrativeRole": {
+      "function": "The apartment is the story's home base for Desmond and Jetta's relationship, their private confrontations, and the respites between outside events.",
+      "storyRole": "main",
+      "plotAnchors": [
+        "Bubble demands five grand for Pop's debt and points a gun at Jetta outside the apartment; Desmond agrees to get the money and enters the brownstone.",
+        "Desmond returns with a .45 and a roofing ax, then he and Jetta come back with the blood-stained ax; he pours whisky and puts off their talk until morning.",
+        "Desmond admits to Jetta that he stole a car and has done too much to deserve happiness; Fifth and Madison arrive and Madison invites him out.",
+        "Desmond tells Jetta he wants her to meet Marcos to help find her son, and says he will kill Pop's killer if he finds him.",
+        "Jetta answers the phone and learns from Steven that she can see Marlon, then speaks with Marlon and cries."
+      ]
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Fifth's Loft": {
+    "name": "Fifth's Loft",
+    "summary": "Fifth's loft is the apartment where Fifth lives and where Madison often stays. It serves as the primary setting for the story's domestic and relationship scenes, including the final confrontation between Ray and Madison.",
+    "mood": "",
+    "traits": [
+      "a loft",
+      "a lobby of the building",
+      "a roof of the building",
+      "a ledge on the roof",
+      "a fridge",
+      "a bathroom",
+      "a bathtub",
+      "a sofa",
+      "pillows",
+      "a bedroom",
+      "a lavish walk-in closet",
+      "rows of suits",
+      "dozens of boxes of shoes",
+      "a T-shirt rack",
+      "a shelf",
+      "an elevator",
+      "a ground floor",
+      "a door",
+      "an open window",
+      "a small television",
+      "an outlet on the wall",
+      "a kitchen",
+      "a big chalk board on a side wall near the kitchen",
+      "a coffee table",
+      "a living room"
+    ],
+    "narrativeRole": {
+      "function": "The loft is the home base where Fifth's decline, Madison's relationships, and the climactic attack unfold.",
+      "storyRole": "main",
+      "plotAnchors": [
+        "Madison confronts Fifth about his suicide attempts and his decision to give away his money.",
+        "Fifth leaves the bathtub as the television falls in and the outlet explodes.",
+        "Madison finds Fifth's chalkboard message 'Went to apartment F' and leaves.",
+        "Fifth introduces Sidney to Madison and Ray, and Fifth says love is beautiful.",
+        "Ray attacks Madison; Desmond arrives, hits Ray, fires a shot, and carries Madison out."
+      ]
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Desmond's Car": {
+    "name": "Desmond's Car",
+    "summary": "Desmond's car is a recurring setting where Desmond drives, takes calls, and transports Jetta, Madison, and Fifth. It serves as a private space for conversations, arguments, and key revelations. The car appears in six scenes across the story, from Desmond picking up Jetta to the final drive to Queens.",
+    "mood": "",
+    "traits": [
+      "a car",
+      "a rear view mirror",
+      "a trunk"
+    ],
+    "narrativeRole": {
+      "function": "A moving private space where Desmond, Jetta, and others talk, argue, and make key decisions and revelations.",
+      "storyRole": "recurring",
+      "plotAnchors": [
+        "Desmond learns his brother is alive and picks up Jetta; Jetta throws her marriage band out the window and says she is not free; Desmond reveals Pop was killed and vows revenge; Jetta offers to help but he tells her to focus on finding her son.",
+        "Madison questions whether Desmond can talk Fifth out of killing himself; Desmond admits he can't but hopes to keep Fifth alive; Desmond accuses Madison of only caring when she is broke; Desmond explains only Madison can sign Fifth out and Dr. Mitchell will sign him over to her care; they arrive at the mental hospital and enter.",
+        "Desmond fires two shots in the air at a yuppie who took a parking spot, causing the yuppie car to speed away; everyone in the car stares at Desmond with disbelief.",
+        "Desmond admits the situation was his fault, tells Jetta that Ray Oaklin killed Pop and Madi set Ray up for him, and fears Fifth may do something crazy; he explains Marcos was hired to stop Fifth from killing himself and that the firm would have to pay out big because everything is in Madi's name, about 5 million.",
+        "Desmond drives to an industrial, abandoned part of Queens, opens the trunk to find Ray alive and bleeding, pulls out his gun, helps Ray out, and tells him, 'Come on Ray. I want to show you something.'"
+      ]
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Sidney's Apartment": {
+    "name": "Sidney's Apartment",
+    "summary": "Sidney's apartment is the home of Sidney Hammond, an artist who lives in apartment F. It is the setting for her first encounter with Fifth, their deepening intimacy, and a confrontation with Madi at the door.",
+    "mood": "",
+    "traits": [
+      "smaller than Fifth's apartment",
+      "amazing decor",
+      "a kitchen",
+      "a living room",
+      "a bathroom",
+      "a shower with fogged glass",
+      "a bedroom",
+      "a balcony",
+      "a door",
+      "a buzzer"
+    ],
+    "narrativeRole": {
+      "function": "The apartment is the private space where Sidney and Fifth's relationship deepens through intimacy, confession, and domestic routine.",
+      "storyRole": "recurring",
+      "plotAnchors": [
+        "Fifth, wet and in a towel, bangs on Sidney's door; she pulls him in over the leak, and in her bathroom he says 'I love you.'",
+        "Sidney and Fifth kiss, exchange names, and she learns he was named after an avenue; she brings coffee and bagels and asks about his bandages.",
+        "Madi buzzes and Fifth, shirtless, refuses to let her in; she hears Sidney and Fifth having sex through the door and walks away laughing.",
+        "Fifth and Sidney talk on the balcony about fate and true love; she calls him Cowboy and he agrees to drive her on errands.",
+        "In bed, Fifth tells Sidney about his mother and his suicide attempt, admits he lied about his father, and agrees to let her photograph him after he does something first."
+      ]
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Hospital": {
+    "name": "Hospital",
+    "summary": "The hospital is where Fifth Mann is discharged into Madison Mann's custody and where Madi is later hospitalized after surgery. It appears in four scenes across the story, serving as a site for release, reunion, and medical crisis.",
+    "mood": "",
+    "traits": [
+      "a desk with video monitors",
+      "a waiting room",
+      "a hallway leading to Madi's room",
+      "Madi's room"
+    ],
+    "narrativeRole": {
+      "function": "The hospital is where Fifth is released into Madison's custody and where Madi is later hospitalized after surgery.",
+      "storyRole": "recurring",
+      "plotAnchors": [
+        "The guard confirms Fifth Mann can only be released into Madison Mann's custody, and Madison identifies herself.",
+        "Fifth is brought out, the doctor has Madison sign a form, and Fifth is released to the group.",
+        "Madison learns Pop was shot and killed and his funeral was that morning; she hugs Des.",
+        "Des tells Jetta that Madi is in bad shape after surgery and says he will call Fifth to stay with Madi."
+      ]
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Speeding Car": {
+    "name": "Speeding Car",
+    "summary": "The speeding car is a setting for two scenes in which Fifth drives recklessly. In the first, he is chased by Private Investigators, a fire truck, and the Police, and crashes before fleeing on foot. In the second, he drives with Desmond and two hookers, ignores warnings to slow down, and crashes into a park bench.",
+    "mood": "",
+    "traits": [
+      "New York city streets",
+      "a building",
+      "stairs",
+      "the roof",
+      "the edge of the roof",
+      "the street",
+      "a double parked car",
+      "the scene of the collision",
+      "the car",
+      "the front passenger seat",
+      "the back",
+      "a red light",
+      "the adjacent car",
+      "a busy intersection",
+      "a hot dog stand",
+      "the island",
+      "a park bench",
+      "the curve"
+    ],
+    "narrativeRole": {
+      "function": "The speeding car is used for high-speed driving sequences that escalate Fifth's reckless behavior and end in crashes.",
+      "storyRole": "passing",
+      "plotAnchors": [
+        "Fifth speeds through New York City streets, chased by Private Investigators, a fire truck, and the Police, smiling. He turns on music, has heavy bandages on both wrists, and briefly takes his eyes off the road to look at a cute girl. He sees a kid running across the street, swerves, and collides into a double parked car. Shaken but composed, he jumps out and sprints into a building. The police and fire engine arrive at the collision scene. Fifth runs up the stairs to the roof, with the Investigators chasing but unable to keep up. On the roof, he throws off his suit jacket, revealing a “LIFE IS BEAUTIFUL” T-shirt. The investigators reach the roof, and Marcos pleads, \"Mr. Mann please don't do it\". Fifth sprints to the edge of the roof and leaps off.",
+        "Fifth drives a car with Des in the front passenger seat and two hookers in the back. Des tries to drink a milk shake. At a red light, guys in an adjacent car point and laugh at Fifth. When the light turns green, Fifth stomps on the gas and speeds off. Des yells at him to slow down. Fifth speeds past his opponents, cuts them off, causing them to hit the island. Fifth smiles and giggles. Des tells him it is not funny and to slow down. Fifth drives even faster, running red lights and skidding through turns. Desmond's milk shake flies out of his hand and splashes the hookers. Des yells at Fifth about car crashes. Fifth speeds through a busy intersection and hits a hot dog stand. Des says Fifth is not taking him with him. Des makes a move for the steering wheel; the hookers scream; Fifth releases one hand to turn the music up. Des fights for control; Fifth presses down harder on the gas; the car speeds toward the back of a garbage truck. Des hits Fifth square in the jaw; Fifth releases the wheel; Des turns hard left, pulls the emergency break; the car skids, jumps the curve, and collides into a park bench. People gather; ambulance and police sirens are heard; Fifth jars his door loose and slides out. Des and the hookers are shaken up; Des is bleeding from the head; Fifth jumps out unscathed; the crowd is perplexed. Fifth breaks into a stretching routine. An elderly bystander approaches him and focuses on Fifth's T-shirt reading “Jesus - Coming Soon”. The park bystander asks Fifth if he is okay and what kind of driving that was. Fifth looks the man dead in his eyes, reaches in his pocket, pulls out a handful of pistachio nuts, cracks the shells, and eats one while staring at the old codger. The park old man backs away. Fifth spots a squirrel by a tree, walks over, kneels down, and starts tossing nuts to it."
+      ]
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Airport": {
+    "name": "Airport",
+    "summary": "The airport appears twice in the story: first as the nighttime setting where Desmond and Jetta pick up Madison and a major confrontation occurs, and later as the daytime setting for Jetta's final goodbye to Desmond. It functions as a transitional space for arrivals and departures that bookend significant relationship moments.",
+    "mood": "",
+    "traits": [
+      "a parking space",
+      "a terminal"
+    ],
+    "narrativeRole": {
+      "function": "The airport serves as a place of arrival and departure where key confrontations and farewells between Desmond, Jetta, and Madison occur.",
+      "storyRole": "passing",
+      "plotAnchors": [
+        "Desmond and Jetta arrive to pick up Madison; Desmond confronts Jetta about being selfish and tells her to find her son; Jetta agrees, then sucker punches Des for calling her a bitch; they collect Madison, who complains about Des's car and her eviction; in the car, Madison talks about hitting her ex-fiancé with a paint can, and the conversation turns to Fifth's hospitalization and suicide attempts; Des says he almost lost his best friend today, and the scene cuts to a flashback of Fifth.",
+        "Jetta is about to board a plane; she says her final goodbyes to Desmond, thanking him for everything; Desmond tells her he just wants to see her happy; Jetta says she is happy when she is with him and gives him a kiss; she reaches into Desmond's shirt, holds the ring in her hand, and tells him that if he makes the right choice she will be back for it; they look into each other's eyes, and Jetta walks away; Desmond watches her until she is out of sight, and a single tear rolls down his face."
+      ]
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Airport Terminal": {
+    "name": "Airport Terminal",
+    "summary": "Jetta is about to board a plane at the airport terminal. She says her final goodbyes to Desmond, thanking him for everything. Desmond tells her he just wants to see her happy. Jetta says she is happy when she is with him and gives him a kiss. She then reaches into Desmond's shirt, holds the ring in her hand, and tells him that if he makes the right choice she will be back for it. They look into each other's eyes, and Jetta walks away. Desmond watches her until she is out of sight, and a single tear rolls down his face.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "City Street": {
+    "name": "City Street",
+    "summary": "Fifth and Madison walk down a busy New York street. Madison tells Fifth that he knows a woman they passed, but Fifth denies ever seeing her before. Madison says it is good to know your neighbors, calling him brother dear, and when Fifth asks why, she explains that neighbors can sign for packages, lend sugar, and spot condoms in the middle of the night. Fifth simply says oh.",
+    "mood": "",
+    "traits": [
+      "a busy New York street"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Classroom": {
+    "name": "Classroom",
+    "summary": "In a classroom, Mr. Gathers is huddled in the corner while Jetta aims a large hand gun at him. Mr. Gathers insists he did not touch anyone and that the person is confused. Jetta tells him he now knows fear, calls him an animal, and says he will never put his hands on another innocent child. Mr. Gathers denies lying and asks her to put the gun down, but Jetta tells him to shut up and says she does not want to hear his lies. Mr. Gathers tries to rush Jetta; she fires shots and hits him in the head, and brain matter and blood splatter on the window of his classroom door. Students standing outside, staring through the glass, start running and screaming.",
+    "mood": "",
+    "traits": [
+      "a classroom",
+      "a classroom door with a window"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Coffee Shop": {
+    "name": "Coffee Shop",
+    "summary": "Desmond and Marcos sit in a coffee shop. Desmond complains that after over a week Marcos has no leads on his brother's murder. Marcos says there are no leads and that Desmond's brother was dealing drugs and could have been shot by a crackhead. Desmond says his brother's murderer could be in Cuba by now, which offends Marcos, who argues about the Cuba remark. Desmond asks if Marcos followed the lead he gave him; Marcos says no, explaining the lead is too hot and the person too connected. Marcos asks about Fifth, and Desmond says Fifth is cool and will chill out with his sister in town. Marcos recalls Fifth jumping off a roof and calls him crazy. Desmond says Fifth has a good heart and we need more people like that. Marcos agrees to do what he can. Desmond finishes his coffee, grabs his jacket, and leaves. Marcos remains sitting and watches him from the window.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Emergency Room": {
+    "name": "Emergency Room",
+    "summary": "In a small hospital room, Des watches over an unconscious Madi. An ER doctor tells him that all but one fragment of glass has been removed, that the remaining fragment is moving, and that they must operate before it causes major damage. Des urges the doctor to do whatever is necessary to keep Madi alive. Two orderlies take Madi out for surgery. The doctor says the surgery should take no more than an hour and promises to keep Des informed. Des thanks him. The doctor leaves, and Des throws his jacket in the chair and stares out the window as the sun rises.",
+    "mood": "",
+    "traits": [
+      "a small hospital room"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Fifth's Car": {
+    "name": "Fifth's Car",
+    "summary": "Sidney drives Fifth in his car with the top down, and he asks her to pull over so he can grab a surprise. He enters Peacle's Jewelry, where Mr. and Mrs. Peacle warmly greet him and take him to the back room. Mr. Peacle retrieves a sparkling ring from a safe, telling Fifth his mother picked it out and paid for it. Fifth leaves a thousand dollar tip and takes the ring. Back in the car, he tells Sidney the store was closed, then asks her three questions, the last being if she will marry him. She says yes, the ring fits perfectly, and they kiss. As they drive off to celebrate, Sidney runs a red light, and a moving truck from the 'Heaven' moving company slams into the car, totalling it.",
+    "mood": "",
+    "traits": [
+      "a car with the top down"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [
+        {
+          "change": "totalled",
+          "scenes": [
+            "S1"
+          ]
+        }
+      ],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "French Cafe": {
+    "name": "French Cafe",
+    "summary": "At a French cafe, the club sits in a somber mood. Jetta says it feels funny to be on the outside, that five years is a long time, that it was worth it to have one less monster in the world, and that her only regret is losing her family and missing her baby. She looks out the window and wipes away tears; the waitress serves her food and she eats. Madison says Jetta's food looks good, that she is starving and has not eaten in two days, and that she is broke, homeless, and her life stinks. The waitress brings Madison's food and she pigs out. Fifth looks like he is about to start his confessional but the waitress returns with his food and he eats. Madison guesses they are all crashing at Desmond's place; Desmond refuses, says he has the keys to Fifth's loft in his pocket, that Madison and Fifth are going home, and that Jetta is welcome to crash with him. The waitress brings the check and Desmond looks for contributions. Jetta says don't look at her; Madison says she had to borrow plane-fare; Fifth says what he did not give away Desmond took and that he is running on empty. Desmond says it is just like old times, a bunch of broke muthafuckas, and pulls a few bills out of his pocket and drops them on the table.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Funeral Home": {
+    "name": "Funeral Home",
+    "summary": "At a funeral home, Desmond mourns over the coffin of his baby brother, holding the deceased's hand and crying. His cell phone rings, shocking the mourners. He composes himself and answers, speaking to Madison. After the call, he hangs up, and everyone stares in disbelief. Desmond turns back to his brother and resumes crying loudly. The mourners return to crying, and then his cell phone rings again.",
+    "mood": "",
+    "traits": [
+      "small",
+      "low lite",
+      "filled with Black mourners",
+      "crying and carrying on",
+      "a coffin in the front"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Hell's Kitchen": {
+    "name": "Hell's Kitchen",
+    "summary": "Jetta walks around Hell's Kitchen asking in restaurants and shops about work, but is turned away. She spots a tattoo shop and enters. Nacho, a heavily tattooed young man, rudely tells her the shop is appointment only. Tony, an older tattooed man, appears and scolds Nacho, then apologizes to Jetta. Jetta says she is looking for work and shows her tattooed arm as a portfolio. Nacho accuses her of lying, and Jetta tells him off. Nacho jumps over the counter and attacks her, but Jetta side steps and knocks him into chairs. She tosses off her shirt, revealing a sports bra and tattoos covering her upper body. Nacho attacks again, and Jetta breaks his nose and floors him. Tony recognizes her work as prison style. Jetta warns Nacho not to call her a bitch again and starts to leave. Tony asks if she really did the work, then offers her a job, asking if she can work the tattoo gun. Jetta says yes. Nacho threatens to quit if Tony hires her, so Tony pays him off and fires him. Nacho leaves, and Jetta and Tony laugh.",
+    "mood": "",
+    "traits": [
+      "restaurants and shops",
+      "a tattoo shop with a bell on the door",
+      "a back of the store from which people appear",
+      "rock music filling the shop"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Hospital Waiting Room": {
+    "name": "Hospital Waiting Room",
+    "summary": "In the hospital waiting room at night, everyone waits for Fifth to be brought out. The Guard bobs to his music. Fifth is brought out by a large Orderly and a sleepy doctor; the doctor hands Madison a form to sign. Fifth greets the group, the orderly removes his restraints, and he hugs Madison. Madison warns him not to try anything crazy. Fifth then embraces Des, who tells him about Pop's death. Madison learns Pop was shot and killed and his funeral was that morning; she hugs Des, who initially resists then hugs back. Fifth jokes with Jetta, and they square up playfully until the Guard stops them. Fifth tells the group to leave, and they file out of the hospital.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Industrial Artist Space": {
+    "name": "Industrial Artist Space",
+    "summary": "Madison arrives at her industrial artist space carrying paint supplies and groceries, only to find an eviction notice from the City Marshall and a chain and lock on her door. She drops her supplies and calls Jason, but the answering machine picks up. She leaves a desperate message asking him to pick up and saying she needs him, then puts away the phone and picks up her supplies.",
+    "mood": "",
+    "traits": [
+      "a door with an eviction notice from the City Marshall and a chain and lock on it"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Jason's Apartment": {
+    "name": "Jason's Apartment",
+    "summary": "Madison struggles to get the keys to Jason's apartment out of her pocket while juggling her supplies, then opens the door. Inside, she hears moans and groans of wild sex from the bedroom. She heads back for the door but hesitates, sets her supplies down quietly, and opens a large can of paint. She walks to the bedroom, flings the door open, and throws the paint all over Jason and his lover. Jason wipes globs of paint from his face and calls out to Madison, saying he can explain. Madison beams the empty paint can directly at Jason's head, knocking him out, and storms out of the apartment.",
+    "mood": "",
+    "traits": [
+      "a bedroom"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Jetta's House": {
+    "name": "Jetta's House",
+    "summary": "Jetta clings to her son as the police pull him away from her and handcuff her. She screams and cries, trying to get back to her son.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Mental Hospital": {
+    "name": "Mental Hospital",
+    "summary": "Blaine Wellworth visits Fifth at a mental hospital with Dr. Mitchell. Dr. Mitchell explains that Fifth is suicidal and recently tried to hang himself. Blaine asks to speak with Fifth about confidential business. After surrendering his pen and glasses, Blaine enters Fifth's room, where Fifth is restrained in a straight jacket. They discuss Blaine's business offer and Fifth's suicide attempt. Fifth complains of itchy balls and asks Blaine to free one hand. Blaine unfastens a strap, and Fifth immediately punches him, knocking him out. Fifth removes the straight jacket, undresses Blaine, puts him in the straight jacket, and arranges him in the corner. Fifth calls the orderly, claiming Blaine swallowed his tongue. When the orderly enters, Fifth sneaks out, runs through the facility, sets off alarms, finds car keys, and drives off in a Mustang. Two investigators in a parked car see him and give chase.",
+    "mood": "",
+    "traits": [
+      "a hallway",
+      "Fifth's room",
+      "a door with glass",
+      "a parking lot",
+      "a corner in the room"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Night Club": {
+    "name": "Night Club",
+    "summary": "The quartet arrives at a night club. Jetta and Fifth head to the dance floor while Desmond and Madison take a booth. Madison apologizes for leaving without calling, and Desmond reveals he is in freefall. Madison finds a gold chain with a diamond engagement ring hidden behind his shirt. Desmond tells the story of his failed engagement and the years of hookers and booze that followed, including a flashback where he killed a hooker while drunk. Madison tries to give him hope, but Desmond says he stopped having hope long ago. Ray approaches and offers to buy them drinks; Desmond insults him, then introduces him to Madison as his sister. Ray kisses Madison's hand and leaves. Later, Desmond and Madison join Fifth and Jetta in the VIP section, and Ray and an attractive young woman join the group.",
+    "mood": "",
+    "traits": [
+      "a mature crowd, with guys in suits and chics in fancy dresses",
+      "a designer backdrop",
+      "a dance floor",
+      "a booth in the VIP section"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Nyc Streets": {
+    "name": "Nyc Streets",
+    "summary": "Des and Jetta walk through the streets on their way to meet Marcos. Jetta teases Des about his love life, and he answers with jokes about waiting on the bench and buying water when the well dries up. They reach Central Park near Columbus Circle, where a Latin percussion band is playing and Marcos is sitting under a statue. Marcos greets Des and is introduced to Jetta. He quietly asks Des if she is the same Jetta Ross from the Gathers murder, and Des signals him to drop it. Jetta overhears, confirms she is Jetta Bloom, says she served her time and the man deserved to die, and asks if Marcos has a problem. Marcos says he does not, then asks about her son. Jetta explains that her husband moved the boy away after the trial, that she told them not to contact her while she was in prison, and that her son Marlon will be turning eight this year. The Latin band comes by for tips and Marcos throws in a five. Marcos tells Jetta the only way to find her husband and son is with a bribe, which is tricky, and that he will speak to some people and get back to them in a couple of days. He and Des step aside, where Marcos says it is a long shot and still up to the father, and that it will cost five grand and make them even. Marcos tells Jetta he hopes things work out, says he will be in touch, and fades into the crowd as the music plays and Jetta and Des sit back and people watch.",
+    "mood": "",
+    "traits": [
+      "streets",
+      "Central Park near Columbus Circle",
+      "a Latin percussion band can be heard in the distance"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Rooftop": {
+    "name": "Rooftop",
+    "summary": "Fifth stands on a rooftop staring at the ledge, wearing a T-shirt that reads \"LIFE IS BEAUTIFUL\". Two investigators hired by his firm stand behind him. Fifth ignores their pleas, runs to the ledge, and leaps. The investigators do not react. From the ground, Fifth falls toward the street. Firefighters catch him in a large net. The police grab and handcuff him. The two investigators rush up and watch as Fifth is taken away.",
+    "mood": "",
+    "traits": [
+      "a ledge",
+      "a street below"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Streets": {
+    "name": "Streets",
+    "summary": "The garage door opens slowly and a classic convertible comes racing out with Fifth at the wheel. Sidney is loving it. She has a cowboy hat on and she takes it off and puts it on Fifth. They drive off.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Womens Penitentiary": {
+    "name": "Womens Penitentiary",
+    "summary": "Jetta is escorted back to her cell by a correction officer who tells her to pack up her things. After the officer leaves, two female inmates slip into her cell and threaten her with home-made shanks. Moments later, the officer returns to find the two inmates unconscious on the floor and Jetta packed and ready to leave.",
+    "mood": "",
+    "traits": [
+      "a cell",
+      "a cell door"
+    ],
+    "narrativeRole": {
+      "function": "",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Bronxville": {
+    "name": "Bronxville",
+    "summary": "Bronxville is mentioned as the location of Blaine's mansion. It is referenced in dialogue to highlight his wealth, contrasting six cars and a mansion with whatever dissatisfaction he has.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "Bronxville is cited as the location of Blaine's mansion, used to illustrate his wealth.",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  },
+  "Jail": {
+    "name": "Jail",
+    "summary": "Jail is not shown as a scene; it is only spoken of. It is used as a threatened consequence of getting caught and as a past place of confinement that raises questions about someone's whereabouts.",
+    "mood": "",
+    "traits": [],
+    "narrativeRole": {
+      "function": "A threatened or reported consequence of getting caught, and a past place of confinement used to question someone's whereabouts.",
+      "storyRole": "passing",
+      "plotAnchors": []
+    },
+    "thematicImportance": {
+      "thematicRole": "",
+      "themesEmbodied": [],
+      "symbolicElements": []
+    },
+    "continuity": {
+      "progressionPattern": "",
+      "revisitFrequency": "",
+      "environmentalChanges": [],
+      "timeOfDayDistribution": {}
+    },
+    "occupants": [],
+    "cast": {
+      "convergence": "",
+      "powerDynamics": "",
+      "relationshipTypes": ""
+    }
+  }
+}

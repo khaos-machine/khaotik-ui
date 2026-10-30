@@ -1,0 +1,789 @@
+{
+  "_provenance": "khaosd GET /api/catalog/prompts — the whole artifact registry, all kinds, with the links khaos-tools #1120 adds (systemMessageId, schemaId, family, retained, notes, usedBy). Captured 2026-10-12 from khaosd 0.114.0 running khaos-tools main at bd43830a0. There is no per-kind route; the discriminator is the kind field.",
+  "artifacts": [
+    {
+      "id": "character-casting",
+      "kind": "prompt",
+      "domain": "character",
+      "version": "1.1.0",
+      "description": "Character analysis: the casting profile",
+      "hash": "sha256:a21c9735c5b7f36cadd4310336bdbf4d3147509ccb2d742f9c2c00192d64664b",
+      "source": "templates/analyze-character-casting.md",
+      "systemMessageId": "character-casting-v1",
+      "schemaId": "character-casting-schema",
+      "family": "character-casting",
+      "analyzer": "CharacterAnalyzer",
+      "type": "analysis",
+      "notes": "The casting profile: appearance, voice and voice profile from the script's own lines about and by the character. Reads no scene analysis. What the script does not state is a marked suggestion."
+    },
+    {
+      "id": "character-casting-schema",
+      "kind": "schema",
+      "hash": "sha256:bb75cb4df7e626361114403878b0967d123b079d3b5074d15a97290e42b39d22",
+      "source": "schemas/character-casting-schema.json",
+      "usedBy": [
+        "character-casting"
+      ]
+    },
+    {
+      "id": "character-casting-v1",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "primary",
+      "description": "Character analysis system prompt (casting call)",
+      "hash": "sha256:05db4d458771c47f8724d4339e94c7b255e9de100f4fb065405dc6433d9002af",
+      "source": "system-prompts/character-v2.md",
+      "usedBy": [
+        "character-casting"
+      ]
+    },
+    {
+      "id": "character-journey-merge",
+      "kind": "prompt",
+      "domain": "character",
+      "version": "1.0.0",
+      "description": "Cross-chunk character journey merge (#184). Step 4/5 of the character-journey pipeline: joins the ordered ChunkSummary artifacts emitted by #182 into the single full-character-journey artifact shape from parent epic #167.",
+      "hash": "sha256:0fbcfeb5582bd8d1b8934c873c2b0e3485efc5dbb840855a14faeb575c8c2985",
+      "source": "templates/merge-character-journey.md",
+      "systemMessageId": "character-journey-merge-v1",
+      "schemaId": "character-journey-schema",
+      "family": "character-journey-merge",
+      "analyzer": "JourneyMerger",
+      "type": "synthesis",
+      "notes": "Persisted via workflow.Result{Kind:\"character-journey\", EntityType:\"character\", EntityID:\"<character_id>\"} at analyses/character-journey/<character_id>.json. Single-chunk inputs skip the LLM call and project deterministically; multi-chunk inputs invoke the LLM with retry-once on malformed JSON or evidence hallucination. Fan-out wiring deferred to #187."
+    },
+    {
+      "id": "character-journey-merge-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Cross-chunk character journey merge system prompt (#184) — synthesizes the full per-character journey artifact from the ordered list of per-chunk ChunkSummary artifacts emitted by #182.",
+      "hash": "sha256:03bdada0778dc509e874e4b9b754565c66af367c12b145f2e27a99985bb2fefd",
+      "source": "system-prompts/character-journey-merge-v1.md",
+      "usedBy": [
+        "character-journey-merge"
+      ]
+    },
+    {
+      "id": "character-journey-schema",
+      "kind": "schema",
+      "hash": "sha256:af66e82ed494459bc3cd2466259ec8d3941cfb0d984bebf41a1b14202c7e2233",
+      "source": "schemas/character-journey-schema.json",
+      "usedBy": [
+        "character-journey-merge"
+      ]
+    },
+    {
+      "id": "character-story",
+      "kind": "prompt",
+      "domain": "character",
+      "version": "1.0.0",
+      "description": "Character analysis: the story reading",
+      "hash": "sha256:40f52df70299d81771a8d4c497fb018bc267f15928be0629f37ca997efa66ccf",
+      "source": "templates/analyze-character-story.md",
+      "systemMessageId": "character-story-v1",
+      "schemaId": "character-story-schema",
+      "family": "character-story",
+      "analyzer": "CharacterAnalyzer",
+      "type": "analysis",
+      "notes": "The story reading: who the character is, their arc, their relationships, what they want and their part in the story, from the scene records. Stage 2 character analysis of 2026-10-11, split in three after the single call proved unstable (khaos.machine docs/plans/2026-10-11-stage2-character-analysis-draft.md)."
+    },
+    {
+      "id": "character-story-schema",
+      "kind": "schema",
+      "hash": "sha256:f5f1db79337fd5394d5db7a6fe4fe57aac911d318aaef877c5ae68b4faac0b54",
+      "source": "schemas/character-story-schema.json",
+      "usedBy": [
+        "character-story"
+      ]
+    },
+    {
+      "id": "character-story-v1",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "primary",
+      "description": "Character analysis system prompt (story call)",
+      "hash": "sha256:05db4d458771c47f8724d4339e94c7b255e9de100f4fb065405dc6433d9002af",
+      "source": "system-prompts/character-v2.md",
+      "usedBy": [
+        "character-story"
+      ]
+    },
+    {
+      "id": "character-ties",
+      "kind": "prompt",
+      "domain": "character",
+      "version": "1.0.0",
+      "description": "Character analysis: ties",
+      "hash": "sha256:543404ea11ef5927687e6e0951e88165ed0ce653d0d6f5dfde2e01296e065ef0",
+      "source": "templates/analyze-character-ties.md",
+      "systemMessageId": "character-ties-v1",
+      "schemaId": "character-ties-schema",
+      "family": "character-ties",
+      "analyzer": "CharacterAnalyzer",
+      "type": "analysis",
+      "notes": "Who the people the script ties to a character are: one record per kind of tie, each line with its speaker. The answer is a suggestion for Review, never a decision."
+    },
+    {
+      "id": "character-ties-schema",
+      "kind": "schema",
+      "hash": "sha256:94ac0780872a5589d72145e0978cbd68a1305d7a41adc8020173af77e3b6bdc4",
+      "source": "schemas/character-ties-schema.json",
+      "usedBy": [
+        "character-ties"
+      ]
+    },
+    {
+      "id": "character-ties-v1",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "primary",
+      "description": "Character analysis system prompt (ties call)",
+      "hash": "sha256:05db4d458771c47f8724d4339e94c7b255e9de100f4fb065405dc6433d9002af",
+      "source": "system-prompts/character-v2.md",
+      "usedBy": [
+        "character-ties"
+      ]
+    },
+    {
+      "id": "coverage-report",
+      "kind": "prompt",
+      "domain": "coverage",
+      "version": "1.0.0",
+      "description": "Project-level coverage report synthesizing scene and character analyses",
+      "hash": "sha256:09c72f7a93fe1e8ecfb8746b9ba4994ca6befd61578a859b5457cab8356fe185",
+      "source": "templates/coverage-report.md",
+      "systemMessageId": "coverage-v1",
+      "schemaId": "coverage-schema",
+      "family": "coverage-report",
+      "analyzer": "CoverageSynthesizer",
+      "type": "synthesis",
+      "notes": "Production Practicality is always null and scored deterministically. The four grounding variables beyond scene/character/story are assembled by coverage.BuildSynthesisInput; an upstream layer that has not run is rendered as an explicit absence marker, never a blank section."
+    },
+    {
+      "id": "coverage-schema",
+      "kind": "schema",
+      "hash": "sha256:fd06b30e6adb1febff7e993afeba9cbe7a9963d7f2dcaf83be2bc8017ce21c17",
+      "source": "schemas/coverage-schema.json",
+      "usedBy": [
+        "coverage-report"
+      ]
+    },
+    {
+      "id": "coverage-summary",
+      "kind": "report_template",
+      "domain": "coverage",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Coverage summary report template (scene/character/location totals + overall properties).",
+      "hash": "sha256:88cd1ef53ebcb9f345f45e33f53cfb545eecff711e829012035087a7340d7d36",
+      "source": "report-templates/coverage-summary.md"
+    },
+    {
+      "id": "coverage-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Coverage report system prompt — screenplay-level qualitative synthesis over the completed first pass.",
+      "hash": "sha256:018cd77a11f1e7d927055020af5c2e1def43e5bcb5bd97a8a8eca56e5d77f41c",
+      "source": "system-prompts/coverage-v1.md",
+      "usedBy": [
+        "coverage-report"
+      ]
+    },
+    {
+      "id": "journey-chunk-summary",
+      "kind": "prompt",
+      "domain": "character",
+      "version": "1.0.0",
+      "description": "Per-chunk character journey summary (#182). Step 3/5 of the character-journey pipeline: LLM synthesis grounded in a deterministic appearance chunk emitted by journey.ChunkAppearances (#178).",
+      "hash": "sha256:65839ab7eb94cd9187c73de428e19f256b3cec4ee17326345a06d30887a99d45",
+      "source": "templates/summarize-character-journey-chunk.md",
+      "systemMessageId": "journey-chunk-v1",
+      "schemaId": "journey-chunk-summary-schema",
+      "family": "journey-chunk-summary",
+      "analyzer": "ChunkSummarizer",
+      "type": "analysis",
+      "notes": "Persisted via workflow.Result{Kind:\"journey-chunk-summary\", EntityType:\"character\", EntityID:\"<character_id>__chunk_<index>\"}. Fan-out wiring deferred to #184/#188."
+    },
+    {
+      "id": "journey-chunk-summary-schema",
+      "kind": "schema",
+      "hash": "sha256:e5b72bb75fcd4571a273e7fc7299f19ffea300217ea81f55990323c62e81a83e",
+      "source": "schemas/journey-chunk-summary-schema.json",
+      "usedBy": [
+        "journey-chunk-summary"
+      ]
+    },
+    {
+      "id": "journey-chunk-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Per-chunk character journey summary system prompt (#182) — LLM synthesis from a deterministic per-character appearance chunk emitted by journey.ChunkAppearances (#178).",
+      "hash": "sha256:a74b3bf8a17af09ad7c2f4935164740ead73b69235c062fd5f7964f99db099f5",
+      "source": "system-prompts/journey-chunk-v1.md",
+      "usedBy": [
+        "journey-chunk-summary"
+      ]
+    },
+    {
+      "id": "location-mentions",
+      "kind": "prompt",
+      "domain": "location",
+      "version": "1.0.0",
+      "description": "Location analysis: mentions",
+      "hash": "sha256:56a2efdcc38f42542c4b6abee35a4fb21e595bd288ed8c91291fae041174f677",
+      "source": "templates/analyze-location-mentions.md",
+      "systemMessageId": "location-mentions-v1",
+      "schemaId": "location-mentions-schema",
+      "family": "location-mentions",
+      "analyzer": "LocationAnalyzer",
+      "type": "analysis",
+      "notes": "What each loose wording used in a place's scenes means: this place, a part of it, another place, somewhere unlisted, or not a place. The answer is a suggestion for Review, never a decision."
+    },
+    {
+      "id": "location-mentions-schema",
+      "kind": "schema",
+      "hash": "sha256:98d52b1abb1a728602c5e243b4a462bdb81cb6477fccf48c9888995740bd358a",
+      "source": "schemas/location-mentions-schema.json",
+      "usedBy": [
+        "location-mentions"
+      ]
+    },
+    {
+      "id": "location-mentions-v1",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "primary",
+      "description": "Location analysis system prompt (mentions call)",
+      "hash": "sha256:787edf53273229211bb7f702b87a399eac4573cf0cce5c13e6256f3a664e8b8e",
+      "source": "system-prompts/location-v2.md",
+      "usedBy": [
+        "location-mentions"
+      ]
+    },
+    {
+      "id": "location-setting",
+      "kind": "prompt",
+      "domain": "location",
+      "version": "1.0.0",
+      "description": "Location analysis: setting",
+      "hash": "sha256:bc5b8fe74321da2d77e284767ed170943493b7698d30c20e7560799264d861c7",
+      "source": "templates/analyze-location-setting.md",
+      "systemMessageId": "location-setting-v1",
+      "schemaId": "location-setting-schema",
+      "family": "location-setting",
+      "analyzer": "LocationAnalyzer",
+      "type": "analysis",
+      "notes": "How the script describes a place, read from the script's own lines and never from a scene analysis: what is stated, lasting changes, atmosphere, and what is only suggested."
+    },
+    {
+      "id": "location-setting-schema",
+      "kind": "schema",
+      "hash": "sha256:597567728f95d7df551a19c0b910e5eb34ee9d29fab46a8781f14deec8da764d",
+      "source": "schemas/location-setting-schema.json",
+      "usedBy": [
+        "location-setting"
+      ]
+    },
+    {
+      "id": "location-setting-v1",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "primary",
+      "description": "Location analysis system prompt (setting call)",
+      "hash": "sha256:787edf53273229211bb7f702b87a399eac4573cf0cce5c13e6256f3a664e8b8e",
+      "source": "system-prompts/location-v2.md",
+      "usedBy": [
+        "location-setting"
+      ]
+    },
+    {
+      "id": "location-story",
+      "kind": "prompt",
+      "domain": "location",
+      "version": "1.0.0",
+      "description": "Location analysis: story",
+      "hash": "sha256:7823ceb839ce60f4cd3a7a8a6317a340d30c678ede6e0ed43ea35eed717cc807",
+      "source": "templates/analyze-location-story.md",
+      "systemMessageId": "location-story-v1",
+      "schemaId": "location-story-schema",
+      "family": "location-story",
+      "analyzer": "LocationAnalyzer",
+      "type": "analysis",
+      "notes": "What the story does at a place, read from its scenes' own analyses: summary, the events the story depends on, whether its use or who holds it changes, and its role."
+    },
+    {
+      "id": "location-story-schema",
+      "kind": "schema",
+      "hash": "sha256:aecd7070fb7b34f79d58d787fbbe1eb5d1a79c25e94542937646de72b95183a9",
+      "source": "schemas/location-story-schema.json",
+      "usedBy": [
+        "location-story"
+      ]
+    },
+    {
+      "id": "location-story-v1",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "primary",
+      "description": "Location analysis system prompt (story call)",
+      "hash": "sha256:787edf53273229211bb7f702b87a399eac4573cf0cce5c13e6256f3a664e8b8e",
+      "source": "system-prompts/location-v2.md",
+      "usedBy": [
+        "location-story"
+      ]
+    },
+    {
+      "id": "premise-schema",
+      "kind": "schema",
+      "hash": "sha256:c55d59d774dd0292282637e9640b4ad9c2e1706d1efc741418fa11b953821659",
+      "source": "schemas/premise-schema.json",
+      "usedBy": [
+        "project-premise"
+      ]
+    },
+    {
+      "id": "premise-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Project premise synthesizer system prompt (logline + synopsis)",
+      "hash": "sha256:6db1ca116cfadd4e8cdd3bca0e725f2a18c62681b257f9d2e934d7c627440a45",
+      "source": "system-prompts/premise-v1.md",
+      "usedBy": [
+        "project-premise"
+      ]
+    },
+    {
+      "id": "project-premise",
+      "kind": "prompt",
+      "domain": "coverage",
+      "version": "1.0.0",
+      "description": "Project-level logline and synopsis written to info.json for project lists",
+      "hash": "sha256:bc83cb3703fb6d647d40743608bd2478e5816e62928aa5237fa06cfd817c486b",
+      "source": "templates/project-premise.md",
+      "systemMessageId": "premise-v1",
+      "schemaId": "premise-schema",
+      "family": "project-premise",
+      "analyzer": "PremiseSynthesizer",
+      "type": "synthesis",
+      "notes": "Shares coverage-report's seven grounding variables verbatim so both passes read the same assembled context (coverage.BuildProjectGrounding). Output is deliberately two fields; genre, tone, pacing and the rubric stay on the coverage report."
+    },
+    {
+      "id": "relationship-schema",
+      "kind": "schema",
+      "hash": "sha256:2d64db90b99858d0f85a9ab6fa1bf68e11cf6203361c607fec430cba7f31f576",
+      "source": "schemas/relationship-schema.json",
+      "usedBy": [
+        "relationship-synthesis"
+      ]
+    },
+    {
+      "id": "relationship-synthesis",
+      "kind": "prompt",
+      "domain": "relationship",
+      "version": "1.0.0",
+      "description": "Per-edge relationship synthesis (#183). LLM-backed step 3/5 of the relationship pipeline.",
+      "hash": "sha256:f8e86f5608f2a38ebea095e5e0096833f4f04454b6b955594c485b39b4cbf00e",
+      "source": "templates/analyze-relationship.md",
+      "systemMessageId": "relationship-synthesis-v1",
+      "schemaId": "relationship-schema",
+      "family": "relationship-synthesis",
+      "analyzer": "RelationshipSynthesizer",
+      "type": "analysis",
+      "notes": "Reads the per-edge evidence artifact written by #180 (relationships.BuildEdgeEvidence) and emits a structured relationship summary under analyses/relationships/synthesis/<edge>.json. Edges below min_weight (default 3, env KHAOS_REL_SYNTHESIS_MIN_WEIGHT) write a skip-stub envelope instead of calling the LLM."
+    },
+    {
+      "id": "relationship-synthesis-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Relationship synthesis system prompt (#183) — LLM synthesis from deterministic per-edge evidence emitted by relationships.BuildEdgeEvidence (#180).",
+      "hash": "sha256:4c61ec7a0ccffcacd739cc449ab2357d5249e00c091d1aa78b5e9c1ca348b187",
+      "source": "system-prompts/relationship-synthesis-v1.md",
+      "usedBy": [
+        "relationship-synthesis"
+      ]
+    },
+    {
+      "id": "scene-analysis",
+      "kind": "eval_fixture",
+      "domain": "scene",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Deterministic render/schema fixture cases for first-pass scene analysis, run via `catalog eval` with no LLM call.",
+      "hash": "sha256:50042e5f3b78c9ad4cce16c853c82ebac523478242957a1e28527a7ad80fc36d",
+      "source": "eval-fixtures/scene-analysis.json"
+    },
+    {
+      "id": "scene-analysis-first",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "2.1.0",
+      "description": "Scene analysis — opening scene.",
+      "hash": "sha256:bd3e0fced8ecf4ca03b77d20c9689fb28e6bce04709579f487bf91c539e29603",
+      "source": "templates/analyze-scene-first.md",
+      "systemMessageId": "scene-v2",
+      "schemaId": "scene-schema",
+      "family": "scene-analysis-first",
+      "analyzer": "SceneAnalyzer",
+      "type": "analysis",
+      "notes": "Split from scene-analysis 3.4.0. Position is no longer a conditional inside one template: a first scene has no narrative context, a continuing scene has all prior scenes, a closing scene has the whole story — and each pairs with an output contract whose continuity fields match. The instruction body is shared (instructionBlockKey)."
+    },
+    {
+      "id": "scene-analysis-last",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "2.0.0",
+      "description": "Scene analysis — closing scene.",
+      "hash": "sha256:c434361947225f490ecf9e501cba46b79bba62ec82988989ab109d9a732a271f",
+      "source": "templates/analyze-scene-last.md",
+      "systemMessageId": "scene-v2",
+      "schemaId": "scene-schema",
+      "family": "scene-analysis-last",
+      "analyzer": "SceneAnalyzer",
+      "type": "analysis",
+      "notes": "Split from scene-analysis 3.4.0. Position is no longer a conditional inside one template: a first scene has no narrative context, a continuing scene has all prior scenes, a closing scene has the whole story — and each pairs with an output contract whose continuity fields match. The instruction body is shared (instructionBlockKey). 2.0.0 is the Stage 2 last-scene analysis of 2026-10-10, brought up to date with the first and nth scenes: the plain style, the bounded Stage 1 block, every earlier scene's record (PRIOR_SCENES) in place of the character roster, the location registry and the accumulated narrative, and the themes already used. It asks what this scene shows about the threads the earlier records carry, as a closure list sent to the closing scene alone (output template scene-last 2.0.0, schema 3.3.0); the closing scene may mark climax or resolution, never inciting or midpoint."
+    },
+    {
+      "id": "scene-analysis-nth",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "2.1.0",
+      "description": "Scene analysis — continuing scene.",
+      "hash": "sha256:b6fd5b62ae8c5bbde874abb83fcdf9e9939a177b387ffab3e6dc3715aa0a2456",
+      "source": "templates/analyze-scene-nth.md",
+      "systemMessageId": "scene-v2",
+      "schemaId": "scene-schema",
+      "family": "scene-analysis-nth",
+      "analyzer": "SceneAnalyzer",
+      "type": "analysis",
+      "notes": "Split from scene-analysis 3.4.0. Position is no longer a conditional inside one template: a first scene has no narrative context, a continuing scene has all prior scenes, a closing scene has the whole story — and each pairs with an output contract whose continuity fields match. The instruction body is shared (instructionBlockKey). 2.0.0 is the Stage 2 nth-scene plan of 2026-10-10 in the first scene's plain style: the bounded Stage 1 block (scene N's records and an identity list), the records of the earlier scenes the selection rule picks (PRIOR_SCENES) and the themes already used, in place of the character roster, the location registry and the accumulated narrative. 2.1.0: an arc moment describes only what the scene shows, and a middle scene marks no milestone (output template scene-nth 2.1.0, instruction block scene-v3 3.2.0, schema 3.2.0)."
+    },
+    {
+      "id": "scene-analysis-quality",
+      "kind": "rubric",
+      "domain": "scene",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Rubric for evaluating the quality and traceability of a scene analysis output.",
+      "hash": "sha256:bab31b2f2260b8d597f14e3887c4c476a4665ab4c347f2b86a07d3901a940d0a",
+      "source": "rubrics/scene-analysis-quality.md"
+    },
+    {
+      "id": "scene-analysis-v2",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "2.0.0",
+      "description": "Scene analysis with graph alignment (v2) — superseded by v3, retained for reproducibility",
+      "hash": "sha256:fb07a92b173810e7ff53002ff3f85dcc6fab0a486bc20b977f268a2df8831c67",
+      "source": "templates/analyze-scene-v2.md",
+      "systemMessageId": "scene-v2",
+      "schemaId": "scene-schema",
+      "family": "scene-analysis-v2",
+      "analyzer": "SceneAnalyzer",
+      "type": "analysis",
+      "notes": "V2 designed for knowledge graph integration. Explicit field mapping to graph operations. Recommended for all new scene analyses."
+    },
+    {
+      "id": "scene-entities-schema",
+      "kind": "schema",
+      "hash": "sha256:8b3fcba919edcc915a1051e66e3c84286ed82d61ad79001768803e5920071bd0",
+      "source": "schemas/scene-entities-schema.json",
+      "usedBy": [
+        "scene-entity-extraction"
+      ]
+    },
+    {
+      "id": "scene-entities-v1",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "primary",
+      "description": "Scene entity extraction (NER) system prompt — extraction-only role, distinct from the scene analyst.",
+      "hash": "sha256:5b90d336b7ce59499c9abd3055e63da9f2a79962fb4894fb217c580e9fb9b818",
+      "source": "system-prompts/scene-entities-v1.md",
+      "usedBy": [
+        "scene-entity-extraction"
+      ]
+    },
+    {
+      "id": "scene-entity-extraction",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "1.3.0",
+      "description": "Scene-level named-entity extraction (NER) — non-speaking characters and objects, matched against the parser's own known-entity gazetteer.",
+      "hash": "sha256:96dbc25ad277ef1c1353ec6e00790989f677a1ce4620a32c7bef9e733aae1c1e",
+      "source": "templates/extract-scene-entities.md",
+      "systemMessageId": "scene-entities-v1",
+      "schemaId": "scene-entities-schema",
+      "family": "scene-entity-extraction",
+      "type": "extraction",
+      "notes": "Wired into the first-pass pipeline: SceneAnalyzer.Analyze calls this prompt before scene-analysis-first/nth/last, and non_speaking_characters/objects were removed from scene-schema.json (3.0.0) in the same change — this is now the sole source non_speaking_characters.go and observed_objects.go read from. Deliberately narrower than scene-analysis: no accumulated prior-scene context, no narrative reasoning, no significance judgment. It reads the scene text in front of it and reports, for every entity the text names, whether it matches one of the known entities supplied (this scene's own speaking characters, plus every location in the screenplay, from the parser) or is new, plus every physical object the text names. Surface forms are recorded as observed, never normalised, canonicalised, or merged — relating differently-described mentions of the same thing is a later pass. 1.1.0 (#771) splits KNOWN_ENTITIES into a labelled cast and a labelled location list: 1.0.0 supplied both as one flat bullet list, so a location was indistinguishable from a character, and on a screenplay with no dialogue the whole block was a single unlabelled bullet naming a place. The model reported those places as people — 65 of 97 warnings on a 62-scene fixture. Locations are now the whole screenplay's rather than this scene's alone, because they serve as an exclusion set and a scene's action can name a place whose slugline belongs elsewhere."
+    },
+    {
+      "id": "scene-relation-extraction",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "1.0.0",
+      "description": "Scene-level relation extraction — relations the scene text states between entities on a supplied known-entity roster, as observed surface forms.",
+      "hash": "sha256:5cdd6c1b32528b792f6b4c8b15d1d3ccff7283a0b1a729ad26aa4681dcb1b307",
+      "source": "templates/extract-scene-relations.md",
+      "systemMessageId": "scene-relations-v1",
+      "schemaId": "scene-relations-schema",
+      "family": "scene-relation-extraction",
+      "type": "extraction",
+      "notes": "Second per-scene extraction pass (Stage 2 NER), run after entity minting completes so the roster carries minted observed characters and objects. KNOWN_ENTITIES here is the package-read relation roster (relationRoster), never buildKnownEntities — the entity pass's gazetteer deliberately skips non-speaking characters, which are exactly the entities this pass exists to relate. The prompt instructs the model to name endpoints exactly as the roster lists them; endpoint resolution is a Go-side exact lookup in the roster's own name-key map, a miss is a reported finding and no deposit. Relations are surface forms only: label as stated, grounding line quoted, no taxonomy — record as observed, relating differently-described mentions is not this pass's job either."
+    },
+    {
+      "id": "scene-relations-schema",
+      "kind": "schema",
+      "hash": "sha256:d2bf8a5b83d3d48994773c4a1d4e43a64ea1d78b436c256eec57c644db571096",
+      "source": "schemas/scene-relations-schema.json",
+      "usedBy": [
+        "scene-relation-extraction"
+      ]
+    },
+    {
+      "id": "scene-relations-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Scene relation extraction system prompt — stated-relations-only role, distinct from both the entity extractor and the scene analyst.",
+      "hash": "sha256:b08dc9026d3c6606f87513848675a11846e645bcc545803da1c15d2ff77eee99",
+      "source": "system-prompts/scene-relations-v1.md",
+      "usedBy": [
+        "scene-relation-extraction"
+      ]
+    },
+    {
+      "id": "scene-schema",
+      "kind": "schema",
+      "hash": "sha256:d857a71b46adf9ecd08ac702a0ec2edbfa906e0e928de83f877340955da4845c",
+      "source": "schemas/scene-schema.json",
+      "usedBy": [
+        "scene-analysis-first",
+        "scene-analysis-last",
+        "scene-analysis-nth",
+        "scene-analysis-v2"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "9.0.0",
+      "description": "Stage 1 source-grounded character, object, prose-location and relation claims in one scene call.",
+      "hash": "sha256:e90fcebbe1a6ed2854f063130483d29ad6b52c51e5760ee70cfb30881bbc8239",
+      "source": "templates/extract-scene-stage1-claims-v9.md",
+      "systemMessageId": "scene-stage1-claims-v4",
+      "schemaId": "scene-stage1-claims-v5-schema",
+      "family": "scene-stage1-claims",
+      "type": "extraction",
+      "notes": "Pending source claims only; each extracted item is classified by the decision model before publication, and identity and relation assertions stay pending for review."
+    },
+    {
+      "id": "scene-stage1-claims-schema",
+      "kind": "schema",
+      "hash": "sha256:efa3d725855034e49aef17d3367dcbc8074a69fa2316314b64e8776b3fc24390",
+      "source": "schemas/scene-stage1-claims-schema.json",
+      "usedBy": [
+        "scene-stage1-claims-v1"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v1",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "1.0.0",
+      "description": "Retained Stage 1 exact-quote prompt and schema for historical provenance.",
+      "hash": "sha256:3d685039156513e6779b2211f62017c5d8e1ef27c9a362c70c137a2e7763f3fb",
+      "source": "templates/extract-scene-stage1-claims.md",
+      "systemMessageId": "scene-stage1-claims-v1",
+      "schemaId": "scene-stage1-claims-schema",
+      "retained": true,
+      "family": "scene-stage1-claims",
+      "type": "extraction",
+      "notes": "Historical contract; new runs use scene-stage1-claims v2 source-owned evidence selectors."
+    },
+    {
+      "id": "scene-stage1-claims-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Stage 1 source-grounded scene claim extraction in one call.",
+      "hash": "sha256:33039a5b5ffd7e9cdd81cbe1fffc35dbd923995af935193db1b4a6f4a8ca7e3b",
+      "source": "system-prompts/scene-stage1-claims-v1.md",
+      "usedBy": [
+        "scene-stage1-claims-v1"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v2",
+      "kind": "system_message",
+      "version": "2.0.0",
+      "status": "deprecated",
+      "description": "Stage 1 scene extraction with source-owned relation evidence selectors.",
+      "hash": "sha256:4b47a25c831e481bd06712fc576fd4bccf1c3fe1fa1e693ff9fcb439166bb348",
+      "source": "system-prompts/scene-stage1-claims-v2.md"
+    },
+    {
+      "id": "scene-stage1-claims-v2-schema",
+      "kind": "schema",
+      "hash": "sha256:b690634cd7f68f0b9ce76823aa34dffe68d761821eae08509323f16cfc174255",
+      "source": "schemas/scene-stage1-claims-v2-schema.json",
+      "usedBy": [
+        "scene-stage1-claims-v3"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v3",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "3.0.0",
+      "description": "Retained Stage 1 contract whose presence vocabulary was \"present\" and \"mentioned\", for historical provenance.",
+      "hash": "sha256:80d764866c319cd25e64973ef68c53c67bc503bebe1894b38a48645923de580e",
+      "source": "templates/extract-scene-stage1-claims-v3.md",
+      "systemMessageId": "scene-stage1-claims-v3",
+      "schemaId": "scene-stage1-claims-v2-schema",
+      "retained": true,
+      "family": "scene-stage1-claims",
+      "type": "extraction",
+      "notes": "Historical contract; new runs use scene-stage1-claims v4, whose presence is \"present\" or \"absent\" (KSPD RFC 0089 retired \"mention\")."
+    },
+    {
+      "id": "scene-stage1-claims-v3",
+      "kind": "system_message",
+      "version": "3.0.0",
+      "status": "deprecated",
+      "description": "Stage 1 scene extraction, lean positive instructions over the v2 contract.",
+      "hash": "sha256:edc70f94bc4bcb1a5c3ee4118a54cfae8435b4914f009e04c9c6b6c43c6d4115",
+      "source": "system-prompts/scene-stage1-claims-v3.md",
+      "usedBy": [
+        "scene-stage1-claims-v3",
+        "scene-stage1-claims-v6",
+        "scene-stage1-claims-v8"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v3-schema",
+      "kind": "schema",
+      "hash": "sha256:6ce95eb6d3d4608429011d75da0e5019392022dcf1957569ae7524a9ceb517b5",
+      "source": "schemas/scene-stage1-claims-v3-schema.json",
+      "usedBy": [
+        "scene-stage1-claims-v6"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v4",
+      "kind": "system_message",
+      "version": "4.0.0",
+      "status": "primary",
+      "description": "Stage 1 scene extraction of characters, places and physical objects, each kind defined once.",
+      "hash": "sha256:fc0d47fd1e0e0fd32e042e91316bb74cbdf5ae4648acecba5e5bacd213d233a4",
+      "source": "system-prompts/scene-stage1-claims-v4.md",
+      "usedBy": [
+        "scene-stage1-claims"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v4-schema",
+      "kind": "schema",
+      "hash": "sha256:3e492e9271e22947ccca8fa24781cb4f5aac0e7eedbcf431fb1e997c5094d373",
+      "source": "schemas/scene-stage1-claims-v4-schema.json",
+      "usedBy": [
+        "scene-stage1-claims-v8"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v5-schema",
+      "kind": "schema",
+      "hash": "sha256:505d9356c3a94ea1b72b73380efc14f2005269bfb34bc3f37338b2433e698c6f",
+      "source": "schemas/scene-stage1-claims-v5-schema.json",
+      "usedBy": [
+        "scene-stage1-claims"
+      ]
+    },
+    {
+      "id": "scene-stage1-claims-v6",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "6.0.0",
+      "description": "Retained Stage 1 contract whose objects carried only a name, for historical provenance.",
+      "hash": "sha256:fb099b8136f473d4a8c16e6cc0e3ecacd049c97388e89af7d204f7d8db5ebfc3",
+      "source": "templates/extract-scene-stage1-claims-v6.md",
+      "systemMessageId": "scene-stage1-claims-v3",
+      "schemaId": "scene-stage1-claims-v3-schema",
+      "retained": true,
+      "family": "scene-stage1-claims",
+      "type": "extraction",
+      "notes": "Historical contract; new runs use scene-stage1-claims v7, whose objects cite the clauses they are named in and ground only there."
+    },
+    {
+      "id": "scene-stage1-claims-v8",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "8.0.0",
+      "description": "Retained Stage 1 contract whose entity kind offered non_person, for historical provenance.",
+      "hash": "sha256:10a5cbb1a8336ab77fc4b3160214f72826f34c0c282ff5aa527fbbc0d9b7e84e",
+      "source": "templates/extract-scene-stage1-claims-v8.md",
+      "systemMessageId": "scene-stage1-claims-v3",
+      "schemaId": "scene-stage1-claims-v4-schema",
+      "retained": true,
+      "family": "scene-stage1-claims",
+      "type": "extraction",
+      "notes": "Historical contract; new runs use scene-stage1-claims v9, whose entity kind is individual or group and whose kinds are each defined once."
+    },
+    {
+      "id": "scene-story-data",
+      "kind": "prompt",
+      "domain": "scene",
+      "version": "1.0.0",
+      "description": "Scene-level story-data extraction — entities, objects, and the relations the scene states between them, in one pass.",
+      "hash": "sha256:9ad727dc2f326124738e1bd6d891c5265ab2b0f4b2fe88273e10946e436c5a05",
+      "source": "templates/extract-scene-story-data.md",
+      "systemMessageId": "scene-story-data-v1",
+      "schemaId": "scene-story-data-schema",
+      "family": "scene-story-data",
+      "type": "extraction",
+      "notes": "Returns entities, objects, and the relations the scene states between them. Relations reference the entities and objects reported in the same response."
+    },
+    {
+      "id": "scene-story-data-schema",
+      "kind": "schema",
+      "hash": "sha256:6436ced42251927ec991a37b7ca62ad940eed1a0f2259085fe1316d249031f62",
+      "source": "schemas/scene-story-data-schema.json",
+      "usedBy": [
+        "scene-story-data"
+      ]
+    },
+    {
+      "id": "scene-story-data-v1",
+      "kind": "system_message",
+      "version": "1.0.0",
+      "status": "primary",
+      "description": "Scene story-data extraction system prompt — combined entities, objects, and stated relations in one pass.",
+      "hash": "sha256:dd6af5aa7e924766e563f2e4aa19f031e8046410ad5d4a5e604774d3a34e3d66",
+      "source": "system-prompts/scene-story-data-v1.md",
+      "usedBy": [
+        "scene-story-data"
+      ]
+    },
+    {
+      "id": "scene-v2",
+      "kind": "system_message",
+      "version": "3.0.0",
+      "status": "primary",
+      "description": "Primary scene analyzer with graph modeling and optimization",
+      "hash": "sha256:a8cb41c5f325c173de09db90aca47e465f78532212a3201eb087e03e8d61e598",
+      "source": "system-prompts/scene-v2.md",
+      "usedBy": [
+        "scene-analysis-first",
+        "scene-analysis-last",
+        "scene-analysis-nth",
+        "scene-analysis-v2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<script>
+  // The Khaos brand mark, single-fill — vendored from the canonical source of
+  // truth, khaos-ui/brand (logo-template.svg / logo-silhouette.svg, the same
+  // geometry). Tinted with `currentColor`, exactly as the macOS app renders it
+  // via Image("KhaosLogo").foregroundStyle(DS.accent). Do not edit the path.
+  /**
+   * @typedef {Object} Props
+   * @property {number} [size] Width/height in px; tinted with `currentColor`.
+   */
+
+  /** @type {Props} */
+  let { size = 48 } = $props()
+</script>
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 400 400"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  role="img"
+>
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    fill="currentColor"
+    d="M91.841 149.047C83.1626 140.369 83.1626 126.298 91.841 117.62L171.683 37.7778H234.984L117.206 155.556L130 168.35L260.572 37.7778H323.872L161.65 200L323.873 362.222H305.016L152.222 209.428L139.428 222.222L279.428 362.222H216.127L107.778 253.873L104.412 257.239C99.2048 262.446 99.2048 270.888 104.412 276.095L190.539 362.222H171.683L91.8409 282.38C83.1626 273.702 83.1626 259.632 91.8409 250.953L98.3497 244.444L91.841 237.936C83.1626 229.257 83.1626 215.187 91.841 206.509L98.3497 200L91.841 193.491C83.1626 184.813 83.1626 170.743 91.841 162.064L98.3497 155.556L91.841 149.047ZM177.206 51.1111H202.794L107.778 146.127L104.412 142.761C99.2048 137.554 99.2048 129.112 104.412 123.905L177.206 51.1111ZM107.778 164.984L104.412 168.35C99.2048 173.557 99.2048 181.999 104.412 187.206L107.778 190.572L120.572 177.778L107.778 164.984ZM130 187.206L117.206 200L130 212.794L142.794 200L130 187.206ZM152.222 190.572L291.683 51.1111H266.095L139.428 177.778L152.222 190.572ZM120.572 222.222L107.778 209.428L104.412 212.794C99.2048 218.001 99.2048 226.443 104.412 231.65L107.778 235.016L120.572 222.222ZM117.206 244.444L221.65 348.889H247.239L130 231.65L117.206 244.444Z"
+  />
+</svg>

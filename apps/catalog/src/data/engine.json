@@ -1,0 +1,21 @@
+{
+  "_provenance": "khaosd GET /api/health — daemon version plus the tool table. Machine-specific fields (pid, port, disk, uptime) are deliberately not captured.",
+  "daemonVersion": "0.164.1",
+  "tools": [
+    {
+      "id": "khaos-custody",
+      "available": true,
+      "semver": "0.12.0"
+    },
+    {
+      "id": "khaos-tools",
+      "available": true,
+      "semver": "0.106.0"
+    },
+    {
+      "id": "khaos-tui",
+      "available": true,
+      "semver": "0.0.60"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+name: ci
+
+# Runs the repository's quality gates on every pull request.
+#
+# Before this existed, the only workflow in the repo triggered on `push: tags:
+# ['v*']`, so a PR's green tick was two Socket Security dependency scans and
+# nothing else — it reported that nothing scanned badly, not that the suite
+# passed (#87). A red suite produced exactly the same green. The gates were
+# good and they ran too late: after a defect had reached main and sat there.
+#
+# There is no push-to-main run. It re-ran these gates on code the pull request
+# had already verified, on the one shared runner, and the operator ruled it out
+# (2026-10-06: "No rerun on main"). What only it could see — main moving under
+# a stale branch, an admin merge, a direct push — now goes unobserved until the
+# next pull request's run.
+
+on:
+  pull_request:
+
+# A superseded run tells you about code nobody is merging any more.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    uses: ./.github/workflows/gates.yml

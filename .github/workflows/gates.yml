@@ -1,0 +1,116 @@
+name: gates
+
+# The repository's quality gates, in one place, called by every workflow
+# that needs them. Reusable rather than duplicated because a PR gate that has
+# silently diverged from the release gate is the defect this file exists to
+# close (#87): the release would then be checked against something the PR never
+# ran, and neither green would mean what a reader takes it to mean.
+#
+# Runs on GitHub-hosted macOS. The repository is public, so its Actions minutes
+# are free (operator, 2026-10-30: "public copy for free compute to handle CI").
+
+on:
+  workflow_call: {}
+
+# Declared explicitly rather than inherited. `check-issue-refs` reads issue
+# state, which the default token grants but no caller states, and an unstated
+# permission is one a caller can tighten without knowing what it breaks.
+#
+# `#139` is a pull request, and the first CI run with only `issues: read`
+# exited 2 unable to read it — correctly, rather than passing. Issues and pull
+# requests share one number space, so a reference in prose can be either and
+# the gate needs both scopes.
+#
+# `issues: read` covers THIS repository only, and there is no scope that would
+# widen it: the token is repo-scoped. So ANY cross-repository reference in the
+# blocked section is a guaranteed exit 1 from CI — allow-listed or not, open or
+# closed — because the gate reports what it could not verify rather than
+# passing it. If you need to name a cross-repo issue there, the answer is to
+# move the entry out of the blocked section, not to add a scope.
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read   # a `#N` may be a PR; the two share one number space
+
+jobs:
+  gates:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install deps (workspace)
+        run: npm ci
+
+      # The catalog is the
+      # library's only test surface, including for files that live outside it —
+      # tokens/parse.js and tokens/utilities.css are tested from
+      # apps/catalog/src/ and carry a header saying why.
+      - name: Gate — tests
+        run: npm test --workspace apps/catalog
+
+      # Five sub-gates, the chain package.json's check-coverage runs: every
+      # export has a catalog fixture (the playtest surface), is filed in a
+      # category the catalog declares and labels, loads the way a consumer
+      # loads it, and compiles; and every document stating an export count
+      # states the real one. 0 = clean, 1 = named gaps, 2 = the check could
+      # not run — which is a red, not a pass.
+      - name: Gate — catalog coverage, taxonomy, consumer load, compile, export count
+        run: npm run check-coverage
+
+      # The shipped .d.ts files are generated from the components and committed,
+      # so the repository and the npm package carry the same files. Committed output is only safe if it
+      # cannot go stale: this regenerates into a temp dir and fails on any
+      # difference.
+      - name: Gate — shipped TypeScript declarations are current
+        run: npm run check-types
+
+      # Nothing above this line opens a markdown file. A pull request of eight
+      # root documents passed every gate here from a suite that read none of
+      # them, and review then found four defects in those documents by hand —
+      # including a `RULES.md:308` citation that pointed at the workspace root's
+      # file until this repository grew a RULES.md of its own, at which point it
+      # resolved to a real 111-line file with no line 308. The citation got
+      # WORSE by landing somewhere.
+      #
+      # This checks that a `path:line` citation in a live reference document —
+      # root `*.md` plus `docs/*.md` — resolves to a real file and a line that
+      # exists. `docs/decisions.md` and `docs/plans/` are excluded on purpose:
+      # they carry 71 citations to files retired with the UCS programme, all
+      # true when written, and a gate satisfiable only by rewriting history is
+      # worse than no gate.
+      #
+      # It does NOT check that the cited line says what the prose claims, and it
+      # cannot see a claim carrying no citation at all — the docblock asserting
+      # "element durations summed exactly to segment duration", false for
+      # months, names no line and would pass. Partial, and the script says so.
+      - name: Gate — citations in live reference documents resolve
+        run: npm run check-citations
+
+      # CURRENT.md's blocked list asserts each named issue is still open, and
+      # that assertion rots in silence: an issue closes elsewhere, nothing here
+      # changes, and finished work keeps reading as blocked. It happened on
+      # 2026-09-22 — a rewrite meant to remove rot carried #122 forward after it
+      # closed, and it was then offered as available work.
+      #
+      # The self-check runs FIRST. A proof that the gate is not vacuous, which
+      # itself never runs, is the vacuity it rules out.
+      - name: Gate — the blocked-list gate still catches its founding case
+        run: scripts/check-issue-refs.test.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Gate — every issue CURRENT.md calls blocking is open
+        run: npm run check-issue-refs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # The lock catalog-release.yml takes around its keychain search-list change.
+      # The suite uses its own temporary lock directory and a shim for `security`,
+      # so it never contends with a real release or touches the real search list.
+      - name: Gate — the signing keychain lock
+        run: scripts/signing-keychain-lock.test.sh

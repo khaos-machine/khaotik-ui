@@ -1,0 +1,32 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   STATUSTONE BRIDGE — the seven-way status the atoms reach for.
+   ───────────────────────────────────────────────────────────────────────────
+   Maps the Khaos StatusTone vocabulary (success / warning / danger / info /
+   neutral / accent / skipped — khaos.machine.x DesignSystem.swift) onto the
+   kit's status scale. accent + skipped are now defined in tokens.json (they
+   land in tokens.css); info still rides the compat --st-provis-* because
+   Andrew's BrandKit has not named a blue "info" status yet, and neutral
+   still rides --text-secondary (harvest-khaos-machine-tokens.md gap #1).
+
+   Not part of tokens.json on purpose: this is a vocabulary alias, not a
+   colour, and two of the seven tones (info, neutral) are still pending
+   Andrew's definition. Delete the info/neutral lines when the kit defines
+   them.
+
+   Deliberately mode-independent — each alias points at a mode-aware semantic
+   token, so the block holds one set of selectors and the values flip with
+   the theme on their own.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root,
+.dark,
+[data-theme="dark"],
+html[data-theme="light"] {
+  --tone-neutral: var(--text-secondary);
+  --tone-success: var(--status-normal-fg);
+  --tone-warning: var(--status-warning-fg);
+  --tone-danger: var(--status-alarm-fg);
+  --tone-info: var(--st-provis-fg);
+  --tone-accent: var(--status-accent-fg);
+  --tone-skipped: var(--status-skipped-fg);
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "khaotik-catalog",
+  "version": "0.20.0",
+  "identifier": "dev.loswf.khaotik-catalog",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "Khaotik Component Catalog",
+        "width": 800,
+        "height": 600,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM4NTU0QTc4RDRCNEYzRUIKUldUcjg3VFVlRXBWeUtPVzlodG1GUXZYUXVKUllSOC9PZkRzaEIyVlZkUHk2eGYxVmk0S3BOc0YK",
+      "endpoints": [
+        "https://updates.loswf.com/khaotik-catalog/latest.json"
+      ]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "createUpdaterArtifacts": true,
+    "macOS": {
+      "hardenedRuntime": true
+    },
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "android": {
+      "debugApplicationIdSuffix": ".debug"
+    },
+    "publisher": "Khaos Studio",
+    "copyright": "© 2026 Khaos Studio",
+    "category": "DeveloperTool",
+    "shortDescription": "The Khaos component catalog",
+    "longDescription": "Playtest the khaotik-ui atoms and compositions at real device sizes, against real KSPD data from the khaosd daemon."
+  }
+}

@@ -1,0 +1,810 @@
+{
+  "_provenance": "khaosd GET /api/dashboard/scenes — Forrest Gump.kspd, scene order, word_count per scene. A SECOND project on purpose: the catalog project has 54 scenes and the point-density rule only engages above 16, so 54 would not exercise the long-series case khaos-app cited (201 scenes).",
+  "project": "Forrest Gump",
+  "series": [
+    {
+      "label": "EXT. A SAVANNAH STREET - DAY (1981)",
+      "value": 395
+    },
+    {
+      "label": "INT. COUNTRY DOCTOR'S OFFICE - GREENBOW, ALABAMA - DAY",
+      "value": 93
+    },
+    {
+      "label": "EXT. GREENBOW, ALABAMA",
+      "value": 40
+    },
+    {
+      "label": "EXT. RURAL ALABAMA",
+      "value": 125
+    },
+    {
+      "label": "EXT. GREENBOW",
+      "value": 129
+    },
+    {
+      "label": "EXT. OAK ALLEY/THE GUMP BOARDING HOUSE",
+      "value": 156
+    },
+    {
+      "label": "INT. ELEMENTARY SCHOOL / PRINCIPAL'S OFFICE - DAY",
+      "value": 27
+    },
+    {
+      "label": "INT. HALLWAY",
+      "value": 140
+    },
+    {
+      "label": "INT. HALLWAY",
+      "value": 22
+    },
+    {
+      "label": "INT. PRINCIPAL'S OFFICE",
+      "value": 16
+    },
+    {
+      "label": "EXT. GUMP BOARDING HOUSE - NIGHT",
+      "value": 74
+    },
+    {
+      "label": "INT. GUMP BOARDING HOUSE/FORREST'S BEDROOM",
+      "value": 78
+    },
+    {
+      "label": "EXT. GUMP BOARDING HOUSE - DAY",
+      "value": 51
+    },
+    {
+      "label": "INT. GUMP BOARDING HOUSE",
+      "value": 281
+    },
+    {
+      "label": "EXT. GREENBOW - NIGHT",
+      "value": 115
+    },
+    {
+      "label": "EXT. SAVANNAH/BUS BENCH - DAY",
+      "value": 40
+    },
+    {
+      "label": "EXT. COUNTRY ROAD/ALABAMA - MORNING (1954)",
+      "value": 99
+    },
+    {
+      "label": "INT. BUS",
+      "value": 65
+    },
+    {
+      "label": "EXT. SAVANNAH/BUS BENCH - DAY",
+      "value": 52
+    },
+    {
+      "label": "INT. BUS - MORNING (1954)",
+      "value": 188
+    },
+    {
+      "label": "EXT. OAK TREE - DAY",
+      "value": 63
+    },
+    {
+      "label": "EXT. OAK TREE - NIGHT",
+      "value": 69
+    },
+    {
+      "label": "INT. SAVANNAH/BUS STOP - DAY",
+      "value": 34
+    },
+    {
+      "label": "EXT. OAK ALLEY - ANOTHER DAY (1954)",
+      "value": 146
+    },
+    {
+      "label": "EXT. SAVANNAH/ BUS BENCH - DAY",
+      "value": 28
+    },
+    {
+      "label": "EXT. OAK ALLEY - DAY (1954)",
+      "value": 43
+    },
+    {
+      "label": "EXT. COUNTRY ROAD",
+      "value": 25
+    },
+    {
+      "label": "EXT. GREENBOW",
+      "value": 27
+    },
+    {
+      "label": "EXT. JENNY'S HOUSE",
+      "value": 214
+    },
+    {
+      "label": "EXT. TRAILER PARK/ALABAMA - DAY (1955)",
+      "value": 64
+    },
+    {
+      "label": "EXT. GUMP HOUSE - NIGHT (1955)",
+      "value": 42
+    },
+    {
+      "label": "INT. GUMP HOUSE/FORREST'S BEDROOM",
+      "value": 37
+    },
+    {
+      "label": "EXT. GREENBOW/OAK ALLEY - DAY (1961)",
+      "value": 92
+    },
+    {
+      "label": "INT. TRUCK",
+      "value": 4
+    },
+    {
+      "label": "EXT. OAK ALLEY",
+      "value": 46
+    },
+    {
+      "label": "EXT. SAVANNAH/BUS BENCH - DAY (1981)",
+      "value": 38
+    },
+    {
+      "label": "EXT. HIGH SCHOOL/ROAD - DAY (1961)",
+      "value": 70
+    },
+    {
+      "label": "EXT. UNIVERSITY OF ALABAMA STADIUM - DAY (1962)",
+      "value": 125
+    },
+    {
+      "label": "INT. GREENBOW/BARBER SHOT - BLACK & WHITE TELEVISION (JUNE",
+      "value": 36
+    },
+    {
+      "label": "EXT. UNIVERSITY OF ALABAMA - DAY",
+      "value": 46
+    },
+    {
+      "label": "INT. GREENBOW/BARBER SHOP",
+      "value": 31
+    },
+    {
+      "label": "EXT. UNIVERSITY OF ALABAMA",
+      "value": 126
+    },
+    {
+      "label": "INT. COACHES' OFFICE",
+      "value": 42
+    },
+    {
+      "label": ".BLACK AND WHITE FOOTAGE",
+      "value": 106
+    },
+    {
+      "label": "EXT. UNIVERSITY OF ALABAMA",
+      "value": 78
+    },
+    {
+      "label": "INT. COACHES' OFFICE - NIGHT (1963)",
+      "value": 138
+    },
+    {
+      "label": "EXT. SAVANNAH/BUS BENCH - DAY (1981)",
+      "value": 111
+    },
+    {
+      "label": "EXT, GIRLS' COLLEGE/JENNY'S DORM - NIGHT",
+      "value": 145
+    },
+    {
+      "label": "INT. JENNY'S DORM/HALLWAY",
+      "value": 17
+    },
+    {
+      "label": "INT. JENNY'S DORM ROOM",
+      "value": 320
+    },
+    {
+      "label": "EXT. UNIVERSITY OF ALABAMA/FOOTBALL STADIUM - DAY (1963)",
+      "value": 55
+    },
+    {
+      "label": "BLACK AND WHITE PARAMOUNT NEWSREEL - DAY (1963)",
+      "value": 48
+    },
+    {
+      "label": ".BLACK AND WHITE NEWSREEL",
+      "value": 42
+    },
+    {
+      "label": "INT. WHITE HOUSE RECEPTION AREA - DAY (1963)",
+      "value": 166
+    },
+    {
+      "label": "INT. WHITE HOUSE/BATHROOM",
+      "value": 78
+    },
+    {
+      "label": "EXT. SAVANNHA/BUS BENCH - DAY (1981)",
+      "value": 25
+    },
+    {
+      "label": "EXT. UNIVERSITY OF ALABAMA - DAY - GRADUATION DAY (1966)",
+      "value": 98
+    },
+    {
+      "label": "INT. ARMY BUS - DAY (1966)",
+      "value": 232
+    },
+    {
+      "label": "INT. LOUISIANA/KITCHEN - DAY (1966)",
+      "value": 46
+    },
+    {
+      "label": "INT. SOMEWHERE IN THE SOUTH/KITCHEN - DAY (EARLY DAYS OF",
+      "value": 51
+    },
+    {
+      "label": "INT. ARMY BUS - DAY (1966)",
+      "value": 47
+    },
+    {
+      "label": "INT. BARRACKS - DAY",
+      "value": 165
+    },
+    {
+      "label": ".ANOTHER DAY",
+      "value": 165
+    },
+    {
+      "label": ".ANOTHER DAY",
+      "value": 25
+    },
+    {
+      "label": ".ANOTHER DAY",
+      "value": 117
+    },
+    {
+      "label": "INT. NASHVILLE/NIGHT CLUB - NIGHT (1966)",
+      "value": 301
+    },
+    {
+      "label": "EXT. MEMPHIS BRIDGE - NIGHT",
+      "value": 224
+    },
+    {
+      "label": "EXT. GREENBOW/GUMP BOARDING HOUSE/RIVER - DAY",
+      "value": 37
+    },
+    {
+      "label": "EXT. VIETNAM/MEKONG DELTA - MORNING (1967)",
+      "value": 37
+    },
+    {
+      "label": "EXT. FIREBASE/4TH PLATOON",
+      "value": 427
+    },
+    {
+      "label": "EXT. VALLEY FORGE/THE REVOLUTIONARY WAR - DAY (1778)",
+      "value": 24
+    },
+    {
+      "label": "EXT. GETTYSBURG/THE CIVIL WAR - DAY (1863)",
+      "value": 25
+    },
+    {
+      "label": "EXT. NORMANDY/WORLD WAR II - DAY (1944)",
+      "value": 22
+    },
+    {
+      "label": "EXT. VETNAM/MEKONG DELTA/FIREBASE - DAY (1967)",
+      "value": 122
+    },
+    {
+      "label": "EXT. RICE FIELD - ANOTHER DAY",
+      "value": 48
+    },
+    {
+      "label": "EXT. JUNGLE/DIRT ROAD - ANOTHER DAY",
+      "value": 188
+    },
+    {
+      "label": "EXT. VIETNAM/VIET CONG FOXHOLE - ANOTHER DAY",
+      "value": 59
+    },
+    {
+      "label": "EXT. JUNGLE",
+      "value": 58
+    },
+    {
+      "label": "EXT. ENCAMPMENT - NIGHT",
+      "value": 250
+    },
+    {
+      "label": "EXT. JENNY'S GRANDMOTHER'S TRAILER - DAY",
+      "value": 66
+    },
+    {
+      "label": "EXT. VIETNAM - NIGHT",
+      "value": 21
+    },
+    {
+      "label": "EXT. JUNGLE - DAY",
+      "value": 762
+    },
+    {
+      "label": "BUS STATION - DAY",
+      "value": 184
+    },
+    {
+      "label": "INT. ARMY HOSPITAL/VIETNAM - DAY",
+      "value": 334
+    },
+    {
+      "label": "INT. REC ROOM/VIETNAM HOSPITAL - ANOTHER DAY",
+      "value": 37
+    },
+    {
+      "label": "INT. VIETNAM HOSPITAL WARD",
+      "value": 44
+    },
+    {
+      "label": "INT. BARBER SHOP/GREENBOW - DAY",
+      "value": 88
+    },
+    {
+      "label": "INT. BARBER SHOP",
+      "value": 50
+    },
+    {
+      "label": "EXT. LINCOLN MEMORIAL - DAY",
+      "value": 551
+    },
+    {
+      "label": "EXT. WASHINGTON MONUMENT/PROTESTER'S ENCAMPMENT - NIGHT",
+      "value": 39
+    },
+    {
+      "label": "INT. BLACK PANTHER HEADQUARTERS/STOREFRONT, D.C. - NIGHT",
+      "value": 343
+    },
+    {
+      "label": "EXT. WASHINGTON D.C. - NIGHT",
+      "value": 114
+    },
+    {
+      "label": "EXT. ROUTE 66 - FLASHBACK - DAY",
+      "value": 41
+    },
+    {
+      "label": "EXT. COMMUNE IN NEW MEXICO - NIGHT",
+      "value": 43
+    },
+    {
+      "label": "EXT. HOLLYWOOD/WALK OF FAME - DAY",
+      "value": 85
+    },
+    {
+      "label": "EXT. WASHINGTON D.C. - DAWN",
+      "value": 31
+    },
+    {
+      "label": "EXT. PARKING LOT - EARLY MORNING",
+      "value": 140
+    },
+    {
+      "label": "INT. VETERANS ADMINISTRATION HOSPITAL/REC ROOM - DAY",
+      "value": 118
+    },
+    {
+      "label": "EXT. CHINA/PING-PONG TOURNAMENT - FLASHBACK - DAY",
+      "value": 226
+    },
+    {
+      "label": "EXT. STUDIO - LATER",
+      "value": 121
+    },
+    {
+      "label": "EXT. NEW YORK CITY STREETS - NIGHT",
+      "value": 125
+    },
+    {
+      "label": "EXT. LT. DAN'S HOTEL ROOM - LATER",
+      "value": 199
+    },
+    {
+      "label": "INT. TIMES SQUARE BAR - NIGHT",
+      "value": 367
+    },
+    {
+      "label": "INT. APARTMENT/L.A. - NIGHT",
+      "value": 49
+    },
+    {
+      "label": "INT. TIMES SQUARE BAR - NIGHT",
+      "value": 55
+    },
+    {
+      "label": "INT. LT. DAN'S HOTEL ROOM - LATER",
+      "value": 283
+    },
+    {
+      "label": "EXT. WHITE HOUSE - NIGHT",
+      "value": 81
+    },
+    {
+      "label": "INT. WHITE HOUSE - DAY",
+      "value": 107
+    },
+    {
+      "label": "INT. WATERGATE HOTEL ROOM - NIGHT",
+      "value": 79
+    },
+    {
+      "label": "INT. GYMNASIUM - DAY",
+      "value": 130
+    },
+    {
+      "label": "EXT. GUMP HOUSE - DAY",
+      "value": 33
+    },
+    {
+      "label": "INT. GUMP HOUSE",
+      "value": 145
+    },
+    {
+      "label": "EXT. BAYOU LA BATRE/BUBBA'S MOM'S HOUSE - DAY",
+      "value": 91
+    },
+    {
+      "label": "EXT. BUBBA'S GRAVE - DAY",
+      "value": 59
+    },
+    {
+      "label": "EXT. BAYOU - DAY",
+      "value": 64
+    },
+    {
+      "label": "EXT. BUBBA'S GRAVE",
+      "value": 73
+    },
+    {
+      "label": "EXT. BAYOU - DAY",
+      "value": 64
+    },
+    {
+      "label": "EXT. DOCKS",
+      "value": 67
+    },
+    {
+      "label": "INT. DISCO",
+      "value": 30
+    },
+    {
+      "label": "EXT. BAYOU LA BATRE - DAY",
+      "value": 38
+    },
+    {
+      "label": "INT. APARTMENT - NIGHT",
+      "value": 41
+    },
+    {
+      "label": "INT. BATHROOM",
+      "value": 18
+    },
+    {
+      "label": "EXT. BALCONY",
+      "value": 92
+    },
+    {
+      "label": "EXT. BAYOU LA BATRE/FORREST'S BOAT - NIGHT",
+      "value": 31
+    },
+    {
+      "label": "EXT. FORREST'S BOAT/BAYOU DOCK - DAY",
+      "value": 148
+    },
+    {
+      "label": "EXT. BAYOU LA BATRE WATERS - DAY",
+      "value": 114
+    },
+    {
+      "label": "INT. SMALL CHURCH - DAY",
+      "value": 40
+    },
+    {
+      "label": "EXT. BOAT - ANOTHER DAY",
+      "value": 47
+    },
+    {
+      "label": "EXT. BOAT - NIGHT",
+      "value": 84
+    },
+    {
+      "label": "INT. GUMP HOUSE - DAY",
+      "value": 25
+    },
+    {
+      "label": "EXT. BAYOU DOCKS - DAY",
+      "value": 40
+    },
+    {
+      "label": "INT. GUMP HOUSE",
+      "value": 47
+    },
+    {
+      "label": "FORREST'S BOAT - DAY",
+      "value": 42
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 166
+    },
+    {
+      "label": "EXT. BOAT/DECK - DAY",
+      "value": 40
+    },
+    {
+      "label": "EXT. BOAT",
+      "value": 129
+    },
+    {
+      "label": "EXT. ROAD/GUMP HOUSE - DAY",
+      "value": 41
+    },
+    {
+      "label": "INT. GUMP HOUSE - WOMAN'S BED ROOM",
+      "value": 218
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 95
+    },
+    {
+      "label": "EXT. FOOTBALL FIELD - DAY",
+      "value": 29
+    },
+    {
+      "label": "EXT. GUMP HOUSE MAILBOXES",
+      "value": 53
+    },
+    {
+      "label": "EXT. BUS STOP",
+      "value": 12
+    },
+    {
+      "label": "INT. CHURCH - DAY The choir and members are singing.",
+      "value": 24
+    },
+    {
+      "label": "EXT. CHURCH",
+      "value": 50
+    },
+    {
+      "label": "EXT. HOSPITAL - DAY",
+      "value": 32
+    },
+    {
+      "label": "EXT. BUBBA'S MOM'S HOUSE",
+      "value": 37
+    },
+    {
+      "label": "EXT. BUS STOP",
+      "value": 8
+    },
+    {
+      "label": "INT. FLORIDA CONDO",
+      "value": 31
+    },
+    {
+      "label": "EXT. FOOTBALL FIELD",
+      "value": 27
+    },
+    {
+      "label": "EXT. GUMP HOUSE BALCONY - NIGHT",
+      "value": 39
+    },
+    {
+      "label": "EXT. GUMP HOUSE - DAY",
+      "value": 34
+    },
+    {
+      "label": "INT. GUMP HOUSE",
+      "value": 50
+    },
+    {
+      "label": "EXT. COUNTRYSIDE - DAY",
+      "value": 83
+    },
+    {
+      "label": "EXT. OLD OAK TREE - DAY",
+      "value": 40
+    },
+    {
+      "label": "INT. GUMP HOUSE - DAY",
+      "value": 33
+    },
+    {
+      "label": "EXT. GUMP HOUSE - DAY",
+      "value": 60
+    },
+    {
+      "label": "EXT. GUMP HOUSE - NIGHT",
+      "value": 36
+    },
+    {
+      "label": "EXT. RIVER - NIGHT",
+      "value": 34
+    },
+    {
+      "label": "INT. GUMP'S HOUSE - NIGHT",
+      "value": 127
+    },
+    {
+      "label": "EXT. GUMP HOUSE - NIGHT",
+      "value": 11
+    },
+    {
+      "label": "EXT. GUMP HOUSE - NIGHT",
+      "value": 29
+    },
+    {
+      "label": "EXT. GUMP HOUSE - MORNING",
+      "value": 27
+    },
+    {
+      "label": "INT. GUMP HOUSE",
+      "value": 64
+    },
+    {
+      "label": "EXT. FRONT PORCH - DAY",
+      "value": 105
+    },
+    {
+      "label": "INT. BARBER SHOP - DAY",
+      "value": 43
+    },
+    {
+      "label": "EXT. ALABAMA ROAD",
+      "value": 50
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 21
+    },
+    {
+      "label": "EXT. SANTA MONICA - DAY",
+      "value": 51
+    },
+    {
+      "label": "EXT. ATLANTIC OCEAN",
+      "value": 52
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 24
+    },
+    {
+      "label": "EXT. HIGHWAY",
+      "value": 72
+    },
+    {
+      "label": "EXT. BARBER SHOP",
+      "value": 41
+    },
+    {
+      "label": "INT. COFFEE SHOP",
+      "value": 46
+    },
+    {
+      "label": "EXT. MISSISSIPPI BRIDGE",
+      "value": 78
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 11
+    },
+    {
+      "label": "EXT. SMALL EASTERN TOWN",
+      "value": 24
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 20
+    },
+    {
+      "label": "EXT. SMALL EASTERN TOWN",
+      "value": 84
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 140
+    },
+    {
+      "label": "EXT. TRUCK STOP",
+      "value": 135
+    },
+    {
+      "label": "EXT. MONUMENT VALLEY",
+      "value": 127
+    },
+    {
+      "label": "INT. GUMP HOUSE - DAY",
+      "value": 80
+    },
+    {
+      "label": "EXT. BUS STOP - PRESENT",
+      "value": 109
+    },
+    {
+      "label": "INT. JENNY'S APARTMENT - DAY",
+      "value": 407
+    },
+    {
+      "label": "EXT. PARK - DAY",
+      "value": 91
+    },
+    {
+      "label": "EXT. GUMP HOUSE - DAY",
+      "value": 129
+    },
+    {
+      "label": "INT. GUMP HOUSE - MORNING",
+      "value": 52
+    },
+    {
+      "label": "EXT. VIETNAM - FLASHBACK - NIGHT",
+      "value": 61
+    },
+    {
+      "label": "EXT. BAYOU - FLASHBACK - SUNSET",
+      "value": 35
+    },
+    {
+      "label": "EXT. MOUNTAIN LAKE - FLASHBACK - DAY",
+      "value": 50
+    },
+    {
+      "label": "EXT. DESERT - FLASHBACK - SUNRISE",
+      "value": 38
+    },
+    {
+      "label": "INT. GUMP HOUSE - MORNING",
+      "value": 39
+    },
+    {
+      "label": "EXT. JENNY'S GRAVE AT OLD OAK TREE - DAY",
+      "value": 44
+    },
+    {
+      "label": "EXT. JENNY'S OLD HOUSE - DAY",
+      "value": 21
+    },
+    {
+      "label": "EXT. JENNY'S GRAVE",
+      "value": 24
+    },
+    {
+      "label": "INT. GUMP HOUSE - NIGHT",
+      "value": 45
+    },
+    {
+      "label": "EXT. JENNY'S GRAVE",
+      "value": 32
+    },
+    {
+      "label": "EXT. GUMP HOUSE - NIGHT",
+      "value": 26
+    },
+    {
+      "label": "EXT. GUMP HOUSE/RIVER - DAY",
+      "value": 24
+    },
+    {
+      "label": "EXT. JENNY'S GRAVE",
+      "value": 118
+    },
+    {
+      "label": "EXT. ROAD - MORNING",
+      "value": 225
+    }
+  ]
+}
