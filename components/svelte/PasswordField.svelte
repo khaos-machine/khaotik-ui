@@ -2,9 +2,16 @@
   // PasswordField — a labelled password input with a show/hide toggle.
   //
   // Adopted, not authored — Ark UI's PasswordInput inside FieldFrame. The
-  // primitive owns the toggle: it switches the input type, keeps the toggle's
-  // accessible name ("Show password" / "Hide password") in step, and reads the
-  // field's ids, `invalid` and `required` from the frame.
+  // primitive switches the input type and reads the field's ids, `invalid` and
+  // `required` from the frame.
+  //
+  // The toggle is ours to fix in three ways. zag takes it out of the tab order
+  // and acts only on pointerdown, which fails WCAG 2.1.1: a keyboard user could
+  // not reveal what they typed. So it takes focus, and a keyboard click (detail
+  // 0, which a native button fires for Enter and Space) toggles it; a pointer
+  // click is left alone because pointerdown already toggled. And it is a toggle
+  // button, so it keeps one name, "Show password", with `aria-pressed` carrying
+  // the state, in place of zag's changing label plus `aria-expanded`.
   import {
     PasswordInputControl,
     PasswordInputIndicator,
@@ -38,11 +45,13 @@
     error = '',
     oninput = undefined,
   } = $props()
+
+  let visible = $state(false)
 </script>
 
 <FieldFrame {label} {hint} {error} {required}>
   {#snippet children(describedby)}
-    <PasswordInputRoot class="kpassword" autoComplete={autocomplete} {name}>
+    <PasswordInputRoot class="kpassword" autoComplete={autocomplete} {name} bind:visible>
       <PasswordInputControl class="kfield__box">
         <PasswordInputInput
           class="kfield__text"
@@ -50,7 +59,16 @@
           aria-describedby={describedby}
           oninput={(e) => oninput?.(e.currentTarget.value)}
         />
-        <PasswordInputVisibilityTrigger class="kpassword__toggle">
+        <PasswordInputVisibilityTrigger
+          class="kpassword__toggle"
+          tabindex={0}
+          aria-label="Show password"
+          aria-pressed={visible}
+          aria-expanded={null}
+          onclick={(e) => {
+            if (e.detail === 0) visible = !visible
+          }}
+        >
           <PasswordInputIndicator>
             <Icon name="eye" />
             {#snippet fallback()}<Icon name="eye-slash" />{/snippet}

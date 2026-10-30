@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
+import userEvent from '@testing-library/user-event'
 import { createRawSnippet, tick } from 'svelte'
 import TextField from '@khaos-machine/khaotik-ui/components/svelte/TextField.svelte'
 import PasswordField from '@khaos-machine/khaotik-ui/components/svelte/PasswordField.svelte'
@@ -67,15 +68,41 @@ describe('PasswordField', () => {
     expect(screen.getByLabelText(/^Password/)).toHaveAttribute('autocomplete', 'current-password')
   })
 
-  // Ark's trigger acts on pointerdown and sits out of the tab order (zag sets
-  // tabIndex -1), so keyboard focus stays on the input.
-  it('shows and hides the password from a toggle with an accessible name', async () => {
+  // The toggle is a toggle button: one name, its state in aria-pressed.
+  it('shows and hides the password from a pointer, once per press', async () => {
     render(PasswordField, { props: { label: 'Password' } })
     const input = screen.getByLabelText(/^Password/)
-    const toggle = screen.getByRole('button', { name: /show password/i })
+    const toggle = screen.getByRole('button', { name: 'Show password' })
+    expect(toggle).toHaveAttribute('aria-pressed', 'false')
+    expect(toggle).not.toHaveAttribute('aria-expanded')
+
+    // a real click is pointerdown then a click with detail 1; only one toggles
     await fireEvent.pointerDown(toggle, { button: 0 })
+    await fireEvent.click(toggle, { detail: 1 })
     expect(input).toHaveAttribute('type', 'text')
-    expect(screen.getByRole('button', { name: /hide password/i })).toBeInTheDocument()
+    expect(toggle).toHaveAttribute('aria-pressed', 'true')
+    expect(toggle).toHaveAccessibleName('Show password')
+  })
+
+  // zag leaves the trigger out of the tab order and deaf to keys, which fails
+  // WCAG 2.1.1: a keyboard user could not reveal what they typed.
+  it('is reached with Tab and toggled with Enter and Space', async () => {
+    const user = userEvent.setup()
+    render(PasswordField, { props: { label: 'Password' } })
+    const input = screen.getByLabelText(/^Password/)
+    const toggle = screen.getByRole('button', { name: 'Show password' })
+
+    await user.click(input)
+    await user.tab()
+    expect(toggle).toHaveFocus()
+
+    await user.keyboard('{Enter}')
+    expect(input).toHaveAttribute('type', 'text')
+    expect(toggle).toHaveAttribute('aria-pressed', 'true')
+
+    await user.keyboard(' ')
+    expect(input).toHaveAttribute('type', 'password')
+    expect(toggle).toHaveAttribute('aria-pressed', 'false')
   })
 
   it('marks the input invalid and reads the error out', () => {
