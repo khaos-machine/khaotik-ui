@@ -24,7 +24,6 @@ Relevant project skills include:
 - `svelte` for Svelte 5 component work.
 - `tauri` for the desktop shell.
 - `tokens` for BrandKit token work.
-- `writing-tests` for Vitest coverage.
 - `mcp-steering` for the debug-only catalog bridge.
 - `publishing` for authorized release work.
 
