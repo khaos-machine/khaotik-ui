@@ -52,6 +52,10 @@ import ProviderMark from '@khaos-machine/khaotik-ui/components/svelte/ProviderMa
 import ProviderSheet from './components/foundation/ProviderSheet.svelte'
 import Button from '@khaos-machine/khaotik-ui/components/svelte/Button.svelte'
 import FilterField from '@khaos-machine/khaotik-ui/components/svelte/FilterField.svelte'
+import TextField from '@khaos-machine/khaotik-ui/components/svelte/TextField.svelte'
+import PasswordField from '@khaos-machine/khaotik-ui/components/svelte/PasswordField.svelte'
+import CodeField from '@khaos-machine/khaotik-ui/components/svelte/CodeField.svelte'
+import FormStack from '@khaos-machine/khaotik-ui/components/svelte/FormStack.svelte'
 import StoryPlayer from '@khaos-machine/khaotik-ui/components/svelte/StoryPlayer.svelte'
 import Player from '@khaos-machine/khaotik-ui/components/svelte/Player.svelte'
 import Composer from '@khaos-machine/khaotik-ui/components/svelte/Composer.svelte'
@@ -2770,6 +2774,55 @@ export const fixtures = [
     examples: [
       { label: 'Filtering', props: { label: 'Filter scenes', placeholder: 'Filter scenes…', value: 'INT.', shown: scenesData.filter((s) => s.slugline.startsWith('INT.')).length, total: scenesData.length } },
       { label: 'Empty', props: { label: 'Filter scenes', placeholder: 'Filter scenes…', value: '', shown: null, total: null } },
+    ],
+  },
+  {
+    // Khaos Cloud's sign-in and account screens. No khaosd data feeds these, so
+    // the values are empty and the error and hint text is ILLUSTRATIVE STATE (D62).
+    id: 'text-field', name: 'TextField', kind: 'component', section: 'components', group: 'fields', component: TextField,
+    examples: [
+      { label: 'Email', props: { label: 'Email', type: 'email', name: 'email', autocomplete: 'email', required: true, value: '' } },
+      { label: 'With hint', props: { label: 'Display name', name: 'name', autocomplete: 'nickname', hint: 'Shown to collaborators on shared projects.', value: '' } },
+      { label: 'Invalid', props: { label: 'Email', type: 'email', name: 'email', autocomplete: 'email', required: true, value: 'k@', error: 'Enter a full email address.' } },
+    ],
+  },
+  {
+    id: 'password-field', name: 'PasswordField', kind: 'component', section: 'components', group: 'fields', component: PasswordField,
+    examples: [
+      { label: 'Sign in', props: { label: 'Password', name: 'password', autocomplete: 'current-password', required: true, value: '' } },
+      { label: 'New password', props: { label: 'New password', name: 'password', autocomplete: 'new-password', required: true, hint: 'At least 12 characters.', value: '' } },
+      { label: 'Invalid', props: { label: 'New password', name: 'password', autocomplete: 'new-password', required: true, hint: 'At least 12 characters.', value: 'short', error: 'Use at least 12 characters.' } },
+    ],
+  },
+  {
+    id: 'code-field', name: 'CodeField', kind: 'component', section: 'components', group: 'fields', component: CodeField,
+    examples: [
+      { label: 'Empty', props: { label: 'Confirmation code', name: 'code', hint: 'Sent to your email address.', value: '' } },
+      { label: 'Part entered', props: { label: 'Authenticator code', name: 'code', value: '418' } },
+      { label: 'Invalid', props: { label: 'Confirmation code', name: 'code', value: '418302', error: 'That code has expired. Request a new one.' } },
+    ],
+  },
+  {
+    // A form as one column: a form-level message, the fields, the actions.
+    id: 'form-stack', name: 'FormStack', kind: 'component', section: 'components', group: 'fields', component: FormStack,
+    examples: [
+      { label: 'Sign in', props: { label: 'Sign in' },
+        snippets: {
+          children: [
+            { component: TextField, props: { label: 'Email', type: 'email', name: 'email', autocomplete: 'email', required: true, value: '' } },
+            { component: PasswordField, props: { label: 'Password', name: 'password', autocomplete: 'current-password', required: true, value: '' } },
+          ],
+          actions: [{ component: Button, props: { variant: 'primary', type: 'submit', children: buttonLabel('Sign in') } }],
+        } },
+      { label: 'Rejected', props: { label: 'Sign in' },
+        snippets: {
+          message: [{ component: OutcomeBanner, props: { tone: 'error', title: 'Could not sign in', detail: 'Incorrect email or password.' } }],
+          children: [
+            { component: TextField, props: { label: 'Email', type: 'email', name: 'email', autocomplete: 'email', required: true, value: '' } },
+            { component: PasswordField, props: { label: 'Password', name: 'password', autocomplete: 'current-password', required: true, value: '' } },
+          ],
+          actions: [{ component: Button, props: { variant: 'primary', type: 'submit', children: buttonLabel('Sign in') } }],
+        } },
     ],
   },
   {
