@@ -119,13 +119,11 @@ echo "tag type   $TAG_TYPE (annotated)"
 # MUST succeed; swallowing it would let the script print "latest held" having
 # verified nothing — asserting neither the artifact nor the invocation.
 LATEST_AFTER="$(gh release list --limit 10000 --json tagName,isLatest --jq '.[] | select(.isLatest) | .tagName')"
-if [ "$LATEST_AFTER" != "$LATEST_BEFORE" ]; then
-  if [ -n "$LATEST_BEFORE" ]; then
-    fail "$TAG moved 'latest' from $LATEST_BEFORE to ${LATEST_AFTER:-<none>}.
+# Only the catalog's `latest` is worth defending. Until a `v*` release exists,
+# GitHub hands `latest` to the newest lib release, and that harms nothing.
+if [ "$LATEST_AFTER" != "$LATEST_BEFORE" ] && [[ "$LATEST_BEFORE" == v* ]]; then
+  fail "$TAG moved 'latest' from $LATEST_BEFORE to ${LATEST_AFTER:-<none>}.
       Restore it with: gh release edit $LATEST_BEFORE --latest"
-  fi
-  fail "$TAG took 'latest' in a repo that had no release holding it.
-      Clear it with: gh release edit $TAG --latest=false"
 fi
 
 echo "published   $TAG"
