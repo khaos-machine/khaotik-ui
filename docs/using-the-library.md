@@ -8,7 +8,7 @@ shows up on hover in your editor. See §5, "Where the prop reference is".
 Read the operational fact first, because it affects how you install:
 
 > Install from npm and pin an exact version:
-> `"@khaos-machine/khaotik-ui": "0.163.0"`. See
+> `"@khaos-machine/khaotik-ui": "0.164.0"`. See
 > [Versioning reality](#7-versioning-reality).
 
 ---
@@ -490,7 +490,7 @@ change with no warning, the way D58's rename once reached a consumer pinned to
 `main`:
 
 ```jsonc
-"@khaos-machine/khaotik-ui": "0.163.0"
+"@khaos-machine/khaotik-ui": "0.164.0"
 ```
 
 On upgrade, read the new rows in `docs/decisions.md` — that register is where
