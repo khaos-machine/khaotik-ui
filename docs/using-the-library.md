@@ -142,25 +142,21 @@ are defined only in that file. Skip it and the tones fall back to
 ### Phosphor icons need their own CSS
 
 `Icon.svelte` emits `<i class="ph ph-<name">` / `ph-<weight> ph-<name>` — it
-does not bundle a font. Import the weights you use, from
-`@phosphor-icons/web`:
+does not bundle a font. Import the kit's icon stylesheet once:
 
 ```js
-import '@phosphor-icons/web/regular'
-import '@phosphor-icons/web/fill'
+import '@khaos-machine/khaotik-ui/assets/icons/phosphor.css'
 ```
 
-`regular` + `fill` is what the catalog ships (`apps/catalog/src/main.js:9-10`)
-and covers the components' default usage. `Icon`'s type still accepts all six
-weights (`regular|thin|light|bold|fill|duotone`), so **import the weight you
-pass** — a `weight` whose stylesheet you did not import type-checks, renders, and
-silently falls back to whatever is loaded.
+It carries Phosphor's `regular` and `fill` weights, which cover every glyph the
+components render, as woff2 only: 279 KB in your build. Phosphor's own
+stylesheets (`@phosphor-icons/web/regular`, `/fill`) also list woff, ttf and
+svg, so a bundler copies 7.5 MB of fonts no browser fetches.
 
-**The `./*` vs `src/*` trap**: the specifiers above resolve to the same files as
-the `src`-prefixed paths, but the package's
-`./*` export already maps onto `src/*` — so
-`@phosphor-icons/web/src/regular/style.css` double-prefixes and **does not
-resolve**. Always use the short form.
+`Icon`'s type still accepts all six weights (`regular|thin|light|bold|fill|duotone`).
+For another weight, import its stylesheet from `@phosphor-icons/web` as well
+(`import '@phosphor-icons/web/bold'`). A `weight` whose stylesheet is not loaded
+type-checks, renders, and silently falls back to whatever is loaded.
 
 ### The kit ships placeholder artwork, and your bundler must handle it
 

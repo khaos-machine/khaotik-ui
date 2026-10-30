@@ -5,9 +5,9 @@
   /**
    * A Phosphor glyph weight. All six exist in `@phosphor-icons/web`, but only
    * the weights whose stylesheet the host imports actually render, so a weight
-   * this app never imports renders as nothing. The catalog imports `regular`
-   * and `fill` (`apps/catalog/src/main.js:9`); a consumer wanting the other
-   * four imports them itself.
+   * this app never imports renders as nothing. The kit's
+   * `assets/icons/phosphor.css` loads `regular` and `fill`; a consumer wanting
+   * the other four imports them from `@phosphor-icons/web` itself.
    * @typedef {'regular'|'thin'|'light'|'bold'|'fill'|'duotone'} IconWeight
    */
 

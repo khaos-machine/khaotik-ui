@@ -18,6 +18,10 @@ description of a live consumer.
 
 ## [Unreleased]
 
+### Added
+
+- `assets/icons/phosphor.css`: Phosphor's `regular` and `fill` weights as woff2 only. Import it in place of `@phosphor-icons/web/regular` and `/fill`, which also bring woff, ttf and svg into a build: 279 KB of font in place of 7.5 MB. `npm run check-icons` fails when it drifts from the installed Phosphor.
+
 ## [0.163.0] — 2026-10-30
 
 ### Changed

@@ -16,7 +16,9 @@
     "check-issue-refs": "node scripts/check-issue-refs.mjs",
     "build-types": "node scripts/build-types.mjs",
     "check-types": "node scripts/build-types.mjs --check",
-    "check-export-count": "node scripts/check-export-count.mjs"
+    "check-export-count": "node scripts/check-export-count.mjs",
+    "build-icon-css": "node scripts/build-icon-css.mjs",
+    "check-icons": "node scripts/build-icon-css.mjs --check"
   },
   "exports": {
     "./tokens/*": "./tokens/*",
