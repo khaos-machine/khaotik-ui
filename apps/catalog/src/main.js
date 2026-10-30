@@ -13,11 +13,9 @@ import './app.css'
 // components cannot live inside any one of their scoped <style> blocks.
 import './lib/brand.css'
 import './lib/controls.css'
-// Phosphor — the org's icon set (khaos-ui uses @phosphor-icons/vue; the web
-// webfont is the framework-agnostic equivalent). regular + fill cover the
-// SF Symbol → Phosphor map the components need.
-import '@phosphor-icons/web/regular'
-import '@phosphor-icons/web/fill'
+// Phosphor's regular + fill weights, as the kit ships them: woff2 only, so the
+// build carries 279 KB of font rather than Phosphor's own 7.5 MB.
+import '@khaos-machine/khaotik-ui/assets/icons/phosphor.css'
 import App from './App.svelte'
 
 const app = mount(App, {
