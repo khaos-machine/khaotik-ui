@@ -45,6 +45,23 @@ describe('StoryPlayback at phone width', () => {
   })
 })
 
+describe('StoryPlayer at phone width', () => {
+  it('its scrub bar seeks, and reports the gesture start and end once each', async () => {
+    const seeks = []
+    let starts = 0
+    let ends = 0
+    const { component, props } = example('story-player')
+    render(component, { props: { ...props, onSeek: (s) => seeks.push(s), onScrubStart: () => starts++, onScrubEnd: () => ends++ } })
+    const bar = screen.getByRole('slider', { name: 'Position', hidden: true })
+    await fireEvent.pointerDown(bar)
+    await fireEvent.input(bar, { target: { value: '12' } })
+    await fireEvent.change(bar)
+    await fireEvent.pointerUp(window)
+    expect(seeks).toEqual([12])
+    expect([starts, ends]).toEqual([1, 1])
+  })
+})
+
 describe('ScreenplayEditor footnote', () => {
   it('keeps its default line, and an empty footnote leaves it out', () => {
     const { component, props } = example('screenplay-editor')

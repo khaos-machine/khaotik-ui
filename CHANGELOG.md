@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.173.0] — 2026-11-01
+
+### Changed
+
+- `StoryPlayback` and `StoryPlayer` are a media player at phone width (below 600 px). The stage takes the free height with the line as its content, and the scene title sits under it on one line. Below that is a full-width scrub bar with the elapsed and total time, then one centred row: previous scene, a large round play, and next scene, with the beat skips beside them. Stop, first, last, Zoom, the tools and the timeline tracks don't show. Scenes and Inspector open as sheets from two icons on the stage. Fullscreen stays a quiet icon on the stage. Every target is at least 44 pt, and the bottom safe area is kept clear. Desktop is unchanged and there is no API change. The scrub bar reports `onSeek`, and `onScrubStart` and `onScrubEnd` once each per gesture.
+
 ## [0.172.4] — 2026-11-01
 
 ### Fixed

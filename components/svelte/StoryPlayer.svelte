@@ -236,7 +236,12 @@
   let scrubbing = $state(false)
   let pointerId = null
   let skipClick = false
-  onDestroy(() => { if (scrubbing) onScrubEnd?.() })
+  // The phone scrub bar is a native range, so it seeks through its own input events; only
+  // the gesture's start and end are reported, as for the ruler.
+  let sliding = false
+  function slideStart() { if (!sliding) { sliding = true; onScrubStart?.() } }
+  function slideEnd() { if (sliding) { sliding = false; onScrubEnd?.() } }
+  onDestroy(() => { if (scrubbing) onScrubEnd?.(); slideEnd() })
 
   // Keep the playhead in view while it plays. Scrolls only when it actually leaves the
   // viewport, so a user who has scrolled away to read something is not yanked back on
@@ -320,11 +325,20 @@
   )
 </script>
 
-<svelte:window onpointermove={moveScrub} onpointerup={endScrub} onpointercancel={endScrub} onblur={endScrub} />
+<svelte:window onpointermove={moveScrub} onpointerup={(e) => { endScrub(e); slideEnd() }} onpointercancel={(e) => { endScrub(e); slideEnd() }} onblur={() => { endScrub(); slideEnd() }} />
 
 <div class="player" class:player--audio={audioEmphasis}>
+  <!-- Phone width only: one thin scrub bar over the whole story, the elapsed and total time
+       beneath it. Wider, the ruler and the playhead are the scrub surface. -->
+  {#if total > 0}
+    <div class="player__scrub">
+      <input type="range" min="0" max={total} step="0.1" value={clamped} aria-label="Position" aria-valuetext={formatTimecode(clamped)}
+        onpointerdown={slideStart} onchange={slideEnd} oninput={(e) => onSeek?.(Number(e.currentTarget.value))} />
+      <span>{formatTimecode(clamped)}</span><span>{formatTimecode(total)}</span>
+    </div>
+  {/if}
   <div class="player__transport" role="group" aria-label="Playback controls">
-    <button type="button" aria-label="Go to beginning" title="Go to beginning (Home)" disabled={!total} onclick={() => onSeek?.(0)}><Icon name="caret-line-left" /></button>
+    <button type="button" class="player__edge" aria-label="Go to beginning" title="Go to beginning (Home)" disabled={!total} onclick={() => onSeek?.(0)}><Icon name="caret-line-left" /></button>
     {#if onPreviousScene}<button type="button" aria-label="Previous scene" title="Previous scene" disabled={!total} onclick={onPreviousScene}><Icon name="skip-back" /></button>{/if}
     {#if onPreviousBeat}<button type="button" aria-label="Previous beat" title="Previous beat" disabled={!total} onclick={onPreviousBeat}><Icon name="rewind" /></button>{/if}
     <button
@@ -335,10 +349,10 @@
       <Icon name={playing ? 'pause' : 'play'} weight="fill" />
     </button>
 
-    {#if onStop}<button type="button" aria-label="Stop" title="Stop" onclick={onStop}><Icon name="stop" /></button>{/if}
+    {#if onStop}<button type="button" class="player__edge" aria-label="Stop" title="Stop" onclick={onStop}><Icon name="stop" /></button>{/if}
     {#if onNextBeat}<button type="button" aria-label="Next beat" title="Next beat" disabled={!total} onclick={onNextBeat}><Icon name="fast-forward" /></button>{/if}
     {#if onNextScene}<button type="button" aria-label="Next scene" title="Next scene" disabled={!total} onclick={onNextScene}><Icon name="skip-forward" /></button>{/if}
-    <button type="button" aria-label="Go to end" title="Go to end (End)" disabled={!total} onclick={() => onSeek?.(total)}><Icon name="caret-line-right" /></button>
+    <button type="button" class="player__edge" aria-label="Go to end" title="Go to end (End)" disabled={!total} onclick={() => onSeek?.(total)}><Icon name="caret-line-right" /></button>
     <span class="player__timecode">{formatTimecode(clamped)} / {formatTimecode(total)}</span>
 
     <label class="player__zoom">
@@ -578,22 +592,7 @@
     gap: var(--spacing-sm);
     min-width: 0;
   }
-  /* Phone width: the transport wraps, so the zoom and the tools take a row of their own. */
-  @container (max-width: 599px) {
-    .player__transport {
-      flex-wrap: wrap;
-      row-gap: var(--spacing-xs);
-    }
-    .player__zoom input {
-      width: 120px;
-    }
-    /* A phone is touched: every transport button is at least a 44pt target. */
-    .player__transport > button,
-    .player__play {
-      min-width: 44px;
-      min-height: 44px;
-    }
-  }
+  .player__scrub { display: none; }
 
   .player__play {
     display: inline-flex;
@@ -1005,4 +1004,28 @@
     clip-path: inset(50%);
     white-space: nowrap;
   }
+  /* Phone width: a media player. The scrub bar, then one centred row of scene skips around a
+     large round play; the beat skips sit beside them. Stop, the ends, the zoom, the tools and
+     the tracks are desktop editing and do not show. Every target is at least 44pt. */
+  @container (max-width: 599px) {
+    .player__scrub {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      row-gap: 2px;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: var(--caption-size);
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+    }
+    .player__scrub input { grid-column: 1 / -1; width: 100%; height: 24px; margin: 0; accent-color: var(--text-brand); }
+    .player__transport { justify-content: center; gap: var(--spacing-xs); }
+    .player__transport > button:not(.player__play) { min-width: 44px; min-height: 44px; border-color: transparent; }
+    .player__transport :global(.ph) { font-size: 22px; }
+    .player__play { flex: none; width: 64px; height: 64px; border-radius: 50%; border: 0; background: var(--text-primary); color: var(--surface-base); }
+    .player__play:hover { background: var(--text-primary); }
+    .player__play :global(.ph) { font-size: 28px; }
+    .player__transport > button.player__edge:not(.player__play), .player__timecode, .player__zoom, .player__tools, .player__context,
+    .player__stage, .player__panel { display: none; }
+  }
+
 </style>

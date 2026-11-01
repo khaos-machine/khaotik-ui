@@ -147,10 +147,10 @@
 
       <section class="ui-story-playback__stage" aria-label="Story preview">
         <div class="ui-story-playback__phone-bar">
-          {#if showSidebar}<Button variant="tool" icon="list" onclick={() => (sheet = 'scenes')}>Scenes</Button>{/if}
-          {#if inspectorOpen && showInspector}<Button variant="tool" icon="sidebar-simple" onclick={() => (sheet = 'inspector')}>Inspector</Button>{/if}
+          {#if showSidebar}<Button variant="tool" icon="list" onclick={() => (sheet = 'scenes')}><span class="visually-hidden">Scenes</span></Button>{/if}
+          {#if inspectorOpen && showInspector}<Button variant="tool" icon="sidebar-simple" onclick={() => (sheet = 'inspector')}><span class="visually-hidden">Inspector</span></Button>{/if}
         </div>
-        <div class="ui-story-playback__context" data-ui-id="story.playback.context">{#if !embedded}<span>{current?.label ?? 'Choose a scene'}</span>{/if}<span>{current?.timing === 'read' ? 'Measured read' : 'Estimated scene'}</span></div>
+        <div class="ui-story-playback__context" data-ui-id="story.playback.context"><span class="ui-story-playback__title" class:ui-story-playback__title--embedded={embedded}>{current?.label ?? 'Choose a scene'}</span><span class="ui-story-playback__timing">{current?.timing === 'read' ? 'Measured read' : 'Estimated scene'}</span></div>
         {#if current?.context?.characters.length}
           <ul class="ui-story-playback__cast" aria-label="Scene cast">
             {#each current.context.characters as character (character.id)}
@@ -235,6 +235,7 @@
   .ui-story-playback__stage { position: absolute; inset: 12px calc(var(--inspector-space) + 28px) calc(var(--timeline-height) + 34px) 250px; display: flex; flex-direction: column; gap: 16px; min-height: 0; }
   .ui-story-playback__context { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; color: var(--text-secondary); font-size: 11px; line-height: 1.5; }
   .ui-story-playback__context span:last-child { white-space: nowrap; }
+  .ui-story-playback__title--embedded { display: none; }
   .ui-story-playback__monitor { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; padding: 16px; position: relative; isolation: isolate; overflow: auto; }
   .ui-story-playback__monitor > :global(.ph) { font-size: 42px; color: var(--text-secondary); }
   .ui-story-playback__cast { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; padding: 0; margin: 0; }
@@ -266,28 +267,40 @@
   @media (max-width: 1100px) { .ui-story-playback { --inspector-width: 320px; --sidebar-space: 196px; } .ui-story-playback__nav { width: 180px; } .ui-story-playback__stage { left: 210px; } }
   @container viewport (max-width: 1100px) { .ui-story-playback { --inspector-width: 320px; --sidebar-space: 196px; } .ui-story-playback__nav { width: 180px; } .ui-story-playback__stage { left: 210px; } }
   .ui-story-playback__phone-bar, .ui-story-playback__sheet-bar { display: none; }
-  /* Phone width: the stage takes the width, the timeline spans the bottom with its transport, and
-     the scene list and the inspector are sheets opened from the phone bar, each with its own Close. */
+  /* Phone width: a media player. The stage takes the free height with the line as its content,
+     the scene title sits under it, and the timeline below is the transport alone (StoryPlayer's
+     phone layout). Scenes and Inspector are sheets opened from two icons on the stage, each with
+     its own Close. The bottom safe area is kept clear. */
   @media (max-width: 599px) {
-    .ui-story-playback { --sidebar-space: 0px; --inspector-space: 0px; --timeline-height: 220px; }
-    .ui-story-playback__stage { inset: 8px 8px calc(var(--timeline-height) + 16px) 8px; gap: 8px; }
-    .ui-story-playback__timeline { left: 8px; right: 8px; bottom: 8px; }
-    .ui-story-playback__phone-bar { display: flex; gap: 4px; }
+    .ui-story-playback { --sidebar-space: 0px; --inspector-space: 0px; display: flex; flex-direction: column; }
+    .ui-story-playback__stage { position: relative; inset: auto; flex: 1 1 auto; padding: 8px 12px 0; gap: 8px; }
+    .ui-story-playback__cast, .ui-story-playback__timing { display: none; }
+    .ui-story-playback__context { order: 1; display: block; color: var(--text-primary); font-size: var(--body-md-size); font-weight: 600; }
+    .ui-story-playback__title, .ui-story-playback__title--embedded { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ui-story-playback__phone-bar { display: flex; gap: 4px; position: absolute; z-index: 5; top: 8px; right: 8px; }
+    .ui-story-playback__phone-bar :global(button), .ui-story-playback__focus :global(button) { min-width: 44px; min-height: 44px; justify-content: center; }
+    .ui-story-playback__focus { right: 0; bottom: 0; background: transparent; border: 0; backdrop-filter: none; }
+    .ui-story-playback__timeline { position: relative; inset: auto; flex: none; height: auto; padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)); background: transparent; border: 0; border-radius: 0; backdrop-filter: none; }
     .ui-story-playback__sheet-bar { display: flex; justify-content: flex-end; padding: 4px; }
     .ui-story-playback__nav, .ui-story-playback__inspector { display: none; }
     [data-sheet='scenes'] .ui-story-playback__nav:not([hidden]) { display: block; z-index: 6; inset: 8px; width: auto; bottom: 8px; }
-    [data-sheet='inspector'] .ui-story-playback__inspector:not([hidden]) { display: flex; z-index: 6; inset: auto 0 0 0; width: auto; max-height: 75%; padding: 0 12px 12px; box-sizing: border-box; border-left: 0; border-top: 1px solid var(--border-default); }
+    [data-sheet='inspector'] .ui-story-playback__inspector:not([hidden]) { display: flex; z-index: 6; inset: auto 0 0 0; width: auto; max-height: 75%; padding: 0 12px calc(12px + env(safe-area-inset-bottom, 0px)); box-sizing: border-box; border-left: 0; border-top: 1px solid var(--border-default); }
     .ui-story-playback__line { font-size: 1.125rem; }
   }
   @container viewport (max-width: 599px) {
-    .ui-story-playback { --sidebar-space: 0px; --inspector-space: 0px; --timeline-height: 220px; }
-    .ui-story-playback__stage { inset: 8px 8px calc(var(--timeline-height) + 16px) 8px; gap: 8px; }
-    .ui-story-playback__timeline { left: 8px; right: 8px; bottom: 8px; }
-    .ui-story-playback__phone-bar { display: flex; gap: 4px; }
+    .ui-story-playback { --sidebar-space: 0px; --inspector-space: 0px; display: flex; flex-direction: column; }
+    .ui-story-playback__stage { position: relative; inset: auto; flex: 1 1 auto; padding: 8px 12px 0; gap: 8px; }
+    .ui-story-playback__cast, .ui-story-playback__timing { display: none; }
+    .ui-story-playback__context { order: 1; display: block; color: var(--text-primary); font-size: var(--body-md-size); font-weight: 600; }
+    .ui-story-playback__title, .ui-story-playback__title--embedded { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ui-story-playback__phone-bar { display: flex; gap: 4px; position: absolute; z-index: 5; top: 8px; right: 8px; }
+    .ui-story-playback__phone-bar :global(button), .ui-story-playback__focus :global(button) { min-width: 44px; min-height: 44px; justify-content: center; }
+    .ui-story-playback__focus { right: 0; bottom: 0; background: transparent; border: 0; backdrop-filter: none; }
+    .ui-story-playback__timeline { position: relative; inset: auto; flex: none; height: auto; padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)); background: transparent; border: 0; border-radius: 0; backdrop-filter: none; }
     .ui-story-playback__sheet-bar { display: flex; justify-content: flex-end; padding: 4px; }
     .ui-story-playback__nav, .ui-story-playback__inspector { display: none; }
     [data-sheet='scenes'] .ui-story-playback__nav:not([hidden]) { display: block; z-index: 6; inset: 8px; width: auto; bottom: 8px; }
-    [data-sheet='inspector'] .ui-story-playback__inspector:not([hidden]) { display: flex; z-index: 6; inset: auto 0 0 0; width: auto; max-height: 75%; padding: 0 12px 12px; box-sizing: border-box; border-left: 0; border-top: 1px solid var(--border-default); }
+    [data-sheet='inspector'] .ui-story-playback__inspector:not([hidden]) { display: flex; z-index: 6; inset: auto 0 0 0; width: auto; max-height: 75%; padding: 0 12px calc(12px + env(safe-area-inset-bottom, 0px)); box-sizing: border-box; border-left: 0; border-top: 1px solid var(--border-default); }
     .ui-story-playback__line { font-size: 1.125rem; }
   }
   @media (prefers-reduced-motion: no-preference) { .ui-story-playback__hud, .ui-story-playback__stage { transition: opacity 160ms ease; } }

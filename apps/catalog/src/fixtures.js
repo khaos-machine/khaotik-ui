@@ -2071,7 +2071,7 @@ const playbackSnippets = {
     character: playbackSpeaker ? { id: playbackSpeaker.id, name: playbackSpeaker.name } : undefined,
     portrait: madisonFigure,
   } }],
-  timeline: [{ component: StoryPlayer, props: { segments: playbackSegments.slice(0, 2), lanes: ['action', 'dialogue'], currentTime: (playbackLine?.startMs ?? 0) / 1000, playing: false, scale: 10, showContext: false } }],
+  timeline: [{ component: StoryPlayer, props: { segments: playbackSegments.slice(0, 2), lanes: ['action', 'dialogue'], currentTime: (playbackLine?.startMs ?? 0) / 1000, playing: false, scale: 10, showContext: false, onSeek: () => {}, onTogglePlay: () => {}, onPreviousScene: () => {}, onNextScene: () => {}, onPreviousBeat: () => {}, onNextBeat: () => {} } }],
 }
 
 // The Story Atlas as khaosd serves it (story-atlas.json), laid out as the atlas lays it out.
