@@ -18,6 +18,13 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.172.1] — 2026-11-01
+
+### Fixed
+
+- `SegmentedControl` scrolls the chosen item into view when its row is too narrow, so a tapped segment is no longer left cut off. Only the row scrolls, never the page. `CharacterDetail`'s tabs and `StoryAtlasToolbar`'s lens get this too.
+- `StoryAtlas` hides a node's label and count when they would overlap a label already placed. The selection, the hovered node and a chosen connection's ends are placed first, then the rest by scene count. At a phone's fit this hides 24 of 34 labels in the catalog's Characters view, and none at 1280. Zooming in brings them back.
+
 ## [0.172.0] — 2026-11-01
 
 ### Added

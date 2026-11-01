@@ -40,11 +40,30 @@
     items = [],
     onselect = undefined,
   } = $props()
+
+  // A row too narrow for its items scrolls (see the style), so the chosen item is scrolled into
+  // view whenever the value changes. Only the row scrolls, never the page.
+  /** @type {HTMLElement | undefined} */
+  let host = $state()
+  $effect(() => {
+    void value
+    const frame = requestAnimationFrame(() => {
+      const row = /** @type {HTMLElement | null | undefined} */ (host?.querySelector('.ui-segmented'))
+      const item = /** @type {HTMLElement | null | undefined} */ (row?.querySelector('.ui-segmented__item[data-state="checked"]'))
+      if (!row || !item) return
+      const left = item.offsetLeft
+      const right = left + item.offsetWidth
+      if (left < row.scrollLeft) row.scrollLeft = left
+      else if (right > row.scrollLeft + row.clientWidth) row.scrollLeft = right - row.clientWidth
+    })
+    return () => cancelAnimationFrame(frame)
+  })
 </script>
 
 <!-- Classes on an Ark component are forwarded to the rendered element, so
      Svelte scopes them as unused — they are styled :global below
      (catalog/AGENTS.md, "Svelte 5 gotchas"). -->
+<span class="ui-segmented__host" bind:this={host}>
 <SegmentGroupRoot
   {value}
   onValueChange={(details) => onselect?.(details.value)}
@@ -61,8 +80,13 @@
     </SegmentGroupItem>
   {/each}
 </SegmentGroupRoot>
+</span>
 
 <style>
+  .ui-segmented__host {
+    display: contents;
+  }
+
   :global(.ui-segmented) {
     position: relative;
     display: inline-flex;

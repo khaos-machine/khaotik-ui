@@ -253,6 +253,35 @@ export async function createAtlas(element, callbacks) {
       r.count.scale.set(1 / scale)
       r.count.position.set(0, r.radius + (r.label.height * scale + 15) / scale)
     }
+    thinLabels()
+  }
+
+  // Labels keep their screen size while the nodes close up as the view zooms out, so a phone's
+  // fit piles them on each other. Placed by weight (the selection, the hovered node and a chosen
+  // connection's ends first, then by scene count), a label that would overlap one already placed
+  // is hidden with its count. Zooming in spreads the nodes and brings the labels back.
+  function thinLabels() {
+    const pinned = (r) =>
+      r.node.id === selected ||
+      r.node.id === hovered ||
+      (!!scene.selectedEdge && [scene.selectedEdge.source, scene.selectedEdge.target].includes(r.node.id))
+    const placed = []
+    // 4px on screen between any two kept labels, in world units.
+    const gap = 4 / camera.scale.x
+    const byWeight = records
+      .filter((r) => r.label.visible)
+      .toSorted((a, b) => Number(pinned(b)) - Number(pinned(a)) || (b.node.raw?.scene_count ?? 0) - (a.node.raw?.scene_count ?? 0))
+    for (const r of byWeight) {
+      // The count can be wider than a short name ("RAY" over "7 scenes").
+      const half = Math.max(r.label.width, r.count.visible ? r.count.width : 0) / 2 + gap
+      const top = r.group.y + r.label.y - gap
+      const bottom = (r.count.visible ? r.group.y + r.count.y + r.count.height : top + gap + r.label.height) + gap
+      const box = { l: r.group.x - half, r: r.group.x + half, t: top, b: bottom }
+      if (!pinned(r) && placed.some((p) => box.l < p.r && box.r > p.l && box.t < p.b && box.b > p.t)) {
+        r.label.visible = false
+        r.count.visible = false
+      } else placed.push(box)
+    }
   }
 
   function paintPortrait(record, url) {
