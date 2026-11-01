@@ -98,7 +98,18 @@ describe('One toolbar row at phone width', () => {
     const { container } = render(FixtureView, { props: { fixture, example: fixture.examples.find((e) => e.label.includes('screenplay actions')) } })
     const groups = container.querySelectorAll('.toolbar__tools')
     expect(groups).toHaveLength(1)
-    expect(groups[0].querySelectorAll('.ui-button')).toHaveLength(5)
+    expect(groups[0].querySelectorAll('.ui-button')).toHaveLength(4)
+  })
+
+  it('ScreenplayActions part="edit" leaves out Discard, and the editor offers it in its outline', () => {
+    const { component } = example('screenplay-actions')
+    const { unmount } = render(component, { props: { dirty: 1, iconOnly: true, part: 'edit', onscenes: () => {} } })
+    expect(screen.queryByRole('button', { name: 'Discard…' })).toBeNull()
+    expect(screen.getByRole('button', { name: 'Save' })).toBeTruthy()
+    unmount()
+    const editor = example('screenplay-editor')
+    const { container } = render(editor.component, { props: { ...editor.props, dirty: 1, actions: false } })
+    expect(container.querySelector('.screenplay-editor__outline-discard')?.textContent).toContain('Discard…')
   })
 
   it('Toolbar with no title draws no title cell', () => {

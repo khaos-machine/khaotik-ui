@@ -18,6 +18,23 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.178.0] — 2026-11-01
+
+### Added
+
+- **ScreenplayActions `part`:** `'all'` (the default), `'edit'` (Scenes, Undo, Redo and Save)
+  or `'discard'` (Discard… alone, with its confirmation). A phone's toolbar row draws `edit`.
+  With `actions={false}`, ScreenplayEditor offers Discard… at the top of its outline at phone
+  width.
+
+### Fixed
+
+- **Toolbar:** a phone row fits without scrolling. On K's iPhone the text renders about 1.2×
+  the catalog's, which clipped the Atlas lenses ("Scer") and pushed Save off the row. Lenses
+  in the row now have 4px a side, and Screenplay's row holds four buttons. Measured in iOS
+  Safari at 393 and at 375 with text at 120%: Atlas's picker and four lenses fit, and
+  Screenplay's picker and four buttons fit, Save included. Below that, the row scrolls.
+
 ## [0.177.0] — 2026-11-01
 
 ### Changed

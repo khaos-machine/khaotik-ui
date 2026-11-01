@@ -25,6 +25,10 @@ declare const ScreenplayActions: import("svelte").Component<{
      */
     iconOnly?: boolean;
     /**
+     * Which actions: all of them; all but Discard…; or Discard… alone.
+     */
+    part?: "all" | "edit" | "discard";
+    /**
      * Shows the outline. Absent, no Scenes button is drawn.
      */
     onscenes?: () => void;
@@ -66,6 +70,10 @@ type Props = {
      * Icons only, each named by its label: for a phone's toolbar row.
      */
     iconOnly?: boolean;
+    /**
+     * Which actions: all of them; all but Discard…; or Discard… alone.
+     */
+    part?: "all" | "edit" | "discard";
     /**
      * Shows the outline. Absent, no Scenes button is drawn.
      */

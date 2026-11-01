@@ -8,7 +8,7 @@ shows up on hover in your editor. See §5, "Where the prop reference is".
 Read the operational fact first, because it affects how you install:
 
 > Install from npm and pin an exact version:
-> `"@khaos-machine/khaotik-ui": "0.177.0"`. See
+> `"@khaos-machine/khaotik-ui": "0.178.0"`. See
 > [Versioning reality](#7-versioning-reality).
 
 ---
@@ -490,7 +490,7 @@ change with no warning, the way D58's rename once reached a consumer pinned to
 `main`:
 
 ```jsonc
-"@khaos-machine/khaotik-ui": "0.177.0"
+"@khaos-machine/khaotik-ui": "0.178.0"
 ```
 
 On upgrade, read the new rows in `docs/decisions.md` — that register is where
@@ -542,4 +542,6 @@ At phone width (below 600px) the outline and the script take turns; bind `pane`
 window's toolbar row instead of the editor's header, pass `actions={false}` and draw
 `ScreenplayActions` there with the same `saving`, `dirty`, `canUndo`, `canRedo`
 and callbacks, `iconOnly`, and `onscenes={() => (pane = 'outline')}`. It carries
-the Discard confirmation.
+the Discard confirmation. In a phone's row, pass `part="edit"` as well: Scenes, Undo,
+Redo and Save fit 375 beside the picker, and with `actions={false}` the editor offers
+Discard… at the top of its outline.

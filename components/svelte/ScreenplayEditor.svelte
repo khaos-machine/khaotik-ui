@@ -68,6 +68,8 @@
 <section class="screenplay-editor__writer" data-pane={pane} bind:this={root} aria-label="Screenplay editor">
   <nav class="screenplay-editor__outline" aria-label="Screenplay outline">
     <h2>Screenplay</h2>
+    <!-- A host's phone toolbar draws `part="edit"`, with no room for Discard…: it is offered here. -->
+    {#if !actions}<div class="screenplay-editor__outline-discard"><ScreenplayActions part="discard" {saving} {dirty} {ondiscard} /></div>{/if}
     <button class:screenplay-editor__chosen={selected==='title-page'} onclick={()=>{pane='script';onselect?.('title-page')}} aria-current={selected==='title-page'?'page':undefined}><Icon name="file-text" />Title page</button>
     <h3>Scenes <span>{document?.scenes.length??''}</span></h3>
     {#each document?.scenes??[] as row,i (row.id)}
@@ -136,13 +138,14 @@
   .screenplay-editor__dialogue{margin-left:21%;margin-right:18%}.screenplay-editor__cue{margin:0 0 0 26%;white-space:pre-wrap}.screenplay-editor__parenthetical{margin:0 0 0 12%;white-space:pre-wrap}.screenplay-editor__centered{text-align:center}.screenplay-editor__centered textarea{text-align:center}
   .screenplay-editor__block p{white-space:pre-wrap}.screenplay-editor__transition{text-align:right}
   .screenplay-editor__title-page{padding-top:72px}.screenplay-editor__title-page label{position:relative;display:block;max-width:460px;margin:0 auto 12px;text-align:center}.screenplay-editor__title-page label span{position:absolute;left:-92px;top:8px;width:80px;text-align:right;font:11px system-ui;color:var(--text-secondary);opacity:0}.screenplay-editor__title-page label:focus-within span,.screenplay-editor__title-page label:hover span{opacity:1}.screenplay-editor__title-page textarea{text-align:center}.screenplay-editor__title-page textarea::placeholder{color:var(--text-secondary);font-size:12px;font-family:system-ui}.screenplay-editor__title-page .screenplay-editor__title textarea{font-size:24px;font-weight:700;text-transform:none}.screenplay-editor__title-page .screenplay-editor__title{margin-bottom:36px}.screenplay-editor__title-page .screenplay-editor__contact{margin-top:72px}.screenplay-editor__title-page .screenplay-editor__contact textarea{text-align:left}
-  .screenplay-editor__to-outline{display:none}
+  .screenplay-editor__to-outline,.screenplay-editor__outline-discard{display:none}
   .screenplay-editor__writer{container-type:inline-size}
   @container (max-width: 599px){
     .screenplay-editor__outline,.screenplay-editor__workspace{grid-column:1/-1;grid-row:1}
     [data-pane='script'] .screenplay-editor__outline,[data-pane='outline'] .screenplay-editor__workspace{display:none}
     .screenplay-editor__outline{border-right:0}
     .screenplay-editor__to-outline{display:contents}
+    .screenplay-editor__outline-discard{display:block;margin:0 6px 8px}
     header{flex-wrap:wrap}
     .screenplay-editor__heading{flex-basis:100%;order:-1}
     .screenplay-editor__paper-scroll{padding:20px 16px 64px}

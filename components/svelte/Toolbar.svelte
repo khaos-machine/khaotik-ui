@@ -358,6 +358,10 @@
     .toolbar__main:has(> .toolbar__tools) > .toolbar__spacer {
       flex: none;
     }
+    /* Lenses at 4px a side: a picker and four lenses fit 320. */
+    .toolbar__tools :global(.ui-segmented__item) {
+      padding-inline: 4px;
+    }
     .toolbar__tools::-webkit-scrollbar {
       display: none;
     }    .toolbar__filter {

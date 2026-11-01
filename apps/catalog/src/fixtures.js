@@ -3447,7 +3447,7 @@ export const fixtures = [
       { label: 'At 860, switcher as a pop-up', props: { title: 'BROKEN IN 4 PLACES', modes: workspaceModes, mode: 'cast', commands: toolbarCommands, panes: toolbarPanes, filterLabel: 'Filter characters', width: 860 } },
       { label: 'Phone row: picker and four lenses, no title', props: { modes: phoneModes, mode: 'data', compactBelow: 560, filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'character', items: [{ value: 'character', label: 'Characters' }, { value: 'scene', label: 'Scenes' }, { value: 'place', label: 'Places' }, { value: 'object', label: 'Objects' }] } }] } },
       { label: 'Phone row: picker and the Atlas lenses, no title', props: { modes: phoneModes, mode: 'atlas', compactBelow: 560, filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'all', items: [{ value: 'all', label: 'Everything' }, { value: 'character', label: 'Characters' }, { value: 'place', label: 'Places' }, { value: 'scene', label: 'Scenes' }] } }] } },
-      { label: 'Phone row: picker and the screenplay actions', props: { modes: phoneModes, mode: 'screenplay', compactBelow: 560, filter: null }, snippets: { tools: [{ component: ScreenplayActions, props: { dirty: 2, canUndo: true, iconOnly: true, onscenes: () => {} } }] } },
+      { label: 'Phone row: picker and the screenplay actions', props: { modes: phoneModes, mode: 'screenplay', compactBelow: 560, filter: null }, snippets: { tools: [{ component: ScreenplayActions, props: { dirty: 2, canUndo: true, iconOnly: true, part: 'edit', onscenes: () => {} } }] } },
     ],
   },
   {
