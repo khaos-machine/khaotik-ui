@@ -37,6 +37,8 @@
    * @property {boolean} [showInspector] Shows the inspector.
    * @property {boolean} [inspectorOpen] There is something to inspect.
    * @property {boolean} [focusMode] Only the stage shows.
+   * @property {'scenes' | 'inspector' | null} [sheet] Bindable. At phone width, the open sheet: the scene list, the inspector, or none. A host that opens them from its own toolbar binds this and sets `sheetButtons` false.
+   * @property {boolean} [sheetButtons] At phone width, draw the Scenes and Inspector icons on the stage. False when the host draws them.
    * @property {(on: boolean) => void} [onFocusModeChange] Reports focus mode toggled.
    * @property {(id: string) => void} [onNavigate] Reports a scene or section chosen in the navigator.
    * @property {(sceneId: string) => void} [onOpenReadings] Asks for the readings of the scene under the playhead.
@@ -69,6 +71,8 @@
     showInspector = true,
     inspectorOpen = false,
     focusMode = false,
+    sheet = $bindable(null),
+    sheetButtons = true,
     onFocusModeChange = undefined,
     onNavigate = undefined,
     onOpenReadings = undefined,
@@ -85,9 +89,8 @@
   const reducedMotion = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches
   const shotTransition = reducedMotion ? 0 : 280
   // At phone width the scene list and the inspector are sheets over the stage, opened from the
-  // stage's phone bar; wider, the host's showSidebar and showInspector place them and this is ignored.
-  /** @type {'scenes' | 'inspector' | null} */
-  let sheet = $state(null)
+  // stage's phone bar or the host's toolbar (`sheet`); wider, the host's showSidebar and
+  // showInspector place them and `sheet` is ignored.
   /** @param {PlaybackSegment} segment */
   const idOf = (segment) => (segment.kind === 'scene' ? segment.sceneId : segment.sectionId) ?? ''
   /** @param {string} referenceId */
@@ -146,10 +149,10 @@
       </nav>
 
       <section class="ui-story-playback__stage" aria-label="Story preview">
-        <div class="ui-story-playback__phone-bar">
+        {#if sheetButtons}<div class="ui-story-playback__phone-bar">
           {#if showSidebar}<Button variant="tool" icon="list" onclick={() => (sheet = 'scenes')}><span class="visually-hidden">Scenes</span></Button>{/if}
           {#if inspectorOpen && showInspector}<Button variant="tool" icon="sidebar-simple" onclick={() => (sheet = 'inspector')}><span class="visually-hidden">Inspector</span></Button>{/if}
-        </div>
+        </div>{/if}
         <div class="ui-story-playback__context" data-ui-id="story.playback.context"><span class="ui-story-playback__title" class:ui-story-playback__title--embedded={embedded}>{current?.label ?? 'Choose a scene'}</span><span class="ui-story-playback__timing">{current?.timing === 'read' ? 'Measured read' : 'Estimated scene'}</span></div>
         {#if current?.context?.characters.length}
           <ul class="ui-story-playback__cast" aria-label="Scene cast">

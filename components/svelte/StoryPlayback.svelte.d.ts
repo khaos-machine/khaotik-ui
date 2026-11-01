@@ -128,6 +128,14 @@ declare const StoryPlayback: import("svelte").Component<{
      */
     focusMode?: boolean;
     /**
+     * Bindable. At phone width, the open sheet: the scene list, the inspector, or none. A host that opens them from its own toolbar binds this and sets `sheetButtons` false.
+     */
+    sheet?: "scenes" | "inspector" | null;
+    /**
+     * At phone width, draw the Scenes and Inspector icons on the stage. False when the host draws them.
+     */
+    sheetButtons?: boolean;
+    /**
      * Reports focus mode toggled.
      */
     onFocusModeChange?: (on: boolean) => void;
@@ -171,7 +179,7 @@ declare const StoryPlayback: import("svelte").Component<{
      * The host's text preview.
      */
     preview?: import("svelte").Snippet | undefined;
-}, {}, "">;
+}, {}, "sheet">;
 type Props = {
     /**
      * The playback read.
@@ -296,6 +304,14 @@ type Props = {
      * Only the stage shows.
      */
     focusMode?: boolean;
+    /**
+     * Bindable. At phone width, the open sheet: the scene list, the inspector, or none. A host that opens them from its own toolbar binds this and sets `sheetButtons` false.
+     */
+    sheet?: "scenes" | "inspector" | null;
+    /**
+     * At phone width, draw the Scenes and Inspector icons on the stage. False when the host draws them.
+     */
+    sheetButtons?: boolean;
     /**
      * Reports focus mode toggled.
      */

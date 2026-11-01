@@ -68,11 +68,17 @@
 
 <div class="switcher" data-ui-id={uiId}>
   {#if compact}
-    <select class="switcher__popup" aria-label={label} {value} onchange={(e) => choose(e.currentTarget.value)}>
-      {#each modes as mode (mode.value)}
-        <option value={mode.value}>{mode.label}</option>
-      {/each}
-    </select>
+    <!-- Sized to the current value, not the longest option: a hidden copy of the chosen label
+         sets the cell's width and the select fills it. Works in every engine, unlike
+         field-sizing. -->
+    <span class="switcher__fit">
+      <span class="switcher__popup switcher__sizer" aria-hidden="true">{modes.find((m) => m.value === value)?.label ?? ''}</span>
+      <select class="switcher__popup" aria-label={label} {value} onchange={(e) => choose(e.currentTarget.value)}>
+        {#each modes as mode (mode.value)}
+          <option value={mode.value}>{mode.label}</option>
+        {/each}
+      </select>
+    </span>
   {:else}
     <SegmentedControl {label} {value} {items} onselect={choose} />
   {/if}
@@ -91,6 +97,22 @@
     border: var(--size-stroke-hairline) solid var(--border-default);
     border-radius: var(--radius-sm);
     padding: var(--spacing-2xs) var(--spacing-xs);
+  }
+  .switcher__fit {
+    display: inline-grid;
+  }
+  .switcher__fit > * {
+    grid-area: 1 / 1;
+    min-width: 0;
+  }
+  /* Room for the native arrow after the label. */
+  .switcher__sizer {
+    visibility: hidden;
+    white-space: nowrap;
+    padding-right: calc(var(--spacing-xs) + 20px);
+  }
+  .switcher__fit select {
+    width: 100%;
   }
   .switcher__popup:focus-visible {
     outline: var(--size-stroke-focus) solid var(--border-focus);

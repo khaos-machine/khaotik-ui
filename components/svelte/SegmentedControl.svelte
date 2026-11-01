@@ -144,6 +144,13 @@
     font-weight: 600;
   }
 
+  /* Phone width: a compact density, so a row of four sits beside the workspace picker. */
+  @container (max-width: 599px) {
+    :global(.ui-segmented__item) {
+      padding: 4px 8px;
+    }
+  }
+
   /* focus lands on the item's hidden input; show it on the visible segment */
   :global(.ui-segmented__item:has(:focus-visible)) {
     outline: 2px solid var(--border-focus);

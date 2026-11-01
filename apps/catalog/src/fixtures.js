@@ -1,4 +1,5 @@
 import ScreenplayEditor from '@khaos-machine/khaotik-ui/components/svelte/ScreenplayEditor.svelte'
+import ScreenplayActions from '@khaos-machine/khaotik-ui/components/svelte/ScreenplayActions.svelte'
 import PictureTimingReview from '@khaos-machine/khaotik-ui/components/svelte/PictureTimingReview.svelte'
 import ComposerExportDialog from '@khaos-machine/khaotik-ui/components/svelte/ComposerExportDialog.svelte'
 import ObjectAppearanceWorkbench from '@khaos-machine/khaotik-ui/components/svelte/ObjectAppearanceWorkbench.svelte'
@@ -2350,6 +2351,11 @@ export const fixtures = [
       {label:'Planning unavailable',props:{disabled:true}},
     ],
   },
+  { id: 'screenplay-actions', name: 'ScreenplayActions', section: 'screens', group: 'storyScreenplay', kind: 'component', component: ScreenplayActions, emptyNotApplicable: 'A row of actions holds no content to be empty of; with no changes they show disabled, as in the first example.', examples: [
+    {label:'In the header',props:{dirty:2,canUndo:true,onscenes:()=>{}}},
+    {label:'Icons only, for a phone toolbar row',props:{dirty:2,canUndo:true,iconOnly:true,onscenes:()=>{}}},
+    {label:'Saving',props:{dirty:2,saving:true,iconOnly:true}},
+  ]},
   { id: 'screenplay-editor', name: 'ScreenplayEditor', section: 'screens', group: 'storyScreenplay', kind: 'screen', component: ScreenplayEditor, examples: [
     {label:'Title page',props:{document:screenplayDocument,title:screenplayDocument.title,fields:['credit','author','source','draftDate','contact','copyright'],page:{},selected:'title-page'}},
     {label:'Captured opening scene',props:{document:screenplayDocument,selected:screenplayDocument.scenes[0]?.id}},
@@ -3437,6 +3443,9 @@ export const fixtures = [
     examples: [
       { label: 'Story at 1200', props: { title: 'BROKEN IN 4 PLACES', modes: workspaceModes, mode: 'story', commands: toolbarCommands, panes: toolbarPanes, filterLabel: 'Filter characters', width: 1200 } },
       { label: 'At 860, switcher as a pop-up', props: { title: 'BROKEN IN 4 PLACES', modes: workspaceModes, mode: 'cast', commands: toolbarCommands, panes: toolbarPanes, filterLabel: 'Filter characters', width: 860 } },
+      { label: 'Phone row: picker and four lenses, no title', props: { modes: workspaceModes, mode: 'cast', filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'character', items: [{ value: 'character', label: 'Characters' }, { value: 'scene', label: 'Scenes' }, { value: 'place', label: 'Places' }, { value: 'object', label: 'Objects' }] } }] } },
+      { label: 'Phone row: picker and the Atlas lenses, no title', props: { modes: workspaceModes, mode: 'story', filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'all', items: [{ value: 'all', label: 'Everything' }, { value: 'character', label: 'Characters' }, { value: 'place', label: 'Places' }, { value: 'scene', label: 'Scenes' }] } }] } },
+      { label: 'Phone row: picker and the screenplay actions', props: { modes: workspaceModes, mode: 'story', filter: null }, snippets: { tools: [{ component: ScreenplayActions, props: { dirty: 2, canUndo: true, iconOnly: true, onscenes: () => {} } }] } },
     ],
   },
   {

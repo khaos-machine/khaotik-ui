@@ -77,6 +77,14 @@ declare const ScreenplayEditor: import("svelte").Component<{
      */
     footnote?: string;
     /**
+     * Bindable. At phone width, which pane shows: the script or the outline. Wider, both show and this is ignored.
+     */
+    pane?: "script" | "outline";
+    /**
+     * Draw Scenes, Undo, Redo, Discard and Save in the header. False when the host draws them, as ScreenplayActions, in its own toolbar.
+     */
+    actions?: boolean;
+    /**
      * Select a scene or the title page.
      */
     onselect?: (id: string) => void;
@@ -112,7 +120,7 @@ declare const ScreenplayEditor: import("svelte").Component<{
      * Retry opening the story projection.
      */
     onretry?: () => void;
-}, {}, "">;
+}, {}, "pane">;
 type Props = {
     /**
      * Current story values, keyed by stable event identities.
@@ -186,6 +194,14 @@ type Props = {
      * The footer's second line. Empty leaves it out.
      */
     footnote?: string;
+    /**
+     * Bindable. At phone width, which pane shows: the script or the outline. Wider, both show and this is ignored.
+     */
+    pane?: "script" | "outline";
+    /**
+     * Draw Scenes, Undo, Redo, Discard and Save in the header. False when the host draws them, as ScreenplayActions, in its own toolbar.
+     */
+    actions?: boolean;
     /**
      * Select a scene or the title page.
      */

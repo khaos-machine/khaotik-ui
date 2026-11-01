@@ -18,6 +18,22 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.176.0] — 2026-11-01
+
+One toolbar row at phone width: the workspace picker, then the view's own controls beside it.
+
+### Added
+
+- `ScreenplayActions`: Scenes, Undo, Redo, Discard… (with its confirmation) and Save. `ScreenplayEditor` draws it in its header. A host that puts the actions in its toolbar draws it there `iconOnly` (each button keeps its label as its accessible name) and passes the editor `actions={false}`.
+- `ScreenplayEditor` `pane` (bindable, `'script'` or `'outline'`) and `actions` (default true).
+- `StoryPlayback` `sheet` (bindable: `'scenes'`, `'inspector'` or `null`) and `sheetButtons` (default true). A host that opens the sheets from its toolbar binds `sheet` and passes `sheetButtons={false}`.
+
+### Changed
+
+- `Toolbar` draws no title cell when `title` is empty, so the picker starts at the row's left edge with no gap. At phone width every button in the row is at least 44 pt. The row wraps only when its contents can't fit, so what fits stays on one row.
+- `WorkspaceSwitcher`'s pop-up is sized to its current value rather than its longest option. A hidden copy of the chosen label sets the width, which works in every engine, unlike `field-sizing`.
+- `SegmentedControl` uses a compact density inside a container narrower than 600 px. Measured at 390 beside the picker, Data's lenses are 242 px and Atlas's are 257 px, on one row. At 320 they take a second row.
+
 ## [0.175.0] — 2026-11-01
 
 ### Changed

@@ -1,7 +1,7 @@
 <script>
   import Button from './Button.svelte'
   import Icon from './Icon.svelte'
-  import Sheet from './Sheet.svelte'
+  import ScreenplayActions from './ScreenplayActions.svelte'
 
   /**
    * @typedef {{id:string,kind:string,text:string,speaker:string,parenthetical:string,centered:boolean,simultaneous:boolean,editable:boolean}} Block
@@ -22,6 +22,8 @@
    * @property {boolean} [canUndo] Whether a prior draft is available.
    * @property {boolean} [canRedo] Whether an undone draft is available.
    * @property {string} [footnote] The footer's second line. Empty leaves it out.
+   * @property {'script'|'outline'} [pane] Bindable. At phone width, which pane shows: the script or the outline. Wider, both show and this is ignored.
+   * @property {boolean} [actions] Draw Scenes, Undo, Redo, Discard and Save in the header. False when the host draws them, as ScreenplayActions, in its own toolbar.
    * @property {(id:string)=>void} [onselect] Select a scene or the title page.
    * @property {(text:string)=>void} [ontitle] Change the draft title.
    * @property {(key:string,value:string)=>void} [onpage] Change one title-page field.
@@ -33,13 +35,11 @@
    * @property {()=>void} [onretry] Retry opening the story projection.
    */
   /** @type {Props} */
-  let {document=null,title='',page={},fields=[],texts={},selected='title-page',loading=false,saving=false,dirty=0,error='',notice='',canUndo=false,canRedo=false,footnote='Existing recordings and artwork are kept',
+  let {document=null,title='',page={},fields=[],texts={},selected='title-page',loading=false,saving=false,dirty=0,error='',notice='',canUndo=false,canRedo=false,footnote='Existing recordings and artwork are kept',pane=$bindable('script'),actions=true,
     onselect=undefined,ontitle=undefined,onpage=undefined,ontext=undefined,onsave=undefined,onundo=undefined,onredo=undefined,ondiscard=undefined,onretry=undefined}=$props()
   const scene=$derived(document?.scenes.find(scene=>scene.id===selected))
-  let discarding=$state(false)
-  // Below 600px the outline and the script take turns: choosing a scene shows the script, and
-  // Scenes goes back. Wider, both show and this is ignored.
-  let pane=$state('script')
+  // Below 600px the outline and the script take turns (`pane`): choosing a scene shows the
+  // script, and Scenes goes back. Wider, both show and `pane` is ignored.
   /** @type {HTMLElement|undefined} */
   let root=$state()
   /** @type {Record<string,string>} */
@@ -76,12 +76,9 @@
   </nav>
   <div class="screenplay-editor__workspace">
     <header>
-      <span class="screenplay-editor__to-outline"><Button variant="tool" icon="list" onclick={()=>pane='outline'}>Scenes</Button></span>
+      {#if actions}<span class="screenplay-editor__to-outline"><Button variant="tool" icon="list" onclick={()=>pane='outline'}>Scenes</Button></span>{/if}
       <span class="screenplay-editor__heading">{scene?.heading??'Title page'}</span>
-      <Button variant="tool" icon="arrow-u-up-left" title="Undo (⌘Z)" disabled={!canUndo||saving} onclick={onundo}>Undo</Button>
-      <Button variant="tool" icon="arrow-u-up-right" title="Redo (⇧⌘Z)" disabled={!canRedo||saving} onclick={onredo}>Redo</Button>
-      <Button icon="arrow-counter-clockwise" disabled={!dirty||saving} onclick={()=>discarding=true}>Discard…</Button>
-      <Button variant="primary" icon="floppy-disk" disabled={!dirty||saving} onclick={onsave}>{saving?'Saving…':'Save'}</Button>
+      {#if actions}<ScreenplayActions {saving} {dirty} {canUndo} {canRedo} {onsave} {onundo} {onredo} {ondiscard} />{/if}
     </header>
     {#if loading && !document}<p class="screenplay-editor__message" role="status">Opening screenplay…</p>
     {:else if !document}<div class="screenplay-editor__message"><p role="alert">{error||'The screenplay could not open.'}</p><Button icon="arrow-clockwise" onclick={onretry}>Try again</Button></div>
@@ -119,7 +116,6 @@
     {/if}
   </div>
 </section>
-{#if discarding}<Sheet title="Discard screenplay changes?" message="Your saved screenplay and existing media will be kept." confirmLabel="Discard changes" tone="danger" oncancel={()=>discarding=false} onconfirm={()=>{ondiscard?.();discarding=false}} />{/if}
 
 <style>
   .screenplay-editor__writer{display:grid;grid-template-columns:236px minmax(0,1fr);height:100%;min-height:0;background:var(--surface-base);color:var(--text-primary)}

@@ -53,6 +53,7 @@ export { default as InspectorSection } from "./InspectorSection.svelte";
 export { default as RenderMark } from "./RenderMark.svelte";
 export { default as TokenField } from "./TokenField.svelte";
 export { default as ScreenplayText } from "./ScreenplayText.svelte";
+export { default as ScreenplayActions } from "./ScreenplayActions.svelte";
 export { default as ScreenplayEditor } from "./ScreenplayEditor.svelte";
 export { default as ScrubNumber } from "./ScrubNumber.svelte";
 export { default as CommandPalette } from "./CommandPalette.svelte";

@@ -22,7 +22,7 @@
    */
   let { fixture, example = null } = $props()
 
-  const named = { children, overview, table, detail, side, dialogue, line, read, reads, identity, answer, monitor, inspector, timeline, preview, voiceStudio, history, welcome, structure, message, actions }
+  const named = { children, overview, table, detail, side, dialogue, line, read, reads, identity, answer, monitor, inspector, timeline, preview, voiceStudio, history, welcome, structure, message, actions, tools }
 
   const snippetProps = $derived.by(() => {
     const keys = Object.keys(example?.snippets ?? {})
@@ -62,6 +62,7 @@
 {#snippet monitor()}{@render items('monitor')}{/snippet}
 {#snippet inspector()}{@render items('inspector')}{/snippet}
 {#snippet timeline()}{@render items('timeline')}{/snippet}
+{#snippet tools()}{@render items('tools')}{/snippet}
 {#snippet preview()}{@render items('preview')}{/snippet}
 {#snippet voiceStudio()}{@render items('voiceStudio')}{/snippet}
 {#snippet history()}{@render items('history')}{/snippet}

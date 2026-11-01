@@ -8,7 +8,7 @@ shows up on hover in your editor. See §5, "Where the prop reference is".
 Read the operational fact first, because it affects how you install:
 
 > Install from npm and pin an exact version:
-> `"@khaos-machine/khaotik-ui": "0.175.0"`. See
+> `"@khaos-machine/khaotik-ui": "0.176.0"`. See
 > [Versioning reality](#7-versioning-reality).
 
 ---
@@ -490,7 +490,7 @@ change with no warning, the way D58's rename once reached a consumer pinned to
 `main`:
 
 ```jsonc
-"@khaos-machine/khaotik-ui": "0.175.0"
+"@khaos-machine/khaotik-ui": "0.176.0"
 ```
 
 On upgrade, read the new rows in `docs/decisions.md` — that register is where
@@ -536,3 +536,10 @@ scene or `title-page`. `ontext(id, value)`, `ontitle(value)` and
 The host supplies `loading`, `saving`, `dirty`, `error`, `notice`, undo/redo
 availability and callbacks. Keep failed drafts and preserve unfamiliar title-page
 keys. The component performs no parsing, persistence or media generation.
+
+At phone width (below 600px) the outline and the script take turns; bind `pane`
+(`'script'` or `'outline'`) to drive it from outside. To put the actions in the
+window's toolbar row instead of the editor's header, pass `actions={false}` and draw
+`ScreenplayActions` there with the same `saving`, `dirty`, `canUndo`, `canRedo`
+and callbacks, `iconOnly`, and `onscenes={() => (pane = 'outline')}`. It carries
+the Discard confirmation.

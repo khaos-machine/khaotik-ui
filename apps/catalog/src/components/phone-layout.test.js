@@ -90,3 +90,39 @@ describe('ScreenplayEditor footnote', () => {
     expect(screen.queryByText('Existing recordings and artwork are kept')).toBeNull()
   })
 })
+
+describe('One toolbar row at phone width', () => {
+  it('Toolbar with no title draws no title cell', () => {
+    const { component } = example('toolbar')
+    const { container } = render(component, { props: { modes: [{ value: 'a', label: 'A' }], mode: 'a', filter: null } })
+    expect(container.querySelector('.toolbar__title')).toBeNull()
+  })
+
+  it('StoryPlayback opens a sheet from the host, and draws no stage icons when told', () => {
+    const { component, props } = example('story-playback')
+    const { container } = render(component, { props: { ...props, sheet: 'scenes', sheetButtons: false } })
+    expect(container.querySelector('.ui-story-playback').dataset.sheet).toBe('scenes')
+    expect(container.querySelector('.ui-story-playback__phone-bar')).toBeNull()
+  })
+
+  it('ScreenplayEditor shows the pane it is given, and leaves its actions to the host', () => {
+    const { component, props } = example('screenplay-editor')
+    const { container } = render(component, { props: { ...props, pane: 'outline', actions: false } })
+    expect(container.querySelector('.screenplay-editor__writer').dataset.pane).toBe('outline')
+    expect(screen.queryByRole('button', { name: 'Undo', hidden: true })).toBeNull()
+    expect(screen.queryByRole('button', { name: 'Scenes', hidden: true })).toBeNull()
+  })
+
+  it('ScreenplayActions, icons only, keeps every name and confirms Discard', async () => {
+    let discarded = 0
+    let scenes = 0
+    const { component } = example('screenplay-actions')
+    render(component, { props: { dirty: 1, canUndo: true, iconOnly: true, onscenes: () => scenes++, ondiscard: () => discarded++ } })
+    for (const name of ['Scenes', 'Undo', 'Redo', 'Discard…', 'Save']) expect(screen.getByRole('button', { name })).toBeTruthy()
+    await fireEvent.click(screen.getByRole('button', { name: 'Scenes' }))
+    await fireEvent.click(screen.getByRole('button', { name: 'Discard…' }))
+    expect(discarded).toBe(0)
+    await fireEvent.click(screen.getByRole('button', { name: 'Discard changes' }))
+    expect([scenes, discarded]).toEqual([1, 1])
+  })
+})

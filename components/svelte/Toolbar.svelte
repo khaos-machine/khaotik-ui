@@ -120,9 +120,10 @@
 <div class="toolbar" class:toolbar--compact={compact} role="toolbar" aria-label={title || 'Toolbar'} data-ui-id={uiId} bind:clientWidth={measured}>
   <!-- Where you are and what you can do. It takes any overflow, so the status never does. -->
   <div class="toolbar__main" {@attach fit}>
-  <div class="toolbar__drag toolbar__title" data-tauri-drag-region>
-    {#if title}<h1 class="toolbar__heading">{title}</h1>{/if}
-  </div>
+  <!-- No title, no cell: an empty one would hold a gap before the switcher. -->
+  {#if title}
+    <div class="toolbar__drag toolbar__title" data-tauri-drag-region><h1 class="toolbar__heading">{title}</h1></div>
+  {/if}
 
   {#if modes.length}
     <WorkspaceSwitcher {modes} value={mode} onselect={onmode} width={room} {compactBelow} uiId="{uiId}.workspace" />
@@ -318,8 +319,8 @@
     width: auto;
     min-width: 96px;
   }
-  /* Phone width: the row wraps instead of clipping, so every command, the filter, the panes
-     and the tools stay reachable on a second row. Nothing overflows, so nothing folds. */
+  /* Phone width: the row wraps only when it must, instead of clipping, so every command, the
+     filter, the panes and the tools stay reachable. What fits stays on one row. */
   @container (max-width: 599px) {
     .toolbar__main {
       flex-wrap: wrap;
@@ -331,6 +332,14 @@
       flex: 1 1 160px;
       width: auto;
       min-width: 0;
+    }
+    /* A phone is touched: every button in the row is a 44pt target. */
+    .toolbar__main :global(.ui-button),
+    .toolbar__button,
+    .toolbar__toggle {
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
     }
   }
 </style>
