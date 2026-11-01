@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.169.1] — 2026-11-01
+
+### Fixed
+
+- `StatusBar`'s Undo, Dismiss, Details and Cancel are drawn as bordered buttons, not underlined text.
+
 ## [0.169.0] — 2026-11-01
 
 ### Added

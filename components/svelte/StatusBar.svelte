@@ -301,14 +301,21 @@
   .status__result--error {
     color: var(--tone-danger);
   }
+  /* Button's `secondary` look, sized to the bar: a button, not underlined text. */
   .status__button {
+    padding: 0 var(--spacing-xs);
+    border: var(--size-stroke-hairline) solid var(--border-default);
+    border-radius: var(--radius-sm);
     background: none;
-    border: 0;
-    padding: 0 var(--spacing-2xs);
     color: var(--text-primary);
     font: inherit;
-    text-decoration: underline;
-    cursor: default;
+    cursor: pointer;
+  }
+  .status__button:hover {
+    background: color-mix(in oklab, var(--text-primary) 6%, transparent);
+  }
+  .status__button:active {
+    background: color-mix(in oklab, var(--text-primary) 14%, transparent);
   }
   .status__button:focus-visible {
     outline: var(--size-stroke-focus) solid var(--border-focus);
