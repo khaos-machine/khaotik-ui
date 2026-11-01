@@ -20,6 +20,7 @@
 
   /** @typedef {'all' | 'character' | 'location' | 'scene'} AtlasLens */
   /** @typedef {{ destination: 'characters' | 'places' | 'scenes', select: string }} AtlasReveal */
+  /** @typedef {'location-clusters' | 'entity-regions' | 'constellation' | 'scene-spine' | 'neighborhood'} AtlasLayout */
 
   /**
    * @typedef {Object} Props
@@ -30,6 +31,7 @@
    * @property {() => void} [onRetry] Asks for the atlas again.
    * @property {boolean} [active] Whether the atlas is on screen; the keyboard and renderer wait while it is not.
    * @property {AtlasLens} [lens] The lens shown.
+   * @property {AtlasLayout} [initialLayout] The layout the atlas opens in. The layout picker changes it from there.
    * @property {(lens: AtlasLens) => void} [onLensChange] Reports a lens chosen (keys 1 to 4).
    * @property {number} [cameraKey] Changing it returns the camera to the overview.
    * @property {string} [selectedRecordId] The record the host has selected, or ''.
@@ -57,6 +59,7 @@
     onRetry = undefined,
     active = true,
     lens: lensValue = 'all',
+    initialLayout = 'location-clusters',
     onLensChange = undefined,
     cameraKey = 0,
     selectedRecordId = '',
@@ -75,7 +78,15 @@
     events = [],
   } = $props()
 
-  let variant = $state('D')
+  const LAYOUT_VARIANT = {
+    'location-clusters': 'D',
+    'entity-regions': 'E',
+    constellation: 'A',
+    'scene-spine': 'B',
+    neighborhood: 'C',
+  }
+  // svelte-ignore state_referenced_locally
+  let variant = $state(LAYOUT_VARIANT[initialLayout] ?? 'D')
   const kind = $derived(lensValue)
   let selectedId = $derived(selectedRecordId)
   let graphAnchor = $derived(selectedRecordId)

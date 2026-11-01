@@ -47,6 +47,10 @@ declare const StoryAtlas: import("svelte").Component<{
      */
     lens?: "scene" | "location" | "character" | "all";
     /**
+     * The layout the atlas opens in. The layout picker changes it from there.
+     */
+    initialLayout?: "location-clusters" | "entity-regions" | "constellation" | "scene-spine" | "neighborhood";
+    /**
      * Reports a lens chosen (keys 1 to 4).
      */
     onLensChange?: (lens: "scene" | "location" | "character" | "all") => void;
@@ -178,6 +182,10 @@ type Props = {
      * The lens shown.
      */
     lens?: "scene" | "location" | "character" | "all";
+    /**
+     * The layout the atlas opens in. The layout picker changes it from there.
+     */
+    initialLayout?: "location-clusters" | "entity-regions" | "constellation" | "scene-spine" | "neighborhood";
     /**
      * Reports a lens chosen (keys 1 to 4).
      */

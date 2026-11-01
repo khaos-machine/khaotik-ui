@@ -25,6 +25,16 @@ describe('the Story Atlas', () => {
     expect(onActivityChange).toHaveBeenCalledWith(false)
   })
 
+  it('opens in Location clusters, or in the layout the host names', () => {
+    const { container, unmount } = render(StoryAtlas, { props: { atlas } })
+    // the trigger's value, not the arrangement: the menu renders every item
+    const shown = (root) => root.querySelector('.ui-story-atlas__arrangement .ui-menu__value').textContent.trim()
+    expect(shown(container)).toBe('Location clusters')
+    unmount()
+    const web = render(StoryAtlas, { props: { atlas, initialLayout: 'constellation' } })
+    expect(shown(web.container)).toBe('Constellation')
+  })
+
   it('ignores the keyboard while hidden', async () => {
     const onLensChange = vi.fn()
     render(StoryAtlas, { props: { atlas, active: false, onLensChange } })

@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.166.0] — 2026-11-01
+
+### Added
+
+- `StoryAtlas` takes `initialLayout`, the layout it opens in: `location-clusters` (the default, unchanged), `entity-regions`, `constellation`, `scene-spine` or `neighborhood`. The layout picker changes it from there.
+
 ## [0.165.0] — 2026-10-30
 
 ### Added
