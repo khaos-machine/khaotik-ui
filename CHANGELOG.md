@@ -18,6 +18,17 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.177.0] — 2026-11-01
+
+### Changed
+
+- **Story Atlas:** each kind of node has its own shape and a subtle tint. Characters are
+  circles (blue), places diamonds (violet) and scenes rounded squares (orange). Before, scenes
+  were the diamonds and places shared the circle with characters. The tint is the kind's hue
+  mixed at 18% into the raised surface, so it reads in both themes. It is not a tone: the
+  selected rim still carries analysis state. A place's portrait is masked to its diamond.
+  `lib/atlas/appearance.js` exports `outline`, `kindHues` and `kindTint`.
+
 ## [0.176.4] — 2026-11-01
 
 ### Fixed

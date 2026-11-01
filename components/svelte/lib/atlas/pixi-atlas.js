@@ -1,13 +1,13 @@
 // Story Atlas: moved from Khaos App's src/ui/atlas/pixi-atlas.js (catalog app-coverage plan, T7).
 import { fitGraph, focusNode } from './camera.js'
-import { Application, Container, Graphics, Sprite, Texture, Text, Rectangle, Point } from 'pixi.js'
+import { Application, Color, Container, Graphics, Sprite, Texture, Text, Rectangle, Point } from 'pixi.js'
 // Use static shader/uniform functions under the packaged app's strict CSP.
 import 'pixi.js/unsafe-eval'
 import 'pixi.js/accessibility'
 import { Viewport } from 'pixi-viewport'
 import { texture, iconFont, onTap, createLabelFitter } from './drawing.js'
 import { drawEdges, focusConnection } from './edges.js'
-import { nodeSize, stateLabel, tones, edgeKey } from './appearance.js'
+import { nodeSize, stateLabel, tones, edgeKey, kindHues, kindTint, outline } from './appearance.js'
 
 /** App-owned WebGL renderer. All story facts come from the canonical engine read. */
 export async function createAtlas(element, callbacks) {
@@ -75,6 +75,12 @@ export async function createAtlas(element, callbacks) {
   const colorFor = (state) =>
     css.getPropertyValue(`--tone-${tones[state] ?? 'neutral'}`).trim() ||
     palette('--text-secondary')
+  // The raised surface with a little of the kind's hue: subtle in either theme.
+  const fillFor = (kind) => {
+    const ground = new Color(palette('--surface-raised')).toRgbArray()
+    const hue = new Color(palette(kindHues[kind] ?? '--surface-raised') || palette('--surface-raised')).toRgbArray()
+    return new Color(ground.map((g, i) => g + (hue[i] - g) * kindTint))
+  }
 
   let clusterRecords = []
   function drawClusters(rebuild = false) {
@@ -183,7 +189,7 @@ export async function createAtlas(element, callbacks) {
       r.targetAlpha = r.exiting ? 0 : 1
       if (!motionStart) r.group.alpha = r.targetAlpha
       r.group.zIndex = active || over ? 2 : 0
-      r.body.tint = palette('--surface-raised')
+      r.body.tint = fillFor(r.node.kind)
       r.label.style.fill = palette('--text-primary')
       r.label.style.fontWeight = active ? '600' : '400'
       r.icon.style.fill = palette('--text-primary')
@@ -315,12 +321,9 @@ export async function createAtlas(element, callbacks) {
     r.rim.clear()
     r.rimColor = r.node.id === selected ? colorFor(r.node.state) : palette('--text-secondary')
     const width = (r.node.id === selected ? 1.7 : 1.1) / camera.scale.x
-    if (r.node.kind === 'scene')
-      r.rim
-        .poly([0, -r.radius, r.radius, 0, 0, r.radius, -r.radius, 0])
-        .fill(palette('--surface-raised'))
-        .stroke({ color: r.rimColor, width })
-    else r.rim.circle(0, 0, r.radius).stroke({ color: r.rimColor, width, alpha: 1 })
+    // A character's fill is its orb; a place or a scene fills its own outline.
+    if (r.node.kind === 'character') r.rim.circle(0, 0, r.radius).stroke({ color: r.rimColor, width, alpha: 1 })
+    else outline(r.rim, r.node.kind, r.radius).fill(fillFor(r.node.kind)).stroke({ color: r.rimColor, width })
   }
   function buildNode(node) {
     const radius =
@@ -338,7 +341,7 @@ export async function createAtlas(element, callbacks) {
     body.width = body.height = radius * 1.72
     const rim = new Graphics(),
       reticle = new Graphics()
-    body.visible = node.kind !== 'scene'
+    body.visible = node.kind === 'character'
     const icon = new Text({
       text: node.kind === 'scene' ? String(node.number).padStart(2, '0') : fonts[node.kind].text,
       style: {
@@ -372,7 +375,7 @@ export async function createAtlas(element, callbacks) {
     const portrait = new Sprite()
     portrait.anchor.set(0.5)
     portrait.visible = false
-    const portraitMask = new Graphics().circle(0, 0, radius).fill(0xffffff)
+    const portraitMask = outline(new Graphics(), node.kind, radius).fill(0xffffff)
     group.addChild(body, portrait, portraitMask, rim, reticle, icon, label, count)
     portrait.mask = portraitMask
     onTap(group, () => {
