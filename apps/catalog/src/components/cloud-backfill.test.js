@@ -33,6 +33,15 @@ describe('FilePicker', () => {
   })
 })
 
+describe('FilePicker quiet', () => {
+  it('is still a bordered button, only without the upload icon', () => {
+    render(FilePicker, { props: { label: 'Change', quiet: true } })
+    const button = screen.getByRole('button', { name: 'Change' })
+    expect(button).toHaveAttribute('data-variant', 'secondary')
+    expect(button.querySelector('.ph')).toBeNull()
+  })
+})
+
 describe('Drawer', () => {
   it('is a region named by its title, closed by its close button', async () => {
     const onclose = vi.fn()

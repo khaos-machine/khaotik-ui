@@ -44,3 +44,14 @@ describe('StoryPlayback at phone width', () => {
     expect(container.querySelector('.ui-story-playback').dataset.sheet).toBeUndefined()
   })
 })
+
+describe('ScreenplayEditor footnote', () => {
+  it('keeps its default line, and an empty footnote leaves it out', () => {
+    const { component, props } = example('screenplay-editor')
+    const { unmount } = render(component, { props })
+    expect(screen.getByText('Existing recordings and artwork are kept')).toBeInTheDocument()
+    unmount()
+    render(component, { props: { ...props, footnote: '' } })
+    expect(screen.queryByText('Existing recordings and artwork are kept')).toBeNull()
+  })
+})

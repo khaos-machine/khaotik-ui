@@ -73,6 +73,10 @@ declare const ScreenplayEditor: import("svelte").Component<{
      */
     canRedo?: boolean;
     /**
+     * The footer's second line. Empty leaves it out.
+     */
+    footnote?: string;
+    /**
      * Select a scene or the title page.
      */
     onselect?: (id: string) => void;
@@ -178,6 +182,10 @@ type Props = {
      * Whether an undone draft is available.
      */
     canRedo?: boolean;
+    /**
+     * The footer's second line. Empty leaves it out.
+     */
+    footnote?: string;
     /**
      * Select a scene or the title page.
      */

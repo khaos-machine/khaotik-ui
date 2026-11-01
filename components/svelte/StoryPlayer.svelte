@@ -587,6 +587,12 @@
     .player__zoom input {
       width: 120px;
     }
+    /* A phone is touched: every transport button is at least a 44pt target. */
+    .player__transport > button,
+    .player__play {
+      min-width: 44px;
+      min-height: 44px;
+    }
   }
 
   .player__play {

@@ -66,6 +66,11 @@
   :global(.ui-segmented) {
     position: relative;
     display: inline-flex;
+    /* Never wider than its container: a row with no room scrolls, so every item stays reachable. */
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
     padding: 2px;
     border: 1px solid var(--border-default);
     border-radius: var(--radius-md);

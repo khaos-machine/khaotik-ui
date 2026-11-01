@@ -9,7 +9,7 @@
    * @property {string} [label] The button's text, which also names the hidden file input.
    * @property {string} [accept] The input's `accept`: a hint to the picker, not a check.
    * @property {boolean} [disabled] Turns the button off, so nothing can be picked.
-   * @property {boolean} [quiet] A quiet text button with no icon, in place of the secondary button with an upload icon.
+   * @property {boolean} [quiet] Leaves out the upload icon, for a second pick beside a file already chosen ("Change"). Still a button.
    * @property {(file: File) => void} [onfile] Called with the file chosen.
    */
 
@@ -20,7 +20,7 @@
   let input = $state()
 </script>
 
-<Button variant={quiet ? 'text' : 'secondary'} icon={quiet ? '' : 'upload-simple'} {disabled} onclick={() => input?.click()}>{label}</Button>
+<Button icon={quiet ? '' : 'upload-simple'} {disabled} onclick={() => input?.click()}>{label}</Button>
 <input
   bind:this={input}
   type="file"

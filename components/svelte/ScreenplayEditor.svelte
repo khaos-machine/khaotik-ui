@@ -21,6 +21,7 @@
    * @property {string} [notice] Last completed operation.
    * @property {boolean} [canUndo] Whether a prior draft is available.
    * @property {boolean} [canRedo] Whether an undone draft is available.
+   * @property {string} [footnote] The footer's second line. Empty leaves it out.
    * @property {(id:string)=>void} [onselect] Select a scene or the title page.
    * @property {(text:string)=>void} [ontitle] Change the draft title.
    * @property {(key:string,value:string)=>void} [onpage] Change one title-page field.
@@ -32,7 +33,7 @@
    * @property {()=>void} [onretry] Retry opening the story projection.
    */
   /** @type {Props} */
-  let {document=null,title='',page={},fields=[],texts={},selected='title-page',loading=false,saving=false,dirty=0,error='',notice='',canUndo=false,canRedo=false,
+  let {document=null,title='',page={},fields=[],texts={},selected='title-page',loading=false,saving=false,dirty=0,error='',notice='',canUndo=false,canRedo=false,footnote='Existing recordings and artwork are kept',
     onselect=undefined,ontitle=undefined,onpage=undefined,ontext=undefined,onsave=undefined,onundo=undefined,onredo=undefined,ondiscard=undefined,onretry=undefined}=$props()
   const scene=$derived(document?.scenes.find(scene=>scene.id===selected))
   let discarding=$state(false)
@@ -113,7 +114,7 @@
       <footer aria-live="polite">
         {#if error}<span class="screenplay-editor__error" role="alert">{error}</span>
         {:else}<span>{saving?'Saving screenplay…':dirty?`${dirty} unsaved ${dirty===1?'change':'changes'}`:notice||'Saved screenplay'}</span>{/if}
-        <span>Existing recordings and artwork are kept</span>
+        {#if footnote}<span>{footnote}</span>{/if}
       </footer>
     {/if}
   </div>

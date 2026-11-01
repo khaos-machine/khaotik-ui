@@ -18,6 +18,19 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.172.0] — 2026-11-01
+
+### Added
+
+- `ScreenplayEditor` takes `footnote`, the footer's second line. It defaults to the line it always showed, and an empty string leaves it out.
+
+### Changed
+
+- `SegmentedControl` is never wider than its container. A row with no room scrolls, so every item stays reachable. `StoryAtlasToolbar`'s lens is the first to use this.
+- `FilePicker`'s `quiet` keeps the secondary button and leaves out only the upload icon. It is no longer underlined text.
+- `StoryPlayer`: at phone width every transport button is at least 44 by 44.
+- `StoryPlayback`: the phone inspector sheet has padding.
+
 ## [0.171.0] — 2026-11-01
 
 ### Changed

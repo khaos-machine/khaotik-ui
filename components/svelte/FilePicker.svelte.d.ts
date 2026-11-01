@@ -17,7 +17,7 @@ declare const FilePicker: import("svelte").Component<{
      */
     disabled?: boolean;
     /**
-     * A quiet text button with no icon, in place of the secondary button with an upload icon.
+     * Leaves out the upload icon, for a second pick beside a file already chosen ("Change"). Still a button.
      */
     quiet?: boolean;
     /**
@@ -39,7 +39,7 @@ type Props = {
      */
     disabled?: boolean;
     /**
-     * A quiet text button with no icon, in place of the secondary button with an upload icon.
+     * Leaves out the upload icon, for a second pick beside a file already chosen ("Change"). Still a button.
      */
     quiet?: boolean;
     /**

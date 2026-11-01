@@ -31,8 +31,8 @@
 </div>
 
 <style>
-  .atlas-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--spacing-sm); color:var(--text-primary); }
-  fieldset { min-width:0; border:0; padding:0; margin:0; }
+  .atlas-toolbar { max-width:100%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--spacing-sm); color:var(--text-primary); }
+  fieldset { min-width:0; max-width:100%; border:0; padding:0; margin:0; }
   fieldset:disabled { opacity:.5; pointer-events:none; }
   .atlas-toolbar__label { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
   .atlas-toolbar__actions { display:flex; flex-wrap:wrap; align-items:center; gap:var(--spacing-xs); }
