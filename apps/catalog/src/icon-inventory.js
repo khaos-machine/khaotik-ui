@@ -155,6 +155,8 @@ export const callerSupplied = [...Object.entries(sources)]
   //    MetaStrip's `MetaItem`, Settings' `Category`. The glyph arrives inside a
   //    collection, so there is no destructured `icon` to find, and both were
   //    missing from this band while the first shape was the only one read.
+  //    A named `[xIcon]` property is the same glyph under another name: ProviderMark's
+  //    `fallbackIcon`, StatusBar's `detailsIcon`.
   // 3. An `icon?: string` on an inline object type in a prop's JSDoc —
   //    EngineDetails' `routes`, SettingsWindow's `panes`. The same glyph in a
   //    collection, with no named typedef for the second shape to read.
@@ -166,7 +168,7 @@ export const callerSupplied = [...Object.entries(sources)]
   // `ICONS[kind]` map: a bound `name={x.icon}` is not evidence on its own.
   .filter(
     ([, src]) =>
-      /\bicon = ''\s*[,}]/.test(src) || /@property \{string\} (\[icon\]|icon )/.test(src) || /@property \{[^}]*\bicon\?: string\b/.test(src),
+      /\bicon = ''\s*[,}]/.test(src) || /@property \{string\} (\[icon\]|icon |\[\w+Icon\])/.test(src) || /@property \{[^}]*\bicon\?: string\b/.test(src),
   )
   .map(([path]) => path.split('/').pop().replace('.svelte', ''))
   .sort()

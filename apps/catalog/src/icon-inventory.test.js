@@ -81,6 +81,9 @@ describe('the icon inventory harvests what the kit actually renders', () => {
       'InstallList',
       'MetaStrip',
       'MetricCard',
+      // ProviderMark and StatusBar take a glyph in a named `[xIcon]` prop (`fallbackIcon`,
+      // `detailsIcon`), which the shapes read from the Khaos Cloud backfill on.
+      'ProviderMark',
       'SelectableRow',
       'Settings',
       // SettingsWindow passes the host's pane glyphs through to Settings, in `panes`.
@@ -88,6 +91,7 @@ describe('the icon inventory harvests what the kit actually renders', () => {
       // SourceList joined with the data-layer plan's K2: `SourceItem.icon` is the host's
       // Phosphor name for a destination, inside the `sections` collection prop.
       'SourceList',
+      'StatusBar',
       'StatusPill',
       // StoryOverviewStrip joined with khaos-app#617: `next.icon` is the host's Phosphor name
       // for the next step's button.

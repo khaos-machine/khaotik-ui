@@ -129,6 +129,14 @@ describe('StatusBar', () => {
     expect(ondetails).toHaveBeenCalled()
   })
 
+  it('the details button is an icon, named and drawn by the host', () => {
+    render(StatusBar, { props: { engine, ondetails: () => {}, detailsLabel: 'Activity', detailsIcon: 'clock-counter-clockwise' } })
+    const button = screen.getByRole('button', { name: 'Activity' })
+    expect(button).toHaveAttribute('title', 'Activity')
+    expect(button.textContent.trim()).toBe('')
+    expect(button.querySelector('.ph-clock-counter-clockwise')).not.toBeNull()
+  })
+
   it('a click on the bar asks for Details, but a click on its own controls does not', async () => {
     const ondetails = vi.fn()
     const cancel = vi.fn()

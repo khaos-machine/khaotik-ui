@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.170.0] — 2026-11-01
+
+### Changed
+
+- `StatusBar`'s Details is an icon button. `detailsLabel` (default "Details") names it and sets its tooltip, and `detailsIcon` (default `info`) draws it.
+
 ## [0.169.1] — 2026-11-01
 
 ### Fixed

@@ -8,7 +8,8 @@
   // seconds is the host's timing, not the bar's; so is withdrawing it, which the
   // host offers by passing `dismiss` (launcher, 2026-10-14: a notice with no way off).
   //
-  // `ondetails` adds a Details button, where the launcher hangs its engine popover (A11).
+  // `ondetails` adds an icon button, where the launcher hangs its engine popover (A11) and
+  // Khaos Cloud toggles its Activity drawer. `detailsLabel` names it and `detailsIcon` draws it.
   //
   // A running job is a progress bar pinned to the right edge (operator, 2026-10-11): its
   // label, done/total, elapsed and time left. The first job is the one shown; the others
@@ -18,6 +19,7 @@
   // Its Cancel exists only when the host passes one: the host offers it only where the
   // engine can stop that job. Time left is the host's projection — the bar formats it
   // (`lib/duration.js`, the card's formatter) and never computes one.
+  import Icon from './Icon.svelte'
   import { budgetSpent, budgetText } from './lib/budget.js'
   import { formatElapsed, formatRemaining } from './lib/duration.js'
   /**
@@ -53,14 +55,16 @@
    * @property {StatusEngine | null} [engine] The engine's state and what the bar says about it. None renders no engine item.
    * @property {readonly StatusJob[]} [jobs] Running jobs, the one to show first. None renders no bar.
    * @property {StatusResult | null} [result] The last action's result.
-   * @property {() => void} [ondetails] Adds a Details button, and a click anywhere on the bar outside its controls asks for the same.
+   * @property {() => void} [ondetails] Adds the details icon button, and a click anywhere on the bar outside its controls asks for the same.
+   * @property {string} [detailsLabel] The details button's accessible name and tooltip.
+   * @property {string} [detailsIcon] The details button's Phosphor glyph.
    * @property {StatusBudget | null} [budget] The story budget. None draws no budget item.
    * @property {() => void} [onchangebudget] Opens the story's budget to set or change it.
    * @property {string} [uiId] The `data-ui-id` prefix (audit §3.14).
    */
 
   /** @type {Props} */
-  let { engine = null, jobs = [], result = null, ondetails = undefined, budget = null, onchangebudget = undefined, uiId = 'status' } = $props()
+  let { engine = null, jobs = [], result = null, ondetails = undefined, detailsLabel = 'Details', detailsIcon = 'info', budget = null, onchangebudget = undefined, uiId = 'status' } = $props()
 
   /** @param {StatusJob['progress']} p */
   const validCount = (p) =>
@@ -122,7 +126,7 @@
     <button type="button" class="status__button" data-ui-id="{uiId}.dismiss" onclick={() => result?.dismiss?.()}>Dismiss</button>
   {/if}
   {#if ondetails}
-    <button type="button" class="status__button" data-ui-id="{uiId}.details" onclick={() => ondetails?.()}>Details</button>
+    <button type="button" class="status__button status__button--icon" data-ui-id="{uiId}.details" aria-label={detailsLabel} title={detailsLabel} onclick={() => ondetails?.()}><Icon name={detailsIcon} /></button>
   {/if}
   {#if budget}
     <button
@@ -313,6 +317,11 @@
   }
   .status__button:hover {
     background: color-mix(in oklab, var(--text-primary) 6%, transparent);
+  }
+  .status__button--icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 var(--spacing-2xs);
   }
   .status__button:active {
     background: color-mix(in oklab, var(--text-primary) 14%, transparent);

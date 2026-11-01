@@ -62,9 +62,17 @@ declare const StatusBar: import("svelte").Component<{
         dismiss?: () => void;
     } | null;
     /**
-     * Adds a Details button, and a click anywhere on the bar outside its controls asks for the same.
+     * Adds the details icon button, and a click anywhere on the bar outside its controls asks for the same.
      */
     ondetails?: () => void;
+    /**
+     * The details button's accessible name and tooltip.
+     */
+    detailsLabel?: string;
+    /**
+     * The details button's Phosphor glyph.
+     */
+    detailsIcon?: string;
     /**
      * The story budget. None draws no budget item.
      */
@@ -149,9 +157,17 @@ type Props = {
         dismiss?: () => void;
     } | null;
     /**
-     * Adds a Details button, and a click anywhere on the bar outside its controls asks for the same.
+     * Adds the details icon button, and a click anywhere on the bar outside its controls asks for the same.
      */
     ondetails?: () => void;
+    /**
+     * The details button's accessible name and tooltip.
+     */
+    detailsLabel?: string;
+    /**
+     * The details button's Phosphor glyph.
+     */
+    detailsIcon?: string;
     /**
      * The story budget. None draws no budget item.
      */
