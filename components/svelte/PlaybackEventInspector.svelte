@@ -38,7 +38,7 @@
    * @property {{ id: string, name: string } | undefined} [character] The speaking character, when the event is a line.
    * @property {string} [portrait] The speaker's portrait URL.
    * @property {boolean} [auditioning] Whether the audio is an audition rather than the chosen reading.
-   * @property {() => void} [onReadings] Reports Manage readings.
+   * @property {() => void} [onReadings] Reports Manage readings. Without it the button is hidden.
    * @property {() => void} [onSeek] Reports Go to event.
    * @property {() => void} [onData] Reports Open in Data.
    * @property {() => void} [onAddShot] Reports Add shot for event. Without it the action is absent.
@@ -77,7 +77,7 @@
     {:else}
       <strong>No reading chosen</strong><p class="playback-event__hint">This event uses estimated timing until a reading is chosen.</p>
     {/if}
-    {#if scene.kind === 'scene'}<Button variant="tool" icon="waveform" onclick={() => onReadings?.()}>Manage readings</Button>{/if}
+    {#if scene.kind === 'scene' && onReadings}<Button variant="tool" icon="waveform" onclick={onReadings}>Manage readings</Button>{/if}
   </details>
 </section>
 

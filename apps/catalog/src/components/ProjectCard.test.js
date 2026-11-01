@@ -1012,4 +1012,9 @@ describe('ProjectCard carries the host content below the footer', () => {
     expect(rule).toMatch(/position:\s*relative/)
     expect(rule).toMatch(/z-index:\s*2/)
   })
+
+  it('removeLabel renames the remove control', () => {
+    render(ProjectCard, { props: { project, onRemove: () => {}, removeLabel: 'Remove project' } })
+    expect(screen.getByRole('button', { name: 'Remove project: Broken in Four Places' })).toBeInTheDocument()
+  })
 })

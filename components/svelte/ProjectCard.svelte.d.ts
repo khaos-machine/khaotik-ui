@@ -25,6 +25,10 @@ declare const ProjectCard: import("svelte").Component<{
      */
     onRemove?: (event: MouseEvent) => void;
     /**
+     * Renames the `onRemove` control for a host whose remove is not "Remove from Recents", such as "Delete". Its accessible name becomes "<removeLabel>: <title>".
+     */
+    removeLabel?: string;
+    /**
      * When set **and the project has no repo**, shows the git-init button and binds its invocation. Not offered once `project.git_repo` is true — there is nothing to initialise. This prop was previously accepted and never used: the card took the handler and dropped it, so a launcher wiring git-init got silence.
      */
     onInitGit?: (event: MouseEvent) => void;
@@ -66,6 +70,10 @@ type Props = {
      * When set, shows **Remove from Recents** and binds its invocation. It removes the project from the host's recent list and never deletes it: a person deletes a project in the Finder (project portability plan, D1). Hidden when omitted.
      */
     onRemove?: (event: MouseEvent) => void;
+    /**
+     * Renames the `onRemove` control for a host whose remove is not "Remove from Recents", such as "Delete". Its accessible name becomes "<removeLabel>: <title>".
+     */
+    removeLabel?: string;
     /**
      * When set **and the project has no repo**, shows the git-init button and binds its invocation. Not offered once `project.git_repo` is true — there is nothing to initialise. This prop was previously accepted and never used: the card took the handler and dropped it, so a launcher wiring git-init got silence.
      */

@@ -62,7 +62,7 @@ declare const StatusBar: import("svelte").Component<{
         dismiss?: () => void;
     } | null;
     /**
-     * Adds a Details button.
+     * Adds a Details button, and a click anywhere on the bar outside its controls asks for the same.
      */
     ondetails?: () => void;
     /**
@@ -149,7 +149,7 @@ type Props = {
         dismiss?: () => void;
     } | null;
     /**
-     * Adds a Details button.
+     * Adds a Details button, and a click anywhere on the bar outside its controls asks for the same.
      */
     ondetails?: () => void;
     /**

@@ -35,6 +35,10 @@ declare const DataTable: import("svelte").Component<{
      */
     onopen?: (id: string) => void;
     /**
+     * A single click opens the row too, for a list whose rows only go somewhere. The arrow keys still only move.
+     */
+    openOnClick?: boolean;
+    /**
      * Rows whose any column contains this text are shown.
      */
     filter?: string;
@@ -135,6 +139,10 @@ type Props = {
      * Asked with the selected row's id on Return or double-click.
      */
     onopen?: (id: string) => void;
+    /**
+     * A single click opens the row too, for a list whose rows only go somewhere. The arrow keys still only move.
+     */
+    openOnClick?: boolean;
     /**
      * Rows whose any column contains this text are shown.
      */

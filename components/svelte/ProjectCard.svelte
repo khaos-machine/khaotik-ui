@@ -144,6 +144,7 @@
    * @property {string} [coverSrcset] Optional srcset for higher-density displays. Omitted entirely when empty — an empty srcset is a candidate list browsers can fail to resolve.
    * @property {(event: MouseEvent) => void} [onOpen] Invoked when the card surface is activated.
    * @property {(event: MouseEvent) => void} [onRemove] When set, shows **Remove from Recents** and binds its invocation. It removes the project from the host's recent list and never deletes it: a person deletes a project in the Finder (project portability plan, D1). Hidden when omitted.
+   * @property {string} [removeLabel] Renames the `onRemove` control for a host whose remove is not "Remove from Recents", such as "Delete". Its accessible name becomes "<removeLabel>: <title>".
    * @property {(event: MouseEvent) => void} [onInitGit] When set **and the project has no repo**, shows the git-init button and binds its invocation. Not offered once `project.git_repo` is true — there is nothing to initialise. This prop was previously accepted and never used: the card took the handler and dropped it, so a launcher wiring git-init got silence.
    * @property {import('./lib/types.js').ProjectJob} [job] A background job running on this project — an import or an extraction — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
    * @property {(event: MouseEvent) => void} [onExtract] Invoked by the parsed-package extraction action, offered with no job or a failed extraction.
@@ -161,6 +162,7 @@
     coverSrcset = '',
     onOpen = undefined,
     onRemove = undefined,
+    removeLabel = '',
     onInitGit = undefined,
     job = undefined,
     onExtract = undefined,
@@ -719,8 +721,8 @@
         <button
           class="project__action"
           type="button"
-          aria-label={`Remove ${title} from Recents`}
-          title="Remove from Recents"
+          aria-label={removeLabel ? `${removeLabel}: ${title}` : `Remove ${title} from Recents`}
+          title={removeLabel || 'Remove from Recents'}
           onclick={onRemove}
         >
           <Icon name="x" />

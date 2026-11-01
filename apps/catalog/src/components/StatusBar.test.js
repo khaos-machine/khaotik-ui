@@ -128,6 +128,16 @@ describe('StatusBar', () => {
     await fireEvent.click(screen.getByRole('button', { name: 'Details' }))
     expect(ondetails).toHaveBeenCalled()
   })
+
+  it('a click on the bar asks for Details, but a click on its own controls does not', async () => {
+    const ondetails = vi.fn()
+    const cancel = vi.fn()
+    const { container } = render(StatusBar, { props: { engine, ondetails, jobs: [{ ...analysing, cancel }] } })
+    await fireEvent.click(screen.getByRole('button', { name: /Cancel/ }))
+    expect(ondetails).not.toHaveBeenCalled()
+    await fireEvent.click(container.querySelector('footer'))
+    expect(ondetails).toHaveBeenCalledOnce()
+  })
 })
 
 // The story budget: one dollar limit (K, 2026-10-24: "one fucking number ($USD) as MAX spend").

@@ -32,6 +32,7 @@
    * @property {string} [selected] The selected row's id.
    * @property {(id: string) => void} [onselect] Asked with a row's id.
    * @property {(id: string) => void} [onopen] Asked with the selected row's id on Return or double-click.
+   * @property {boolean} [openOnClick] A single click opens the row too, for a list whose rows only go somewhere. The arrow keys still only move.
    * @property {string} [filter] Rows whose any column contains this text are shown.
    * @property {{ key: string, dir: 1 | -1 } | null} [sort] The sort. Controlled when given with `onsort`.
    * @property {(sort: { key: string, dir: 1 | -1 }) => void} [onsort] Asked with the sort a header click wants.
@@ -57,6 +58,7 @@
     selected = '',
     onselect = undefined,
     onopen = undefined,
+    openOnClick = false,
     filter = '',
     sort = null,
     onsort = undefined,
@@ -308,8 +310,9 @@
           data-ui-id="{uiId}.row.{id}"
           onclick={() => {
             if (id !== selected) onselect?.(id)
+            if (openOnClick) onopen?.(id)
           }}
-          ondblclick={() => onopen?.(id)}>
+          ondblclick={() => openOnClick || onopen?.(id)}>
           {@render cells(row)}
         </div>
       {/each}
@@ -374,8 +377,9 @@
                 data-ui-id="{uiId}.row.{id}"
                 onclick={() => {
                   if (id !== selected) onselect?.(id)
+                  if (openOnClick) onopen?.(id)
                 }}
-                ondblclick={() => onopen?.(id)}>
+                ondblclick={() => openOnClick || onopen?.(id)}>
                 {@render cells(item.row)}
               </div>
             {/if}

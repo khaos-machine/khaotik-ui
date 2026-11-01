@@ -142,7 +142,9 @@ describe('tokens/utilities.css', () => {
     // element, so its block class can never acquire a descendant and will always
     // look like a utility to this scan. `ui-button` joins for the same reason in
     // #237: Button is one <button>, and its label is the host's snippet.
-    expect(undefinedByKit(orphans).sort()).toEqual(['labeled-pill', 'pill', 'pmark', 'ui-button'])
+    // `ui-avatar` (one <span>) and `ui-form-sheet` (one <dialog> around the host's form) join
+    // for the same reason with the Khaos Cloud backfill.
+    expect(undefinedByKit(orphans).sort()).toEqual(['labeled-pill', 'pill', 'pmark', 'ui-avatar', 'ui-button', 'ui-form-sheet'])
   })
 
   // The red the case above cannot produce on its own: point the same machinery

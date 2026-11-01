@@ -179,6 +179,11 @@ describe('PlaybackEventInspector', () => {
     expect(screen.getByText('Chosen reading')).toBeInTheDocument()
   })
 
+  it('hides Manage readings when the host gives no onReadings', () => {
+    render(PlaybackEventInspector, { props: { scene, event } })
+    expect(screen.queryByRole('button', { name: 'Manage readings' })).toBeNull()
+  })
+
   it('says it is between events, and that no reading is chosen', () => {
     render(PlaybackEventInspector, { props: { scene: { kind: 'scene', timing: 'estimated', reads: [], audio: null }, event: null } })
     expect(screen.getByText('Between events')).toBeInTheDocument()

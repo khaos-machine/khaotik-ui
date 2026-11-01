@@ -53,7 +53,7 @@
    * @property {StatusEngine | null} [engine] The engine's state and what the bar says about it. None renders no engine item.
    * @property {readonly StatusJob[]} [jobs] Running jobs, the one to show first. None renders no bar.
    * @property {StatusResult | null} [result] The last action's result.
-   * @property {() => void} [ondetails] Adds a Details button.
+   * @property {() => void} [ondetails] Adds a Details button, and a click anywhere on the bar outside its controls asks for the same.
    * @property {StatusBudget | null} [budget] The story budget. None draws no budget item.
    * @property {() => void} [onchangebudget] Opens the story's budget to set or change it.
    * @property {string} [uiId] The `data-ui-id` prefix (audit §3.14).
@@ -93,7 +93,15 @@
   const exhausted = $derived(budgetSpent(budget))
 </script>
 
-<footer class="status" data-ui-id={uiId}>
+<!-- The pointer's shortcut to Details; the keyboard has the Details button itself. -->
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+<footer
+  class="status"
+  class:status--opens={!!ondetails}
+  data-ui-id={uiId}
+  onclick={(e) => {
+    if (ondetails && !(/** @type {Element} */ (e.target)).closest('button, a, input, [role="button"]')) ondetails()
+  }}>
   <div class="status__live" role="status">
     {#if engine}
       <span class="status__engine" data-state={engine.state}>
@@ -156,6 +164,10 @@
 </footer>
 
 <style>
+  .status--opens {
+    cursor: pointer;
+  }
+
   .status {
     display: flex;
     align-items: center;

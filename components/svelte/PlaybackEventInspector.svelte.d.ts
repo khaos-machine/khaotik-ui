@@ -86,7 +86,7 @@ declare const PlaybackEventInspector: import("svelte").Component<{
      */
     auditioning?: boolean;
     /**
-     * Reports Manage readings.
+     * Reports Manage readings. Without it the button is hidden.
      */
     onReadings?: () => void;
     /**
@@ -189,7 +189,7 @@ type Props = {
      */
     auditioning?: boolean;
     /**
-     * Reports Manage readings.
+     * Reports Manage readings. Without it the button is hidden.
      */
     onReadings?: () => void;
     /**

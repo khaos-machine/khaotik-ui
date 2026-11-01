@@ -18,6 +18,23 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.167.0] — 2026-11-01
+
+### Added
+
+- `Avatar`: initials in a circle, from a name or an email. `initials(name, email)` is exported from its module.
+- `AccountMenu`: an avatar that opens who is signed in, the host's `places` links, then Sign out (`onsignout`).
+- `Drawer`: a panel over the status bar with a heading, a close button and a body the host fills.
+- `FilePicker`: a Button that opens the file picker and calls `onfile` with the file chosen.
+- `FormSheet`: a form on a sheet, in a native dialog. Esc does nothing while `busy`. `onclose` hears every way out.
+- `DataTable` takes `openOnClick`: one click opens the row. The arrow keys still only move.
+- `ProjectCard` takes `removeLabel`, which renames the remove control.
+
+### Changed
+
+- `StatusBar`: a click anywhere on the bar outside its controls calls `ondetails`.
+- `PlaybackEventInspector` hides Manage readings when the host gives no `onReadings`.
+
 ## [0.166.0] — 2026-11-01
 
 ### Added

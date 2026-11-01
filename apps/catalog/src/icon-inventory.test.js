@@ -65,6 +65,9 @@ describe('the icon inventory harvests what the kit actually renders', () => {
     // exact list reds in both directions — a new caller-supplied component
     // that goes undetected, and one that drifts into the band wrongly.
     expect(callerSupplied).toEqual([
+      // AccountMenu joined with the Khaos Cloud backfill: `AccountPlace.icon` is the host's
+      // Phosphor name for a link, inside the `places` collection prop.
+      'AccountMenu',
       // Button joined with #237: `icon` is the host's leading Phosphor glyph.
       'Button',
       'EmptyState',

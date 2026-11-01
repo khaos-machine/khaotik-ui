@@ -54,6 +54,11 @@ import Button from '@khaos-machine/khaotik-ui/components/svelte/Button.svelte'
 import FilterField from '@khaos-machine/khaotik-ui/components/svelte/FilterField.svelte'
 import TextField from '@khaos-machine/khaotik-ui/components/svelte/TextField.svelte'
 import TextAreaField from '@khaos-machine/khaotik-ui/components/svelte/TextAreaField.svelte'
+import Avatar from '@khaos-machine/khaotik-ui/components/svelte/Avatar.svelte'
+import AccountMenu from '@khaos-machine/khaotik-ui/components/svelte/AccountMenu.svelte'
+import Drawer from '@khaos-machine/khaotik-ui/components/svelte/Drawer.svelte'
+import FilePicker from '@khaos-machine/khaotik-ui/components/svelte/FilePicker.svelte'
+import FormSheet from '@khaos-machine/khaotik-ui/components/svelte/FormSheet.svelte'
 import PasswordField from '@khaos-machine/khaotik-ui/components/svelte/PasswordField.svelte'
 import CodeField from '@khaos-machine/khaotik-ui/components/svelte/CodeField.svelte'
 import FormStack from '@khaos-machine/khaotik-ui/components/svelte/FormStack.svelte'
@@ -2794,6 +2799,42 @@ export const fixtures = [
       { label: 'Empty', props: { label: 'Notes', name: 'notes', value: '' } },
       { label: 'With hint', props: { label: 'Logline', name: 'logline', rows: 2, hint: 'One or two sentences. Cmd+Enter saves.', value: '' } },
       { label: 'Invalid', props: { label: 'Logline', name: 'logline', rows: 2, required: true, value: '', error: 'Add a logline before saving.' } },
+    ],
+  },
+  {
+    // Backfilled from Khaos Cloud. Names, emails and files are ILLUSTRATIVE STATE (D62).
+    id: 'file-picker', name: 'FilePicker', kind: 'component', section: 'components', group: 'fields', component: FilePicker,
+    examples: [
+      { label: 'Secondary', props: { label: 'Upload a screenplay', accept: '.fountain,.fdx,.pdf' } },
+      { label: 'Quiet', props: { label: 'Replace file', accept: '.fountain', quiet: true } },
+      { label: 'Disabled', props: { label: 'Upload a screenplay', accept: '.fountain', disabled: true } },
+    ],
+  },
+  {
+    id: 'avatar', name: 'Avatar', kind: 'component', section: 'components', group: 'labels', component: Avatar,
+    examples: [
+      { label: 'From a name', props: { name: 'Ada Lovelace', email: 'ada@example.com' } },
+      { label: 'From an email', props: { name: '', email: 'writer@example.com' } },
+      { label: 'Large', props: { name: 'Ada Lovelace', email: 'ada@example.com', size: 48 } },
+    ],
+  },
+  {
+    id: 'account-menu', name: 'AccountMenu', kind: 'component', section: 'components', group: 'shell', component: AccountMenu,
+    examples: [
+      { label: 'Named', props: { name: 'Ada Lovelace', email: 'ada@example.com', places: [{ label: 'Settings', href: '#settings', icon: 'gear-six' }, { label: 'Account', href: '#account', icon: 'user' }] } },
+      { label: 'Email only', props: { name: '', email: 'writer@example.com', places: [{ label: 'Account', href: '#account', icon: 'user' }] } },
+    ],
+  },
+  {
+    id: 'drawer', name: 'Drawer', kind: 'component', section: 'components', group: 'shell', component: Drawer,
+    examples: [
+      { label: 'Activity', props: { title: 'Activity' }, snippets: { children: [{ component: EmptyState, props: { title: 'Nothing yet', description: 'Imports, runs and edits show here.', icon: 'clock-counter-clockwise' } }] } },
+    ],
+  },
+  {
+    id: 'form-sheet', name: 'FormSheet', kind: 'component', section: 'components', group: 'shell', component: FormSheet,
+    examples: [
+      { label: 'Rename', props: { title: 'Rename project', modal: false }, snippets: { children: [{ component: TextField, props: { label: 'Name', name: 'name', value: 'Broken in Four Places' } }, { component: Button, props: { label: 'Save' } }] } },
     ],
   },
   {

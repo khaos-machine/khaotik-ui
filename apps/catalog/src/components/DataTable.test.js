@@ -143,6 +143,23 @@ describe('selection and the keyboard', () => {
     await fireEvent.click(container.querySelector('[data-ui-id="table.row.occ-3"]'))
     expect(onselect).toHaveBeenCalledWith('occ-3')
   })
+
+  it('openOnClick opens a row on one click, and a double click still opens it once per click', async () => {
+    const onopen = vi.fn()
+    const { container } = render(DataTable, { props: { ...base, openOnClick: true, onopen } })
+    const row = container.querySelector('[data-ui-id="table.row.occ-3"]')
+    await fireEvent.click(row)
+    expect(onopen).toHaveBeenCalledExactlyOnceWith('occ-3')
+    await fireEvent.dblClick(row)
+    expect(onopen).toHaveBeenCalledOnce()
+  })
+
+  it('without openOnClick a click only selects', async () => {
+    const onopen = vi.fn()
+    const { container } = render(DataTable, { props: { ...base, onopen } })
+    await fireEvent.click(container.querySelector('[data-ui-id="table.row.occ-3"]'))
+    expect(onopen).not.toHaveBeenCalled()
+  })
 })
 
 describe('empty', () => {
