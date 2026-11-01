@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.176.2] — 2026-11-01
+
+### Changed
+
+- `StoryOverviewOutline` labels a section with nothing yet "Not ready" instead of "Missing". The state is still named `missing`. `RenderMark` and `RenderStrip`'s image "Missing" is unchanged.
+
 ## [0.176.1] — 2026-11-01
 
 ### Fixed

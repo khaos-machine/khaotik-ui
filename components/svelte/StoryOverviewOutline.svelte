@@ -23,7 +23,7 @@
   let { premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, current = null, onjump = undefined } = $props()
 
   /** @type {Record<string, { text: string, tone: 'success' | 'neutral' | 'danger' }>} */
-  const PILLS = { ready: { text: 'Ready', tone: 'success' }, missing: { text: 'Missing', tone: 'neutral' }, failed: { text: "Couldn't read", tone: 'danger' } }
+  const PILLS = { ready: { text: 'Ready', tone: 'success' }, missing: { text: 'Not ready', tone: 'neutral' }, failed: { text: "Couldn't read", tone: 'danger' } }
 
   /**
    * @param {{ kind: string, data?: any }} read

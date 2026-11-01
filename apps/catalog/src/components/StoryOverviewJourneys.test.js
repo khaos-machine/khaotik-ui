@@ -102,7 +102,7 @@ describe('StoryOverviewOutline journeys and relationships', () => {
     const rows = screen.getAllByRole('button')
     expect(rows.slice(-2).map((r) => r.getAttribute('aria-label'))).toEqual(['Journeys', 'Relationships'])
     expect(rows.at(-2).closest('.ui-story-outline__row')).toHaveTextContent('Ready')
-    expect(rows.at(-1).closest('.ui-story-outline__row')).toHaveTextContent('Missing')
+    expect(rows.at(-1).closest('.ui-story-outline__row')).toHaveTextContent('Not ready')
   })
 })
 

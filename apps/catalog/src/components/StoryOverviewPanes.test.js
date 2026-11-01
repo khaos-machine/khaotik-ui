@@ -24,9 +24,9 @@ describe('StoryOverviewOutline', () => {
     const { names, ...unnamed } = captured.structure
     render(StoryOverviewOutline, { props: { premise: { kind: 'missing' }, structure: loaded(unnamed), coverage: { kind: 'failed', message: 'x' } } })
     const pill = (name) => screen.getByRole('button', { name }).closest('.ui-story-outline__row')
-    expect(pill('Premise')).toHaveTextContent('Missing')
+    expect(pill('Premise')).toHaveTextContent('Not ready')
     expect(pill('Shape')).toHaveTextContent('Ready')
-    expect(pill('Where the story turns')).toHaveTextContent('Missing')
+    expect(pill('Where the story turns')).toHaveTextContent('Not ready')
     expect(pill('Coverage')).toHaveTextContent("Couldn't read")
     expect(pill('Production')).toHaveTextContent("Couldn't read")
   })
