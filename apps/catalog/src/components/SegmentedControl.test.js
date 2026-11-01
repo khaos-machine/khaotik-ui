@@ -7,7 +7,6 @@ import SegmentedControl from '@khaos-machine/khaotik-ui/components/svelte/Segmen
 // items' geometry is set by hand: four 100px items in a 150px row.
 
 const items = ['all', 'character', 'location', 'scene'].map((value) => ({ value, label: value }))
-const frame = () => new Promise((done) => requestAnimationFrame(() => done(undefined)))
 
 function lay(container) {
   const row = container.querySelector('.ui-segmented')
@@ -24,10 +23,8 @@ describe('SegmentedControl in a row too narrow for it', () => {
     const { container, rerender } = render(SegmentedControl, { props: { label: 'Lens', items, value: 'all' } })
     const row = lay(container)
     await rerender({ value: 'scene' })
-    await frame()
     expect(row.scrollLeft).toBe(250)
     await rerender({ value: 'character' })
-    await frame()
     expect(row.scrollLeft).toBe(100)
   })
 
@@ -36,7 +33,6 @@ describe('SegmentedControl in a row too narrow for it', () => {
     const row = lay(container)
     row.scrollLeft = 0
     await rerender({ value: 'all' })
-    await frame()
     expect(row.scrollLeft).toBe(0)
   })
 })

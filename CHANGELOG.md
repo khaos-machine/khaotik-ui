@@ -18,6 +18,13 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.172.2] — 2026-11-01
+
+### Fixed
+
+- `DataTable` narrower than its columns scrolls sideways inside its body, and the header and pinned rows follow it, instead of widening the page. At 320 px, `CharacterDetail`'s Recordings table had pushed the page to 588 px.
+- `SegmentedControl` scrolls the chosen item into view without waiting for a frame and finds it by its position in `items`, so the scroll no longer misses on a slow first paint.
+
 ## [0.172.1] — 2026-11-01
 
 ### Fixed

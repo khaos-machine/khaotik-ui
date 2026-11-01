@@ -46,17 +46,16 @@
   /** @type {HTMLElement | undefined} */
   let host = $state()
   $effect(() => {
-    void value
-    const frame = requestAnimationFrame(() => {
-      const row = /** @type {HTMLElement | null | undefined} */ (host?.querySelector('.ui-segmented'))
-      const item = /** @type {HTMLElement | null | undefined} */ (row?.querySelector('.ui-segmented__item[data-state="checked"]'))
-      if (!row || !item) return
-      const left = item.offsetLeft
-      const right = left + item.offsetWidth
-      if (left < row.scrollLeft) row.scrollLeft = left
-      else if (right > row.scrollLeft + row.clientWidth) row.scrollLeft = right - row.clientWidth
-    })
-    return () => cancelAnimationFrame(frame)
+    // Found by position in `items`, not by Ark's checked state, which can lag behind `value`. The
+    // effect runs after the DOM is updated, and reading the offsets lays it out.
+    const at = items.findIndex((item) => item.value === value)
+    const row = /** @type {HTMLElement | null | undefined} */ (host?.querySelector('.ui-segmented'))
+    const item = /** @type {HTMLElement | null | undefined} */ (row?.querySelectorAll('.ui-segmented__item')[at])
+    if (!row || !item) return
+    const left = item.offsetLeft
+    const right = left + item.offsetWidth
+    if (left < row.scrollLeft) row.scrollLeft = left
+    else if (right > row.scrollLeft + row.clientWidth) row.scrollLeft = right - row.clientWidth
   })
 </script>
 

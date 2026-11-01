@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import DataTable from '@khaos-machine/khaotik-ui/components/svelte/DataTable.svelte'
-import { rowWindow, visibleRows, flattenGroups, itemOffsets, offsetWindow } from '@khaos-machine/khaotik-ui/components/svelte/lib/table.js'
+import { rowWindow, visibleRows, flattenGroups, itemOffsets, offsetWindow, trackFloor } from '@khaos-machine/khaotik-ui/components/svelte/lib/table.js'
 
 // DataTable (data-layer plan K5, its named failing check; audit §2 item 2, §3.1
 // principle 5, §3.16, §4.1). Review rendered 1,912 rows and 151,287px of DOM. A table
@@ -241,5 +241,26 @@ describe('subtitles', () => {
 
   it('the filter finds a row by its subtitle', () => {
     expect(visibleRows(scenes, sceneColumns, 'apartment', null, 1).map((r) => r.id)).toEqual(['s1'])
+  })
+})
+
+// Phone width: a table narrower than its columns scrolls sideways inside its body, and the header
+// and the pinned rows follow, instead of the table widening the page (CharacterRecordings, 588px
+// of columns at 320).
+describe('narrower than its columns', () => {
+  it('floors at the sum of the tracks\' px minimums', () => {
+    expect(trackFloor(['minmax(180px, 1fr)', '120px', '168px', '64px', '56px'])).toBe(588)
+    expect(trackFloor(['1fr', 'auto', 'minmax(0, 1fr)', '40.5px'])).toBe(40.5)
+  })
+
+  it('carries the floor, and the header follows the body sideways', async () => {
+    const { container } = render(DataTable, { props: base })
+    const grid = screen.getByRole('grid')
+    expect(grid.style.getPropertyValue('--table-floor')).toBe('296px')
+    const body = container.querySelector('[data-body]')
+    const head = container.querySelector('.table__head')
+    body.scrollLeft = 40
+    await fireEvent.scroll(body)
+    expect(head.scrollLeft).toBe(40)
   })
 })

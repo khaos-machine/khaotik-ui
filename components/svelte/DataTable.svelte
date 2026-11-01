@@ -17,7 +17,7 @@
   // and the window is found over the running offsets (lib/table.js `offsetWindow`).
   import { tick } from 'svelte'
   import Button from './Button.svelte'
-  import { flattenGroups, itemOffsets, offsetWindow, rowWindow, visibleRows } from './lib/table.js'
+  import { flattenGroups, itemOffsets, offsetWindow, rowWindow, trackFloor, visibleRows } from './lib/table.js'
 
   /**
    * @typedef {import('./lib/table.js').Column<any> & { cell?: import('svelte').Snippet<[any]> }} TableColumn
@@ -136,6 +136,11 @@
   /** Item indices of the data rows, in order — what the keyboard walks. */
   const rowItems = $derived(items.flatMap((item, i) => (item.kind === 'row' ? [i] : [])))
   const tracks = $derived(columns.map((c) => c.width).join(' '))
+  const floor = $derived(trackFloor(columns.map((c) => c.width)))
+  /** @type {HTMLElement | undefined} */
+  let head = $state()
+  /** @type {HTMLElement | undefined} */
+  let pinnedRows = $state()
 
   /** @param {number} i */
   const keyAt = (i) => {
@@ -290,12 +295,13 @@
   aria-colcount={columns.length}
   data-ui-id={uiId}
   style:--table-cols={tracks}
+  style:--table-floor="{floor}px"
   style:--table-row={`${rowHeight}px`}
   tabindex={gridTabStop ? 0 : -1}
   bind:this={grid}
   onkeydown={key}>
   {#if pinned.length}
-    <div class="table__pinned" role="rowgroup">
+    <div class="table__pinned" role="rowgroup" bind:this={pinnedRows}>
       {#each pinned as row, k (rowKey(row))}
         {@const id = rowKey(row)}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -318,7 +324,7 @@
       {/each}
     </div>
   {/if}
-  <div class="table__head" role="rowgroup">
+  <div class="table__head" role="rowgroup" bind:this={head}>
     <div class="table__row" role="row" aria-rowindex={pinned.length + 1}>
       {#each columns as col (col.key)}
         <div class="table__header" class:table__cell--end={col.align === 'end'} role="columnheader" aria-sort={ariaSort(col)} data-ui-id="{uiId}.header.{col.key}">
@@ -342,7 +348,12 @@
     bind:this={scroller}
     bind:clientHeight={measured}
     style:height={viewportHeight > 0 ? `${viewportHeight}px` : undefined}
-    onscroll={(e) => (scrollTop = e.currentTarget.scrollTop)}>
+    onscroll={(e) => {
+      scrollTop = e.currentTarget.scrollTop
+      // The header and the pinned rows sit outside the scroller; they follow it sideways.
+      if (head) head.scrollLeft = e.currentTarget.scrollLeft
+      if (pinnedRows) pinnedRows.scrollLeft = e.currentTarget.scrollLeft
+    }}>
     {#if items.length === 0 && status.kind === 'loading'}
       <p class="table__empty" role="status">{loadingLabel}</p>
     {:else if items.length === 0 && status.kind === 'failed'}
@@ -406,10 +417,12 @@
   }
   .table__pinned {
     flex: none;
+    overflow: hidden;
     border-bottom: var(--size-stroke-hairline) solid var(--border-default);
   }
   .table__head {
     flex: none;
+    overflow: hidden;
     border-bottom: var(--size-stroke-hairline) solid var(--border-default);
   }
   .table__body {
@@ -420,14 +433,18 @@
   }
   .table__spacer {
     position: relative;
+    min-width: var(--table-floor, 0);
   }
   .table__window {
     position: absolute;
     inset: 0 0 auto 0;
+    min-width: var(--table-floor, 0);
   }
   .table__row {
     display: grid;
     grid-template-columns: var(--table-cols);
+    /* Never narrower than the columns: below that the body scrolls sideways, the header following. */
+    min-width: var(--table-floor, 0);
     height: var(--table-row);
     align-items: center;
   }

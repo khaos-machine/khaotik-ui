@@ -80,6 +80,14 @@ export function offsetWindow(offsets: Float64Array, scrollTop: number, viewportH
     end: number;
 };
 /**
+ * The narrowest the columns can go, in px: each track's minimum summed. A `minmax(Npx, …)` or a
+ * plain `Npx` track counts N; `fr`, `auto` and anything else count 0. Below this width the body
+ * scrolls sideways and the header follows, instead of the table widening the page.
+ * @param {readonly string[]} widths The columns' CSS grid tracks.
+ * @returns {number}
+ */
+export function trackFloor(widths: readonly string[]): number;
+/**
  * One column. `value` drives filtering, sorting and the default cell.
  */
 export type Column<T> = {

@@ -136,3 +136,17 @@ export function offsetWindow(offsets, scrollTop, viewportHeight, overscan) {
   const last = at(Math.max(0, scrollTop + viewportHeight - 1))
   return { start: Math.max(0, first - overscan), end: Math.min(count, last + 1 + overscan) }
 }
+
+/**
+ * The narrowest the columns can go, in px: each track's minimum summed. A `minmax(Npx, …)` or a
+ * plain `Npx` track counts N; `fr`, `auto` and anything else count 0. Below this width the body
+ * scrolls sideways and the header follows, instead of the table widening the page.
+ * @param {readonly string[]} widths The columns' CSS grid tracks.
+ * @returns {number}
+ */
+export function trackFloor(widths) {
+  return widths.reduce((sum, width) => {
+    const px = /^\s*(?:minmax\(\s*)?(\d+(?:\.\d+)?)px/.exec(width ?? '')
+    return sum + (px ? Number(px[1]) : 0)
+  }, 0)
+}
