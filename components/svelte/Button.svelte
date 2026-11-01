@@ -18,6 +18,9 @@
    * @property {boolean} [disabled] Renders `aria-disabled="true"`, stays focusable, and never calls `onclick`.
    * @property {string} [icon] Leading Phosphor glyph name (kebab-case), `aria-hidden`.
    * @property {'button'|'submit'} [type] The native button type.
+   * @property {string} [href] Makes it a link that looks like this button: an `<a>` with the link role, for an action that leaves the page. `type` does not apply. Disabled, it keeps its href and focus, and the click goes nowhere.
+   * @property {string} [target] The link's `target`, with `href`.
+   * @property {string} [rel] The link's `rel`, with `href`.
    * @property {string} [describedby] Passed through as `aria-describedby` — the id of the line that explains this action, or why it is unavailable.
    * @property {(event: MouseEvent) => void} [onclick] Called on activation, unless disabled.
    * @property {import('svelte').Snippet} [children] The label, and the accessible name. Always pass one: optional only in type, like every prop in the kit (props-optionality.test.js).
@@ -30,6 +33,9 @@
     icon = '',
     title = undefined,
     type = 'button',
+    href = undefined,
+    target = undefined,
+    rel = undefined,
     describedby = undefined,
     onclick = undefined,
     children = undefined,
@@ -45,8 +51,12 @@
   }
 </script>
 
-<button
-  {type}
+<svelte:element
+  this={href ? 'a' : 'button'}
+  type={href ? undefined : type}
+  {href}
+  {target}
+  {rel}
   {title}
   class="ui-button"
   data-variant={variant}
@@ -56,7 +66,7 @@
 >
   {#if icon}<Icon name={icon} />{/if}
   {@render children?.()}
-</button>
+</svelte:element>
 
 <style>
   .ui-button {
@@ -73,6 +83,7 @@
     line-height: var(--body-md-line);
     white-space: nowrap;
     cursor: pointer;
+    text-decoration: none;
   }
 
   .ui-button[data-variant='tool'] {

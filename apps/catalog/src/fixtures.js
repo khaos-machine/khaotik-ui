@@ -2772,6 +2772,7 @@ export const fixtures = [
       { label: 'Icon', props: { variant: 'secondary', icon: 'arrow-clockwise', children: buttonLabel('Check again') } },
       { label: 'Disabled', props: { variant: 'primary', disabled: true, children: buttonLabel('Bind') } },
       { label: 'Disabled secondary', props: { variant: 'secondary', disabled: true, children: buttonLabel('Refuse this answer') } },
+      { label: 'Link', props: { variant: 'secondary', icon: 'github-logo', href: 'https://github.com/settings/installations', target: '_blank', rel: 'noopener', children: buttonLabel('Manage on GitHub') } },
     ],
   },
   {

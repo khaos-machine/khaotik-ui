@@ -25,6 +25,18 @@ declare const Button: import("svelte").Component<{
      */
     type?: "button" | "submit";
     /**
+     * Makes it a link that looks like this button: an `<a>` with the link role, for an action that leaves the page. `type` does not apply. Disabled, it keeps its href and focus, and the click goes nowhere.
+     */
+    href?: string;
+    /**
+     * The link's `target`, with `href`.
+     */
+    target?: string;
+    /**
+     * The link's `rel`, with `href`.
+     */
+    rel?: string;
+    /**
      * Passed through as `aria-describedby` — the id of the line that explains this action, or why it is unavailable.
      */
     describedby?: string;
@@ -58,6 +70,18 @@ type Props = {
      * The native button type.
      */
     type?: "button" | "submit";
+    /**
+     * Makes it a link that looks like this button: an `<a>` with the link role, for an action that leaves the page. `type` does not apply. Disabled, it keeps its href and focus, and the click goes nowhere.
+     */
+    href?: string;
+    /**
+     * The link's `target`, with `href`.
+     */
+    target?: string;
+    /**
+     * The link's `rel`, with `href`.
+     */
+    rel?: string;
     /**
      * Passed through as `aria-describedby` — the id of the line that explains this action, or why it is unavailable.
      */

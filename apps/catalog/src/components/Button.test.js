@@ -170,3 +170,28 @@ it('provides a named compact tool with a tooltip and the same disabled guard',as
  await fireEvent.click(button)
  expect(onclick).not.toHaveBeenCalled()
 })
+
+describe('Button with href', () => {
+  it('is a link that keeps its href, target and rel, and calls onclick before it leaves', async () => {
+    const onclick = vi.fn((e) => e.preventDefault())
+    render(Button, { props: { href: 'https://github.com/settings/installations', target: '_blank', rel: 'noopener', onclick, children: label('Manage on GitHub') } })
+    const link = screen.getByRole('link', { name: 'Manage on GitHub' })
+    expect(link).toHaveAttribute('href', 'https://github.com/settings/installations')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noopener')
+    expect(link).not.toHaveAttribute('type')
+    expect(link).toHaveClass('ui-button')
+    expect(screen.queryByRole('button')).toBeNull()
+    await fireEvent.click(link)
+    expect(onclick).toHaveBeenCalledOnce()
+  })
+
+  it('disabled, it stays a focusable link and the click goes nowhere', async () => {
+    const onclick = vi.fn()
+    render(Button, { props: { href: '#fix', disabled: true, onclick, children: label('Fix it') } })
+    const link = screen.getByRole('link', { name: 'Fix it' })
+    expect(link).toHaveAttribute('aria-disabled', 'true')
+    expect(await fireEvent.click(link)).toBe(false)
+    expect(onclick).not.toHaveBeenCalled()
+  })
+})

@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.169.0] — 2026-11-01
+
+### Added
+
+- `Button` takes `href`, `target` and `rel`. With `href` it renders an `<a>` with the link role, the same variants and the same disabled look, for an action that leaves the page. `onclick` still runs first. Disabled, the link stays focusable and the click goes nowhere.
+
 ## [0.168.0] — 2026-11-01
 
 ### Added
