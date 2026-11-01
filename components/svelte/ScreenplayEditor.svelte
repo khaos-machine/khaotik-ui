@@ -36,6 +36,9 @@
     onselect=undefined,ontitle=undefined,onpage=undefined,ontext=undefined,onsave=undefined,onundo=undefined,onredo=undefined,ondiscard=undefined,onretry=undefined}=$props()
   const scene=$derived(document?.scenes.find(scene=>scene.id===selected))
   let discarding=$state(false)
+  // Below 600px the outline and the script take turns: choosing a scene shows the script, and
+  // Scenes goes back. Wider, both show and this is ignored.
+  let pane=$state('script')
   /** @type {HTMLElement|undefined} */
   let root=$state()
   /** @type {Record<string,string>} */
@@ -61,17 +64,18 @@
 </script>
 
 <svelte:window onkeydown={keyboard} />
-<section class="screenplay-editor__writer" bind:this={root} aria-label="Screenplay editor">
+<section class="screenplay-editor__writer" data-pane={pane} bind:this={root} aria-label="Screenplay editor">
   <nav class="screenplay-editor__outline" aria-label="Screenplay outline">
     <h2>Screenplay</h2>
-    <button class:screenplay-editor__chosen={selected==='title-page'} onclick={()=>onselect?.('title-page')} aria-current={selected==='title-page'?'page':undefined}><Icon name="file-text" />Title page</button>
+    <button class:screenplay-editor__chosen={selected==='title-page'} onclick={()=>{pane='script';onselect?.('title-page')}} aria-current={selected==='title-page'?'page':undefined}><Icon name="file-text" />Title page</button>
     <h3>Scenes <span>{document?.scenes.length??''}</span></h3>
     {#each document?.scenes??[] as row,i (row.id)}
-      <button class:screenplay-editor__chosen={selected===row.id} onclick={()=>onselect?.(row.id)} aria-current={selected===row.id?'page':undefined}><span class="screenplay-editor__ordinal">{i+1}</span><span>{row.heading}</span></button>
+      <button class:screenplay-editor__chosen={selected===row.id} onclick={()=>{pane='script';onselect?.(row.id)}} aria-current={selected===row.id?'page':undefined}><span class="screenplay-editor__ordinal">{i+1}</span><span>{row.heading}</span></button>
     {/each}
   </nav>
   <div class="screenplay-editor__workspace">
     <header>
+      <span class="screenplay-editor__to-outline"><Button variant="tool" icon="list" onclick={()=>pane='outline'}>Scenes</Button></span>
       <span class="screenplay-editor__heading">{scene?.heading??'Title page'}</span>
       <Button variant="tool" icon="arrow-u-up-left" title="Undo (⌘Z)" disabled={!canUndo||saving} onclick={onundo}>Undo</Button>
       <Button variant="tool" icon="arrow-u-up-right" title="Redo (⇧⌘Z)" disabled={!canRedo||saving} onclick={onredo}>Redo</Button>
@@ -135,5 +139,19 @@
   .screenplay-editor__dialogue{margin-left:21%;margin-right:18%}.screenplay-editor__cue{margin:0 0 0 26%;white-space:pre-wrap}.screenplay-editor__parenthetical{margin:0 0 0 12%;white-space:pre-wrap}.screenplay-editor__centered{text-align:center}.screenplay-editor__centered textarea{text-align:center}
   .screenplay-editor__block p{white-space:pre-wrap}.screenplay-editor__transition{text-align:right}
   .screenplay-editor__title-page{padding-top:72px}.screenplay-editor__title-page label{position:relative;display:block;max-width:460px;margin:0 auto 12px;text-align:center}.screenplay-editor__title-page label span{position:absolute;left:-92px;top:8px;width:80px;text-align:right;font:11px system-ui;color:var(--text-secondary);opacity:0}.screenplay-editor__title-page label:focus-within span,.screenplay-editor__title-page label:hover span{opacity:1}.screenplay-editor__title-page textarea{text-align:center}.screenplay-editor__title-page textarea::placeholder{color:var(--text-secondary);font-size:12px;font-family:system-ui}.screenplay-editor__title-page .screenplay-editor__title textarea{font-size:24px;font-weight:700;text-transform:none}.screenplay-editor__title-page .screenplay-editor__title{margin-bottom:36px}.screenplay-editor__title-page .screenplay-editor__contact{margin-top:72px}.screenplay-editor__title-page .screenplay-editor__contact textarea{text-align:left}
+  .screenplay-editor__to-outline{display:none}
+  .screenplay-editor__writer{container-type:inline-size}
+  @container (max-width: 599px){
+    .screenplay-editor__outline,.screenplay-editor__workspace{grid-column:1/-1;grid-row:1}
+    [data-pane='script'] .screenplay-editor__outline,[data-pane='outline'] .screenplay-editor__workspace{display:none}
+    .screenplay-editor__outline{border-right:0}
+    .screenplay-editor__to-outline{display:contents}
+    header{flex-wrap:wrap}
+    .screenplay-editor__heading{flex-basis:100%;order:-1}
+    .screenplay-editor__paper-scroll{padding:20px 16px 64px}
+    .screenplay-editor__dialogue{margin-left:8%;margin-right:4%}
+    .screenplay-editor__title-page label span{display:none}
+    footer{flex-wrap:wrap}
+  }
   footer{display:flex;justify-content:space-between;gap:16px;padding:7px 12px;border-top:1px solid var(--border-hairline);font-size:11px;color:var(--text-secondary);background:var(--surface-base);flex:none}footer .screenplay-editor__error{color:var(--status-alarm-fg)}.screenplay-editor__message{padding:24px}
 </style>

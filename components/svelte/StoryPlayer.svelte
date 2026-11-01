@@ -569,6 +569,7 @@
     gap: var(--spacing-sm);
     min-width: 0;
     height: 100%;
+    container-type: inline-size;
   }
 
   .player__transport {
@@ -576,6 +577,16 @@
     align-items: center;
     gap: var(--spacing-sm);
     min-width: 0;
+  }
+  /* Phone width: the transport wraps, so the zoom and the tools take a row of their own. */
+  @container (max-width: 599px) {
+    .player__transport {
+      flex-wrap: wrap;
+      row-gap: var(--spacing-xs);
+    }
+    .player__zoom input {
+      width: 120px;
+    }
   }
 
   .player__play {

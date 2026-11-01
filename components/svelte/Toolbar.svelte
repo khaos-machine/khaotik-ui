@@ -202,8 +202,10 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. */
-    height: 52px;
+    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. A floor, so a
+       phone's wrapped rows can grow it; one row is exactly 52. */
+    min-height: 52px;
+    container-type: inline-size;
     padding: 0 var(--spacing-sm);
     border-bottom: var(--size-stroke-hairline) solid var(--border-default);
     background: var(--surface-base);
@@ -315,5 +317,20 @@
     flex: 0 100 200px;
     width: auto;
     min-width: 96px;
+  }
+  /* Phone width: the row wraps instead of clipping, so every command, the filter, the panes
+     and the tools stay reachable on a second row. Nothing overflows, so nothing folds. */
+  @container (max-width: 599px) {
+    .toolbar__main {
+      flex-wrap: wrap;
+      overflow: visible;
+      padding-block: var(--spacing-2xs);
+      row-gap: var(--spacing-2xs);
+    }
+    .toolbar__filter {
+      flex: 1 1 160px;
+      width: auto;
+      min-width: 0;
+    }
   }
 </style>

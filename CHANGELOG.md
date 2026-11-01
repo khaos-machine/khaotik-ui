@@ -18,6 +18,19 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.171.0] — 2026-11-01
+
+### Changed
+
+Phone width, below 600px. Measured at 320 and 393 with nothing off-screen.
+
+- `StoryPlayback`: the stage takes the full width and the timeline spans the bottom with its transport. The scene list and the inspector become sheets, opened from a bar on the stage, each with its own Close. Choosing a scene closes the list.
+- `ScreenplayEditor`: the outline and the script take turns. Choosing a scene shows the script, and Scenes goes back. The action row wraps.
+- `Toolbar`: the row wraps onto more rows instead of clipping, so every command, the filter, the panes and the tools stay reachable.
+- `StoryOverviewStrip`: two figures a row, with the next step on its own row.
+- `StoryAtlas`: the zoom row spans the width and wraps, the layout picker moves to the top, and the inspector becomes a sheet along the bottom.
+- `StoryPlayer`: the transport wraps, so the zoom control takes its own row.
+
 ## [0.170.0] — 2026-11-01
 
 ### Changed

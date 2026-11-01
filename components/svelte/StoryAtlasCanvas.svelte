@@ -168,4 +168,14 @@
     color: var(--text-secondary);
     font-variant-numeric: tabular-nums;
   }
+  /* Phone width (the Atlas is the container): the row spans the canvas and wraps. */
+  @container (max-width: 599px) {
+    .ui-atlas-canvas__tools {
+      left: var(--spacing-sm);
+      right: var(--spacing-sm);
+      bottom: var(--spacing-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 </style>

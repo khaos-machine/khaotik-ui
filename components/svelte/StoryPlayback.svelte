@@ -52,7 +52,7 @@
 
   /** @type {Props} */
   let {
-    state = { kind: 'loading' },
+    state: read = { kind: 'loading' },
     segments = [],
     current = null,
     selectedSceneId = '',
@@ -84,6 +84,10 @@
 
   const reducedMotion = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches
   const shotTransition = reducedMotion ? 0 : 280
+  // At phone width the scene list and the inspector are sheets over the stage, opened from the
+  // stage's phone bar; wider, the host's showSidebar and showInspector place them and this is ignored.
+  /** @type {'scenes' | 'inspector' | null} */
+  let sheet = $state(null)
   /** @param {PlaybackSegment} segment */
   const idOf = (segment) => (segment.kind === 'scene' ? segment.sceneId : segment.sectionId) ?? ''
   /** @param {string} referenceId */
@@ -115,23 +119,25 @@
     class:ui-story-playback--has-frame={!!frame}
     class:ui-story-playback--focus-mode={focusMode}
     class:ui-story-playback--sidebar-hidden={!showSidebar}
-    class:ui-story-playback--inspector-hidden={!showInspector}>
+    class:ui-story-playback--inspector-hidden={!showInspector}
+    data-sheet={sheet}>
     {#if frame}
       <div class="ui-story-playback__atmosphere" aria-hidden="true">
         {#key frame.id}<img src={frame.url} alt="" transition:fade={{ duration: shotTransition }} />{/key}
       </div>
     {/if}
-    {#if state.kind === 'failed'}
-      <div class="ui-story-playback__opening"><EmptyState title="Read playback could not open" description={state.message} icon="warning" /><Button onclick={() => onPreviewText?.()}>Open text preview</Button></div>
-    {:else if state.kind === 'loading'}
+    {#if read.kind === 'failed'}
+      <div class="ui-story-playback__opening"><EmptyState title="Read playback could not open" description={read.message} icon="warning" /><Button onclick={() => onPreviewText?.()}>Open text preview</Button></div>
+    {:else if read.kind === 'loading'}
       <div class="ui-story-playback__opening"><EmptyState title="Opening the story…" icon="circle-notch" /></div>
     {:else}
       <nav class="ui-story-playback__hud ui-story-playback__nav" aria-label="Story scenes" hidden={!showSidebar}>
+        <div class="ui-story-playback__sheet-bar"><Button variant="tool" icon="x" onclick={() => (sheet = null)}>Close scenes</Button></div>
         <div class="ui-story-playback__heading"><strong>Scenes</strong><span>{segments.length}</span></div>
         <ol class="ui-story-playback__scenes">
           {#each segments as segment, index (idOf(segment))}
             {@const id = idOf(segment)}
-            <li><button type="button" class="ui-story-playback__scene" class:ui-story-playback__scene--selected={selectedSceneId ? selectedSceneId === id : current === segment} class:ui-story-playback__scene--playing={current === segment && playing} onclick={() => onNavigate?.(id)}>
+            <li><button type="button" class="ui-story-playback__scene" class:ui-story-playback__scene--selected={selectedSceneId ? selectedSceneId === id : current === segment} class:ui-story-playback__scene--playing={current === segment && playing} onclick={() => { sheet = null; onNavigate?.(id) }}>
               <span class="ui-story-playback__scene-number">{index + 1}</span><span class="ui-story-playback__scene-label">{segment.label}<small>{status(segment)}</small></span>
               {#if segment.audio}<Icon name="speaker-high" />{/if}
             </button></li>
@@ -140,6 +146,10 @@
       </nav>
 
       <section class="ui-story-playback__stage" aria-label="Story preview">
+        <div class="ui-story-playback__phone-bar">
+          {#if showSidebar}<Button variant="tool" icon="list" onclick={() => (sheet = 'scenes')}>Scenes</Button>{/if}
+          {#if inspectorOpen && showInspector}<Button variant="tool" icon="sidebar-simple" onclick={() => (sheet = 'inspector')}>Inspector</Button>{/if}
+        </div>
         <div class="ui-story-playback__context" data-ui-id="story.playback.context">{#if !embedded}<span>{current?.label ?? 'Choose a scene'}</span>{/if}<span>{current?.timing === 'read' ? 'Measured read' : 'Estimated scene'}</span></div>
         {#if current?.context?.characters.length}
           <ul class="ui-story-playback__cast" aria-label="Scene cast">
@@ -173,6 +183,7 @@
 
       {#if inspectorOpen}
         <aside class="ui-story-playback__hud ui-story-playback__inspector" aria-label="Playback inspector" hidden={!showInspector}>
+          <div class="ui-story-playback__sheet-bar"><Button variant="tool" icon="x" onclick={() => (sheet = null)}>Close inspector</Button></div>
           {@render inspector?.()}
         </aside>
       {/if}
@@ -254,5 +265,30 @@
   .ui-story-playback__preview > header { padding: 8px 16px; display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-secondary); }
   @media (max-width: 1100px) { .ui-story-playback { --inspector-width: 320px; --sidebar-space: 196px; } .ui-story-playback__nav { width: 180px; } .ui-story-playback__stage { left: 210px; } }
   @container viewport (max-width: 1100px) { .ui-story-playback { --inspector-width: 320px; --sidebar-space: 196px; } .ui-story-playback__nav { width: 180px; } .ui-story-playback__stage { left: 210px; } }
+  .ui-story-playback__phone-bar, .ui-story-playback__sheet-bar { display: none; }
+  /* Phone width: the stage takes the width, the timeline spans the bottom with its transport, and
+     the scene list and the inspector are sheets opened from the phone bar, each with its own Close. */
+  @media (max-width: 599px) {
+    .ui-story-playback { --sidebar-space: 0px; --inspector-space: 0px; --timeline-height: 220px; }
+    .ui-story-playback__stage { inset: 8px 8px calc(var(--timeline-height) + 16px) 8px; gap: 8px; }
+    .ui-story-playback__timeline { left: 8px; right: 8px; bottom: 8px; }
+    .ui-story-playback__phone-bar { display: flex; gap: 4px; }
+    .ui-story-playback__sheet-bar { display: flex; justify-content: flex-end; padding: 4px; }
+    .ui-story-playback__nav, .ui-story-playback__inspector { display: none; }
+    [data-sheet='scenes'] .ui-story-playback__nav:not([hidden]) { display: block; z-index: 6; inset: 8px; width: auto; bottom: 8px; }
+    [data-sheet='inspector'] .ui-story-playback__inspector:not([hidden]) { display: flex; z-index: 6; inset: auto 0 0 0; width: auto; max-height: 75%; border-left: 0; border-top: 1px solid var(--border-default); }
+    .ui-story-playback__line { font-size: 1.125rem; }
+  }
+  @container viewport (max-width: 599px) {
+    .ui-story-playback { --sidebar-space: 0px; --inspector-space: 0px; --timeline-height: 220px; }
+    .ui-story-playback__stage { inset: 8px 8px calc(var(--timeline-height) + 16px) 8px; gap: 8px; }
+    .ui-story-playback__timeline { left: 8px; right: 8px; bottom: 8px; }
+    .ui-story-playback__phone-bar { display: flex; gap: 4px; }
+    .ui-story-playback__sheet-bar { display: flex; justify-content: flex-end; padding: 4px; }
+    .ui-story-playback__nav, .ui-story-playback__inspector { display: none; }
+    [data-sheet='scenes'] .ui-story-playback__nav:not([hidden]) { display: block; z-index: 6; inset: 8px; width: auto; bottom: 8px; }
+    [data-sheet='inspector'] .ui-story-playback__inspector:not([hidden]) { display: flex; z-index: 6; inset: auto 0 0 0; width: auto; max-height: 75%; border-left: 0; border-top: 1px solid var(--border-default); }
+    .ui-story-playback__line { font-size: 1.125rem; }
+  }
   @media (prefers-reduced-motion: no-preference) { .ui-story-playback__hud, .ui-story-playback__stage { transition: opacity 160ms ease; } }
 </style>

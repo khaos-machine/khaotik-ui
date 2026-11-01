@@ -270,6 +270,7 @@
   .ui-story-atlas {
     height: 100dvh;
     position: relative;
+    container-type: inline-size;
     overflow: hidden;
     background: var(--surface-base);
     color: var(--text-primary);
@@ -372,5 +373,29 @@
     border: 1px solid var(--border-default);
     padding: var(--spacing-md);
     border-radius: var(--radius-sm);
+  }
+  /* Phone width: the picker leaves the bottom row to the zoom tools, and the inspector
+     becomes a sheet along the bottom with its own Close details. */
+  @container (max-width: 599px) {
+    .ui-story-atlas__arrangement {
+      top: var(--spacing-sm);
+      bottom: auto;
+      left: var(--spacing-sm);
+      transform: none;
+      max-width: calc(100% - 2 * var(--spacing-sm));
+    }
+    .ui-story-atlas__inspector {
+      z-index: 8;
+      top: auto;
+      left: var(--spacing-sm);
+      right: var(--spacing-sm);
+      bottom: var(--spacing-sm);
+      width: auto;
+      max-height: 60%;
+    }
+    .ui-story-atlas__activity {
+      left: var(--spacing-sm);
+      width: calc(100% - 2 * var(--spacing-sm));
+    }
   }
 </style>

@@ -46,7 +46,7 @@
   </div>
 {/snippet}
 
-<div class="ui-strip" data-ui-id="overview.strip">
+<div class="ui-strip__host"><div class="ui-strip" data-ui-id="overview.strip">
   {@render figure(
     `Coverage: ${verdict?.text ?? 'Not made'}`,
     oncoverage,
@@ -70,7 +70,7 @@
       <Button icon={next.icon ?? ''} onclick={() => onnext?.()}>{next.label}</Button>
     </div>
   {/if}
-</div>
+</div></div>
 
 <style>
   .ui-strip {
@@ -111,5 +111,23 @@
   .ui-strip__next {
     color: var(--text-secondary);
     font-size: var(--body-md-size);
+  }
+  /* Phone width: two figures a row, and the next step takes a row of its own. */
+  .ui-strip__host {
+    container-type: inline-size;
+  }
+  @container (max-width: 599px) {
+    .ui-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ui-strip__card {
+      padding: var(--spacing-sm);
+    }
+    .ui-strip__card--next {
+      grid-column: 1 / -1;
+    }
+    .ui-strip__card--next :global(.ui-button) {
+      white-space: normal;
+    }
   }
 </style>
