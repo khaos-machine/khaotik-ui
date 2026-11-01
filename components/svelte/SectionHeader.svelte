@@ -25,7 +25,9 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--spacing-md);
+    /* Too narrow for the title and the trailing actions side by side, the actions drop below. */
+    flex-wrap: wrap;
+    gap: var(--spacing-xs) var(--spacing-md);
   }
 
   .section-header__text {
@@ -44,6 +46,8 @@
 
   .section-header__trailing {
     display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
     align-items: center;
     color: var(--text-secondary);
   }

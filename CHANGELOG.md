@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.172.4] — 2026-11-01
+
+### Fixed
+
+- `SectionHeader` wraps: when the title and its trailing actions don't fit side by side, the actions drop below and wrap among themselves. At 320 px, `ProjectHistory`'s Checkpoint… had pushed the page to 353 px. Every `SectionHeader` user measured at 320 and 1280 px fits its width, except `StoryOverview`, whose remaining overflow is a "Dialogue weight" control outside the header.
+
 ## [0.172.3] — 2026-11-01
 
 ### Changed
