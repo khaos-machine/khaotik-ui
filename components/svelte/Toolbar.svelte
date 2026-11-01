@@ -177,7 +177,7 @@
       <Icon name={pane.icon ?? 'square'} />
     </button>
   {/each}
-  {@render tools?.()}
+  {#if tools}<div class="toolbar__tools">{@render tools()}</div>{/if}
   </div>
 
   {#if status || onsettings}
@@ -248,6 +248,12 @@
   }
   .toolbar__label--folded {
     display: none;
+  }
+  /* The host's tools are one group, so the row never splits them. */
+  .toolbar__tools {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
   }
   .toolbar__status {
     display: flex;
@@ -336,7 +342,25 @@
     .toolbar__spacer {
       margin-left: calc(-1 * var(--spacing-2xs));
     }
-    .toolbar__filter {
+    /* The tools stay on the first row, whatever the room: short of it, they scroll within the
+       row rather than wrap, so the bar never changes height between views. Ends right; `safe`
+       starts them left when they overflow, where plain flex-end would put the first out of reach. */
+    .toolbar__main > .toolbar__tools {
+      flex: 1 1 0;
+      min-width: 0;
+      justify-content: safe flex-end;
+      align-self: stretch;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: var(--spacing-2xs);
+    }
+    /* The tools take the room the spacer would, and end right by themselves. */
+    .toolbar__main:has(> .toolbar__tools) > .toolbar__spacer {
+      flex: none;
+    }
+    .toolbar__tools::-webkit-scrollbar {
+      display: none;
+    }    .toolbar__filter {
       flex: 1 1 160px;
       width: auto;
       min-width: 0;

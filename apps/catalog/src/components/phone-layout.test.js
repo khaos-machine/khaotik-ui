@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import { fixtures } from '../fixtures.js'
+import FixtureView from './shell/FixtureView.svelte'
 
 // Phone width (below 600px) shows one pane at a time. jsdom does no layout, so the
 // widths are measured live; these hold the state the CSS reads. The phone-only buttons are
@@ -92,6 +93,14 @@ describe('ScreenplayEditor footnote', () => {
 })
 
 describe('One toolbar row at phone width', () => {
+  it('Toolbar keeps the host tools in one group, so the row never splits them', () => {
+    const fixture = fixtures.find((f) => f.id === 'toolbar')
+    const { container } = render(FixtureView, { props: { fixture, example: fixture.examples.find((e) => e.label.includes('screenplay actions')) } })
+    const groups = container.querySelectorAll('.toolbar__tools')
+    expect(groups).toHaveLength(1)
+    expect(groups[0].querySelectorAll('.ui-button')).toHaveLength(5)
+  })
+
   it('Toolbar with no title draws no title cell', () => {
     const { component } = example('toolbar')
     const { container } = render(component, { props: { modes: [{ value: 'a', label: 'A' }], mode: 'a', filter: null } })

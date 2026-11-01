@@ -18,6 +18,21 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.176.4] — 2026-11-01
+
+### Fixed
+
+- **Toolbar:** the host's `tools` are one group. At phone width the group stays on the first
+  row and scrolls within it when short of room, so the bar keeps one height in every view and
+  no single button is left on a row of its own. Measured in iOS Safari (iPhone 16 simulator):
+  52 at 393 and at 327 for the Data, Atlas and Screenplay rows.
+- **WorkspaceSwitcher:** the pop-up fits its chosen label in WebKit. The select is out of flow,
+  because WebKit gave the in-flow select a minimum width: "Data" measured 96 in iOS Safari and
+  66 in Chromium. It now measures 66 in both.
+- **SegmentedControl:** the chosen item is scrolled back into view when the row is resized, not
+  only when the value changes. A toolbar's first layout gave the Atlas lenses about 49px of room,
+  and the scroll set then hid "Everything" once the row widened.
+
 ## [0.176.3] — 2026-11-01
 
 ### Fixed

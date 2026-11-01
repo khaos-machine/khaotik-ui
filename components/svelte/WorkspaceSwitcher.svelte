@@ -99,11 +99,8 @@
     padding: var(--spacing-2xs) var(--spacing-xs);
   }
   .switcher__fit {
-    display: inline-grid;
-  }
-  .switcher__fit > * {
-    grid-area: 1 / 1;
-    min-width: 0;
+    position: relative;
+    display: inline-flex;
   }
   /* Room for the native arrow after the label. */
   .switcher__sizer {
@@ -111,10 +108,13 @@
     white-space: nowrap;
     padding-right: calc(var(--spacing-xs) + 20px);
   }
-  /* width 0 so the options never size the cell; the sizer alone does, and the select fills it. */
+  /* Out of flow, so the sizer alone sizes the cell and the select fills it. In flow, WebKit
+     floors a native select's width whatever its `width`: "Data" measured 96 in iOS Safari,
+     against 66 in Chromium. */
   .switcher__fit select {
-    width: 0;
-    min-width: 100%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
   }
   .switcher__popup:focus-visible {
     outline: var(--size-stroke-focus) solid var(--border-focus);

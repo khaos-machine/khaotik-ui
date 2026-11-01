@@ -42,7 +42,9 @@
   } = $props()
 
   // A row too narrow for its items scrolls (see the style), so the chosen item is scrolled into
-  // view whenever the value changes. Only the row scrolls, never the page.
+  // view whenever the value changes or the row is resized. Only the row scrolls, never the page.
+  // A host's first layout can be narrower than its last: the toolbar measured this row 49px wide
+  // before its switcher folded, and the scroll set then hid the chosen item once it widened.
   /** @type {HTMLElement | undefined} */
   let host = $state()
   $effect(() => {
@@ -50,12 +52,20 @@
     // effect runs after the DOM is updated, and reading the offsets lays it out.
     const at = items.findIndex((item) => item.value === value)
     const row = /** @type {HTMLElement | null | undefined} */ (host?.querySelector('.ui-segmented'))
-    const item = /** @type {HTMLElement | null | undefined} */ (row?.querySelectorAll('.ui-segmented__item')[at])
-    if (!row || !item) return
-    const left = item.offsetLeft
-    const right = left + item.offsetWidth
-    if (left < row.scrollLeft) row.scrollLeft = left
-    else if (right > row.scrollLeft + row.clientWidth) row.scrollLeft = right - row.clientWidth
+    if (!row) return
+    const reveal = () => {
+      const item = /** @type {HTMLElement | undefined} */ (row.querySelectorAll('.ui-segmented__item')[at])
+      if (!item) return
+      const left = item.offsetLeft
+      const right = left + item.offsetWidth
+      if (left < row.scrollLeft) row.scrollLeft = left
+      else if (right > row.scrollLeft + row.clientWidth) row.scrollLeft = right - row.clientWidth
+    }
+    reveal()
+    if (typeof ResizeObserver === 'undefined') return
+    const resized = new ResizeObserver(reveal)
+    resized.observe(row)
+    return () => resized.disconnect()
   })
 </script>
 
