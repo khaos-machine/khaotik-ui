@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.175.0] — 2026-11-01
+
+### Changed
+
+- `StoryPlayer` at phone width shows the timeline again, fitted to the width rather than drawn 1:1 with desktop. In place of the plain scrub bar is a strip of the story: scene blocks with the current scene marked, colour-coded beat lanes and a playhead. It is the scrub surface, so a drag, a tap or the arrow keys seek. `onScrubStart` and `onScrubEnd` are reported once per gesture. One toggle opens it upward into named scenes and taller lanes, the stage gives up the room, and the times and transport stay put. Desktop is unchanged and there is no API change.
+
 ## [0.174.1] — 2026-11-01
 
 ### Fixed

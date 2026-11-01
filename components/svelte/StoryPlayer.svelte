@@ -236,12 +236,39 @@
   let scrubbing = $state(false)
   let pointerId = null
   let skipClick = false
-  // The phone scrub bar is a native range, so it seeks through its own input events; only
-  // the gesture's start and end are reported, as for the ruler.
-  let sliding = false
-  function slideStart() { if (!sliding) { sliding = true; onScrubStart?.() } }
-  function slideEnd() { if (sliding) { sliding = false; onScrubEnd?.() } }
-  onDestroy(() => { if (scrubbing) onScrubEnd?.(); slideEnd() })
+  // The phone timeline: the whole story fitted to the width, so it reads at a glance and is
+  // the scrub surface. Not the desktop track at another scale: positions are shares of the
+  // total, and it opens upward into labelled lanes.
+  let mini = $state(/** @type {HTMLElement | null} */ (null))
+  let miniOpen = $state(false)
+  let miniPointer = /** @type {number | null} */ (null)
+  /** @param {number | null} seconds */
+  const share = (seconds) => (total > 0 ? ((seconds ?? 0) / total) * 100 : 0)
+  /** @param {PointerEvent} event */
+  function miniSeek(event) {
+    const rect = mini?.getBoundingClientRect()
+    if (!rect?.width) return
+    onSeek?.(Math.min(Math.max(((event.clientX - rect.left) / rect.width) * total, 0), total))
+  }
+  /** @param {PointerEvent} event */
+  function miniDown(event) {
+    if (event.button !== 0 || miniPointer !== null) return
+    miniPointer = event.pointerId
+    mini?.setPointerCapture?.(event.pointerId)
+    onScrubStart?.()
+    miniSeek(event)
+  }
+  /** @param {PointerEvent} event */
+  function miniMove(event) {
+    if (event.pointerId === miniPointer) miniSeek(event)
+  }
+  /** @param {PointerEvent} [event] */
+  function miniUp(event) {
+    if (miniPointer === null || (event && event.pointerId !== miniPointer)) return
+    miniPointer = null
+    onScrubEnd?.()
+  }
+  onDestroy(() => { if (scrubbing) onScrubEnd?.(); miniUp() })
 
   // Keep the playhead in view while it plays. Scrolls only when it actually leaves the
   // viewport, so a user who has scrolled away to read something is not yanked back on
@@ -325,16 +352,38 @@
   )
 </script>
 
-<svelte:window onpointermove={moveScrub} onpointerup={(e) => { endScrub(e); slideEnd() }} onpointercancel={(e) => { endScrub(e); slideEnd() }} onblur={() => { endScrub(); slideEnd() }} />
+<svelte:window onpointermove={moveScrub} onpointerup={endScrub} onpointercancel={endScrub} onblur={endScrub} />
 
 <div class="player" class:player--audio={audioEmphasis}>
-  <!-- Phone width only: one thin scrub bar over the whole story, the elapsed and total time
-       beneath it. Wider, the ruler and the playhead are the scrub surface. -->
+  <!-- Phone width only: the story fitted to the width, scenes and beats under a playhead, with
+       the elapsed and total time beneath it. Wider, the ruler and the playhead scrub. -->
   {#if total > 0}
-    <div class="player__scrub">
-      <input type="range" min="0" max={total} step="0.1" value={clamped} aria-label="Position" aria-valuetext={formatTimecode(clamped)}
-        onpointerdown={slideStart} onchange={slideEnd} oninput={(e) => onSeek?.(Number(e.currentTarget.value))} />
-      <span>{formatTimecode(clamped)}</span><span>{formatTimecode(total)}</span>
+    <div class="player__mini" class:player__mini--open={miniOpen}>
+      <div class="player__mini-track" bind:this={mini} role="slider" tabindex="0" aria-label="Position"
+        aria-valuemin={0} aria-valuemax={total} aria-valuenow={clamped} aria-valuetext={formatTimecode(clamped)}
+        onpointerdown={miniDown} onpointermove={miniMove} onpointerup={miniUp} onpointercancel={miniUp} onkeydown={seekByKey}>
+        <div class="player__mini-scenes" aria-hidden="true">
+          {#each timeline.segments as segment, i (i)}
+            <span class="player__mini-scene" class:player__mini-scene--on={segment === currentSegment}
+              style:left="{share(segment.start)}%" style:width="{share(segment.duration)}%">{#if miniOpen}{segment.label}{/if}</span>
+          {/each}
+        </div>
+        {#each laneRows.filter((row) => row.lane !== 'scenes') as row (row.lane)}
+          <div class="player__mini-lane" aria-hidden="true">
+            {#each row.items as event, i (i)}
+              <span class="player__mini-event" class:player__mini-event--on={event === currentElement} data-kind={event.elementType}
+                style:left="{share(event.start)}%" style:width="{share(event.duration)}%"></span>
+            {/each}
+          </div>
+        {/each}
+        <span class="player__mini-head" aria-hidden="true" style:left="{share(clamped)}%"></span>
+      </div>
+      <div class="player__mini-times">
+        <span>{formatTimecode(clamped)}</span>
+        <button type="button" class="player__mini-toggle" aria-expanded={miniOpen} aria-label={miniOpen ? 'Hide timeline' : 'Show timeline'}
+          onclick={() => (miniOpen = !miniOpen)}><Icon name={miniOpen ? 'caret-down' : 'caret-up'} /></button>
+        <span>{formatTimecode(total)}</span>
+      </div>
     </div>
   {/if}
   <div class="player__transport" role="group" aria-label="Playback controls">
@@ -592,7 +641,7 @@
     gap: var(--spacing-sm);
     min-width: 0;
   }
-  .player__scrub { display: none; }
+  .player__mini { display: none; }
 
   .player__play {
     display: inline-flex;
@@ -1004,20 +1053,32 @@
     clip-path: inset(50%);
     white-space: nowrap;
   }
-  /* Phone width: a media player. The scrub bar, then one centred row of scene skips around a
+  /* Phone width: a media player. The fitted timeline (the scrub surface), then one centred row of scene skips around a
      large round play; the beat skips sit beside them. Stop, the ends, the zoom, the tools and
      the tracks are desktop editing and do not show. Every target is at least 44pt. */
   @container (max-width: 599px) {
-    .player__scrub {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      row-gap: 2px;
-      font-family: ui-monospace, SFMono-Regular, monospace;
-      font-size: var(--caption-size);
-      font-variant-numeric: tabular-nums;
-      color: var(--text-secondary);
-    }
-    .player__scrub input { grid-column: 1 / -1; width: 100%; height: 24px; margin: 0; accent-color: var(--text-brand); }
+    .player__mini { display: flex; flex-direction: column; gap: 2px; }
+    .player__mini-track { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 4px 0; touch-action: none; cursor: pointer; }
+    .player__mini-track:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+    .player__mini-scenes, .player__mini-lane { position: relative; height: 6px; }
+    .player__mini-scene { position: absolute; top: 0; bottom: 0; box-sizing: border-box; border-left: 1px solid var(--surface-base); background: color-mix(in oklab, var(--text-primary) 14%, transparent); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .player__mini-scene--on { background: color-mix(in oklab, var(--text-primary) 30%, transparent); }
+    .player__mini-lane { height: 4px; }
+    .player__mini-event { position: absolute; top: 0; bottom: 0; min-width: 2px; --event-tone: var(--tone-neutral); background: color-mix(in oklab, var(--event-tone) 55%, transparent); }
+    .player__mini-event[data-kind='action'] { --event-tone: var(--tone-warning); }
+    .player__mini-event[data-kind='dialogue'] { --event-tone: var(--tone-info); }
+    .player__mini-event[data-kind='transition'] { --event-tone: var(--tone-skipped); }
+    .player__mini-event--on { background: var(--event-tone); }
+    .player__mini-head { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--text-brand); pointer-events: none; }
+    .player__mini-head::before { content: ''; position: absolute; top: -2px; left: -5px; width: 12px; height: 12px; border-radius: 50%; background: var(--text-brand); }
+    /* Open: the lanes grow upward, the scenes are named, and the stage gives up the room. */
+    .player__mini--open .player__mini-scenes { height: 28px; }
+    .player__mini--open .player__mini-scene { padding: 6px 4px; font-size: var(--caption-size); color: var(--text-secondary); }
+    .player__mini--open .player__mini-scene--on { color: var(--text-primary); }
+    .player__mini--open .player__mini-lane { height: 14px; }
+    .player__mini-times { display: flex; align-items: center; justify-content: space-between; font-family: ui-monospace, SFMono-Regular, monospace; font-size: var(--caption-size); font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+    .player__mini-toggle { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 32px; border: 0; background: none; color: var(--text-secondary); cursor: pointer; }
+    .player__mini-toggle:focus-visible { outline: 2px solid var(--border-focus); border-radius: var(--radius-sm); }
     .player__transport { justify-content: center; gap: var(--spacing-xs); }
     .player__transport > button:not(.player__play) { min-width: 44px; min-height: 44px; border-color: transparent; }
     .player__transport :global(.ph) { font-size: 22px; }

@@ -53,19 +53,30 @@ describe('StoryPlayback at phone width', () => {
 })
 
 describe('StoryPlayer at phone width', () => {
-  it('its scrub bar seeks, and reports the gesture start and end once each', async () => {
+  it('its fitted timeline seeks by share of the width, and reports the gesture once', async () => {
     const seeks = []
     let starts = 0
     let ends = 0
     const { component, props } = example('story-player')
-    render(component, { props: { ...props, onSeek: (s) => seeks.push(s), onScrubStart: () => starts++, onScrubEnd: () => ends++ } })
+    render(component, { props: { ...props, currentTime: 0, onSeek: (s) => seeks.push(s), onScrubStart: () => starts++, onScrubEnd: () => ends++ } })
     const bar = screen.getByRole('slider', { name: 'Position', hidden: true })
-    await fireEvent.pointerDown(bar)
-    await fireEvent.input(bar, { target: { value: '12' } })
-    await fireEvent.change(bar)
-    await fireEvent.pointerUp(window)
-    expect(seeks).toEqual([12])
+    const total = Number(bar.getAttribute('aria-valuemax'))
+    bar.getBoundingClientRect = () => ({ left: 0, width: 200, top: 0, height: 20, right: 200, bottom: 20, x: 0, y: 0, toJSON() {} })
+    await fireEvent.pointerDown(bar, { button: 0, pointerId: 1, clientX: 50 })
+    await fireEvent.pointerMove(bar, { pointerId: 1, clientX: 100 })
+    await fireEvent.pointerUp(bar, { pointerId: 1 })
+    expect(seeks).toEqual([total / 4, total / 2])
     expect([starts, ends]).toEqual([1, 1])
+  })
+
+  it('opens upward into named scenes from one toggle', async () => {
+    const { component, props } = example('story-player')
+    const { container } = render(component, { props: { segments: props.segments.slice(0, 3) } })
+    const toggle = screen.getByRole('button', { name: 'Show timeline', hidden: true })
+    expect(container.querySelector('.player__mini-scene').textContent).toBe('')
+    await fireEvent.click(toggle)
+    expect(toggle.getAttribute('aria-expanded')).toBe('true')
+    expect(container.querySelector('.player__mini-scene').textContent).not.toBe('')
   })
 })
 
