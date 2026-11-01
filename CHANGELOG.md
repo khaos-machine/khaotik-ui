@@ -18,6 +18,13 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.172.3] — 2026-11-01
+
+### Changed
+
+- Appearance follows action. Button's `text` variant, the underlined link look, is now only for navigation: opening or revealing another thing. The 15 controls that changed something while looking like a link are now buttons: `ShotInspector` Delete, `ReviewSuggestions` Restore and Dismiss, `StoryAtlasRelationship` Clear connection, `SettingsWindow` Change, `ReadingReadiness` Lock voice…, `ProjectHistory` Restore and Put files back…, `StoryOverview` Change budget…, `RefusalOffer` Report a Problem…, `CharacterAliases` Remove, Not this character and Select all, `Voices` Done, and `ProviderSetup`'s getting-started Change….
+- `RefusalOffer`'s actions wrap, so at 320 px they stay on the screen.
+
 ## [0.172.2] — 2026-11-01
 
 ### Fixed

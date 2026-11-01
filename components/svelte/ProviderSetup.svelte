@@ -5,6 +5,7 @@
   // own state: whether it is open, what is being typed, and which attempt is current, so a slow
   // answer for a closed sheet changes nothing. Moved from Khaos App (catalog app-coverage plan, T9).
   import { DialogBackdrop, DialogCloseTrigger, DialogContent, Positioner as DialogPositioner, Root as DialogRoot, Title as DialogTitle } from '@ark-ui/svelte/dialog'
+  import Button from './Button.svelte'
   import EmptyState from './EmptyState.svelte'
   import Icon from './Icon.svelte'
   import LabeledField from './LabeledField.svelte'
@@ -277,7 +278,7 @@
     <div class="ui-provider-setup__getting-started" role="group" aria-label="Getting started">
       <span>{gettingStarted}</span>
       <span aria-hidden="true">·</span>
-      <button type="button" class="ui-provider-setup__getting-started-change" onclick={onOpenSetup}>Change…</button>
+      <Button onclick={onOpenSetup}>Change…</Button>
     </div>
   {/if}
   <section class="ui-provider-setup__provider-list" aria-label="Configured providers">
@@ -636,21 +637,6 @@
     padding: var(--spacing-xs) 0;
     color: var(--text-secondary);
     font-size: var(--caption-size);
-  }
-
-  .ui-provider-setup__getting-started-change {
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--text-primary);
-    font: inherit;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .ui-provider-setup__getting-started-change:focus-visible {
-    outline: 2px solid var(--border-focus);
-    outline-offset: 2px;
   }
 
   .ui-provider-setup {

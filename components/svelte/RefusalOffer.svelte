@@ -21,7 +21,7 @@
     {#each offer.fixes as fix (fix.kind)}
       <Button variant="secondary" onclick={() => onFix?.(fix)}>{fix.label}</Button>
     {/each}
-    <Button variant="text" onclick={() => onReport?.()}>Report a Problem…</Button>
+    <Button onclick={() => onReport?.()}>Report a Problem…</Button>
   </div>
 </div>
 
@@ -47,6 +47,7 @@
 
   .refusal-offer__actions {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-xs);
   }
 </style>

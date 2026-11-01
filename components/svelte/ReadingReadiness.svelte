@@ -127,7 +127,7 @@
           {#each attention as voice (voice.voiceProfileId)}
             <li>
               <span>{said(voice)}</span>
-              {#if !voice.locked}<Button variant="text" onclick={() => onLockVoice?.(voice.voiceProfileId)}>Lock voice…</Button>{/if}
+              {#if !voice.locked}<Button onclick={() => onLockVoice?.(voice.voiceProfileId)}>Lock voice…</Button>{/if}
             </li>
           {/each}
         </ul>

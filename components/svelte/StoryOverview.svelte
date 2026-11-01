@@ -116,7 +116,7 @@
     {@render line(r.reason)}
   {:else if r.kind === 'budget-reached'}
     {@render line(r.usd !== undefined && r.spentUsd !== undefined ? `Stopped at the budget: ${dollars(r.spentUsd)} of ${dollars(r.usd)} spent.` : 'Stopped at the budget.')}
-    <Button variant="text" onclick={() => onsetbudget?.()}>Change budget…</Button>
+    <Button onclick={() => onsetbudget?.()}>Change budget…</Button>
     {@render offer(section, { paid: true, maxCalls: r.maxCalls })}
   {:else if r.kind === 'failed'}
     {@render line("This analysis didn't finish.", r.message)}

@@ -31,12 +31,12 @@
         {#if offer.needs && !s.dismissed}<p class="ui-suggestions__needs">{offer.needs}</p>{/if}
         <div class="ui-suggestions__actions">
           {#if s.dismissed}
-            <Button variant="text" disabled={busy} onclick={() => ondismiss?.(s, false)}>Restore</Button>
+            <Button disabled={busy} onclick={() => ondismiss?.(s, false)}>Restore</Button>
           {:else}
             {#each offer.accepts as accept, i (accept.label)}
               <Button variant={i === 0 ? 'primary' : 'secondary'} disabled={busy} onclick={() => onaccept?.(accept.decision)}>{accept.label}</Button>
             {/each}
-            <Button variant="text" disabled={busy} onclick={() => ondismiss?.(s, true)}>Dismiss</Button>
+            <Button disabled={busy} onclick={() => ondismiss?.(s, true)}>Dismiss</Button>
           {/if}
         </div>
       </div>

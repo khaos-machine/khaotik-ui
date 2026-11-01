@@ -22,7 +22,7 @@
 
 <div class="atlas-relationship" aria-label="Selected connection details">
   {#if source && target}
-    <div class="atlas-relationship__heading"><span class="eyebrow">Connection</span><Button variant="text" onclick={onClear}>Clear connection</Button></div>
+    <div class="atlas-relationship__heading"><span class="eyebrow">Connection</span><Button onclick={onClear}>Clear connection</Button></div>
     <h2>{label || 'Story connection'}</h2>
     <div class="atlas-relationship__endpoints">
       <div><span class="atlas-relationship__kind">{source.kind ?? ''}</span><Button onclick={() => onSelectEndpoint?.(source.id)}>{source.label}</Button></div>

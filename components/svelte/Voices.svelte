@@ -425,7 +425,7 @@
           <div class="ui-voices__for" data-ui-id="voices.studio.for-character">
             <div class="ui-voices__for-head">
               <h2 class="eyebrow">Designing a voice for {who}</h2>
-              <Button variant="text" onclick={() => onCloseCharacter?.()}>Done</Button>
+              <Button onclick={() => onCloseCharacter?.()}>Done</Button>
             </div>
             {#if character.brief.kind === 'loading'}
               <p class="note">Reading {who}'s analysis…</p>

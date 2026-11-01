@@ -158,7 +158,7 @@
   {/if}
   {#if shot}
     {#if deletePending}<div class="ui-shot__delete-confirm" role="group" aria-label="Delete shot confirmation"><strong>Delete {shot.title}?</strong><p>The shot leaves the picture track. Its frame history is retained.</p><div class="ui-shot__review-actions"><Button disabled={busy} onclick={()=>ondeletecancel?.()}>Cancel</Button><Button disabled={busy||dirty} onclick={()=>ondeleteconfirm?.()}>Delete shot</Button></div></div>{/if}
-    {#if shot.id&&onaction}<div class="ui-shot__edit-actions"><Button disabled={busy||dirty} onclick={()=>onaction?.('insertBefore')}>Insert before</Button><Button disabled={busy||dirty} onclick={()=>onaction?.('insertAfter')}>Insert after</Button><Button disabled={busy||dirty} onclick={()=>onaction?.('split')}><Icon name="scissors" />Split</Button><Button variant="text" disabled={busy||dirty} onclick={()=>onaction?.('delete')}><Icon name="trash" />Delete</Button></div>{/if}
+    {#if shot.id&&onaction}<div class="ui-shot__edit-actions"><Button disabled={busy||dirty} onclick={()=>onaction?.('insertBefore')}>Insert before</Button><Button disabled={busy||dirty} onclick={()=>onaction?.('insertAfter')}>Insert after</Button><Button disabled={busy||dirty} onclick={()=>onaction?.('split')}><Icon name="scissors" />Split</Button><Button disabled={busy||dirty} onclick={()=>onaction?.('delete')}><Icon name="trash" />Delete</Button></div>{/if}
     {#each shot.warnings??[] as warning,index (index)}<p class="ui-shot__warning">{warning}</p>{/each}
     <fieldset disabled={busy}>
       <label class="ui-shot__title-field">Shot name<input aria-label="Shot name" value={shot.title} oninput={event=>onchange?.({title:event.currentTarget.value})} /></label>

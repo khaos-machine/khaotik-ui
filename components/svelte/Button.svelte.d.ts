@@ -5,7 +5,7 @@ type Button = {
 };
 declare const Button: import("svelte").Component<{
     /**
-     * `primary` is the one amber action on a screen; `secondary` is every other action; `text` is the inline link look, for an action inside a sentence or a banner.
+     * `primary` is the one amber action on a screen; `secondary` is every other action; `text` is the inline link look, only for navigation: opening or revealing another thing. An action that changes something is a button, never `text`, even inside a sentence.
      */
     variant?: "primary" | "secondary" | "text" | "tool";
     /**
@@ -51,7 +51,7 @@ declare const Button: import("svelte").Component<{
 }, {}, "">;
 type Props = {
     /**
-     * `primary` is the one amber action on a screen; `secondary` is every other action; `text` is the inline link look, for an action inside a sentence or a banner.
+     * `primary` is the one amber action on a screen; `secondary` is every other action; `text` is the inline link look, only for navigation: opening or revealing another thing. An action that changes something is a button, never `text`, even inside a sentence.
      */
     variant?: "primary" | "secondary" | "text" | "tool";
     /**

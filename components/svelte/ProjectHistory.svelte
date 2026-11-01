@@ -82,9 +82,9 @@
           <span class="ui-project-history__time">{checkpointTime(checkpoint.at)}</span>
           {#if i > 0}
             {#if checkpoint.restorable}
-              <Button variant="text" disabled={busy} onclick={() => onRestore?.(checkpoint)}>Restore, keeping later changes…</Button>
+              <Button disabled={busy} onclick={() => onRestore?.(checkpoint)}>Restore, keeping later changes…</Button>
             {/if}
-            <Button variant="text" disabled={busy} onclick={() => onRestoreFiles?.(checkpoint)}>Put files back…</Button>
+            <Button disabled={busy} onclick={() => onRestoreFiles?.(checkpoint)}>Put files back…</Button>
           {/if}
         </li>
       {/each}

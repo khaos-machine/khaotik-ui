@@ -97,7 +97,7 @@
       {#each groups.authored as alias (alias)}
         <li class="ui-character-aliases__item">
           <LabeledPill label="Added by you" value={alias} tone="accent" />
-          <Button variant="text" disabled={busy} onclick={() => (retiring = { alias, origin: 'authored' })}>
+          <Button disabled={busy} onclick={() => (retiring = { alias, origin: 'authored' })}>
             Remove <span class="visually-hidden">“{alias}”</span>
           </Button>
         </li>
@@ -105,7 +105,7 @@
       {#each groups.introduced as alias (alias)}
         <li class="ui-character-aliases__item">
           <LabeledPill label="Introduced in the script" value={alias} tone="info" />
-          <Button variant="text" disabled={busy} onclick={() => (retiring = { alias, origin: 'introduced' })}>
+          <Button disabled={busy} onclick={() => (retiring = { alias, origin: 'introduced' })}>
             Not this character<span class="visually-hidden">: “{alias}”</span>
           </Button>
         </li>
@@ -141,7 +141,7 @@
         {/each}
       </div>
       <div class="ui-character-aliases__move">
-        <Button variant="text" disabled={busy} onclick={() => (chosen = mine.mentions.map((m) => m.id))}>Select all</Button>
+        <Button disabled={busy} onclick={() => (chosen = mine.mentions.map((m) => m.id))}>Select all</Button>
         <Menu
           label="Move to"
           value={destination ?? ''}

@@ -225,7 +225,7 @@
             {#if applied && !changingConfiguration}
               <p>
                 Your configuration: <strong>{applied.title}</strong>
-                <Button variant="text" onclick={() => (changingConfiguration = true)}>Change</Button>
+                <Button onclick={() => (changingConfiguration = true)}>Change</Button>
               </p>
             {:else}
               <p>{applied ? 'Choose another configuration' : 'Choose a configuration'}</p>

@@ -13,7 +13,7 @@
 
   /**
    * @typedef {Object} Props
-   * @property {'primary'|'secondary'|'text'|'tool'} [variant] `primary` is the one amber action on a screen; `secondary` is every other action; `text` is the inline link look, for an action inside a sentence or a banner.
+   * @property {'primary'|'secondary'|'text'|'tool'} [variant] `primary` is the one amber action on a screen; `secondary` is every other action; `text` is the inline link look, only for navigation: opening or revealing another thing. An action that changes something is a button, never `text`, even inside a sentence.
    * @property {string} [title] Tooltip for compact tools and unavailable-action explanations.
    * @property {boolean} [disabled] Renders `aria-disabled="true"`, stays focusable, and never calls `onclick`.
    * @property {string} [icon] Leading Phosphor glyph name (kebab-case), `aria-hidden`.
@@ -120,8 +120,8 @@
     background: var(--action-primary-pressed);
   }
 
-  /* The inline link look: no box, so it sits inside a line of text without
-     pushing the line apart. Underlined so it reads as actionable without colour. */
+  /* The inline link look, for navigation only: no box, so it sits inside a line of text
+     without pushing the line apart. Underlined so it reads as a link without colour. */
   .ui-button[data-variant='text'] {
     padding: 0;
     border-color: transparent;
