@@ -206,6 +206,7 @@
     /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. A floor, so a
        phone's wrapped rows can grow it; one row is exactly 52. */
     min-height: 52px;
+    box-sizing: border-box;
     container-type: inline-size;
     padding: 0 var(--spacing-sm);
     border-bottom: var(--size-stroke-hairline) solid var(--border-default);
@@ -327,7 +328,9 @@
     .toolbar__main {
       flex-wrap: wrap;
       overflow: visible;
-      padding-block: var(--spacing-2xs);
+      /* 3px: a 44pt row plus this and the hairline stays inside the 52 floor, so one row is 52
+         with or without touch targets. */
+      padding-block: 3px;
       gap: var(--spacing-2xs);
     }
     .toolbar__spacer {

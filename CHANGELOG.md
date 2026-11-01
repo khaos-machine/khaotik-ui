@@ -18,6 +18,15 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.176.3] — 2026-11-01
+
+### Fixed
+
+- **Toolbar:** one row is 52px whether or not its buttons are 44pt touch targets, in any host.
+  The bar is `border-box`, and at phone width the row's block padding is 3px, so a 44pt row
+  plus the hairline stays inside the 52 floor. Before, an app with global `border-box` measured
+  52 for a row of segments and 53 for a row of buttons.
+
 ## [0.176.2] — 2026-11-01
 
 ### Changed
