@@ -24,6 +24,10 @@ declare const MetricCard: import("svelte").Component<{
      * Optional trailing sub-value.
      */
     sub?: string | number;
+    /**
+     * The value over a small label, never wrapping: a figure in a row of figures. Inline otherwise.
+     */
+    stacked?: boolean;
 }, {}, "">;
 type Props = {
     /**
@@ -46,4 +50,8 @@ type Props = {
      * Optional trailing sub-value.
      */
     sub?: string | number;
+    /**
+     * The value over a small label, never wrapping: a figure in a row of figures. Inline otherwise.
+     */
+    stacked?: boolean;
 };

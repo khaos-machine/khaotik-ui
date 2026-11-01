@@ -186,7 +186,11 @@
     color: var(--text-secondary);
     padding: var(--spacing-2xs) var(--spacing-sm) var(--spacing-2xs) 0;
     border-bottom: 1px solid var(--border-default);
-    white-space: nowrap;
+  }
+
+  /* Headings and names wrap, so a narrow table fits its width; the figures never do. */
+  .mtable__head .mtable__sort {
+    white-space: normal;
   }
 
   .mtable__sort {
@@ -257,9 +261,11 @@
 
   /* A track under every cell, not only filled ones, so a short bar reads as a
      small share rather than as a rendering failure. */
+  /* ponytail: shrinks with the viewport, not the table; a narrow pane on a wide screen keeps
+     4rem. A container query on a wrapper would follow the table, if a pane ever needs it. */
   .mtable__track {
     display: inline-block;
-    width: 4rem;
+    width: min(4rem, 10vw);
     height: 6px;
     margin-left: var(--spacing-xs);
     border-radius: var(--radius-sm);

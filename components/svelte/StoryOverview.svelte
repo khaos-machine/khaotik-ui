@@ -82,6 +82,10 @@
   {#if detail}<p class="ui-story-overview__detail">{detail}</p>{/if}
 {/snippet}
 
+{#snippet none(/** @type {string} */ text, /** @type {string} */ detail = '')}
+  <p class="ui-story-overview__none">{text}{#if detail}<span>{detail}</span>{/if}</p>
+{/snippet}
+
 {#snippet sourced(/** @type {string} */ label, /** @type {Sourced} */ f)}
   <div class="ui-story-overview__sourced">
     {#if label}<p class="ui-story-overview__label">{label}</p>{/if}
@@ -139,14 +143,14 @@
   {/if}
 {/snippet}
 
-<div class="ui-story-overview">
+<div class="ui-story-overview__host"><div class="ui-story-overview">
   <SectionHeader eyebrow="Story" {title}>
     {#snippet trailing()}{#if madeOn}<span class="ui-story-overview__made">Coverage made {madeOn}</span>{/if}{/snippet}
   </SectionHeader>
 
   <InspectorSection title="Premise" uiId="story.overview.premise">
-    {#if premise.kind === 'loading'}{@render line(LOADING)}
-    {:else if premise.kind === 'missing'}{@render line('This story has no premise yet.', premise.reason)}
+    {#if premise.kind === 'loading'}{@render none(LOADING)}
+    {:else if premise.kind === 'missing'}{@render none('This story has no premise yet.', premise.reason)}
     {:else if premise.kind === 'failed'}{@render line(premise.message)}
     {:else}
       {@render sourced('', premise.data.logline)}
@@ -156,8 +160,8 @@
   </InspectorSection>
 
   <InspectorSection title="Shape" uiId="story.overview.shape">
-    {#if structure.kind === 'loading'}{@render line(LOADING)}
-    {:else if structure.kind === 'missing'}{@render line("This story's shape hasn't been measured yet.", structure.reason)}
+    {#if structure.kind === 'loading'}{@render none(LOADING)}
+    {:else if structure.kind === 'missing'}{@render none("This story's shape hasn't been measured yet.", structure.reason)}
     {:else if structure.kind === 'failed' || !shape}{@render line("Khaos couldn't read this story's shape.", structure.kind === 'failed' ? structure.message : '')}
     {:else}
       <p class="ui-story-overview__headline">{shape.fit.reason}</p>
@@ -182,8 +186,8 @@
   </InspectorSection>
 
   <InspectorSection title="Coverage" uiId="story.overview.coverage">
-    {#if coverage.kind === 'loading'}{@render line(LOADING)}
-    {:else if coverage.kind === 'missing'}{@render line("There's no coverage for this story yet.", coverage.reason)}
+    {#if coverage.kind === 'loading'}{@render none(LOADING)}
+    {:else if coverage.kind === 'missing'}{@render none("There's no coverage for this story yet.", coverage.reason)}
     {:else if coverage.kind === 'failed' || !report}{@render line(coverage.kind === 'failed' ? coverage.message : "Khaos couldn't read this story's coverage.")}
     {:else}
       {#if report.incompleteSections?.length}<p class="ui-story-overview__note" role="note">Part of this coverage wasn't finished: {report.incompleteSections.map((/** @type {string} */ s) => INCOMPLETE[s]).join(', ')}.</p>{/if}
@@ -250,8 +254,8 @@
   </InspectorSection>
 
   <InspectorSection title="Journeys" uiId="story.overview.journeys">
-    {#if journeys.kind === 'loading'}{@render line(LOADING)}
-    {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render line('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
+    {#if journeys.kind === 'loading'}{@render none(LOADING)}
+    {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render none('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
     {:else if journeys.kind === 'failed' || !journeyList}{@render line("Khaos couldn't read this story's journeys.", journeys.kind === 'failed' ? journeys.message : '')}
     {:else}
       {#each journeyList as j, i (j.character.id)}
@@ -263,8 +267,8 @@
   </InspectorSection>
 
   <InspectorSection title="Relationships" uiId="story.overview.relationships">
-    {#if relationships.kind === 'loading'}{@render line(LOADING)}
-    {:else if relationships.kind === 'missing' || (pairList && !pairList.length)}{@render line('No relationships have been read yet.', relationships.kind === 'missing' ? relationships.reason : '')}
+    {#if relationships.kind === 'loading'}{@render none(LOADING)}
+    {:else if relationships.kind === 'missing' || (pairList && !pairList.length)}{@render none('No relationships have been read yet.', relationships.kind === 'missing' ? relationships.reason : '')}
     {:else if relationships.kind === 'failed' || !pairList}{@render line("Khaos couldn't read this story's relationships.", relationships.kind === 'failed' ? relationships.message : '')}
     {:else}
       {#each readPairs as r (r.pairKey)}
@@ -281,7 +285,7 @@
       {/if}
     {/if}
   </InspectorSection>
-</div>
+</div></div>
 
 <style>
   .ui-story-overview {
@@ -345,5 +349,37 @@
     padding-left: var(--spacing-md);
     font-size: var(--body-md-size);
     line-height: 1.5;
+  }
+  /* A section with nothing yet says so in one quiet line, so it takes less weight than one
+     with content. */
+  .ui-story-overview__none {
+    margin: 0 0 var(--spacing-2xs);
+    font-size: var(--caption-size);
+    color: var(--text-secondary);
+  }
+  .ui-story-overview__none span {
+    display: block;
+  }
+  /* Phone width: the title is already in the window's bar, so the header keeps only its date,
+     and the sections sit closer. */
+  .ui-story-overview__host {
+    container-type: inline-size;
+  }
+  @container (max-width: 599px) {
+    .ui-story-overview {
+      gap: 0;
+    }
+    .ui-story-overview :global(.section-header__text) {
+      display: none;
+    }
+    .ui-story-overview :global(.section-header) {
+      padding: var(--spacing-2xs) var(--spacing-xs) 0;
+    }
+    .ui-story-overview :global(.section__body) {
+      padding: 0 var(--spacing-xs) var(--spacing-2xs);
+    }
+    .ui-story-overview :global(.section__toggle) {
+      padding: 0 var(--spacing-xs);
+    }
   }
 </style>

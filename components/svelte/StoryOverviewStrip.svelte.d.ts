@@ -19,7 +19,7 @@ declare const StoryOverviewStrip: import("svelte").Component<{
      */
     review?: number;
     /**
-     * The next step; null draws no fourth figure.
+     * The next step, drawn first as the primary action; null draws none.
      */
     next?: {
         label: string;
@@ -58,7 +58,7 @@ type Props = {
      */
     review?: number;
     /**
-     * The next step; null draws no fourth figure.
+     * The next step, drawn first as the primary action; null draws none.
      */
     next?: {
         label: string;

@@ -17,7 +17,7 @@ describe('the props schema, read out of the components', () => {
   })
 
   it('reads MetricCard exactly as its typedef declares it', () => {
-    expect(schemas.MetricCard.map((p) => p.name)).toEqual(['value', 'label', 'icon', 'tone', 'sub'])
+    expect(schemas.MetricCard.map((p) => p.name)).toEqual(['value', 'label', 'icon', 'tone', 'sub', 'stacked'])
     expect(schemas.MetricCard[0].description).toBe('The metric readout; tabular numerals.')
     expect(schemas.MetricCard.every((p) => p.optional)).toBe(true)
   })

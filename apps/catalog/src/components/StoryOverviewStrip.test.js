@@ -16,6 +16,13 @@ describe('StoryOverviewStrip', () => {
     expect([oncoverage, onbudget, onreview, onnext].map((f) => f.mock.calls.length)).toEqual([1, 1, 1, 1])
   })
 
+  it('puts the next step first, as the primary action', () => {
+    render(StoryOverviewStrip, { props: { review: 2, next: { label: 'Find relationships' } } })
+    const [first] = screen.getAllByRole('button')
+    expect(first.textContent.trim()).toBe('Find relationships')
+    expect(first.dataset.variant).toBe('primary')
+  })
+
   it('offers Set budget… when the story has none', () => {
     const { container } = render(StoryOverviewStrip, { props: { budget: { kind: 'none' } } })
     expect(screen.getByRole('button', { name: 'Budget: No budget set' })).toBeTruthy()

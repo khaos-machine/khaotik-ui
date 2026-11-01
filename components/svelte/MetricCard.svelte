@@ -11,13 +11,14 @@
    * @property {string} [icon] Optional leading Phosphor icon (fill weight).
    * @property {StatusTone} [tone] Tints the leading icon (`--tone-*`).
    * @property {string|number} [sub] Optional trailing sub-value.
+   * @property {boolean} [stacked] The value over a small label, never wrapping: a figure in a row of figures. Inline otherwise.
    */
 
   /** @type {Props} */
-  let { value = '', label = '', icon = '', tone = 'neutral', sub = '' } = $props()
+  let { value = '', label = '', icon = '', tone = 'neutral', sub = '', stacked = false } = $props()
 </script>
 
-<span class="metric" data-tone={tone} role="group" aria-label={label}>
+<span class="metric" class:metric--stacked={stacked} data-tone={tone} role="group" aria-label={label}>
   {#if icon}<Icon name={icon} weight="fill" />{/if}
   <span class="metric__value">{value}</span>
   <span class="metric__label">{label}</span>
@@ -64,5 +65,29 @@
     font-size: var(--caption-size);
     color: var(--text-tertiary);
     font-variant-numeric: tabular-nums;
+  }
+
+  /* Stacked: the icon and value on one line, the label under them. Neither wraps; a value
+     longer than its room ends in an ellipsis. */
+  .metric--stacked {
+    display: inline-grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--spacing-2xs);
+    row-gap: 0;
+  }
+  .metric--stacked .metric__value,
+  .metric--stacked .metric__label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .metric--stacked .metric__label,
+  .metric--stacked .metric__sub {
+    grid-column: 1 / -1;
+  }
+  .metric--stacked:not(:has(:global(.ph))) .metric__value {
+    grid-column: 1 / -1;
   }
 </style>

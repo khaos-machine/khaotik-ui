@@ -18,6 +18,21 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.174.0] — 2026-11-01
+
+### Added
+
+- `MetricCard` `stacked`: the value over a small label, neither wrapping. A value longer than its room ends in an ellipsis.
+
+### Changed
+
+- `StoryOverviewStrip`, at every size: the next step comes first as the primary button, with no card around it and no "Next" caption. It is full width on a phone. The figures lose their card chrome and sit in one compact row split by hairlines, each a value over a label. Each figure is still a button that opens what it opens, at least 44 pt tall on a phone. "Not made", nothing to review and no budget read as quiet states. The accessible names and `data-ui-id="overview.strip"` are unchanged.
+- `StoryOverview`: a section with nothing yet, or still reading, says so in one quiet caption line, so it takes less weight than a section with content. At phone width the header drops the title the window bar already shows, keeping only the coverage date, and section padding is tighter.
+
+### Fixed
+
+- `MeasureTable` headings and names wrap, and its bars shrink on a narrow viewport, so at 320 px `StoryOverview`'s Characters table (Dialogue weight) no longer widens the page to 383 px.
+
 ## [0.173.0] — 2026-11-01
 
 ### Changed

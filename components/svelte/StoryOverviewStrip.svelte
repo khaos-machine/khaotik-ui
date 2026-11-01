@@ -1,8 +1,8 @@
 <script>
-  // The Overview's strip (khaos-app#617): four figures in a row, each a way in. Coverage's
-  // verdict, the budget's spend, what needs review, and the next step. Figures, no sentences.
-  // Each of the first three is a MetricCard under a stretched button that carries its name (D52);
-  // the next step is a real button with its own label.
+  // The Overview's strip (khaos-app#617). The next step comes first, as the screen's primary
+  // action, when there is one. Then the figures, each a way in: Coverage's verdict, the
+  // budget's spend and what needs review. Figures, no sentences, no card chrome: one compact
+  // row split by hairlines, each figure a button named for what it opens (D52).
   import Button from './Button.svelte'
   import MetricCard from './MetricCard.svelte'
   import { budgetSpent, budgetText } from './lib/budget.js'
@@ -15,7 +15,7 @@
    * @property {{ verdict: 'recommend' | 'consider' | 'pass' } | null} [coverage] Coverage's verdict; null before coverage is made.
    * @property {StatusBudget | null} [budget] The story budget, as the status bar takes it.
    * @property {number} [review] How many things need review.
-   * @property {{ label: string, icon?: string } | null} [next] The next step; null draws no fourth figure.
+   * @property {{ label: string, icon?: string } | null} [next] The next step, drawn first as the primary action; null draws none.
    * @property {() => void} [oncoverage] Opens coverage.
    * @property {() => void} [onbudget] Opens the story's budget, to set or change it.
    * @property {() => void} [onreview] Opens what needs review.
@@ -39,95 +39,108 @@
   const budgetLabel = $derived(budget?.kind === 'none' ? 'Set budget…' : 'Budget')
 </script>
 
-{#snippet figure(/** @type {string} */ name, /** @type {(() => void) | undefined} */ open, /** @type {import('svelte').ComponentProps<typeof MetricCard>} */ metric)}
-  <div class="ui-strip__card">
-    <button type="button" class="ui-strip__open" aria-label={name} onclick={() => open?.()}></button>
-    <span class="ui-strip__figure" aria-hidden="true"><MetricCard {...metric} /></span>
-  </div>
+{#snippet figure(/** @type {string} */ name, /** @type {(() => void) | undefined} */ open, /** @type {boolean} */ none, /** @type {import('svelte').ComponentProps<typeof MetricCard>} */ metric)}
+  <button type="button" class="ui-strip__figure" class:ui-strip__figure--none={none} aria-label={name} onclick={() => open?.()}>
+    <span aria-hidden="true"><MetricCard stacked {...metric} /></span>
+  </button>
 {/snippet}
 
 <div class="ui-strip__host"><div class="ui-strip" data-ui-id="overview.strip">
-  {@render figure(
-    `Coverage: ${verdict?.text ?? 'Not made'}`,
-    oncoverage,
-    { value: verdict?.text ?? 'Not made', label: 'Coverage', icon: verdict ? 'circle' : 'circle-dashed', tone: /** @type {any} */ (verdict?.tone ?? 'neutral') },
-  )}
-  {#if budget}
-    {@render figure(
-      `Budget: ${budgetText(budget)}`,
-      onbudget,
-      { value: budgetValue, label: budgetLabel, icon: 'coins', tone: budgetSpent(budget) ? 'warning' : 'neutral' },
-    )}
-  {/if}
-  {@render figure(
-    `Needs review: ${review}`,
-    onreview,
-    { value: review, label: 'Needs review', icon: 'list-checks', tone: review > 0 ? 'warning' : 'neutral' },
-  )}
   {#if next}
-    <div class="ui-strip__card ui-strip__card--next">
-      <span class="ui-strip__next" aria-hidden="true">Next</span>
-      <Button icon={next.icon ?? ''} onclick={() => onnext?.()}>{next.label}</Button>
-    </div>
+    <span class="ui-strip__next"><Button variant="primary" icon={next.icon ?? ''} onclick={() => onnext?.()}>{next.label}</Button></span>
   {/if}
+  <div class="ui-strip__figures">
+    {@render figure(
+      `Coverage: ${verdict?.text ?? 'Not made'}`,
+      oncoverage,
+      !verdict,
+      { value: verdict?.text ?? 'Not made', label: 'Coverage', icon: verdict ? 'circle' : 'circle-dashed', tone: /** @type {any} */ (verdict?.tone ?? 'neutral') },
+    )}
+    {#if budget}
+      {@render figure(
+        `Budget: ${budgetText(budget)}`,
+        onbudget,
+        budget.kind === 'none',
+        { value: budgetValue, label: budgetLabel, icon: 'coins', tone: budgetSpent(budget) ? 'warning' : 'neutral' },
+      )}
+    {/if}
+    {@render figure(
+      `Needs review: ${review}`,
+      onreview,
+      review === 0,
+      { value: review, label: 'Needs review', icon: 'list-checks', tone: review > 0 ? 'warning' : 'neutral' },
+    )}
+  </div>
 </div></div>
 
 <style>
-  .ui-strip {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
-  }
-  .ui-strip__card {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    min-width: 0;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-md);
-    background: var(--surface-raised);
-  }
-  /* The stretched button takes the whole card's click; the figure under it is drawn only. */
-  .ui-strip__open {
-    position: absolute;
-    inset: 0;
-    border: var(--size-stroke-hairline) solid transparent;
-    border-radius: inherit;
-    background: none;
-    cursor: pointer;
-  }
-  .ui-strip__open:hover {
-    border-color: var(--border-default);
-  }
-  .ui-strip__open:focus-visible {
-    outline: var(--size-stroke-focus) solid var(--border-focus);
-  }
-  .ui-strip__figure {
-    min-width: 0;
-    pointer-events: none;
-  }
-  .ui-strip__next {
-    color: var(--text-secondary);
-    font-size: var(--body-md-size);
-  }
-  /* Phone width: two figures a row, and the next step takes a row of its own. */
   .ui-strip__host {
     container-type: inline-size;
   }
+  .ui-strip {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  .ui-strip__next :global(.ui-button) {
+    white-space: normal;
+  }
+  .ui-strip__figures {
+    display: flex;
+    min-width: 0;
+  }
+  /* Plain figures, split by a hairline. Hover and focus mark the one you are on. */
+  .ui-strip__figure {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: var(--spacing-2xs) var(--spacing-sm);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .ui-strip__figure + .ui-strip__figure {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    box-shadow: inset var(--size-stroke-hairline) 0 0 var(--border-default);
+  }
+  .ui-strip__figure:hover {
+    background: color-mix(in oklab, var(--text-primary) 6%, transparent);
+  }
+  .ui-strip__figure:focus-visible {
+    outline: var(--size-stroke-focus) solid var(--border-focus);
+  }
+  .ui-strip__figure > span {
+    display: flex;
+    min-width: 0;
+    pointer-events: none;
+  }
+  /* Nothing there yet ("Not made", nothing to review, no budget) reads as a state, not a figure. */
+  .ui-strip__figure--none :global(.metric__value) {
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+  /* Phone width: the next step takes the full width, and the figures share one row under it,
+     each a 44pt target. */
   @container (max-width: 599px) {
     .ui-strip {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--spacing-xs);
     }
-    .ui-strip__card {
-      padding: var(--spacing-sm);
+    .ui-strip__next :global(.ui-button) {
+      width: 100%;
+      min-height: 44px;
+      justify-content: center;
     }
-    .ui-strip__card--next {
-      grid-column: 1 / -1;
-    }
-    .ui-strip__card--next :global(.ui-button) {
-      white-space: normal;
+    .ui-strip__figure {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding-inline: var(--spacing-2xs);
     }
   }
 </style>
