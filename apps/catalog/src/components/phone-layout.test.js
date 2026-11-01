@@ -36,6 +36,13 @@ describe('StoryPlayback at phone width', () => {
     expect(main.dataset.sheet).toBeUndefined()
   })
 
+  it('says nothing under a scene with no readings to choose from', () => {
+    const { component, props } = example('story-playback')
+    const { container } = render(component, { props: { ...props, segments: [{ kind: 'scene', sceneId: 's1', label: 'INT. ROOM - DAY', reads: [] }, { kind: 'scene', sceneId: 's2', label: 'EXT. ROOF - NIGHT', audio: {} }] } })
+    const rows = [...container.querySelectorAll('.ui-story-playback__scene-label')]
+    expect(rows.map((r) => r.querySelector('small')?.textContent ?? '')).toEqual(['', 'Read ready'])
+  })
+
   it('its sheets close with their own Close', async () => {
     const { component, props } = example('story-playback')
     const { container } = render(component, { props })

@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.174.1] — 2026-11-01
+
+### Fixed
+
+- `StoryPlayback`'s scene list no longer says "No reading chosen" under a scene that has no readings to choose from. In a project with no readings, every row repeated it. A scene with readings still says "Reading available" or "Read ready".
+
 ## [0.174.0] — 2026-11-01
 
 ### Added

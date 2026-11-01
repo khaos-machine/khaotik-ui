@@ -103,7 +103,7 @@
   const speaker = $derived(current?.context?.characters.find((character) => character.id === focus?.characterId))
   const speakerImage = $derived(speaker ? portraitUrl(speaker.portraitReferenceId) : '')
   /** @param {PlaybackSegment} segment */
-  const status = (segment) => (segment.audio ? 'Read ready' : segment.reads?.length ? 'Reading available' : segment.kind === 'section' ? 'Section' : 'No reading chosen')
+  const status = (segment) => (segment.audio ? 'Read ready' : segment.reads?.length ? 'Reading available' : segment.kind === 'section' ? 'Section' : '')
 </script>
 
 {#if textPreview}
@@ -138,7 +138,7 @@
           {#each segments as segment, index (idOf(segment))}
             {@const id = idOf(segment)}
             <li><button type="button" class="ui-story-playback__scene" class:ui-story-playback__scene--selected={selectedSceneId ? selectedSceneId === id : current === segment} class:ui-story-playback__scene--playing={current === segment && playing} onclick={() => { sheet = null; onNavigate?.(id) }}>
-              <span class="ui-story-playback__scene-number">{index + 1}</span><span class="ui-story-playback__scene-label">{segment.label}<small>{status(segment)}</small></span>
+              <span class="ui-story-playback__scene-number">{index + 1}</span><span class="ui-story-playback__scene-label">{segment.label}{#if status(segment)}<small>{status(segment)}</small>{/if}</span>
               {#if segment.audio}<Icon name="speaker-high" />{/if}
             </button></li>
           {/each}
