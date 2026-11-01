@@ -18,6 +18,12 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.168.0] — 2026-11-01
+
+### Added
+
+- `Toasts`: outcomes that float over the page without moving it, and dismiss themselves after `duration` (5 s by default; 0 keeps them). Each toast is an `OutcomeBanner`, with the same tones and roles. Pointing at the stack or focusing inside it holds the timers. The host owns the list and removes a toast when `ondismiss` reports it.
+
 ## [0.167.0] — 2026-11-01
 
 ### Added

@@ -21,6 +21,7 @@ export { default as AccountMenu } from "./AccountMenu.svelte";
 export { default as Drawer } from "./Drawer.svelte";
 export { default as FilePicker } from "./FilePicker.svelte";
 export { default as FormSheet } from "./FormSheet.svelte";
+export { default as Toasts } from "./Toasts.svelte";
 export { default as PasswordField } from "./PasswordField.svelte";
 export { default as CodeField } from "./CodeField.svelte";
 export { default as FormStack } from "./FormStack.svelte";

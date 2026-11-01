@@ -59,6 +59,7 @@ import AccountMenu from '@khaos-machine/khaotik-ui/components/svelte/AccountMenu
 import Drawer from '@khaos-machine/khaotik-ui/components/svelte/Drawer.svelte'
 import FilePicker from '@khaos-machine/khaotik-ui/components/svelte/FilePicker.svelte'
 import FormSheet from '@khaos-machine/khaotik-ui/components/svelte/FormSheet.svelte'
+import Toasts from '@khaos-machine/khaotik-ui/components/svelte/Toasts.svelte'
 import PasswordField from '@khaos-machine/khaotik-ui/components/svelte/PasswordField.svelte'
 import CodeField from '@khaos-machine/khaotik-ui/components/svelte/CodeField.svelte'
 import FormStack from '@khaos-machine/khaotik-ui/components/svelte/FormStack.svelte'
@@ -3202,6 +3203,14 @@ export const fixtures = [
       { label: 'Failure', props: { tone: 'error', title: 'Could not delete project', detail: 'projectPath query param required' } },
       { label: 'Long engine message', props: { tone: 'error', title: 'Could not open project', detail: 'failed to open project at /Users/k/khaos/projects/broken in 4 places.kspd: the .kspd directory exists but contains no info.json, so it cannot be read as a project' } },
       { label: 'Not dismissible', props: { tone: 'error', title: 'Engine unreachable', detail: 'connection refused', dismissible: false } },
+    ],
+  },
+  {
+    // Held open (duration 0) so the catalog can show them; a host's toasts dismiss themselves.
+    id: 'toasts', name: 'Toasts', kind: 'component', section: 'components', group: 'feedback', component: Toasts,
+    examples: [
+      { label: 'A success and a failure', props: { duration: 0, toasts: [{ id: 't1', tone: 'success', title: 'Project saved' }, { id: 't2', tone: 'error', title: 'Could not save project', detail: 'repository is read-only' }] } },
+      { label: 'One success', props: { duration: 0, toasts: [{ id: 't1', tone: 'success', title: 'Screenplay imported' }] } },
     ],
   },
   {
