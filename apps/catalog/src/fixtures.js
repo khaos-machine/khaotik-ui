@@ -350,6 +350,8 @@ const workspaceModes = [
   { value: 'cast', label: 'Cast' },
   { value: 'perform', label: 'Perform' },
 ]
+// The cloud app's views, for the phone toolbar row: Screenplay is the widest label.
+const phoneModes = ['Overview', 'Screenplay', 'Data', 'Atlas', 'Player'].map((label) => ({ value: label.toLowerCase(), label }))
 // The toolbar's command buttons. The disabled reason is the audit's own example of
 // engine state the registry reads (audit §3.11).
 const toolbarCommands = [
@@ -3443,9 +3445,9 @@ export const fixtures = [
     examples: [
       { label: 'Story at 1200', props: { title: 'BROKEN IN 4 PLACES', modes: workspaceModes, mode: 'story', commands: toolbarCommands, panes: toolbarPanes, filterLabel: 'Filter characters', width: 1200 } },
       { label: 'At 860, switcher as a pop-up', props: { title: 'BROKEN IN 4 PLACES', modes: workspaceModes, mode: 'cast', commands: toolbarCommands, panes: toolbarPanes, filterLabel: 'Filter characters', width: 860 } },
-      { label: 'Phone row: picker and four lenses, no title', props: { modes: workspaceModes, mode: 'cast', filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'character', items: [{ value: 'character', label: 'Characters' }, { value: 'scene', label: 'Scenes' }, { value: 'place', label: 'Places' }, { value: 'object', label: 'Objects' }] } }] } },
-      { label: 'Phone row: picker and the Atlas lenses, no title', props: { modes: workspaceModes, mode: 'story', filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'all', items: [{ value: 'all', label: 'Everything' }, { value: 'character', label: 'Characters' }, { value: 'place', label: 'Places' }, { value: 'scene', label: 'Scenes' }] } }] } },
-      { label: 'Phone row: picker and the screenplay actions', props: { modes: workspaceModes, mode: 'story', filter: null }, snippets: { tools: [{ component: ScreenplayActions, props: { dirty: 2, canUndo: true, iconOnly: true, onscenes: () => {} } }] } },
+      { label: 'Phone row: picker and four lenses, no title', props: { modes: phoneModes, mode: 'data', compactBelow: 560, filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'character', items: [{ value: 'character', label: 'Characters' }, { value: 'scene', label: 'Scenes' }, { value: 'place', label: 'Places' }, { value: 'object', label: 'Objects' }] } }] } },
+      { label: 'Phone row: picker and the Atlas lenses, no title', props: { modes: phoneModes, mode: 'atlas', compactBelow: 560, filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'all', items: [{ value: 'all', label: 'Everything' }, { value: 'character', label: 'Characters' }, { value: 'place', label: 'Places' }, { value: 'scene', label: 'Scenes' }] } }] } },
+      { label: 'Phone row: picker and the screenplay actions', props: { modes: phoneModes, mode: 'screenplay', compactBelow: 560, filter: null }, snippets: { tools: [{ component: ScreenplayActions, props: { dirty: 2, canUndo: true, iconOnly: true, onscenes: () => {} } }] } },
     ],
   },
   {

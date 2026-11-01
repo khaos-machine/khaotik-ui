@@ -126,3 +126,12 @@ describe('One toolbar row at phone width', () => {
     expect([scenes, discarded]).toEqual([1, 1])
   })
 })
+
+describe('WorkspaceSwitcher pop-up', () => {
+  it('is sized by the chosen label, not the longest option', () => {
+    const { component } = example('toolbar')
+    const modes = [{ value: 'data', label: 'Data' }, { value: 'screenplay', label: 'Screenplay' }]
+    const { container } = render(component, { props: { modes, mode: 'data', width: 390, compactBelow: 560, filter: null } })
+    expect(container.querySelector('.switcher__sizer').textContent).toBe('Data')
+  })
+})

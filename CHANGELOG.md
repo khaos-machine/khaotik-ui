@@ -18,6 +18,14 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.176.1] — 2026-11-01
+
+### Fixed
+
+- `WorkspaceSwitcher`'s pop-up is now actually sized to its current value. In 0.176.0 the select still lent the cell its widest option's width, so it was 106 px in every view. Measured at 390: Data 66, Atlas 68, Screenplay 105.
+- `Toolbar` holds one row at 390 with the picker and Atlas's four lenses, or the picker and Screenplay's five 44 pt actions. An empty spacer no longer costs a second gap, and at phone width the row's gap is 4 px.
+- `Toolbar` at phone width is one height, 53 px, whether it holds segments or 44 pt buttons: those buttons are border-box. Desktop is unchanged at 53.
+
 ## [0.176.0] — 2026-11-01
 
 One toolbar row at phone width: the workspace picker, then the view's own controls beside it.

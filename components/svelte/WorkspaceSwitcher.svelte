@@ -111,8 +111,10 @@
     white-space: nowrap;
     padding-right: calc(var(--spacing-xs) + 20px);
   }
+  /* width 0 so the options never size the cell; the sizer alone does, and the select fills it. */
   .switcher__fit select {
-    width: 100%;
+    width: 0;
+    min-width: 100%;
   }
   .switcher__popup:focus-visible {
     outline: var(--size-stroke-focus) solid var(--border-focus);

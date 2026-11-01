@@ -236,8 +236,10 @@
     align-items: center;
     min-width: 0;
   }
+  /* An empty spacer takes no gap of its own: the gap before it is given back. */
   .toolbar__spacer {
     flex: 1;
+    margin-left: calc(-1 * var(--spacing-xs));
   }
   /* Compact, the title is the last thing to give way. */
   .toolbar--compact .toolbar__title {
@@ -326,7 +328,10 @@
       flex-wrap: wrap;
       overflow: visible;
       padding-block: var(--spacing-2xs);
-      row-gap: var(--spacing-2xs);
+      gap: var(--spacing-2xs);
+    }
+    .toolbar__spacer {
+      margin-left: calc(-1 * var(--spacing-2xs));
     }
     .toolbar__filter {
       flex: 1 1 160px;
@@ -337,8 +342,9 @@
     .toolbar__main :global(.ui-button),
     .toolbar__button,
     .toolbar__toggle {
+      box-sizing: border-box;
       min-width: 44px;
-      min-height: 44px;
+      height: 44px;
       justify-content: center;
     }
   }
