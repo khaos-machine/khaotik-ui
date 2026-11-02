@@ -18,6 +18,16 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.178.1] — 2026-11-01
+
+### Fixed
+
+- StoryOverview reads a coverage report with any unfinished section the engine
+  reports: character journeys, relationships, scenes, characters and locations.
+  Before, every label but character journeys failed the whole Coverage section.
+- A coverage report with no scored dimension shows "No verdict" instead of
+  failing the section.
+
 ## [0.178.0] — 2026-11-01
 
 ### Added

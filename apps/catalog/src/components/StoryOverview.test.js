@@ -89,6 +89,18 @@ describe('StoryOverview read sections', () => {
     expect(screen.getByText("Part of this coverage wasn't finished: character journeys.")).toBeVisible()
   })
 
+  it('names every section the engine can report unfinished', () => {
+    const incompleteSections = ['character-journey', 'relationships', 'scenes', 'characters', 'locations']
+    render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, incompleteSections }) } })
+    expect(screen.getByText("Part of this coverage wasn't finished: character journeys, relationships, scenes, characters, locations.")).toBeVisible()
+  })
+
+  it('says "No verdict" when the engine scored no dimension', () => {
+    const verdict = { value: '', source: 'none', confidence: 'none' }
+    render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, rubric: { ...report.rubric, verdict } }) } })
+    expect(within(region('Coverage')).getByText('No verdict')).toBeVisible()
+  })
+
   it('lists the assessment and the rubric, "No score" where the engine gave none', () => {
     const dims = report.rubric.dimensions.map((d, i) => (i === 1 ? { ...d, score: { value: null, source: 'none', confidence: 'none' } } : d))
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, rubric: { ...report.rubric, dimensions: dims } }) } })

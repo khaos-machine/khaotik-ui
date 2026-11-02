@@ -27,11 +27,13 @@ export function productionFlags(r: Record<string, any> | null): {
  */
 /** @type {Readonly<Record<string, string>>} */
 export const OUTCOMES: Readonly<Record<string, string>>;
-/** @type {Readonly<Record<string, { text: string, tone: 'success' | 'warning' | 'danger' }>>} */
+/** The empty verdict is the engine's when no dimension was scored (KSPD coverage-report, source none). */
+/** @type {Readonly<Record<string, { text: string, tone: 'success' | 'warning' | 'danger' | 'neutral' }>>} */
 export const VERDICTS: Readonly<Record<string, {
     text: string;
-    tone: "success" | "warning" | "danger";
+    tone: "success" | "warning" | "danger" | "neutral";
 }>>;
+/** Every section the engine reports unfinished: its grounding layers and its analysed entity types. */
 /** @type {Readonly<Record<string, string>>} */
 export const INCOMPLETE: Readonly<Record<string, string>>;
 /** @type {Readonly<Record<string, string>>} */

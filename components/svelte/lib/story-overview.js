@@ -34,11 +34,19 @@ export const OUTCOMES = {
   'insufficient-evidence': 'Not enough to tell',
 }
 
-/** @type {Readonly<Record<string, { text: string, tone: 'success' | 'warning' | 'danger' }>>} */
-export const VERDICTS = { recommend: { text: 'Recommend', tone: 'success' }, consider: { text: 'Consider', tone: 'warning' }, pass: { text: 'Pass', tone: 'danger' } }
+/** The empty verdict is the engine's when no dimension was scored (KSPD coverage-report, source none). */
+/** @type {Readonly<Record<string, { text: string, tone: 'success' | 'warning' | 'danger' | 'neutral' }>>} */
+export const VERDICTS = { recommend: { text: 'Recommend', tone: 'success' }, consider: { text: 'Consider', tone: 'warning' }, pass: { text: 'Pass', tone: 'danger' }, '': { text: 'No verdict', tone: 'neutral' } }
 
+/** Every section the engine reports unfinished: its grounding layers and its analysed entity types. */
 /** @type {Readonly<Record<string, string>>} */
-export const INCOMPLETE = { 'character-journey': 'character journeys' }
+export const INCOMPLETE = {
+  'character-journey': 'character journeys',
+  relationships: 'relationships',
+  scenes: 'scenes',
+  characters: 'characters',
+  locations: 'locations',
+}
 
 /** @type {Readonly<Record<string, string>>} */
 export const FLAGS = {
