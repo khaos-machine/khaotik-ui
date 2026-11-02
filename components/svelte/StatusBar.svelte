@@ -158,8 +158,8 @@
         <div class="status__fill" style:width={count ? `${(count.completed / count.total) * 100}%` : undefined}></div>
       </div>
       {#if count}<span class="status__count">{count.completed}/{count.total}</span>{/if}
-      {#if elapsed}<span class="status__count">{elapsed}</span>{/if}
-      {#if remaining}<span>{remaining}</span>{/if}
+      {#if elapsed}<span class="status__count status__time">{elapsed}</span>{/if}
+      {#if remaining}<span class="status__time">{remaining}</span>{/if}
       {#if active.cancel}
         <button type="button" class="status__button" data-ui-id="{uiId}.cancel" aria-label="Cancel {active.label}" onclick={() => active.cancel?.()}>Cancel</button>
       {/if}
@@ -248,12 +248,28 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    flex: none;
+    flex: 0 1 auto;
+    min-width: 0;
     margin-left: auto;
     white-space: nowrap;
   }
+  /* The label and the bar give way, so the count and Cancel stay in reach on a phone. */
   .status__job-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: var(--text-primary);
+  }
+  /* The time is in the bar's accessible value, and a phone needs the room for the label. */
+  @media (max-width: 599px) {
+    .status__time {
+      display: none;
+    }
+  }
+  @container viewport (max-width: 599px) {
+    .status__time {
+      display: none;
+    }
   }
   .status__more {
     color: var(--text-secondary);
@@ -264,6 +280,7 @@
   .status__bar {
     position: relative;
     width: 120px;
+    min-width: 0;
     height: 4px;
     overflow: hidden;
     border-radius: var(--radius-full);

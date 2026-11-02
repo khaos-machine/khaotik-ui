@@ -18,6 +18,16 @@ description of a live consumer.
 
 ## [Unreleased]
 
+## [0.178.2] — 2026-11-02
+
+### Fixed
+
+- StatusBar keeps a running job's count and Cancel in view on a phone. The label
+  truncates with an ellipsis and the progress bar narrows when space runs out.
+  Below 600 wide the elapsed and remaining times are hidden; screen readers still
+  get the time left from the progress bar. Wider layouts don't change. The catalog
+  has a long-label example.
+
 ## [0.178.1] — 2026-11-01
 
 ### Fixed

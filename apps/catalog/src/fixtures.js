@@ -3531,6 +3531,8 @@ export const fixtures = [
     id: 'status-bar', name: 'StatusBar', kind: 'component', section: 'components', group: 'shell', component: StatusBar,
     examples: [
       { label: 'Analysis running, another queued', props: { engine: { state: 'ready', label: `khaosd ${engineData.daemonVersion ?? ''} ready`.trim() }, jobs: [{ id: 'scenes', label: 'Analysing scenes', progress: { completed: 12, total: 54 }, elapsedMs: 83_000, remainingMs: 290_000, cancel: () => {} }, { id: 'read', label: 'Reading S48' }] } },
+      // At phone width the label truncates and the bar narrows; the count and Cancel stay in view.
+      { label: 'Long label: fits a phone', props: { jobs: [{ id: 'scenes', label: 'Extracting scenes, 2 of 2 · EXT. PLATFORM - NIGHT AT THE FAR END OF THE LINE', progress: { completed: 2, total: 2 }, elapsedMs: 83_000, remainingMs: 290_000, cancel: () => {} }], ondetails: () => {}, detailsLabel: 'Activity', detailsIcon: 'clock-counter-clockwise' } },
       { label: 'Extraction starting, no count yet', props: { engine: { state: 'ready', label: 'khaosd ready' }, jobs: [{ id: 'extract', label: 'Extracting entities', elapsedMs: 4_000 }] } },
       { label: 'Result, no Undo', props: { engine: { state: 'ready', label: 'khaosd ready' }, result: { text: 'Cast DESMOND to Desmond' } } },
       { label: 'Offline', props: { engine: { state: 'offline', label: 'khaosd is not running' } } },
