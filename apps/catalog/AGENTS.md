@@ -198,8 +198,9 @@ standalone.
   (one `.kspd` = one story), so the launcher shows a **Stories** grid of these
   cards. The launcher + `ProjectCard` fixtures use the **real** projects
   (`BROKEN IN 4 PLACES` = 54/27/26, `Heart of an Indie` = 5/4/3).
-- **Shell**: search + sort (Grouped / Name), version in the sidebar brand, and
-  a **Settings** sheet. Settings had an Updates section driven by
+- **Shell**: search + sort (Grouped / Name) and a **Settings** sheet, which is
+  where the version is shown (it moved there from the app bar; see the comment
+  in `App.svelte`). Settings had an Updates section driven by
   `Updater.svelte` until D95; it now holds About alone. `src/fixtures.js`
   exports `APP_VERSION` (`App.svelte` imports it), read from the root
   `package.json` — the catalog reports the library version it was built with,

@@ -23,9 +23,10 @@ description of a live consumer.
 
 ### Changed
 
-- The package contents are unchanged: no component, token, asset or type
-  declaration differs from 0.178.2, and the one edit to a shipped file is a
-  comment in `SetupProgress.svelte`. The catalog is now web-only and publishes
+- No component, token, asset or `.d.ts` changes from 0.178.2 beyond a comment
+  in `SetupProgress.svelte`. Of the other files the package ships, `README.md`
+  changes its catalog link and release line, and `package.json` moves the
+  version to 0.178.3. The catalog is now web-only and publishes
   to GitHub Pages, at https://khaos-machine.github.io/khaotik-ui/, on each
   `lib-*` tag after the gates pass. It shows the library version it was built
   from. The desktop catalog, its separate releases and its updater are

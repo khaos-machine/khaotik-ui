@@ -37,8 +37,10 @@ grep -c '^export' components/svelte/index.js                    # export count
 ```
 
 There is one release family. A `lib-*` tag fires `lib-publish.yml` and
-`catalog-pages.yml`; no other tag releases anything. Consumers pin a readable
-`lib-*` tag rather than `main` or a bare SHA.
+`catalog-pages.yml`; no other tag releases anything. Consumers pin an exact npm
+version rather than `main` or a bare SHA. **Killed by:** any workflow that
+publishes on another trigger; `grep -n -A2 '^on:' .github/workflows/*.yml`
+answers it.
 
 ## Retiring
 

@@ -207,8 +207,8 @@ npx vitest run -t "renders the tone"
 
 Three quirks, from `apps/catalog/AGENTS.md`, "Testing quirks":
 
-- `apps/catalog/vite.config.js:7-9` sets `resolve: { conditions: ['browser'] }`.
-  Without it Svelte 5 resolves its **server** build and `mount()` throws
+- The `resolve.conditions` setting in `apps/catalog/vite.config.js` is
+  `['browser']`. Without it Svelte 5 resolves its **server** build and `mount()` throws
   `lifecycle_function_unavailable`.
 - `apps/catalog/src/vitest-setup.js:21` calls `afterEach(cleanup)` —
   testing-library does not auto-cleanup under vitest, and without it components
@@ -220,8 +220,8 @@ Three quirks, from `apps/catalog/AGENTS.md`, "Testing quirks":
 
 Two more the config and setup file explain in place:
 
-- `apps/catalog/vite.config.js:13-16` sets `css: true` so a `?raw` CSS import
-  returns real text instead of vitest's empty-module stub — that is what makes
+- The `test.css: true` setting in `apps/catalog/vite.config.js` makes a `?raw`
+  CSS import return real text instead of vitest's empty-module stub — that is what makes
   the token tests read the actual `tokens.css`.
 - `apps/catalog/src/vitest-setup.js:5-19` shims `ResizeObserver` as a no-op.
   Ark's Segment Group measures the checked item to place its indicator, and

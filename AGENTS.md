@@ -167,8 +167,10 @@ each.
 
 There were two workflows until D61. `storybook-deploy.yml` republished a
 Storybook catalog to `khaotik-ui.loswf.com` on any push to `main`, and
-`catalog-release.yml` deployed it again as its own last step; both are gone with
-Storybook. `khaotik-ui.loswf.com` no longer resolves — issue #40 retired the
+`catalog-release.yml` deployed it again as its own last step. Both stopped with
+Storybook: `storybook-deploy.yml` was deleted and `catalog-release.yml` lost that
+step. `catalog-release.yml` itself stayed, as the desktop release workflow,
+until #22 removed it (D95). `khaotik-ui.loswf.com` no longer resolves — issue #40 retired the
 bucket, the CloudFront distribution and the DNS record on 2026-08-18, with no
 redirect to the catalog.
 
@@ -258,13 +260,12 @@ that lives only in prose is followed only by whoever reads it: the pointer was
 taken off the catalog a **sixth** time by `lib-0.20.0`, and sat on a library
 marker with no DMG until it was found and restored to `v0.17.0`.
 
-**Consumers pin a commit, not a branch.** This said "anything pinned to `main`
-picks up library changes with no tag and no signal", and nothing pins to `main`
-— `khaos-app/package.json` pins a bare SHA. That is the same no-signal problem
-wearing different clothes: the pin was 24 commits and two minor versions stale
-before anyone noticed, so D58's break and D59's shipped `.d.ts` had never
-reached the client. Pin a `lib-*` tag instead; a version in the dependency
-string is a thing a human can read.
+**Consumers pin an exact npm version.** A version in the dependency string is
+a thing a human can read. khaos-app once pinned a bare SHA, which is the same
+no-signal problem as pinning `main`: the pin was 24 commits and two minor
+versions stale before anyone noticed, so D58's break and D59's shipped `.d.ts`
+had never reached the client. It pins an npm version now; read which one in
+`khaos-app/package.json`, not here.
 
 `0.2.0` is the first deliberate break (D58), and the version had never moved
 before it.
