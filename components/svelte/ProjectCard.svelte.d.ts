@@ -33,13 +33,17 @@ declare const ProjectCard: import("svelte").Component<{
      */
     onInitGit?: (event: MouseEvent) => void;
     /**
-     * A background job running on this project — an import or an extraction — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
+     * A background job running on this project — an import, an extraction or an analysis pass — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
      */
     job?: import("./lib/types.js").ProjectJob;
     /**
      * Invoked by the parsed-package extraction action, offered with no job or a failed extraction.
      */
     onExtract?: (event: MouseEvent) => void;
+    /**
+     * When set, a failed analysis `job` offers a retry ("Retry character analysis for <title>") that invokes it. The host knows which job it passed, so it dispatches that one again. A failed extraction keeps its own retry through `onExtract`.
+     */
+    onRetry?: (event: MouseEvent) => void;
     /**
      * What the host knows of the three analyses — scenes, characters, places — drawn as the rail's last three segments, placed by `kind`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
      */
@@ -79,13 +83,17 @@ type Props = {
      */
     onInitGit?: (event: MouseEvent) => void;
     /**
-     * A background job running on this project — an import or an extraction — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
+     * A background job running on this project — an import, an extraction or an analysis pass — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
      */
     job?: import("./lib/types.js").ProjectJob;
     /**
      * Invoked by the parsed-package extraction action, offered with no job or a failed extraction.
      */
     onExtract?: (event: MouseEvent) => void;
+    /**
+     * When set, a failed analysis `job` offers a retry ("Retry character analysis for <title>") that invokes it. The host knows which job it passed, so it dispatches that one again. A failed extraction keeps its own retry through `onExtract`.
+     */
+    onRetry?: (event: MouseEvent) => void;
     /**
      * What the host knows of the three analyses — scenes, characters, places — drawn as the rail's last three segments, placed by `kind`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
      */

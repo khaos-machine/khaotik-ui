@@ -11,9 +11,9 @@ export type StatusTone = "neutral" | "success" | "warning" | "danger" | "info" |
  */
 export type ProjectJob = {
     /**
-     * An analysis kind fills its own rail segment.
+     * The three `analyze-*` kinds fill their own rail segment. The five story passes after them are khaosd's job types and have no segment.
      */
-    kind: "import" | "extract" | "analyze-scenes" | "analyze-characters" | "analyze-places";
+    kind: "import" | "extract" | "analyze-scenes" | "analyze-characters" | "analyze-places" | "character-journeys" | "relationship-synthesis" | "story-structure" | "premise" | "coverage-report";
     /**
      * `downloading` is import-only; `finalizing` is for extraction and analysis.
      */

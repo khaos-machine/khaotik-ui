@@ -143,7 +143,7 @@ describe('ProjectCard rail: an analysis job fills its own segment live', () => {
     expect(card({ job: { kind: 'analyze-scenes', phase } }).querySelector('.project__label').textContent).toBe(label)
   })
 
-  it('does not offer extraction or retry over an analysis job', () => {
+  it('keeps the extract action, not an extraction retry, over a failed analysis job', () => {
     const c = card({
       project: { ...indexed, package_stage: 'parsed' },
       onExtract: () => {},
@@ -152,6 +152,50 @@ describe('ProjectCard rail: an analysis job fills its own segment live', () => {
     const action = c.querySelector('.project__action')
     expect(action.getAttribute('aria-label')).toBe('Extract Broken in Four Places')
     expect(action.disabled).toBe(false)
+  })
+})
+
+// khaotik-ui#27: the five story passes khaosd runs after the three analyses.
+describe('ProjectCard: a story pass job', () => {
+  it.each([
+    ['character-journeys', 'Analyzing character journeys', 'Character journey analysis failed'],
+    ['relationship-synthesis', 'Analyzing relationships', 'Relationship analysis failed'],
+    ['story-structure', 'Analyzing story structure', 'Story structure analysis failed'],
+    ['premise', 'Analyzing the premise', 'Premise analysis failed'],
+    ['coverage-report', 'Analyzing coverage', 'Coverage analysis failed'],
+  ])('%s names itself running and failed, and claims no rail segment', (kind, running, failed) => {
+    const run = card({ job: { kind, phase: 'running', progress: { completed: 3, total: 9 } } })
+    expect(run.querySelector('.project__label').textContent).toBe(running)
+    expect(run.querySelector('.project__count').textContent).toBe('3/9')
+    expect(steps(run).some((s) => has(s, 'active'))).toBe(false)
+    expect(steps(run).map((s) => has(s, 'complete'))).toEqual([true, true, true, false, false, false])
+    const fail = card({ job: { kind, phase: 'failed' } })
+    expect(fail.querySelector('.project__label').textContent).toBe(failed)
+    expect(fail.querySelector('.project__status').dataset.tone).toBe('danger')
+  })
+})
+
+// khaotik-ui#28: a failed analysis job offers a retry through `onRetry`.
+describe('ProjectCard: retrying a failed analysis', () => {
+  const retry = (c) => [...c.querySelectorAll('.project__action')].find((b) => b.getAttribute('aria-label').startsWith('Retry'))
+
+  it.each([
+    ['analyze-characters', 'Retry character analysis for Broken in Four Places'],
+    ['coverage-report', 'Retry coverage analysis for Broken in Four Places'],
+  ])('offers a retry for a failed %s job and invokes onRetry', (kind, label) => {
+    let calls = 0
+    const c = card({ job: { kind, phase: 'failed' }, onRetry: () => calls++ })
+    const button = retry(c)
+    expect(button.getAttribute('aria-label')).toBe(label)
+    button.click()
+    expect(calls).toBe(1)
+  })
+
+  it('offers no retry without onRetry, for a job still running, or for an extraction', () => {
+    expect(retry(card({ job: { kind: 'analyze-scenes', phase: 'failed' } }))).toBeUndefined()
+    expect(retry(card({ job: { kind: 'analyze-scenes', phase: 'running' }, onRetry: () => {} }))).toBeUndefined()
+    const extract = card({ project: { ...indexed, package_stage: 'parsed' }, job: { kind: 'extract', phase: 'failed' }, onRetry: () => {}, onExtract: () => {} })
+    expect([...extract.querySelectorAll('.project__action')].map((b) => b.getAttribute('aria-label'))).toEqual(['Retry extraction for Broken in Four Places'])
   })
 })
 

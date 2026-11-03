@@ -340,7 +340,31 @@ today.
 | extract | running | Extracting entities from scenes | if sent | yes | if sent, else "estimating time left" when there is a count |
 | extract | finalizing | Finalizing extraction… | if sent | yes | no |
 | extract | failed | Extraction failed | last value | no | no |
+| analysis pass | starting | Starting <noun> analysis… | no | yes | no |
+| analysis pass | queued | <Noun> analysis queued | no | if sent | no |
+| analysis pass | running | Analyzing <object> | if sent | yes | if sent, else "estimating time left" when there is a count |
+| analysis pass | finalizing | Finalizing <noun> analysis… | if sent | yes | no |
+| analysis pass | failed | <Noun> analysis failed | last value | no | no |
 | none | (done or idle) | stage chip, unchanged | no | no | no |
+
+An analysis pass's noun and object, by kind:
+
+| Kind | Noun | Object | Rail segment |
+| --- | --- | --- | --- |
+| `analyze-scenes` | scene | scenes | 4 |
+| `analyze-characters` | character | characters | 5 |
+| `analyze-places` | place | places | 6 |
+| `character-journeys` | character journey | character journeys | none |
+| `relationship-synthesis` | relationship | relationships | none |
+| `story-structure` | story structure | story structure | none |
+| `premise` | premise | the premise | none |
+| `coverage-report` | coverage | coverage | none |
+
+The last five are khaosd's job types for the default flow's story passes, which
+run after the three analyses (khaotik-ui#27). They have no rail segment, so the
+rail shows what the stage and `analyses` say while one runs. A failed pass of
+any of the eight offers "Retry <noun> analysis for <title>" when the host passes
+`onRetry` (khaotik-ui#28).
 
 Format rules, none of them new:
 

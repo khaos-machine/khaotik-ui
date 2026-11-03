@@ -49,24 +49,33 @@
   // of 53 read "Analyzing scenes 1/53" with no job); `in-progress` is work running.
   const ANALYSIS_STATES = new Set(['not-started', 'partial', 'in-progress', 'done', 'failed'])
 
-  // An analysis job's kind → [segment, noun].
+  // An analysis job's kind → [segment, noun, what "Analyzing" names]. The five
+  // story passes after the three analyses take khaosd's job type as their kind
+  // and have no segment: the rail draws the three analyses only.
   const ANALYSIS_JOBS = new Map([
-    ['analyze-scenes', [3, 'scene']],
-    ['analyze-characters', [4, 'character']],
-    ['analyze-places', [5, 'place']],
+    ['analyze-scenes', [3, 'scene', 'scenes']],
+    ['analyze-characters', [4, 'character', 'characters']],
+    ['analyze-places', [5, 'place', 'places']],
+    ['character-journeys', [null, 'character journey', 'character journeys']],
+    ['relationship-synthesis', [null, 'relationship', 'relationships']],
+    ['story-structure', [null, 'story structure', 'story structure']],
+    ['premise', [null, 'premise', 'the premise']],
+    ['coverage-report', [null, 'coverage', 'coverage']],
   ])
+
+  const capitalise = (s) => `${s[0].toUpperCase()}${s.slice(1)}`
 
   // A job's status line, by kind and then phase (docs/design/
   // project-card-progress.md, "Copy"). Maps for the reason the stage tables
   // are: an unknown kind or phase — including `toString` — finds nothing, so
   // the card renders no job and falls back to the stage chip.
   const JOB_LABELS = new Map([
-    ...[...ANALYSIS_JOBS].map(([kind, [, noun]]) => [kind, new Map([
+    ...[...ANALYSIS_JOBS].map(([kind, [, noun, object]]) => [kind, new Map([
       ['starting', `Starting ${noun} analysis…`],
-      ['queued', `${noun[0].toUpperCase()}${noun.slice(1)} analysis queued`],
-      ['running', `Analyzing ${noun}s`],
+      ['queued', `${capitalise(noun)} analysis queued`],
+      ['running', `Analyzing ${object}`],
       ['finalizing', `Finalizing ${noun} analysis…`],
-      ['failed', `${noun[0].toUpperCase()}${noun.slice(1)} analysis failed`],
+      ['failed', `${capitalise(noun)} analysis failed`],
     ])]),
     ['import', new Map([
       ['downloading', 'Downloading from iCloud'],
@@ -115,7 +124,7 @@
       if (a?.state === 'done') continue
       const count = validCount(a?.progress)
       const counted = count ? { progress: `${count.completed}/${count.total}` } : {}
-      if (a?.state === 'partial') return { label: `${kind[0].toUpperCase()}${kind.slice(1)} analyzed`, tone: 'neutral', ...counted }
+      if (a?.state === 'partial') return { label: `${capitalise(kind)} analyzed`, tone: 'neutral', ...counted }
       if (a?.state !== 'in-progress' && a?.state !== 'failed') return null
       const failed = a.state === 'failed'
       const label = JOB_LABELS.get(`analyze-${kind}`).get(failed ? 'failed' : 'running')
@@ -146,8 +155,9 @@
    * @property {(event: MouseEvent) => void} [onRemove] When set, shows **Remove from Recents** and binds its invocation. It removes the project from the host's recent list and never deletes it: a person deletes a project in the Finder (project portability plan, D1). Hidden when omitted.
    * @property {string} [removeLabel] Renames the `onRemove` control for a host whose remove is not "Remove from Recents", such as "Delete". Its accessible name becomes "<removeLabel>: <title>".
    * @property {(event: MouseEvent) => void} [onInitGit] When set **and the project has no repo**, shows the git-init button and binds its invocation. Not offered once `project.git_repo` is true — there is nothing to initialise. This prop was previously accepted and never used: the card took the handler and dropped it, so a launcher wiring git-init got silence.
-   * @property {import('./lib/types.js').ProjectJob} [job] A background job running on this project — an import or an extraction — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
+   * @property {import('./lib/types.js').ProjectJob} [job] A background job running on this project — an import, an extraction or an analysis pass — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
    * @property {(event: MouseEvent) => void} [onExtract] Invoked by the parsed-package extraction action, offered with no job or a failed extraction.
+   * @property {(event: MouseEvent) => void} [onRetry] When set, a failed analysis `job` offers a retry ("Retry character analysis for <title>") that invokes it. The host knows which job it passed, so it dispatches that one again. A failed extraction keeps its own retry through `onExtract`.
    * @property {readonly import('./lib/types.js').ProjectAnalysis[]} [analyses] What the host knows of the three analyses — scenes, characters, places — drawn as the rail's last three segments, placed by `kind`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
    * @property {import('svelte').Snippet} [children] The host's content below the footer — what a failed job offers (a fix, Report a Problem…), which only the host can choose. Rendered whatever the job, raised above the card's activate overlay so its controls take the click, and outside the `aria-hidden` footer so they are announced. Omit it and the card draws no empty slot.
    */
@@ -166,6 +176,7 @@
     onInitGit = undefined,
     job = undefined,
     onExtract = undefined,
+    onRetry = undefined,
     analyses = undefined,
     children = undefined,
   } = $props()
@@ -230,6 +241,13 @@
     return { label: `Extract ${title}`, disabled: false }
   })
 
+  // A failed analysis job's retry, named for the pass that failed.
+  const retryLabel = $derived.by(() => {
+    if (!onRetry || activeJob?.phase !== 'failed') return ''
+    const noun = ANALYSIS_JOBS.get(activeJob.kind)?.[1]
+    return noun ? `Retry ${noun} analysis for ${title}` : ''
+  })
+
   // What the host reports per analysis segment, by index. First report of a
   // kind wins; an unknown kind or state reports nothing.
   const reportedAnalyses = $derived.by(() => {
@@ -263,7 +281,8 @@
     let jobStep = -1
     if (activeJob) {
       const { kind, phase } = activeJob
-      jobStep = ANALYSIS_JOBS.get(kind)?.[0] ?? (kind === 'extract' ? 2 : phase === 'running' ? 1 : 0)
+      // A story pass has no segment, so its step is -1 and the stage places the rail.
+      jobStep = ANALYSIS_JOBS.has(kind) ? ANALYSIS_JOBS.get(kind)[0] ?? -1 : kind === 'extract' ? 2 : phase === 'running' ? 1 : 0
     }
     const importDone = jobStep >= 0 && jobStep < IMPORT_SEGMENTS ? jobStep : stage?.step ?? 0
     const fractionOf = (count) => (count ? count.completed / count.total : null)
@@ -309,6 +328,11 @@
   function handleExtract(event) {
     event.stopPropagation()
     onExtract?.(event)
+  }
+
+  function handleRetry(event) {
+    event.stopPropagation()
+    onRetry?.(event)
   }
   const logline = $derived(project.logline ?? project.summary ?? '')
   const scenes = $derived(project.scene_count ?? 0)
@@ -694,8 +718,13 @@
 
   {#if children}<div class="project__detail">{@render children()}</div>{/if}
 
-  {#if !isImport && (extractionAction || onRemove || showInitGit)}
+  {#if !isImport && (retryLabel || extractionAction || onRemove || showInitGit)}
     <div class="project__actions">
+      {#if retryLabel}
+        <button class="project__action" type="button" aria-label={retryLabel} onclick={handleRetry}>
+          <Icon name="arrow-clockwise" />
+        </button>
+      {/if}
       {#if extractionAction}
         <button
           class="project__action"
