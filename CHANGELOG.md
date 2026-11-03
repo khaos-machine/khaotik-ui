@@ -20,6 +20,18 @@ current pin.
 
 ## [Unreleased]
 
+## [0.178.5] — 2026-11-03
+
+### Fixed
+
+- StoryOverview labels unfinished coverage sections as KSPD RFC 0128 declares
+  them: Scene analysis, Character analysis, Location analysis, Character
+  journeys, Relationships and Story structure. Any other name is shown exactly
+  as sent, so the 0.178.4 hyphens-to-spaces fallback is gone. The `scenes`,
+  `characters` and `locations` labels are removed because the RFC does not
+  declare them. Names sent by khaos-tools v0.136.0 or earlier now show as their
+  raw ids.
+
 ## [0.178.4] — 2026-11-03
 
 ### Fixed

@@ -3,7 +3,7 @@
   // and the coverage report. Each section is drawn from its own read, so one failing or missing
   // never blanks the others. Values are shown as the engine sent them; the closed label maps in
   // lib/story-overview.js are presentation, and a value outside them fails its section, except an
-  // unfinished section, which the protocol leaves open and is named from its id.
+  // unfinished section the protocol does not declare, which is shown exactly as sent.
   import Button from './Button.svelte'
   import InspectorSection from './InspectorSection.svelte'
   import LabeledPill from './LabeledPill.svelte'
