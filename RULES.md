@@ -111,7 +111,8 @@ this file conflicts with another root document.
 - A `lib-*` tag is the only release: it publishes the library to npm
   (`lib-publish.yml`) and the catalog to GitHub Pages (`catalog-pages.yml`).
   The desktop catalog and its separate release path are retired (D95).
-- Consumers pin a `lib-*` tag. Do not recommend `main` or a bare SHA.
+- Consumers pin an exact released npm version: the version a `lib-*` tag
+  publishes. Never recommend `main` or a bare SHA.
 - Use semantic commit prefixes and a `docs/`, `feature/`, `feat/`, or `fix/` branch.
   Changes reach `main` through a pull request, merged only after
   `gates / gates` passes. Branch protection enforces this, but not `strict`, so

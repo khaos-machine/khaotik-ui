@@ -10,12 +10,13 @@ reports the library version — see [AGENTS.md](AGENTS.md), "Releases". Until
 0.178.3 the catalog was a separately versioned desktop app; it is retired
 (D95).
 
-**Consumers should pin a `lib-*` tag, not a bare SHA.** A version in a
-dependency string is something a human can read. `khaos-app` once pinned a bare
-SHA and was 24 commits and two minor versions stale before anyone noticed, so
-D58's break and D59's shipped `.d.ts` had never reached the client. It pins a
-`lib-*` tag now — measured 2026-09-22 — so that sentence is history, not a
-description of a live consumer.
+**Consumers should pin an exact released npm version** — the version a `lib-*`
+tag publishes — never `main` or a bare SHA. A version in a dependency string is
+something a human can read. `khaos-app` once pinned a bare SHA and was 24
+commits and two minor versions stale before anyone noticed, so D58's break and
+D59's shipped `.d.ts` had never reached the client. That sentence is history,
+not a description of a live consumer; `khaos-app/package.json` holds its
+current pin.
 
 ## [Unreleased]
 

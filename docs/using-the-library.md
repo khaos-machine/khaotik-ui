@@ -487,9 +487,10 @@ version is the release. The same tag publishes the catalog to
 [GitHub Pages](https://khaos-machine.github.io/khaotik-ui/), which shows the
 library version it was built from.
 
-**Pin an exact version** and upgrade deliberately. A range picks up a breaking
-change with no warning, the way D58's rename once reached a consumer pinned to
-`main`:
+**Pin an exact released npm version** — the version a `lib-*` tag publishes —
+and upgrade deliberately. Never pin `main` or a bare SHA, and never a range: a
+range picks up a breaking change with no warning, the way D58's rename once
+reached a consumer pinned to `main`:
 
 ```jsonc
 "@khaos-machine/khaotik-ui": "0.178.3"

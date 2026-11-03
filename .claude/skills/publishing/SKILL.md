@@ -60,8 +60,9 @@ that throws at evaluation. See `apps/catalog/src/utilities.test.js` and
 
 The package ships only `components/`, `tokens/` and `assets/` (the `files` list
 in `package.json`). Check a change to that list with `npm pack --dry-run`.
-Consumers pin an exact version, so a breaking change reaches them only when they
-upgrade.
+Consumers pin an exact released npm version — the version a `lib-*` tag
+publishes, never `main` or a bare SHA — so a breaking change reaches them only
+when they upgrade.
 
 ## Showing someone an unreleased change
 
