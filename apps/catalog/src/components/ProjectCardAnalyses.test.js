@@ -209,6 +209,11 @@ describe('ProjectCard: a reported story pass', () => {
     expect(label([...three, { kind: 'relationship-synthesis', state: 'partial', progress: { completed: 2, total: 5 } }])).toBe('Relationship analysis partly done')
   })
 
+  it.each(passes)('labels a reported %s by its own kind', (kind, _i, _s, running, failed) => {
+    expect(label([...three, { kind, state: 'in-progress' }])).toBe(running)
+    expect(label([...three, { kind, state: 'failed' }])).toBe(failed)
+  })
+
   it('lets the stage speak for a reported story pass not yet started', () => {
     expect(label([...three, { kind: 'premise', state: 'not-started' }])).toBe('Indexed')
   })

@@ -2298,7 +2298,7 @@ export const fixtures = [
       { label: 'Job 13: done (no job)', props: {
         project: { ...PROJECT_BASE, package_stage: 'indexed' },
       } },
-      // The rail's last three segments: what the host reports of each analysis
+      // The rail's three analysis segments: what the host reports of each analysis
       // (hover a segment for its name and count), and a live analysis job.
       { label: 'Analyses: scenes part-done, characters and places not started', props: {
         project: { ...PROJECT_BASE, package_stage: 'indexed' },

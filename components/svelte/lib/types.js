@@ -53,7 +53,7 @@
  * A background job running on a project, as the host knows it
  * (docs/design/project-card-progress.md, "Interface contract").
  * @typedef {Object} ProjectJob
- * @property {'import'|'extract'|'analyze-scenes'|'analyze-characters'|'analyze-places'|'character-journeys'|'relationship-synthesis'|'story-structure'|'premise'|'coverage-report'} kind The three `analyze-*` kinds fill their own rail segment. The five story passes after them are khaosd's job types and have no segment.
+ * @property {'import'|'extract'|'analyze-scenes'|'analyze-characters'|'analyze-places'|'character-journeys'|'relationship-synthesis'|'story-structure'|'premise'|'coverage-report'} kind Each analysis kind fills its own rail segment: the three `analyze-*` kinds, then the five story passes, which are khaosd's job types.
  * @property {'downloading'|'starting'|'queued'|'running'|'finalizing'|'failed'} phase `downloading` is import-only; `finalizing` is for extraction and analysis.
  * @property {{ readonly completed: number, readonly total: number }} [progress] Real counts only. Omit when the process has not emitted them.
  * @property {number} [elapsedMs] Measured from when the operator started the job.
@@ -61,6 +61,7 @@
  */
 
 /**
+ * One analysis of a project as the host knows it — the `ProjectCard` rail's
  * last eight segments. Report only what the engine says; an analysis the
  * engine does not report is omitted, not sent as `not-started`.
  * @typedef {Object} ProjectAnalysis

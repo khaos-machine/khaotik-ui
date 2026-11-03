@@ -345,6 +345,7 @@ today.
 | analysis pass | running | Analyzing <object> | if sent | yes | if sent, else "estimating time left" when there is a count |
 | analysis pass | finalizing | Finalizing <noun> analysis… | if sent | yes | no |
 | analysis pass | failed | <Noun> analysis failed | last value | no | no |
+| story pass, reported `partial` | (no job) | <Noun> analysis partly done | if sent | no | no |
 | none | (done or idle) | stage chip, unchanged | no | no | no |
 
 An analysis pass's noun and object, by kind:
