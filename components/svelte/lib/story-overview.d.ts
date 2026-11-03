@@ -34,9 +34,9 @@ export const VERDICTS: Readonly<Record<string, {
     tone: "success" | "warning" | "danger" | "neutral";
 }>>;
 /**
- * The sections the engine reports unfinished that have a written label. Unlike the other maps this
- * one is open: KSPD declares `incompleteSections` an open list of strings, so
- * a section missing here is named from its id rather than failing Coverage.
+ * The coverage section names KSPD declares and their labels (RFC 0128, "The names"). Unlike the other
+ * maps this one is open: the RFC has a client show a name it does not know exactly as sent and still
+ * show the report, so a name missing here is printed as is rather than failing Coverage.
  * @type {Readonly<Record<string, string>>}
  */
 export const INCOMPLETE: Readonly<Record<string, string>>;

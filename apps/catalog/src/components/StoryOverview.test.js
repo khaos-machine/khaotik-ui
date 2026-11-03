@@ -86,21 +86,22 @@ describe('StoryOverview read sections', () => {
 
   it('says part of the coverage was not finished', () => {
     render(StoryOverview, { props: base })
-    expect(screen.getByText("Part of this coverage wasn't finished: character journeys.")).toBeVisible()
+    expect(screen.getByText("Part of this coverage wasn't finished: Character journeys.")).toBeVisible()
   })
 
-  it('names every section the engine can report unfinished', () => {
-    const incompleteSections = ['character-journey', 'relationships', 'scenes', 'characters', 'locations']
+  // KSPD RFC 0128 §2: the six declared names and their labels, in the RFC's order.
+  it('labels every section KSPD declares', () => {
+    const incompleteSections = ['scene-analysis', 'character-analysis', 'location-analysis', 'character-journey', 'relationships', 'story-structure']
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, incompleteSections }) } })
-    expect(screen.getByText("Part of this coverage wasn't finished: character journeys, relationships, scenes, characters, locations.")).toBeVisible()
+    expect(screen.getByText("Part of this coverage wasn't finished: Scene analysis, Character analysis, Location analysis, Character journeys, Relationships, Story structure.")).toBeVisible()
   })
 
-  // KSPD declares incompleteSections an open list of strings, so a section the kit has no label for
-  // still reads: khaosd sends `character-analysis`. `constructor` proves only the map's own keys count.
-  it('names a section it has no label for, and still shows the coverage', () => {
-    const incompleteSections = ['character-journey', 'character-analysis', 'some-future-section', 'constructor']
+  // RFC 0128 §2: a name the client does not know is shown exactly as sent, and the report still shows.
+  // `scenes` is what khaos-tools v0.136.0 writes; `constructor` proves only the map's own keys count.
+  it('shows a section it does not know exactly as sent, and still shows the coverage', () => {
+    const incompleteSections = ['character-journey', 'scenes', 'some-future-section', 'constructor']
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, incompleteSections }) } })
-    expect(screen.getByText("Part of this coverage wasn't finished: character journeys, character analysis, some future section, constructor.")).toBeVisible()
+    expect(screen.getByText("Part of this coverage wasn't finished: Character journeys, scenes, some-future-section, constructor.")).toBeVisible()
     expect(within(region('Coverage')).getByText(report.logline.value)).toBeVisible()
   })
 

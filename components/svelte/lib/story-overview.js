@@ -1,7 +1,7 @@
 // The story-wide analyses' closed label maps and the reads the Overview's three panes share.
 // Pure. Every map but INCOMPLETE is closed: a value outside it fails its section rather than
 // printing raw (khaos.machine docs/designs/2026-10-24-stage3-analysis-display.md, item 4).
-// INCOMPLETE is open because the protocol declares that field open; see it below.
+// INCOMPLETE is open because the protocol says an unknown name is shown as sent; see it below.
 
 /**
  * A value the engine sends with where it came from.
@@ -40,21 +40,22 @@ export const OUTCOMES = {
 export const VERDICTS = { recommend: { text: 'Recommend', tone: 'success' }, consider: { text: 'Consider', tone: 'warning' }, pass: { text: 'Pass', tone: 'danger' }, '': { text: 'No verdict', tone: 'neutral' } }
 
 /**
- * The sections the engine reports unfinished that have a written label. Unlike the other maps this
- * one is open: KSPD declares `incompleteSections` an open list of strings, so
- * a section missing here is named from its id rather than failing Coverage.
+ * The coverage section names KSPD declares and their labels (RFC 0128, "The names"). Unlike the other
+ * maps this one is open: the RFC has a client show a name it does not know exactly as sent and still
+ * show the report, so a name missing here is printed as is rather than failing Coverage.
  * @type {Readonly<Record<string, string>>}
  */
 export const INCOMPLETE = {
-  'character-journey': 'character journeys',
-  relationships: 'relationships',
-  scenes: 'scenes',
-  characters: 'characters',
-  locations: 'locations',
+  'scene-analysis': 'Scene analysis',
+  'character-analysis': 'Character analysis',
+  'location-analysis': 'Location analysis',
+  'character-journey': 'Character journeys',
+  relationships: 'Relationships',
+  'story-structure': 'Story structure',
 }
 
-/** An unfinished section's label: the written one, else its id with hyphens as spaces. @param {string} s */
-export const incompleteLabel = (s) => (Object.hasOwn(INCOMPLETE, s) ? INCOMPLETE[s] : s.replaceAll('-', ' '))
+/** An unfinished section's label: the declared one, else the name exactly as sent. @param {string} s */
+export const incompleteLabel = (s) => (Object.hasOwn(INCOMPLETE, s) ? INCOMPLETE[s] : s)
 
 /** @type {Readonly<Record<string, string>>} */
 export const FLAGS = {
