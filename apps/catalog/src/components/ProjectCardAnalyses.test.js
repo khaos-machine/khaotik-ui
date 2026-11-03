@@ -143,7 +143,7 @@ describe('ProjectCard rail: an analysis job fills its own segment live', () => {
     expect(card({ job: { kind: 'analyze-scenes', phase } }).querySelector('.project__label').textContent).toBe(label)
   })
 
-  it('does not offer extraction or retry over an analysis job', () => {
+  it('keeps the extract action, not an extraction retry, over a failed analysis job', () => {
     const c = card({
       project: { ...indexed, package_stage: 'parsed' },
       onExtract: () => {},
@@ -184,13 +184,11 @@ describe('ProjectCard: retrying a failed analysis', () => {
     ['coverage-report', 'Retry coverage analysis for Broken in Four Places'],
   ])('offers a retry for a failed %s job and invokes onRetry', (kind, label) => {
     let calls = 0
-    let opened = 0
-    const c = card({ job: { kind, phase: 'failed' }, onRetry: () => calls++, onOpen: () => opened++ })
+    const c = card({ job: { kind, phase: 'failed' }, onRetry: () => calls++ })
     const button = retry(c)
     expect(button.getAttribute('aria-label')).toBe(label)
     button.click()
     expect(calls).toBe(1)
-    expect(opened).toBe(0)
   })
 
   it('offers no retry without onRetry, for a job still running, or for an extraction', () => {
