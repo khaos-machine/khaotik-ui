@@ -111,4 +111,5 @@ this file conflicts with another root document.
   separate.
 - Consumers pin a `lib-*` tag. Do not recommend `main` or a bare SHA.
 - Use semantic commit prefixes and a `docs/`, `feature/`, `feat/`, or `fix/` branch.
-  Changes reach protected `main` through a pull request.
+  Changes reach `main` through a pull request, merged only after
+  `gates / gates` passes. `main` is unprotected, so this rule is not enforced.
