@@ -161,9 +161,8 @@ the library's version, because `APP_VERSION` is read from the root
 The catalog was a signed desktop app with a release tag of its own until D95
 retired it (#12, landed in #22). No desktop shell, signing, updater, MCP bridge
 or S3/CloudFront deploy is left in the repository, and no workflow fires on any
-tag but `lib-*`. The hosts it published to still exist while they
-are retired; `CURRENT.md`, "Retiring", lists them and the ticket that removes
-each.
+tag but `lib-*`. Its catalog host and its updater feed were deleted on
+2026-11-03; `CURRENT.md`, "Retired", records what went and what was kept.
 
 There were two workflows until D61. `storybook-deploy.yml` republished a
 Storybook catalog to `khaotik-ui.loswf.com` on any push to `main`, and
@@ -271,5 +270,5 @@ had never reached the client. It pins an npm version now; read which one in
 before it.
 
 Live surfaces: <https://khaos-machine.github.io/khaotik-ui/> (catalog web) ·
-`@khaos-machine/khaotik-ui` on npm. The retired desktop hosts are in
-`CURRENT.md`, "Retiring".
+`@khaos-machine/khaotik-ui` on npm. The retired desktop hosts are recorded in
+`CURRENT.md`, "Retired".
