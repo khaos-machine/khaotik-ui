@@ -33,9 +33,14 @@ export const VERDICTS: Readonly<Record<string, {
     text: string;
     tone: "success" | "warning" | "danger" | "neutral";
 }>>;
-/** Every section the engine reports unfinished: its grounding layers and its analysed entity types. */
-/** @type {Readonly<Record<string, string>>} */
+/**
+ * The sections the engine reports unfinished that have a written label. Unlike the other maps this
+ * one is open: KSPD declares `incompleteSections` an open []string (kspdprotocol coverage.go:97), so
+ * a section missing here is named from its id rather than failing Coverage.
+ * @type {Readonly<Record<string, string>>}
+ */
 export const INCOMPLETE: Readonly<Record<string, string>>;
+export function incompleteLabel(s: string): string;
 /** @type {Readonly<Record<string, string>>} */
 export const FLAGS: Readonly<Record<string, string>>;
 export function namedPoints(s: StoryStructure | null): readonly TurnPoint[] | null;

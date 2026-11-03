@@ -95,6 +95,15 @@ describe('StoryOverview read sections', () => {
     expect(screen.getByText("Part of this coverage wasn't finished: character journeys, relationships, scenes, characters, locations.")).toBeVisible()
   })
 
+  // KSPD declares incompleteSections an open []string (kspdprotocol coverage.go:97), so a section
+  // the kit has no label for still reads: khaosd sends `character-analysis` on PARALLEL_LIVES_2.
+  it('names a section it has no label for, and still shows the coverage', () => {
+    const incompleteSections = ['character-journey', 'character-analysis', 'some-future-section']
+    render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, incompleteSections }) } })
+    expect(screen.getByText("Part of this coverage wasn't finished: character journeys, character analysis, some future section.")).toBeVisible()
+    expect(within(region('Coverage')).getByText(report.logline.value)).toBeVisible()
+  })
+
   it('says "No verdict" when the engine scored no dimension', () => {
     const verdict = { value: '', source: 'none', confidence: 'none' }
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, rubric: { ...report.rubric, verdict } }) } })
