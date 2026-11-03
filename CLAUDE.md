@@ -52,3 +52,20 @@ updating. Treat them as a lead, not a verdict. Trust the submitted diff and the
 configured npm, Vitest, Vite, declaration, and Tauri validation commands. Do
 not stop or overwrite another in-flight change because an editor reports a
 transient diagnostic.
+
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues on `khaos-machine/khaotik-ui`, through the `gh` CLI. See
+`docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+The five defaults: `needs-triage`, `needs-info`, `ready-for-agent`,
+`ready-for-human` and `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context. Decisions live in `docs/decisions.md`, and the glossary and
+ADRs are the workspace's, one level up. See `docs/agents/domain.md`.
