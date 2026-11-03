@@ -1,6 +1,5 @@
 <script>
   import Icon from '@khaos-machine/khaotik-ui/components/svelte/Icon.svelte'
-  import Updater from './Updater.svelte'
 
   let { open = false, version = '', onClose = () => {} } = $props()
 
@@ -32,11 +31,6 @@
           <span class="settings__name">Khaotik Component Catalog</span>
           <span class="settings__version">Version {version || '—'}</span>
         </div>
-      </section>
-
-      <section class="settings__section">
-        <span class="settings__eyebrow">Updates</span>
-        <Updater />
       </section>
     </div>
   </div>

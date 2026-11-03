@@ -299,8 +299,8 @@
 
   /* The library's first `@keyframes`, so it is also the library's first
      reduced-motion guard. There is no house precedent to copy — the only
-     animation in the workspace is catalog-side (shell/Updater.svelte:114) and
-     carries no guard at all. The next component copies this one. */
+     animation in the workspace was catalog-side (the since-removed updater) and
+     carried no guard at all. The next component copies this one. */
   @media (prefers-reduced-motion: reduce) {
     .setup__spinner { animation: none; }
   }

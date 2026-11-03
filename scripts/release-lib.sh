@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# release-lib.sh — cut a `lib-*` marker Release for the library.
+# release-lib.sh — cut a `lib-*` Release for the library, holding `latest`.
 #
-# The counterpart to apps/catalog/scripts/release.sh, which asserts `--latest`
-# for the catalog. This path had no script, so its rules lived only in
-# AGENTS.md prose — and a rule that lives only in prose is followed only by
-# whoever reads it. The repo-wide `latest` pointer has been taken off the
-# catalog SIX times by a `lib-*` release cut from memory.
+# `lib-*` is the only release family this repository publishes now that the
+# desktop catalog is gone, so the newest library release holds the repo-wide
+# `latest` pointer. The script publishes with `--latest` and then reads the
+# pointer back, because passing the flag and the pointer holding are two
+# different claims and only the second one matters.
 #
 # Usage:
 #   scripts/release-lib.sh                      # version from package.json
@@ -44,26 +44,9 @@ git rev-parse "$TAG" >/dev/null 2>&1 && fail "$TAG already exists locally"
 git ls-remote --exit-code --tags origin "$TAG" >/dev/null 2>&1 && fail "$TAG already exists on origin"
 [ -z "$NOTES_FILE" ] || [ -f "$NOTES_FILE" ] || fail "notes file not found: $NOTES_FILE"
 
-# What `latest` points at NOW — the value the post-publish check defends.
-# No `|| echo ""` here: a read that fails and a repo with no releases are not the
-# same thing, and collapsing them to "" makes the check below compare nothing to
-# nothing and pass. The only legitimate empty is a repo with no releases at all,
-# so that case is asked for explicitly and every other failure aborts under `set -e`.
-if LATEST_BEFORE="$(gh release list --limit 10000 --json tagName,isLatest --jq '.[] | select(.isLatest) | .tagName' 2>/dev/null)"; then
-  :
-else
-  # The read failed. That is either "no releases exist yet" (legitimate) or a
-  # broken `gh` (not). Ask in a form that ABORTS on the second: a bare command
-  # whose failure `set -e` acts on. Do NOT test this through a command
-  # substitution inside `[ ]` — `$(gh ... | wc -l)` prints "0" when gh fails, so
-  # a broken read reads as an empty repository and the script sails past.
-  gh release list --limit 1 >/dev/null
-  LATEST_BEFORE=""
-fi
 echo "version     $VERSION"
 echo "tag         $TAG"
 echo "target      $SHA"
-echo "latest is   ${LATEST_BEFORE:-<none>}"
 
 if [ "$DRY_RUN" -eq 1 ]; then echo "dry run: every guard passed, nothing published"; exit 0; fi
 
@@ -94,11 +77,9 @@ git push -q origin "$TAG"
 # No `--target`: the tag already exists and points where it should. Passing one
 # here would be a second claim about the same thing.
 #
-# `--latest=false` is the whole point of the flag. GitHub resolves `latest`
-# repo-wide by publish time, and this repo carries two tag families (`v*`
-# catalog, `lib-*` library), so a library release with no flag silently takes
-# the pointer off the signed catalog build.
-gh release create "$TAG" --latest=false \
+# `--latest` explicitly rather than GitHub's default, which picks `latest` by
+# date and semver and so is not a claim this script can make about its own run.
+gh release create "$TAG" --latest \
   --title "Library $VERSION" "${NOTES_ARGS[@]}" >/dev/null
 
 # Assert the OBJECT TYPE, not that a tag exists. `tag` is annotated, `commit` is
@@ -112,19 +93,12 @@ if [ "$TAG_TYPE" != "tag" ]; then
 fi
 echo "tag type   $TAG_TYPE (annotated)"
 
-# Assert the ARTIFACT, not the invocation. Passing the flag and the pointer
-# actually holding are two different claims, and only the second one matters.
-# Bare, exactly as the catalog path reads it at
-# apps/catalog/scripts/release.sh:259. A release was just created, so this read
-# MUST succeed; swallowing it would let the script print "latest held" having
-# verified nothing — asserting neither the artifact nor the invocation.
-LATEST_AFTER="$(gh release list --limit 10000 --json tagName,isLatest --jq '.[] | select(.isLatest) | .tagName')"
-# Only the catalog's `latest` is worth defending. Until a `v*` release exists,
-# GitHub hands `latest` to the newest lib release, and that harms nothing.
-if [ "$LATEST_AFTER" != "$LATEST_BEFORE" ] && [[ "$LATEST_BEFORE" == v* ]]; then
-  fail "$TAG moved 'latest' from $LATEST_BEFORE to ${LATEST_AFTER:-<none>}.
-      Restore it with: gh release edit $LATEST_BEFORE --latest"
-fi
+# Assert the ARTIFACT, not the invocation. A release was just created, so this
+# read MUST succeed; it is bare so `set -e` aborts on a failed read rather than
+# comparing nothing to the tag.
+LATEST="$(gh release view --json tagName --jq .tagName)"
+[ "$LATEST" = "$TAG" ] || fail "'latest' is ${LATEST:-<none>}, not $TAG.
+      Restore it with: gh release edit $TAG --latest"
 
 echo "published   $TAG"
-echo "latest held ${LATEST_AFTER:-<none>}"
+echo "latest      $LATEST"

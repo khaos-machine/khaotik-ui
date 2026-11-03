@@ -4,11 +4,9 @@
 // state where the components loaded and the flows did not, and no key
 // enumeration to keep in step with what is actually stored.
 //
-// localStorage RATHER THAN THE FILESYSTEM. The catalog ships twice — a signed
-// Tauri app and a static web build at khaotik-catalog.loswf.com — and a
-// Tauri-only store would make the whole mode vanish on the web surface.
-// `capabilities/default.json` stays `core:default`; nothing here needs a plugin
-// or a permission.
+// localStorage RATHER THAN THE FILESYSTEM. The catalog ships as a static web
+// build on GitHub Pages, where a browser has no filesystem to write to; nothing
+// here needs a plugin or a permission.
 //
 // REPORT, NEVER REPAIR, NEVER CLEAR. Every failure below returns a named problem
 // and leaves the stored bytes exactly where they were. This is the house rule —

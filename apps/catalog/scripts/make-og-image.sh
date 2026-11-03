@@ -9,7 +9,7 @@
 # One template, any surface — the title and subtitle are passed in so the
 # layout, logo and palette stay identical everywhere the design system is
 # shared. Defaults render the catalog's own card, which index.html serves as
-# the share image for khaotik-catalog.loswf.com.
+# the share image for the catalog on GitHub Pages.
 #
 #   ./scripts/make-og-image.sh
 #   ./scripts/make-og-image.sh --title "Khaotik UI" \

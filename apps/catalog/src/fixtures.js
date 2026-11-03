@@ -15,6 +15,7 @@ import StoryAtlas from '@khaos-machine/khaotik-ui/components/svelte/StoryAtlas.s
 // Drawn by StoryAtlas, whose fixture `plays` it; check-catalog requires the import.
 import StoryAtlasCanvas from '@khaos-machine/khaotik-ui/components/svelte/StoryAtlasCanvas.svelte'
 import storyAtlasData from './data/story-atlas.json'
+import { version as libraryVersion } from '../../../package.json'
 import Menu from '@khaos-machine/khaotik-ui/components/svelte/Menu.svelte'
 import SegmentedControl from '@khaos-machine/khaotik-ui/components/svelte/SegmentedControl.svelte'
 import StatusPill from '@khaos-machine/khaotik-ui/components/svelte/StatusPill.svelte'
@@ -884,10 +885,10 @@ const unavailableCommands = [
 // playtested at all, and its `section`/`group` must be one the registry below
 // declares and labels (`npm run check-taxonomy`).
 
-// Keep in sync with src-tauri/tauri.conf.json (and Cargo.toml) on release.
-// version.test.js asserts all three agree — the sidebar reads this constant, so
-// a forgotten bump ships a build that misreports itself.
-export const APP_VERSION = '0.20.0'
+// The catalog ships with the library (a Pages build on each lib-* tag), so it
+// reports the library's version, read from the root package.json rather than
+// restated here — a restated constant is one a release forgets to bump.
+export const APP_VERSION = libraryVersion
 
 // The engine plate's real component list, from a captured `/api/health`.
 //
@@ -1180,7 +1181,7 @@ const characterPanes = [
       // khaos-app#620: the narrator's voice heard in place. The clip is the catalog's bundled
       // audition sample (public/samples/), standing in for a preview khaosd makes; illustrative.
       { label: 'Narrator, preview offered (illustrative)', props: { narrator: true, castable: castableVoices, narratorLabel: 'Ava', narratorPreview: { kind: 'none' }, onPreviewNarrator: () => {}, onCast: () => {}, onDesignVoice: () => {} } },
-      { label: 'Narrator, preview playing (illustrative clip)', props: { narrator: true, castable: castableVoices, narratorLabel: 'Ava', narratorPreview: { kind: 'ready', src: '/samples/neutral.m4a' }, onCast: () => {}, onDesignVoice: () => {} } },
+      { label: 'Narrator, preview playing (illustrative clip)', props: { narrator: true, castable: castableVoices, narratorLabel: 'Ava', narratorPreview: { kind: 'ready', src: 'samples/neutral.m4a' }, onCast: () => {}, onDesignVoice: () => {} } },
       { label: 'A line selected', props: { ...madisonSide },
         snippets: { dialogue: [{ component: DialogueInspector, props: { line: madisonLine, speaker: 'Madison', takesOffered: true, takes: illustrativeTakes } }] } },
       { label: 'Empty', props: { character: null } },

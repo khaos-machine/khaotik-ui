@@ -11,10 +11,8 @@ const PUBLISHED = path.join(REPO, 'components/composed')
  * Publishing a composed document to the repo.
  *
  * WHY A DEV-SERVER PLUGIN. Publishing writes a file, and a browser cannot. The
- * two alternatives were worse: Tauri's filesystem plugin would make the whole
- * feature vanish from the static web build at khaotik-catalog.loswf.com and
- * would need a capability widened from `core:default`, and a download hands
- * someone a file they then have to move into the repo themselves.
+ * alternative was worse: a download hands someone a file they then have to move
+ * into the repo themselves.
  *
  * `apply: 'serve'` — it exists under `npm run dev`, which is where authoring
  * happens, and nowhere else. In the built app the publish control says so and
@@ -74,9 +72,9 @@ export default defineConfig({
   resolve: {
     conditions: ['browser'],
   },
-  // The Tauri shell loads devUrl, http://localhost:5173 (src-tauri/tauri.conf.json). With
-  // 5173 taken, Vite would move to 5174 and the window would load whatever holds 5173, with
-  // no error; another app's dev server was shown as the catalog that way. Fail instead.
+  // A fixed port, failing when taken rather than silently moving to 5174. It was set for
+  // the retired desktop shell, which loaded 5173 and once showed another app's dev server
+  // as the catalog; it still keeps the dev URL the one the docs name.
   server: { port: 5173, strictPort: true },
   test: {
     environment: 'jsdom',
@@ -91,11 +89,11 @@ export default defineConfig({
     // here and the one with the least margin. Under load it exceeded 5s and
     // went red; the run that surfaced it had competing vitest processes.
     //
-    // The margin matters more than it did: catalog-release.yml now gates
-    // signing on this suite, and `loswf-mini` is a shared runner. A timeout
-    // flake there blocks a release for a reason that is not a defect, and
-    // teaches whoever hits it to re-run rather than to read. A test that
-    // genuinely hangs still fails — five seconds later.
+    // The margin matters more than it did: gates.yml runs this suite on every
+    // pull request and before every Pages deploy. A timeout flake there blocks
+    // a merge or a release for a reason that is not a defect, and teaches
+    // whoever hits it to re-run rather than to read. A test that genuinely
+    // hangs still fails — five seconds later.
     testTimeout: 10000,
   },
 })
