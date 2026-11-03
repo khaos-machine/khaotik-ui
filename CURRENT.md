@@ -23,9 +23,7 @@ date were verified on that date only.
   on each `lib-*` tag, with a `lib-*` Release.
 - Catalog web: `https://khaos-machine.github.io/khaotik-ui/`, deployed by
   `catalog-pages.yml` on each `lib-*` tag after the gates pass. It reports the
-  library's version. **Not yet deployed** — it answered 404 on 2026-11-03,
-  before the first `lib-*` tag since the workflow landed. **Killed by:** #17,
-  which cuts 0.178.3 and verifies the site is live.
+  library's version. Answered 200 on 2026-11-03 (verified that date only).
 
 Do not read versions from prose — these answer from the repository:
 
@@ -42,23 +40,14 @@ version rather than `main` or a bare SHA. **Killed by:** any workflow that
 publishes on another trigger; `grep -n -A2 '^on:' .github/workflows/*.yml`
 answers it.
 
-## Retiring
+## Retired
 
-The desktop catalog is gone from the repository (D95, #22), but what it
-published to still exists outside it. Each entry is live until its ticket runs.
-
-- **`https://khaotik-catalog.loswf.com`** — the old catalog web host.
-  Answered 200 on 2026-11-03. No redirect and no notice (operator ruling, map
-  #11). **Killed by:** #18 deleting its DNS records, CloudFront distribution,
-  bucket and, if unshared, its certificate.
-- **`https://updates.loswf.com/khaotik-catalog/latest.json`** — the updater
-  feed installed desktop builds poll. Answered 200 on 2026-11-03. **Killed by:**
-  #18 deleting the `khaotik-catalog/` prefix on the shared update host, and the
-  host itself only if nothing else uses it.
-- **The desktop app's own credentials** — the AWS keys tied to the catalog's
-  deploys and the Tauri updater signing key. The Apple Developer credentials
-  are shared and stay. **Killed by:** #19 deleting them and recording what was
-  kept.
+**2026-11-03.** The desktop catalog's hosts are retired (D95, map #11). The old
+catalog web host `khaotik-catalog.loswf.com` and the updater feed
+`updates.loswf.com/khaotik-catalog/` were deleted by #18, with no redirect and
+no notice. The shared `updates.loswf.com` host stays because other content uses
+it. The desktop app's credentials are not this repository's (#19): it holds
+none.
 
 ## Known consumers
 
