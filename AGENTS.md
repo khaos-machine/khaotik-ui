@@ -102,11 +102,12 @@ stale version, and an agent cites it with full confidence.
 
 ```sh
 # the gates (0 clean / 1 gaps / 2 CANNOT RUN — a 2 is a red)
-npm run check-coverage                # all four below, in order
+npm run check-coverage                # every check below, in order (package.json)
 npm run check-catalog                 # every export has a catalog fixture
 npm run check-taxonomy                # every export is filed in a declared, labelled group
 npm run check-consumer                # the package loads the way a consumer loads it
 npm run check-compile                 # the catalog's build — it imports every export
+npm run check-export-count            # every document stating an export count states the real one
 
 # the component catalog (Tauri desktop app)
 cd apps/catalog && npm run dev        # or: npm test, npm run build
@@ -130,14 +131,16 @@ The repository is public, so its Actions minutes are free. Catalog credentials
 (signing cert, Apple notarization, the updater key, the AWS keys that own the
 buckets) are secrets; the npm publish uses trusted publishing and holds none.
 
-One workflow *publishes*; two others check. `ci.yml` runs the gates on every
+Two workflows *publish* (`catalog-release.yml`, `lib-publish.yml`); `ci.yml`
+and `gates.yml` check. `ci.yml` runs the gates on every
 pull request and on push to `main`, and `catalog-release.yml` runs the same set
 before it signs anything — both by calling `gates.yml`, so the PR gate and the
 release gate cannot drift apart.
 
-`gates.yml` runs **the catalog's test suite, then `check-coverage` (which chains
-four gates), then `check-types`** — six checks, not the "three" this said for
-months. `gates / gates` is a required status check on `main` with `strict: true`,
+`gates.yml` runs **the catalog's test suite, then `check-coverage`, then the
+checks after it in that file** — read its `run:` steps for the list. This line
+stated a count twice and was wrong both times ("three", then "six").
+`gates / gates` is a required status check on `main` with `strict: true`,
 so a branch cannot merge without it and cannot merge stale. Before that existed, a PR's green
 tick was two Socket Security dependency scans and nothing else (#87).
 
@@ -195,7 +198,7 @@ while they shared one:
 | Prefix | Releases | Fires |
 | --- | --- | --- |
 | `v*` | the **catalog** | `catalog-release.yml` — signs, notarizes, publishes to `updates.loswf.com` and the CDN |
-| `lib-*` | the **library** | `lib-publish.yml` — publishes `@khaos-machine/khaotik-ui` to npm (needs the `NPM_TOKEN` secret) |
+| `lib-*` | the **library** | `lib-publish.yml` — publishes `@khaos-machine/khaotik-ui` to npm through trusted publishing; no token is stored |
 
 **Cut a `lib-*` Release with `--latest=false`.** GitHub's `latest` is repo-wide
 and last-publish-wins, so a library release with no flag silently takes the
