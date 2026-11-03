@@ -4,7 +4,7 @@
 # becomes the build-time input for the web + desktop catalog, so neither needs a
 # running daemon.
 #
-# Requires khaosd running (voices + kspd detail) and khaos-tools on PATH.
+# Requires khaosd running (voices + kspd detail).
 set -euo pipefail
 
 cd "$(dirname "$0")/.."

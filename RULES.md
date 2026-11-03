@@ -107,7 +107,8 @@ this file conflicts with another root document.
   principle specifically, because the argument's presence is what stops
   anyone looking.
 - A `v*` tag means catalog release and invokes signing/publishing automation.
-  A `lib-*` tag is a library marker and releases nothing. Keep them separate.
+  A `lib-*` tag publishes the library to npm (`lib-publish.yml`). Keep them
+  separate.
 - Consumers pin a `lib-*` tag. Do not recommend `main` or a bare SHA.
 - Use semantic commit prefixes and a `docs/`, `feature/`, `feat/`, or `fix/` branch.
   Changes reach protected `main` through a pull request.
