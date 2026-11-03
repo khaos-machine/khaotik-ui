@@ -11,7 +11,7 @@ export type StatusTone = "neutral" | "success" | "warning" | "danger" | "info" |
  */
 export type ProjectJob = {
     /**
-     * The three `analyze-*` kinds fill their own rail segment. The five story passes after them are khaosd's job types and have no segment.
+     * Each analysis kind fills its own rail segment: the three `analyze-*` kinds, then the five story passes, which are khaosd's job types.
      */
     kind: "import" | "extract" | "analyze-scenes" | "analyze-characters" | "analyze-places" | "character-journeys" | "relationship-synthesis" | "story-structure" | "premise" | "coverage-report";
     /**
@@ -36,11 +36,14 @@ export type ProjectJob = {
 };
 /**
  * One analysis of a project as the host knows it — the `ProjectCard` rail's
- * last three segments. Report only what the engine says; an analysis the
+ * last eight segments. Report only what the engine says; an analysis the
  * engine does not report is omitted, not sent as `not-started`.
  */
 export type ProjectAnalysis = {
-    kind: "scenes" | "characters" | "places";
+    /**
+     * The three analyses, then the five story passes under khaosd's job type.
+     */
+    kind: "scenes" | "characters" | "places" | "character-journeys" | "relationship-synthesis" | "story-structure" | "premise" | "coverage-report";
     /**
      * `partial`: some analysed, nothing running. `in-progress`: an analysis is running.
      */

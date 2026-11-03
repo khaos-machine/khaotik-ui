@@ -345,6 +345,7 @@ today.
 | analysis pass | running | Analyzing <object> | if sent | yes | if sent, else "estimating time left" when there is a count |
 | analysis pass | finalizing | Finalizing <noun> analysis… | if sent | yes | no |
 | analysis pass | failed | <Noun> analysis failed | last value | no | no |
+| story pass, reported `partial` | (no job) | <Noun> analysis partly done | if sent | no | no |
 | none | (done or idle) | stage chip, unchanged | no | no | no |
 
 An analysis pass's noun and object, by kind:
@@ -354,15 +355,15 @@ An analysis pass's noun and object, by kind:
 | `analyze-scenes` | scene | scenes | 4 |
 | `analyze-characters` | character | characters | 5 |
 | `analyze-places` | place | places | 6 |
-| `character-journeys` | character journey | character journeys | none |
-| `relationship-synthesis` | relationship | relationships | none |
-| `story-structure` | story structure | story structure | none |
-| `premise` | premise | the premise | none |
-| `coverage-report` | coverage | coverage | none |
+| `character-journeys` | character journey | character journeys | 7 |
+| `relationship-synthesis` | relationship | relationships | 8 |
+| `story-structure` | story structure | story structure | 9 |
+| `premise` | premise | the premise | 10 |
+| `coverage-report` | coverage | coverage | 11 |
 
 The last five are khaosd's job types for the default flow's story passes, which
-run after the three analyses (khaotik-ui#27). They have no rail segment, so the
-rail shows what the stage and `analyses` say while one runs. A failed pass of
+run after the three analyses (khaotik-ui#27). Each has its own rail segment
+after the three analyses (operator, 2026-11-03: "A segment each"). A failed pass of
 any of the eight offers "Retry <noun> analysis for <title>" when the host passes
 `onRetry` (khaotik-ui#28).
 
@@ -445,7 +446,7 @@ parallel sets of props describing one concept. Replace all three with one prop:
   duration renders nothing, and an unknown `phase` renders no job, so the card
   falls back to the stage chip.
 
-### The rail: six segments, and `analyses`
+### The rail: eleven segments, and `analyses`
 
 Operator, 2026-10-10: the card's bar gets segments for the analyses. The rail is
 import, parse, index, analyze scenes, analyze characters, analyze places, in
@@ -459,6 +460,14 @@ empty and titled "not reported": absence is not "not started". A job of kind
 segment live and outranks the report for it. Each segment's `title` names it
 and its count ("Analyze scenes: in progress, 30 of 54"); the rail sits above
 the activate button so those titles can be hovered.
+
+Operator, 2026-11-03: the five story passes get a segment each, so the rail
+is now eleven segments. After the three analyses come character journeys,
+relationships, story structure, premise and coverage, in khaosd's default-flow
+order. `analyses` takes their khaosd job types as `kind`, and a job of one of
+those kinds fills its own segment. `Complete` needs the three analyses done and
+every story pass the host reports done. A story pass the host does not report
+is left out, so a host that reports only the three still reads `Complete`.
 
 ### Launcher
 

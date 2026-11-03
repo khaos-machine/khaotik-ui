@@ -19,9 +19,10 @@ describe('ProjectCard rail: the hit area does not eat the bar', () => {
   })
 })
 
-// The rail is six segments in a fixed order: the three import stages, then the
-// three analyses. The first three keep their stage/job behaviour; the last
-// three come from `analyses` (what the host knows) or a live analysis `job`.
+// The rail is eleven segments in a fixed order: the three import stages, the
+// three analyses, then the five story passes. The first three keep their
+// stage/job behaviour; the last eight come from `analyses` (what the host
+// knows) or a live analysis `job`.
 
 const indexed = { id: 'p1', title: 'Broken in Four Places', path: '/p/b4p.kspd', scene_count: 54, package_stage: 'indexed' }
 const card = (props) => render(ProjectCard, { props: { project: indexed, ...props } }).container
@@ -29,7 +30,7 @@ const steps = (c) => [...c.querySelectorAll('.project__stage-step')]
 const titles = (c) => steps(c).map((s) => s.getAttribute('title'))
 const has = (s, mod) => s.classList.contains(`project__stage-step--${mod}`)
 
-describe('ProjectCard rail: six segments', () => {
+describe('ProjectCard rail: eleven segments', () => {
   it('names each segment in order, with what is known about it', () => {
     expect(titles(card({}))).toEqual([
       'Import: done',
@@ -38,6 +39,11 @@ describe('ProjectCard rail: six segments', () => {
       'Analyze scenes: not reported',
       'Analyze characters: not reported',
       'Analyze places: not reported',
+      'Analyze character journeys: not reported',
+      'Analyze relationships: not reported',
+      'Analyze story structure: not reported',
+      'Analyze premise: not reported',
+      'Analyze coverage: not reported',
     ])
   })
 
@@ -50,7 +56,7 @@ describe('ProjectCard rail: six segments', () => {
       ],
     })
     const [, , , scenes, characters, places] = steps(c)
-    expect(titles(c).slice(3)).toEqual([
+    expect(titles(c).slice(3, 6)).toEqual([
       'Analyze scenes: in progress, 30 of 54',
       'Analyze characters: not started',
       'Analyze places: done',
@@ -72,7 +78,7 @@ describe('ProjectCard rail: six segments', () => {
 
   it('places each analysis by its kind, not its position in the list', () => {
     const c = card({ analyses: [{ kind: 'places', state: 'done' }, { kind: 'scenes', state: 'done' }] })
-    expect(steps(c).map((s) => has(s, 'complete'))).toEqual([true, true, true, true, false, true])
+    expect(steps(c).map((s) => has(s, 'complete'))).toEqual([true, true, true, true, false, true, false, false, false, false, false])
   })
 
   it('shows a failed analysis in danger, keeping its count', () => {
@@ -90,7 +96,7 @@ describe('ProjectCard rail: six segments', () => {
         { kind: 'places', state: 'in-progress', progress: { completed: 9, total: 3 } },
       ],
     })
-    expect(titles(c).slice(3)).toEqual([
+    expect(titles(c).slice(3, 6)).toEqual([
       'Analyze scenes: not reported',
       'Analyze characters: not reported',
       'Analyze places: in progress',
@@ -100,7 +106,7 @@ describe('ProjectCard rail: six segments', () => {
 
   it('keeps the import stages unchanged beside the analyses', () => {
     const c = card({ project: { ...indexed, package_stage: 'imported' }, analyses: [{ kind: 'scenes', state: 'done' }] })
-    expect(steps(c).map((s) => has(s, 'complete'))).toEqual([true, false, false, true, false, false])
+    expect(steps(c).map((s) => has(s, 'complete'))).toEqual([true, false, false, true, false, false, false, false, false, false, false])
   })
 })
 
@@ -155,23 +161,61 @@ describe('ProjectCard rail: an analysis job fills its own segment live', () => {
   })
 })
 
-// khaotik-ui#27: the five story passes khaosd runs after the three analyses.
+// khaotik-ui#27: the five story passes khaosd runs after the three analyses,
+// each with its own segment after the three analyses.
+const passes = [
+  ['character-journeys', 6, 'Analyze character journeys', 'Analyzing character journeys', 'Character journey analysis failed'],
+  ['relationship-synthesis', 7, 'Analyze relationships', 'Analyzing relationships', 'Relationship analysis failed'],
+  ['story-structure', 8, 'Analyze story structure', 'Analyzing story structure', 'Story structure analysis failed'],
+  ['premise', 9, 'Analyze premise', 'Analyzing the premise', 'Premise analysis failed'],
+  ['coverage-report', 10, 'Analyze coverage', 'Analyzing coverage', 'Coverage analysis failed'],
+]
+
 describe('ProjectCard: a story pass job', () => {
-  it.each([
-    ['character-journeys', 'Analyzing character journeys', 'Character journey analysis failed'],
-    ['relationship-synthesis', 'Analyzing relationships', 'Relationship analysis failed'],
-    ['story-structure', 'Analyzing story structure', 'Story structure analysis failed'],
-    ['premise', 'Analyzing the premise', 'Premise analysis failed'],
-    ['coverage-report', 'Analyzing coverage', 'Coverage analysis failed'],
-  ])('%s names itself running and failed, and claims no rail segment', (kind, running, failed) => {
+  it.each(passes)('%s fills segment %i, running and failed', (kind, index, segment, running, failed) => {
     const run = card({ job: { kind, phase: 'running', progress: { completed: 3, total: 9 } } })
     expect(run.querySelector('.project__label').textContent).toBe(running)
     expect(run.querySelector('.project__count').textContent).toBe('3/9')
-    expect(steps(run).some((s) => has(s, 'active'))).toBe(false)
-    expect(steps(run).map((s) => has(s, 'complete'))).toEqual([true, true, true, false, false, false])
+    const s = steps(run)
+    expect(s.findIndex((x) => has(x, 'active'))).toBe(index)
+    expect(s[index].getAttribute('title')).toBe(`${segment}: in progress, 3 of 9`)
+    expect(s[index].querySelector('.project__stage-fill').style.width).toBe('33%')
+    expect(s.slice(0, 3).every((x) => has(x, 'complete'))).toBe(true)
     const fail = card({ job: { kind, phase: 'failed' } })
     expect(fail.querySelector('.project__label').textContent).toBe(failed)
     expect(fail.querySelector('.project__status').dataset.tone).toBe('danger')
+    expect(has(steps(fail)[index], 'failed')).toBe(true)
+  })
+})
+
+describe('ProjectCard: a reported story pass', () => {
+  const three = [{ kind: 'scenes', state: 'done' }, { kind: 'characters', state: 'done' }, { kind: 'places', state: 'done' }]
+  const label = (analyses) => card({ analyses }).querySelector('.project__label').textContent
+
+  it.each(passes)('%s draws in segment %i', (kind, index, segment) => {
+    const c = card({ analyses: [{ kind, state: 'done' }] })
+    expect(has(steps(c)[index], 'complete')).toBe(true)
+    expect(steps(c)[index].getAttribute('title')).toBe(`${segment}: done`)
+  })
+
+  it('reads Complete once the three analyses are done, when the host reports no story pass', () => {
+    expect(label(three)).toBe('Complete')
+  })
+
+  it('reads Complete only once every reported story pass is done too', () => {
+    expect(label([...three, { kind: 'premise', state: 'done' }])).toBe('Complete')
+    expect(label([...three, { kind: 'coverage-report', state: 'failed' }])).toBe('Coverage analysis failed')
+    expect(label([...three, { kind: 'story-structure', state: 'in-progress' }])).toBe('Analyzing story structure')
+    expect(label([...three, { kind: 'relationship-synthesis', state: 'partial', progress: { completed: 2, total: 5 } }])).toBe('Relationship analysis partly done')
+  })
+
+  it.each(passes)('labels a reported %s by its own kind', (kind, _i, _s, running, failed) => {
+    expect(label([...three, { kind, state: 'in-progress' }])).toBe(running)
+    expect(label([...three, { kind, state: 'failed' }])).toBe(failed)
+  })
+
+  it('lets the stage speak for a reported story pass not yet started', () => {
+    expect(label([...three, { kind: 'premise', state: 'not-started' }])).toBe('Indexed')
   })
 })
 

@@ -2298,7 +2298,7 @@ export const fixtures = [
       { label: 'Job 13: done (no job)', props: {
         project: { ...PROJECT_BASE, package_stage: 'indexed' },
       } },
-      // The rail's last three segments: what the host reports of each analysis
+      // The rail's three analysis segments: what the host reports of each analysis
       // (hover a segment for its name and count), and a live analysis job.
       { label: 'Analyses: scenes part-done, characters and places not started', props: {
         project: { ...PROJECT_BASE, package_stage: 'indexed' },
@@ -2318,6 +2318,26 @@ export const fixtures = [
       { label: 'Job 14: analyzing scenes', props: {
         project: { ...PROJECT_BASE, package_stage: 'indexed' },
         job: { kind: 'analyze-scenes', phase: 'running', progress: { completed: 7, total: 54 }, elapsedMs: 21_000 },
+      } },
+      // The story passes' five segments after the three analyses (#27), and the
+      // retry a failed pass offers (#28).
+      { label: 'Story passes: journeys and relationships done, structure running', props: {
+        project: { ...PROJECT_BASE, package_stage: 'indexed' },
+        analyses: [
+          { kind: 'scenes', state: 'done' }, { kind: 'characters', state: 'done' }, { kind: 'places', state: 'done' },
+          { kind: 'character-journeys', state: 'done' }, { kind: 'relationship-synthesis', state: 'done' },
+        ],
+        job: { kind: 'story-structure', phase: 'running', elapsedMs: 9_000 },
+      } },
+      { label: 'Story passes: coverage failed, with retry', props: {
+        project: { ...PROJECT_BASE, package_stage: 'indexed' },
+        analyses: [
+          { kind: 'scenes', state: 'done' }, { kind: 'characters', state: 'done' }, { kind: 'places', state: 'done' },
+          { kind: 'character-journeys', state: 'done' }, { kind: 'relationship-synthesis', state: 'done' },
+          { kind: 'story-structure', state: 'done' }, { kind: 'premise', state: 'done' },
+        ],
+        job: { kind: 'coverage-report', phase: 'failed' },
+        onRetry: () => {},
       } },
       // No job and the extract action offered: the state before Job 6.
       { label: 'Extract: available', props: {
