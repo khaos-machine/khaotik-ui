@@ -20,6 +20,16 @@ current pin.
 
 ## [Unreleased]
 
+## [0.180.1] — 2026-11-03
+
+### Fixed
+
+- `StoryOverviewStrip` draws the "Needs review" figure only while something
+  needs review. At `review` 0 the figure is gone, where it used to stay as a
+  greyed-out 0. From 1 it shows the count in the warning tone and opens through
+  `onreview`, as before. Coverage's "Not made" and "No budget set" are
+  unchanged. The catalog adds a no-review example and a one-to-review example.
+
 ## [0.180.0] — 2026-11-03
 
 ### Changed

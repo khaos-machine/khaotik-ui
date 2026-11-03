@@ -1407,7 +1407,9 @@ const placePanes = [
     id: 'story-overview-strip', name: 'StoryOverviewStrip', kind: 'component', section: 'screens', group: 'drafts', component: StoryOverviewStrip,
     examples: [
       { label: 'B4P verdict (captured), spend and next step (illustrative)', props: { ...overviewStrip, oncoverage: () => {}, onbudget: () => {}, onreview: () => {}, onnext: () => {} } },
-      { label: 'No budget set, nothing to review (illustrative)', props: { ...overviewStrip, budget: { kind: 'none' }, review: 0, onbudget: () => {} } },
+      { label: 'Nothing to review: no review figure (illustrative)', props: { ...overviewStrip, review: 0, oncoverage: () => {}, onbudget: () => {}, onnext: () => {} } },
+      { label: 'One thing to review (illustrative)', props: { ...overviewStrip, review: 1, onreview: () => {} } },
+      { label: 'No budget set (illustrative)', props: { ...overviewStrip, budget: { kind: 'none' }, onbudget: () => {} } },
       { label: 'Budget spent (illustrative)', props: { ...overviewStrip, budget: { kind: 'loaded', usd: '10.00', spentUsd: '10.00', remainingUsd: '0' } } },
       { label: 'Empty', props: {} },
     ],

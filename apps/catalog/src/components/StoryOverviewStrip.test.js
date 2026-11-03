@@ -2,7 +2,8 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import StoryOverviewStrip from '@khaos-machine/khaotik-ui/components/svelte/StoryOverviewStrip.svelte'
 
-// The Overview's strip (khaos-app#617): four figures, each a way in. No sentences.
+// The Overview's strip (khaos-app#617): the next step, then up to three figures, each a way in.
+// No sentences.
 const loaded = { kind: 'loaded', usd: '10.00', spentUsd: '3.20', remainingUsd: '6.80' }
 
 describe('StoryOverviewStrip', () => {
@@ -36,10 +37,25 @@ describe('StoryOverviewStrip', () => {
     expect(tones.slice(0, 2)).toEqual(['danger', 'warning'])
   })
 
-  it('says coverage is not made yet, and draws no budget or next step without them', () => {
+  it('says coverage is not made yet, and draws no budget, review or next step without them', () => {
     render(StoryOverviewStrip, { props: {} })
     expect(screen.getByRole('button', { name: 'Coverage: Not made' })).toBeTruthy()
     expect(screen.queryByRole('button', { name: /^Budget/ })).toBeNull()
-    expect(screen.getAllByRole('button')).toHaveLength(2)
+    expect(screen.getAllByRole('button')).toHaveLength(1)
+  })
+
+  it('draws no review figure when nothing needs review', () => {
+    const { container } = render(StoryOverviewStrip, { props: { coverage: { verdict: 'pass' }, budget: loaded, review: 0, onreview: () => {} } })
+    expect(screen.queryByRole('button', { name: /^Needs review/ })).toBeNull()
+    expect(container.textContent).not.toContain('Needs review')
+  })
+
+  it('draws the review figure with its count, in the warning tone, from 1', () => {
+    const { container } = render(StoryOverviewStrip, { props: { review: 1 } })
+    const figure = screen.getByRole('button', { name: 'Needs review: 1' })
+    expect(figure.textContent).toContain('1')
+    expect(figure.classList.contains('ui-strip__figure--none')).toBe(false)
+    expect(figure.querySelector('.metric')?.getAttribute('data-tone')).toBe('warning')
+    expect(container.textContent).toContain('Needs review')
   })
 })

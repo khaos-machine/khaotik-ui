@@ -15,7 +15,7 @@ declare const StoryOverviewStrip: import("svelte").Component<{
      */
     budget?: any | null;
     /**
-     * How many things need review.
+     * How many things need review; 0 draws no review figure.
      */
     review?: number;
     /**
@@ -54,7 +54,7 @@ type Props = {
      */
     budget?: any | null;
     /**
-     * How many things need review.
+     * How many things need review; 0 draws no review figure.
      */
     review?: number;
     /**
