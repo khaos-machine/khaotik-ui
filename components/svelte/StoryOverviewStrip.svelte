@@ -1,8 +1,9 @@
 <script>
   // The Overview's strip (khaos-app#617). The next step comes first, as the screen's primary
   // action, when there is one. Then the figures, each a way in: Coverage's verdict, the
-  // budget's spend and what needs review. Figures, no sentences, no card chrome: one compact
-  // row split by hairlines, each figure a button named for what it opens (D52).
+  // budget's spend and, only while something needs it, what needs review. Figures, no
+  // sentences, no card chrome: one compact row split by hairlines, each figure a button named
+  // for what it opens (D52).
   import Button from './Button.svelte'
   import MetricCard from './MetricCard.svelte'
   import { budgetSpent, budgetText } from './lib/budget.js'
@@ -14,7 +15,7 @@
    * @typedef {Object} Props
    * @property {{ verdict: 'recommend' | 'consider' | 'pass' } | null} [coverage] Coverage's verdict; null before coverage is made.
    * @property {StatusBudget | null} [budget] The story budget, as the status bar takes it.
-   * @property {number} [review] How many things need review.
+   * @property {number} [review] How many things need review; 0 draws no review figure.
    * @property {{ label: string, icon?: string } | null} [next] The next step, drawn first as the primary action; null draws none.
    * @property {() => void} [oncoverage] Opens coverage.
    * @property {() => void} [onbudget] Opens the story's budget, to set or change it.
@@ -64,12 +65,14 @@
         { value: budgetValue, label: budgetLabel, icon: 'coins', tone: budgetSpent(budget) ? 'warning' : 'neutral' },
       )}
     {/if}
-    {@render figure(
-      `Needs review: ${review}`,
-      onreview,
-      review === 0,
-      { value: review, label: 'Needs review', icon: 'list-checks', tone: review > 0 ? 'warning' : 'neutral' },
-    )}
+    {#if review > 0}
+      {@render figure(
+        `Needs review: ${review}`,
+        onreview,
+        false,
+        { value: review, label: 'Needs review', icon: 'list-checks', tone: 'warning' },
+      )}
+    {/if}
   </div>
 </div></div>
 
@@ -119,7 +122,7 @@
     min-width: 0;
     pointer-events: none;
   }
-  /* Nothing there yet ("Not made", nothing to review, no budget) reads as a state, not a figure. */
+  /* Nothing there yet ("Not made", no budget) reads as a state, not a figure. */
   .ui-strip__figure--none :global(.metric__value) {
     color: var(--text-secondary);
     font-weight: 400;
