@@ -19,27 +19,46 @@ date were verified on that date only.
 
 ## Shipped surfaces
 
-- Library package: `@khaos-machine/khaotik-ui`, marker tag and Release `lib-*`.
-- Catalog app: version in `apps/catalog/src-tauri/tauri.conf.json`; release
-  tag `v*`.
-- Catalog web: `https://khaotik-catalog.loswf.com`.
-- Desktop updater feed: `https://updates.loswf.com/khaotik-catalog/latest.json`.
-- Library: `@khaos-machine/khaotik-ui` on npm, published by `lib-publish.yml` on each `lib-*` tag.
+- Library: `@khaos-machine/khaotik-ui` on npm, published by `lib-publish.yml`
+  on each `lib-*` tag, with a `lib-*` Release.
+- Catalog web: `https://khaos-machine.github.io/khaotik-ui/`, deployed by
+  `catalog-pages.yml` on each `lib-*` tag after the gates pass. It reports the
+  library's version. **Not yet deployed** — it answered 404 on 2026-11-03,
+  before the first `lib-*` tag since the workflow landed. **Killed by:** #17,
+  which cuts 0.178.3 and verifies the site is live.
 
 Do not read versions from prose — these answer from the repository:
 
 ```sh
 git tag -l 'lib-*' | sort -V | tail -1
 node -p "require('./package.json').version"
-node -p "require('./apps/catalog/src-tauri/tauri.conf.json').version"
+gh release view --json tagName --jq .tagName                    # holds `latest`: the newest lib-* release
 grep -c '^export' components/svelte/index.js                    # export count
 ```
 
-`releases/latest` does **not** answer either version question; see `TOOLS.md`.
+There is one release family. A `lib-*` tag fires `lib-publish.yml` and
+`catalog-pages.yml`; no other tag releases anything. Consumers pin an exact npm
+version rather than `main` or a bare SHA. **Killed by:** any workflow that
+publishes on another trigger; `grep -n -A2 '^on:' .github/workflows/*.yml`
+answers it.
 
-The library and catalog version independently. A `v*` tag triggers the catalog
-release workflow; a `lib-*` tag triggers `lib-publish.yml`, which publishes to npm.
-Consumers pin a readable `lib-*` tag rather than `main` or a bare SHA.
+## Retiring
+
+The desktop catalog is gone from the repository (D95, #22), but what it
+published to still exists outside it. Each entry is live until its ticket runs.
+
+- **`https://khaotik-catalog.loswf.com`** — the old catalog web host.
+  Answered 200 on 2026-11-03. No redirect and no notice (operator ruling, map
+  #11). **Killed by:** #18 deleting its DNS records, CloudFront distribution,
+  bucket and, if unshared, its certificate.
+- **`https://updates.loswf.com/khaotik-catalog/latest.json`** — the updater
+  feed installed desktop builds poll. Answered 200 on 2026-11-03. **Killed by:**
+  #18 deleting the `khaotik-catalog/` prefix on the shared update host, and the
+  host itself only if nothing else uses it.
+- **The desktop app's own credentials** — the AWS keys tied to the catalog's
+  deploys and the Tauri updater signing key. The Apple Developer credentials
+  are shared and stay. **Killed by:** #19 deleting them and recording what was
+  kept.
 
 ## Known consumers
 
@@ -125,8 +144,8 @@ Consumers pin a readable `lib-*` tag rather than `main` or a bare SHA.
 
 - The catalog is the only component catalog; Storybook and its deployment are
   retired by D61.
-- CI calls `.github/workflows/gates.yml` on pull requests and pushes to `main`.
-  The catalog release workflow calls the same reusable gates before signing.
+- CI calls `.github/workflows/gates.yml` on pull requests. The Pages workflow
+  calls the same reusable gates before it builds.
   `main` is protected with `gates / gates` required and `strict: false`
   (measured 2026-11-03), so a branch can merge behind `main`.
   **Killed by:** any change to `main`'s protection; `AGENTS.md`,

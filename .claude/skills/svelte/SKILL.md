@@ -11,15 +11,15 @@ description: >
 
 This repo is a hand-authored component library: `components/svelte/` holds the
 atoms and compositions, `tokens/` holds the design tokens, and `apps/catalog/`
-is the Tauri playtest app and the library's only component surface (D61). There
-is no generator (`AGENTS.md:8-12`) — what you write is the artifact.
+is the web playtest app and the library's only component surface (D61). There
+is no generator (`AGENTS.md`, its opening section) — what you write is the artifact.
 
-Svelte 5 runes only. No SvelteKit (`apps/catalog/AGENTS.md:11-12`). Ark UI for
-primitives; **no React** (`AGENTS.md:35`).
+Svelte 5 runes only. No SvelteKit (`apps/catalog/AGENTS.md`, "Stack"). Ark UI for
+primitives; **no React** (`AGENTS.md`, "Conventions").
 
 ## The four gotchas, each of which cost a rebuild
 
-These are recorded at `apps/catalog/AGENTS.md:118-128`. They are not style
+These are recorded in `apps/catalog/AGENTS.md`, "Svelte 5 gotchas". They are not style
 preferences; every one of them shipped a broken build first.
 
 **1. Dynamic components go through `{@const}`.** `<svelte:component>` is
@@ -156,8 +156,8 @@ Consequences to hold to:
   `SegmentedControl.svelte:21-23`); `Menu.svelte:38` composes it with the
   current value into the trigger's `aria-label`.
 
-Hand-authored components follow the **D52 encoding** instead (`AGENTS.md:33-34`,
-`apps/catalog/AGENTS.md:59-68`): a plain `div` (never `article`), a stretched
+Hand-authored components follow the **D52 encoding** instead (`AGENTS.md`, "Conventions";
+`apps/catalog/AGENTS.md`, "Components — the D52 encoding"): a plain `div` (never `article`), a stretched
 `<button aria-label="<name>">` carrying the name, visual text marked
 `aria-hidden="true"`, no `<title>`. `components/svelte/SelectableRow.svelte:12`
 is the button; `:20`, `:24` and `:29` are the `aria-hidden` inner text.
@@ -170,7 +170,7 @@ deliberate tradeoff, not a lint accident.
 
 Components reference **semantic** tokens so they flip with the theme; primitive
 tokens are mode-invariant and belong to the token layer only
-(`apps/catalog/AGENTS.md:48-52`). Dark is the default: `tokens/tokens.css:166-167`
+(`apps/catalog/AGENTS.md`, "Tokens — Andrew's BrandKit, from the library"). Dark is the default: `tokens/tokens.css:166-167`
 defines `--surface-raised: var(--warm-800)` / `--text-primary: var(--warm-50)`
 on `:root`, and `:229-230` redefines the same names under
 `html[data-theme="light"]`. Write `var(--surface-raised)`; never `var(--warm-800)`,
@@ -179,7 +179,7 @@ and never a literal hex.
 The same discipline covers spacing, radii and type: `var(--spacing-md)`,
 `var(--radius-sm)`, `var(--body-md-size)`, `var(--caption-size)` — see
 `components/svelte/SelectableRow.svelte:34-47` for a rule block that reaches for
-nothing raw. StatusTone is seven-way (`AGENTS.md:30-31`) via `--tone-*`, defined
+nothing raw. StatusTone is seven-way (`AGENTS.md`, "Conventions") via `--tone-*`, defined
 at `tokens/tokens-extra.css:25-31`.
 
 Two things are permitted and appear throughout: `color-mix(in oklab,
@@ -191,7 +191,7 @@ the one standing exemption: the kit names **no** icon size, so `.ph` rules are
 sized in `rem`, and the exemption is narrow on purpose so the gap stays visible.
 
 Never hand-edit `tokens/tokens.css` — it is generated from `tokens.json` by
-`tokens/build-tokens.py` (`AGENTS.md:17`).
+`tokens/build-tokens.py` (`AGENTS.md`, "Layout").
 
 ## Testing
 
@@ -205,10 +205,10 @@ npx vitest run src/components/StatusPill.test.js
 npx vitest run -t "renders the tone"
 ```
 
-Three quirks, from `apps/catalog/AGENTS.md:130-137`:
+Three quirks, from `apps/catalog/AGENTS.md`, "Testing quirks":
 
-- `apps/catalog/vite.config.js:7-9` sets `resolve: { conditions: ['browser'] }`.
-  Without it Svelte 5 resolves its **server** build and `mount()` throws
+- The `resolve.conditions` setting in `apps/catalog/vite.config.js` is
+  `['browser']`. Without it Svelte 5 resolves its **server** build and `mount()` throws
   `lifecycle_function_unavailable`.
 - `apps/catalog/src/vitest-setup.js:21` calls `afterEach(cleanup)` —
   testing-library does not auto-cleanup under vitest, and without it components
@@ -220,8 +220,8 @@ Three quirks, from `apps/catalog/AGENTS.md:130-137`:
 
 Two more the config and setup file explain in place:
 
-- `apps/catalog/vite.config.js:13-16` sets `css: true` so a `?raw` CSS import
-  returns real text instead of vitest's empty-module stub — that is what makes
+- The `test.css: true` setting in `apps/catalog/vite.config.js` makes a `?raw`
+  CSS import return real text instead of vitest's empty-module stub — that is what makes
   the token tests read the actual `tokens.css`.
 - `apps/catalog/src/vitest-setup.js:5-19` shims `ResizeObserver` as a no-op.
   Ark's Segment Group measures the checked item to place its indicator, and

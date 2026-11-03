@@ -8,7 +8,7 @@ shows up on hover in your editor. See §5, "Where the prop reference is".
 Read the operational fact first, because it affects how you install:
 
 > Install from npm and pin an exact version:
-> `"@khaos-machine/khaotik-ui": "0.178.2"`. See
+> `"@khaos-machine/khaotik-ui": "0.178.3"`. See
 > [Versioning reality](#7-versioning-reality).
 
 ---
@@ -214,8 +214,9 @@ Copy that and you are on the theme.
 document.documentElement.dataset.theme = 'light'  // or 'dark'
 ```
 
-Seed it before first paint if you care about a flash — the catalog does exactly
-this from its app shell (`apps/catalog/src/App.svelte:39`).
+Seed it before first paint if you care about a flash — the catalog writes
+`data-theme="dark"` on `<html>` in `apps/catalog/index.html`, and its app shell
+(`apps/catalog/src/App.svelte`) keeps the attribute in step from then on.
 
 ### Use the semantic tokens
 
@@ -482,15 +483,17 @@ being undone.
 
 The library is published on npm as `@khaos-machine/khaotik-ui` (Apache-2.0).
 Every `lib-*` tag publishes one version through `lib-publish.yml`, and that
-version is the release. The catalog app versions independently under `v*`, so
-don't read one version from the other.
+version is the release. The same tag publishes the catalog to
+[GitHub Pages](https://khaos-machine.github.io/khaotik-ui/), which shows the
+library version it was built from.
 
-**Pin an exact version** and upgrade deliberately. A range picks up a breaking
-change with no warning, the way D58's rename once reached a consumer pinned to
-`main`:
+**Pin an exact released npm version** — the version a `lib-*` tag publishes —
+and upgrade deliberately. Never pin `main` or a bare SHA, and never a range: a
+range picks up a breaking change with no warning, the way D58's rename once
+reached a consumer pinned to `main`:
 
 ```jsonc
-"@khaos-machine/khaotik-ui": "0.178.2"
+"@khaos-machine/khaotik-ui": "0.178.3"
 ```
 
 On upgrade, read the new rows in `docs/decisions.md` — that register is where

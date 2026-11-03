@@ -61,7 +61,7 @@ is the bug.
 
 Do not invent aliases for products, tag series, CSS tokens, component groups,
 or decision identifiers. `docs/decisions.md` owns decision names; the package
-and Tauri manifests own software identifiers.
+manifests own software identifiers.
 
 ## User-facing posture
 

@@ -68,8 +68,8 @@ information. The set is self-contained in this repository and does not depend
 on a parent workspace document.
 
 `apps/catalog/AGENTS.md` remains the authority for its subtree. Root guidance
-routes to it instead of copying its detailed Svelte, Tauri, data, testing, and
-release notes and allowing two versions to drift.
+routes to it instead of copying its detailed Svelte, data, testing and build
+notes and allowing two versions to drift.
 
 ### 2026-09-22 — I diagnosed a cause from a peer's number without checking its provenance
 
@@ -147,8 +147,9 @@ the zero, so "no matches" and "nothing was read" stop looking alike.
 `write_json` asserts the FIXTURE still holds its original bytes rather than
 asserting the command failed. Assert the artifact, not the invocation. The
 same principle is why `scripts/release-lib.sh` re-reads the `latest` pointer
-after publishing instead of trusting that it passed `--latest=false`, and why
-`check-latest-release.mjs` exits 2 — never 0 — when it cannot read.
+after publishing instead of trusting the flag it passed — `--latest=false` when
+this was written, `--latest` since D95 — and why `check-latest-release.mjs`,
+deleted with the desktop catalog, exited 2 — never 0 — when it could not read.
 
 **Two of the six were caught by other people**, not by me: a peer refuted my
 lockfile diagnosis, and K asked why I was working on a tool that is not part of Khaos. A

@@ -7,10 +7,11 @@ Supported development and delivery procedures for `khaotik-ui`. Policy is in
 
 - `git` and `gh` for branches, pull requests, checks, tags, and releases.
 - Node.js 24 and npm for CI-equivalent installs, gates, builds, and tests.
-- Rust/Cargo and Tauri CLI for the native catalog.
 - Python 3 only for the existing token builder.
-- Xcode, Apple credentials, signing certificate, updater key, AWS credentials,
-  and `gh` are release-runner requirements. Do not move secrets into files.
+- A browser for the catalog. It is a web app; there is no native build.
+
+Publishing needs no local credentials: npm uses trusted publishing and the Pages
+deploy uses the workflow's `id-token`. Do not move secrets into files.
 
 Use `npm ci` from the root for a reproducible workspace install. The catalog is
 an npm workspace and consumes this repository's root package through its local
@@ -34,6 +35,7 @@ npm run check-compile       # catalog production build; imports every fixture ex
 npm run check-export-count  # every document stating an export count states the real one
 
 npm run check-types                 # generated declarations match components
+npm run check-icons                 # the shipped icon stylesheet matches the installed Phosphor
 npm run check-citations             # path:line citations in live reference docs resolve
 
 # both need GH_TOKEN; locally: export GH_TOKEN=$(gh auth token)
@@ -67,8 +69,9 @@ cross-repository document by section name, not by line.
 The custom coverage scripts report 0 clean, 1 named gaps, and 2 could not run.
 Treat 2 as failure. CI runs every command in the block above through
 `.github/workflows/gates.yml`, in that order: `npm ci`, the catalog tests,
-`check-coverage`, `check-types`, `check-citations`, then the `check-issue-refs`
-self-check and the gate itself.
+`check-coverage`, `check-types`, `check-icons`, `check-citations`, then the
+`check-issue-refs` self-check and the gate itself. `ci.yml` calls it on every
+pull request, and `catalog-pages.yml` calls it before every Pages deploy.
 
 For a single catalog test:
 
@@ -99,21 +102,22 @@ library is consumed directly from git; they are not a hand-maintained API.
 cd apps/catalog
 npm run dev       # browser/Vite
 npm test          # Vitest suite
-npm run build     # static web build
-npm run dev:mcp   # Tauri debug app with the MCP bridge
-npx tauri dev     # Tauri desktop app
+npm run build     # static web build, base path /
+npm run preview   # serve the build
 ```
 
-For Rust/Tauri work on machines where Cargo is installed but absent from the
-default shell path:
+`npm run dev` serves on port 5173 and fails rather than moving when the port is
+taken (`vite.config.js`). The Pages build passes `--base` from
+`actions/configure-pages`, because a project site is served under
+`/khaotik-ui/`; dev, tests and `check-compile` stay at `/`. To check a change
+under the Pages base before it ships:
 
 ```sh
-export PATH="$HOME/.cargo/bin:$PATH"
+npm run build -- --base=/khaotik-ui/ && npm run preview -- --base=/khaotik-ui/
 ```
 
-The MCP bridge is debug-only, feature-gated, and bound to `127.0.0.1:9223`.
-Do not relax the debug assertion, feature gate, or loopback bind; the bridge can
-execute JavaScript in the webview.
+Agents drive the catalog in a browser, on `npm run dev` or the Pages URL; see
+`.claude/skills/mcp-steering`.
 
 ## Catalog data
 
@@ -135,79 +139,61 @@ producer runs, and a failing producer leaves it at 0 bytes (#139).
 
 ## Release and publishing
 
-GitHub Actions owns normal publishing. `.github/workflows/catalog-release.yml`
-runs the reusable gates, then uses a GitHub-hosted macOS runner to import the
-signing certificate and invoke `apps/catalog/scripts/release.sh`.
+GitHub Actions owns publishing, and one tag family releases everything. A
+`lib-X.Y.Z` tag fires two workflows:
 
-- `vX.Y.Z`: catalog tag; builds, signs, notarizes, creates updater artifacts,
-  drafts the GitHub release, publishes the updater feed, and deploys the web
-  catalog.
-- `lib-X.Y.Z`: library tag; `.github/workflows/lib-publish.yml` publishes
-  `@khaos-machine/khaotik-ui` to npm through trusted publishing.
+- `.github/workflows/lib-publish.yml` publishes `@khaos-machine/khaotik-ui` to
+  npm through trusted publishing.
+- `.github/workflows/catalog-pages.yml` runs the reusable gates, builds the
+  catalog with the Pages base path on `ubuntu-latest`, and deploys it to
+  <https://khaos-machine.github.io/khaotik-ui/>. The `github-pages` environment
+  admits `lib-*` tags.
 
-**Cut a `lib-*` Release with `--latest=false`.** GitHub's `latest` is
-repo-wide and last-publish-wins, so a library release published without the
-flag takes the pointer off the catalog. It has fired **six** times —
-`lib-0.11.0` through `lib-0.15.0` each held `latest` until the next `v*` tag
-took it back, and `lib-0.20.0` held it from 2026-09-21 until it was found and
-restored to `v0.17.0` on 2026-09-22. `releases/latest` is what `AGENTS.md`
-offers as the link to the signed DMG, so for those windows it resolved to
-something with no installable build.
+The gates run before the Pages build because `gates / gates` is required on
+`main` but not strict, and a tag can point at any commit, so a tagged commit is
+not known to be green.
 
-The five-times count is inherited from the earlier record and is **not
-independently verifiable** — the API reports only the current `isLatest`, never
-its history. The `lib-0.20.0` occurrence was measured directly.
+There is no second release path. The signed desktop catalog, its updater and
+its S3/CloudFront deploy were removed by D95 (#12, landed in #22), and no
+workflow fires on any other tag.
 
-```sh
-gh release create lib-X.Y.Z --target <full-sha> --latest=false --title ... --notes ...
-```
-
-`--target` needs the **full** SHA; an abbreviated one is rejected as
-`Release.target_commitish is invalid`, which reads like a tag problem and is
-not.
-
-**`releases/latest` does not answer "what is the newest library release."** In
-a repository with two release families it answers *the newest thing published
-here*, which is a different question. Ask the tags instead:
-
-```sh
-git tag -l 'lib-*' | sort -V | tail -1
-git tag -l 'v*'    | sort -V | tail -1
-```
-
-`apps/catalog/scripts/release.sh` asserts `--latest` for the catalog path
-(#103), and **`scripts/release-lib.sh` is its counterpart for the library
-path** — use it rather than `gh release create` by hand:
+**The newest `lib-*` release holds `latest`.** Cut it with
+`scripts/release-lib.sh` rather than `gh release create` by hand:
 
 ```sh
 scripts/release-lib.sh --dry-run   # every pre-publish guard, publishes nothing
 scripts/release-lib.sh
 ```
 
-It passes `--latest=false`, then **re-reads the pointer and fails if it moved**,
-printing the command that restores it. Passing the flag and the pointer holding
-are two different claims and only the second one matters.
+It creates an annotated tag, publishes the Release with `--latest`, then
+**reads `releases/latest` back and fails unless it is the new tag**, printing
+the command that restores it. Passing the flag and the pointer holding are two
+different claims and only the second one matters.
 
-Until 2026-09-22 this path had no script and the rule lived only in prose here.
-A rule that lives only in prose is followed only by whoever reads it, which is
-never the person cutting a release from memory — and that is how it fired a
-sixth time.
+That inverts the rule this section carried while the desktop catalog existed.
+GitHub's `latest` is repo-wide and last-publish-wins, so a library release then
+had to pass `--latest=false` or take the pointer off the catalog's DMG. It did
+so **six** times — `lib-0.11.0` through `lib-0.15.0` each held `latest` until
+the next `v*` tag took it back, and `lib-0.20.0` held it from 2026-09-21 until
+it was found and restored to `v0.17.0` on 2026-09-22. The five-times count is
+inherited from the earlier record and is **not independently verifiable** — the
+API reports only the current `isLatest`, never its history. The `lib-0.20.0`
+occurrence was measured directly. Until 2026-09-22 that path had no script and
+the rule lived only in prose here, and a rule that lives only in prose is
+followed only by whoever reads it.
 
-**No gate reads the root `package.json` version.** `version.test.js` reads
-`tauri.conf.json`, `Cargo.toml`, `Cargo.lock` and `APP_VERSION`;
-`check-consumer.mjs` reads `pkg.exports` and never `pkg.version`. A library
-version bump is therefore a hand-check in both directions — a missing bump
-ships new API under an old version, a wrong bump ships old API under a new one,
-and neither reds. #43 shipped without its bump for exactly this reason.
+A release created by hand with `--target` needs the **full** SHA; an
+abbreviated one is rejected as `Release.target_commitish is invalid`, which
+reads like a tag problem and is not.
 
-Before a catalog release, update all four version sources named in
-`apps/catalog/AGENTS.md`, using `cargo update -p app --offline` for the lockfile,
-then run the full validation set. Never create a `v*` tag for a library-only
-change.
+**No gate reads the root `package.json` version.** `check-consumer.mjs` reads
+`pkg.exports` and never `pkg.version`, and the catalog only displays it
+(`APP_VERSION` is read from the root `package.json`). A library version bump is
+therefore a hand-check in both directions — a missing bump ships new API under
+an old version, a wrong bump ships old API under a new one, and neither reds.
+#43 shipped without its bump for exactly this reason. `lib-publish.yml` does
+check that the tag matches `package.json`, but only after the tag exists.
 
-The release script resolves a certificate hash, runs Tauri for the signed app,
-packages the DMG with `hdiutil`, notarizes and staples it, signs updater
-artifacts, uploads to `updates.loswf.com`, and deploys the static catalog.
-Credentials and signing keys stay in CI secrets or the documented local secret
-stores. Run the script locally only when K explicitly authorizes a release and
-a release-capable machine is configured.
+Bump `version` in `package.json` and add the `CHANGELOG.md` entry in the pull
+request, then run `npm install --package-lock-only` so `package-lock.json`'s
+root version follows.

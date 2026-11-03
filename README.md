@@ -29,7 +29,9 @@ theming, icons, assets and the component inventory.
 
 ## Catalog
 
-Browse every component at [khaotik-catalog.loswf.com](https://khaotik-catalog.loswf.com).
+Browse every component at
+[khaos-machine.github.io/khaotik-ui](https://khaos-machine.github.io/khaotik-ui/),
+published with each library release.
 
 ## Develop
 
@@ -43,6 +45,6 @@ npm run check-types                     # shipped .d.ts are current
 
 ## Release
 
-A `lib-*` tag publishes the library to npm. A `v*` tag ships the catalog.
+A `lib-*` tag publishes the library to npm and the catalog to GitHub Pages.
 Changes are in [`CHANGELOG.md`](CHANGELOG.md), and working conventions in
 [`AGENTS.md`](AGENTS.md).
