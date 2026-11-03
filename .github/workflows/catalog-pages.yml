@@ -1,0 +1,77 @@
+name: catalog-pages
+
+# Publishes the catalog's static web build to GitHub Pages on each library
+# release, at https://khaos-machine.github.io/khaotik-ui/. The catalog ships
+# with the library, so it rides the library's tag rather than one of its own.
+#
+# The gates run first. `gates / gates` is required on main but not strict, so a
+# merged commit may never have been checked against the main it landed on, and
+# a tag can point at any commit at all. Deploying without this would publish
+# whatever the tag names.
+
+on:
+  push:
+    tags: ['lib-*']
+
+# Nothing by default; each job states what it needs.
+permissions: {}
+
+# One deploy at a time, and a running deploy is never cut off mid-upload.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  gates:
+    # gates.yml asks for these, and a called workflow may not ask for more than
+    # its caller grants (see its header, and ci.yml).
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+    uses: ./.github/workflows/gates.yml
+
+  build:
+    needs: gates
+    runs-on: ubuntu-latest
+    # configure-pages reads the site with GET /repos/{owner}/{repo}/pages
+    # (src/api-client.js, getPagesSite), which needs Pages: read, and throws
+    # "Get Pages site failed" without it.
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - run: npm ci
+
+      - id: pages
+        uses: actions/configure-pages@v6
+
+      # A project site is served under /<repo>/, so the build takes its base from
+      # Pages rather than from vite.config.js, which stays at / for dev and tests.
+      - name: Build the catalog
+        run: npm run build --workspace apps/catalog -- --base="${{ steps.pages.outputs.base_path }}/"
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: apps/catalog/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # The minimum deploy-pages documents; the job checks nothing out.
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

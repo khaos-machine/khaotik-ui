@@ -111,9 +111,3 @@ jobs:
         run: npm run check-issue-refs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # The lock catalog-release.yml takes around its keychain search-list change.
-      # The suite uses its own temporary lock directory and a shim for `security`,
-      # so it never contends with a real release or touches the real search list.
-      - name: Gate — the signing keychain lock
-        run: scripts/signing-keychain-lock.test.sh

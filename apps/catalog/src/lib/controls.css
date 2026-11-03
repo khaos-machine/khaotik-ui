@@ -13,9 +13,9 @@
 
 /* ---- hover ---- */
 
-/* `:not(:disabled)` is part of the affordance, not a detail. Updater's button
- * had written it and the other six had not, because only that one can be
- * disabled — a non-button element always matches, so carrying it here costs
+/* `:not(:disabled)` is part of the affordance, not a detail. The since-removed
+ * updater's button had written it and the other six had not, because only that
+ * one could be disabled — a non-button element always matches, so carrying it here costs
  * nothing and stops the next disabled control from lighting up under the
  * cursor.
  *

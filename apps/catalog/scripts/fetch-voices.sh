@@ -5,7 +5,8 @@
 # Auditions play clips this repo hosts, never a third-party URL: one per gender
 # bucket in public/samples/ (female, male, neutral), made on-device with macOS
 # `say` and encoded with afconvert. src/voice-samples.test.js fails if a voice
-# points at a clip that is not committed.
+# points at a clip that is not committed. The URL is relative (samples/…, not
+# /samples/…) so it resolves under the base path the catalog is served from.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -35,7 +36,7 @@ khaosd_curl "/api/voices" | jq --argjson accent "$ACCENT" '
       provider:  (.provider // ""),
       providerId: (.providerId // ""),
       qualityTier: (.qualityTier // ""),
-      sampleURL: ("/samples/" + (if .gender == "female" or .gender == "male" then .gender else "neutral" end) + ".m4a"),
+      sampleURL: ("samples/" + (if .gender == "female" or .gender == "male" then .gender else "neutral" end) + ".m4a"),
       steeringKind: ((.steering.kind) // "none"),
       tags:      (.tags // [])
   } ] | sort_by(.name | ascii_downcase)

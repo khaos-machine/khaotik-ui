@@ -47,7 +47,7 @@ describe('documents published into the repo', () => {
   })
 
   it('refuses without even trying on the built web surface, and says why', async () => {
-    // khaotik-catalog.loswf.com is a static build with no dev server and no repo
+    // The GitHub Pages build is static, with no dev server and no repo
     // to write to. Attempting the fetch there would fail with a network error
     // that says nothing useful; this says what is actually true, and the control
     // still offers the JSON to copy.

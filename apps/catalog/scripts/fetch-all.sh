@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # fetch-all.sh — regenerate the catalog's stored (committed) data from the live
 # sources. This is the "export/convert" step: the JSON it writes is committed and
-# becomes the build-time input for the web + desktop catalog, so neither needs a
-# running daemon.
+# becomes the build-time input for the web catalog, so it never needs a running
+# daemon.
 #
 # Requires khaosd running (voices + kspd detail).
 set -euo pipefail
