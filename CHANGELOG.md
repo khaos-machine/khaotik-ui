@@ -20,6 +20,19 @@ current pin.
 
 ## [Unreleased]
 
+## [0.179.0] — 2026-11-03
+
+### Added
+
+- `ProjectCard` names the five story passes khaosd runs after the three
+  analyses. `ProjectJob.kind` takes `character-journeys`,
+  `relationship-synthesis`, `story-structure`, `premise` and `coverage-report`,
+  each with a status line for every phase, including "Coverage analysis
+  failed". They have no rail segment (#27).
+- `ProjectCard` takes `onRetry`. With it set, a failed analysis job of any of
+  the eight analysis kinds offers "Retry <noun> analysis for <title>", which
+  invokes it. A failed extraction keeps its retry through `onExtract` (#28).
+
 ## [0.178.5] — 2026-11-03
 
 ### Fixed
