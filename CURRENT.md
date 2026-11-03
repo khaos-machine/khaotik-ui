@@ -7,7 +7,8 @@ a library three versions behind. The 2026-09-05 version then survived
 seventeen days and repeated the same failure — library `0.18.0` against a
 shipped `0.20.1`, and a closed issue listed as blocking.
 
-**Last verified:** 2026-09-23
+**Last verified:** 2026-09-23 for the whole file. Sections carrying a later
+date were verified on that date only.
 
 **Two shapes are banned here**, because both produced a wrong document above:
 
@@ -37,7 +38,7 @@ grep -c '^export' components/svelte/index.js                    # export count
 `releases/latest` does **not** answer either version question; see `TOOLS.md`.
 
 The library and catalog version independently. A `v*` tag triggers the catalog
-release workflow; `lib-*` is a library marker and triggers no release.
+release workflow; a `lib-*` tag triggers `lib-publish.yml`, which publishes to npm.
 Consumers pin a readable `lib-*` tag rather than `main` or a bare SHA.
 
 ## Known consumers

@@ -120,36 +120,30 @@ execute JavaScript in the webview.
 From `apps/catalog`:
 
 ```sh
-scripts/fetch-kspd.sh    # KSPD captures from khaosd + khaos-tools
+scripts/fetch-kspd.sh    # KSPD captures from the khaosd API
 scripts/fetch-voices.sh  # voices and provider status
 scripts/fetch-all.sh     # both, in order
 ```
 
 The daemon port comes from `~/.khaos/runtime.json`. These scripts require the
-live daemon and `khaos-tools` only while capturing; committed JSON is used at
-build and runtime. They do not write `contrast-allow.json` or
-`contrast-audit.json`.
+live daemon only while capturing; committed JSON is used at build and runtime.
+They do not write `contrast-allow.json` or `contrast-audit.json`.
 
-**Do not run these until #123 is fixed. `fetch-kspd.sh` is broken and
-destructive.** It calls `khaos-tools parser query`, a subcommand removed by
-khaos-tools 0.18.0 (`parse | version | help` is the whole surface), and its
-default project path no longer exists on disk. Three of its five writes use a
-bare `> file` redirect under `set -euo pipefail`, so the shell truncates the
-**committed** capture before the failing pipeline runs and leaves it at 0
-bytes. The script's own comment documents that exact hazard and fixes it with a
-temp-file helper — for the other two writers. Route every write through
-`write_json`, not just the three that are broken.
+Route every write to a committed capture through `write_json`. A bare
+`> file` under `set -euo pipefail` truncates the committed capture before the
+producer runs, and a failing producer leaves it at 0 bytes (#139).
 
 ## Release and publishing
 
 GitHub Actions owns normal publishing. `.github/workflows/catalog-release.yml`
-runs the reusable gates, then uses the self-hosted macOS ARM64 runner to import
-the signing certificate and invoke `apps/catalog/scripts/release.sh`.
+runs the reusable gates, then uses a GitHub-hosted macOS runner to import the
+signing certificate and invoke `apps/catalog/scripts/release.sh`.
 
 - `vX.Y.Z`: catalog tag; builds, signs, notarizes, creates updater artifacts,
   drafts the GitHub release, publishes the updater feed, and deploys the web
   catalog.
-- `lib-X.Y.Z`: library marker; triggers no workflow.
+- `lib-X.Y.Z`: library tag; `.github/workflows/lib-publish.yml` publishes
+  `@khaos-machine/khaotik-ui` to npm through trusted publishing.
 
 **Cut a `lib-*` Release with `--latest=false`.** GitHub's `latest` is
 repo-wide and last-publish-wins, so a library release published without the
