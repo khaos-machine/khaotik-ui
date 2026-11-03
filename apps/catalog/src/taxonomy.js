@@ -171,7 +171,7 @@ export const SECTION_EMPTY = {
 }
 
 // Sidebar grouping: display label + canonical order for the fixture registry.
-// `adopted` is the Ark UI shelf D50 calls for (`docs/decisions.md:131`). It was
+// `adopted` is the Ark UI shelf D50 calls for (D50 in `docs/decisions.md`). It was
 // declared empty and has since filled — Menu, SegmentedControl, Toggle and
 // ConfirmDialog — so its GROUP_EMPTY copy no longer renders; it stays for the
 // same reason the shelf did, as the honest state when nothing is on it.
