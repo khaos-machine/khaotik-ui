@@ -1,9 +1,10 @@
 # catalog — operating notes
 
-What this directory is: the **component catalog** — a Svelte + Tauri + Ark UI
-app that renders the library's atoms and compositions with the BrandKit tokens.
-It is the "preview on devices" surface: the desktop playtest app for components
-and compositions against real KSPD data. Lives in the khaotik-ui monorepo as
+What this directory is: the **component catalog** — a Svelte + Vite + Ark UI
+web app that renders the library's atoms and compositions with the BrandKit
+tokens. It is the "preview on devices" surface: the playtest app for components
+and compositions on device frames against real KSPD data, published to
+<https://khaos-machine.github.io/khaotik-ui/> on each `lib-*` tag. Lives in the khaotik-ui monorepo as
 `apps/catalog`; the library it previews is the repo root (`@khaos-machine/khaotik-ui`).
 
 ## What this is for
@@ -114,7 +115,8 @@ working around it.
 
 - **Svelte 5** (runes) + **Vite** — deliberately *not* SvelteKit (a catalog
   needs no SSR or router).
-- **Tauri v2** desktop (macOS first).
+- A **static web build**, and nothing else. The desktop shell was
+  retired by D95; there is no native build, updater or MCP bridge.
 - **Ark UI** `@ark-ui/svelte` — primitives for the *components* only, never the
   catalog shell. It is the framework-agnostic equivalent of shadcn's Radix base
   (same Zag.js state machines), chosen because shadcn/ui is React-only and the
@@ -128,9 +130,13 @@ cd apps/catalog
 npm install
 npm run dev        # Vite only (browser)
 npm test           # vitest
-npm run build      # Vite production build
-npx tauri dev      # desktop app (needs cargo on PATH: export PATH="$HOME/.cargo/bin:$PATH")
+npm run build      # Vite production build, base path /
+npm run preview    # serve the build
 ```
+
+`npm run dev` holds port 5173 and fails rather than moving when it is taken
+(`vite.config.js`). Agents drive the running catalog in a browser — see
+`.claude/skills/mcp-steering`.
 
 ## Tokens — Andrew's BrandKit, from the library
 
@@ -193,18 +199,20 @@ standalone.
   cards. The launcher + `ProjectCard` fixtures use the **real** projects
   (`BROKEN IN 4 PLACES` = 54/27/26, `Heart of an Indie` = 5/4/3).
 - **Shell**: search + sort (Grouped / Name), version in the sidebar brand, and
-  a **Settings** sheet (About + Updates — check/apply via `Updater.svelte`,
-  Tauri-only). `src/fixtures.js` carries the `APP_VERSION` constant (`App.svelte`
-  imports it) — keep it in sync with `tauri.conf.json`/`Cargo.toml` on release.
+  a **Settings** sheet. Settings had an Updates section driven by
+  `Updater.svelte` until D95; it now holds About alone. `src/fixtures.js`
+  exports `APP_VERSION` (`App.svelte` imports it), read from the root
+  `package.json` — the catalog reports the library version it was built with,
+  so there is nothing to bump here.
 
-### Real data — khaosd API + khaos-tools
+### Real data — the khaosd API
 
 `scripts/fetch-kspd.sh` is the single source of truth for the **captured**
 `src/data/*.json` — every file there except the two named under "Not captured"
 below. It
 reads the **live khaosd API** (the running daemon on `~/.khaos/runtime.json`'s
-port) + `khaos-tools parser query` — **not** the KSPD files, which were stale
-(old layout, old counts). `fetch-voices.sh` does the same for `voices.json` +
+port) — **not** the KSPD files, which were stale (old layout, old counts). It
+no longer calls `khaos-tools`. `fetch-voices.sh` does the same for `voices.json` and
 `provider-status.json`. Run both after the daemon changes — or `fetch-all.sh`,
 which runs them in order:
 
@@ -221,10 +229,10 @@ bash scripts/fetch-all.sh     # both, in order
 - Data integrity rule: **no canned data**. Real data or the honest empty state;
   a missing field is a gap to report (the catalog/KSPD/khaos-tools), never fabricated.
 - **Build-time export**: the committed `src/data/*.json` is the catalog's data
-  source — the web + desktop builds import it directly (no daemon at
-  build/deploy time). Regenerate + commit the **captured** files with
-  `scripts/fetch-all.sh`; the daemon/khaos-tools are only needed at that export
-  step, never at runtime.
+  source — the web build imports it directly (no daemon at build or deploy
+  time). Regenerate + commit the **captured** files with
+  `scripts/fetch-all.sh`; the daemon is only needed at that export step, never
+  at runtime.
 
 #### Not captured — two files in `src/data/` that no script writes
 
@@ -238,9 +246,12 @@ and `fetch-all.sh` will not touch them.
   from the thing being checked would make the guard a tautology — which this
   repo has shipped three times. **There is no command to run. If the guard reds,
   the answer is a justified entry or a fixed rule, never a regeneration.**
-- **`contrast-audit.json` is measurement**, produced by a manual MCP-driven
-  sweep of the running catalog (its own `regenerateWith` field says how). No
-  code reads it; the guard is forbidden to.
+- **`contrast-audit.json` is measurement**, produced by a manual sweep of the
+  running catalog. No code reads it; the guard is forbidden to. The file
+  records how it was taken: in the desktop app's WKWebView through the MCP
+  bridge. Both are gone (D95), so its `regenerateWith` field names a command
+  that no longer exists, and how the next sweep runs is
+  not yet decided.
 
 ## Svelte 5 gotchas (each cost a rebuild)
 
@@ -263,84 +274,28 @@ and `fetch-all.sh` will not touch them.
 - Token test reads `tokens.css` via `import.meta.dirname` — `new URL(..., import.meta.url)`
   throws "URL must be of scheme file" under vitest's jsdom transform.
 
-## Release — signing + notarization
+## Publishing — GitHub Pages, on each `lib-*` tag
 
-`scripts/release.sh` does the whole signed release in one command. It packages
-the DMG with `hdiutil` (Tauri's `create-dmg` fails on these machines), puts
-`~/.cargo/bin` on PATH (cargo is not on the default shell PATH), and **tags
-`vX.Y.Z` before drafting** so the release is never left "untagged".
+The catalog has no release of its own. A `lib-*` tag fires
+`.github/workflows/catalog-pages.yml`, which runs `gates.yml`, builds this app
+on `ubuntu-latest` with `--base` from `actions/configure-pages`, and deploys
+`dist/` to <https://khaos-machine.github.io/khaotik-ui/>. The repo-root
+`TOOLS.md`, "Release and publishing", owns the procedure.
 
-```bash
-cd apps/catalog
-set -a && source ~/KhaosFoundation/.env && set +a   # APPLE_ID / TEAM_ID / APP_SPECIFIC_PASSWORD
-./scripts/release.sh --version X.Y.Z
-gh release edit vX.Y.Z --draft=false                # publish after review
-```
+- **The base path is `/khaotik-ui/` on Pages and `/` everywhere else.**
+  `vite.config.js` does not set one, so dev, tests and `check-compile` run at
+  `/`. To check a change under the Pages base locally:
+  `npm run build -- --base=/khaotik-ui/ && npm run preview -- --base=/khaotik-ui/`.
+- **A URL written into data or code at runtime must be relative.** Vite's
+  `--base` rewrites the URLs it bundles, not strings the app builds itself. The
+  voice `sampleURL`s are `samples/<bucket>.m4a`, not `/samples/…`, in
+  `fetch-voices.sh`, the committed `voices.json` and the fixtures, so they
+  resolve under `/khaotik-ui/`. A root-absolute one 404s on Pages and nowhere
+  else.
+- **Nothing to version here.** `APP_VERSION` is the root `package.json`
+  version.
 
-Steps the script performs, in order:
-
-1. Resolve the signing identity to a **hash** (`security find-identity`) — two
-   `Developer ID Application: Khalid Mills (G98TZJ75HL)` certs coexist, and
-   `codesign --sign "<name>"` is ambiguous.
-2. `npx tauri build --bundles app` — signs + notarizes + staples the `.app`
-   (Tauri notarizes automatically when `APPLE_ID`/`APPLE_PASSWORD`/
-   `APPLE_TEAM_ID` are set).
-3. Package the DMG with `hdiutil` — **not** Tauri's default `dmg` bundle.
-4. `codesign` the DMG, then `xcrun notarytool submit --wait` + `stapler staple`.
-5. Tag `vX.Y.Z` (create + push) so the draft carries the tag.
-6. `gh release create vX.Y.Z --draft` with the DMG + `.sha256`.
-
-A draft is **"untagged" until published** (normal GitHub behaviour); the script
-tags first so the draft already has the tag, and `gh release edit vX.Y.Z
---draft=false` publishes it.
-
-**Credentials** (never in the shell env):
-- `~/KhaosFoundation/.env` on `vader` — `APPLE_ID`, `APPLE_TEAM_ID`,
-  `APPLE_APP_SPECIFIC_PASSWORD`.
-- For CI: **org-level** secrets on `loswf`; the workflow maps
-  `APPLE_APP_SPECIFIC_PASSWORD` → `APPLE_PASSWORD` inside `release.sh`.
-
-**Runner**: `[self-hosted, macOS, ARM64]` on `mini.local` (Rust 1.97, Xcode 27,
-the signing cert, Node under `/opt/homebrew/bin`). A `loswf`-org runner was
-registered as `loswf-mini`.
-
-## Auto-update — Tauri updater on updates.loswf.com
-
-The catalog ships the **Tauri updater** (`tauri-plugin-updater` + Ark-less
-`Updater.svelte` in the sidebar footer). The repo is **private**, so GitHub
-release assets are not publicly fetchable — the updater endpoint + artifacts
-live on the shared **LOSWF** update host instead (K: one subdomain for all LOSWF
-products):
-
-- **Endpoint**: `https://updates.loswf.com/khaotik-catalog/latest.json`
-  (baked into `tauri.conf.json` under `plugins.updater.endpoints`).
-- **Hosting**: S3 bucket `loswf-updates-web` (private, Block Public Access ON) +
-  CloudFront distribution `E1WTYEQ9SZ5JYP` (alias `updates.loswf.com`) via an
-  **OAC** (`ENKY554EWCU6G`) — least privilege, not a public bucket.
-- **Layout** (product-scoped so other LOSWF products share the subdomain):
-  `khaotik-catalog/latest.json`, `khaotik-catalog/vX.Y.Z/khaotik-catalog.app.tar.gz[.sig]`,
-  `khaotik-catalog/vX.Y.Z/khaotik-catalog-X.Y.Z.dmg[.sha256]`.
-- **Signing**: `tauri signer generate` produced `~/.tauri/khaotik-catalog.key[.pub]`.
-  `release.sh` exports `TAURI_SIGNING_PRIVATE_KEY` (key *content*, not a path) +
-  `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` (from `KHAOTIK_UPDATER_KEY_PASSWORD` in the
-  `.env`). `bundle.createUpdaterArtifacts: true` makes `tauri build` emit the
-  signed `.app.tar.gz` + `.sig`.
-
-`release.sh` publishes the updater artifacts + `latest.json` to S3
-(`AWS_PROFILE`, default `personal`) and the DMG + `.sha256` to the (private)
-GitHub draft. Losing the private key/password means existing installs can never
-update again — back both up.
-
-## Release checklist
-
-1. Bump the version in **all four** places `src/version.test.js` gates:
-   `src-tauri/tauri.conf.json`, `src-tauri/Cargo.toml`, the `APP_VERSION`
-   constant in `src/fixtures.js`, and `src-tauri/Cargo.lock` — the last via
-   `cargo update -p app --offline`, never by hand. Miss `Cargo.lock` and the
-   release is blocked, not merely untidy: `catalog-release.yml` runs `npm test`
-   before it signs, and nothing in CI repairs the lockfile (`release.sh` only
-   reads `tauri.conf.json`). It had drifted five releases before the gate
-   existed, because `cargo build` silently rewrites the entry locally.
-2. Commit + push.
-3. `./scripts/release.sh --version X.Y.Z` with the `.env` sourced (above).
-4. Review the draft, then `gh release edit vX.Y.Z --draft=false`.
+Until D95 this section described the signed desktop app with its own release
+tag, its auto-updater and a separate web deploy. All of it is removed from the
+repository (#22). The repo-root `CURRENT.md`, "Retiring", lists the hosts that
+still exist and the ticket that removes each.

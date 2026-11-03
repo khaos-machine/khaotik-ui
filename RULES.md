@@ -63,7 +63,8 @@ this file conflicts with another root document.
 - Never hand-edit `components/svelte/**/*.svelte.d.ts` or `index.d.ts`; edit
   component source and run `npm run build-types`.
 - The catalog's committed JSON is its build-time data. Regenerate captured data
-  from the live daemon and `khaos-tools`; never fabricate values to fill a gap.
+  from the live daemon with the catalog scripts; never fabricate values to fill
+  a gap.
 - D62 allows illustrative fixture rows using real engine format/payload shapes
   and never by altering captured data. **D74 widened its scope** from state
   matrices to *states the capture cannot reach, including layout thresholds it
@@ -72,9 +73,10 @@ this file conflicts with another root document.
   machine cannot be in" would not have covered the case it was written for.
   D62's second condition — only payloads already in the repo — is the limit.
 - `contrast-allow.json` is a hand-reviewed source, not generated.
-  `contrast-audit.json` is manual MCP measurement and is not read by the guard.
-- Catalog release versions must agree in `tauri.conf.json`, `Cargo.toml`,
-  `src/fixtures.js`, and `Cargo.lock`; update the lock with Cargo.
+  `contrast-audit.json` is a manual measurement of the running catalog and is
+  not read by the guard.
+- The catalog has no version of its own. `APP_VERSION` is read from the root
+  `package.json`; do not restate it.
 
 ## Testing and delivery
 
@@ -106,9 +108,9 @@ this file conflicts with another root document.
   followed** — check the code under such a paragraph against its own stated
   principle specifically, because the argument's presence is what stops
   anyone looking.
-- A `v*` tag means catalog release and invokes signing/publishing automation.
-  A `lib-*` tag publishes the library to npm (`lib-publish.yml`). Keep them
-  separate.
+- A `lib-*` tag is the only release: it publishes the library to npm
+  (`lib-publish.yml`) and the catalog to GitHub Pages (`catalog-pages.yml`).
+  The desktop catalog and its separate release path are retired (D95).
 - Consumers pin a `lib-*` tag. Do not recommend `main` or a bare SHA.
 - Use semantic commit prefixes and a `docs/`, `feature/`, `feat/`, or `fix/` branch.
   Changes reach `main` through a pull request, merged only after

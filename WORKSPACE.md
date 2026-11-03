@@ -11,12 +11,11 @@ This file maps the repository and each path's ownership. Procedures live in
 | `tokens/` | Design tokens and shared token utilities | `tokens.json` is source; `tokens.css` is generated; `tokens-extra.css` carries seven StatusTone aliases; `utilities.css` carries shared classes; `parse.js` is the single parser |
 | `components/svelte/` | Shipped Svelte atoms and compositions | Components are hand-authored; adjacent declarations and `index.d.ts` are generated |
 | `assets/placeholders/` | Shipped pre-production artwork | Keep assets small; real consumer artwork wins; read its `README.md` |
-| `apps/catalog/` | Svelte 5 + Vite + Tauri 2 catalog | Has its own `AGENTS.md`, which governs the subtree |
+| `apps/catalog/` | Svelte 5 + Vite web catalog, published to GitHub Pages | Has its own `AGENTS.md`, which governs the subtree |
 | `docs/` | Decision register, consumer guidance, token history, plans | `decisions.md` owns design/architecture decisions; historical plans are not current instructions |
-| `scripts/` | Coverage, taxonomy, consumer, compile, and declaration tooling | Root npm scripts are the supported interface |
-| `.github/workflows/` | Pull-request gates and catalog release automation | `gates.yml` is reusable by CI and release |
+| `scripts/` | Coverage, taxonomy, consumer, compile, declaration and release tooling | Root npm scripts are the supported interface |
+| `.github/workflows/` | Pull-request gates, the npm publish and the Pages deploy | `gates.yml` is reusable; `ci.yml` and `catalog-pages.yml` call it |
 | `.claude/` | Claude Code agents, commands, skills, settings, and launch config | Runtime configuration, not shipped library content |
-| `.mcp.json` | Project-scoped MCP servers | The Tauri bridge drives a debug catalog build only |
 
 ## Ownership boundaries
 
@@ -40,9 +39,9 @@ ownership:
   hand-edit `*.svelte.d.ts` or `components/svelte/index.d.ts`.
 - Regenerate captured `apps/catalog/src/data/*.json` with the catalog scripts,
   except `contrast-allow.json` (human-reviewed source) and
-  `contrast-audit.json` (manual MCP measurement). The fetch scripts do not own
+  `contrast-audit.json` (manual measurement of the running catalog). The fetch scripts do not own
   those two files.
-- Update catalog version sources together as described in
-  `apps/catalog/AGENTS.md`; `Cargo.lock` changes through Cargo, not by hand.
-- Build output, dependency directories, and Tauri targets are generated and
-  must not be treated as source.
+- The catalog has no version source of its own; `APP_VERSION` is read from the
+  root `package.json`.
+- Build output (`apps/catalog/dist/`) and dependency directories are generated
+  and must not be treated as source.

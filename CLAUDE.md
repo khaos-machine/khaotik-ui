@@ -10,8 +10,7 @@ Claude Code harness information.
 
 Claude Code discovers nested `AGENTS.md` files by path. Before touching
 `apps/catalog/`, read `apps/catalog/AGENTS.md`; it is authoritative for that
-subtree's Svelte 5, Tauri, test, data-capture, signing, notarization, and updater
-procedures.
+subtree's Svelte 5, Vite, test, data-capture and web-build procedures.
 
 ## Project toolkit
 
@@ -22,9 +21,9 @@ copying counts into prose; counts drift as the toolkit changes.
 Relevant project skills include:
 
 - `svelte` for Svelte 5 component work.
-- `tauri` for the desktop shell.
 - `tokens` for BrandKit token work.
-- `mcp-steering` for the debug-only catalog bridge.
+- `mcp-steering` for which MCP servers to use, including driving the catalog in a
+  browser.
 - `publishing` for authorized release work.
 
 Load the skill that matches the task before changing its surface. A named skill
@@ -49,8 +48,8 @@ every paragraph lands somewhere; check that before removing one.
 
 Editor diagnostic streams can be stale while files or language servers are
 updating. Treat them as a lead, not a verdict. Trust the submitted diff and the
-configured npm, Vitest, Vite, declaration, and Tauri validation commands. Do
-not stop or overwrite another in-flight change because an editor reports a
+configured npm, Vitest, Vite and declaration validation commands. Do not
+stop or overwrite another in-flight change because an editor reports a
 transient diagnostic.
 
 ## Agent skills

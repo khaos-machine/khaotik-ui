@@ -58,5 +58,5 @@ release work when practical.
 Preferred technologies include Swift, Go, Rust, Kotlin, Bash, Vue, Svelte, and
 plain HTML/CSS/JavaScript. Avoid React, React Native, and Python unless an
 existing requirement makes them necessary. This repository already requires
-Svelte, Rust/Tauri, JavaScript, npm, and one Python token-build script; use the
+Svelte, JavaScript, npm, and one Python token-build script; use the
 existing stack rather than introducing a parallel one.

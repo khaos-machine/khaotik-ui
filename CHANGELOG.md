@@ -4,10 +4,11 @@ All notable changes to the **`@khaos-machine/khaotik-ui` library** are recorded 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and
 the library follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-This file tracks the **library**, which ships under the `lib-*` tag prefix. The
-**catalog** desktop app versions independently under `v*` — see
-[AGENTS.md](AGENTS.md). Keep the prefixes apart: a `v*` tag ships a signed,
-notarized catalog release whether or not one was intended.
+This file tracks the **library**, which ships under the `lib-*` tag prefix. Each
+`lib-*` tag also publishes the **catalog** to GitHub Pages, and the catalog
+reports the library version — see [AGENTS.md](AGENTS.md), "Releases". Until
+0.178.3 the catalog was a separately versioned desktop app; it is retired
+(D95).
 
 **Consumers should pin a `lib-*` tag, not a bare SHA.** A version in a
 dependency string is something a human can read. `khaos-app` once pinned a bare
@@ -17,6 +18,18 @@ D58's break and D59's shipped `.d.ts` had never reached the client. It pins a
 description of a live consumer.
 
 ## [Unreleased]
+
+## [0.178.3] — 2026-11-03
+
+### Changed
+
+- The package contents are unchanged: no component, token, asset or type
+  declaration differs from 0.178.2, and the one edit to a shipped file is a
+  comment in `SetupProgress.svelte`. The catalog is now web-only and publishes
+  to GitHub Pages, at https://khaos-machine.github.io/khaotik-ui/, on each
+  `lib-*` tag after the gates pass. It shows the library version it was built
+  from. The desktop catalog, its separate releases and its updater are
+  retired (D95).
 
 ## [0.178.2] — 2026-11-02
 

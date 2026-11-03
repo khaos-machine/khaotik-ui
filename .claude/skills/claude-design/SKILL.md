@@ -41,7 +41,7 @@ reported, never guessed, and no token is fabricated.
 ## What is worth syncing
 
 This library's own published surface is already
-[khaotik-catalog.loswf.com](https://khaotik-catalog.loswf.com) — the catalog,
+[khaos-machine.github.io/khaotik-ui](https://khaos-machine.github.io/khaotik-ui/) — the catalog,
 browsable without installing anything, rendering the real components against real
 data. Per-prop docs are in the shipped `*.svelte.d.ts` and show on hover in an
 editor. Before syncing anything, ask whether one of those already answers the

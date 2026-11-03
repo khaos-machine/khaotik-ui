@@ -24,6 +24,22 @@ build log. "Did it compile" can, and should be.
 
 ## Browser — the catalog
 
+**Agents drive the catalog in a browser.** It is a web app and nothing else:
+the desktop shell, its MCP bridge and the project-scoped MCP config were
+retired by D95, and no MCP server drives the catalog any other way.
+Point the browser at one of two places:
+
+```bash
+cd apps/catalog && npm run dev       # http://localhost:5173 — your working tree
+```
+
+- **`npm run dev`** for anything you are changing. Vite holds port 5173 and
+  fails rather than moving when it is taken (`vite.config.js`), so the URL is
+  always that one.
+- **<https://khaos-machine.github.io/khaotik-ui/>** for what the last `lib-*`
+  release shipped. It is served under `/khaotik-ui/`, so a root-absolute URL
+  that works on `npm run dev` can 404 here and nowhere else.
+
 Two servers can drive Chrome. Pick one and stay in it for the task; mixing them
 mid-flow just confuses which tab is which.
 
@@ -33,66 +49,21 @@ mid-flow just confuses which tab is which.
   `tabs_context_mcp` first; create a new tab with `tabs_create_mcp` rather than
   reusing a tab id from earlier in the session.
 - **`chrome-devtools`** — reach for this when the question is performance, a
-  network waterfall, or a Lighthouse/accessibility audit rather than
-  interaction.
-
-What to point them at:
-
-```bash
-cd apps/catalog && npm run dev       # the catalog shell (Vite prints the port)
-```
+  network waterfall, computed styles, or a Lighthouse/accessibility audit rather
+  than interaction.
 
 Two traps specific to this repo:
 
-- **The theme lives on the root element.** The catalog stamps
-  `document.documentElement.dataset.theme` from its app shell
-  (`apps/catalog/src/App.svelte:39`), seeded before first paint. Dark is the
-  default; light is `html[data-theme="light"]`. If you are verifying a colour,
-  verify **both** — a token that reads fine on the dark default can fail in
-  light.
+- **The theme lives on the root element.** `apps/catalog/index.html` writes
+  `data-theme="dark"` on `<html>` before first paint, and the app shell
+  (`apps/catalog/src/App.svelte`) keeps `document.documentElement.dataset.theme`
+  in step. Dark is the default; light is `html[data-theme="light"]`. If you are
+  verifying a colour, verify **both** — a token that reads fine on the dark
+  default can fail in light.
 - **Never trigger a JS dialog.** `alert`/`confirm`/`prompt` block every
   subsequent extension command and the session goes unresponsive until the user
   dismisses it by hand. Use `read_console_messages` (with the `pattern` filter)
   instead of dialog-based debugging.
-
-## Tauri — the catalog desktop app
-
-`.mcp.json` at the repo root registers **`@hypothesi/tauri-mcp-server`**
-project-scoped, so it travels with the repo rather than living in one machine's
-user config. It drives a **running** app over a local driver session — it does
-not read the project directory, so nothing needs to point it at `apps/catalog`.
-
-The app half was already built: `src-tauri/Cargo.toml:25-29` declares an
-optional `mcp-bridge` feature over `tauri-plugin-mcp-bridge` (the dependency
-is `Cargo.toml:38`), and `src-tauri/src/lib.rs:13-20` initialises it behind
-`#[cfg(all(debug_assertions, feature = "mcp-bridge"))]`. **Both gates are
-deliberate** — the feature is off by default and `debug_assertions` means even
-enabling it cannot produce a release build that listens. The bridge is a
-WebSocket that executes arbitrary JavaScript in the webview, which is why
-`lib.rs:17` pins `bind_address("127.0.0.1")` rather than taking the plugin's
-`0.0.0.0` default. Do not relax either gate or that bind address.
-
-The bridge's `mcp-bridge:default` permission is granted **at runtime**, in
-`setup`, with `add_capability` to the `main` window only, inside the same
-`cfg` gate (`lib.rs:28-36`). **Do not** add it to
-`capabilities/default.json` as the plugin's README says: a release build
-compiles that file, and nothing a release build compiles names the bridge.
-
-```bash
-cd apps/catalog
-npm run dev:mcp    # tauri dev --features mcp-bridge — the bridge is live
-npx tauri dev      # normal desktop run, no bridge
-npm run dev        # Vite only, browser — faster for anything not desktop-specific
-```
-
-All three need cargo on PATH: `export PATH="$HOME/.cargo/bin:$PATH"`.
-
-**Reach for it when the question is desktop-specific** — does the window
-render correctly, does a stylesheet cascade wrong in WKWebView, what does the
-real app's DOM look like. For anything that reproduces in a browser, `npm run
-dev` plus `claude-in-chrome` is a much shorter loop than a Rust rebuild. The
-server also exposes `get_setup_instructions`; call it if the driver session
-will not connect.
 
 ## Playwright — a CLI skill, not an MCP server
 
