@@ -35,7 +35,7 @@ export const VERDICTS: Readonly<Record<string, {
 }>>;
 /**
  * The sections the engine reports unfinished that have a written label. Unlike the other maps this
- * one is open: KSPD declares `incompleteSections` an open []string (kspdprotocol coverage.go:97), so
+ * one is open: KSPD declares `incompleteSections` an open list of strings, so
  * a section missing here is named from its id rather than failing Coverage.
  * @type {Readonly<Record<string, string>>}
  */

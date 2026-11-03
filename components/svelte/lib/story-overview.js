@@ -41,7 +41,7 @@ export const VERDICTS = { recommend: { text: 'Recommend', tone: 'success' }, con
 
 /**
  * The sections the engine reports unfinished that have a written label. Unlike the other maps this
- * one is open: KSPD declares `incompleteSections` an open []string (kspdprotocol coverage.go:97), so
+ * one is open: KSPD declares `incompleteSections` an open list of strings, so
  * a section missing here is named from its id rather than failing Coverage.
  * @type {Readonly<Record<string, string>>}
  */
@@ -54,7 +54,7 @@ export const INCOMPLETE = {
 }
 
 /** An unfinished section's label: the written one, else its id with hyphens as spaces. @param {string} s */
-export const incompleteLabel = (s) => INCOMPLETE[s] ?? s.replaceAll('-', ' ')
+export const incompleteLabel = (s) => (Object.hasOwn(INCOMPLETE, s) ? INCOMPLETE[s] : s.replaceAll('-', ' '))
 
 /** @type {Readonly<Record<string, string>>} */
 export const FLAGS = {
