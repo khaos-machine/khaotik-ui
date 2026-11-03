@@ -6,8 +6,11 @@ name: gates
 # close (#87): the release would then be checked against something the PR never
 # ran, and neither green would mean what a reader takes it to mean.
 #
-# Runs on GitHub-hosted macOS. The repository is public, so its Actions minutes
+# Runs on GitHub-hosted Linux. The repository is public, so its Actions minutes
 # are free (operator, 2026-10-30: "public copy for free compute to handle CI").
+# It ran on macOS until 2026-11-03, when the macOS arm64 queue left the
+# lib-0.178.4 and lib-0.180.0 Pages runs unacquired and timed out a test on a
+# loaded runner. No gate needs macOS, and every other job already runs on Linux.
 
 on:
   workflow_call: {}
@@ -34,7 +37,7 @@ permissions:
 
 jobs:
   gates:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
 

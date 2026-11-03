@@ -1,6 +1,6 @@
 {
   "generatedBy": "the runtime contrast audit \u2014 getComputedStyle on real rendered nodes in the running khaotik catalog (Tauri desktop app) driven through the dev-only MCP bridge. Records are one per SPLIT-SELECTOR KEY (75), not one per rule (73): the two grouped rules StoryPlayer:334 and EditableField:247 contribute two keys each. Both units are reconciled in `counts`.",
-  "regenerateWith": "cd apps/catalog && npm run dev:mcp, then drive the walker described in docs/plans/caption-contrast-and-metastrip-migration.md section 4.1 over every fixture and every example, in both themes. This file is MEASUREMENT ONLY and is never read by the regression guard (contrast-guard.test.js) \u2014 the guard reads the hand-authored contrast-allow.json, which has no generator.",
+  "regenerateWith": "cd apps/catalog && npm run dev, then drive the walker in a browser (the desktop MCP bridge that ran it was retired by D95) described in docs/plans/caption-contrast-and-metastrip-migration.md section 4.1 over every fixture and every example, in both themes. This file is MEASUREMENT ONLY and is never read by the regression guard (contrast-guard.test.js) \u2014 the guard reads the hand-authored contrast-allow.json, which has no generator.",
   "measuredAt": "2026-08-22",
   "instrument": {
     "engine": "WKWebView (Tauri 2 desktop shell), macOS",
