@@ -127,8 +127,10 @@ Consumers pin a readable `lib-*` tag rather than `main` or a bare SHA.
   retired by D61.
 - CI calls `.github/workflows/gates.yml` on pull requests and pushes to `main`.
   The catalog release workflow calls the same reusable gates before signing.
-  `gates / gates` is a required check with `strict: true`, so a branch cannot
-  merge stale — expect to re-run it after `main` moves.
+  `main` has no branch protection and no ruleset (measured 2026-11-03), so
+  `gates / gates` is not a required check and a branch can merge red or stale.
+  **Killed by:** a branch protection rule or ruleset on `main`; `AGENTS.md`,
+  "Releases", has the commands that answer it.
 - The generated TypeScript declaration drift check is separate from
   `check-coverage` and is also enforced by the reusable workflow.
 - The decision register's highest id is answered by the command below, not by

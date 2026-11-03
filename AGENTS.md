@@ -140,9 +140,18 @@ release gate cannot drift apart.
 `gates.yml` runs **the catalog's test suite, then `check-coverage`, then the
 checks after it in that file** — read its `run:` steps for the list. This line
 stated a count twice and was wrong both times ("three", then "six").
-`gates / gates` is a required status check on `main` with `strict: true`,
-so a branch cannot merge without it and cannot merge stale. Before that existed, a PR's green
-tick was two Socket Security dependency scans and nothing else (#87).
+**Nothing enforces the gates on `main`.** This repository was re-created as
+`khaos-machine/khaotik-ui` on 2026-10-30, and branch protection did not come
+with it. The archived `khaos-studio/khaotik-ui` still requires
+`gates / gates` (with `strict: false`, measured 2026-11-03, despite this file
+saying `true`). `main` has no branch protection and no ruleset, so a branch can
+merge red or stale. Merge only after `gates / gates` passes on the PR. Check the
+current state with:
+
+```sh
+gh api repos/khaos-machine/khaotik-ui/branches/main/protection   # 404 = unprotected
+gh api repos/khaos-machine/khaotik-ui/rulesets
+```
 
 The catalog ships as a signed Tauri app
 (`.github/workflows/catalog-release.yml` on tag `v*`), publishing updater
