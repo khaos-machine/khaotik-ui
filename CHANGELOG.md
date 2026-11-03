@@ -29,8 +29,9 @@ current pin.
   journeys, Relationships and Story structure. Any other name is shown exactly
   as sent, so the 0.178.4 hyphens-to-spaces fallback is gone. The `scenes`,
   `characters` and `locations` labels are removed because the RFC does not
-  declare them. Names sent by khaos-tools v0.136.0 or earlier now show as their
-  raw ids.
+  declare them. khaos-tools v0.136.0 still sends those three, so they show as
+  raw ids until it writes the RFC's names. Its other names are declared and
+  keep a label.
 
 ## [0.178.4] — 2026-11-03
 
