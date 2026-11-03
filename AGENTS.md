@@ -140,17 +140,16 @@ release gate cannot drift apart.
 `gates.yml` runs **the catalog's test suite, then `check-coverage`, then the
 checks after it in that file** — read its `run:` steps for the list. This line
 stated a count twice and was wrong both times ("three", then "six").
-**Nothing enforces the gates on `main`.** This repository was re-created as
-`khaos-machine/khaotik-ui` on 2026-10-30, and branch protection did not come
-with it. The archived `khaos-studio/khaotik-ui` still requires
-`gates / gates` (with `strict: false`, measured 2026-11-03, despite this file
-saying `true`). `main` has no branch protection and no ruleset, so a branch can
-merge red or stale. Merge only after `gates / gates` passes on the PR. Check the
-current state with:
+`main` is protected (operator ruling, 2026-11-03): changes arrive by pull
+request (0 approvals), `gates / gates` must pass, admins are included, and
+force-push and deletion are blocked. `strict` is **false**, so a branch can merge
+behind `main`. When `main` has moved, re-run the gates before merging. Tag pushes
+are not covered, so `release-lib.sh` pushing `lib-*` is unaffected. The repository
+was re-created on 2026-10-30 without protection, and from then until this ruling
+nothing enforced the gates. Read the current rules from the API, not from here:
 
 ```sh
-gh api repos/khaos-machine/khaotik-ui/branches/main/protection   # 404 = unprotected
-gh api repos/khaos-machine/khaotik-ui/rulesets
+gh api repos/khaos-machine/khaotik-ui/branches/main/protection
 ```
 
 The catalog ships as a signed Tauri app
