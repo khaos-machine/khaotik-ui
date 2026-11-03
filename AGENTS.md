@@ -161,8 +161,8 @@ the library's version, because `APP_VERSION` is read from the root
 The catalog was a signed desktop app with a release tag of its own until D95
 retired it (#12, landed in #22). No desktop shell, signing, updater, MCP bridge
 or S3/CloudFront deploy is left in the repository, and no workflow fires on any
-tag but `lib-*`. The hosts it published to were deleted on 2026-11-03;
-`CURRENT.md`, "Retired", records them.
+tag but `lib-*`. Its catalog host and its updater feed were deleted on
+2026-11-03; `CURRENT.md`, "Retired", records what went and what was kept.
 
 There were two workflows until D61. `storybook-deploy.yml` republished a
 Storybook catalog to `khaotik-ui.loswf.com` on any push to `main`, and

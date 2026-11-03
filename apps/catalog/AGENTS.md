@@ -298,5 +298,5 @@ on `ubuntu-latest` with `--base` from `actions/configure-pages`, and deploys
 
 Until D95 this section described the signed desktop app with its own release
 tag, its auto-updater and a separate web deploy. All of it is removed from the
-repository (#22). The repo-root `CURRENT.md`, "Retired", records the hosts it
-published to and when they were deleted.
+repository (#22). The repo-root `CURRENT.md`, "Retired", records what it
+published to, what was deleted and what was kept.

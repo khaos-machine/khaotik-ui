@@ -45,9 +45,10 @@ answers it.
 **2026-11-03.** The desktop catalog's hosts are retired (D95, map #11). The old
 catalog web host `khaotik-catalog.loswf.com` and the updater feed
 `updates.loswf.com/khaotik-catalog/` were deleted by #18, with no redirect and
-no notice. The shared `updates.loswf.com` host stays because other content uses
-it. The desktop app's credentials are not this repository's (#19): it holds
-none.
+no notice. The shared `updates.loswf.com` host was kept, because its bucket
+also served `ucs-catalog/`. The desktop app's credentials are not this
+repository's (#19): on 2026-11-03 it held no Actions secret and no signing
+reference.
 
 ## Known consumers
 
