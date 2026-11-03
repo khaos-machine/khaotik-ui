@@ -20,6 +20,17 @@ current pin.
 
 ## [Unreleased]
 
+## [0.180.0] — 2026-11-03
+
+### Changed
+
+- `ProjectCard`'s rail has eleven segments, not six: one for each of the five
+  story passes after the three analyses (character journeys, relationships,
+  story structure, premise, coverage). A job of one of those kinds fills its
+  own segment, and `ProjectAnalysis.kind` takes their khaosd job types so a
+  host can report them. `Complete` still needs only the three analyses when the
+  host reports no story pass, and every reported story pass must be done too.
+
 ## [0.179.0] — 2026-11-03
 
 ### Added

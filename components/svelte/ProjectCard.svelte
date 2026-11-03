@@ -37,30 +37,46 @@
 
   // The rail, in order. Imported → Parsed → Indexed is the complete import
   // flow (enrichment is a later capability, not a fourth prerequisite for
-  // opening the project); the three analyses follow it. A segment's index is
-  // its position here.
-  const RAIL_SEGMENTS = ['Import', 'Parse', 'Index', 'Analyze scenes', 'Analyze characters', 'Analyze places']
+  // opening the project); the three analyses follow it, then the five story
+  // passes in khaosd's default-flow order. A segment's index is its position
+  // here.
+  const RAIL_SEGMENTS = [
+    'Import', 'Parse', 'Index',
+    'Analyze scenes', 'Analyze characters', 'Analyze places',
+    'Analyze character journeys', 'Analyze relationships', 'Analyze story structure', 'Analyze premise', 'Analyze coverage',
+  ]
   const IMPORT_SEGMENTS = 3
+  // The three analyses a project needs before `Complete`. A story pass counts
+  // toward it only when the host reports one.
+  const CORE_ANALYSES = 3
 
-  // An analysis's segment, by the `kind` the host reports it under. A Map, so
-  // `toString` finds nothing and the segment makes no claim.
-  const ANALYSIS_SEGMENTS = new Map([['scenes', 3], ['characters', 4], ['places', 5]])
+  // An analysis's [segment, job kind], by the `kind` the host reports it under.
+  // A Map, so `toString` finds nothing and the segment makes no claim.
+  const ANALYSIS_SEGMENTS = new Map([
+    ['scenes', [3, 'analyze-scenes']],
+    ['characters', [4, 'analyze-characters']],
+    ['places', [5, 'analyze-places']],
+    ['character-journeys', [6, 'character-journeys']],
+    ['relationship-synthesis', [7, 'relationship-synthesis']],
+    ['story-structure', [8, 'story-structure']],
+    ['premise', [9, 'premise']],
+    ['coverage-report', [10, 'coverage-report']],
+  ])
   // `partial` is some analysed and nothing running (Breaking Even, 2026-10-14: one scene
   // of 53 read "Analyzing scenes 1/53" with no job); `in-progress` is work running.
   const ANALYSIS_STATES = new Set(['not-started', 'partial', 'in-progress', 'done', 'failed'])
 
   // An analysis job's kind → [segment, noun, what "Analyzing" names]. The five
-  // story passes after the three analyses take khaosd's job type as their kind
-  // and have no segment: the rail draws the three analyses only.
+  // story passes take khaosd's job type as their kind.
   const ANALYSIS_JOBS = new Map([
     ['analyze-scenes', [3, 'scene', 'scenes']],
     ['analyze-characters', [4, 'character', 'characters']],
     ['analyze-places', [5, 'place', 'places']],
-    ['character-journeys', [null, 'character journey', 'character journeys']],
-    ['relationship-synthesis', [null, 'relationship', 'relationships']],
-    ['story-structure', [null, 'story structure', 'story structure']],
-    ['premise', [null, 'premise', 'the premise']],
-    ['coverage-report', [null, 'coverage', 'coverage']],
+    ['character-journeys', [6, 'character journey', 'character journeys']],
+    ['relationship-synthesis', [7, 'relationship', 'relationships']],
+    ['story-structure', [8, 'story structure', 'story structure']],
+    ['premise', [9, 'premise', 'the premise']],
+    ['coverage-report', [10, 'coverage', 'coverage']],
   ])
 
   const capitalise = (s) => `${s[0].toUpperCase()}${s.slice(1)}`
@@ -111,26 +127,29 @@
     return { completed, total }
   }
 
-  // The status label's analysis rung, from the analyses by rail index: all
-  // three done is `Complete`; otherwise the first analysis in rail order that
-  // is not done names the label — in progress or failed, with its own count.
-  // One not started or not reported makes no claim, so the stage speaks. The
-  // copy is the analysis job's own, so a report and a live job read alike.
+  // The status label's analysis rung, from the analyses by rail index: the
+  // first analysis in rail order that is not done names the label — in
+  // progress or failed, with its own count. One not started makes no claim, so
+  // the stage speaks; so does one of the three analyses not reported. A story
+  // pass not reported is skipped, so a host that reports only the three still
+  // reads `Complete` once they are done. The copy is the analysis job's own,
+  // so a report and a live job read alike.
   function analysisStatus(byIndex) {
-    const segments = [...ANALYSIS_SEGMENTS.values()]
-    if (segments.every((i) => byIndex.get(i)?.state === 'done')) return { label: 'Complete', tone: 'success' }
-    for (const [kind, i] of ANALYSIS_SEGMENTS) {
+    for (const [kind, [i, jobKind]] of ANALYSIS_SEGMENTS) {
       const a = byIndex.get(i)
-      if (a?.state === 'done') continue
+      if (a?.state === 'done' || (!a && i >= IMPORT_SEGMENTS + CORE_ANALYSES)) continue
       const count = validCount(a?.progress)
       const counted = count ? { progress: `${count.completed}/${count.total}` } : {}
-      if (a?.state === 'partial') return { label: `${capitalise(kind)} analyzed`, tone: 'neutral', ...counted }
+      if (a?.state === 'partial') {
+        const label = i < IMPORT_SEGMENTS + CORE_ANALYSES ? `${capitalise(kind)} analyzed` : `${capitalise(ANALYSIS_JOBS.get(jobKind)[1])} analysis partly done`
+        return { label, tone: 'neutral', ...counted }
+      }
       if (a?.state !== 'in-progress' && a?.state !== 'failed') return null
       const failed = a.state === 'failed'
-      const label = JOB_LABELS.get(`analyze-${kind}`).get(failed ? 'failed' : 'running')
+      const label = JOB_LABELS.get(jobKind).get(failed ? 'failed' : 'running')
       return { label, tone: failed ? 'danger' : 'warning', ...counted }
     }
-    return null
+    return { label: 'Complete', tone: 'success' }
   }
 </script>
 
@@ -158,7 +177,7 @@
    * @property {import('./lib/types.js').ProjectJob} [job] A background job running on this project — an import, an extraction or an analysis pass — as the host knows it. Omit when there is none, and the card shows the package stage. It outranks the stage chip whatever the stage is. An unknown `kind` or `phase` renders no job. During an import the meta row and every action are hidden. Durations that are not finite and non-negative render nothing; the timing sits in the `aria-hidden` footer, so a value refreshed every second is never announced.
    * @property {(event: MouseEvent) => void} [onExtract] Invoked by the parsed-package extraction action, offered with no job or a failed extraction.
    * @property {(event: MouseEvent) => void} [onRetry] When set, a failed analysis `job` offers a retry ("Retry character analysis for <title>") that invokes it. The host knows which job it passed, so it dispatches that one again. A failed extraction keeps its own retry through `onExtract`.
-   * @property {readonly import('./lib/types.js').ProjectAnalysis[]} [analyses] What the host knows of the three analyses — scenes, characters, places — drawn as the rail's last three segments, placed by `kind`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
+   * @property {readonly import('./lib/types.js').ProjectAnalysis[]} [analyses] What the host knows of the three analyses — scenes, characters, places — and of the five story passes after them — `character-journeys`, `relationship-synthesis`, `story-structure`, `premise`, `coverage-report` — drawn as the rail's last eight segments, placed by `kind`. `Complete` needs the three analyses done and every story pass the host reports done; a story pass it does not report is left out of `Complete`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
    * @property {import('svelte').Snippet} [children] The host's content below the footer — what a failed job offers (a fix, Report a Problem…), which only the host can choose. Rendered whatever the job, raised above the card's activate overlay so its controls take the click, and outside the `aria-hidden` footer so they are announced. Omit it and the card draws no empty slot.
    */
 
@@ -253,13 +272,13 @@
   const reportedAnalyses = $derived.by(() => {
     const byIndex = new Map()
     for (const a of Array.isArray(analyses) ? analyses : []) {
-      const index = ANALYSIS_SEGMENTS.get(a?.kind)
+      const index = ANALYSIS_SEGMENTS.get(a?.kind)?.[0]
       if (index !== undefined && ANALYSIS_STATES.has(a.state) && !byIndex.has(index)) byIndex.set(index, a)
     }
     return byIndex
   })
 
-  // The six segments, each `{ label, done, active, waiting, failed, fraction,
+  // The eleven segments, each `{ label, done, active, waiting, failed, fraction,
   // title }`, or null when the card knows neither a stage nor a job.
   const rail = $derived.by(() => {
     const key = typeof project.package_stage === 'string' ? project.package_stage.trim() : ''
@@ -281,8 +300,7 @@
     let jobStep = -1
     if (activeJob) {
       const { kind, phase } = activeJob
-      // A story pass has no segment, so its step is -1 and the stage places the rail.
-      jobStep = ANALYSIS_JOBS.has(kind) ? ANALYSIS_JOBS.get(kind)[0] ?? -1 : kind === 'extract' ? 2 : phase === 'running' ? 1 : 0
+      jobStep = ANALYSIS_JOBS.get(kind)?.[0] ?? (kind === 'extract' ? 2 : phase === 'running' ? 1 : 0)
     }
     const importDone = jobStep >= 0 && jobStep < IMPORT_SEGMENTS ? jobStep : stage?.step ?? 0
     const fractionOf = (count) => (count ? count.completed / count.total : null)
@@ -513,7 +531,7 @@
       return { label: 'Not Parsed', tone: 'neutral' }
     }
 
-    // Analysis, from the SAME reports the rail's last three segments draw, so
+    // Analysis, from the SAME reports the rail's analysis segments draw, so
     // the label and the rail are one fact. Above the remaining stage members
     // because `parsed`/`indexed`/`enriched` all CONCEDE that content exists —
     // they cannot contradict a count of work done over it.
@@ -1017,7 +1035,9 @@
     flex: 1;
     min-width: 0;
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    /* One column per segment, however many RAIL_SEGMENTS holds. */
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
     gap: 3px;
     height: 3px;
     padding-block: 4px;

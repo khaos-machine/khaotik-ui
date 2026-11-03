@@ -2319,6 +2319,26 @@ export const fixtures = [
         project: { ...PROJECT_BASE, package_stage: 'indexed' },
         job: { kind: 'analyze-scenes', phase: 'running', progress: { completed: 7, total: 54 }, elapsedMs: 21_000 },
       } },
+      // The story passes' five segments after the three analyses (#27), and the
+      // retry a failed pass offers (#28).
+      { label: 'Story passes: journeys and relationships done, structure running', props: {
+        project: { ...PROJECT_BASE, package_stage: 'indexed' },
+        analyses: [
+          { kind: 'scenes', state: 'done' }, { kind: 'characters', state: 'done' }, { kind: 'places', state: 'done' },
+          { kind: 'character-journeys', state: 'done' }, { kind: 'relationship-synthesis', state: 'done' },
+        ],
+        job: { kind: 'story-structure', phase: 'running', elapsedMs: 9_000 },
+      } },
+      { label: 'Story passes: coverage failed, with retry', props: {
+        project: { ...PROJECT_BASE, package_stage: 'indexed' },
+        analyses: [
+          { kind: 'scenes', state: 'done' }, { kind: 'characters', state: 'done' }, { kind: 'places', state: 'done' },
+          { kind: 'character-journeys', state: 'done' }, { kind: 'relationship-synthesis', state: 'done' },
+          { kind: 'story-structure', state: 'done' }, { kind: 'premise', state: 'done' },
+        ],
+        job: { kind: 'coverage-report', phase: 'failed' },
+        onRetry: () => {},
+      } },
       // No job and the extract action offered: the state before Job 6.
       { label: 'Extract: available', props: {
         project: { ...PROJECT_BASE, package_stage: 'parsed' },

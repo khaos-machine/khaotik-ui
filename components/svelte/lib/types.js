@@ -61,11 +61,10 @@
  */
 
 /**
- * One analysis of a project as the host knows it — the `ProjectCard` rail's
- * last three segments. Report only what the engine says; an analysis the
+ * last eight segments. Report only what the engine says; an analysis the
  * engine does not report is omitted, not sent as `not-started`.
  * @typedef {Object} ProjectAnalysis
- * @property {'scenes'|'characters'|'places'} kind
+ * @property {'scenes'|'characters'|'places'|'character-journeys'|'relationship-synthesis'|'story-structure'|'premise'|'coverage-report'} kind The three analyses, then the five story passes under khaosd's job type.
  * @property {'not-started'|'partial'|'in-progress'|'done'|'failed'} state `partial`: some analysed, nothing running. `in-progress`: an analysis is running.
  * @property {{ readonly completed: number, readonly total: number }} [progress] Real counts only, e.g. scenes analysed of scenes in the story.
  */

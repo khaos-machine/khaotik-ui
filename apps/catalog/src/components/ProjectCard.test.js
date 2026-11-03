@@ -299,7 +299,7 @@ describe('ProjectCard package_stage (W-11)', () => {
       props: { project: { ...parsed, package_stage: stage } },
     })
 
-    expect(container.querySelectorAll('.project__stage-step')).toHaveLength(6)
+    expect(container.querySelectorAll('.project__stage-step')).toHaveLength(11)
     expect(container.querySelectorAll('.project__stage-step--complete')).toHaveLength(completed)
     expect(container.querySelector('.project__stage-step--active')).toBeNull()
   })

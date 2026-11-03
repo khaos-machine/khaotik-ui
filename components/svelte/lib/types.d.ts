@@ -35,12 +35,14 @@ export type ProjectJob = {
     remainingMs?: number;
 };
 /**
- * One analysis of a project as the host knows it — the `ProjectCard` rail's
- * last three segments. Report only what the engine says; an analysis the
+ * last eight segments. Report only what the engine says; an analysis the
  * engine does not report is omitted, not sent as `not-started`.
  */
 export type ProjectAnalysis = {
-    kind: "scenes" | "characters" | "places";
+    /**
+     * The three analyses, then the five story passes under khaosd's job type.
+     */
+    kind: "scenes" | "characters" | "places" | "character-journeys" | "relationship-synthesis" | "story-structure" | "premise" | "coverage-report";
     /**
      * `partial`: some analysed, nothing running. `in-progress`: an analysis is running.
      */

@@ -45,7 +45,7 @@ declare const ProjectCard: import("svelte").Component<{
      */
     onRetry?: (event: MouseEvent) => void;
     /**
-     * What the host knows of the three analyses — scenes, characters, places — drawn as the rail's last three segments, placed by `kind`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
+     * What the host knows of the three analyses — scenes, characters, places — and of the five story passes after them — `character-journeys`, `relationship-synthesis`, `story-structure`, `premise`, `coverage-report` — drawn as the rail's last eight segments, placed by `kind`. `Complete` needs the three analyses done and every story pass the host reports done; a story pass it does not report is left out of `Complete`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
      */
     analyses?: readonly import("./lib/types.js").ProjectAnalysis[];
     /**
@@ -95,7 +95,7 @@ type Props = {
      */
     onRetry?: (event: MouseEvent) => void;
     /**
-     * What the host knows of the three analyses — scenes, characters, places — drawn as the rail's last three segments, placed by `kind`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
+     * What the host knows of the three analyses — scenes, characters, places — and of the five story passes after them — `character-journeys`, `relationship-synthesis`, `story-structure`, `premise`, `coverage-report` — drawn as the rail's last eight segments, placed by `kind`. `Complete` needs the three analyses done and every story pass the host reports done; a story pass it does not report is left out of `Complete`. An analysis that is absent, or whose `kind` or `state` this build does not recognise, renders as an empty segment titled "not reported", never as "not started". A live analysis `job` outranks the report for its segment.
      */
     analyses?: readonly import("./lib/types.js").ProjectAnalysis[];
     /**
