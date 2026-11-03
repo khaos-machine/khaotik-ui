@@ -1,6 +1,7 @@
 // The story-wide analyses' closed label maps and the reads the Overview's three panes share.
-// Pure. Every map is closed: a value outside it fails its section rather than printing raw
-// (khaos.machine docs/designs/2026-10-24-stage3-analysis-display.md, item 4).
+// Pure. Every map but INCOMPLETE is closed: a value outside it fails its section rather than
+// printing raw (khaos.machine docs/designs/2026-10-24-stage3-analysis-display.md, item 4).
+// INCOMPLETE is open because the protocol declares that field open; see it below.
 
 /**
  * A value the engine sends with where it came from.
@@ -38,8 +39,12 @@ export const OUTCOMES = {
 /** @type {Readonly<Record<string, { text: string, tone: 'success' | 'warning' | 'danger' | 'neutral' }>>} */
 export const VERDICTS = { recommend: { text: 'Recommend', tone: 'success' }, consider: { text: 'Consider', tone: 'warning' }, pass: { text: 'Pass', tone: 'danger' }, '': { text: 'No verdict', tone: 'neutral' } }
 
-/** Every section the engine reports unfinished: its grounding layers and its analysed entity types. */
-/** @type {Readonly<Record<string, string>>} */
+/**
+ * The sections the engine reports unfinished that have a written label. Unlike the other maps this
+ * one is open: KSPD declares `incompleteSections` an open list of strings, so
+ * a section missing here is named from its id rather than failing Coverage.
+ * @type {Readonly<Record<string, string>>}
+ */
 export const INCOMPLETE = {
   'character-journey': 'character journeys',
   relationships: 'relationships',
@@ -47,6 +52,9 @@ export const INCOMPLETE = {
   characters: 'characters',
   locations: 'locations',
 }
+
+/** An unfinished section's label: the written one, else its id with hyphens as spaces. @param {string} s */
+export const incompleteLabel = (s) => (Object.hasOwn(INCOMPLETE, s) ? INCOMPLETE[s] : s.replaceAll('-', ' '))
 
 /** @type {Readonly<Record<string, string>>} */
 export const FLAGS = {
@@ -71,10 +79,10 @@ export const namedPoints = (s) => (s?.names?.state === 'named' ? s.names.points 
 export const shapeReads = (s) => !!s && s.fit.outcome in OUTCOMES
 
 /**
- * Whether the coverage reads: its verdict and incomplete sections are ones the maps know.
+ * Whether the coverage reads: its verdict is one the map knows and its incomplete sections are strings.
  * @param {Record<string, any> | null} r
  */
-export const coverageReads = (r) => !!r && r.rubric?.verdict?.value in VERDICTS && (r.incompleteSections ?? []).every((/** @type {string} */ s) => s in INCOMPLETE)
+export const coverageReads = (r) => !!r && r.rubric?.verdict?.value in VERDICTS && (r.incompleteSections ?? []).every((/** @type {unknown} */ s) => typeof s === 'string')
 
 /**
  * The production flags raised, labelled, and the contained-location share; null when a flag is

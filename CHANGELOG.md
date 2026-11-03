@@ -20,6 +20,17 @@ current pin.
 
 ## [Unreleased]
 
+## [0.178.4] — 2026-11-03
+
+### Fixed
+
+- StoryOverview reads coverage whose `incompleteSections` names a section the
+  kit has no label for, such as `character-analysis`, which khaosd sends.
+  KSPD declares the field an open list. Coverage used to fail as a whole on an
+  unknown section; now it names the section from its id with hyphens as spaces
+  ("character analysis") and shows the rest of the report. Known sections keep
+  their written labels. `lib/story-overview.js` adds `incompleteLabel`.
+
 ## [0.178.3] — 2026-11-03
 
 ### Changed

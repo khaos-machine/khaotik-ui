@@ -2,7 +2,8 @@
   // The story-wide analyses as one document: the premise, the story's shape and where it turns,
   // and the coverage report. Each section is drawn from its own read, so one failing or missing
   // never blanks the others. Values are shown as the engine sent them; the closed label maps in
-  // lib/story-overview.js are presentation, and a value outside them fails its section.
+  // lib/story-overview.js are presentation, and a value outside them fails its section, except an
+  // unfinished section, which the protocol leaves open and is named from its id.
   import Button from './Button.svelte'
   import InspectorSection from './InspectorSection.svelte'
   import LabeledPill from './LabeledPill.svelte'
@@ -12,7 +13,7 @@
   import SectionHeader from './SectionHeader.svelte'
   import SelectableRow from './SelectableRow.svelte'
   import StatusPill from './StatusPill.svelte'
-  import { ARCS, INCOMPLETE, OUTCOMES, VERDICTS, coverageReads, journeyName, journeysRead, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads } from './lib/story-overview.js'
+  import { ARCS, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads } from './lib/story-overview.js'
   import { dollars } from './lib/budget.js'
 
   /** @typedef {import('./lib/story-overview.js').Sourced} Sourced */
@@ -190,7 +191,7 @@
     {:else if coverage.kind === 'missing'}{@render none("There's no coverage for this story yet.", coverage.reason)}
     {:else if coverage.kind === 'failed' || !report}{@render line(coverage.kind === 'failed' ? coverage.message : "Khaos couldn't read this story's coverage.")}
     {:else}
-      {#if report.incompleteSections?.length}<p class="ui-story-overview__note" role="note">Part of this coverage wasn't finished: {report.incompleteSections.map((/** @type {string} */ s) => INCOMPLETE[s]).join(', ')}.</p>{/if}
+      {#if report.incompleteSections?.length}<p class="ui-story-overview__note" role="note">Part of this coverage wasn't finished: {report.incompleteSections.map(incompleteLabel).join(', ')}.</p>{/if}
       <span class="ui-story-overview__verdict" title={report.rubric.verdict.evidence?.[0]?.citation ?? ''}><StatusPill text={VERDICTS[report.rubric.verdict.value].text} tone={VERDICTS[report.rubric.verdict.value].tone} /></span>
       <div class="ui-story-overview__metrics">
         <MetricCard label="Runtime" value="{Math.round(report.structure.estimatedRuntimeMs.value / 60000)} min" />
