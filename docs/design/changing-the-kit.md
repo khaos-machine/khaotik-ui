@@ -81,7 +81,8 @@ the pull request waited, the gates run again before merge
 
 After merging, the Lead runs `scripts/release-lib.sh`. It pushes a `lib-*` tag,
 and that tag publishes the new version to npm through
-`.github/workflows/lib-publish.yml` and the catalog to GitHub Pages. The
+`.github/workflows/lib-publish.yml`, and the catalog to GitHub Pages through
+`.github/workflows/catalog-pages.yml`. The
 procedure is in [`TOOLS.md`, "Release and publishing"](https://github.com/khaos-machine/khaotik-ui/blob/main/TOOLS.md#release-and-publishing).
 
 ## 7. The app picks it up

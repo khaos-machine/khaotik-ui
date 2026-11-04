@@ -62,7 +62,7 @@ itself.
 | Accessibility and component rules | [`RULES.md`, "Component and accessibility rules"](https://github.com/khaos-machine/khaotik-ui/blob/main/RULES.md#component-and-accessibility-rules) |
 | Whether a change is a token, an atom, a composition or a screen | [The `design-iteration` skill](https://github.com/khaos-machine/khaotik-ui/blob/main/.claude/skills/design-iteration/SKILL.md) |
 | Working from a Claude Design project: the kit is upstream, the project mirrors it | [The `claude-design` skill](https://github.com/khaos-machine/khaotik-ui/blob/main/.claude/skills/claude-design/SKILL.md) |
-| A token a design needs that the kit does not have | [Token gaps](https://github.com/khaos-machine/khaotik-ui/blob/main/docs/harvest-khaos-machine-tokens.md): report it, never invent a value |
+| A token a design needs that the kit does not have | [`RULES.md`, "Design-system invariants"](https://github.com/khaos-machine/khaotik-ui/blob/main/RULES.md#design-system-invariants): never invent a value; a new one needs a decision in `docs/decisions.md` |
 
 ## Changing the kit
 

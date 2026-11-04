@@ -49,5 +49,6 @@ npm run check-types                     # shipped .d.ts are current
 ## Release
 
 A `lib-*` tag publishes the library to npm and the catalog to GitHub Pages.
-Changes are in [`CHANGELOG.md`](CHANGELOG.md), and working conventions in
-[`AGENTS.md`](AGENTS.md).
+Changes are in [`CHANGELOG.md`](https://github.com/khaos-machine/khaotik-ui/blob/main/CHANGELOG.md),
+and working conventions in
+[`AGENTS.md`](https://github.com/khaos-machine/khaotik-ui/blob/main/AGENTS.md).
