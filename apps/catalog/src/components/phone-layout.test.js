@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { describe, it, expect } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import { fixtures } from '../fixtures.js'
@@ -110,6 +111,20 @@ describe('One toolbar row at phone width', () => {
     const editor = example('screenplay-editor')
     const { container } = render(editor.component, { props: { ...editor.props, dirty: 1, actions: false } })
     expect(container.querySelector('.screenplay-editor__outline-discard')?.textContent).toContain('Discard…')
+  })
+
+  it('Toolbar never wraps its row, so a host may fix the bar at 52 and nothing falls below it', () => {
+    // jsdom applies no CSS, so the rule is read from source. Measured in Chromium at 390: the
+    // phone row wrapped the filter to a second line, the bar grew to 85 and the filter sat at
+    // 51-81, over the admin's range row below its fixed 52px bar.
+    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/Toolbar.svelte`, 'utf8')
+    const style = source.slice(source.indexOf('<style>'))
+    expect(style, 'the row wraps').not.toMatch(/flex-wrap:\s*wrap/)
+    const phone = style.slice(style.indexOf('@container (max-width: 599px)'))
+    const filter = phone.match(/\.toolbar__filter\s*\{[^}]*\}/)?.[0] ?? ''
+    expect(filter, 'the phone filter has no floor, so a short row squeezes it to nothing instead of folding labels').toMatch(/min-width:\s*96px/)
+    const row = phone.match(/\.toolbar__main\s*\{[^}]*\}/)?.[0] ?? ''
+    expect(row, 'a phone row that cannot wrap must scroll, or its pane toggles are cut off').toMatch(/overflow-x:\s*auto/)
   })
 
   it('Toolbar with no title draws no title cell', () => {

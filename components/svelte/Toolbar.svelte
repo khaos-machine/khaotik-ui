@@ -203,8 +203,8 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. A floor, so a
-       phone's wrapped rows can grow it; one row is exactly 52. */
+    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. The row never
+       wraps, at any width, so the bar is exactly 52 and a host may fix it there. */
     min-height: 52px;
     box-sizing: border-box;
     container-type: inline-size;
@@ -328,12 +328,14 @@
     width: auto;
     min-width: 96px;
   }
-  /* Phone width: the row wraps only when it must, instead of clipping, so every command, the
-     filter, the panes and the tools stay reachable. What fits stays on one row. */
+  /* Phone width: still one row, never wrapped. A wrapped row grows the bar past 52 and over
+     whatever the host draws below it. A row that overflows folds its labels, narrows the filter
+     and truncates the title, as at any width; still short, it scrolls, as the tools do, so
+     every command, the filter and the panes stay reachable. */
   @container (max-width: 599px) {
     .toolbar__main {
-      flex-wrap: wrap;
-      overflow: visible;
+      overflow-x: auto;
+      scrollbar-width: none;
       /* 3px: a 44pt row plus this and the hairline stays inside the 52 floor, so one row is 52
          with or without touch targets. */
       padding-block: 3px;
@@ -362,12 +364,16 @@
     .toolbar__tools :global(.ui-segmented__item) {
       padding-inline: 4px;
     }
+    .toolbar__main::-webkit-scrollbar,
     .toolbar__tools::-webkit-scrollbar {
       display: none;
-    }    .toolbar__filter {
-      flex: 1 1 160px;
+    }
+    /* The filter takes the room the row has left, down to the compact floor; short of that the
+       row overflows, and the overflow folds labels first. */
+    .toolbar__filter {
+      flex: 1 1 0;
       width: auto;
-      min-width: 0;
+      min-width: 96px;
     }
     /* A phone is touched: every button in the row is a 44pt target. */
     .toolbar__main :global(.ui-button),

@@ -20,6 +20,20 @@ current pin.
 
 ## [Unreleased]
 
+## [0.181.1] — 2026-11-04
+
+### Fixed
+
+- `Toolbar` stays one 52px row at phone width. Below 600px the row used to
+  wrap, so a filter that did not fit dropped to a second line and the bar grew
+  to 85px. In a host bar fixed at 52px, the filter then covered the content
+  below it. Measured in Chromium at 390, 360 and 320 with a title, one command
+  and the filter, the filter sat at 51–81px. Now the row overflows instead of
+  wrapping, as it does at any width: labels fold to icons, the filter narrows
+  to 96px and the title truncates. If it is still short, the row scrolls
+  sideways, like the tools group, so every command, the filter and the pane
+  toggles stay reachable. Hosts change nothing, and the props are unchanged.
+
 ## [0.181.0] — 2026-11-04
 
 ### Added
