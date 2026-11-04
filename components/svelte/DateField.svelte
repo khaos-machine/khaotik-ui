@@ -9,9 +9,15 @@
   // kit does not carry, to do what the platform already does.
   //
   // The value is a calendar day, `YYYY-MM-DD`, with no time zone; what the day
-  // means is the host's. It is controlled: a typed day outside the bounds is
-  // refused — not reported, and put back to `value` — because the native picker
-  // stops a pointer from choosing one but not a keyboard from typing one.
+  // means is the host's. It is controlled: a day outside the bounds is never
+  // reported, because the native picker stops a pointer from choosing one but
+  // not a keyboard from typing one.
+  //
+  // The box is NOT put back while the field is being typed in. Chromium fires
+  // input after every year digit, so typing 2026 reports 0002, 0020 and 0202
+  // first, each below any real `min`; resetting on those threw the keystrokes
+  // away and no day could be typed at all. A refused day stays in the box,
+  // unreported, until the field is left, and then goes back to `value`.
   import { FieldInput } from '@ark-ui/svelte/field'
   import FieldFrame from './internal/FieldFrame.svelte'
 
@@ -43,11 +49,12 @@
   /** @param {Event & { currentTarget: HTMLInputElement }} e */
   function report(e) {
     const day = e.currentTarget.value
-    if (outside(day)) {
-      e.currentTarget.value = value
-      return
-    }
-    oninput?.(day)
+    if (!outside(day)) oninput?.(day)
+  }
+
+  /** @param {FocusEvent & { currentTarget: HTMLInputElement }} e */
+  function settle(e) {
+    if (outside(e.currentTarget.value)) e.currentTarget.value = value
   }
 </script>
 
@@ -63,6 +70,7 @@
         aria-describedby={describedby}
         data-ui-id={uiId}
         oninput={report}
+        onblur={settle}
       />
     </div>
   {/snippet}

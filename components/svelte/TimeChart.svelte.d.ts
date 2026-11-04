@@ -30,7 +30,7 @@ declare const TimeChart: import("svelte").Component<{
      */
     label?: string;
     /**
-     * Announced as the chart's description.
+     * Shown as the table's caption and announced as the chart's description.
      */
     caption?: string;
     /**
@@ -69,7 +69,7 @@ type Props = {
      */
     label?: string;
     /**
-     * Announced as the chart's description.
+     * Shown as the table's caption and announced as the chart's description.
      */
     caption?: string;
     /**

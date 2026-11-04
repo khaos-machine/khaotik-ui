@@ -8,10 +8,11 @@
   // - a value that is not finite draws NO bar and reads as absent. A day with
   //   no measurement is not a day measured at zero, and a bar is a claim;
   // - bars are scaled to the largest finite value, never to a total;
-  // - the figures live in a table, so every day and value is reachable without
-  //   a pointer. Here the table is visually hidden and the columns drawn over
-  //   it are aria-hidden, because a time series reads as columns over days and
-  //   ninety rows of figures would bury the shape.
+  // - the figures live in a VISIBLE table, so every day and value is on screen
+  //   and reachable without a pointer, as BarChart's are. The columns drawn
+  //   above it are aria-hidden: they repeat the table's facts as a shape, and
+  //   announcing them would read every figure twice. Nothing is in a hover
+  //   title alone.
   //
   // Hand-rolled DOM, like BarChart: charts stay DOM/SVG (RULES.md, "Design-system
   // invariants"), and a column is a sized box.
@@ -31,7 +32,7 @@
    * @property {readonly Point[]} [points] One entry per day, **in your order** — the chart neither sorts nor fills gaps.
    * @property {(value: number) => string} [format] Renders a value. Counts by default; money or a duration belongs to the caller.
    * @property {string} [label] The chart's accessible name.
-   * @property {string} [caption] Announced as the chart's description.
+   * @property {string} [caption] Shown as the table's caption and announced as the chart's description.
    * @property {string} [emptyLabel] Rendered instead of an empty chart when there are no points.
    * @property {StatusTone} [tone] Bar colour, from the seven-way StatusTone scale.
    */
@@ -100,19 +101,20 @@
         </div>
       {/each}
     </div>
-    <!-- The caption is the table's description by reference rather than as a
-         <caption>, whose role as a description engines compute unevenly. -->
-    <table class="visually-hidden" aria-label={label || undefined} aria-describedby={caption ? captionId : undefined}>
+    <!-- The caption is visible and also referenced by aria-describedby: with an
+         aria-label naming the table, engines compute a <caption>'s role as the
+         description unevenly, and the reference makes it explicit. -->
+    <table class="timechart__table" aria-label={label || undefined} aria-describedby={caption ? captionId : undefined}>
+      {#if caption}<caption class="timechart__caption" id={captionId}>{caption}</caption>{/if}
       <tbody>
         {#each points as p, i (i)}
-          <tr>
-            <th scope="row">{p.day}</th>
-            <td>{text(p)}</td>
+          <tr class="timechart__row">
+            <th scope="row" class="timechart__day">{p.day}</th>
+            <td class="timechart__value">{text(p)}</td>
           </tr>
         {/each}
       </tbody>
     </table>
-    {#if caption}<p class="timechart__caption" id={captionId} aria-hidden="true">{caption}</p>{/if}
   </div>
 {:else}
   <p class="timechart__empty">{emptyLabel}</p>
@@ -184,11 +186,39 @@
     white-space: nowrap;
   }
 
+  /* BarChart's table: day and figure, dense, numbers right-aligned. */
+  .timechart__table {
+    width: 100%;
+    margin-top: var(--spacing-xs);
+    border-collapse: collapse;
+    font-size: var(--caption-size);
+    line-height: var(--caption-line);
+  }
+
   .timechart__caption {
-    margin: var(--spacing-2xs) 0 0;
+    padding-bottom: var(--spacing-2xs);
     color: var(--text-secondary);
     font-size: var(--caption-size);
     line-height: var(--caption-line);
+    text-align: left;
+  }
+
+  .timechart__day {
+    padding: 2px var(--spacing-xs) 2px 0;
+    border-bottom: 1px solid var(--border-hairline);
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .timechart__value {
+    padding: 2px 0;
+    border-bottom: 1px solid var(--border-hairline);
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
   }
 
   .timechart__empty {

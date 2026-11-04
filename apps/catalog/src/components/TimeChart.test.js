@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest'
+import { readFileSync } from 'node:fs'
+import { afterEach, describe, it, expect, vi } from 'vitest'
 import { render, screen, within } from '@testing-library/svelte'
 import TimeChart from '@khaos-machine/khaotik-ui/components/svelte/TimeChart.svelte'
 
@@ -58,9 +59,26 @@ describe('TimeChart', () => {
     expect(days).toEqual(['2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04'])
   })
 
-  it('hides the drawn bars from assistive tech, since the table carries the figures', () => {
+  it('hides the drawn bars from assistive tech, since the visible table carries the figures', () => {
     const { container } = render(TimeChart, { props: { points: DAYS, label: 'Calls per day' } })
     expect(container.querySelector('.timechart__plot')).toHaveAttribute('aria-hidden', 'true')
+  })
+
+  it('shows its table on screen, so every day and value is reachable without a pointer', () => {
+    // BarChart's rule: the table is visible, not only announced. The bars carry
+    // no figures, so hiding the table again leaves a sighted keyboard user with
+    // none. jsdom applies no CSS, so this checks every way the kit hides a node.
+    const { container } = render(TimeChart, { props: { points: DAYS, label: 'Calls per day', caption: 'Model calls' } })
+    const table = screen.getByRole('table', { name: 'Calls per day' })
+    for (let el = table; el && el !== container; el = el.parentElement) {
+      expect(el.classList.contains('visually-hidden'), `${el.tagName}.${el.className} is visually hidden`).toBe(false)
+      expect(el).not.toHaveAttribute('hidden')
+      expect(el).not.toHaveAttribute('aria-hidden')
+    }
+    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/TimeChart.svelte`, 'utf8')
+    expect(source).not.toMatch(/visually-hidden/)
+    // The caption is part of the visible table, not a hidden copy beside it.
+    expect(within(table).getByText('Model calls').tagName).toBe('CAPTION')
   })
 
   it('shows emptyLabel instead of an empty chart', () => {
@@ -75,6 +93,34 @@ describe('TimeChart', () => {
     const ticks = [...container.querySelectorAll('.timechart__tick')]
     expect(ticks[0].dataset.day).toBe('2026-11-01')
     expect(ticks.at(-1).dataset.day).toBe('2026-11-03')
+  })
+
+  describe('day labels thin to the width', () => {
+    // jsdom lays nothing out, so the plot's clientWidth is stubbed: Svelte's
+    // bind:clientWidth reads it when the binding starts. A label slot is 48px.
+    const FOURTEEN = Array.from({ length: 14 }, (_, i) => ({ day: `2026-11-${String(i + 1).padStart(2, '0')}`, value: i }))
+    const ticks = (c) => [...c.querySelectorAll('.timechart__tick')].map((t) => t.dataset.day.slice(-2))
+    afterEach(() => vi.restoreAllMocks())
+
+    it('shows every third day across 240px, keeping the first and last', () => {
+      vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(240)
+      const { container } = render(TimeChart, { props: { points: FOURTEEN, label: 'Calls per day' } })
+      // 5 slots for 14 days is a step of 3. Day 13 is one short of a full step
+      // before the last, so it gives way to it.
+      expect(ticks(container)).toEqual(['01', '04', '07', '10', '14'])
+    })
+
+    it('keeps only the first and last when one slot fits', () => {
+      vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(48)
+      const { container } = render(TimeChart, { props: { points: FOURTEEN, label: 'Calls per day' } })
+      expect(ticks(container)).toEqual(['01', '14'])
+    })
+
+    it('shows every day when there is room for all of them', () => {
+      vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(14 * 48)
+      const { container } = render(TimeChart, { props: { points: FOURTEEN, label: 'Calls per day' } })
+      expect(ticks(container)).toHaveLength(14)
+    })
   })
 
   it('takes a StatusTone for its bars', () => {

@@ -46,7 +46,24 @@ describe('DateField', () => {
     expect(oninput).toHaveBeenLastCalledWith('')
   })
 
-  it('carries min and max, and refuses a day past max', async () => {
+  it('lets a day inside the bounds be typed digit by digit', async () => {
+    // Chromium fires input after every year digit, so typing 10152026 into a
+    // bounded field reports 0002-10-15, 0020-10-15, 0202-10-15, then
+    // 2026-10-15. jsdom does not produce that sequence, so it is replayed here.
+    // Each partial year is below `min`; refusing it by resetting the box threw
+    // the keystrokes away and the day could never be typed.
+    const oninput = vi.fn()
+    render(DateField, { props: { label: 'From', value: '', min: '2026-10-01', max: '2026-11-04', oninput } })
+    const input = screen.getByLabelText('From')
+    for (const partial of ['0002-10-15', '0020-10-15', '0202-10-15']) {
+      await fireEvent.input(input, { target: { value: partial } })
+      expect(input).toHaveValue(partial)
+    }
+    await fireEvent.input(input, { target: { value: '2026-10-15' } })
+    expect(oninput.mock.calls).toEqual([['2026-10-15']])
+  })
+
+  it('carries min and max, and never reports a finished day past max', async () => {
     const oninput = vi.fn()
     render(DateField, { props: { label: 'To', value: '2026-11-01', min: '2026-10-01', max: '2026-11-04', oninput } })
     const input = screen.getByLabelText('To')
@@ -54,8 +71,10 @@ describe('DateField', () => {
     expect(input).toHaveAttribute('max', '2026-11-04')
     await fireEvent.input(input, { target: { value: '2026-11-05' } })
     expect(oninput).not.toHaveBeenCalled()
-    // Controlled: the refused day does not stay in the box.
+    // Controlled: leaving the field puts the refused day back to `value`.
+    await fireEvent.blur(input)
     expect(input).toHaveValue('2026-11-01')
+    expect(oninput).not.toHaveBeenCalled()
   })
 
   it('refuses a day before min', async () => {
