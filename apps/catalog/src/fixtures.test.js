@@ -193,7 +193,7 @@ describe('fixture registry placement', () => {
     // The Story Atlas toolbar and relationship card moved to Screens → Story · Atlas,
     // where the app renders them (catalog app-coverage plan, choice 4).
     expect(fixtures.filter((f) => f.group === 'charts').map((f) => f.name).sort())
-      .toEqual(['BarChart', 'MeasureTable', 'RenderStrip'])
+      .toEqual(['BarChart', 'MeasureTable', 'RenderStrip', 'TimeChart'])
     // Every chart is in Components, not Foundation. This is the assertion that
     // fails if one is filed by "it composes nothing" again.
     for (const f of fixtures.filter((c) => c.group === 'charts')) {

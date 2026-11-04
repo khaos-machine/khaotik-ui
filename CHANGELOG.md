@@ -20,6 +20,55 @@ current pin.
 
 ## [Unreleased]
 
+## [0.181.0] — 2026-11-04
+
+### Added
+
+- `DateField`, a labelled calendar-day input. It wears `TextField`'s Ark Field
+  frame around the browser's date input, at `TextField`'s height. The value is
+  `YYYY-MM-DD`, or `''` when empty, and it is controlled. A valid day is
+  reported through `oninput` as soon as it is typed or picked. `min` and `max`
+  bound it: a day outside them can't be picked, and a typed one is never
+  reported through `oninput`.
+  - A refusal is judged when the entry is committed, on blur or Enter, never
+    on a keystroke. A year typed digit by digit fires nothing and leaves the
+    field valid.
+  - On commit, a refused value calls `oninvalid({ typed, reason })`, with
+    `reason` `before_min`, `after_max` or `unreadable` (not a real
+    `YYYY-MM-DD` day). The field turns invalid and keeps the text; nothing
+    resets it.
+  - The field writes no message of its own. The host words `error` from the
+    reason, and `error` is the only text read out through
+    `aria-describedby`. A valid day that replaces a refused one clears the
+    field's own invalid state.
+  - Retyping over an existing day keeps every keystroke. The browser reports
+    `''` while a segment is emptied mid-edit, and the field never writes that
+    back into the box.
+  - `uiId` sets `data-ui-id`.
+- `TimeChart`, a per-day bar series for one measure. Spend and calls are two
+  charts over the same days, because two measures of different scale never
+  share an axis. `points` is `{ day, value, floor? }[]` in the host's order,
+  for non-negative measures.
+  - A `null` value draws no bar and reads "Not measured". A measured zero also
+    draws no bar and reads `format(0)`, and a negative value draws no bar and
+    shows its figure. No bar has a minimum height.
+  - A `floor` point is drawn as a lower bound and announced with `≥`.
+  - Every day and value is on screen in a table under the bars, as
+    `BarChart`'s are.
+  - The chart does not grow with the range. The plot is a fixed height, and
+    the table scrolls on its own in a bounded region the keyboard can focus.
+    That region is the chart's single accessible name, `label`, and the
+    visible `caption` is its description.
+  - Day labels thin out to fit the width, and the first and last always show.
+  - Empty `points` shows `emptyLabel`.
+
+### Changed
+
+- The `svelte` peer range is `^5.29.0`, up from `^5.0.0`. The kit already
+  needed 5.29: `{@attach}`, which ten components use, arrived in 5.29.
+  Writable `$derived` (5.25) and `$props.id()` (5.20) also need more than
+  5.0.
+
 ## [0.180.2] — 2026-11-04
 
 ### Added

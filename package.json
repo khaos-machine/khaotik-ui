@@ -1,6 +1,6 @@
 {
   "name": "@khaos-machine/khaotik-ui",
-  "version": "0.180.2",
+  "version": "0.181.0",
   "type": "module",
   "description": "Khaos-branded component library — tokens, atoms, components and compositions, built and maintained here and shared with every Khaos app. Also hosts the catalog (apps/catalog) for device playtesting.",
   "workspaces": [
@@ -33,7 +33,7 @@
     "./assets/*": "./assets/*"
   },
   "peerDependencies": {
-    "svelte": "^5.0.0"
+    "svelte": "^5.29.0"
   },
   "dependencies": {
     "@ark-ui/svelte": "5.24.3",

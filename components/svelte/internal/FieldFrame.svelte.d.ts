@@ -8,6 +8,7 @@ declare const FieldFrame: import("svelte").Component<{
     hint?: string;
     error?: string;
     required?: boolean;
+    invalid?: any;
     children: any;
 }, {}, "">;
 type $$ComponentProps = {
@@ -15,5 +16,6 @@ type $$ComponentProps = {
     hint?: string;
     error?: string;
     required?: boolean;
+    invalid?: any;
     children: any;
 };

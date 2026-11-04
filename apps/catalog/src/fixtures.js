@@ -55,6 +55,7 @@ import ProviderSheet from './components/foundation/ProviderSheet.svelte'
 import Button from '@khaos-machine/khaotik-ui/components/svelte/Button.svelte'
 import FilterField from '@khaos-machine/khaotik-ui/components/svelte/FilterField.svelte'
 import TextField from '@khaos-machine/khaotik-ui/components/svelte/TextField.svelte'
+import DateField from '@khaos-machine/khaotik-ui/components/svelte/DateField.svelte'
 import TextAreaField from '@khaos-machine/khaotik-ui/components/svelte/TextAreaField.svelte'
 import Avatar from '@khaos-machine/khaotik-ui/components/svelte/Avatar.svelte'
 import AccountMenu from '@khaos-machine/khaotik-ui/components/svelte/AccountMenu.svelte'
@@ -88,6 +89,7 @@ import SetupProgress from '@khaos-machine/khaotik-ui/components/svelte/SetupProg
 import ResourceCatalog from '@khaos-machine/khaotik-ui/components/svelte/ResourceCatalog.svelte'
 import BarChart from '@khaos-machine/khaotik-ui/components/svelte/BarChart.svelte'
 import MeasureTable from '@khaos-machine/khaotik-ui/components/svelte/MeasureTable.svelte'
+import TimeChart from '@khaos-machine/khaotik-ui/components/svelte/TimeChart.svelte'
 import Composed from '@khaos-machine/khaotik-ui/components/svelte/Composed.svelte'
 import Dock from '@khaos-machine/khaotik-ui/components/svelte/Dock.svelte'
 import WelcomeWindow from '@khaos-machine/khaotik-ui/components/svelte/WelcomeWindow.svelte'
@@ -596,6 +598,12 @@ const presetSpeakers = [
   { id: 'ono_anna', name: 'Ono Anna' },
   { id: 'uncle_fu', name: 'Uncle Fu' },
 ]
+
+// TimeChart's series. ILLUSTRATIVE (D62): Khaos Cloud's admin `days` shape, which
+// no khaosd capture carries. Fourteen days, so the axis has labels to thin.
+const TIME_CALLS = [12, 30, 18, 0, 44, 25, 9, 61, 38, 20, 15, 52, 33, 27]
+  .map((value, i) => ({ day: '2026-11-' + String(i + 1).padStart(2, '0'), value }))
+const TIME_SPEND = TIME_CALLS.map((p, i) => ({ day: p.day, value: p.value * 0.035, floor: i === 7 }))
 
 // BarChart's distributions, counted from the committed scenes rather than typed
 // in — the fetch now carries `timeOfDay` and `type` for exactly this. Derived
@@ -2826,6 +2834,20 @@ export const fixtures = [
     ],
   },
   {
+    // Khaos Cloud's admin usage range (K1). No khaosd data feeds it, so the days,
+    // bounds and error text are ILLUSTRATIVE STATE (D62).
+    //
+    // DateField writes no message of its own. On a refused day it calls
+    // `oninvalid({ typed, reason })` at commit, and the HOST words `error` from
+    // the reason. The error below is an example of host wording, not the kit's.
+    id: 'date-field', name: 'DateField', kind: 'component', section: 'components', group: 'fields', component: DateField,
+    examples: [
+      { label: 'Empty', props: { label: 'From', value: '' } },
+      { label: 'Bounded', props: { label: 'To', value: '2026-11-04', min: '2026-10-01', max: '2026-11-04' } },
+      { label: 'Invalid (host-worded error)', props: { label: 'To', value: '2026-09-30', min: '2026-10-01', error: 'Pick a day on or after Oct 1.' } },
+    ],
+  },
+  {
     // Khaos Cloud's multiline fields. The text is ILLUSTRATIVE STATE (D62).
     id: 'text-area-field', name: 'TextAreaField', kind: 'component', section: 'components', group: 'fields', component: TextAreaField,
     examples: [
@@ -3095,6 +3117,19 @@ export const fixtures = [
         caption: 'Jetta has no word count',
       } },
       { label: 'Empty', props: { rows: [], measures: MEASURE_COLUMNS } },
+    ],
+  },
+  {
+    // A per-day series for one measure (K2, Khaos Cloud's admin usage view).
+    // Spend and calls are two charts over the same days, because two measures
+    // of different scale never share an axis. No khaosd data feeds it, so the
+    // series is ILLUSTRATIVE STATE (D62) in the admin's `days` shape.
+    id: 'time-chart', name: 'TimeChart', kind: 'component', section: 'components', group: 'charts', component: TimeChart,
+    examples: [
+      { label: 'Calls per day', props: { points: TIME_CALLS, label: 'Calls per day', caption: 'Model calls, UTC days' } },
+      { label: 'Spend, with a floor', props: { points: TIME_SPEND, label: 'Spend per day', caption: 'Nov 8 is a lower bound', format: (v) => '$' + v.toFixed(2), tone: 'warning' } },
+      { label: 'A day not measured', props: { points: TIME_CALLS.map((p, i) => (i === 5 ? { ...p, value: null } : p)), label: 'Calls per day', caption: 'Nov 6 has no record' } },
+      { label: 'Empty', props: { points: [], label: 'Calls per day', emptyLabel: 'No calls in this range.' } },
     ],
   },
   {
