@@ -20,6 +20,25 @@ current pin.
 
 ## [Unreleased]
 
+## [0.181.0] — 2026-11-04
+
+### Added
+
+- `DateField`, a labelled calendar-day input. It wears `TextField`'s Ark Field
+  frame around the browser's date input. The value is `YYYY-MM-DD`, or `''`
+  when empty, and it is controlled. `min` and `max` bound it: a day outside
+  them can't be picked, and a typed one is refused, so it is neither reported
+  nor kept. A non-empty `error` sets `aria-invalid` and is read out through
+  `aria-describedby`. `uiId` sets `data-ui-id`.
+- `TimeChart`, a per-day bar series for one measure. Spend and calls are two
+  charts over the same days, because two measures of different scale never
+  share an axis. `points` is `{ day, value, floor? }[]` in the host's order.
+  A `null` value draws no bar and reads "Not measured", never zero. A `floor`
+  point is drawn as a lower bound and announced with `≥`. Every day and value
+  is in a visually hidden table named by `label` and described by `caption`.
+  Day labels thin out to fit the width, and the first and last always show.
+  Empty `points` shows `emptyLabel`.
+
 ## [0.180.1] — 2026-11-03
 
 ### Fixed

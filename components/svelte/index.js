@@ -48,6 +48,7 @@ export { default as StatusPill } from './StatusPill.svelte'
 export { default as Button } from './Button.svelte'
 export { default as FilterField } from './FilterField.svelte'
 export { default as TextField } from './TextField.svelte'
+export { default as DateField } from './DateField.svelte'
 export { default as TextAreaField } from './TextAreaField.svelte'
 export { default as Avatar } from './Avatar.svelte'
 export { default as AccountMenu } from './AccountMenu.svelte'
@@ -134,6 +135,7 @@ export { default as WelcomeWindow } from './WelcomeWindow.svelte'
 // something foundational.
 export { default as BarChart } from './BarChart.svelte'
 export { default as MeasureTable } from './MeasureTable.svelte'
+export { default as TimeChart } from './TimeChart.svelte'
 
 // Inspectors — props-driven surfaces composed of the elements above.
 export { default as VoiceClonePanel } from './VoiceClonePanel.svelte'
