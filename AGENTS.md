@@ -29,6 +29,8 @@ is stated; nothing here is repeated in them.
 | `WORKSPACE.md` | The filesystem map — what each path is and what may be edited where. | Before touching an unfamiliar path. |
 | `IDENTITY.md` | Attribution, commit voice, what reaches a user. | Before committing or opening a PR. |
 | `apps/catalog/AGENTS.md` | **Authoritative for that subtree** — Svelte 5, Vite, tests, data capture, the web build. | Before touching `apps/catalog/`. |
+| `docs/design/README.md` | **Designer start page** — the catalog, running it, where tokens, components and the design rules live. Ships in the npm package. | First, when working for a designer. |
+| `docs/design/changing-the-kit.md` | **A kit change, end to end** — brief, catalog entry, failing test, pull request, review, release, the app's version bump. Ships in the npm package. | Before proposing or making a kit change. |
 
 `CLAUDE.md` carries Claude Code harness configuration only and imports this
 file. `docs/decisions.md` is the D-register. **Its highest id is answered by

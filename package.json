@@ -1,6 +1,6 @@
 {
   "name": "@khaos-machine/khaotik-ui",
-  "version": "0.180.1",
+  "version": "0.180.2",
   "type": "module",
   "description": "Khaos-branded component library — tokens, atoms, components and compositions, built and maintained here and shared with every Khaos app. Also hosts the catalog (apps/catalog) for device playtesting.",
   "workspaces": [
@@ -57,7 +57,10 @@
     "components",
     "tokens",
     "!tokens/build-tokens.py",
-    "assets"
+    "assets",
+    "docs/using-the-library.md",
+    "docs/design/README.md",
+    "docs/design/changing-the-kit.md"
   ],
   "publishConfig": {
     "access": "public"

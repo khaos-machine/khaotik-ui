@@ -27,6 +27,9 @@ them on hover.
 [`docs/using-the-library.md`](docs/using-the-library.md) is the full guide:
 theming, icons, assets and the component inventory.
 
+Designers, and the agents working for them, start at
+[`docs/design/README.md`](docs/design/README.md).
+
 ## Catalog
 
 Browse every component at
@@ -46,5 +49,6 @@ npm run check-types                     # shipped .d.ts are current
 ## Release
 
 A `lib-*` tag publishes the library to npm and the catalog to GitHub Pages.
-Changes are in [`CHANGELOG.md`](CHANGELOG.md), and working conventions in
-[`AGENTS.md`](AGENTS.md).
+Changes are in [`CHANGELOG.md`](https://github.com/khaos-machine/khaotik-ui/blob/main/CHANGELOG.md),
+and working conventions in
+[`AGENTS.md`](https://github.com/khaos-machine/khaotik-ui/blob/main/AGENTS.md).
