@@ -57,7 +57,10 @@
     "components",
     "tokens",
     "!tokens/build-tokens.py",
-    "assets"
+    "assets",
+    "docs/using-the-library.md",
+    "docs/design/README.md",
+    "docs/design/changing-the-kit.md"
   ],
   "publishConfig": {
     "access": "public"

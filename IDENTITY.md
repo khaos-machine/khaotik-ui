@@ -73,9 +73,13 @@ manifests own software identifiers.
   its access limitation is stated. Public users are directed to the web catalog.
 - Date stateful documentation or point to a canonical source. Do not present a
   stale version snapshot as current fact.
-- The library (`components/`, `tokens/`, `assets/`) is Apache-2.0 and published
-  on npm as `@khaos-machine/khaotik-ui`. The repository stays private: do not
-  mirror, paste, or publish internal documentation outside Khaos Studio systems.
+- The library is Apache-2.0 and published on npm as `@khaos-machine/khaotik-ui`.
+  What ships is the `files` list in `package.json`: the components, tokens and
+  assets, plus `docs/using-the-library.md` and the designer docs in
+  `docs/design/`. The repository is public at
+  `khaos-machine/khaotik-ui` (`AGENTS.md`, "Releases"); ask
+  `gh repo view khaos-machine/khaotik-ui --json visibility` rather than trusting
+  this line.
 
 ## Pull-request record
 
