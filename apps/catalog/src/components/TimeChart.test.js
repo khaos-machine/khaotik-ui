@@ -63,8 +63,28 @@ describe('TimeChart', () => {
     const { container } = render(TimeChart, { props: { points: DAYS, label: 'Calls per day', caption: 'Model calls' } })
     const region = screen.getByRole('region', { name: 'Calls per day' })
     expect(region).toHaveAttribute('tabindex', '0')
-    expect(region).toContainElement(screen.getByRole('table', { name: 'Calls per day' }))
+    expect(region).toContainElement(screen.getByRole('table'))
     expect(container.querySelector('.timechart__plot')).not.toContainElement(region)
+  })
+
+  it('bounds the region and scrolls it on its own, so the chart never grows with the range', () => {
+    // jsdom applies no CSS, so the bound is read from source: losing either the
+    // height cap or the scrolling lets ninety rows lengthen a window that never
+    // scrolls as a page (measured: 1819px of rows in a 240px region).
+    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/TimeChart.svelte`, 'utf8')
+    const rule = source.match(/\.timechart__scroll\s*\{[^}]*\}/)?.[0] ?? ''
+    expect(rule, 'the region has no height cap').toMatch(/max-height:\s*\d/)
+    expect(rule, 'the region does not scroll on its own').toMatch(/overflow-y:\s*auto/)
+    const plot = source.match(/\.timechart__plot\s*\{[^}]*\}/)?.[0] ?? ''
+    expect(plot, 'the plot is not a fixed height').toMatch(/\bheight:\s*\d+px/)
+  })
+
+  it('names the chart once: the region carries label, the table and the rest do not', () => {
+    const { container } = render(TimeChart, { props: { points: DAYS, label: 'Calls per day', caption: 'Model calls' } })
+    expect(container.querySelectorAll('[aria-label="Calls per day"]')).toHaveLength(1)
+    const table = screen.getByRole('table')
+    expect(table).not.toHaveAttribute('aria-label')
+    expect(table.querySelector('caption')).toBeNull()
   })
 
   it('announces a floor point with ≥ before its formatted value, and draws it distinctly', () => {
@@ -77,12 +97,12 @@ describe('TimeChart', () => {
     expect(floor).toHaveAttribute('data-floor', 'true')
   })
 
-  it('lists every day in its table equivalent, named by label and described by caption', () => {
+  it('lists every day in its table equivalent, in a chart named by label and described by caption', () => {
     const points = [...DAYS, { day: '2026-11-04', value: null }]
     render(TimeChart, { props: { points, label: 'Calls per day', caption: 'All model calls, UTC days' } })
-    const table = screen.getByRole('table', { name: 'Calls per day' })
-    expect(table).toHaveAccessibleDescription('All model calls, UTC days')
-    const days = within(table).getAllByRole('rowheader').map((h) => h.textContent)
+    const chart = screen.getByRole('region', { name: 'Calls per day' })
+    expect(chart).toHaveAccessibleDescription('All model calls, UTC days')
+    const days = within(within(chart).getByRole('table')).getAllByRole('rowheader').map((h) => h.textContent)
     expect(days).toEqual(['2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04'])
   })
 
@@ -96,16 +116,19 @@ describe('TimeChart', () => {
     // no figures, so hiding the table again leaves a sighted keyboard user with
     // none. jsdom applies no CSS, so this checks every way the kit hides a node.
     const { container } = render(TimeChart, { props: { points: DAYS, label: 'Calls per day', caption: 'Model calls' } })
-    const table = screen.getByRole('table', { name: 'Calls per day' })
-    for (let el = table; el && el !== container; el = el.parentElement) {
-      expect(el.classList.contains('visually-hidden'), `${el.tagName}.${el.className} is visually hidden`).toBe(false)
-      expect(el).not.toHaveAttribute('hidden')
-      expect(el).not.toHaveAttribute('aria-hidden')
+    const table = screen.getByRole('table')
+    const caption = screen.getByText('Model calls')
+    for (const start of [table, caption]) {
+      for (let el = start; el && el !== container; el = el.parentElement) {
+        expect(el.classList.contains('visually-hidden'), `${el.tagName}.${el.className} is visually hidden`).toBe(false)
+        expect(el).not.toHaveAttribute('hidden')
+        expect(el).not.toHaveAttribute('aria-hidden')
+      }
     }
     const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/TimeChart.svelte`, 'utf8')
     expect(source).not.toMatch(/visually-hidden/)
-    // The caption is part of the visible table, not a hidden copy beside it.
-    expect(within(table).getByText('Model calls').tagName).toBe('CAPTION')
+    // The caption is visible in the chart's own region, not a hidden copy beside it.
+    expect(screen.getByRole('region', { name: 'Calls per day' })).toContainElement(caption)
   })
 
   it('shows emptyLabel instead of an empty chart', () => {

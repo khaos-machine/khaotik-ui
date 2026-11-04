@@ -2836,11 +2836,15 @@ export const fixtures = [
   {
     // Khaos Cloud's admin usage range (K1). No khaosd data feeds it, so the days,
     // bounds and error text are ILLUSTRATIVE STATE (D62).
+    //
+    // DateField writes no message of its own. On a refused day it calls
+    // `oninvalid({ typed, reason })` at commit, and the HOST words `error` from
+    // the reason. The error below is an example of host wording, not the kit's.
     id: 'date-field', name: 'DateField', kind: 'component', section: 'components', group: 'fields', component: DateField,
     examples: [
       { label: 'Empty', props: { label: 'From', value: '' } },
       { label: 'Bounded', props: { label: 'To', value: '2026-11-04', min: '2026-10-01', max: '2026-11-04' } },
-      { label: 'Invalid', props: { label: 'To', value: '2026-09-30', min: '2026-10-01', error: 'Pick a day on or after From.' } },
+      { label: 'Invalid (host-worded error)', props: { label: 'To', value: '2026-09-30', min: '2026-10-01', error: 'Pick a day on or after Oct 1.' } },
     ],
   },
   {

@@ -5,7 +5,7 @@ type TimeChart = {
 };
 declare const TimeChart: import("svelte").Component<{
     /**
-     * One entry per day, **in your order** — the chart neither sorts nor fills gaps.
+     * One entry per day, **in your order** — the chart neither sorts nor fills gaps. For non-negative measures (counts, costs, durations): a negative value draws no bar, and its figure still shows in the table.
      */
     points?: readonly {
         /**
@@ -26,11 +26,11 @@ declare const TimeChart: import("svelte").Component<{
      */
     format?: (value: number) => string;
     /**
-     * The chart's accessible name.
+     * The chart's accessible name, given once: it names the scrolling region that holds the table.
      */
     label?: string;
     /**
-     * Shown as the table's caption and announced as the chart's description.
+     * Shown above the table and announced as the chart's description.
      */
     caption?: string;
     /**
@@ -44,7 +44,7 @@ declare const TimeChart: import("svelte").Component<{
 }, {}, "">;
 type Props = {
     /**
-     * One entry per day, **in your order** — the chart neither sorts nor fills gaps.
+     * One entry per day, **in your order** — the chart neither sorts nor fills gaps. For non-negative measures (counts, costs, durations): a negative value draws no bar, and its figure still shows in the table.
      */
     points?: readonly {
         /**
@@ -65,11 +65,11 @@ type Props = {
      */
     format?: (value: number) => string;
     /**
-     * The chart's accessible name.
+     * The chart's accessible name, given once: it names the scrolling region that holds the table.
      */
     label?: string;
     /**
-     * Shown as the table's caption and announced as the chart's description.
+     * Shown above the table and announced as the chart's description.
      */
     caption?: string;
     /**

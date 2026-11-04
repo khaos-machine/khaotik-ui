@@ -33,7 +33,7 @@
     "./assets/*": "./assets/*"
   },
   "peerDependencies": {
-    "svelte": "^5.0.0"
+    "svelte": "^5.29.0"
   },
   "dependencies": {
     "@ark-ui/svelte": "5.24.3",

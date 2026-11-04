@@ -38,10 +38,10 @@
 
   /**
    * @typedef {Object} Props
-   * @property {readonly Point[]} [points] One entry per day, **in your order** — the chart neither sorts nor fills gaps.
+   * @property {readonly Point[]} [points] One entry per day, **in your order** — the chart neither sorts nor fills gaps. For non-negative measures (counts, costs, durations): a negative value draws no bar, and its figure still shows in the table.
    * @property {(value: number) => string} [format] Renders a value. Counts by default; money or a duration belongs to the caller.
-   * @property {string} [label] The chart's accessible name.
-   * @property {string} [caption] Shown as the table's caption and announced as the chart's description.
+   * @property {string} [label] The chart's accessible name, given once: it names the scrolling region that holds the table.
+   * @property {string} [caption] Shown above the table and announced as the chart's description.
    * @property {string} [emptyLabel] Rendered instead of an empty chart when there are no points.
    * @property {StatusTone} [tone] Bar colour, from the seven-way StatusTone scale.
    */
@@ -111,13 +111,20 @@
         </div>
       {/each}
     </div>
-    <!-- The caption is visible and also referenced by aria-describedby: with an
-         aria-label naming the table, engines compute a <caption>'s role as the
-         description unevenly, and the reference makes it explicit. -->
+    <!-- The region IS the chart for assistive tech: `label` names it once and
+         the visible caption describes it. The table inside takes no name of its
+         own, and the caption is a <p> rather than a <caption>, which would name
+         the table and announce the caption a second time. -->
     <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-    <div class="timechart__scroll" role="region" aria-label={label || undefined} tabindex="0">
-      <table class="timechart__table" aria-label={label || undefined} aria-describedby={caption ? captionId : undefined}>
-        {#if caption}<caption class="timechart__caption" id={captionId}>{caption}</caption>{/if}
+    <div
+      class="timechart__scroll"
+      role="region"
+      aria-label={label || undefined}
+      aria-describedby={caption ? captionId : undefined}
+      tabindex="0"
+    >
+      {#if caption}<p class="timechart__caption" id={captionId}>{caption}</p>{/if}
+      <table class="timechart__table">
         <tbody>
           {#each points as p, i (i)}
             <tr class="timechart__row">
@@ -219,6 +226,7 @@
   }
 
   .timechart__caption {
+    margin: 0;
     padding-bottom: var(--spacing-2xs);
     color: var(--text-secondary);
     font-size: var(--caption-size);

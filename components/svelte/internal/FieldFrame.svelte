@@ -19,7 +19,9 @@
     FieldRoot,
   } from '@ark-ui/svelte/field'
 
-  let { label = '', hint = '', error = '', required = false, children } = $props()
+  // `invalid` defaults to "the error is non-empty". DateField passes it so a
+  // refused day is invalid before the host has worded an error.
+  let { label = '', hint = '', error = '', required = false, invalid = undefined, children } = $props()
 
   const id = $props.id()
   const ids = { control: `${id}-control`, label: `${id}-label`, helperText: `${id}-hint`, errorText: `${id}-error` }
@@ -30,13 +32,17 @@
 
 <!-- Classes on an Ark component are forwarded to the rendered element, so
      Svelte scopes them as unused — they are styled :global below. -->
-<FieldRoot class="kfield" invalid={error !== ''} {required} {ids}>
+<FieldRoot class="kfield" invalid={invalid ?? error !== ''} {required} {ids}>
   <FieldLabel class="kfield__label">
     {label}<FieldRequiredIndicator class="kfield__required">*</FieldRequiredIndicator>
   </FieldLabel>
   {@render children?.(describedby)}
   {#if hint}<FieldHelperText class="kfield__hint">{hint}</FieldHelperText>{/if}
-  <FieldErrorText class="kfield__error">{error}</FieldErrorText>
+  <!-- Only with a message. Ark renders the error text whenever the field is
+       invalid and points aria-describedby at it, so an invalid field with no
+       message (DateField, before its host words one) would be described by an
+       empty node. -->
+  {#if error}<FieldErrorText class="kfield__error">{error}</FieldErrorText>{/if}
 </FieldRoot>
 
 <style>
