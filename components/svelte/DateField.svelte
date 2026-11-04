@@ -69,8 +69,9 @@
   // What the box holds: the host's value until something is typed, and again
   // whenever the host sets a new one.
   let typed = $derived(value)
-  // The text a commit refused. Invalid only while the box still holds exactly
-  // that text: any edit, or a new `value`, clears it.
+  // The text a commit refused. Any edit clears it, even one that lands on the
+  // same text again, since only a commit judges; a new `value` from the host
+  // clears it by no longer matching.
   /** @type {string | null} */
   let flagged = $state(null)
   const refused = $derived(flagged !== null && flagged === typed)
@@ -99,6 +100,7 @@
   /** @param {Event & { currentTarget: HTMLInputElement }} e */
   function report(e) {
     typed = e.currentTarget.value
+    flagged = null
     if (refusal(typed) !== null) return
     reported = typed
     oninput?.(typed)

@@ -127,6 +127,34 @@ describe('DateField', () => {
     expect(oninput).not.toHaveBeenCalled()
   })
 
+  it('clears its invalid state on any edit, even one that passes back through the refused text', async () => {
+    // After a commit refuses 2026-11-05, retyping the year walks 0002…, 0020…,
+    // 0202… and lands on 2026-11-05 again. Only a commit judges, so none of
+    // those keystrokes, the last included, may turn the field invalid.
+    const oninvalid = vi.fn()
+    render(DateField, { props: { label: 'To', value: '', max: '2026-11-04', oninvalid } })
+    const input = screen.getByLabelText('To')
+    await fireEvent.input(input, { target: { value: '2026-11-05' } })
+    await fireEvent.blur(input)
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    await typeYear(input, '11-05', '2026')
+    expect(input).not.toHaveAttribute('aria-invalid', 'true')
+    expect(oninvalid).toHaveBeenCalledTimes(1)
+    await fireEvent.keyDown(input, { key: 'Enter' })
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(oninvalid).toHaveBeenCalledTimes(2)
+  })
+
+  it('tells the host once when Enter and then blur commit the same text', async () => {
+    const oninvalid = vi.fn()
+    render(DateField, { props: { label: 'To', value: '', max: '2026-11-04', oninvalid } })
+    const input = screen.getByLabelText('To')
+    await fireEvent.input(input, { target: { value: '2026-11-05' } })
+    await fireEvent.keyDown(input, { key: 'Enter' })
+    await fireEvent.blur(input)
+    expect(oninvalid).toHaveBeenCalledTimes(1)
+  })
+
   it('treats Enter as a commit: before_min on a day before min', async () => {
     const oninput = vi.fn()
     const oninvalid = vi.fn()
