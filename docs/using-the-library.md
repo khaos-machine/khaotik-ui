@@ -20,9 +20,9 @@ Requires Svelte 5 — `package.json` declares `"peerDependencies": { "svelte":
 `$derived`).
 
 ```jsonc
-// package.json — pin to a commit, not to a branch. See §6.
+// package.json — pin an exact released npm version, never a range. See §7.
 "dependencies": {
-  "@khaos-machine/khaotik-ui": "github:khaos-studio/khaotik-ui#<commit-sha>",
+  "@khaos-machine/khaotik-ui": "0.178.3",
   "@ark-ui/svelte": "^5.23.0",
   "@phosphor-icons/web": "^2.1.2"
 }
