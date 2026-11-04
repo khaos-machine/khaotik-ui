@@ -13,11 +13,16 @@
   // reported, because the native picker stops a pointer from choosing one but
   // not a keyboard from typing one.
   //
-  // The box is NOT put back while the field is being typed in. Chromium fires
+  // A typed day outside the bounds STAYS in the box and turns the field invalid
+  // at once; nothing resets it. Resetting threw keystrokes away: Chromium fires
   // input after every year digit, so typing 2026 reports 0002, 0020 and 0202
-  // first, each below any real `min`; resetting on those threw the keystrokes
-  // away and no day could be typed at all. A refused day stays in the box,
-  // unreported, until the field is left, and then goes back to `value`.
+  // first, each below any real `min`. Those partial years read invalid for a
+  // moment, and reporting resumes the moment the day is back in range.
+  //
+  // The host never hears of a day it is not sent, so it cannot word the
+  // problem: the field supplies its own range message when the host's `error`
+  // is empty. A host `error` takes its place, and the field is invalid while
+  // either holds.
   import { FieldInput } from '@ark-ui/svelte/field'
   import FieldFrame from './internal/FieldFrame.svelte'
 
@@ -27,7 +32,7 @@
    * @property {string} [value] The day as `YYYY-MM-DD`, or `''` when empty. Controlled — the consumer owns it.
    * @property {string} [min] The earliest day that can be chosen, as `YYYY-MM-DD`.
    * @property {string} [max] The latest day that can be chosen, as `YYYY-MM-DD`.
-   * @property {string} [error] The error message. Non-empty makes the field invalid and is read out as the input's description.
+   * @property {string} [error] The error message. Non-empty makes the field invalid and is read out as the input's description. While a typed day is outside `min`/`max` and this is empty, the field shows its own range message instead.
    * @property {(value: string) => void} [oninput] Called with `YYYY-MM-DD` on every change, or `''` when the field is cleared. Never called with a day outside `min`/`max`.
    * @property {string} [uiId] The `data-ui-id` (audit §3.14), set on the input.
    */
@@ -46,23 +51,28 @@
   // `YYYY-MM-DD` orders as text, so the bounds compare as strings.
   const outside = (day) => day !== '' && ((min && day < min) || (max && day > max))
 
+  // What the box holds: the host's value until something is typed, and again
+  // whenever the host sets a new one.
+  let typed = $derived(value)
+  const range = $derived(
+    !outside(typed) ? ''
+      : min && max ? `Choose a day from ${min} to ${max}.`
+      : min ? `Choose a day on or after ${min}.`
+      : `Choose a day on or before ${max}.`,
+  )
+
   /** @param {Event & { currentTarget: HTMLInputElement }} e */
   function report(e) {
-    const day = e.currentTarget.value
-    if (!outside(day)) oninput?.(day)
-  }
-
-  /** @param {FocusEvent & { currentTarget: HTMLInputElement }} e */
-  function settle(e) {
-    if (outside(e.currentTarget.value)) e.currentTarget.value = value
+    typed = e.currentTarget.value
+    if (!outside(typed)) oninput?.(typed)
   }
 </script>
 
-<FieldFrame {label} {error}>
+<FieldFrame {label} error={error || range}>
   {#snippet children(describedby)}
     <div class="kfield__box">
       <FieldInput
-        class="kfield__text"
+        class="kfield__text kfield__date"
         type="date"
         {value}
         {min}
@@ -70,8 +80,18 @@
         aria-describedby={describedby}
         data-ui-id={uiId}
         oninput={report}
-        onblur={settle}
       />
     </div>
   {/snippet}
 </FieldFrame>
+
+<style>
+  /* Desktop density matches TextField. Chromium pads the date input's fields
+     wrapper 1px above and below, which made this box 2px taller than
+     TextField's (35.5px against 33.5px, measured in the catalog at 1440px;
+     zeroing the edit area, the fields or the picker icon changed nothing).
+     The class is on an Ark component, so the rule is :global. */
+  :global(.kfield__date::-webkit-datetime-edit-fields-wrapper) {
+    padding: 0;
+  }
+</style>

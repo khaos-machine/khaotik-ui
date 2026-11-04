@@ -21,7 +21,7 @@ declare const DateField: import("svelte").Component<{
      */
     max?: string;
     /**
-     * The error message. Non-empty makes the field invalid and is read out as the input's description.
+     * The error message. Non-empty makes the field invalid and is read out as the input's description. While a typed day is outside `min`/`max` and this is empty, the field shows its own range message instead.
      */
     error?: string;
     /**
@@ -51,7 +51,7 @@ type Props = {
      */
     max?: string;
     /**
-     * The error message. Non-empty makes the field invalid and is read out as the input's description.
+     * The error message. Non-empty makes the field invalid and is read out as the input's description. While a typed day is outside `min`/`max` and this is empty, the field shows its own range message instead.
      */
     error?: string;
     /**

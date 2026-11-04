@@ -25,22 +25,28 @@ current pin.
 ### Added
 
 - `DateField`, a labelled calendar-day input. It wears `TextField`'s Ark Field
-  frame around the browser's date input. The value is `YYYY-MM-DD`, or `''`
-  when empty, and it is controlled. `min` and `max` bound it: a day outside
-  them can't be picked, and a typed one is never reported. It stays in the box
-  until the field is left, then goes back to `value`, so a day inside the
-  bounds can still be typed digit by digit through the partial years a browser
-  reports on the way. A non-empty `error` sets `aria-invalid` and is read out
-  through `aria-describedby`. `uiId` sets `data-ui-id`.
+  frame around the browser's date input, at `TextField`'s height. The value is
+  `YYYY-MM-DD`, or `''` when empty, and it is controlled. `min` and `max` bound
+  it: a day outside them can't be picked, and a typed one is never reported.
+  The typed day stays in the box and the field turns invalid at once, with a
+  range message when the host's `error` is empty. Nothing resets it, and it is
+  reported as soon as it is back in range. A day inside the bounds can be
+  typed digit by digit through the partial years a browser reports on the way.
+  A non-empty `error` sets `aria-invalid`, is read out through
+  `aria-describedby`, and takes the range message's place. `uiId` sets
+  `data-ui-id`.
 - `TimeChart`, a per-day bar series for one measure. Spend and calls are two
   charts over the same days, because two measures of different scale never
   share an axis. `points` is `{ day, value, floor? }[]` in the host's order.
-  A `null` value draws no bar and reads "Not measured", never zero. A `floor`
+  A `null` value draws no bar and reads "Not measured". A measured zero also
+  draws no bar and reads `format(0)`. No bar has a minimum height. A `floor`
   point is drawn as a lower bound and announced with `≥`. Every day and value
   is on screen in a table under the bars, as `BarChart`'s are, named by
-  `label` and described by its visible `caption`.
-  Day labels thin out to fit the width, and the first and last always show.
-  Empty `points` shows `emptyLabel`.
+  `label` and described by its visible `caption`. The chart does not grow
+  with the range: the plot is a fixed height, and the table scrolls on its
+  own in a bounded region the keyboard can focus. Day labels thin out to fit
+  the width, and the first and last always show. Empty `points` shows
+  `emptyLabel`.
 
 ## [0.180.1] — 2026-11-03
 

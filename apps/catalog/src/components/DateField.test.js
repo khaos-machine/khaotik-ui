@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
@@ -63,18 +64,48 @@ describe('DateField', () => {
     expect(oninput.mock.calls).toEqual([['2026-10-15']])
   })
 
-  it('carries min and max, and never reports a finished day past max', async () => {
+  it('turns invalid on a day past max, keeps it in the box, and reports nothing, even after blur', async () => {
     const oninput = vi.fn()
     render(DateField, { props: { label: 'To', value: '2026-11-01', min: '2026-10-01', max: '2026-11-04', oninput } })
     const input = screen.getByLabelText('To')
     expect(input).toHaveAttribute('min', '2026-10-01')
     expect(input).toHaveAttribute('max', '2026-11-04')
+    expect(input).not.toHaveAttribute('aria-invalid', 'true')
     await fireEvent.input(input, { target: { value: '2026-11-05' } })
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(describedBy(input)).toEqual(['Choose a day from 2026-10-01 to 2026-11-04.'])
+    expect(input).toHaveValue('2026-11-05')
     expect(oninput).not.toHaveBeenCalled()
-    // Controlled: leaving the field puts the refused day back to `value`.
+    // No silent reset: the writer's day stays where they can see and fix it.
     await fireEvent.blur(input)
-    expect(input).toHaveValue('2026-11-01')
+    expect(input).toHaveValue('2026-11-05')
+    expect(input).toHaveAttribute('aria-invalid', 'true')
     expect(oninput).not.toHaveBeenCalled()
+  })
+
+  it('turns valid again, and reports, once the typed day is back in range', async () => {
+    const oninput = vi.fn()
+    render(DateField, { props: { label: 'To', value: '', max: '2026-11-04', oninput } })
+    const input = screen.getByLabelText('To')
+    await fireEvent.input(input, { target: { value: '2026-11-05' } })
+    expect(describedBy(input)).toEqual(['Choose a day on or before 2026-11-04.'])
+    await fireEvent.input(input, { target: { value: '2026-11-03' } })
+    expect(input).not.toHaveAttribute('aria-invalid', 'true')
+    expect(oninput.mock.calls).toEqual([['2026-11-03']])
+  })
+
+  it("lets the host's error stand in for the range message, and stays invalid either way", async () => {
+    // Out of range with an empty host error: invalid, with the field's own
+    // message, since the host never hears of a day it is not sent. With a host
+    // error: that message is the description, and the field stays invalid.
+    const { rerender } = render(DateField, { props: { label: 'From', value: '', min: '2026-10-01', error: '' } })
+    const input = screen.getByLabelText('From')
+    await fireEvent.input(input, { target: { value: '2026-09-30' } })
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(describedBy(input)).toEqual(['Choose a day on or after 2026-10-01.'])
+    await rerender({ error: 'From must come before To.' })
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(describedBy(input)).toEqual(['From must come before To.'])
   })
 
   it('refuses a day before min', async () => {
@@ -96,6 +127,17 @@ describe('DateField', () => {
     const input = screen.getByLabelText('To')
     expect(input).not.toHaveAttribute('aria-invalid', 'true')
     expect(input).not.toHaveAttribute('aria-describedby')
+  })
+
+  it("keeps the rule that holds TextField's density", () => {
+    // jsdom lays nothing out, so the height itself cannot be measured here. In
+    // Chromium the date input's fields wrapper carries 1px of padding above and
+    // below, which made this box 35.5px against TextField's 33.5px; zeroing it
+    // makes both 33.5px (measured in the catalog at 1440px). This reads the rule
+    // from source, so deleting it reds; it does not prove the rendered height.
+    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/DateField.svelte`, 'utf8')
+    expect(source).toMatch(/:global\(\.kfield__date::-webkit-datetime-edit-fields-wrapper\)\s*\{\s*padding:\s*0;\s*\}/)
+    expect(source).toMatch(/class="kfield__text kfield__date"/)
   })
 
   it('sets data-ui-id from uiId', () => {

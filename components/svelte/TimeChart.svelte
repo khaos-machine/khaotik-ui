@@ -7,12 +7,21 @@
   //
   // - a value that is not finite draws NO bar and reads as absent. A day with
   //   no measurement is not a day measured at zero, and a bar is a claim;
+  // - a measured ZERO also draws no bar, and its row reads `format(0)`. There
+  //   is no minimum-height stub: a sliver over a zero claims a measurement
+  //   above zero. The table, not the plot, tells zero from absent;
   // - bars are scaled to the largest finite value, never to a total;
   // - the figures live in a VISIBLE table, so every day and value is on screen
   //   and reachable without a pointer, as BarChart's are. The columns drawn
   //   above it are aria-hidden: they repeat the table's facts as a shape, and
   //   announcing them would read every figure twice. Nothing is in a hover
   //   title alone.
+  //
+  // The chart does NOT grow with the range. Its host is a desktop window that
+  // never scrolls as a page, so the plot is a fixed height and the table sits
+  // in a bounded region that scrolls on its own. That region is focusable and
+  // named by `label`, so a keyboard reaches it and scrolls it with the arrow
+  // keys like any other scroll area.
   //
   // Hand-rolled DOM, like BarChart: charts stay DOM/SVG (RULES.md, "Design-system
   // invariants"), and a column is a sized box.
@@ -48,6 +57,7 @@
   } = $props()
 
   const measured = (p) => p != null && Number.isFinite(p.value)
+  const drawn = (p) => measured(p) && p.value > 0
   const max = $derived(Math.max(0, ...points.filter(measured).map((p) => /** @type {number} */ (p.value))))
   const text = (p) => (measured(p) ? `${p.floor ? '≥ ' : ''}${format(p.value)}` : 'Not measured')
 
@@ -81,7 +91,7 @@
     <div class="timechart__plot" aria-hidden="true" bind:clientWidth={width}>
       {#each points as p, i (i)}
         <div class="timechart__slot">
-          {#if measured(p)}
+          {#if drawn(p)}
             <span
               class="timechart__bar"
               data-day={p.day}
@@ -104,17 +114,20 @@
     <!-- The caption is visible and also referenced by aria-describedby: with an
          aria-label naming the table, engines compute a <caption>'s role as the
          description unevenly, and the reference makes it explicit. -->
-    <table class="timechart__table" aria-label={label || undefined} aria-describedby={caption ? captionId : undefined}>
-      {#if caption}<caption class="timechart__caption" id={captionId}>{caption}</caption>{/if}
-      <tbody>
-        {#each points as p, i (i)}
-          <tr class="timechart__row">
-            <th scope="row" class="timechart__day">{p.day}</th>
-            <td class="timechart__value">{text(p)}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
+    <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+    <div class="timechart__scroll" role="region" aria-label={label || undefined} tabindex="0">
+      <table class="timechart__table" aria-label={label || undefined} aria-describedby={caption ? captionId : undefined}>
+        {#if caption}<caption class="timechart__caption" id={captionId}>{caption}</caption>{/if}
+        <tbody>
+          {#each points as p, i (i)}
+            <tr class="timechart__row">
+              <th scope="row" class="timechart__day">{p.day}</th>
+              <td class="timechart__value">{text(p)}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
   </div>
 {:else}
   <p class="timechart__empty">{emptyLabel}</p>
@@ -152,9 +165,6 @@
     display: block;
     width: 100%;
     max-width: 24px;
-    /* A real but tiny value still shows; it changes how short a bar may LOOK,
-       never what it represents (BarChart's floor). */
-    min-height: 2px;
     border-radius: 2px 2px 0 0;
     background: var(--bar);
   }
@@ -186,10 +196,23 @@
     white-space: nowrap;
   }
 
+  /* A bounded area that scrolls on its own, so ninety days of figures never
+     lengthen the window. Twelve rows of the dense table show at once. */
+  .timechart__scroll {
+    max-height: 15rem;
+    margin-top: var(--spacing-xs);
+    overflow-y: auto;
+    border-radius: var(--radius-sm);
+  }
+
+  .timechart__scroll:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+  }
+
   /* BarChart's table: day and figure, dense, numbers right-aligned. */
   .timechart__table {
     width: 100%;
-    margin-top: var(--spacing-xs);
     border-collapse: collapse;
     font-size: var(--caption-size);
     line-height: var(--caption-line);

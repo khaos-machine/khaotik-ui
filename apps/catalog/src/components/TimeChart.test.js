@@ -40,6 +40,33 @@ describe('TimeChart', () => {
     expect(value).not.toHaveTextContent('0')
   })
 
+  it('draws no bar for a measured zero, and its row reads format(0)', () => {
+    const points = [DAYS[0], { day: '2026-11-02', value: 0 }, { day: '2026-11-03', value: null }]
+    const format = (v) => `$${v.toFixed(2)}`
+    const { container } = render(TimeChart, { props: { points, label: 'Spend per day', format } })
+    expect(bars(container).map((b) => b.dataset.day)).toEqual(['2026-11-01'])
+    expect(within(rowFor('2026-11-02')).getByRole('cell').textContent.trim()).toBe('$0.00')
+    expect(within(rowFor('2026-11-03')).getByRole('cell').textContent.trim()).toBe('Not measured')
+  })
+
+  it('gives a zero no height at all: no bar element, and no minimum height in the bar rule', () => {
+    // A stub on a zero claims a measurement above zero. jsdom applies no CSS,
+    // so the bar rule is read from source as well as the DOM checked.
+    const { container } = render(TimeChart, { props: { points: [{ day: '2026-11-01', value: 0 }], label: 'Calls per day' } })
+    expect(bars(container)).toHaveLength(0)
+    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/TimeChart.svelte`, 'utf8')
+    const barRule = source.match(/\.timechart__bar\s*\{[^}]*\}/)[0]
+    expect(barRule).not.toMatch(/min-height/)
+  })
+
+  it('keeps the table in a bounded region a keyboard can reach and scroll, named by label', () => {
+    const { container } = render(TimeChart, { props: { points: DAYS, label: 'Calls per day', caption: 'Model calls' } })
+    const region = screen.getByRole('region', { name: 'Calls per day' })
+    expect(region).toHaveAttribute('tabindex', '0')
+    expect(region).toContainElement(screen.getByRole('table', { name: 'Calls per day' }))
+    expect(container.querySelector('.timechart__plot')).not.toContainElement(region)
+  })
+
   it('announces a floor point with ≥ before its formatted value, and draws it distinctly', () => {
     const points = [DAYS[0], { day: '2026-11-02', value: 1.5, floor: true }]
     const format = (v) => `$${v.toFixed(2)}`
