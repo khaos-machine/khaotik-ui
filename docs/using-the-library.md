@@ -510,6 +510,7 @@ breaking changes are actually recorded — and diff
 | How do tokens get built? | `tokens/build-tokens.py`, `docs/tokens-to-ui.md` |
 | Which BrandKit values are still missing? | `docs/harvest-khaos-machine-tokens.md` |
 | A working consumer, end to end | `apps/catalog/` (`src/main.js`, `src/app.css`) |
+| I design rather than code. Where do I start? | [`design/README.md`](design/README.md) |
 
 ### StoryPlayer transport
 

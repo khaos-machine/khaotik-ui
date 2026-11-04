@@ -20,6 +20,16 @@ current pin.
 
 ## [Unreleased]
 
+## [0.180.2] — 2026-11-04
+
+### Added
+
+- Designer docs: `docs/design/README.md`, the start page, and
+  `docs/design/changing-the-kit.md`, a kit change from brief to release. The
+  package ships them with `docs/using-the-library.md`, so an agent in a
+  consuming app reads them at `node_modules/@khaos-machine/khaotik-ui/docs/` at
+  the version that app pins. No component or token changed.
+
 ## [0.180.1] — 2026-11-03
 
 ### Fixed

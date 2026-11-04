@@ -27,6 +27,9 @@ them on hover.
 [`docs/using-the-library.md`](docs/using-the-library.md) is the full guide:
 theming, icons, assets and the component inventory.
 
+Designers, and the agents working for them, start at
+[`docs/design/README.md`](docs/design/README.md).
+
 ## Catalog
 
 Browse every component at
