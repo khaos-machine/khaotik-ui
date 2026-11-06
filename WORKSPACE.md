@@ -12,7 +12,7 @@ This file maps the repository and each path's ownership. Procedures live in
 | `components/svelte/` | Shipped Svelte atoms and compositions | Components are hand-authored; adjacent declarations and `index.d.ts` are generated |
 | `assets/placeholders/` | Shipped pre-production artwork | Keep assets small; real consumer artwork wins; read its `README.md` |
 | `apps/catalog/` | Svelte 5 + Vite web catalog, published to GitHub Pages | Has its own `AGENTS.md`, which governs the subtree |
-| `docs/` | Decision register, consumer guidance, token history, plans | `decisions.md` owns design/architecture decisions; historical plans are not current instructions |
+| `docs/` | Decision register, consumer guidance, designer pages, token history, plans | `decisions.md` owns design/architecture decisions; `design/` holds the designer pages, which ship in the npm package; historical plans are not current instructions |
 | `scripts/` | Coverage, taxonomy, consumer, compile, declaration and release tooling | Root npm scripts are the supported interface |
 | `.github/workflows/` | Pull-request gates, the npm publish and the Pages deploy | `gates.yml` is reusable; `ci.yml` and `catalog-pages.yml` call it |
 | `.claude/` | Claude Code agents, commands, skills, settings, and launch config | Runtime configuration, not shipped library content |
