@@ -183,7 +183,7 @@
   </div>
 
   {#snippet snapshotStatus()}
-    <span class="ui-shell__snapshot-status" role="status" title={snapshotError}>Story update failed</span>
+    <span class="ui-shell__snapshot-status" role="status" data-toolbar-message title={snapshotError}>Story update failed</span>
     <Button icon="arrow-clockwise" onclick={() => onRetrySnapshot?.()}>Retry</Button>
   {/snippet}
 

@@ -43,13 +43,13 @@ current pin.
     `calc(2 * var(--spacing-2xl))` (96px). Beyond that, the rest of the row
     scrolls instead. The full title is still the toolbar's accessible name.
   - **The status gives way, not the title.** This replaces the rule that the
-    status group never clips. At phone width the row keeps at least the title's
-    floor plus one fade width (120px). Where the status group and that floor
-    cannot both fit, the status message truncates with an ellipsis. It keeps
-    its full text, so its accessible name and any `role="status"` are
-    unchanged. Controls in the status group (Retry, Project Settings, the gear)
-    stay whole and reachable. In the status, a direct child that is not a
-    control gives way, and controls do not.
+    status group never clips. At phone width, short of room, the status shrinks
+    first, down to its floor, before the row narrows below the title's floor
+    plus one fade width (120px). The floor is everything in the status except
+    the message, measured live, so Retry, Project Settings, the gear and any
+    wrapper around them stay whole and reachable. Only a direct child marked
+    `data-toolbar-message` truncates, with an ellipsis. It keeps its full
+    text, so its accessible name and any `role="status"` are unchanged.
   - **A visible cue:** a side that is cut off fades over `--spacing-lg`, and
     only while content is cut off on that side. The fade is gone when the row
     is scrolled to that end. The fade is an alpha mask, so it reads the same in
@@ -60,7 +60,11 @@ current pin.
     fade width from each side that is cut off. At the row's true start or end
     there is no fade on that side.
 
-  Hosts change nothing, and the props are unchanged.
+  **Contract change for hosts:** a `status` snippet whose message should
+  give way marks it `data-toolbar-message` as a direct child, as `Shell` now
+  does. Without the mark nothing in the status truncates: it holds whole, a
+  wrapper included, and the row narrows and scrolls instead. Nothing breaks
+  unmarked, and the props are unchanged.
 - `Button` states its role on the element it renders: `button` on a `<button>`,
   `link` on an `<a>` with `href`. Svelte could not infer the role through
   `<svelte:element>` and warned that the click handler needs one; the warning

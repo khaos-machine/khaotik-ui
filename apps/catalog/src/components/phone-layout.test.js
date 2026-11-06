@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { compile } from 'svelte/compiler'
+import { createRawSnippet } from 'svelte'
 import { describe, it, expect } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import { fixtures } from '../fixtures.js'
@@ -264,26 +265,53 @@ describe('One toolbar row at phone width', () => {
     expect(row.scrollLeft, 'scrolled to the radio, not the segment').toBe(100 + 360 - (300 - 24))
   })
 
-  it('Toolbar gives way in the status, not the title: its message truncates, its controls stay whole', () => {
+  it('Toolbar gives way in the status, not the title: only the marked message truncates', () => {
     // K: "Status gives way". Measured at 320: a failure message, Retry and the gear took 244px
     // and left the row 44px, under the title's 96px floor. The message is host markup, so the
     // rules reach it with `:global`; compiled, a scoped selector would carry `.svelte-x` and
-    // never match it.
+    // never match it. Each phone rule is read whole, selector and declarations, so changing or
+    // dropping any one of them fails here.
     const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/Toolbar.svelte`, 'utf8')
     const { css } = compile(source, { filename: 'Toolbar.svelte', css: 'external' })
     const code = css.code.replace(/\/\*[\s\S]*?\*\//g, '')
     const phone = code.slice(code.indexOf('@container (max-width: 599px)'))
-    const rule = (re) => [...phone.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(([, s]) => re.test(s.trim())).map(([, s, b]) => [s.trim(), b])
-    const [status] = rule(/^\.toolbar__status\.svelte-[a-z0-9]+$/)
-    expect(status?.[1], 'the status group does not shrink').toMatch(/flex:\s*0 1 auto/)
-    expect(status?.[1]).toMatch(/min-width:\s*0/)
-    const [message] = rule(/^\.toolbar__status\.svelte-[a-z0-9]+ > :not\(/)
-    expect(message, 'no rule truncates the status message').toBeTruthy()
-    expect(message[0].split('>')[1], 'the message rule is scoped, so it never matches host markup').not.toMatch(/svelte-/)
-    for (const control of ['button', 'a', 'input', 'select', "[role='button']", '.ui-button']) expect(message[0], `${control} would truncate`).toContain(control)
-    expect(message[1]).toMatch(/text-overflow:\s*ellipsis/)
-    const [row] = rule(/^\.toolbar__main\.svelte-[a-z0-9]+$/).filter(([, b]) => /min-width/.test(b))
-    expect(row?.[1], 'the row has no floor, so the status takes the title').toMatch(/min-width:\s*calc\(2 \* var\(--spacing-2xl\) \+ var\(--spacing-lg\)\)/)
+    const rules = [...phone.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(([, s, b]) => ({
+      selectors: s.trim().replace(/\.svelte-[a-z0-9]+/g, '.S').split(/\s*,\s*/),
+      declarations: Object.fromEntries(b.split(';').map((d) => d.split(':')).filter((d) => d.length > 1).map(([p, ...v]) => [p.trim(), v.join(':').trim()])),
+    }))
+    const only = (selector) => rules.filter((r) => r.selectors.includes(selector)).map((r) => r.declarations)
+    expect(only('.toolbar__status.S'), 'the status gives way before the row, down to its floor').toContainEqual({ flex: '0 100 auto', 'min-width': 'var(--toolbar-status-floor, auto)' })
+    expect(only('.toolbar__main.S'), 'the row yields only after the status').toContainEqual({ flex: '1 1 calc(2 * var(--spacing-2xl) + var(--spacing-lg))' })
+    expect(only('.toolbar__status.S > *'), 'a control or wrapper in the status shrinks').toEqual([{ 'flex-shrink': '0' }])
+    expect(only('.toolbar__status.S > [data-toolbar-message]'), 'the marked message does not truncate, or the rule is scoped').toEqual([
+      { 'flex-shrink': '1', 'min-width': '0', overflow: 'hidden', 'text-overflow': 'ellipsis', 'white-space': 'nowrap' },
+    ])
+    const truncating = rules.filter((r) => r.selectors.some((s) => s.startsWith('.toolbar__status.S >')) && r.declarations['text-overflow'])
+    expect(truncating.flatMap((r) => r.selectors), 'something other than the marked message truncates').toEqual(['.toolbar__status.S > [data-toolbar-message]'])
+  })
+
+  it('Toolbar holds the status at everything but its marked message, a wrapper whole', async () => {
+    // Measured at 320: `<div><span role="status">…</span><button>Retry</button></div>` shrank
+    // from 185 to 107px and clipped Retry. The floor holds a wrapper whole; only a direct child
+    // marked `data-toolbar-message` is left out of it.
+    const sized = (el, width) => {
+      el.getBoundingClientRect = () => ({ left: 0, right: width, width, top: 0, bottom: 44, height: 44, x: 0, y: 0, toJSON() {} })
+      el.getClientRects = () => [el.getBoundingClientRect()]
+    }
+    const floorOf = async (html, widths) => {
+      const status = createRawSnippet(() => ({ render: () => html }))
+      const { container, unmount } = render(Toolbar, { props: { title: 'Admin', status, onsettings: () => {} } })
+      const group = container.querySelector('.toolbar__status')
+      for (const [selector, width] of widths) sized(group.querySelector(selector), width)
+      group.querySelector('[data-text]').append('.')
+      await Promise.resolve()
+      const floor = group.style.getPropertyValue('--toolbar-status-floor')
+      unmount()
+      return floor
+    }
+    const gear = ['.toolbar__toggle', 44]
+    expect(await floorOf('<span data-toolbar-message data-text role="status">Story update failed</span>', [['[data-toolbar-message]', 150], gear]), 'the floor counts the message').toBe('44px')
+    expect(await floorOf('<div data-wrapper><span data-text role="status">Story update failed</span><button>Retry</button></div>', [['[data-wrapper]', 185], gear]), 'the floor cuts into a wrapper').toBe('229px')
   })
 
   it('Toolbar gives the host tools the same cue', async () => {

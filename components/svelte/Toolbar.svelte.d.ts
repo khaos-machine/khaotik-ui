@@ -90,7 +90,7 @@ declare const Toolbar: import("svelte").Component<{
      */
     tools?: import("svelte").Snippet;
     /**
-     * Status at the trailing edge, before the settings gear: a failure and its Retry.
+     * Status at the trailing edge, before the settings gear: a failure and its Retry, as direct children. Mark the message `data-toolbar-message`: at phone width, short of room, it alone truncates with an ellipsis (its text, accessible name and role kept). Everything else, a wrapper included, stays whole.
      */
     status?: import("svelte").Snippet;
     /**
@@ -189,7 +189,7 @@ type Props = {
      */
     tools?: import("svelte").Snippet;
     /**
-     * Status at the trailing edge, before the settings gear: a failure and its Retry.
+     * Status at the trailing edge, before the settings gear: a failure and its Retry, as direct children. Mark the message `data-toolbar-message`: at phone width, short of room, it alone truncates with an ellipsis (its text, accessible name and role kept). Everything else, a wrapper included, stays whole.
      */
     status?: import("svelte").Snippet;
     /**

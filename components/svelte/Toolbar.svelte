@@ -18,8 +18,9 @@
   // icons one at a time, from the last, until it fits (the label stays the accessible name and
   // the tooltip); then the filter narrows, and the title truncates last. At phone width the
   // title keeps a floor and the row scrolls; where the status group and that floor cannot both
-  // fit, the status gives way: its text truncates with an ellipsis (keeping its accessible name
-  // and role), while its controls (Retry, the gear) stay whole and reachable.
+  // fit, the status gives way: the message the host marks `data-toolbar-message` truncates with
+  // an ellipsis (keeping its accessible name and role), while everything else in it (Retry, the
+  // gear, any wrapper) stays whole and reachable. Unmarked, nothing in the status truncates.
   import { flushSync } from 'svelte'
   import Icon from './Icon.svelte'
   import WorkspaceSwitcher from './WorkspaceSwitcher.svelte'
@@ -53,7 +54,7 @@
    * @property {string} [uiId] The `data-ui-id` prefix (audit §3.14).
    * @property {import('svelte').Snippet} [lead] More of where you are, right after the switcher: a workspace switch.
    * @property {import('svelte').Snippet} [tools] More of what you can do, after the pane toggles.
-   * @property {import('svelte').Snippet} [status] Status at the trailing edge, before the settings gear: a failure and its Retry.
+   * @property {import('svelte').Snippet} [status] Status at the trailing edge, before the settings gear: a failure and its Retry, as direct children. Mark the message `data-toolbar-message`: at phone width, short of room, it alone truncates with an ellipsis (its text, accessible name and role kept). Everything else, a wrapper included, stays whole.
    * @property {() => void} [onsettings] Opens settings. Absent, no gear is drawn.
    * @property {string} [settingsLabel] The gear's accessible name and tooltip.
    */
@@ -187,10 +188,36 @@
       row.removeEventListener('focusin', focus)
     }
   }
+
+  // The status's floor: the width of everything in it but the message marked
+  // `data-toolbar-message`, so giving way truncates that message and never cuts a control.
+  // Measured, not left to the browser: a flex container's own minimum counts a message at its
+  // full text and lets a wrapper's text wrap, so it held a message whole or clipped a Retry.
+  /** @param {HTMLElement} group */
+  function holdStatus(group) {
+    const measure = () => {
+      const kids = [...group.children].filter((c) => c.getClientRects().length > 0)
+      const whole = kids.filter((c) => !c.matches('[data-toolbar-message]'))
+      const gap = parseFloat(getComputedStyle(group).columnGap) || 0
+      const floor = whole.reduce((w, c) => w + c.getBoundingClientRect().width, 0) + gap * Math.max(0, kids.length - 1)
+      const value = `${Math.ceil(floor)}px`
+      if (group.style.getPropertyValue('--toolbar-status-floor') !== value) group.style.setProperty('--toolbar-status-floor', value)
+    }
+    const resized = new ResizeObserver(measure)
+    const changed = new MutationObserver(measure)
+    resized.observe(group)
+    changed.observe(group, { childList: true, subtree: true, characterData: true })
+    measure()
+    return () => {
+      resized.disconnect()
+      changed.disconnect()
+    }
+  }
 </script>
 
 <div class="toolbar" class:toolbar--compact={compact} role="toolbar" aria-label={title || 'Toolbar'} data-ui-id={uiId} bind:clientWidth={measured}>
-  <!-- Where you are and what you can do. It takes any overflow, so the status never does. -->
+  <!-- Where you are and what you can do. It takes the overflow, folding and then scrolling; at
+       phone width the status gives way first, its marked message truncating, its controls whole. -->
   <div class="toolbar__main" {@attach fit} {@attach scrollRow}>
   <!-- No title, no cell: an empty one would hold a gap before the switcher. -->
   {#if title}
@@ -253,7 +280,7 @@
   </div>
 
   {#if status || onsettings}
-    <div class="toolbar__status" data-ui-id="{uiId}.status">
+    <div class="toolbar__status" data-ui-id="{uiId}.status" {@attach holdStatus}>
       {@render status?.()}
       {#if onsettings}
         <button
@@ -452,21 +479,23 @@
     .toolbar__title {
       min-width: calc(2 * var(--spacing-2xl));
     }
-    /* The row never narrows past the title's floor and one fade beyond it, so the end fade
-       cannot cover the title's ellipsis. Short of that room, the status gives way. */
+    /* Short of room, the status gives way before the row: shrink is shared by weight, so the
+       status's 100 to the row's 1 takes the status down to its floor (holdStatus: everything in
+       it but the marked message) before the row narrows below the title's floor and one fade
+       beyond it, the room that keeps the end fade off the title's ellipsis. */
     .toolbar__main {
-      min-width: calc(2 * var(--spacing-2xl) + var(--spacing-lg));
+      flex: 1 1 calc(2 * var(--spacing-2xl) + var(--spacing-lg));
     }
     .toolbar__status {
-      flex: 0 1 auto;
-      min-width: 0;
+      flex: 0 100 auto;
+      min-width: var(--toolbar-status-floor, auto);
     }
-    /* In the status, controls stay whole; any other child (the message) truncates. Host
-       markup, so `:global`. */
+    /* In the status only the message the host marks `data-toolbar-message` truncates; every
+       other child, a wrapper included, stays whole. Host markup, so `:global`. */
     .toolbar__status > :global(*) {
       flex-shrink: 0;
     }
-    .toolbar__status > :global(:not(button, a, input, select, [role='button'], .ui-button)) {
+    .toolbar__status > :global([data-toolbar-message]) {
       flex-shrink: 1;
       min-width: 0;
       overflow: hidden;
