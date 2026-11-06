@@ -24,15 +24,32 @@ current pin.
 
 ### Fixed
 
-- `Toolbar` stays one 52px row at phone width. Below 600px the row used to
-  wrap, so a filter that did not fit dropped to a second line and the bar grew
-  to 85px. In a host bar fixed at 52px, the filter then covered the content
-  below it. Measured in Chromium at 390, 360 and 320 with a title, one command
-  and the filter, the filter sat at 51–81px. Now the row overflows instead of
-  wrapping, as it does at any width: labels fold to icons, the filter narrows
-  to 96px and the title truncates. If it is still short, the row scrolls
-  sideways, like the tools group, so every command, the filter and the pane
-  toggles stay reachable. Hosts change nothing, and the props are unchanged.
+- `Toolbar` is one 52px row at every width. Its height is now fixed at 52px,
+  where it used to be a 52px minimum.
+  - **The phone row no longer wraps.** This reverses 0.171.0, which made the
+    row wrap at phone width rather than clip. A filter that did not fit
+    dropped to a second line and the bar grew to 85px, or as much as 157px in
+    the full-chrome example. In a host bar fixed at 52px, the filter then
+    covered the content below. Measured in Chromium at 390 and 320, the filter
+    sat at 51–81px.
+  - **A row that does not fit:** labels fold to their icons, then the filter
+    narrows, then the title truncates. If the row is still short, it scrolls
+    sideways, and every command, the filter and the pane toggles stay
+    reachable.
+  - **The filter** takes whatever room the row has left, and the spacer no
+    longer splits it. It narrows to no less than 96px.
+  - **The title** truncates with an ellipsis to no less than
+    `calc(2 * var(--spacing-2xl))` (96px). Beyond that, the rest of the row
+    scrolls instead. The full title is still the toolbar's accessible name.
+  - **A visible cue:** a side that is cut off fades over `--spacing-lg`, and
+    only while content is cut off on that side. The fade is gone when the row
+    is scrolled to that end. The fade is an alpha mask, so it reads the same in
+    light and dark. The host's tools group gets the same cue.
+  - **Scrolling:** a vertical mouse wheel over the row scrolls it sideways
+    until it reaches that end, and then the page scrolls. A focused control is
+    scrolled fully into view, clear of the fade.
+
+  Hosts change nothing, and the props are unchanged.
 
 ## [0.181.0] — 2026-11-04
 

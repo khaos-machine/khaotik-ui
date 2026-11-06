@@ -115,11 +115,66 @@
       changed.disconnect()
     }
   }
+
+  // A row that scrolls sideways at phone width (the row itself, and the host's tools). The side
+  // that is cut off fades, and only while it is (`--toolbar-cut-start` / `-end`, 1 or 0, read by
+  // the mask); a vertical wheel scrolls it sideways until it reaches that end; and a focused
+  // control is scrolled fully into view. Where the row does not scroll (`overflow-x: hidden`,
+  // wider than a phone) the wheel and focus leave it alone.
+  /** @param {HTMLElement} row */
+  function scrollRow(row) {
+    /** @param {string} name @param {boolean} on */
+    const set = (name, on) => {
+      if (row.style.getPropertyValue(name) !== (on ? '1' : '0')) row.style.setProperty(name, on ? '1' : '0')
+    }
+    const cue = () => {
+      set('--toolbar-cut-start', row.scrollLeft > 0.5)
+      set('--toolbar-cut-end', row.scrollLeft + row.clientWidth < row.scrollWidth - 0.5)
+    }
+    /** @param {WheelEvent} e */
+    const wheel = (e) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX) || getComputedStyle(row).overflowX === 'hidden') return
+      const delta = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY
+      const next = Math.min(row.scrollWidth - row.clientWidth, Math.max(0, row.scrollLeft + delta))
+      if (Math.abs(next - row.scrollLeft) < 0.5) return // at that end: the page scrolls instead
+      e.preventDefault()
+      row.scrollLeft = next
+      cue()
+    }
+    // A focused control is scrolled fully into the row, a fade's width clear of either edge where
+    // the row has that room (a narrow row has less; the fade lifts while a control has focus).
+    /** @param {FocusEvent} e */
+    const focus = (e) => {
+      if (!(e.target instanceof HTMLElement) || e.target === row || getComputedStyle(row).overflowX === 'hidden') return
+      const r = row.getBoundingClientRect()
+      const b = e.target.getBoundingClientRect()
+      const fade = parseFloat(getComputedStyle(row).getPropertyValue('--spacing-lg')) || 24
+      const pad = Math.max(0, Math.min(fade, (r.width - b.width) / 2))
+      if (b.left < r.left + pad) row.scrollLeft -= r.left + pad - b.left
+      else if (b.right > r.right - pad) row.scrollLeft += b.right - (r.right - pad)
+      cue()
+    }
+    const resized = new ResizeObserver(cue)
+    const changed = new MutationObserver(cue)
+    resized.observe(row)
+    changed.observe(row, { childList: true, subtree: true, characterData: true, attributeFilter: ['class'] })
+    row.addEventListener('scroll', cue, { passive: true })
+    row.addEventListener('wheel', wheel, { passive: false })
+    row.addEventListener('focusin', focus)
+    cue()
+    return () => {
+      resized.disconnect()
+      changed.disconnect()
+      row.removeEventListener('scroll', cue)
+      row.removeEventListener('wheel', wheel)
+      row.removeEventListener('focusin', focus)
+    }
+  }
 </script>
 
 <div class="toolbar" class:toolbar--compact={compact} role="toolbar" aria-label={title || 'Toolbar'} data-ui-id={uiId} bind:clientWidth={measured}>
   <!-- Where you are and what you can do. It takes any overflow, so the status never does. -->
-  <div class="toolbar__main" {@attach fit}>
+  <div class="toolbar__main" {@attach fit} {@attach scrollRow}>
   <!-- No title, no cell: an empty one would hold a gap before the switcher. -->
   {#if title}
     <div class="toolbar__drag toolbar__title" data-tauri-drag-region><h1 class="toolbar__heading">{title}</h1></div>
@@ -177,7 +232,7 @@
       <Icon name={pane.icon ?? 'square'} />
     </button>
   {/each}
-  {#if tools}<div class="toolbar__tools">{@render tools()}</div>{/if}
+  {#if tools}<div class="toolbar__tools" {@attach scrollRow}>{@render tools()}</div>{/if}
   </div>
 
   {#if status || onsettings}
@@ -203,9 +258,9 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. The row never
-       wraps, at any width, so the bar is exactly 52 and a host may fix it there. */
-    min-height: 52px;
+    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. A height, not a
+       floor: the row never wraps, so nothing needs it taller, and a host may fix its bar at 52. */
+    height: 52px;
     box-sizing: border-box;
     container-type: inline-size;
     padding: 0 var(--spacing-sm);
@@ -330,8 +385,9 @@
   }
   /* Phone width: still one row, never wrapped. A wrapped row grows the bar past 52 and over
      whatever the host draws below it. A row that overflows folds its labels, narrows the filter
-     and truncates the title, as at any width; still short, it scrolls, as the tools do, so
-     every command, the filter and the panes stay reachable. */
+     and truncates the title to its floor, as at any width; still short, it scrolls, as the tools
+     do, with a fade on the side cut off, so every command, the filter and the panes stay
+     reachable. */
   @container (max-width: 599px) {
     .toolbar__main {
       overflow-x: auto;
@@ -356,9 +412,32 @@
       scrollbar-width: none;
       gap: var(--spacing-2xs);
     }
-    /* The tools take the room the spacer would, and end right by themselves. */
-    .toolbar__main:has(> .toolbar__tools) > .toolbar__spacer {
+    /* The tools and the filter take the room the spacer would; the tools end right by themselves. */
+    .toolbar__main:has(> .toolbar__tools) > .toolbar__spacer,
+    .toolbar__main:has(> .toolbar__filter) > .toolbar__spacer {
       flex: none;
+    }
+    /* The cue: the side cut off fades over --spacing-lg, and only while it is cut off (scrollRow).
+       The mask is alpha alone, so it reads the same in light and dark. It lifts while a control
+       in the row has keyboard focus, so the focused control is never under it. */
+    .toolbar__main,
+    .toolbar__main > .toolbar__tools {
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black calc(var(--toolbar-cut-start, 0) * var(--spacing-lg)),
+        black calc(100% - var(--toolbar-cut-end, 0) * var(--spacing-lg)),
+        transparent
+      );
+    }
+    .toolbar__main:has(:focus-visible),
+    .toolbar__main > .toolbar__tools:has(:global(:focus-visible)) {
+      mask-image: none;
+    }
+    /* The title stays readable: it truncates to this floor and no further, and the rest of the
+       row scrolls instead. Its full text is still the toolbar's accessible name. */
+    .toolbar__title {
+      min-width: calc(2 * var(--spacing-2xl));
     }
     /* Lenses at 4px a side: a picker and four lenses fit 320. */
     .toolbar__tools :global(.ui-segmented__item) {
@@ -369,11 +448,15 @@
       display: none;
     }
     /* The filter takes the room the row has left, down to the compact floor; short of that the
-       row overflows, and the overflow folds labels first. */
+       row overflows, and the overflow folds labels first. A row narrower than the floor (a wide
+       status beside it) still shows the whole filter when it is focused. */
+    .toolbar__filter,
+    .toolbar--compact .toolbar__filter {
+      min-width: min(96px, 100%);
+    }
     .toolbar__filter {
       flex: 1 1 0;
       width: auto;
-      min-width: 96px;
     }
     /* A phone is touched: every button in the row is a 44pt target. */
     .toolbar__main :global(.ui-button),

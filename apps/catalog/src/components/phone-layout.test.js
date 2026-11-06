@@ -3,10 +3,24 @@ import { describe, it, expect } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import { fixtures } from '../fixtures.js'
 import FixtureView from './shell/FixtureView.svelte'
+import Toolbar from '@khaos-machine/khaotik-ui/components/svelte/Toolbar.svelte'
 
 // Phone width (below 600px) shows one pane at a time. jsdom does no layout, so the
 // widths are measured live; these hold the state the CSS reads. The phone-only buttons are
 // display:none at jsdom's width, hence `hidden: true`.
+
+// Toolbar's style rules, read from source because jsdom applies no CSS: each with its
+// selectors, its declarations as [property, value], and whether it sits in the phone block.
+const toolbarRules = () => {
+  const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/Toolbar.svelte`, 'utf8')
+  const style = source.slice(source.indexOf('<style>') + 7, source.indexOf('</style>')).replace(/\/\*[\s\S]*?\*\//g, '')
+  const phoneAt = style.indexOf('@container (max-width: 599px)')
+  return [...style.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map((m) => ({
+    phone: phoneAt >= 0 && m.index > phoneAt,
+    selectors: m[1].split(',').map((s) => s.trim()),
+    declarations: m[2].split(';').map((d) => d.split(':')).filter((d) => d.length > 1).map(([p, ...v]) => [p.trim(), v.join(':').trim()]),
+  }))
+}
 
 const example = (id) => {
   const fixture = fixtures.find((f) => f.id === id)
@@ -117,14 +131,107 @@ describe('One toolbar row at phone width', () => {
     // jsdom applies no CSS, so the rule is read from source. Measured in Chromium at 390: the
     // phone row wrapped the filter to a second line, the bar grew to 85 and the filter sat at
     // 51-81, over the admin's range row below its fixed 52px bar.
-    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/Toolbar.svelte`, 'utf8')
-    const style = source.slice(source.indexOf('<style>'))
-    expect(style, 'the row wraps').not.toMatch(/flex-wrap:\s*wrap/)
-    const phone = style.slice(style.indexOf('@container (max-width: 599px)'))
-    const filter = phone.match(/\.toolbar__filter\s*\{[^}]*\}/)?.[0] ?? ''
-    expect(filter, 'the phone filter has no floor, so a short row squeezes it to nothing instead of folding labels').toMatch(/min-width:\s*96px/)
-    const row = phone.match(/\.toolbar__main\s*\{[^}]*\}/)?.[0] ?? ''
-    expect(row, 'a phone row that cannot wrap must scroll, or its pane toggles are cut off').toMatch(/overflow-x:\s*auto/)
+    const rules = toolbarRules()
+    const declarations = rules.flatMap((r) => r.declarations)
+    const wraps = declarations.filter(([p, v]) => (p === 'flex-wrap' || p === 'flex-flow') && /\bwrap\b/.test(v))
+    expect(wraps, 'the row wraps').toEqual([])
+    // The bar's own rule caps its height at 52: a floor alone lets anything grow it.
+    const bar = rules.filter((r) => r.selectors.includes('.toolbar')).flatMap((r) => r.declarations)
+    const heights = bar.filter(([p]) => /^(min-|max-)?height$/.test(p))
+    expect(heights.filter(([p]) => p === 'height').map(([, v]) => v), 'the bar has no fixed height').toEqual(['52px'])
+    expect(heights.filter(([p, v]) => p !== 'height' && v !== '52px'), 'a min- or max-height other than 52 overrides the cap').toEqual([])
+    const phone = rules.filter((r) => r.phone)
+    const filter = phone.filter((r) => r.selectors.includes('.toolbar__filter')).flatMap((r) => r.declarations)
+    expect(filter, 'the phone filter has no floor, so a short row squeezes it to nothing instead of folding labels').toContainEqual(['min-width', 'min(96px, 100%)'])
+    const compactFilter = phone.filter((r) => r.selectors.includes('.toolbar--compact .toolbar__filter')).flatMap((r) => r.declarations)
+    expect(compactFilter, 'compact, the desktop 96px floor outgrows a row squeezed by the status').toContainEqual(['min-width', 'min(96px, 100%)'])
+    const row = phone.filter((r) => r.selectors.includes('.toolbar__main')).flatMap((r) => r.declarations)
+    expect(row, 'a phone row that cannot wrap must scroll, or its pane toggles are cut off').toContainEqual(['overflow-x', 'auto'])
+  })
+
+  it('Toolbar gives a phone filter the room the spacer would take', () => {
+    // Measured at 390 with a title, a command and the filter: a spacer still at flex 1 split
+    // the free room with the filter, leaving 73px empty beside a filter at its 96px floor.
+    const spacer = toolbarRules().filter((r) => r.phone && r.selectors.some((s) => /:has\(>\s*\.toolbar__filter\)\s*>\s*\.toolbar__spacer$/.test(s)))
+    expect(spacer.flatMap((r) => r.declarations), 'the spacer still takes room beside the filter').toContainEqual(['flex', 'none'])
+  })
+
+  // jsdom does no layout, so a scrolling row's geometry is stubbed: 600px of content in 300.
+  const scrolling = (el, at = 0) => {
+    let left = at
+    Object.defineProperty(el, 'scrollWidth', { configurable: true, get: () => 600 })
+    Object.defineProperty(el, 'clientWidth', { configurable: true, get: () => 300 })
+    Object.defineProperty(el, 'scrollLeft', { configurable: true, get: () => left, set: (v) => { left = v } })
+    return el
+  }
+  const cut = (el) => [el.style.getPropertyValue('--toolbar-cut-start'), el.style.getPropertyValue('--toolbar-cut-end')]
+  const adminRow = () => render(Toolbar, { props: { title: 'Khaos Cloud Admin', filter: '', filterLabel: 'Filter accounts', commands: [{ id: 'refresh', label: 'Refresh', icon: 'play' }] } }).container.querySelector('.toolbar__main')
+
+  it('Toolbar fades only the side of the row that is cut off, and neither at rest', async () => {
+    const row = adminRow()
+    expect(cut(row), 'a row that fits shows a cue').toEqual(['0', '0'])
+    scrolling(row, 0)
+    await fireEvent.scroll(row)
+    expect(cut(row), 'at the start').toEqual(['0', '1'])
+    row.scrollLeft = 150
+    await fireEvent.scroll(row)
+    expect(cut(row), 'midway').toEqual(['1', '1'])
+    row.scrollLeft = 300
+    await fireEvent.scroll(row)
+    expect(cut(row), 'at the end').toEqual(['1', '0'])
+  })
+
+  it('Toolbar turns a vertical wheel over the row sideways, and lets it go at the end', () => {
+    const row = scrolling(adminRow(), 0)
+    const wheel = (init) => { const e = new WheelEvent('wheel', { cancelable: true, bubbles: true, ...init }); row.dispatchEvent(e); return e.defaultPrevented }
+    expect(wheel({ deltaY: 100 }), 'a vertical wheel was not taken').toBe(true)
+    expect(row.scrollLeft).toBe(100)
+    expect(cut(row)).toEqual(['1', '1'])
+    expect(wheel({ deltaX: 40, deltaY: 10 }), 'a sideways gesture is the browser’s own').toBe(false)
+    row.scrollLeft = 300
+    expect(wheel({ deltaY: 100 }), 'at the end, the wheel must reach the page').toBe(false)
+    expect(row.scrollLeft).toBe(300)
+  })
+
+  it('Toolbar scrolls a focused control fully into the row, and lifts the fade while it has focus', async () => {
+    // Measured at 390 in Chromium: Source list focused at the row's end sat 9px clipped.
+    const rect = (left, width) => () => ({ left, right: left + width, width, top: 0, bottom: 44, height: 44, x: left, y: 0, toJSON() {} })
+    const row = scrolling(adminRow(), 100)
+    const filter = row.querySelector('.toolbar__filter')
+    row.getBoundingClientRect = rect(0, 300)
+    filter.getBoundingClientRect = rect(280, 44) // cut off at the end
+    await fireEvent.focusIn(filter)
+    expect(row.scrollLeft, 'past the end edge: scrolled to sit a fade clear of it').toBe(100 + 324 - (300 - 24))
+    row.scrollLeft = 100
+    filter.getBoundingClientRect = rect(-10, 44) // cut off at the start
+    await fireEvent.focusIn(filter)
+    expect(row.scrollLeft, 'past the start edge').toBe(100 - 34)
+    row.scrollLeft = 100
+    row.getBoundingClientRect = rect(0, 44) // a row no wider than the control
+    filter.getBoundingClientRect = rect(30, 44)
+    await fireEvent.focusIn(filter)
+    expect(row.scrollLeft, 'a narrow row keeps no margin it does not have').toBe(130)
+    const lifted = toolbarRules().filter((r) => r.phone && r.selectors.includes('.toolbar__main:has(:focus-visible)')).flatMap((r) => r.declarations)
+    expect(lifted, 'a focused control can sit under the fade').toContainEqual(['mask-image', 'none'])
+  })
+
+  it('Toolbar gives the host tools the same cue', async () => {
+    const fixture = fixtures.find((f) => f.id === 'toolbar')
+    const { container } = render(FixtureView, { props: { fixture, example: fixture.examples.find((e) => e.label.includes('four lenses')) } })
+    const tools = scrolling(container.querySelector('.toolbar__tools'), 300)
+    await fireEvent.scroll(tools)
+    expect(cut(tools)).toEqual(['1', '0'])
+    const masked = toolbarRules().filter((r) => r.phone && r.selectors.includes('.toolbar__main > .toolbar__tools'))
+    expect(masked.flatMap((r) => r.declarations).map(([p]) => p), 'the tools fade nowhere').toContain('mask-image')
+  })
+
+  it('Toolbar keeps a readable title at phone width and its full accessible name', () => {
+    const title = 'Khaos Cloud Administration and Usage'
+    const { container } = render(Toolbar, { props: { title, filter: '' } })
+    expect(container.querySelector('.toolbar').getAttribute('aria-label')).toBe(title)
+    expect(container.querySelector('.toolbar__heading').textContent).toBe(title)
+    const floor = toolbarRules().filter((r) => r.phone && r.selectors.includes('.toolbar__title')).flatMap((r) => r.declarations)
+    expect(floor, 'the title can truncate to nothing').toContainEqual(['min-width', 'calc(2 * var(--spacing-2xl))'])
   })
 
   it('Toolbar with no title draws no title cell', () => {
