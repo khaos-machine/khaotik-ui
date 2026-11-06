@@ -27,8 +27,13 @@ this file conflicts with another root document.
   generated output. Figma and consumers mirror the source; they do not replace
   it.
 - Use semantic color tokens (`--surface-*`, `--text-*`, `--action-*`,
-  `--border-*`) in components. Primitive colors are stable ingredients, not app
-  semantics. Dark is the default; light mode is
+  `--border-*`) in components and in the apps that consume them. Primitive
+  colors (`--warm-950`, `--gold-400`, `--green-450`, ...) are stable
+  ingredients, not app semantics: they are mode-invariant, holding one value in
+  dark and light because the semantic layer is what flips, so a primitive in a
+  component or an app is a hardcoded dark-mode colour. The one deliberate
+  exception is `--scrim`, which points at a primitive because a scrim darkens in
+  both modes (`tokens/tokens.css:275-280`). Dark is the default; light mode is
   `html[data-theme="light"]`.
 - Use the warm-gray Quiet-Pro direction. Indigo/grey are deprecated brand-mark
   primitives; gold is reserved for brand and primary actions.
@@ -82,8 +87,9 @@ this file conflicts with another root document.
 
 - The catalog Vitest suite is the repository's test surface, including tests
   for root library files.
-- `check-coverage` runs catalog coverage, taxonomy, consumer load, and catalog
-  compile in order. `check-types` is a separate required drift gate.
+- `check-coverage` runs, in order, the chain of sub-gates its script in
+  `package.json` names; that script is the authority on what the chain holds.
+  `check-types` is a separate required drift gate.
 - Custom coverage checks use exit 0 for clean, 1 for named gaps, and 2 for
   could-not-run. Exit 2 is red.
 - **Two defect classes are invisible to every gate and need source-read tests

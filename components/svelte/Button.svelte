@@ -9,6 +9,10 @@
   // Every activation — click, Enter, Space — arrives as a click, so the one guard
   // in `activate` covers all three, and it also stops a disabled submit button
   // from posting its form.
+  //
+  // The role is stated although each element implies it: `<svelte:element>`
+  // hides the tag from the compiler, which then cannot see that the click
+  // handler sits on an interactive element.
   import Icon from './Icon.svelte'
 
   /**
@@ -53,6 +57,7 @@
 
 <svelte:element
   this={href ? 'a' : 'button'}
+  role={href ? 'link' : 'button'}
   type={href ? undefined : type}
   {href}
   {target}

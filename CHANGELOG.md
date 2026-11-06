@@ -37,7 +37,8 @@ current pin.
     sideways, and every command, the filter and the pane toggles stay
     reachable.
   - **The filter** takes whatever room the row has left, and the spacer no
-    longer splits it. It narrows to no less than 96px.
+    longer splits it. It narrows to no less than 96px, or to the row's whole
+    width when a wide status group leaves the row narrower than that.
   - **The title** truncates with an ellipsis to no less than
     `calc(2 * var(--spacing-2xl))` (96px). Beyond that, the rest of the row
     scrolls instead. The full title is still the toolbar's accessible name.
@@ -47,9 +48,14 @@ current pin.
     light and dark. The host's tools group gets the same cue.
   - **Scrolling:** a vertical mouse wheel over the row scrolls it sideways
     until it reaches that end, and then the page scrolls. A focused control is
-    scrolled fully into view, clear of the fade.
+    scrolled fully into view, and the fade lifts while a control in the row has
+    keyboard focus.
 
   Hosts change nothing, and the props are unchanged.
+- `Button` states its role on the element it renders: `button` on a `<button>`,
+  `link` on an `<a>` with `href`. Svelte could not infer the role through
+  `<svelte:element>` and warned that the click handler needs one; the warning
+  is gone and the rendered roles are unchanged.
 
 ## [0.181.0] — 2026-11-04
 

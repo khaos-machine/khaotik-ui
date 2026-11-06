@@ -159,9 +159,8 @@ regenerate.
 
 - **Dark is the default**: semantic tokens are defined on `:root`; light mode is
   `html[data-theme="light"]`.
-- Components must use **semantic** tokens (`--surface-*`, `--text-*`,
-  `--action-*`, `--border-*`) so they flip with mode. Primitive tokens
-  (`--indigo-950`, `--gold-400`) are mode-invariant.
+- Semantic tokens only, never primitives: the rule lives in
+  [`RULES.md`, "Design-system invariants"](../../RULES.md#design-system-invariants).
 - The shell (`app.css`) must set `color`/`background` from semantic tokens — a
   shell that inherits browser black is invisible on the dark default (this
   happened once; see the `body { color: var(--text-primary) }` fix).
