@@ -14,10 +14,12 @@
   //
   // Three groups, left to right (khaos-app#617): where you are (title, switcher, `lead`), what
   // you can do (commands, filter, panes, `tools`), and status (`status`, the settings gear)
-  // at the trailing edge behind a hairline. The status group never clips: when the row
-  // overflows, command labels fold to their icons one at a time, from the last, until it fits
-  // (the label stays the accessible name and the tooltip); then the filter narrows, and the
-  // title truncates last.
+  // at the trailing edge behind a hairline. When the row overflows, command labels fold to their
+  // icons one at a time, from the last, until it fits (the label stays the accessible name and
+  // the tooltip); then the filter narrows, and the title truncates last. At phone width the
+  // title keeps a floor and the row scrolls; where the status group and that floor cannot both
+  // fit, the status gives way: its text truncates with an ellipsis (keeping its accessible name
+  // and role), while its controls (Retry, the gear) stay whole and reachable.
   import { flushSync } from 'svelte'
   import Icon from './Icon.svelte'
   import WorkspaceSwitcher from './WorkspaceSwitcher.svelte'
@@ -119,7 +121,7 @@
   // A row that scrolls sideways at phone width (the row itself, and the host's tools). The side
   // that is cut off fades, and only while it is (`--toolbar-cut-start` / `-end`, 1 or 0, read by
   // the mask); a vertical wheel scrolls it sideways until it reaches that end; and a focused
-  // control is scrolled fully into view. Where the row does not scroll (`overflow-x: hidden`,
+  // control is scrolled clear of the fade. Where the row does not scroll (`overflow-x: hidden`,
   // wider than a phone) the wheel and focus leave it alone.
   /** @param {HTMLElement} row */
   function scrollRow(row) {
@@ -141,8 +143,8 @@
       row.scrollLeft = next
       cue()
     }
-    // A focused control is scrolled fully into the row, a fade's width clear of either edge where
-    // the row has that room (a narrow row has less; the fade lifts while a control has focus).
+    // A focused control is scrolled fully clear of the fade, a fade's width from each side that is
+    // cut off; the fade stays on while focus is in the row.
     // What is measured is what the user sees: a segment's focus lands on a 1px hidden radio, so
     // the nearest enclosing box of real size (the segment's label) is the one brought into view.
     /** @param {FocusEvent} e */
@@ -157,9 +159,16 @@
       }
       const r = row.getBoundingClientRect()
       const fade = parseFloat(getComputedStyle(row).getPropertyValue('--spacing-lg')) || 24
-      const pad = Math.max(0, Math.min(fade, (r.width - b.width) / 2))
-      if (b.left < r.left + pad) row.scrollLeft -= r.left + pad - b.left
-      else if (b.right > r.right - pad) row.scrollLeft += b.right - (r.right - pad)
+      const max = row.scrollWidth - row.clientWidth
+      const at = row.scrollLeft
+      const x = b.left - r.left + at // the box's start, in the row's scrolled content
+      // A side fades only while it is cut off: none at the row's true start or end.
+      /** @param {number} s */ const startFade = (s) => (s > 0.5 ? fade : 0)
+      /** @param {number} s */ const endFade = (s) => (s < max - 0.5 ? fade : 0)
+      let to = at
+      if (x - at < startFade(at)) to = Math.max(0, x - fade)
+      else if (x + b.width - at > r.width - endFade(at)) to = Math.min(max, x + b.width - r.width + fade)
+      row.scrollLeft = to
       cue()
     }
     const resized = new ResizeObserver(cue)
@@ -426,8 +435,8 @@
       flex: none;
     }
     /* The cue: the side cut off fades over --spacing-lg, and only while it is cut off (scrollRow).
-       The mask is alpha alone, so it reads the same in light and dark. It lifts while a control
-       in the row has keyboard focus, so the focused control is never under it. */
+       The mask is alpha alone, so it reads the same in light and dark. It stays on while focus
+       is in the row; a focused control is scrolled clear of it. */
     .toolbar__main,
     .toolbar__main > .toolbar__tools {
       mask-image: linear-gradient(
@@ -438,15 +447,31 @@
         transparent
       );
     }
-    /* `:global`: focus inside a child component (the switcher, a host's `lead` or tools) counts. */
-    .toolbar__main:has(:global(:focus-visible)),
-    .toolbar__main > .toolbar__tools:has(:global(:focus-visible)) {
-      mask-image: none;
-    }
     /* The title stays readable: it truncates to this floor and no further, and the rest of the
        row scrolls instead. Its full text is still the toolbar's accessible name. */
     .toolbar__title {
       min-width: calc(2 * var(--spacing-2xl));
+    }
+    /* The row never narrows past the title's floor and one fade beyond it, so the end fade
+       cannot cover the title's ellipsis. Short of that room, the status gives way. */
+    .toolbar__main {
+      min-width: calc(2 * var(--spacing-2xl) + var(--spacing-lg));
+    }
+    .toolbar__status {
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+    /* In the status, controls stay whole; any other child (the message) truncates. Host
+       markup, so `:global`. */
+    .toolbar__status > :global(*) {
+      flex-shrink: 0;
+    }
+    .toolbar__status > :global(:not(button, a, input, select, [role='button'], .ui-button)) {
+      flex-shrink: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     /* Lenses at 4px a side: a picker and four lenses fit 320. */
     .toolbar__tools :global(.ui-segmented__item) {
@@ -457,11 +482,11 @@
       display: none;
     }
     /* The filter takes the room the row has left, down to the compact floor; short of that the
-       row overflows, and the overflow folds labels first. A row narrower than the floor (a wide
-       status beside it) still shows the whole filter when it is focused. */
+       row overflows, and the overflow folds labels first. In a row too narrow for the floor and a
+       fade on each side, it narrows to fit between the fades, so focused it shows whole. */
     .toolbar__filter,
     .toolbar--compact .toolbar__filter {
-      min-width: min(96px, 100%);
+      min-width: min(96px, calc(100% - 2 * var(--spacing-lg)));
     }
     .toolbar__filter {
       flex: 1 1 0;

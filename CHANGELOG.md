@@ -37,19 +37,28 @@ current pin.
     sideways, and every command, the filter and the pane toggles stay
     reachable.
   - **The filter** takes whatever room the row has left, and the spacer no
-    longer splits it. It narrows to no less than 96px, or to the row's whole
-    width when a wide status group leaves the row narrower than that.
+    longer splits it. It narrows to no less than 96px. In a row too narrow to
+    hold 96px plus a fade on each side, it narrows to fit between the fades.
   - **The title** truncates with an ellipsis to no less than
     `calc(2 * var(--spacing-2xl))` (96px). Beyond that, the rest of the row
     scrolls instead. The full title is still the toolbar's accessible name.
+  - **The status gives way, not the title.** This replaces the rule that the
+    status group never clips. At phone width the row keeps at least the title's
+    floor plus one fade width (120px). Where the status group and that floor
+    cannot both fit, the status message truncates with an ellipsis. It keeps
+    its full text, so its accessible name and any `role="status"` are
+    unchanged. Controls in the status group (Retry, Project Settings, the gear)
+    stay whole and reachable. In the status, a direct child that is not a
+    control gives way, and controls do not.
   - **A visible cue:** a side that is cut off fades over `--spacing-lg`, and
     only while content is cut off on that side. The fade is gone when the row
     is scrolled to that end. The fade is an alpha mask, so it reads the same in
     light and dark. The host's tools group gets the same cue.
   - **Scrolling:** a vertical mouse wheel over the row scrolls it sideways
-    until it reaches that end, and then the page scrolls. A focused control is
-    scrolled fully into view, and the fade lifts while a control in the row has
-    keyboard focus.
+    until it reaches that end, and then the page scrolls. The fade stays on
+    while focus is in the row. A focused control is scrolled clear of it, one
+    fade width from each side that is cut off. At the row's true start or end
+    there is no fade on that side.
 
   Hosts change nothing, and the props are unchanged.
 - `Button` states its role on the element it renders: `button` on a `<button>`,

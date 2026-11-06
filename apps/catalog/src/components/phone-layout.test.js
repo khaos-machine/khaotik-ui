@@ -143,9 +143,10 @@ describe('One toolbar row at phone width', () => {
     expect(heights.filter(([p, v]) => p !== 'height' && v !== '52px'), 'a min- or max-height other than 52 overrides the cap').toEqual([])
     const phone = rules.filter((r) => r.phone)
     const filter = phone.filter((r) => r.selectors.includes('.toolbar__filter')).flatMap((r) => r.declarations)
-    expect(filter, 'the phone filter has no floor, so a short row squeezes it to nothing instead of folding labels').toContainEqual(['min-width', 'min(96px, 100%)'])
+    const floor = ['min-width', 'min(96px, calc(100% - 2 * var(--spacing-lg)))']
+    expect(filter, 'the phone filter has no floor, so a short row squeezes it to nothing instead of folding labels').toContainEqual(floor)
     const compactFilter = phone.filter((r) => r.selectors.includes('.toolbar--compact .toolbar__filter')).flatMap((r) => r.declarations)
-    expect(compactFilter, 'compact, the desktop 96px floor outgrows a row squeezed by the status').toContainEqual(['min-width', 'min(96px, 100%)'])
+    expect(compactFilter, 'compact, the desktop 96px floor cannot sit clear of both fades in a narrow row').toContainEqual(floor)
     const row = phone.filter((r) => r.selectors.includes('.toolbar__main')).flatMap((r) => r.declarations)
     expect(row, 'a phone row that cannot wrap must scroll, or its pane toggles are cut off').toContainEqual(['overflow-x', 'auto'])
   })
@@ -194,24 +195,56 @@ describe('One toolbar row at phone width', () => {
     expect(row.scrollLeft).toBe(300)
   })
 
-  it('Toolbar scrolls a focused control fully into the row, and lifts the fade while it has focus', async () => {
+  it('Toolbar scrolls a focused control clear of the fade on each side that is cut off', async () => {
     // Measured at 390 in Chromium: Source list focused at the row's end sat 9px clipped.
+    // A 300px row over 600px of content (scrollable 0-300); the fade is 24px on a cut side.
     const rect = (left, width) => () => ({ left, right: left + width, width, top: 0, bottom: 44, height: 44, x: left, y: 0, toJSON() {} })
     const row = scrolling(adminRow(), 100)
     const filter = row.querySelector('.toolbar__filter')
     row.getBoundingClientRect = rect(0, 300)
-    filter.getBoundingClientRect = rect(280, 44) // cut off at the end
+    // Where the box sits after the scroll, and the fade zones then in force.
+    const clear = (left, width, before) => {
+      const at = row.scrollLeft
+      const start = left + before - at
+      return start >= (at > 0 ? 24 : 0) && start + width <= 300 - (at < 300 ? 24 : 0)
+    }
+    filter.getBoundingClientRect = rect(280, 44) // under the end fade
     await fireEvent.focusIn(filter)
-    expect(row.scrollLeft, 'past the end edge: scrolled to sit a fade clear of it').toBe(100 + 324 - (300 - 24))
+    expect(row.scrollLeft, 'past the end fade: scrolled to sit just clear of it').toBe(148)
+    expect(clear(280, 44, 100)).toBe(true)
     row.scrollLeft = 100
-    filter.getBoundingClientRect = rect(-10, 44) // cut off at the start
+    filter.getBoundingClientRect = rect(10, 44) // under the start fade
     await fireEvent.focusIn(filter)
-    expect(row.scrollLeft, 'past the start edge').toBe(100 - 34)
+    expect(row.scrollLeft, 'past the start fade').toBe(86)
+    expect(clear(10, 44, 100)).toBe(true)
     row.scrollLeft = 100
-    row.getBoundingClientRect = rect(0, 44) // a row no wider than the control
-    filter.getBoundingClientRect = rect(30, 44)
+    filter.getBoundingClientRect = rect(130, 44) // already clear
     await fireEvent.focusIn(filter)
-    expect(row.scrollLeft, 'a narrow row keeps no margin it does not have').toBe(130)
+    expect(row.scrollLeft, 'a control already clear moves nothing').toBe(100)
+    row.scrollLeft = 10
+    filter.getBoundingClientRect = rect(-5, 44) // near the true start
+    await fireEvent.focusIn(filter)
+    expect(row.scrollLeft, 'at the true start there is no fade to clear').toBe(0)
+    expect(clear(-5, 44, 10)).toBe(true)
+    row.scrollLeft = 250
+    filter.getBoundingClientRect = rect(290, 44) // near the true end
+    await fireEvent.focusIn(filter)
+    expect(row.scrollLeft, 'at the true end there is no fade to clear').toBe(300)
+    expect(clear(290, 44, 250)).toBe(true)
+  })
+
+  it('Toolbar keeps the fade on while focus is in the row', () => {
+    // K: "Keep the fade". No rule may lift the mask for focus: the cue stays, and the focused
+    // control is scrolled clear of it instead.
+    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/Toolbar.svelte`, 'utf8')
+    const { css } = compile(source, { filename: 'Toolbar.svelte', css: 'external' })
+    const code = css.code.replace(/\/\*[\s\S]*?\*\//g, '')
+    const masks = [...code.matchAll(/([^{}]+)\{([^{}]*mask-image[^{}]*)\}/g)]
+    expect(masks.length, 'no mask rule left').toBeGreaterThan(0)
+    for (const [, selector, body] of masks) {
+      expect(body, `${selector.trim()} drops the mask`).not.toMatch(/mask-image:\s*none/)
+      expect(selector, `${selector.trim()} masks by focus`).not.toMatch(/focus/)
+    }
   })
 
   it('Toolbar brings a focused segment into view by the segment, not its 1px radio', async () => {
@@ -231,18 +264,26 @@ describe('One toolbar row at phone width', () => {
     expect(row.scrollLeft, 'scrolled to the radio, not the segment').toBe(100 + 360 - (300 - 24))
   })
 
-  it('Toolbar lifts the fade for focus inside a child component, not only its own controls', () => {
-    // A scoped `:has(:focus-visible)` compiles to `:has(.svelte-x:focus-visible)`, which never
-    // matches the switcher or a host's lead and tools: the fade stayed over them (measured).
+  it('Toolbar gives way in the status, not the title: its message truncates, its controls stay whole', () => {
+    // K: "Status gives way". Measured at 320: a failure message, Retry and the gear took 244px
+    // and left the row 44px, under the title's 96px floor. The message is host markup, so the
+    // rules reach it with `:global`; compiled, a scoped selector would carry `.svelte-x` and
+    // never match it.
     const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/Toolbar.svelte`, 'utf8')
     const { css } = compile(source, { filename: 'Toolbar.svelte', css: 'external' })
     const code = css.code.replace(/\/\*[\s\S]*?\*\//g, '')
-    const lifts = [...code.matchAll(/([^{}]+)\{[^{}]*mask-image:\s*none[^{}]*\}/g)].flatMap((m) => m[1].split(',').map((s) => s.trim()))
-    expect(lifts.length, 'the row and the tools each lift the fade').toBe(2)
-    for (const selector of lifts) {
-      const has = selector.slice(selector.indexOf(':has('))
-      expect(has, `${selector} lifts the fade for the Toolbar's own elements only`).toBe(':has(:focus-visible)')
-    }
+    const phone = code.slice(code.indexOf('@container (max-width: 599px)'))
+    const rule = (re) => [...phone.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(([, s]) => re.test(s.trim())).map(([, s, b]) => [s.trim(), b])
+    const [status] = rule(/^\.toolbar__status\.svelte-[a-z0-9]+$/)
+    expect(status?.[1], 'the status group does not shrink').toMatch(/flex:\s*0 1 auto/)
+    expect(status?.[1]).toMatch(/min-width:\s*0/)
+    const [message] = rule(/^\.toolbar__status\.svelte-[a-z0-9]+ > :not\(/)
+    expect(message, 'no rule truncates the status message').toBeTruthy()
+    expect(message[0].split('>')[1], 'the message rule is scoped, so it never matches host markup').not.toMatch(/svelte-/)
+    for (const control of ['button', 'a', 'input', 'select', "[role='button']", '.ui-button']) expect(message[0], `${control} would truncate`).toContain(control)
+    expect(message[1]).toMatch(/text-overflow:\s*ellipsis/)
+    const [row] = rule(/^\.toolbar__main\.svelte-[a-z0-9]+$/).filter(([, b]) => /min-width/.test(b))
+    expect(row?.[1], 'the row has no floor, so the status takes the title').toMatch(/min-width:\s*calc\(2 \* var\(--spacing-2xl\) \+ var\(--spacing-lg\)\)/)
   })
 
   it('Toolbar gives the host tools the same cue', async () => {
