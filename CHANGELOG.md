@@ -20,6 +20,13 @@ current pin.
 
 ## [Unreleased]
 
+### Fixed
+
+- `Button` states its role on the element it renders: `button` on a `<button>`,
+  `link` on an `<a>` with `href`. Svelte could not infer the role through
+  `<svelte:element>` and warned that the click handler needs one; the warning
+  is gone and the rendered roles are unchanged.
+
 ## [0.181.0] — 2026-11-04
 
 ### Added

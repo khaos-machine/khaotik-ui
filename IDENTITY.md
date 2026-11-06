@@ -67,10 +67,11 @@ manifests own software identifiers.
 
 - Product copy speaks as the product, not as an assistant. Avoid first-person
   helper voice, apology theater, and internal implementation commentary.
-- Do not expose localhost URLs, ports, signing internals, credentials, private
-  repository URLs, or agent/tooling instructions in shipped UI.
-- A private GitHub release link may appear in developer documentation only when
-  its access limitation is stated. Public users are directed to the web catalog.
+- The product UI the components render carries no localhost URLs, ports,
+  signing internals, credentials, private repository URLs, or agent/tooling
+  instructions. The shipped documentation is a different audience: its readers
+  are developers, designers and their agents, so a local dev-server URL or an
+  agent instruction may appear there.
 - Date stateful documentation or point to a canonical source. Do not present a
   stale version snapshot as current fact.
 - The library is Apache-2.0 and published on npm as `@khaos-machine/khaotik-ui`.

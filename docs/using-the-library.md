@@ -247,15 +247,8 @@ not final.
 
 ### Do not use primitive tokens in app code
 
-`--warm-950`, `--gold-400`, `--green-450`, `--red-300` and friends are the raw
-ramp. They are **mode-invariant** — they hold the same value in dark and in
-light, because the semantic layer is what flips. Reach for `--warm-950` in an
-app and you have hardcoded a dark-mode colour that will still be near-black on
-a light background. Always go through the semantic token.
-
-(The one deliberate exception inside the library is `--scrim`, which points at
-a primitive on purpose: a scrim darkens in both modes. `tokens.css:275-280`
-explains it.)
+The rule, its reason and its one exception live in
+[`RULES.md`, "Design-system invariants"](https://github.com/khaos-machine/khaotik-ui/blob/main/RULES.md#design-system-invariants).
 
 ## 4. What is in the box
 

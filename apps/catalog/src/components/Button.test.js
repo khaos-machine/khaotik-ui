@@ -195,3 +195,24 @@ describe('Button with href', () => {
     expect(onclick).not.toHaveBeenCalled()
   })
 })
+
+describe('Button states its role for every element it renders', () => {
+  // `<svelte:element>` hides the tag from the compiler, so it cannot infer the
+  // implicit role and warns that a click handler needs one. The warning was the
+  // symptom; the explicit role per element is the fix this pins.
+  it('compiles without an accessibility warning', async () => {
+    const { compile } = await import('svelte/compiler')
+    const { warnings } = compile(SOURCE, { filename: 'Button.svelte' })
+    expect(warnings.filter((w) => w.code.startsWith('a11y')).map((w) => w.message)).toEqual([])
+  })
+
+  it.each([
+    ['a <button>', {}, 'BUTTON', 'button'],
+    ['an <a> with href', { href: '/elsewhere' }, 'A', 'link'],
+  ])('renders %s with the matching role', (_, props, tag, role) => {
+    render(Button, { props: { ...props, children: label('Go') } })
+    const el = screen.getByRole(role, { name: 'Go' })
+    expect(el.tagName).toBe(tag)
+    expect(el).toHaveAttribute('role', role)
+  })
+})

@@ -55,7 +55,7 @@ itself.
 
 | Rule | Home |
 | --- | --- |
-| Use semantic tokens (`--surface-*`, `--text-*`, ...), never primitives like `--warm-950` | [Using the library, §3 Theming](../using-the-library.md#3-theming) |
+| Use semantic tokens (`--surface-*`, `--text-*`, ...), never primitives like `--warm-950` | [`RULES.md`, "Design-system invariants"](https://github.com/khaos-machine/khaotik-ui/blob/main/RULES.md#design-system-invariants); the token names are in [Using the library, §3 Theming](../using-the-library.md#3-theming) |
 | The conventions that will bite you: selection by id, optional callbacks, the D52 accessibility encoding | [Using the library, §5](../using-the-library.md#5-the-conventions-that-will-bite-you) |
 | What is in the box: every component, grouped | [Using the library, §4](../using-the-library.md#4-what-is-in-the-box) |
 | The design-system invariants: warm-gray theme, gold for brand and primary actions only, seven status tones, tight radii, no new design value without a decision | [`RULES.md`, "Design-system invariants"](https://github.com/khaos-machine/khaotik-ui/blob/main/RULES.md#design-system-invariants) |

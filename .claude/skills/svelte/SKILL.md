@@ -170,7 +170,7 @@ deliberate tradeoff, not a lint accident.
 
 Components reference **semantic** tokens so they flip with the theme; primitive
 tokens are mode-invariant and belong to the token layer only
-(`apps/catalog/AGENTS.md`, "Tokens — Andrew's BrandKit, from the library"). Dark is the default: `tokens/tokens.css:166-167`
+(`RULES.md`, "Design-system invariants"). Dark is the default: `tokens/tokens.css:166-167`
 defines `--surface-raised: var(--warm-800)` / `--text-primary: var(--warm-50)`
 on `:root`, and `:229-230` redefines the same names under
 `html[data-theme="light"]`. Write `var(--surface-raised)`; never `var(--warm-800)`,
