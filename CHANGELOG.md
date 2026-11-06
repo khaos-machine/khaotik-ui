@@ -20,18 +20,14 @@ current pin.
 
 ## [Unreleased]
 
-## [0.181.1] — 2026-11-04
+## [0.182.0] — 2026-11-06
 
-### Fixed
+### Changed
 
 - `Toolbar` is one 52px row at every width. Its height is now fixed at 52px,
   where it used to be a 52px minimum.
   - **The phone row no longer wraps.** This reverses 0.171.0, which made the
-    row wrap at phone width rather than clip. A filter that did not fit
-    dropped to a second line and the bar grew to 85px, or as much as 157px in
-    the full-chrome example. In a host bar fixed at 52px, the filter then
-    covered the content below. Measured in Chromium at 390 and 320, the filter
-    sat at 51–81px.
+    row wrap at phone width rather than clip.
   - **A row that does not fit:** labels fold to their icons, then the filter
     narrows, then the title truncates. If the row is still short, it scrolls
     sideways, and every command, the filter and the pane toggles stay
@@ -42,14 +38,23 @@ current pin.
   - **The title** truncates with an ellipsis to no less than
     `calc(2 * var(--spacing-2xl))` (96px). Beyond that, the rest of the row
     scrolls instead. The full title is still the toolbar's accessible name.
-  - **The status gives way, not the title.** This replaces the rule that the
-    status group never clips. At phone width, short of room, the status shrinks
-    first, down to its floor, before the row narrows below the title's floor
-    plus one fade width (120px). The floor is everything in the status except
-    the message, measured live, so Retry, Project Settings, the gear and any
-    wrapper around them stay whole and reachable. Only a direct child marked
-    `data-toolbar-message` truncates, with an ellipsis. It keeps its full
-    text, so its accessible name and any `role="status"` are unchanged.
+  - **A marked status gives way, not the title.** This replaces the rule that
+    the status group never clips. At phone width, short of room, the status
+    shrinks first, down to its floor, before the row narrows below the title's
+    floor plus one fade width (120px). The floor is everything in the status
+    except the message marked `data-toolbar-message` (see Added), measured
+    live, so Retry, Project Settings, the gear and any wrapper around them
+    stay whole and reachable. The marked message truncates with an ellipsis.
+    It keeps its full text, so its accessible name and any `role="status"`
+    are unchanged.
+  - **An unmarked status wins over the title.** Unmarked messages no longer
+    truncate. Without the mark, the status stays whole, a wrapper included,
+    and the row gives up the room instead: the title can fall below its 96px
+    floor, and focused controls in the row can sit under the fade. Measured
+    at 320: an unmarked message span leaves an 89px row, with Workspace, Cast
+    and Read under the fade; a wrapper around the message and Retry leaves a
+    41px row, every Tab stop in it under a fade and about 17px of title
+    showing. Mark your message to keep the title.
   - **A visible cue:** a side that is cut off fades over `--spacing-lg`, and
     only while content is cut off on that side. The fade is gone when the row
     is scrolled to that end. The fade is an alpha mask, so it reads the same in
@@ -60,11 +65,21 @@ current pin.
     fade width from each side that is cut off. At the row's true start or end
     there is no fade on that side.
 
-  **Contract change for hosts:** a `status` snippet whose message should
-  give way marks it `data-toolbar-message` as a direct child, as `Shell` now
-  does. Without the mark nothing in the status truncates: it holds whole, a
-  wrapper included, and the row narrows and scrolls instead. Nothing breaks
-  unmarked, and the props are unchanged.
+### Added
+
+- **Contract for hosts:** `Toolbar`'s `status` snippet marks the message that
+  may give way with `data-toolbar-message`, as a direct child, as `Shell` now
+  does. A message inside a wrapper is not reached. Unmarked, the status stays
+  whole and the title and fade clearance give way instead (see Changed). The
+  props are unchanged.
+
+### Fixed
+
+- `Toolbar` at phone width no longer covers the content below it. A filter
+  that did not fit dropped to a second line and the bar grew to 85px, or as
+  much as 157px in the full-chrome example; in a host bar fixed at 52px, the
+  filter covered the content below. Measured in Chromium at 390 and 320, the
+  filter sat at 51–81px. It now stays in the 52px row (see Changed).
 - `Button` states its role on the element it renders: `button` on a `<button>`,
   `link` on an `<a>` with `href`. Svelte could not infer the role through
   `<svelte:element>` and warned that the click handler needs one; the warning

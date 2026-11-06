@@ -303,6 +303,7 @@ describe('One toolbar row at phone width', () => {
       const { container, unmount } = render(Toolbar, { props: { title: 'Admin', status, onsettings: () => {} } })
       const group = container.querySelector('.toolbar__status')
       for (const [selector, width] of widths) sized(group.querySelector(selector), width)
+      group.style.columnGap = '8px' // jsdom applies no stylesheet; one gap sits between each pair of children
       group.querySelector('[data-text]').append('.')
       await Promise.resolve()
       const floor = group.style.getPropertyValue('--toolbar-status-floor')
@@ -310,8 +311,8 @@ describe('One toolbar row at phone width', () => {
       return floor
     }
     const gear = ['.toolbar__toggle', 44]
-    expect(await floorOf('<span data-toolbar-message data-text role="status">Story update failed</span>', [['[data-toolbar-message]', 150], gear]), 'the floor counts the message').toBe('44px')
-    expect(await floorOf('<div data-wrapper><span data-text role="status">Story update failed</span><button>Retry</button></div>', [['[data-wrapper]', 185], gear]), 'the floor cuts into a wrapper').toBe('229px')
+    expect(await floorOf('<span data-toolbar-message data-text role="status">Story update failed</span>', [['[data-toolbar-message]', 150], gear]), 'the floor counts the message, or not the gap').toBe('52px')
+    expect(await floorOf('<div data-wrapper><span data-text role="status">Story update failed</span><button>Retry</button></div>', [['[data-wrapper]', 185], gear]), 'the floor cuts into a wrapper, or not the gap').toBe('237px')
   })
 
   it('Toolbar gives the host tools the same cue', async () => {

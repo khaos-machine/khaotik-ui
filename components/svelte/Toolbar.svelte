@@ -54,7 +54,7 @@
    * @property {string} [uiId] The `data-ui-id` prefix (audit §3.14).
    * @property {import('svelte').Snippet} [lead] More of where you are, right after the switcher: a workspace switch.
    * @property {import('svelte').Snippet} [tools] More of what you can do, after the pane toggles.
-   * @property {import('svelte').Snippet} [status] Status at the trailing edge, before the settings gear: a failure and its Retry, as direct children. Mark the message `data-toolbar-message`: at phone width, short of room, it alone truncates with an ellipsis (its text, accessible name and role kept). Everything else, a wrapper included, stays whole.
+   * @property {import('svelte').Snippet} [status] Status at the trailing edge, before the settings gear: a failure and its Retry, as direct children. Mark the message `data-toolbar-message`: at phone width, short of room, it alone truncates with an ellipsis (its text, accessible name and role kept). Everything else, a wrapper included, stays whole. Unmarked, nothing in the status truncates: it stays whole, the title can fall below its floor, and focused controls in the row can sit under the fade. Mark your message to keep the title.
    * @property {() => void} [onsettings] Opens settings. Absent, no gear is drawn.
    * @property {string} [settingsLabel] The gear's accessible name and tooltip.
    */
