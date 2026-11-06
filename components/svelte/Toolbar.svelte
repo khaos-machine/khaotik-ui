@@ -14,10 +14,13 @@
   //
   // Three groups, left to right (khaos-app#617): where you are (title, switcher, `lead`), what
   // you can do (commands, filter, panes, `tools`), and status (`status`, the settings gear)
-  // at the trailing edge behind a hairline. The status group never clips: when the row
-  // overflows, command labels fold to their icons one at a time, from the last, until it fits
-  // (the label stays the accessible name and the tooltip); then the filter narrows, and the
-  // title truncates last.
+  // at the trailing edge behind a hairline. When the row overflows, command labels fold to their
+  // icons one at a time, from the last, until it fits (the label stays the accessible name and
+  // the tooltip); then the filter narrows, and the title truncates last. At phone width the
+  // title keeps a floor and the row scrolls; where the status group and that floor cannot both
+  // fit, the status gives way: the message the host marks `data-toolbar-message` truncates with
+  // an ellipsis (keeping its accessible name and role), while everything else in it (Retry, the
+  // gear, any wrapper) stays whole and reachable. Unmarked, nothing in the status truncates.
   import { flushSync } from 'svelte'
   import Icon from './Icon.svelte'
   import WorkspaceSwitcher from './WorkspaceSwitcher.svelte'
@@ -51,7 +54,7 @@
    * @property {string} [uiId] The `data-ui-id` prefix (audit §3.14).
    * @property {import('svelte').Snippet} [lead] More of where you are, right after the switcher: a workspace switch.
    * @property {import('svelte').Snippet} [tools] More of what you can do, after the pane toggles.
-   * @property {import('svelte').Snippet} [status] Status at the trailing edge, before the settings gear: a failure and its Retry.
+   * @property {import('svelte').Snippet} [status] Status at the trailing edge, before the settings gear: a failure and its Retry, as direct children. Mark the message `data-toolbar-message`: at phone width, short of room, it alone truncates with an ellipsis (its text, accessible name and role kept). Everything else, a wrapper included, stays whole. Unmarked, nothing in the status truncates: it stays whole, the title can fall below its floor, and focused controls in the row can sit under the fade. Mark your message to keep the title.
    * @property {() => void} [onsettings] Opens settings. Absent, no gear is drawn.
    * @property {string} [settingsLabel] The gear's accessible name and tooltip.
    */
@@ -115,11 +118,107 @@
       changed.disconnect()
     }
   }
+
+  // A row that scrolls sideways at phone width (the row itself, and the host's tools). The side
+  // that is cut off fades, and only while it is (`--toolbar-cut-start` / `-end`, 1 or 0, read by
+  // the mask); a vertical wheel scrolls it sideways until it reaches that end; and a focused
+  // control is scrolled clear of the fade. Where the row does not scroll (`overflow-x: hidden`,
+  // wider than a phone) the wheel and focus leave it alone.
+  /** @param {HTMLElement} row */
+  function scrollRow(row) {
+    /** @param {string} name @param {boolean} on */
+    const set = (name, on) => {
+      if (row.style.getPropertyValue(name) !== (on ? '1' : '0')) row.style.setProperty(name, on ? '1' : '0')
+    }
+    const cue = () => {
+      set('--toolbar-cut-start', row.scrollLeft > 0.5)
+      set('--toolbar-cut-end', row.scrollLeft + row.clientWidth < row.scrollWidth - 0.5)
+    }
+    /** @param {WheelEvent} e */
+    const wheel = (e) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX) || getComputedStyle(row).overflowX === 'hidden') return
+      const delta = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY
+      const next = Math.min(row.scrollWidth - row.clientWidth, Math.max(0, row.scrollLeft + delta))
+      if (Math.abs(next - row.scrollLeft) < 0.5) return // at that end: the page scrolls instead
+      e.preventDefault()
+      row.scrollLeft = next
+      cue()
+    }
+    // A focused control is scrolled fully clear of the fade, a fade's width from each side that is
+    // cut off; the fade stays on while focus is in the row.
+    // What is measured is what the user sees: a segment's focus lands on a 1px hidden radio, so
+    // the nearest enclosing box of real size (the segment's label) is the one brought into view.
+    /** @param {FocusEvent} e */
+    const focus = (e) => {
+      if (!(e.target instanceof HTMLElement) || e.target === row || getComputedStyle(row).overflowX === 'hidden') return
+      /** @type {HTMLElement} */
+      let shown = e.target
+      let b = shown.getBoundingClientRect()
+      while ((b.width < 2 || b.height < 2) && shown.parentElement && shown.parentElement !== row) {
+        shown = shown.parentElement
+        b = shown.getBoundingClientRect()
+      }
+      const r = row.getBoundingClientRect()
+      const fade = parseFloat(getComputedStyle(row).getPropertyValue('--spacing-lg')) || 24
+      const max = row.scrollWidth - row.clientWidth
+      const at = row.scrollLeft
+      const x = b.left - r.left + at // the box's start, in the row's scrolled content
+      // A side fades only while it is cut off: none at the row's true start or end.
+      /** @param {number} s */ const startFade = (s) => (s > 0.5 ? fade : 0)
+      /** @param {number} s */ const endFade = (s) => (s < max - 0.5 ? fade : 0)
+      let to = at
+      if (x - at < startFade(at)) to = Math.max(0, x - fade)
+      else if (x + b.width - at > r.width - endFade(at)) to = Math.min(max, x + b.width - r.width + fade)
+      row.scrollLeft = to
+      cue()
+    }
+    const resized = new ResizeObserver(cue)
+    const changed = new MutationObserver(cue)
+    resized.observe(row)
+    changed.observe(row, { childList: true, subtree: true, characterData: true, attributeFilter: ['class'] })
+    row.addEventListener('scroll', cue, { passive: true })
+    row.addEventListener('wheel', wheel, { passive: false })
+    row.addEventListener('focusin', focus)
+    cue()
+    return () => {
+      resized.disconnect()
+      changed.disconnect()
+      row.removeEventListener('scroll', cue)
+      row.removeEventListener('wheel', wheel)
+      row.removeEventListener('focusin', focus)
+    }
+  }
+
+  // The status's floor: the width of everything in it but the message marked
+  // `data-toolbar-message`, so giving way truncates that message and never cuts a control.
+  // Measured, not left to the browser: a flex container's own minimum counts a message at its
+  // full text and lets a wrapper's text wrap, so it held a message whole or clipped a Retry.
+  /** @param {HTMLElement} group */
+  function holdStatus(group) {
+    const measure = () => {
+      const kids = [...group.children].filter((c) => c.getClientRects().length > 0)
+      const whole = kids.filter((c) => !c.matches('[data-toolbar-message]'))
+      const gap = parseFloat(getComputedStyle(group).columnGap) || 0
+      const floor = whole.reduce((w, c) => w + c.getBoundingClientRect().width, 0) + gap * Math.max(0, kids.length - 1)
+      const value = `${Math.ceil(floor)}px`
+      if (group.style.getPropertyValue('--toolbar-status-floor') !== value) group.style.setProperty('--toolbar-status-floor', value)
+    }
+    const resized = new ResizeObserver(measure)
+    const changed = new MutationObserver(measure)
+    resized.observe(group)
+    changed.observe(group, { childList: true, subtree: true, characterData: true })
+    measure()
+    return () => {
+      resized.disconnect()
+      changed.disconnect()
+    }
+  }
 </script>
 
 <div class="toolbar" class:toolbar--compact={compact} role="toolbar" aria-label={title || 'Toolbar'} data-ui-id={uiId} bind:clientWidth={measured}>
-  <!-- Where you are and what you can do. It takes any overflow, so the status never does. -->
-  <div class="toolbar__main" {@attach fit}>
+  <!-- Where you are and what you can do. It takes the overflow, folding and then scrolling; at
+       phone width the status gives way first, its marked message truncating, its controls whole. -->
+  <div class="toolbar__main" {@attach fit} {@attach scrollRow}>
   <!-- No title, no cell: an empty one would hold a gap before the switcher. -->
   {#if title}
     <div class="toolbar__drag toolbar__title" data-tauri-drag-region><h1 class="toolbar__heading">{title}</h1></div>
@@ -177,11 +276,11 @@
       <Icon name={pane.icon ?? 'square'} />
     </button>
   {/each}
-  {#if tools}<div class="toolbar__tools">{@render tools()}</div>{/if}
+  {#if tools}<div class="toolbar__tools" {@attach scrollRow}>{@render tools()}</div>{/if}
   </div>
 
   {#if status || onsettings}
-    <div class="toolbar__status" data-ui-id="{uiId}.status">
+    <div class="toolbar__status" data-ui-id="{uiId}.status" {@attach holdStatus}>
       {@render status?.()}
       {#if onsettings}
         <button
@@ -203,9 +302,9 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. A floor, so a
-       phone's wrapped rows can grow it; one row is exactly 52. */
-    min-height: 52px;
+    /* 52px: harvest gap 11 (`size.toolbar`), a literal until Andrew decides it. A height, not a
+       floor: the row never wraps, so nothing needs it taller, and a host may fix its bar at 52. */
+    height: 52px;
     box-sizing: border-box;
     container-type: inline-size;
     padding: 0 var(--spacing-sm);
@@ -328,12 +427,15 @@
     width: auto;
     min-width: 96px;
   }
-  /* Phone width: the row wraps only when it must, instead of clipping, so every command, the
-     filter, the panes and the tools stay reachable. What fits stays on one row. */
+  /* Phone width: still one row, never wrapped. A wrapped row grows the bar past 52 and over
+     whatever the host draws below it. A row that overflows folds its labels, narrows the filter
+     and truncates the title to its floor, as at any width; still short, it scrolls, as the tools
+     do, with a fade on the side cut off, so every command, the filter and the panes stay
+     reachable. */
   @container (max-width: 599px) {
     .toolbar__main {
-      flex-wrap: wrap;
-      overflow: visible;
+      overflow-x: auto;
+      scrollbar-width: none;
       /* 3px: a 44pt row plus this and the hairline stays inside the 52 floor, so one row is 52
          with or without touch targets. */
       padding-block: 3px;
@@ -354,20 +456,70 @@
       scrollbar-width: none;
       gap: var(--spacing-2xs);
     }
-    /* The tools take the room the spacer would, and end right by themselves. */
-    .toolbar__main:has(> .toolbar__tools) > .toolbar__spacer {
+    /* The tools and the filter take the room the spacer would; the tools end right by themselves. */
+    .toolbar__main:has(> .toolbar__tools) > .toolbar__spacer,
+    .toolbar__main:has(> .toolbar__filter) > .toolbar__spacer {
       flex: none;
+    }
+    /* The cue: the side cut off fades over --spacing-lg, and only while it is cut off (scrollRow).
+       The mask is alpha alone, so it reads the same in light and dark. It stays on while focus
+       is in the row; a focused control is scrolled clear of it. */
+    .toolbar__main,
+    .toolbar__main > .toolbar__tools {
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black calc(var(--toolbar-cut-start, 0) * var(--spacing-lg)),
+        black calc(100% - var(--toolbar-cut-end, 0) * var(--spacing-lg)),
+        transparent
+      );
+    }
+    /* The title stays readable: it truncates to this floor and no further, and the rest of the
+       row scrolls instead. Its full text is still the toolbar's accessible name. */
+    .toolbar__title {
+      min-width: calc(2 * var(--spacing-2xl));
+    }
+    /* Short of room, the status gives way before the row: shrink is shared by weight, so the
+       status's 100 to the row's 1 takes the status down to its floor (holdStatus: everything in
+       it but the marked message) before the row narrows below the title's floor and one fade
+       beyond it, the room that keeps the end fade off the title's ellipsis. */
+    .toolbar__main {
+      flex: 1 1 calc(2 * var(--spacing-2xl) + var(--spacing-lg));
+    }
+    .toolbar__status {
+      flex: 0 100 auto;
+      min-width: var(--toolbar-status-floor, auto);
+    }
+    /* In the status only the message the host marks `data-toolbar-message` truncates; every
+       other child, a wrapper included, stays whole. Host markup, so `:global`. */
+    .toolbar__status > :global(*) {
+      flex-shrink: 0;
+    }
+    .toolbar__status > :global([data-toolbar-message]) {
+      flex-shrink: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     /* Lenses at 4px a side: a picker and four lenses fit 320. */
     .toolbar__tools :global(.ui-segmented__item) {
       padding-inline: 4px;
     }
+    .toolbar__main::-webkit-scrollbar,
     .toolbar__tools::-webkit-scrollbar {
       display: none;
-    }    .toolbar__filter {
-      flex: 1 1 160px;
+    }
+    /* The filter takes the room the row has left, down to the compact floor; short of that the
+       row overflows, and the overflow folds labels first. In a row too narrow for the floor and a
+       fade on each side, it narrows to fit between the fades, so focused it shows whole. */
+    .toolbar__filter,
+    .toolbar--compact .toolbar__filter {
+      min-width: min(96px, calc(100% - 2 * var(--spacing-lg)));
+    }
+    .toolbar__filter {
+      flex: 1 1 0;
       width: auto;
-      min-width: 0;
     }
     /* A phone is touched: every button in the row is a 44pt target. */
     .toolbar__main :global(.ui-button),
