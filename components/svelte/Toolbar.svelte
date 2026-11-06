@@ -143,11 +143,19 @@
     }
     // A focused control is scrolled fully into the row, a fade's width clear of either edge where
     // the row has that room (a narrow row has less; the fade lifts while a control has focus).
+    // What is measured is what the user sees: a segment's focus lands on a 1px hidden radio, so
+    // the nearest enclosing box of real size (the segment's label) is the one brought into view.
     /** @param {FocusEvent} e */
     const focus = (e) => {
       if (!(e.target instanceof HTMLElement) || e.target === row || getComputedStyle(row).overflowX === 'hidden') return
+      /** @type {HTMLElement} */
+      let shown = e.target
+      let b = shown.getBoundingClientRect()
+      while ((b.width < 2 || b.height < 2) && shown.parentElement && shown.parentElement !== row) {
+        shown = shown.parentElement
+        b = shown.getBoundingClientRect()
+      }
       const r = row.getBoundingClientRect()
-      const b = e.target.getBoundingClientRect()
       const fade = parseFloat(getComputedStyle(row).getPropertyValue('--spacing-lg')) || 24
       const pad = Math.max(0, Math.min(fade, (r.width - b.width) / 2))
       if (b.left < r.left + pad) row.scrollLeft -= r.left + pad - b.left
@@ -430,7 +438,8 @@
         transparent
       );
     }
-    .toolbar__main:has(:focus-visible),
+    /* `:global`: focus inside a child component (the switcher, a host's `lead` or tools) counts. */
+    .toolbar__main:has(:global(:focus-visible)),
     .toolbar__main > .toolbar__tools:has(:global(:focus-visible)) {
       mask-image: none;
     }

@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs'
+import { compile } from 'svelte/compiler'
 import { describe, it, expect } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import { fixtures } from '../fixtures.js'
@@ -211,8 +212,37 @@ describe('One toolbar row at phone width', () => {
     filter.getBoundingClientRect = rect(30, 44)
     await fireEvent.focusIn(filter)
     expect(row.scrollLeft, 'a narrow row keeps no margin it does not have').toBe(130)
-    const lifted = toolbarRules().filter((r) => r.phone && r.selectors.includes('.toolbar__main:has(:focus-visible)')).flatMap((r) => r.declarations)
-    expect(lifted, 'a focused control can sit under the fade').toContainEqual(['mask-image', 'none'])
+  })
+
+  it('Toolbar brings a focused segment into view by the segment, not its 1px radio', async () => {
+    // Measured at 320: the switcher's focus lands on a hidden radio one pixel wide, so scrolling
+    // to it left the segment the user sees half out of the row.
+    const rect = (left, width) => () => ({ left, right: left + width, width, top: 0, bottom: 44, height: width > 1 ? 44 : 1, x: left, y: 0, toJSON() {} })
+    const modes = [{ value: 'story', label: 'Story' }, { value: 'cast', label: 'Cast' }]
+    const { container } = render(Toolbar, { props: { title: 'BROKEN IN 4 PLACES', modes, mode: 'story', width: 1200, filter: '' } })
+    const row = scrolling(container.querySelector('.toolbar__main'), 100)
+    const radio = row.querySelector('input[type="radio"]')
+    const segment = radio.closest('label')
+    expect(segment, 'the switcher no longer wraps its radio in a label').toBeTruthy()
+    row.getBoundingClientRect = rect(0, 300)
+    radio.getBoundingClientRect = rect(300, 1)
+    segment.getBoundingClientRect = rect(280, 80)
+    await fireEvent.focusIn(radio)
+    expect(row.scrollLeft, 'scrolled to the radio, not the segment').toBe(100 + 360 - (300 - 24))
+  })
+
+  it('Toolbar lifts the fade for focus inside a child component, not only its own controls', () => {
+    // A scoped `:has(:focus-visible)` compiles to `:has(.svelte-x:focus-visible)`, which never
+    // matches the switcher or a host's lead and tools: the fade stayed over them (measured).
+    const source = readFileSync(`${import.meta.dirname}/../../../../components/svelte/Toolbar.svelte`, 'utf8')
+    const { css } = compile(source, { filename: 'Toolbar.svelte', css: 'external' })
+    const code = css.code.replace(/\/\*[\s\S]*?\*\//g, '')
+    const lifts = [...code.matchAll(/([^{}]+)\{[^{}]*mask-image:\s*none[^{}]*\}/g)].flatMap((m) => m[1].split(',').map((s) => s.trim()))
+    expect(lifts.length, 'the row and the tools each lift the fade').toBe(2)
+    for (const selector of lifts) {
+      const has = selector.slice(selector.indexOf(':has('))
+      expect(has, `${selector} lifts the fade for the Toolbar's own elements only`).toBe(':has(:focus-visible)')
+    }
   })
 
   it('Toolbar gives the host tools the same cue', async () => {
