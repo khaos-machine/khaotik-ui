@@ -20,6 +20,13 @@ current pin.
 
 ## [Unreleased]
 
+## [0.185.0] — 2026-11-09
+
+### Added
+
+- `Activity` and the `StoryAtlas` activity panel page a bounded feed and show a khaosd search (#40). `Activity` takes `feed`, `onLoadOlder` and `onRefresh`; `StoryAtlas` takes `activityFeed`, `activityQuery`, `onActivityQuery`, `onActivityLoadOlder` and `onActivityRefresh`. `feed` is an `ActivityFeed` (`lib/activity.js`): `hasMore` (kspd-events `has_more`), `matchedTotal` (`matched_total`), `storyTotal` (`story_total`), and the `older`, `refresh` and `search` read states. Load older is disabled while its page loads and becomes a retry when it fails; a failed refresh offers Check for newer changes again; neither clears the rows already loaded. The count reads "Showing *loaded* of *total* changes" (or "matching changes" under a query), from the totals given, never from the rows held. Searching, no matches, a khaosd that cannot search, and a failed search are each said, and the search field stays when a search matches nothing so it can be cleared. Every new prop is optional: with none passed both surfaces render as before.
+- `ActivityFeedStatus`, the paged feed's foot both surfaces draw (count, search and refresh states, Load older), exported for a host that lists changes its own way.
+
 ## [0.184.0] — 2026-11-09
 
 ### Added

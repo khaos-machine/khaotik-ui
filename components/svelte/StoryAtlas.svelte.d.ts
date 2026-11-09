@@ -138,6 +138,26 @@ declare const StoryAtlas: import("svelte").Component<{
      * The committed changes, as EventLog takes them.
      */
     events?: readonly any[];
+    /**
+     * Pages the committed changes (#40): `events` are the loaded rows, counts come from the feed's totals. Absent: `events` is the whole log, as before.
+     */
+    activityFeed?: import("./lib/activity.js").ActivityFeed;
+    /**
+     * The khaosd search the loaded changes answer, or ''.
+     */
+    activityQuery?: string;
+    /**
+     * Reports the search typed. Set, the panel draws a search field.
+     */
+    onActivityQuery?: (query: string) => void;
+    /**
+     * With `activityFeed`: asks for the next older page, or retries a failed one.
+     */
+    onActivityLoadOlder?: () => void;
+    /**
+     * With `activityFeed`: retries a failed read of newer changes.
+     */
+    onActivityRefresh?: () => void;
 }, {}, "">;
 type Props = {
     /**
@@ -274,4 +294,24 @@ type Props = {
      * The committed changes, as EventLog takes them.
      */
     events?: readonly any[];
+    /**
+     * Pages the committed changes (#40): `events` are the loaded rows, counts come from the feed's totals. Absent: `events` is the whole log, as before.
+     */
+    activityFeed?: import("./lib/activity.js").ActivityFeed;
+    /**
+     * The khaosd search the loaded changes answer, or ''.
+     */
+    activityQuery?: string;
+    /**
+     * Reports the search typed. Set, the panel draws a search field.
+     */
+    onActivityQuery?: (query: string) => void;
+    /**
+     * With `activityFeed`: asks for the next older page, or retries a failed one.
+     */
+    onActivityLoadOlder?: () => void;
+    /**
+     * With `activityFeed`: retries a failed read of newer changes.
+     */
+    onActivityRefresh?: () => void;
 };

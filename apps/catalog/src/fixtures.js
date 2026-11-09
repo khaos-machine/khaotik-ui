@@ -290,6 +290,9 @@ import VoiceRow from '@khaos-machine/khaotik-ui/components/svelte/VoiceRow.svelt
 import Voices from '@khaos-machine/khaotik-ui/components/svelte/Voices.svelte'
 import appWindowsData from './data/app-windows.json'
 
+import ActivityFeedStatus from '@khaos-machine/khaotik-ui/components/svelte/ActivityFeedStatus.svelte'
+import { logEvents } from '@khaos-machine/khaotik-ui/components/svelte/lib/activity.js'
+
 import { DEMO_COVER, DEMO_COVER_SRCSET, demoFigureFor } from './demo-cover.js'
 import { createRawSnippet } from 'svelte'
 
@@ -1984,6 +1987,25 @@ const windowPanes = [
       { label: 'Filtered to nothing (illustrative)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', total: 3, rowCount: 3, days: [], query: 'merge' } },
       { label: 'Could not read (illustrative message)', props: { state: { kind: 'failed', message: 'khaosd is not running.' }, projectTitle: 'BROKEN IN 4 PLACES' } },
       { label: 'Empty', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', total: 0, rowCount: 0 } },
+      // Paged (#40): the newest page is Today's two rows of the three; the totals are what
+      // kspd-events would report for these rows.
+      { label: 'Paged, older to load (illustrative)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', days: illustrativeActivity.slice(0, 1), feed: { hasMore: true, storyTotal: 3 }, onQuery: () => {}, onLoadOlder: () => {} } },
+      { label: 'Paged, older page failed (illustrative message)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', days: illustrativeActivity.slice(0, 1), feed: { hasMore: true, storyTotal: 3, older: { kind: 'failed', message: 'khaosd is not running.' } }, onLoadOlder: () => {} } },
+      { label: 'Search matched nothing (illustrative)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', days: [], query: 'merge', feed: { hasMore: false, storyTotal: 3, matchedTotal: 0 }, onQuery: () => {} } },
+      { label: 'Search unsupported by khaosd (illustrative)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', days: [], query: 'merge', feed: { storyTotal: 3, search: { kind: 'unsupported' } }, onQuery: () => {} } },
+    ],
+  },
+  {
+    // The paged feed's foot (#40), alone. Counts are the illustrative three-change story above.
+    id: 'activity-feed-status', name: 'ActivityFeedStatus', kind: 'component', section: 'screens', group: 'activityWindow', component: ActivityFeedStatus,
+    examples: [
+      { label: 'Older to load (illustrative)', props: { feed: { hasMore: true, storyTotal: 3 }, loaded: 2, onLoadOlder: () => {} } },
+      { label: 'Loading older (illustrative)', props: { feed: { hasMore: true, storyTotal: 3, older: { kind: 'loading' } }, loaded: 2 } },
+      { label: 'Older page failed (illustrative message)', props: { feed: { hasMore: true, storyTotal: 3, older: { kind: 'failed', message: 'khaosd is not running.' } }, loaded: 2, onLoadOlder: () => {} } },
+      { label: 'Refresh failed (illustrative message)', props: { feed: { storyTotal: 3, refresh: { kind: 'failed', message: 'khaosd is not running.' } }, loaded: 3, onRefresh: () => {} } },
+      { label: 'Searching (illustrative)', props: { feed: { search: { kind: 'searching' } }, query: 'merge' } },
+      { label: 'Search matched nothing (illustrative)', props: { feed: { matchedTotal: 0, storyTotal: 3 }, query: 'merge' } },
+      { label: 'Empty', props: {} },
     ],
   },
   {
@@ -3071,6 +3093,7 @@ export const fixtures = [
       { label: 'Madison selected (captured)', props: { ...atlasProps, selectedRecordId: charactersDestination.focus.id, portraitUrls: { [charactersDestination.focus.id]: madisonFigure } } },
       { label: 'Renderer diagnostics', props: { ...atlasProps, diagnostics: true } },
       { label: 'Activity open (illustrative job)', props: { ...atlasProps, activityOpen: true, jobs: [{ id: 'job_1', type: 'scene analysis', status: 'running', progress: { completed: 12, total: 57 } }], activity: { kind: 'missing' } } },
+      { label: 'Activity paged (illustrative rows)', props: { ...atlasProps, activityOpen: true, activity: { kind: 'loaded' }, events: logEvents(illustrativeActivity.slice(0, 1), (at) => at.slice(11, 16)), activityFeed: { hasMore: true, storyTotal: 3 }, onActivityQuery: () => {}, onActivityLoadOlder: () => {} } },
       { label: 'Reading', props: { atlas: null, refreshing: true } },
       { label: 'Could not read (illustrative message)', props: { atlas: null, error: 'The story could not be read: khaosd is not running.', onRetry: () => {} } },
       { label: 'Empty', props: { atlas: null } },
