@@ -1,0 +1,135 @@
+{
+  "_source": {
+    "repo": "khaos-machine/khaos-cloud",
+    "path": "crates/core/tests/coverage/deterministic-goldens.json",
+    "case": "empty",
+    "field": "output.body",
+    "commit": "98a72695bfec37b38893b82f7ecd07e28cdcb772",
+    "read_at_main": "0de80404ded92b971cfe433030de93bee5ba9554",
+    "golden_source_tag": "v0.135.0",
+    "golden_kspd_commit": "50c9876643f903cb8d6b821af96b0ccc86c8a7a8",
+    "note": "Copied verbatim; a Khaos Cloud deterministic coverage body for an empty story. Not a captured khaosd read."
+  },
+  "report": {
+    "assessment": {
+      "concerns": {
+        "confidence": "none",
+        "source": "none",
+        "value": null
+      },
+      "notes": {
+        "confidence": "none",
+        "source": "none",
+        "value": ""
+      },
+      "strengths": {
+        "confidence": "none",
+        "source": "none",
+        "value": null
+      }
+    },
+    "genre": {
+      "confidence": "none",
+      "source": "none",
+      "value": ""
+    },
+    "logline": {
+      "confidence": "none",
+      "source": "none",
+      "value": ""
+    },
+    "rubric": {
+      "verdict": {
+        "confidence": "none",
+        "source": "none",
+        "value": ""
+      }
+    },
+    "structure": {
+      "estimatedRuntimeMs": {
+        "confidence": "high",
+        "evidence": [
+          {
+            "citation": "0 scenes → 0 ms estimated runtime",
+            "ref": "structure"
+          }
+        ],
+        "source": "deterministic",
+        "value": 0
+      },
+      "measured": {
+        "outcome": "not-measured",
+        "reason": "No story structure has been measured for this package."
+      },
+      "pacingNotes": {
+        "confidence": "none",
+        "source": "none",
+        "value": ""
+      },
+      "pageCount": {
+        "confidence": "high",
+        "evidence": [
+          {
+            "citation": "0 scenes parsed from screenplay.json",
+            "ref": "structure"
+          }
+        ],
+        "source": "deterministic",
+        "value": 0
+      },
+      "sceneCount": {
+        "confidence": "high",
+        "evidence": [
+          {
+            "citation": "0 scenes parsed from screenplay.json",
+            "ref": "structure"
+          }
+        ],
+        "source": "deterministic",
+        "value": 0
+      }
+    },
+    "synopsis": {
+      "confidence": "none",
+      "source": "none",
+      "value": ""
+    },
+    "tone": {
+      "confidence": "none",
+      "source": "none",
+      "value": ""
+    },
+    "viability": {
+      "complexityTier": {
+        "confidence": "high",
+        "evidence": [
+          {
+            "citation": "0 unique locations, 0 speaking roles → low",
+            "ref": "viability"
+          }
+        ],
+        "source": "deterministic",
+        "value": "low"
+      },
+      "productionFlags": {
+        "actionHeavyScenes": false,
+        "animalRoles": false,
+        "childRoles": false,
+        "containedLocationPct": {
+          "confidence": "high",
+          "evidence": [
+            {
+              "citation": "0% of scenes in top-3 locations",
+              "ref": "locations"
+            }
+          ],
+          "source": "deterministic",
+          "value": 0
+        },
+        "extrasOrCrowdScenes": false,
+        "periodSetting": false,
+        "vfxOrStuntsSignals": false
+      }
+    }
+  }
+}

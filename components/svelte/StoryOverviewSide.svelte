@@ -88,6 +88,12 @@
       {/each}
     </InspectorSection>
   {/if}
+  <!-- KSPD go/kspdprotocol/v0.136.1 analysis/character-journey.schema.json:83: the journey's own evidence. -->
+  {#if j.evidence_scene_ids?.length}
+    <InspectorSection title="Evidence scenes" count={j.evidence_scene_ids.length}>
+      {@render evidence(j.evidence_scene_ids)}
+    </InspectorSection>
+  {/if}
 {:else if pair?.analysis.skip}
   <InspectorSection title={pairName(pair.characters)} uiId="story.overview.side.relationship">
     <StatusPill text="Skipped" tone="skipped" />

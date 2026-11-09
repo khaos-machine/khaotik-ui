@@ -20,6 +20,18 @@ current pin.
 
 ## [Unreleased]
 
+## [0.183.1] — 2026-11-09
+
+### Fixed
+
+- Story Overview no longer throws on coverage reports KSPD allows: `assessment.strengths` and `.concerns` with a null value, and a rubric with no `dimensions` (KSPD go/kspdprotocol/v0.136.1 coverage-report.schema.json `$defs.attributedStringList`, `$defs.rubric`). Khaos Cloud's deterministic "empty" golden now renders.
+- Advanced shape details no longer throw on a lens with no `score` or `p`, and named turns with no `points` say none were named (structure.schema.json `$defs.lensFit`, `$defs.names`).
+
+### Added
+
+- Coverage draws `structure.measured`: its outcome, reason and, when present, the document read (`$defs.measuredStructure`, including `not-measured`).
+- The journey inspector lists the journey's own `evidence_scene_ids` as scene Buttons, as turning points already did.
+
 ## [0.183.0] — 2026-11-09
 
 ### Added

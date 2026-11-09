@@ -23,7 +23,16 @@ export function productionFlags(r: Record<string, any> | null): {
  * Indices are zero-based and endIndex is inclusive; fraction is the share of story words.
  * @typedef {{ name: string, startIndex: number, endIndex: number, fraction: number }} StructureAct
  */
-/** @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score: number, p: number }[] }, names?: { state: string, points: readonly TurnPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure */
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json: a lens's score and p are
+ * absent when not scored (:371, :379); names.points is optional (:387).
+ * @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score?: number, p?: number }[] }, names?: { state: string, points?: readonly TurnPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure
+ */
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:391 ($defs.measuredStructure).
+ * document is absent when not-measured.
+ * @typedef {{ outcome: string, reason: string, document?: string }} MeasuredStructure
+ */
 /** @typedef {{ logline: Sourced, synopsis: Sourced }} StoryPremise */
 /**
  * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:379, :422.
@@ -43,12 +52,12 @@ export function productionFlags(r: Record<string, any> | null): {
  * @property {Sourced} synopsis
  * @property {Sourced} genre
  * @property {Sourced} tone
- * @property {{ verdict: Sourced, dimensions: readonly { name: string, score: Sourced, summary?: Sourced }[] }} rubric
- * @property {{ estimatedRuntimeMs: Sourced, pageCount: Sourced, sceneCount: Sourced, pacingNotes?: Sourced, acts?: readonly CoverageAct[] }} structure
+ * @property {{ verdict: Sourced, dimensions?: readonly { name: string, score: Sourced, summary?: Sourced }[] }} rubric Only verdict is required (:312).
+ * @property {{ estimatedRuntimeMs: Sourced, pageCount: Sourced, sceneCount: Sourced, measured?: MeasuredStructure, pacingNotes?: Sourced, acts?: readonly CoverageAct[] }} structure measured is required by KSPD but read as optional, so older reports still render.
  * @property {readonly CoverageScene[]} [scenes]
  * @property {readonly { name: string, importance: Sourced, arcSummary: Sourced, dialogueWeight: Sourced, sceneCount?: number, strengths: Sourced, concerns: Sourced }[]} [characters]
  * @property {{ uniqueLocations?: number, castSize?: number, speakingRoles?: number, complexityTier: Sourced, productionFlags: { containedLocationPct: Sourced, extrasOrCrowdScenes: boolean, actionHeavyScenes: boolean, vfxOrStuntsSignals: boolean, periodSetting: boolean, childRoles: boolean, animalRoles: boolean } }} viability
- * @property {{ strengths: Sourced, concerns: Sourced, notes: Sourced }} assessment
+ * @property {{ strengths: Sourced, concerns: Sourced, notes: Sourced }} assessment strengths and concerns may carry a null value (:280).
  * @property {readonly string[]} [incompleteSections]
  * @property {readonly string[]} [warnings]
  */
@@ -75,7 +84,17 @@ export const INCOMPLETE: Readonly<Record<string, string>>;
 export function incompleteLabel(s: string): string;
 /** @type {Readonly<Record<string, string>>} */
 export const FLAGS: Readonly<Record<string, string>>;
+/**
+ * What coverage's structure.measured found: the shape outcomes, plus absence (KSPD
+ * go/kspdprotocol/v0.136.1 coverage-report.schema.json:391, $defs.measuredStructure). Closed: an
+ * outcome outside it fails only the measured block.
+ * @type {Readonly<Record<string, string>>}
+ */
+export const MEASURED: Readonly<Record<string, string>>;
 export function namedPoints(s: StoryStructure | null): readonly TurnPoint[] | null;
+export function listItems(f: {
+    value?: readonly string[] | null;
+} | null | undefined): readonly string[];
 export function shapeReads(s: StoryStructure | null): boolean;
 export function coverageReads(r: Record<string, any> | null): any;
 /**
@@ -133,19 +152,23 @@ export type StructureAct = {
     endIndex: number;
     fraction: number;
 };
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json: a lens's score and p are
+ * absent when not scored (:371, :379); names.points is optional (:387).
+ */
 export type StoryStructure = {
     fit: {
         outcome: string;
         reason: string;
         lenses: readonly {
             id: string;
-            score: number;
-            p: number;
+            score?: number;
+            p?: number;
         }[];
     };
     names?: {
         state: string;
-        points: readonly TurnPoint[];
+        points?: readonly TurnPoint[];
     };
     acts?: readonly StructureAct[];
     _provenance?: {
@@ -153,6 +176,15 @@ export type StoryStructure = {
             model?: string;
         };
     };
+};
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:391 ($defs.measuredStructure).
+ * document is absent when not-measured.
+ */
+export type MeasuredStructure = {
+    outcome: string;
+    reason: string;
+    document?: string;
 };
 export type StoryPremise = {
     logline: Sourced;
@@ -195,18 +227,25 @@ export type StoryCoverage = {
     synopsis: Sourced;
     genre: Sourced;
     tone: Sourced;
+    /**
+     * Only verdict is required (:312).
+     */
     rubric: {
         verdict: Sourced;
-        dimensions: readonly {
+        dimensions?: readonly {
             name: string;
             score: Sourced;
             summary?: Sourced;
         }[];
     };
+    /**
+     * measured is required by KSPD but read as optional, so older reports still render.
+     */
     structure: {
         estimatedRuntimeMs: Sourced;
         pageCount: Sourced;
         sceneCount: Sourced;
+        measured?: MeasuredStructure;
         pacingNotes?: Sourced;
         acts?: readonly CoverageAct[];
     };
@@ -235,6 +274,9 @@ export type StoryCoverage = {
             animalRoles: boolean;
         };
     };
+    /**
+     * strengths and concerns may carry a null value (:280).
+     */
     assessment: {
         strengths: Sourced;
         concerns: Sourced;

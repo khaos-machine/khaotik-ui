@@ -13,7 +13,7 @@
   import SectionHeader from './SectionHeader.svelte'
   import SelectableRow from './SelectableRow.svelte'
   import StatusPill from './StatusPill.svelte'
-  import { ARCS, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads } from './lib/story-overview.js'
+  import { ARCS, MEASURED, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, listItems, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads } from './lib/story-overview.js'
   import { dollars } from './lib/budget.js'
 
   /** @typedef {import('./lib/story-overview.js').Sourced} Sourced */
@@ -177,18 +177,20 @@
           {/each}
         </InspectorSection>
       {/if}
-      {#if points}
+      {#if points?.length}
         <InspectorSection title="Where the story turns" count={points.length} uiId="story.overview.turns">
           {#each points as p, i (i)}
             <SelectableRow title={p.name} subtitle={p.turn} selected={selected?.kind === 'turn' && selected.index === i} onclick={() => onselect?.({ kind: 'turn', index: i })} />
           {/each}
         </InspectorSection>
+      {:else if points}
+        {@render line('No turning points were named.')}
       {:else}
         {@render line("The turning points haven't been named yet.")}
       {/if}
       {#if advanced}
         <InspectorSection title="Show details" collapsed uiId="story.overview.shape-details">
-          {#each shape.fit.lenses as l (l.id)}<PropertyRow label={l.id} value="score {l.score.toFixed(2)} · p {l.p.toFixed(3)}" />{/each}
+          {#each shape.fit.lenses as l (l.id)}<PropertyRow label={l.id} value={[l.score === undefined ? '' : `score ${l.score.toFixed(2)}`, l.p === undefined ? '' : `p ${l.p.toFixed(3)}`].filter(Boolean).join(' · ') || 'Not scored'} />{/each}
           {#if shape._provenance?.made_by?.model}<PropertyRow label="Turns named by" value={shape._provenance.made_by.model} />{/if}
         </InspectorSection>
       {/if}
@@ -215,15 +217,30 @@
       {@render sourced('Coverage logline', report.logline)}
       {@render sourced('Coverage synopsis', report.synopsis)}
       {#if report.structure.pacingNotes?.value}{@render sourced('Pacing', report.structure.pacingNotes)}{/if}
-      {@render list('Strengths', report.assessment.strengths.value)}
-      {@render list('Concerns', report.assessment.concerns.value)}
+      {@render list('Strengths', listItems(report.assessment.strengths))}
+      {@render list('Concerns', listItems(report.assessment.concerns))}
       {@render sourced('Notes', report.assessment.notes)}
-      <InspectorSection title="Rubric" count={report.rubric.dimensions.length} uiId="story.overview.rubric">
-        {#each report.rubric.dimensions as d (d.name)}
+      {@const dimensions = report.rubric.dimensions ?? []}
+      <InspectorSection title="Rubric" count={dimensions.length} uiId="story.overview.rubric">
+        {#each dimensions as d (d.name)}
           <PropertyRow label={d.name} value={d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`} />
           {#if d.summary?.value}<p class="ui-story-overview__detail">{d.summary.value}</p>{/if}
+        {:else}
+          {@render none('No dimension was scored.')}
         {/each}
       </InspectorSection>
+      {#if report.structure.measured}
+        {@const m = report.structure.measured}
+        <InspectorSection title="Structure measured" uiId="story.overview.coverage.measured">
+          {#if Object.hasOwn(MEASURED, m.outcome)}
+            <StatusPill text={MEASURED[m.outcome]} tone="info" />
+            {@render line(m.reason)}
+            {#if m.document}<PropertyRow label="Read from" value={m.document} />{/if}
+          {:else}
+            {@render line("Khaos couldn't read how this story's structure was measured.")}
+          {/if}
+        </InspectorSection>
+      {/if}
       {#if report.structure.acts?.length}
         <InspectorSection title="Acts" count={report.structure.acts.length} uiId="story.overview.coverage.acts">
           {#each report.structure.acts as act (act)}
