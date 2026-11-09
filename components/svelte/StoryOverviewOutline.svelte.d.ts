@@ -25,6 +25,26 @@ declare const StoryOverviewOutline: import("svelte").Component<{
      */
     relationships?: import("./lib/story-overview.js").SectionRead<readonly Record<string, any>[]>;
     /**
+     * Current section runs, as StoryOverview takes them; running overrides a previous result.
+     */
+    runs?: {
+        premise?: {
+            kind: string;
+        };
+        structure?: {
+            kind: string;
+        };
+        coverage?: {
+            kind: string;
+        };
+        journeys?: {
+            kind: string;
+        };
+        relationships?: {
+            kind: string;
+        };
+    };
+    /**
      * The section shown.
      */
     current?: ("characters" | "coverage" | "premise" | "shape" | "turns" | "production" | "journeys" | "relationships") | null;
@@ -54,6 +74,26 @@ type Props = {
      * As StoryOverview takes it.
      */
     relationships?: import("./lib/story-overview.js").SectionRead<readonly Record<string, any>[]>;
+    /**
+     * Current section runs, as StoryOverview takes them; running overrides a previous result.
+     */
+    runs?: {
+        premise?: {
+            kind: string;
+        };
+        structure?: {
+            kind: string;
+        };
+        coverage?: {
+            kind: string;
+        };
+        journeys?: {
+            kind: string;
+        };
+        relationships?: {
+            kind: string;
+        };
+    };
     /**
      * The section shown.
      */

@@ -16,8 +16,8 @@
    * @property {import('./lib/story-overview.js').SectionRead<readonly Record<string, any>[]>} [journeys] As StoryOverview takes it.
    * @property {import('./lib/story-overview.js').SectionRead<readonly Record<string, any>[]>} [relationships] As StoryOverview takes it.
    * @property {boolean} [advanced] Advanced mode: a relationship's confidence.
-   * @property {import('./lib/story-overview.js').OverviewSelection | null} [selected] The selected turn, character, journey or relationship.| null} [selected] The selected turn or character.
-   * @property {(sceneId: string) => void} [onRevealScene] Asked with the turn's scene.
+   * @property {import('./lib/story-overview.js').OverviewSelection | null} [selected] The selected turn, character, journey or relationship, including skipped pairs.
+   * @property {(sceneId: string) => void} [onRevealScene] Asked with any selected evidence scene's id.
    */
 
   /** @type {Props} */
@@ -36,6 +36,16 @@
     selected?.kind === 'relationship' && relationships.kind === 'loaded' && relationshipsRead(relationships.data) ? relationships.data[selected.index] : undefined,
   )
 </script>
+
+{#snippet evidence(/** @type {readonly string[] | undefined} */ ids)}
+  {#if ids?.length}
+    <div class="ui-story-side__evidence">
+      {#each ids as sceneId, i (`${sceneId}:${i}`)}
+        <Button variant="secondary" icon="film-slate" onclick={() => onRevealScene?.(sceneId)}>Show in Scenes{ids.length > 1 ? ` · ${i + 1}` : ''}</Button>
+      {/each}
+    </div>
+  {/if}
+{/snippet}
 
 {#if turn}
   <InspectorSection title={turn.name} uiId="story.overview.side.turn">
@@ -65,15 +75,26 @@
     <InspectorSection title="Turning points" count={j.turning_points.length}>
       {#each j.turning_points as t, i (i)}
         <p class="ui-story-side__text">{t.description}</p>
-        {#if t.evidence_scene_ids[0]}<Button variant="secondary" icon="film-slate" onclick={() => onRevealScene?.(t.evidence_scene_ids[0])}>Show in Scenes</Button>{/if}
+        {@render evidence(t.evidence_scene_ids)}
       {/each}
     </InspectorSection>
   {/if}
   {#if j.relationship_evolution.length}
     <InspectorSection title="Relationships" count={j.relationship_evolution.length}>
-      {#each j.relationship_evolution as r, i (i)}<PropertyRow label={r.counterpart} value={r.trajectory} />{/each}
+      {#each j.relationship_evolution as r, i (i)}
+        <p class="ui-story-side__text">{r.counterpart}</p>
+        <p class="ui-story-side__text">{r.trajectory}</p>
+        {@render evidence(r.evidence_scene_ids)}
+      {/each}
     </InspectorSection>
   {/if}
+{:else if pair?.analysis.skip}
+  <InspectorSection title={pairName(pair.characters)} uiId="story.overview.side.relationship">
+    <StatusPill text="Skipped" tone="skipped" />
+    <p class="ui-story-side__text">{pair.analysis.skip.reason}</p>
+    <PropertyRow label="Co-appearance weight" value={pair.analysis.skip.weight} />
+    <PropertyRow label="Minimum weight" value={pair.analysis.skip.min_weight} />
+  </InspectorSection>
 {:else if pair?.analysis.synthesis}
   {@const s = pair.analysis.synthesis}
   <InspectorSection title={pairName(pair.characters)} uiId="story.overview.side.relationship">
@@ -98,11 +119,22 @@
       </InspectorSection>
     {/if}
   {/each}
+  {#if s.evidence_scene_ids?.length}
+    <InspectorSection title="Evidence scenes" count={s.evidence_scene_ids.length}>
+      {@render evidence(s.evidence_scene_ids)}
+    </InspectorSection>
+  {/if}
 {:else}
   <EmptyState title="Select a turning point, a character, a journey or a relationship to see more here." icon="compass" />
 {/if}
 
 <style>
+  .ui-story-side__evidence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
   .ui-story-side__text {
     margin: 0 0 var(--spacing-sm);
     font-size: var(--body-md-size);

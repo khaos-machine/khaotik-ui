@@ -16,9 +16,46 @@
 
 /** @typedef {{ sceneId: string, name: string, turn: string }} TurnPoint */
 
-/** @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score: number, p: number }[] }, names?: { state: string, points: readonly TurnPoint[] }, _provenance?: { made_by?: { model?: string } } }} StoryStructure */
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json:432 ($defs.act).
+ * Indices are zero-based and endIndex is inclusive; fraction is the share of story words.
+ * @typedef {{ name: string, startIndex: number, endIndex: number, fraction: number }} StructureAct
+ */
+
+/** @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score: number, p: number }[] }, names?: { state: string, points: readonly TurnPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure */
 
 /** @typedef {{ logline: Sourced, synopsis: Sourced }} StoryPremise */
+
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:379, :422.
+ * Only name is required in actSummary; absent measures must stay absent.
+ * @typedef {{ name: string, percentage?: number, sceneCount?: number, durationMs?: number }} CoverageAct
+ */
+
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:61, :450 ($defs.sceneCard).
+ * @typedef {{ index?: number, slugline: string, summary: Omit<Sourced, 'value'> & { value: string }, narrativeRole: Omit<Sourced, 'value'> & { value: string }, characters?: readonly string[], durationMs: Omit<Sourced, 'value'> & { value: number } }} CoverageScene
+ */
+
+/**
+ * The coverage fields these panes render. Optional acts and scenes are schema projections;
+ * existing reports without them continue to render their other results.
+ * @typedef {Object} StoryCoverage
+ * @property {string} [generatedAt]
+ * @property {Sourced} logline
+ * @property {Sourced} synopsis
+ * @property {Sourced} genre
+ * @property {Sourced} tone
+ * @property {{ verdict: Sourced, dimensions: readonly { name: string, score: Sourced, summary?: Sourced }[] }} rubric
+ * @property {{ estimatedRuntimeMs: Sourced, pageCount: Sourced, sceneCount: Sourced, pacingNotes?: Sourced, acts?: readonly CoverageAct[] }} structure
+ * @property {readonly CoverageScene[]} [scenes]
+ * @property {readonly { name: string, importance: Sourced, arcSummary: Sourced, dialogueWeight: Sourced, sceneCount?: number, strengths: Sourced, concerns: Sourced }[]} [characters]
+ * @property {{ uniqueLocations?: number, castSize?: number, speakingRoles?: number, complexityTier: Sourced, productionFlags: { containedLocationPct: Sourced, extrasOrCrowdScenes: boolean, actionHeavyScenes: boolean, vfxOrStuntsSignals: boolean, periodSetting: boolean, childRoles: boolean, animalRoles: boolean } }} viability
+ * @property {{ strengths: Sourced, concerns: Sourced, notes: Sourced }} assessment
+ * @property {readonly string[]} [incompleteSections]
+ * @property {readonly string[]} [warnings]
+ */
+
 
 /**
  * What the Overview selects: a turning point, a coverage character, a journey or a relationship, by

@@ -33,11 +33,11 @@ declare const StoryOverview: import("svelte").Component<{
      */
     advanced?: boolean;
     /**
-     * The selected turn or character.
+     * The selected turn, character, journey or relationship, including skipped pairs.
      */
     selected?: import("./lib/story-overview.js").OverviewSelection | null;
     /**
-     * Reports a turn or character chosen.
+     * Reports the selected entity's original list index.
      */
     onselect?: (item: import("./lib/story-overview.js").OverviewSelection) => void;
     /**
@@ -195,11 +195,11 @@ type Props = {
      */
     advanced?: boolean;
     /**
-     * The selected turn or character.
+     * The selected turn, character, journey or relationship, including skipped pairs.
      */
     selected?: import("./lib/story-overview.js").OverviewSelection | null;
     /**
-     * Reports a turn or character chosen.
+     * Reports the selected entity's original list index.
      */
     onselect?: (item: import("./lib/story-overview.js").OverviewSelection) => void;
     /**

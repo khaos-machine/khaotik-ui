@@ -73,26 +73,26 @@ describe('StoryOverview journeys', () => {
 })
 
 describe('StoryOverview relationships', () => {
-  it('lists each read pair by its names with its type and trajectory; a skipped pair is not a row', async () => {
+  it('lists each read pair by its names with its type and trajectory; skipped pairs are selectable too', async () => {
     const onselect = vi.fn()
     render(StoryOverview, { props: { ...base, onselect } })
     const rows = within(region('Relationships')).getAllByRole('button')
-    expect(rows.map((r) => r.getAttribute('aria-label'))).toEqual(['MAYA and THEO'])
+    expect(rows.map((r) => r.getAttribute('aria-label'))).toEqual(['MAYA and THEO', 'MAYA and a character no longer in this story'])
     expect(rows[0]).toHaveTextContent('From resentment to trust.')
     expect(within(region('Relationships')).getByText('siblings')).toBeVisible()
     await fireEvent.click(rows[0])
     expect(onselect).toHaveBeenLastCalledWith({ kind: 'relationship', index: 0 })
   })
 
-  it('says so when every pair was skipped, and lists the skips with their reasons only in Advanced', async () => {
+  it('says so when every pair was skipped, and shows selectable skips and their reasons without Advanced', async () => {
     const skipped = loaded([relationships[1]])
     const { unmount } = render(StoryOverview, { props: { ...base, relationships: skipped } })
     expect(within(region('Relationships')).getByText('No pair of characters shares enough scenes to read yet.')).toBeVisible()
-    expect(screen.queryByText(/below the minimum/)).toBeNull()
+    expect(screen.getByText(/below the minimum/)).toBeVisible()
     unmount()
     render(StoryOverview, { props: { ...base, relationships: skipped, advanced: true } })
-    await fireEvent.click(screen.getByRole('button', { name: 'Show details' }))
-    expect(screen.getByText('MAYA and a character no longer in this story: co-appearance weight 1 is below the minimum of 2')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'MAYA and a character no longer in this story' })).toBeVisible()
+    expect(screen.getByText(/below the minimum/)).toBeVisible()
   })
 })
 
@@ -126,7 +126,7 @@ describe('StoryOverviewSide journeys and relationships', () => {
       expect(screen.getByText(text)).toBeVisible()
     }
     expect(screen.queryByText('AI · medium')).toBeNull()
-    await fireEvent.click(screen.getByRole('button', { name: 'Show in Scenes' }))
+    await fireEvent.click(within(region('Turning points')).getByRole('button', { name: 'Show in Scenes' }))
     expect(onRevealScene).toHaveBeenLastCalledWith('scene_7')
     unmount()
     render(StoryOverviewSide, { props: { ...base, selected: { kind: 'relationship', index: 0 }, advanced: true } })

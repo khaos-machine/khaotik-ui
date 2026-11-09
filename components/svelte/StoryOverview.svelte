@@ -33,8 +33,8 @@
    * @property {import('./lib/story-overview.js').SectionRead<readonly Record<string, any>[]>} [journeys] `GET /api/v1/journeys`'s `journeys`: each character's journey, in story order.
    * @property {import('./lib/story-overview.js').SectionRead<readonly Record<string, any>[]>} [relationships] `GET /api/v1/relationships`'s `relationships`: each pair, read or skipped.
    * @property {boolean} [advanced] Advanced mode: models, confidence, lens scores and warnings.
-   * @property {OverviewSelection | null} [selected] The selected turn or character.
-   * @property {(item: OverviewSelection) => void} [onselect] Reports a turn or character chosen.
+   * @property {OverviewSelection | null} [selected] The selected turn, character, journey or relationship, including skipped pairs.
+   * @property {(item: OverviewSelection) => void} [onselect] Reports the selected entity's original list index.
    * @property {{ premise?: Run, structure?: Run, coverage?: Run }} [runs] Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first.
    * @property {(pass: Pass) => void} [onrun] Starts a pass: `structure` (free), `structureNaming`, `coverage` or `premise`.
    * @property {() => void} [onsetbudget] Opens this story's budget.
@@ -50,13 +50,13 @@
   const shape = $derived(structure.kind === 'loaded' && shapeReads(structure.data) ? structure.data : null)
   const points = $derived(namedPoints(shape))
 
-  const report = $derived(coverage.kind === 'loaded' && coverageReads(coverage.data) ? coverage.data : null)
+  const report = $derived(coverage.kind === 'loaded' && coverageReads(coverage.data) ? /** @type {import('./lib/story-overview.js').StoryCoverage} */ (coverage.data) : null)
   const flags = $derived(productionFlags(report))
   const characters = $derived((report?.characters ?? []).map((/** @type {Record<string, any>} */ c, /** @type {number} */ index) => ({ index, name: c.name, sceneCount: c.sceneCount, dialogueWeight: c.dialogueWeight?.value })))
   const journeyList = $derived(journeys.kind === 'loaded' && journeysRead(journeys.data) ? journeys.data : null)
   const pairList = $derived(relationships.kind === 'loaded' && relationshipsRead(relationships.data) ? relationships.data : null)
   const readPairs = $derived((pairList ?? []).map((/** @type {Record<string, any>} */ r, /** @type {number} */ index) => ({ ...r, index })).filter((r) => r.analysis.synthesis))
-  const skippedPairs = $derived((pairList ?? []).filter((/** @type {Record<string, any>} */ r) => r.analysis.skip))
+  const skippedPairs = $derived((pairList ?? []).map((/** @type {Record<string, any>} */ r, /** @type {number} */ index) => ({ ...r, index })).filter((r) => r.analysis.skip))
   const madeOn = $derived(
     report?.generatedAt ? new Date(report.generatedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }) : '',
   )
@@ -167,6 +167,16 @@
     {:else}
       <p class="ui-story-overview__headline">{shape.fit.reason}</p>
       <StatusPill text={OUTCOMES[shape.fit.outcome]} tone="info" />
+      {#if shape.acts?.length}
+        <InspectorSection title="Acts" count={shape.acts.length} uiId="story.overview.shape.acts">
+          {#each shape.acts as act (act)}
+            <InspectorSection title={act.name}>
+              <PropertyRow label="Scene indices (inclusive)" value="{act.startIndex}–{act.endIndex}" />
+              <PropertyRow label="Word share" value="{Math.round(act.fraction * 100)}%" />
+            </InspectorSection>
+          {/each}
+        </InspectorSection>
+      {/if}
       {#if points}
         <InspectorSection title="Where the story turns" count={points.length} uiId="story.overview.turns">
           {#each points as p, i (i)}
@@ -214,6 +224,30 @@
           {#if d.summary?.value}<p class="ui-story-overview__detail">{d.summary.value}</p>{/if}
         {/each}
       </InspectorSection>
+      {#if report.structure.acts?.length}
+        <InspectorSection title="Acts" count={report.structure.acts.length} uiId="story.overview.coverage.acts">
+          {#each report.structure.acts as act (act)}
+            <InspectorSection title={act.name}>
+              {#if act.percentage !== undefined}<PropertyRow label="Word share" value="{Math.round(act.percentage * 100)}%" />{/if}
+              {#if act.sceneCount !== undefined}<PropertyRow label="Scenes" value={act.sceneCount} />{/if}
+              {#if act.durationMs !== undefined}<PropertyRow label="Runtime" value="{act.durationMs / 60000} min" />{/if}
+            </InspectorSection>
+          {/each}
+        </InspectorSection>
+      {/if}
+      {#if report.scenes?.length}
+        <InspectorSection title="Scene entries" count={report.scenes.length} uiId="story.overview.coverage.scenes">
+          {#each report.scenes as scene (scene)}
+            <InspectorSection title={scene.slugline}>
+              {#if scene.index !== undefined}<PropertyRow label="Scene index" value={scene.index} />{/if}
+              {@render sourced('Summary', scene.summary)}
+              {@render sourced('Narrative role', scene.narrativeRole)}
+              {#if scene.characters?.length}<PropertyRow label="Characters" value={scene.characters.join(', ')} />{/if}
+              <PropertyRow label="Runtime" value="{scene.durationMs.value / 60000} min" source={sourceLabel(scene.durationMs)} />
+            </InspectorSection>
+          {/each}
+        </InspectorSection>
+      {/if}
       <InspectorSection title="Characters" count={characters.length} uiId="story.overview.characters">
         <MeasureTable
           rows={characters}
@@ -279,11 +313,11 @@
       {:else}
         {@render line('No pair of characters shares enough scenes to read yet.')}
       {/each}
-      {#if advanced && skippedPairs.length}
-        <InspectorSection title="Show details" collapsed uiId="story.overview.relationships-details">
-          <ul class="ui-story-overview__list">{#each skippedPairs as r (r.pairKey)}<li>{pairName(r.characters)}: {r.analysis.skip.reason}</li>{/each}</ul>
-        </InspectorSection>
-      {/if}
+      {#each skippedPairs as r (r.pairKey)}
+        <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.skip.reason} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
+          {#snippet trailing()}<StatusPill text="Skipped" tone="skipped" />{/snippet}
+        </SelectableRow>
+      {/each}
     {/if}
   </InspectorSection>
 </div></div>
