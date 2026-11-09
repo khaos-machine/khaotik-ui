@@ -154,6 +154,7 @@ export { default as ShotPlan } from "./ShotPlan.svelte";
 export { default as Player } from "./Player.svelte";
 export { default as StoryPlayback } from "./StoryPlayback.svelte";
 export { default as Activity } from "./Activity.svelte";
+export { default as ActivityFeedStatus } from "./ActivityFeedStatus.svelte";
 export { default as BudgetPane } from "./BudgetPane.svelte";
 export { default as ModelsPane } from "./ModelsPane.svelte";
 export { default as ProblemReport } from "./ProblemReport.svelte";

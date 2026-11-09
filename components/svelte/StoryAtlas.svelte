@@ -5,9 +5,11 @@
   // not in the barrel: a host imports it lazily from story-atlas.js. Moved from Khaos App (catalog
   // app-coverage plan, T7).
   import { fly } from 'svelte/transition'
+  import ActivityFeedStatus from './ActivityFeedStatus.svelte'
   import Button from './Button.svelte'
   import EmptyState from './EmptyState.svelte'
   import EventLog from './EventLog.svelte'
+  import FilterField from './FilterField.svelte'
   import Menu from './Menu.svelte'
   import MetricCard from './MetricCard.svelte'
   import Portrait from './Portrait.svelte'
@@ -48,6 +50,11 @@
    * @property {boolean} [jobsStale] The jobs feed is reconnecting.
    * @property {{ kind: 'loading' } | { kind: 'missing' } | { kind: 'failed', message: string } | { kind: 'loaded' }} [activity] The committed-changes read.
    * @property {readonly any[]} [events] The committed changes, as EventLog takes them.
+   * @property {import('./lib/activity.js').ActivityFeed} [activityFeed] Pages the committed changes (#40): `events` are the loaded rows, counts come from the feed's totals. Absent: `events` is the whole log, as before.
+   * @property {string} [activityQuery] The khaosd search the loaded changes answer, or ''.
+   * @property {(query: string) => void} [onActivityQuery] Reports the search typed. Set, the panel draws a search field.
+   * @property {() => void} [onActivityLoadOlder] With `activityFeed`: asks for the next older page, or retries a failed one.
+   * @property {() => void} [onActivityRefresh] With `activityFeed`: retries a failed read of newer changes.
    */
 
   /** @type {Props} */
@@ -76,6 +83,11 @@
     jobsStale = false,
     activity = { kind: 'loading' },
     events = [],
+    activityFeed = undefined,
+    activityQuery = '',
+    onActivityQuery = undefined,
+    onActivityLoadOlder = undefined,
+    onActivityRefresh = undefined,
   } = $props()
 
   const LAYOUT_VARIANT = {
@@ -250,6 +262,15 @@
       {#if activity.kind === 'failed'}<p role="alert">{activity.message}</p>
       {:else if activity.kind === 'missing'}<EmptyState title="No committed activity yet" />
       {:else if activity.kind === 'loading'}<p role="status">Reading activity…</p>
+      {:else if activityFeed}
+        {#if onActivityQuery}<FilterField label="Search changes" placeholder="Search kinds, actors, decisions, documents…" value={activityQuery} oninput={onActivityQuery} />{/if}
+        {#if events.length > 0}<EventLog {events} viewportHeight={240} label="Story changes" />{/if}
+        <ActivityFeedStatus
+          feed={activityFeed}
+          loaded={events.length}
+          query={activityQuery}
+          onLoadOlder={onActivityLoadOlder}
+          onRefresh={onActivityRefresh} />
       {:else}<EventLog {events} viewportHeight={240} label="Story changes" />{/if}
     </aside>
   {/if}

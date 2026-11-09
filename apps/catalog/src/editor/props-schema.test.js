@@ -83,6 +83,9 @@ describe('the props schema, read out of the components', () => {
     // them would be a control for "your app's scenes", which is not a thing the
     // catalog can offer.
     expect(unknowns.sort()).toEqual([
+      // A paged Activity feed's totals and read states (#40): the host's adaptation of khaosd's
+      // kspd-events response, never typed in.
+      'Activity.feed', 'ActivityFeedStatus.feed',
       // The Images and Audio destinations' records, peaks and resolved URLs: the engine's or
       // the host's, never typed in.
       'AudioSide.recording', 'AudioTable.peaks',
@@ -172,7 +175,8 @@ describe('the props schema, read out of the components', () => {
       'ShotPrevis.definition', 'ShotPrevis.figures', 'ShotPrevis.objects', 'ShotPrevis.shot',
       // The Story Atlas's resolved portraits and the layout's neighbor set: the host's and the
       // layout's, never typed in.
-      'StoryAtlas.portraitUrls', 'StoryAtlasCanvas.portraits', 'StoryAtlasCanvas.related',
+      // StoryAtlas.activityFeed: the activity panel's paged feed (#40), as Activity.feed above.
+      'StoryAtlas.activityFeed', 'StoryAtlas.portraitUrls', 'StoryAtlasCanvas.portraits', 'StoryAtlasCanvas.related',
       // The story-wide analyses: khaosd's premise, structure and coverage reads, and a selection
       // by index into them. Never typed in.
       'StoryOverview.coverage', 'StoryOverview.journeys', 'StoryOverview.premise', 'StoryOverview.relationships', 'StoryOverview.structure',

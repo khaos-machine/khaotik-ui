@@ -41,6 +41,18 @@ declare const Activity: import("svelte").Component<{
      * Reports the filter typed.
      */
     onQuery?: (query: string) => void;
+    /**
+     * Pages the feed and makes the filter a khaosd search (#40). Set, `days` are the loaded rows that answer `query`, `rowCount` is not read, counts come from the feed's totals, and the field stays while a search matches nothing. Absent: the whole-log filter above, unchanged.
+     */
+    feed?: import("./lib/activity.js").ActivityFeed;
+    /**
+     * With `feed`: asks for the next older page, or retries a failed one.
+     */
+    onLoadOlder?: () => void;
+    /**
+     * With `feed`: retries a failed read of newer changes.
+     */
+    onRefresh?: () => void;
 }, {}, "">;
 type Props = {
     /**
@@ -80,4 +92,16 @@ type Props = {
      * Reports the filter typed.
      */
     onQuery?: (query: string) => void;
+    /**
+     * Pages the feed and makes the filter a khaosd search (#40). Set, `days` are the loaded rows that answer `query`, `rowCount` is not read, counts come from the feed's totals, and the field stays while a search matches nothing. Absent: the whole-log filter above, unchanged.
+     */
+    feed?: import("./lib/activity.js").ActivityFeed;
+    /**
+     * With `feed`: asks for the next older page, or retries a failed one.
+     */
+    onLoadOlder?: () => void;
+    /**
+     * With `feed`: retries a failed read of newer changes.
+     */
+    onRefresh?: () => void;
 };

@@ -257,6 +257,8 @@ export { default as StoryPlayback } from './StoryPlayback.svelte'
 
 // Khaos App's windows (catalog app-coverage plan, T9).
 export { default as Activity } from './Activity.svelte'
+// The paged feed's foot, shared by Activity and the Story Atlas's activity panel (#40).
+export { default as ActivityFeedStatus } from './ActivityFeedStatus.svelte'
 export { default as BudgetPane } from './BudgetPane.svelte'
 export { default as ModelsPane } from './ModelsPane.svelte'
 export { default as ProblemReport } from './ProblemReport.svelte'
