@@ -39,6 +39,7 @@
    * @property {() => void} [onRefresh] Reloads the list. Hidden when omitted.
    * @property {(project: Project) => void} [onOpenProject] A story card being activated.
    * @property {(project: Project) => void} [onExtractProject] The card's extraction verb. Hidden when omitted.
+   * @property {(project: Project) => void} [onRetryProject] Retries a story's failed analysis job, as ProjectCard `onRetry`. No Retry when omitted.
    * @property {(project: Project) => void} [onInitGit] The card's "initialise a repo" verb, for a story without one. Hidden when omitted.
    * @property {(project: Project) => void} [onRemoveProject] The card's **Remove from Recents** verb. It never deletes a project, so it needs no confirmation (project portability plan, D1). Hidden when omitted.
    * @property {import('svelte').Snippet<[Project]>} [detail] Per-card host content, given that story's project and rendered as its ProjectCard `children`.
@@ -62,6 +63,7 @@
     onRefresh = undefined,
     onOpenProject = undefined,
     onExtractProject = undefined,
+    onRetryProject = undefined,
     onInitGit = undefined,
     onRemoveProject = undefined,
     detail = undefined,
@@ -126,6 +128,7 @@
               job={jobFor?.(project)}
               analyses={analysesFor?.(project)}
               {...(onExtractProject ? { onExtract: () => onExtractProject(project) } : {})}
+              {...(onRetryProject ? { onRetry: () => onRetryProject(project) } : {})}
               {...(detail ? { children: cardDetail } : {})} />
           </li>
         {/each}

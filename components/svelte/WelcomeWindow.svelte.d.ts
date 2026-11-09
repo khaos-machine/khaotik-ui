@@ -74,6 +74,10 @@ declare const WelcomeWindow: import("svelte").Component<{
      */
     onExtractProject?: (project: import("./lib/types.js").Project) => void;
     /**
+     * Retries a story's failed analysis job, as ProjectCard `onRetry`. No Retry when omitted.
+     */
+    onRetryProject?: (project: import("./lib/types.js").Project) => void;
+    /**
      * The card's "initialise a repo" verb, for a story without one. Hidden when omitted.
      */
     onInitGit?: (project: import("./lib/types.js").Project) => void;
@@ -160,6 +164,10 @@ type Props = {
      * The card's extraction verb. Hidden when omitted.
      */
     onExtractProject?: (project: import("./lib/types.js").Project) => void;
+    /**
+     * Retries a story's failed analysis job, as ProjectCard `onRetry`. No Retry when omitted.
+     */
+    onRetryProject?: (project: import("./lib/types.js").Project) => void;
     /**
      * The card's "initialise a repo" verb, for a story without one. Hidden when omitted.
      */

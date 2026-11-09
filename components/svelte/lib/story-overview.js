@@ -22,7 +22,17 @@
  * @typedef {{ name: string, startIndex: number, endIndex: number, fraction: number }} StructureAct
  */
 
-/** @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score: number, p: number }[] }, names?: { state: string, points: readonly TurnPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure */
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json: a lens's score and p are
+ * absent when not scored (:371, :379); names.points is optional (:387).
+ * @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score?: number, p?: number }[] }, names?: { state: string, points?: readonly TurnPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure
+ */
+
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:391 ($defs.measuredStructure).
+ * document is absent when not-measured.
+ * @typedef {{ outcome: string, reason: string, document?: string }} MeasuredStructure
+ */
 
 /** @typedef {{ logline: Sourced, synopsis: Sourced }} StoryPremise */
 
@@ -46,12 +56,12 @@
  * @property {Sourced} synopsis
  * @property {Sourced} genre
  * @property {Sourced} tone
- * @property {{ verdict: Sourced, dimensions: readonly { name: string, score: Sourced, summary?: Sourced }[] }} rubric
- * @property {{ estimatedRuntimeMs: Sourced, pageCount: Sourced, sceneCount: Sourced, pacingNotes?: Sourced, acts?: readonly CoverageAct[] }} structure
+ * @property {{ verdict: Sourced, dimensions?: readonly { name: string, score: Sourced, summary?: Sourced }[] }} rubric Only verdict is required (:312).
+ * @property {{ estimatedRuntimeMs: Sourced, pageCount: Sourced, sceneCount: Sourced, measured?: MeasuredStructure, pacingNotes?: Sourced, acts?: readonly CoverageAct[] }} structure measured is required by KSPD but read as optional, so older reports still render.
  * @property {readonly CoverageScene[]} [scenes]
  * @property {readonly { name: string, importance: Sourced, arcSummary: Sourced, dialogueWeight: Sourced, sceneCount?: number, strengths: Sourced, concerns: Sourced }[]} [characters]
  * @property {{ uniqueLocations?: number, castSize?: number, speakingRoles?: number, complexityTier: Sourced, productionFlags: { containedLocationPct: Sourced, extrasOrCrowdScenes: boolean, actionHeavyScenes: boolean, vfxOrStuntsSignals: boolean, periodSetting: boolean, childRoles: boolean, animalRoles: boolean } }} viability
- * @property {{ strengths: Sourced, concerns: Sourced, notes: Sourced }} assessment
+ * @property {{ strengths: Sourced, concerns: Sourced, notes: Sourced }} assessment strengths and concerns may carry a null value (:280).
  * @property {readonly string[]} [incompleteSections]
  * @property {readonly string[]} [warnings]
  */
@@ -105,10 +115,27 @@ export const FLAGS = {
 }
 
 /**
- * The structure's named turns, or null when the engine has not named them.
+ * What coverage's structure.measured found: the shape outcomes, plus absence (KSPD
+ * go/kspdprotocol/v0.136.1 coverage-report.schema.json:391, $defs.measuredStructure). Closed: an
+ * outcome outside it fails only the measured block.
+ * @type {Readonly<Record<string, string>>}
+ */
+export const MEASURED = { ...OUTCOMES, 'not-measured': 'Not measured' }
+
+/**
+ * The structure's named turns, or null when the engine has not named them. Named with no points is
+ * an empty list: points is optional (KSPD analysis/structure.schema.json:387, $defs.names).
  * @param {StoryStructure | null} s
  */
-export const namedPoints = (s) => (s?.names?.state === 'named' ? s.names.points : null)
+export const namedPoints = (s) => (s?.names?.state === 'named' ? (s.names.points ?? []) : null)
+
+/**
+ * An attributed list's items; null is valid and means none (KSPD coverage-report.schema.json:280,
+ * $defs.attributedStringList).
+ * @param {{ value?: readonly string[] | null } | null | undefined} f
+ * @returns {readonly string[]}
+ */
+export const listItems = (f) => f?.value ?? []
 
 /**
  * Whether the shape reads: its outcome is one the map knows.
