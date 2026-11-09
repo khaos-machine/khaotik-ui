@@ -41,7 +41,7 @@ declare const StoryOverview: import("svelte").Component<{
      */
     onselect?: (item: import("./lib/story-overview.js").OverviewSelection) => void;
     /**
-     * Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first.
+     * Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first. Journeys and relationships have no action: their run only says when the pass is partial or failed, beside whatever was saved.
      */
     runs?: {
         premise?: {
@@ -154,6 +154,26 @@ declare const StoryOverview: import("svelte").Component<{
                 model: string;
             }[];
             maxCalls?: number;
+        };
+        journeys?: {
+            kind: "none";
+        } | {
+            kind: "running";
+        } | {
+            kind: "partial";
+        } | {
+            kind: "failed";
+            message?: string;
+        };
+        relationships?: {
+            kind: "none";
+        } | {
+            kind: "running";
+        } | {
+            kind: "partial";
+        } | {
+            kind: "failed";
+            message?: string;
         };
     };
     /**
@@ -203,7 +223,7 @@ type Props = {
      */
     onselect?: (item: import("./lib/story-overview.js").OverviewSelection) => void;
     /**
-     * Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first.
+     * Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first. Journeys and relationships have no action: their run only says when the pass is partial or failed, beside whatever was saved.
      */
     runs?: {
         premise?: {
@@ -316,6 +336,26 @@ type Props = {
                 model: string;
             }[];
             maxCalls?: number;
+        };
+        journeys?: {
+            kind: "none";
+        } | {
+            kind: "running";
+        } | {
+            kind: "partial";
+        } | {
+            kind: "failed";
+            message?: string;
+        };
+        relationships?: {
+            kind: "none";
+        } | {
+            kind: "running";
+        } | {
+            kind: "partial";
+        } | {
+            kind: "failed";
+            message?: string;
         };
     };
     /**

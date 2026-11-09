@@ -25,7 +25,7 @@ declare const StoryOverviewOutline: import("svelte").Component<{
      */
     relationships?: import("./lib/story-overview.js").SectionRead<readonly Record<string, any>[]>;
     /**
-     * Current section runs, as StoryOverview takes them; running overrides a previous result.
+     * Current section runs, as StoryOverview takes them; running overrides a previous result. For journeys and relationships, partial reads Incomplete and failed reads Didn't finish, whatever was saved.
      */
     runs?: {
         premise?: {
@@ -75,7 +75,7 @@ type Props = {
      */
     relationships?: import("./lib/story-overview.js").SectionRead<readonly Record<string, any>[]>;
     /**
-     * Current section runs, as StoryOverview takes them; running overrides a previous result.
+     * Current section runs, as StoryOverview takes them; running overrides a previous result. For journeys and relationships, partial reads Incomplete and failed reads Didn't finish, whatever was saved.
      */
     runs?: {
         premise?: {
