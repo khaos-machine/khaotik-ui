@@ -23,6 +23,12 @@
   /**
    * @typedef {{ kind: 'none' } | ({ kind: 'offer' } & Offer) | { kind: 'needs-budget' } | { kind: 'running', paid?: boolean, progress?: string } | { kind: 'blocked', reason: string } | { kind: 'budget-reached', usd?: string, spentUsd?: string, maxCalls?: number } | { kind: 'failed', message: string, offer?: Offer } | { kind: 'done', totals?: readonly { attempts: number, provider: string, model: string }[], maxCalls?: number }} Run
    */
+  /**
+   * A list section's pass: partial when some results are saved and the pass is not done, failed when it
+   * stopped on an error. Running and none are accepted so one runs object serves the outline too; the
+   * outline shows running.
+   * @typedef {{ kind: 'none' } | { kind: 'running' } | { kind: 'partial' } | { kind: 'failed', message?: string }} ListRun
+   */
 
   /**
    * @typedef {Object} Props
@@ -35,7 +41,7 @@
    * @property {boolean} [advanced] Advanced mode: models, confidence, lens scores and warnings.
    * @property {OverviewSelection | null} [selected] The selected turn, character, journey or relationship, including skipped pairs.
    * @property {(item: OverviewSelection) => void} [onselect] Reports the selected entity's original list index.
-   * @property {{ premise?: Run, structure?: Run, coverage?: Run }} [runs] Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first.
+   * @property {{ premise?: Run, structure?: Run, coverage?: Run, journeys?: ListRun, relationships?: ListRun }} [runs] Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first. Journeys and relationships have no action: their run only says when the pass is partial or failed, beside whatever was saved.
    * @property {(pass: Pass) => void} [onrun] Starts a pass: `structure` (free), `structureNaming`, `coverage` or `premise`.
    * @property {() => void} [onsetbudget] Opens this story's budget.
    */
@@ -136,6 +142,15 @@
   {/if}
 {/snippet}
 
+{#snippet pass(/** @type {'journeys' | 'relationships'} */ section)}
+  {@const r = runs[section]}
+  {#if r?.kind === 'partial'}
+    <p class="ui-story-overview__note" role="note">This pass hasn't finished, so some results are missing.</p>
+  {:else if r?.kind === 'failed'}
+    {@render line("This analysis didn't finish.", r.message)}
+  {/if}
+{/snippet}
+
 {#snippet list(/** @type {string} */ name, /** @type {readonly string[]} */ items)}
   {#if items.length}
     <InspectorSection title={name} count={items.length}>
@@ -185,6 +200,8 @@
         </InspectorSection>
       {:else if points}
         {@render line('No turning points were named.')}
+      {:else if shape.names?.state === 'failed'}
+        {@render line("Naming the turning points didn't finish.")}
       {:else}
         {@render line("The turning points haven't been named yet.")}
       {/if}
@@ -306,6 +323,7 @@
   </InspectorSection>
 
   <InspectorSection title="Journeys" uiId="story.overview.journeys">
+    {@render pass('journeys')}
     {#if journeys.kind === 'loading'}{@render none(LOADING)}
     {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render none('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
     {:else if journeys.kind === 'failed' || !journeyList}{@render line("Khaos couldn't read this story's journeys.", journeys.kind === 'failed' ? journeys.message : '')}
@@ -319,6 +337,7 @@
   </InspectorSection>
 
   <InspectorSection title="Relationships" uiId="story.overview.relationships">
+    {@render pass('relationships')}
     {#if relationships.kind === 'loading'}{@render none(LOADING)}
     {:else if relationships.kind === 'missing' || (pairList && !pairList.length)}{@render none('No relationships have been read yet.', relationships.kind === 'missing' ? relationships.reason : '')}
     {:else if relationships.kind === 'failed' || !pairList}{@render line("Khaos couldn't read this story's relationships.", relationships.kind === 'failed' ? relationships.message : '')}

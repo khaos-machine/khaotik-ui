@@ -20,6 +20,16 @@ current pin.
 
 ## [Unreleased]
 
+## [0.184.0] — 2026-11-09
+
+### Added
+
+- `StoryOverview` and `StoryOverviewOutline` take `runs.journeys` and `runs.relationships` with `{ kind: 'partial' }` (some results saved, the pass not done) and `{ kind: 'failed', message? }`. The outline reads them **Incomplete** and **Didn't finish**, never Ready, and the section shows a note or the failed line above whatever was saved (khaos-cloud #193). Optional; existing props are unchanged.
+
+### Fixed
+
+- Failed turn naming (`names.state: 'failed'`, KSPD go/kspdprotocol/v0.136.1 analysis/structure.schema.json `$defs.names`) reads as failed: the Shape section says "Naming the turning points didn't finish." and the outline's Turns row reads **Didn't finish**, no longer the same as not yet named (khaos-cloud #194).
+
 ## [0.183.1] — 2026-11-09
 
 ### Fixed
