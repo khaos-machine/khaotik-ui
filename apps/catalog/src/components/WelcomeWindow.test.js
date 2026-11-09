@@ -187,3 +187,21 @@ describe('the Clone action can be absent', () => {
     expect(within(rail).getByRole('button', { name: /Clone Repository/ })).toBeEnabled()
   })
 })
+
+// khaos-app #671: WelcomeWindow builds each ProjectCard, so the card's retry has to be forwarded.
+describe('retrying a failed analysis', () => {
+  const failedFor = (p) => (p.id === 's1' ? { kind: 'analyze-characters', phase: 'failed' } : undefined)
+
+  it('offers Retry on a failed job and reports that project', async () => {
+    const onRetryProject = vi.fn()
+    render(WelcomeWindow, { props: { ...base, jobFor: failedFor, onRetryProject } })
+    await fireEvent.click(screen.getByRole('button', { name: 'Retry character analysis for BROKEN IN 4 PLACES' }))
+    expect(onRetryProject).toHaveBeenCalledTimes(1)
+    expect(onRetryProject).toHaveBeenCalledWith(b4p)
+  })
+
+  it('offers no Retry without onRetryProject', () => {
+    render(WelcomeWindow, { props: { ...base, jobFor: failedFor } })
+    expect(screen.queryByRole('button', { name: /^Retry / })).toBeNull()
+  })
+})

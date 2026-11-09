@@ -31,6 +31,7 @@ current pin.
 
 - Coverage draws `structure.measured`: its outcome, reason and, when present, the document read (`$defs.measuredStructure`, including `not-measured`).
 - The journey inspector lists the journey's own `evidence_scene_ids` as scene Buttons, as turning points already did.
+- WelcomeWindow takes an optional `onRetryProject(project)` and passes it to each card's `onRetry`, so a failed analysis job offers Retry from the launcher. Without it there is no Retry, as before (khaos-app #671).
 
 ## [0.183.0] — 2026-11-09
 
