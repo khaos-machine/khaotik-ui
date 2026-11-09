@@ -1993,6 +1993,7 @@ const windowPanes = [
       { label: 'Paged, older page failed (illustrative message)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', days: illustrativeActivity.slice(0, 1), feed: { hasMore: true, storyTotal: 3, older: { kind: 'failed', message: 'khaosd is not running.' } }, onLoadOlder: () => {} } },
       { label: 'Search matched nothing (illustrative)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', days: [], query: 'merge', feed: { hasMore: false, storyTotal: 3, matchedTotal: 0 }, onQuery: () => {} } },
       { label: 'Search unsupported by khaosd (illustrative)', props: { state: { kind: 'loaded' }, projectTitle: 'BROKEN IN 4 PLACES', days: [], query: 'merge', feed: { storyTotal: 3, search: { kind: 'unsupported' } }, onQuery: () => {} } },
+      { label: 'History unreadable by this khaosd', props: { state: { kind: 'unsupported' }, projectTitle: 'BROKEN IN 4 PLACES' } },
     ],
   },
   {
@@ -3094,6 +3095,7 @@ export const fixtures = [
       { label: 'Renderer diagnostics', props: { ...atlasProps, diagnostics: true } },
       { label: 'Activity open (illustrative job)', props: { ...atlasProps, activityOpen: true, jobs: [{ id: 'job_1', type: 'scene analysis', status: 'running', progress: { completed: 12, total: 57 } }], activity: { kind: 'missing' } } },
       { label: 'Activity paged (illustrative rows)', props: { ...atlasProps, activityOpen: true, activity: { kind: 'loaded' }, events: logEvents(illustrativeActivity.slice(0, 1), (at) => at.slice(11, 16)), activityFeed: { hasMore: true, storyTotal: 3 }, onActivityQuery: () => {}, onActivityLoadOlder: () => {} } },
+      { label: 'Activity history unreadable by this khaosd', props: { ...atlasProps, activityOpen: true, activity: { kind: 'unsupported' } } },
       { label: 'Reading', props: { atlas: null, refreshing: true } },
       { label: 'Could not read (illustrative message)', props: { atlas: null, error: 'The story could not be read: khaosd is not running.', onRetry: () => {} } },
       { label: 'Empty', props: { atlas: null } },

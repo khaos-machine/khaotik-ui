@@ -5,7 +5,7 @@ type Activity = {
 };
 declare const Activity: import("svelte").Component<{
     /**
-     * The activity read. `missing`: the project holds no committed story.
+     * The activity read. `missing`: the project holds no committed story. `unsupported`: this khaosd cannot read the history a page at a time (no `story-activity-query`), with or without a query (#46).
      */
     state?: {
         kind: "loading";
@@ -14,6 +14,8 @@ declare const Activity: import("svelte").Component<{
     } | {
         kind: "failed";
         message: string;
+    } | {
+        kind: "unsupported";
     } | {
         kind: "loaded";
     };
@@ -56,7 +58,7 @@ declare const Activity: import("svelte").Component<{
 }, {}, "">;
 type Props = {
     /**
-     * The activity read. `missing`: the project holds no committed story.
+     * The activity read. `missing`: the project holds no committed story. `unsupported`: this khaosd cannot read the history a page at a time (no `story-activity-query`), with or without a query (#46).
      */
     state?: {
         kind: "loading";
@@ -65,6 +67,8 @@ type Props = {
     } | {
         kind: "failed";
         message: string;
+    } | {
+        kind: "unsupported";
     } | {
         kind: "loaded";
     };

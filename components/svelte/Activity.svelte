@@ -11,7 +11,7 @@
 
   /**
    * @typedef {Object} Props
-   * @property {{ kind: 'loading' } | { kind: 'missing' } | { kind: 'failed', message: string } | { kind: 'loaded' }} [state] The activity read. `missing`: the project holds no committed story.
+   * @property {{ kind: 'loading' } | { kind: 'missing' } | { kind: 'failed', message: string } | { kind: 'unsupported' } | { kind: 'loaded' }} [state] The activity read. `missing`: the project holds no committed story. `unsupported`: this khaosd cannot read the history a page at a time (no `story-activity-query`), with or without a query (#46).
    * @property {string} [projectTitle] The project the window shows, as its heading.
    * @property {number} [total] The ledger's count of committed changes.
    * @property {number} [rowCount] Changes read, before the filter.
@@ -58,6 +58,8 @@
     <EmptyState title="No committed story" description="This project holds no committed story yet, so it has no activity. Import its screenplay to start one." icon="clock-counter-clockwise" />
   {:else if state.kind === 'failed'}
     <EmptyState title="Could not read the activity" description={state.message} icon="warning" />
+  {:else if state.kind === 'unsupported'}
+    <EmptyState title="This khaosd cannot read the story’s history" description="It cannot read the history a page at a time. Update khaosd to see the story’s activity." icon="clock-counter-clockwise" />
   {:else if empty}
     <EmptyState title="No committed changes" icon="clock-counter-clockwise" />
   {:else if feed}

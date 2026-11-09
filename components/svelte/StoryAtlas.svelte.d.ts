@@ -122,7 +122,7 @@ declare const StoryAtlas: import("svelte").Component<{
      */
     jobsStale?: boolean;
     /**
-     * The committed-changes read.
+     * The committed-changes read. `unsupported`: this khaosd cannot read the history a page at a time, with or without a query (#46).
      */
     activity?: {
         kind: "loading";
@@ -131,6 +131,8 @@ declare const StoryAtlas: import("svelte").Component<{
     } | {
         kind: "failed";
         message: string;
+    } | {
+        kind: "unsupported";
     } | {
         kind: "loaded";
     };
@@ -278,7 +280,7 @@ type Props = {
      */
     jobsStale?: boolean;
     /**
-     * The committed-changes read.
+     * The committed-changes read. `unsupported`: this khaosd cannot read the history a page at a time, with or without a query (#46).
      */
     activity?: {
         kind: "loading";
@@ -287,6 +289,8 @@ type Props = {
     } | {
         kind: "failed";
         message: string;
+    } | {
+        kind: "unsupported";
     } | {
         kind: "loaded";
     };
