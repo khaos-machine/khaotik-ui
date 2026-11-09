@@ -25,11 +25,11 @@ declare const StoryOverviewSide: import("svelte").Component<{
      */
     advanced?: boolean;
     /**
-     * The selected turn, character, journey or relationship.| null} [selected] The selected turn or character.
+     * The selected turn, character, journey or relationship, including skipped pairs.
      */
     selected?: import("./lib/story-overview.js").OverviewSelection | null;
     /**
-     * Asked with the turn's scene.
+     * Asked with any selected evidence scene's id.
      */
     onRevealScene?: (sceneId: string) => void;
 }, {}, "">;
@@ -55,11 +55,11 @@ type Props = {
      */
     advanced?: boolean;
     /**
-     * The selected turn, character, journey or relationship.| null} [selected] The selected turn or character.
+     * The selected turn, character, journey or relationship, including skipped pairs.
      */
     selected?: import("./lib/story-overview.js").OverviewSelection | null;
     /**
-     * Asked with the turn's scene.
+     * Asked with any selected evidence scene's id.
      */
     onRevealScene?: (sceneId: string) => void;
 };

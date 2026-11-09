@@ -20,6 +20,17 @@ current pin.
 
 ## [Unreleased]
 
+## [0.183.0] — 2026-11-09
+
+### Added
+
+- Story Overview renders optional structure acts, coverage acts and scene entries using KSPD's field shapes.
+- Journey turning points and relationship evolution expose every evidence scene; relationship synthesis exposes its complete evidence list through scene Buttons.
+- Skipped relationships are selectable without Advanced and show their reason and co-appearance weights in the inspector.
+- The Overview outline supports optional section runs, labels Turns consistently with desktop and marks incomplete coverage explicitly.
+
+Existing props and selection/reveal callbacks remain compatible; reports without optional fields render as before.
+
 ## [0.182.0] — 2026-11-06
 
 ### Changed

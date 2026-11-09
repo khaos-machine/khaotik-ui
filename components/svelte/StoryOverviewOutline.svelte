@@ -15,15 +15,16 @@
    * @property {import('./lib/story-overview.js').SectionRead<Record<string, any>>} [coverage] As StoryOverview takes it.
    * @property {import('./lib/story-overview.js').SectionRead<readonly Record<string, any>[]>} [journeys] As StoryOverview takes it.
    * @property {import('./lib/story-overview.js').SectionRead<readonly Record<string, any>[]>} [relationships] As StoryOverview takes it.
+   * @property {{ premise?: { kind: string }, structure?: { kind: string }, coverage?: { kind: string }, journeys?: { kind: string }, relationships?: { kind: string } }} [runs] Current section runs, as StoryOverview takes them; running overrides a previous result.
    * @property {OverviewSection | null} [current] The section shown.
    * @property {(section: OverviewSection) => void} [onjump] Asked with the section chosen.
    */
 
   /** @type {Props} */
-  let { premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, current = null, onjump = undefined } = $props()
+  let { premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, runs = {}, current = null, onjump = undefined } = $props()
 
-  /** @type {Record<string, { text: string, tone: 'success' | 'neutral' | 'danger' }>} */
-  const PILLS = { ready: { text: 'Ready', tone: 'success' }, missing: { text: 'Not ready', tone: 'neutral' }, failed: { text: "Couldn't read", tone: 'danger' } }
+  /** @type {Record<string, { text: string, tone: 'success' | 'neutral' | 'danger' | 'info' | 'warning' }>} */
+  const PILLS = { running: { text: 'Running', tone: 'info' }, incomplete: { text: 'Incomplete', tone: 'warning' }, ready: { text: 'Ready', tone: 'success' }, missing: { text: 'Not ready', tone: 'neutral' }, failed: { text: "Couldn't read", tone: 'danger' } }
 
   /**
    * @param {{ kind: string, data?: any }} read
@@ -39,17 +40,17 @@
   const listState = (read, reads) => (read.kind === 'loaded' && reads(read.data) && !read.data.length ? 'missing' : state(read, reads))
 
   const shape = $derived(state(structure, shapeReads))
-  const cover = $derived(state(coverage, coverageReads))
+  const cover = $derived(state(coverage, coverageReads) === 'ready' && coverage.kind === 'loaded' && coverage.data.incompleteSections?.length ? 'incomplete' : state(coverage, coverageReads))
   const rows = $derived([
     { id: 'premise', title: 'Premise', state: state(premise, () => true) },
     { id: 'shape', title: 'Shape', state: shape },
-    { id: 'turns', title: 'Where the story turns', state: shape === 'ready' ? (namedPoints(structure.kind === 'loaded' ? structure.data : null) ? 'ready' : 'missing') : shape },
+    { id: 'turns', title: 'Turns', state: shape === 'ready' ? (namedPoints(structure.kind === 'loaded' ? structure.data : null) ? 'ready' : 'missing') : shape },
     { id: 'coverage', title: 'Coverage', state: cover },
     { id: 'characters', title: 'Characters', state: cover },
-    { id: 'production', title: 'Production', state: cover === 'ready' ? (productionFlags(coverage.kind === 'loaded' ? coverage.data : null) ? 'ready' : 'failed') : cover },
+    { id: 'production', title: 'Production', state: cover === 'ready' || cover === 'incomplete' ? (productionFlags(coverage.kind === 'loaded' ? coverage.data : null) ? cover : 'failed') : cover },
     { id: 'journeys', title: 'Journeys', state: listState(journeys, journeysRead) },
     { id: 'relationships', title: 'Relationships', state: listState(relationships, relationshipsRead) },
-  ])
+  ].map((row) => ({ ...row, state: runs[({ shape: 'structure', turns: 'structure', characters: 'coverage', production: 'coverage' })[row.id] ?? row.id]?.kind === 'running' ? 'running' : row.state })))
 </script>
 
 <div class="ui-story-outline" role="group" aria-label="Overview">

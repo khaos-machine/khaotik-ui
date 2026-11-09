@@ -123,6 +123,7 @@ import { composedExamples } from './editor/demo-document.js'
 // locations. (This said 289 dialogue lines, which was one character's count
 // rather than the project's.)
 import scenesData from './data/scenes.json'
+import legacyCoverage from './data/coverage.json'
 import dialoguesData from './data/dialogues.json'
 import charactersData from './data/characters.json'
 import placeBuilderStates from './data/place-builder-states.json'
@@ -1315,6 +1316,25 @@ const overviewReads = {
   coverage: { kind: 'loaded', data: storyOverview['coverage/report'] },
 }
 const { names: _unnamedTurns, ...overviewUnnamed } = storyOverview.structure
+// ILLUSTRATIVE SCHEMA PROJECTIONS, authorized for cloud#181: the capture has no acts,
+// journeys or pairs. Act boundaries/measures are examples of KSPD's optional shapes,
+// not measurements of B4P. Coverage scene entries come from coverage.json; its legacy
+// duration in seconds is projected to durationMs here. The capture itself is untouched.
+// No journey content is invented: the capture gap stays explicit; rendered tests cover it.
+// KSPD go/kspdprotocol/v0.136.1: analysis/structure.schema.json:432;
+// coverage-report.schema.json:422, :450.
+const overviewPeople = storyOverview['coverage/report'].characters.slice(0, 2).map((c, i) => ({ id: `illustrative-character-${i}`, name: c.name }))
+const overviewStage3Reads = {
+  ...overviewReads,
+  structure: { kind: 'loaded', data: { ...storyOverview.structure, acts: [{ name: 'Act 1', startIndex: 0, endIndex: 3, fraction: 0.25 }, { name: 'Act 2', startIndex: 4, endIndex: 9, fraction: 0.75 }] } },
+  coverage: { kind: 'loaded', data: {
+    ...storyOverview['coverage/report'],
+    structure: { ...storyOverview['coverage/report'].structure, acts: [{ name: 'Act 1', percentage: 0.25, sceneCount: 4, durationMs: 90000 }, { name: 'Act 2' }] },
+    scenes: legacyCoverage.scenes.slice(0, 2).map((scene) => ({ slugline: scene.slugline, summary: scene.summary, narrativeRole: scene.narrativeRole, characters: scene.characters, durationMs: { ...scene.duration, value: scene.duration.value * 1000 } })),
+  } },
+  relationships: { kind: 'loaded', data: [{ pairKey: 'illustrative-pair', characters: overviewPeople, analysis: { skip: { reason: 'co-appearance weight 1 is below the minimum of 2', weight: 1, min_weight: 2 } } }] },
+}
+
 const overviewStrip = {
   coverage: { verdict: storyOverview['coverage/report'].rubric.verdict.value },
   budget: { kind: 'loaded', usd: '10.00', spentUsd: '3.20', remainingUsd: '6.80' },
@@ -1376,6 +1396,7 @@ const placePanes = [
     id: 'story-overview', name: 'StoryOverview', kind: 'component', section: 'screens', group: 'drafts', component: StoryOverview,
     examples: [
       { label: 'B4P (captured)', props: { title: 'B4P', ...overviewReads, onselect: () => {} } },
+      { label: 'Acts, scene entries and skipped pairs (illustrative schema projections)', props: { title: 'B4P', ...overviewStage3Reads, selected: { kind: 'relationship', index: 0 }, onselect: () => {} } },
       { label: 'B4P, Advanced (captured)', props: { title: 'B4P', ...overviewReads, advanced: true, onselect: () => {} } },
       { label: 'A turn selected (captured)', props: { title: 'B4P', ...overviewReads, selected: { kind: 'turn', index: 0 }, onselect: () => {} } },
       { label: 'Turns not named yet (captured, names removed)', props: { title: 'B4P', ...overviewReads, structure: { kind: 'loaded', data: overviewUnnamed } } },
@@ -1397,6 +1418,7 @@ const placePanes = [
     id: 'story-overview-outline', name: 'StoryOverviewOutline', kind: 'component', section: 'screens', group: 'drafts', component: StoryOverviewOutline,
     examples: [
       { label: 'B4P (captured)', props: { ...overviewReads, current: 'coverage', onjump: () => {} } },
+      { label: 'Coverage running (illustrative)', props: { ...overviewReads, runs: { coverage: { kind: 'running' } }, onjump: () => {} } },
       { label: 'Mixed states', props: { premise: { kind: 'missing' }, structure: { kind: 'loaded', data: overviewUnnamed }, coverage: { kind: 'failed', message: 'x' }, onjump: () => {} } },
       { label: 'Reading', props: {} },
     ],
@@ -1404,6 +1426,7 @@ const placePanes = [
   {
     id: 'story-overview-side', name: 'StoryOverviewSide', kind: 'component', section: 'screens', group: 'drafts', component: StoryOverviewSide,
     examples: [
+      { label: 'Skipped pair (illustrative)', props: { ...overviewStage3Reads, selected: { kind: 'relationship', index: 0 } } },
       { label: 'A turn (captured)', props: { ...overviewReads, selected: { kind: 'turn', index: 0 }, onRevealScene: () => {} } },
       { label: 'A character (captured)', props: { ...overviewReads, selected: { kind: 'character', index: storyOverview['coverage/report'].characters.findIndex((c) => c.strengths.value.length > 0) } } },
       { label: 'Empty', props: { ...overviewReads } },
