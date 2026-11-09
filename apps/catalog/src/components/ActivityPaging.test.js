@@ -21,16 +21,16 @@ const daysOf = (n) => (n ? [{ key: '2026-11-09', title: 'Today', rows: rowsOf(n)
 const surfaces = [
   {
     name: 'the Activity window',
-    mount: ({ rows = 2, feed, query = '', onQuery, onLoadOlder, onRefresh, paged = true }) => {
-      const props = { state: { kind: 'loaded' }, projectTitle: 'B4P', total: 500, rowCount: rows, days: daysOf(rows), query, onQuery }
+    mount: ({ state = { kind: 'loaded' }, rows = 2, feed, query = '', onQuery, onLoadOlder, onRefresh, paged = true }) => {
+      const props = { state, projectTitle: 'B4P', total: 500, rowCount: rows, days: daysOf(rows), query, onQuery }
       render(Activity, { props: paged ? { ...props, feed: feed ?? {}, onLoadOlder, onRefresh } : props })
       return document.body
     },
   },
   {
     name: 'the Story Atlas activity panel',
-    mount: ({ rows = 2, feed, query = '', onQuery, onLoadOlder, onRefresh, paged = true }) => {
-      const props = { atlas: null, activityOpen: true, activity: { kind: 'loaded' }, events: logEvents(daysOf(rows), (at) => at) }
+    mount: ({ state = { kind: 'loaded' }, rows = 2, feed, query = '', onQuery, onLoadOlder, onRefresh, paged = true }) => {
+      const props = { atlas: null, activityOpen: true, activity: state, events: logEvents(daysOf(rows), (at) => at) }
       render(StoryAtlas, {
         props: paged ? { ...props, activityFeed: feed ?? {}, activityQuery: query, onActivityQuery: onQuery, onActivityLoadOlder: onLoadOlder, onActivityRefresh: onRefresh } : props,
       })
@@ -115,6 +115,54 @@ describe.each(surfaces)('$name, paged', ({ mount }) => {
     document.body.innerHTML = ''
     const matched = within(mount({ rows: 2, query: 'merge', feed: { matchedTotal: 57, storyTotal: 500, hasMore: true }, onQuery: vi.fn() }))
     expect(matched.getByText('Showing 2 of 57 matching changes')).toBeTruthy()
+  })
+})
+
+// khaotik-ui #46: a khaosd with no story-activity-query can't read the history page by page,
+// with or without a query. A top-level `unsupported` state says so; before it, an unfiltered
+// feed could only draw "No committed changes" (false) or the generic read failure.
+describe.each(surfaces)('$name, a khaosd that cannot page the history', ({ mount }) => {
+  it('draws the unsupported state for an unfiltered feed, not an empty story or a failure', () => {
+    const at = within(mount({ state: { kind: 'unsupported' }, rows: 0, onQuery: vi.fn() }))
+    expect(at.getByText('This khaosd cannot read the story’s history')).toBeTruthy()
+    expect(at.getByText(/Update khaosd/)).toBeTruthy()
+    expect(at.queryByText('No committed changes')).toBeNull()
+    expect(at.queryByText('Could not read the activity')).toBeNull()
+    expect(at.queryByRole('alert')).toBeNull()
+  })
+
+  it('keeps the search sub-state under a non-empty query', () => {
+    const at = within(mount({ rows: 0, query: 'x', feed: { search: { kind: 'unsupported' } }, onQuery: vi.fn() }))
+    expect(at.getByText('This khaosd cannot search the story’s history. Update khaosd to search it.')).toBeTruthy()
+    expect(at.getByRole('searchbox', { name: 'Search changes' }).value).toBe('x')
+    expect(at.queryByText('This khaosd cannot read the story’s history')).toBeNull()
+  })
+})
+
+describe('the existing read states are unchanged', () => {
+  it.each([
+    [{ kind: 'loading' }, 'Reading activity…'],
+    [{ kind: 'missing' }, 'No committed story'],
+    [{ kind: 'failed', message: 'khaosd is not running.' }, 'Could not read the activity'],
+  ])('the Activity window draws %o as before', (state, title) => {
+    const at = within(surfaces[0].mount({ state, rows: 0 }))
+    expect(at.getByText(title)).toBeTruthy()
+    expect(at.queryByText('This khaosd cannot read the story’s history')).toBeNull()
+  })
+
+  it('the Activity window draws an unfiltered feed with no rows as an empty story', () => {
+    const at = within(surfaces[0].mount({ rows: 0 }))
+    expect(at.getByText('No committed changes')).toBeTruthy()
+  })
+
+  it.each([
+    [{ kind: 'loading' }, 'Reading activity…'],
+    [{ kind: 'missing' }, 'No committed activity yet'],
+    [{ kind: 'failed', message: 'khaosd is not running.' }, 'khaosd is not running.'],
+  ])('the Story Atlas activity panel draws %o as before', (state, text) => {
+    const at = within(surfaces[1].mount({ state, rows: 0 }))
+    expect(at.getByText(text)).toBeTruthy()
+    expect(at.queryByText('This khaosd cannot read the story’s history')).toBeNull()
   })
 })
 

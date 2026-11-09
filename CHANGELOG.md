@@ -20,6 +20,12 @@ current pin.
 
 ## [Unreleased]
 
+## [0.185.1] — 2026-11-09
+
+### Fixed
+
+- `Activity`'s `state` and the `StoryAtlas` `activity` read take `{ kind: 'unsupported' }` (#46). Some khaosd builds can't read the story's history a page at a time (no `story-activity-query`). Before this change, an unfiltered feed from one of them could only draw "No committed changes", which is false, or the generic "Could not read the activity". It now says this khaosd can't read the story's history and should be updated. That state is distinct from loading, missing, failed and empty. The change is additive: every existing state renders as before, and `feed.search` `unsupported` under a non-empty query is unchanged.
+
 ## [0.185.0] — 2026-11-09
 
 ### Added

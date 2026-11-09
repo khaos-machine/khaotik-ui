@@ -48,7 +48,7 @@
    * @property {() => void} [onOpenActivity] Asks for the activity window.
    * @property {readonly { id: string, type: string, status: string, progress?: { completed: number, total: number }, error?: string }[]} [jobs] The story's jobs.
    * @property {boolean} [jobsStale] The jobs feed is reconnecting.
-   * @property {{ kind: 'loading' } | { kind: 'missing' } | { kind: 'failed', message: string } | { kind: 'loaded' }} [activity] The committed-changes read.
+   * @property {{ kind: 'loading' } | { kind: 'missing' } | { kind: 'failed', message: string } | { kind: 'unsupported' } | { kind: 'loaded' }} [activity] The committed-changes read. `unsupported`: this khaosd cannot read the history a page at a time, with or without a query (#46).
    * @property {readonly any[]} [events] The committed changes, as EventLog takes them.
    * @property {import('./lib/activity.js').ActivityFeed} [activityFeed] Pages the committed changes (#40): `events` are the loaded rows, counts come from the feed's totals. Absent: `events` is the whole log, as before.
    * @property {string} [activityQuery] The khaosd search the loaded changes answer, or ''.
@@ -262,6 +262,7 @@
       {#if activity.kind === 'failed'}<p role="alert">{activity.message}</p>
       {:else if activity.kind === 'missing'}<EmptyState title="No committed activity yet" />
       {:else if activity.kind === 'loading'}<p role="status">Reading activity…</p>
+      {:else if activity.kind === 'unsupported'}<EmptyState title="This khaosd cannot read the story’s history" description="It cannot read the history a page at a time. Update khaosd to see the story’s activity." />
       {:else if activityFeed}
         {#if onActivityQuery}<FilterField label="Search changes" placeholder="Search kinds, actors, decisions, documents…" value={activityQuery} oninput={onActivityQuery} />{/if}
         {#if events.length > 0}<EventLog {events} viewportHeight={240} label="Story changes" />{/if}
