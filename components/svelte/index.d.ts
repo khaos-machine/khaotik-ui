@@ -79,6 +79,7 @@ export { default as Settings } from "./Settings.svelte";
 export { default as StoryPlayer } from "./StoryPlayer.svelte";
 export { default as StoryOverview } from "./StoryOverview.svelte";
 export { default as StoryOverviewOutline } from "./StoryOverviewOutline.svelte";
+export { default as StoryOverviewScreen } from "./StoryOverviewScreen.svelte";
 export { default as StoryOverviewSide } from "./StoryOverviewSide.svelte";
 export { default as StoryOverviewStrip } from "./StoryOverviewStrip.svelte";
 export { default as ReadingReadiness } from "./ReadingReadiness.svelte";
