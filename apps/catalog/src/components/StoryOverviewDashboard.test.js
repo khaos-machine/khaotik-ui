@@ -67,6 +67,17 @@ describe('StoryOverview dashboard', () => {
     expect(onselect).toHaveBeenCalledWith({ kind: 'character', index: report.characters.findIndex((x) => x.name === 'JETTA') })
   })
 
+  // Operator, 2026-11-10: "Characters as a chart". Each bar's length is the character's dialogue
+  // weight against the top one's, so the lead fills the track; the percentage stays as text.
+  it('draws the top five as dialogue-share bars, the largest filling the track', () => {
+    render(StoryOverview, { props: base })
+    const weights = report.characters.map((c) => c.dialogueWeight.value).sort((a, b) => b - a).slice(0, 5)
+    const bars = panel('Characters').querySelectorAll('.ui-story-overview__bar')
+    expect([...bars].map((b) => Number(b.style.getPropertyValue('--share')))).toEqual(weights.map((w) => w / weights[0]))
+    bars.forEach((b) => expect(b).toHaveAttribute('aria-hidden', 'true'))
+    expect(within(panel('Characters')).getByRole('button', { name: 'DESMOND' })).toHaveTextContent(`${Math.round(weights[0] * 100)}%`)
+  })
+
   it('summarises production, journeys and relationships', () => {
     render(StoryOverview, { props: base })
     expect(within(panel('Production')).getByRole('group', { name: 'Cast size' })).toHaveTextContent(String(report.viability.castSize))

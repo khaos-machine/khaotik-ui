@@ -87,6 +87,7 @@
   })
   /** The characters' summary: the five with the most dialogue. */
   const topCharacters = $derived([...characters].sort((a, b) => (b.dialogueWeight ?? 0) - (a.dialogueWeight ?? 0)).slice(0, 5))
+  const topWeight = $derived(topCharacters[0]?.dialogueWeight ?? 0)
   /** The journeys' summary: how many of each arc, in the arcs' order, e.g. "2 complete arcs · 1 unfinished arc". */
   const arcTally = $derived(
     Object.keys(ARCS)
@@ -403,7 +404,13 @@
     {#each topCharacters as c (c.index)}
       <li>
         <button type="button" class="ui-story-overview__pick" aria-label={c.name} aria-pressed={selected?.kind === 'character' && selected.index === c.index} onclick={() => onselect?.({ kind: 'character', index: c.index })}>
-          <span>{c.name}</span>{#if c.dialogueWeight !== undefined}<span class="ui-story-overview__detail">{Math.round(c.dialogueWeight * 100)}%</span>{/if}
+          <span>{c.name}</span>
+          {#if c.dialogueWeight !== undefined}
+            <!-- Operator, 2026-11-10: "Characters as a chart". The bar is drawn against the lead's
+                 share; the percentage beside it carries the value for a screen reader. -->
+            <span class="ui-story-overview__bar" aria-hidden="true" style:--share={topWeight ? c.dialogueWeight / topWeight : 0}></span>
+            <span class="ui-story-overview__detail">{Math.round(c.dialogueWeight * 100)}%</span>
+          {/if}
         </button>
       </li>
     {/each}
@@ -625,10 +632,12 @@
     padding: 0;
     list-style: none;
   }
+  /* Name, bar, percentage: the bars share one track width so their lengths compare. */
   .ui-story-overview__pick {
-    display: flex;
+    display: grid;
+    grid-template-columns: calc(var(--spacing-2xl) * 2) 1fr auto;
+    align-items: center;
     width: 100%;
-    justify-content: space-between;
     gap: var(--spacing-xs);
     padding: var(--spacing-2xs) 0;
     border: 0;
@@ -639,8 +648,23 @@
     text-align: left;
     cursor: pointer;
   }
+  .ui-story-overview__pick > span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .ui-story-overview__pick .ui-story-overview__detail {
     margin: 0;
+    text-align: right;
+  }
+  .ui-story-overview__bar {
+    height: var(--spacing-xs);
+    width: calc(var(--share) * 100%);
+    border-radius: var(--radius-sm);
+    background: var(--text-secondary);
+  }
+  .ui-story-overview__pick[aria-pressed='true'] .ui-story-overview__bar {
+    background: var(--text-primary);
   }
   .ui-story-overview__pick[aria-pressed='true'] {
     font-weight: var(--label-md-weight);
