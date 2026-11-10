@@ -126,6 +126,18 @@ export function paneSplit(tree, panel) {
 }
 
 /**
+ * Each group's shown panel, in reading order: what a window too narrow to dock lays out one
+ * after another.
+ *
+ * @param {DockNode | null} tree
+ * @returns {string[]}
+ */
+export function shownPanels(tree) {
+  if (!tree) return []
+  return tree.kind === 'group' ? [tree.active] : tree.children.flatMap(shownPanels)
+}
+
+/**
  * The group with `id` showing `panel`. A panel the group does not hold changes nothing.
  *
  * @param {DockNode} tree

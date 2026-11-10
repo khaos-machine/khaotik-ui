@@ -36,6 +36,14 @@ export function toggleSplit(tree: DockNode, id: string): DockNode;
  */
 export function paneSplit(tree: DockNode | null, panel: string): DockSplit | null;
 /**
+ * Each group's shown panel, in reading order: what a window too narrow to dock lays out one
+ * after another.
+ *
+ * @param {DockNode | null} tree
+ * @returns {string[]}
+ */
+export function shownPanels(tree: DockNode | null): string[];
+/**
  * The group with `id` showing `panel`. A panel the group does not hold changes nothing.
  *
  * @param {DockNode} tree

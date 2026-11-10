@@ -43,7 +43,7 @@ declare const Shell: import("svelte").Component<{
     /**
      * The toolbar's commands.
      */
-    commands?: import("./lib/commands").Command[] | undefined;
+    commands?: import("./lib/commands.js").Command[] | undefined;
     /**
      * An enabled command was chosen.
      */
@@ -127,6 +127,10 @@ declare const Shell: import("svelte").Component<{
      * A destination was chosen in the source list.
      */
     onDestination?: (destination: string) => void;
+    /**
+     * On a phone, Back from the selection: the host clears it.
+     */
+    onDeselect?: () => void;
     /**
      * A subject builder covers the window: everything else is hidden and inert.
      */
@@ -282,7 +286,7 @@ type Props = {
     /**
      * The toolbar's commands.
      */
-    commands?: import("./lib/commands").Command[] | undefined;
+    commands?: import("./lib/commands.js").Command[] | undefined;
     /**
      * An enabled command was chosen.
      */
@@ -366,6 +370,10 @@ type Props = {
      * A destination was chosen in the source list.
      */
     onDestination?: (destination: string) => void;
+    /**
+     * On a phone, Back from the selection: the host clears it.
+     */
+    onDeselect?: () => void;
     /**
      * A subject builder covers the window: everything else is hidden and inert.
      */
