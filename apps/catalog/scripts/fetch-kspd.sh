@@ -303,9 +303,9 @@ log_info "place states: $(jq '.states | length' src/data/place-builder-states.js
 # ---- story-wide analyses (khaos.machine docs/designs/2026-10-24-stage3-analysis-display.md, item 4) ----
 #
 # Read from b4p.kspd, the package with all three: premise, structure (named turns) and coverage.
-# Only the fields the Overview reads are kept: structure without `profile` (its unnamed rows are
-# never drawn), coverage without `scenes` (it repeats the Stage 2 scene analysis) and without
-# `sourcePath` (a machine path).
+# Only the fields the Overview reads are kept: structure whole (its `profile` places each turn on
+# the story timeline), coverage without `scenes` (it repeats the Stage 2 scene analysis) and
+# without `sourcePath` (a machine path).
 so_dir="$(mktemp -d)"
 SO_ENC="$(jq -rn --arg p "$STATES_PROJECT" '$p | @uri')"
 for r in premise structure coverage/status coverage/report story-analysis/preflight; do
@@ -315,9 +315,9 @@ jq -n --arg p "$(basename "$STATES_PROJECT" .kspd | tr '[:lower:]' '[:upper:]')"
   --slurpfile premise "$so_dir/premise.json" --slurpfile structure "$so_dir/structure.json" \
   --slurpfile status "$so_dir/coverage-status.json" --slurpfile report "$so_dir/coverage-report.json" \
   --slurpfile preflight "$so_dir/story-analysis-preflight.json" '{
-  _provenance: ("khaosd GET /api/v1/premise, /structure (less profile), /coverage/status, /coverage/report (less scenes and sourcePath) and /story-analysis/preflight — \($p) — verbatim."),
+  _provenance: ("khaosd GET /api/v1/premise, /structure, /coverage/status, /coverage/report (less scenes and sourcePath) and /story-analysis/preflight — \($p) — verbatim."),
   premise: $premise[0],
-  structure: ($structure[0] | del(.profile)),
+  structure: $structure[0],
   "coverage/status": $status[0],
   "coverage/report": ($report[0] | del(.scenes, .sourcePath)),
   "story-analysis/preflight": $preflight[0]

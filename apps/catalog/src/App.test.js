@@ -590,4 +590,23 @@ describe('nav structure', () => {
     expect(document.querySelectorAll('.sidebar__content ul button')).toHaveLength(0)
     expect(screen.getByText(/nothing matches/i)).toBeInTheDocument()
   })
+
+  // Framing follows what is ON the canvas, not the rail. Search reaches every
+  // section, so StoryOverview opened from it while the rail still says BrandKit
+  // left the device controls disabled over a component that needs them.
+  it('frames a component opened by search while the rail is on BrandKit', async () => {
+    render(App)
+    await typeSearch('StoryOverview')
+    await fireEvent.click(screen.getByRole('button', { name: 'StoryOverview' }))
+    expect(screen.getByRole('button', { name: 'Mobile' })).toBeEnabled()
+  })
+
+  it('hides the sidebar from the rail and brings it back', async () => {
+    const { container } = render(App)
+    expect(container.querySelector('.sidebar')).toBeInTheDocument()
+    await fireEvent.click(screen.getByRole('button', { name: 'Hide sidebar' }))
+    expect(container.querySelector('.sidebar')).not.toBeInTheDocument()
+    await fireEvent.click(screen.getByRole('button', { name: 'Show sidebar' }))
+    expect(container.querySelector('.sidebar')).toBeInTheDocument()
+  })
 })

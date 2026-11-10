@@ -180,7 +180,7 @@ describe('the props schema, read out of the components', () => {
       // The story-wide analyses: khaosd's premise, structure and coverage reads, and a selection
       // by index into them. Never typed in.
       'StoryOverview.coverage', 'StoryOverview.journeys', 'StoryOverview.premise', 'StoryOverview.relationships', 'StoryOverview.structure',
-      'StoryOverviewOutline.coverage', 'StoryOverviewOutline.journeys', 'StoryOverviewOutline.premise', 'StoryOverviewOutline.relationships', 'StoryOverviewOutline.structure',
+      'StoryOverviewOutline.coverage', 'StoryOverviewOutline.journeys', 'StoryOverviewOutline.premise', 'StoryOverviewOutline.relationships', 'StoryOverviewOutline.structure', 'StoryOverviewScreen.coverage', 'StoryOverviewScreen.journeys', 'StoryOverviewScreen.premise', 'StoryOverviewScreen.relationships', 'StoryOverviewScreen.strip', 'StoryOverviewScreen.structure',
       'StoryOverviewSide.coverage', 'StoryOverviewSide.journeys', 'StoryOverviewSide.relationships', 'StoryOverviewSide.selected', 'StoryOverviewSide.structure',
       'StoryPlayback.portraits', 'StoryPlayer.waveforms',
       // Resolved image URLs keyed by the host's reference ids: no literal control.

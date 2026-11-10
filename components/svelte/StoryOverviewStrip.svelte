@@ -1,7 +1,8 @@
 <script>
-  // The Overview's strip (khaos-app#617). The next step comes first, as the screen's primary
-  // action, when there is one. Then the figures, each a way in: Coverage's verdict, the
-  // budget's spend and, only while something needs it, what needs review. Figures, no
+  // The Overview's strip (khaos-app#617). The figures lead, each a way in: Coverage's verdict,
+  // the budget's spend and, only while something needs it, what needs review. The next step, when
+  // there is one, is the primary action at the row's end (operator, 2026-11-10: "Figures lead,
+  // step beside"). Figures, no
   // sentences, no card chrome: one compact row split by hairlines, each figure a button named
   // for what it opens (D52).
   import Button from './Button.svelte'
@@ -47,9 +48,6 @@
 {/snippet}
 
 <div class="ui-strip__host"><div class="ui-strip" data-ui-id="overview.strip">
-  {#if next}
-    <span class="ui-strip__next"><Button variant="primary" icon={next.icon ?? ''} onclick={() => onnext?.()}>{next.label}</Button></span>
-  {/if}
   <div class="ui-strip__figures">
     {@render figure(
       `Coverage: ${verdict?.text ?? 'Not made'}`,
@@ -74,6 +72,9 @@
       )}
     {/if}
   </div>
+  {#if next}
+    <span class="ui-strip__next"><Button variant="primary" icon={next.icon ?? ''} onclick={() => onnext?.()}>{next.label}</Button></span>
+  {/if}
 </div></div>
 
 <style>
@@ -85,6 +86,9 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  .ui-strip__next {
+    margin-left: auto;
   }
   .ui-strip__next :global(.ui-button) {
     white-space: normal;
@@ -127,13 +131,16 @@
     color: var(--text-secondary);
     font-weight: 400;
   }
-  /* Phone width: the next step takes the full width, and the figures share one row under it,
-     each a 44pt target. */
+  /* Phone width: the figures share one row, each a 44pt target, and the next step takes the full
+     width under them. */
   @container (max-width: 599px) {
     .ui-strip {
       flex-direction: column;
       align-items: stretch;
       gap: var(--spacing-xs);
+    }
+    .ui-strip__next {
+      margin-left: 0;
     }
     .ui-strip__next :global(.ui-button) {
       width: 100%;

@@ -16,6 +16,13 @@ const base = {
   coverage: loaded(report),
 }
 const region = (name) => screen.getByRole('region', { name })
+// The Overview is a dashboard (operator, 2026-11-10: "Header, band, grid", "Expand in place"):
+// a panel's summary is its group; its full detail opens beneath the grid as the region of its name.
+const panel = (name) => screen.getByRole('group', { name })
+const open = async (name) => {
+  await fireEvent.click(screen.getByRole('button', { name: `Show all: ${name}` }))
+  return region(name)
+}
 
 describe('StoryOverview read sections', () => {
   it('heads the document with the story and when coverage was made', () => {
@@ -25,14 +32,17 @@ describe('StoryOverview read sections', () => {
     expect(screen.getByText('Coverage made 23 Oct 2026')).toBeVisible()
   })
 
-  it('shows the premise with its source, the model and confidence only in Advanced', () => {
+  it('shows the premise with its source, the model and confidence only in Advanced', async () => {
     const { unmount } = render(StoryOverview, { props: base })
     const premise = region('Premise')
+    // The synopsis is folded in the header; opened as a writer opens it.
+    await fireEvent.click(within(premise).getByRole('button', { name: 'Synopsis' }))
     expect(within(premise).getByText(captured.premise.premise.logline.value)).toBeVisible()
     expect(within(premise).getByText(captured.premise.premise.synopsis.value.replace(/\s+/g, ' ').trim())).toBeVisible()
     expect(within(premise).getAllByText('AI')).toHaveLength(2)
     unmount()
     render(StoryOverview, { props: { ...base, advanced: true } })
+    await fireEvent.click(within(region('Premise')).getByRole('button', { name: 'Synopsis' }))
     expect(within(region('Premise')).getAllByText('AI · medium')).toHaveLength(2)
   })
 
@@ -46,6 +56,8 @@ describe('StoryOverview read sections', () => {
   it('lists where the story turns in engine order and selects a turn', async () => {
     const onselect = vi.fn()
     render(StoryOverview, { props: { ...base, onselect } })
+    // Folded under the timeline (operator, 2026-11-10: "Fold it"); opened as a writer opens it.
+    await fireEvent.click(screen.getByRole('button', { name: /Where the story turns/ }))
     const turns = within(region('Where the story turns')).getAllByRole('button')
     const points = captured.structure.names.points
     expect(turns).toHaveLength(points.length)
@@ -70,50 +82,56 @@ describe('StoryOverview read sections', () => {
     expect(screen.getAllByRole('button', { name: /Show details/ }).length).toBeGreaterThan(0)
   })
 
-  it('draws coverage: verdict, measures, genre and tone, its own logline and synopsis', () => {
+  it('draws coverage: verdict, measures, genre and tone, its own logline and synopsis', async () => {
     render(StoryOverview, { props: base })
-    const coverage = region('Coverage')
-    expect(within(coverage).getByText('Consider')).toBeVisible()
-    expect(within(coverage).getByText('Consider').closest('[title]')).toHaveAttribute('title', report.rubric.verdict.evidence[0].citation)
-    expect(within(coverage).getByRole('group', { name: 'Runtime' })).toHaveTextContent('77 min')
-    expect(within(coverage).getByRole('group', { name: 'Pages' })).toHaveTextContent('52')
-    expect(within(coverage).getByRole('group', { name: 'Scenes' })).toHaveTextContent('57')
-    expect(within(coverage).getByText(report.genre.value)).toBeVisible()
+    // The verdict and the story's numbers head the dashboard; the rest is Coverage's detail.
+    expect(screen.getByText('Consider')).toBeVisible()
+    expect(screen.getByText('Consider').closest('[title]')).toHaveAttribute('title', report.rubric.verdict.evidence[0].citation)
+    expect(screen.getByRole('group', { name: 'Runtime' })).toHaveTextContent('77 min')
+    expect(screen.getByRole('group', { name: 'Pages' })).toHaveTextContent('52')
+    expect(screen.getByRole('group', { name: 'Scenes' })).toHaveTextContent('57')
+    expect(screen.getByText(report.genre.value)).toBeVisible()
+    const coverage = await open('Coverage')
     expect(within(coverage).getByText('Coverage logline')).toBeVisible()
     expect(within(coverage).getByText(report.logline.value)).toBeVisible()
     expect(within(coverage).getByText('Coverage synopsis')).toBeVisible()
   })
 
-  it('says part of the coverage was not finished', () => {
+  it('says part of the coverage was not finished', async () => {
     render(StoryOverview, { props: base })
+    await open('Coverage')
     expect(screen.getByText("Part of this coverage wasn't finished: Character journeys.")).toBeVisible()
   })
 
   // KSPD RFC 0128 §2: the six declared names and their labels, in the RFC's order.
-  it('labels every section KSPD declares', () => {
+  it('labels every section KSPD declares', async () => {
     const incompleteSections = ['scene-analysis', 'character-analysis', 'location-analysis', 'character-journey', 'relationships', 'story-structure']
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, incompleteSections }) } })
+    await open('Coverage')
     expect(screen.getByText("Part of this coverage wasn't finished: Scene analysis, Character analysis, Location analysis, Character journeys, Relationships, Story structure.")).toBeVisible()
   })
 
   // RFC 0128 §2: a name the client does not know is shown exactly as sent, and the report still shows.
   // `scenes` is what khaos-tools v0.136.0 writes; `constructor` proves only the map's own keys count.
-  it('shows a section it does not know exactly as sent, and still shows the coverage', () => {
+  it('shows a section it does not know exactly as sent, and still shows the coverage', async () => {
     const incompleteSections = ['character-journey', 'scenes', 'some-future-section', 'constructor']
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, incompleteSections }) } })
+    const coverage = await open('Coverage')
     expect(screen.getByText("Part of this coverage wasn't finished: Character journeys, scenes, some-future-section, constructor.")).toBeVisible()
-    expect(within(region('Coverage')).getByText(report.logline.value)).toBeVisible()
+    expect(within(coverage).getByText(report.logline.value)).toBeVisible()
   })
 
   it('says "No verdict" when the engine scored no dimension', () => {
     const verdict = { value: '', source: 'none', confidence: 'none' }
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, rubric: { ...report.rubric, verdict } }) } })
-    expect(within(region('Coverage')).getByText('No verdict')).toBeVisible()
+    // The verdict heads the dashboard.
+    expect(screen.getByText('No verdict')).toBeVisible()
   })
 
-  it('lists the assessment and the rubric, "No score" where the engine gave none', () => {
+  it('lists the assessment and the rubric, "No score" where the engine gave none', async () => {
     const dims = report.rubric.dimensions.map((d, i) => (i === 1 ? { ...d, score: { value: null, source: 'none', confidence: 'none' } } : d))
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, rubric: { ...report.rubric, dimensions: dims } }) } })
+    await open('Coverage')
     const strengths = within(region('Strengths')).getAllByRole('listitem')
     expect(strengths).toHaveLength(report.assessment.strengths.value.length)
     // khaosd sends the notes as prose, not a list (K, 2026-10-24: a bullet per character).
@@ -126,21 +144,23 @@ describe('StoryOverview read sections', () => {
   it('tables the characters in engine order and selects one', async () => {
     const onselect = vi.fn()
     render(StoryOverview, { props: { ...base, onselect } })
-    const rows = within(region('Characters')).getAllByRole('row').slice(1)
+    const rows = within(await open('Characters')).getAllByRole('row').slice(1)
     expect(rows).toHaveLength(report.characters.length)
     expect(rows[0]).toHaveTextContent(report.characters[0].name)
     await fireEvent.click(within(rows[2]).getByRole('button'))
     expect(onselect).toHaveBeenLastCalledWith({ kind: 'character', index: 2 })
   })
 
-  it('lists production facts and only the flags raised', () => {
+  it('lists production facts and only the flags raised', async () => {
     render(StoryOverview, { props: base })
-    const production = region('Production')
-    expect(within(production).getByRole('group', { name: 'Locations' })).toHaveTextContent('26')
+    // Summary: locations and flags. Detail: speaking roles and the main places' share.
+    const summary = panel('Production')
+    expect(within(summary).getByRole('group', { name: 'Locations' })).toHaveTextContent('26')
+    expect(within(summary).getByText('Action-heavy scenes')).toBeVisible()
+    expect(within(summary).getByText('Child roles')).toBeVisible()
+    expect(within(summary).queryByText('Crowd scenes')).toBeNull()
+    const production = await open('Production')
     expect(within(production).getByRole('group', { name: 'Speaking roles' })).toHaveTextContent('17')
-    expect(within(production).getByText('Action-heavy scenes')).toBeVisible()
-    expect(within(production).getByText('Child roles')).toBeVisible()
-    expect(within(production).queryByText('Crowd scenes')).toBeNull()
     expect(within(production).getByText('Scenes in the three main places: 46%')).toBeVisible()
   })
 
@@ -149,7 +169,7 @@ describe('StoryOverview read sections', () => {
     render(StoryOverview, { props: { ...base, coverage: loaded({ ...report, viability }) } })
     expect(screen.getByText("Khaos couldn't read this coverage's production notes.")).toBeVisible()
     expect(screen.queryByText('laserBattles')).toBeNull()
-    expect(within(region('Coverage')).getByText('Consider')).toBeVisible()
+    expect(screen.getByText('Consider')).toBeVisible()
   })
 
   it('draws each section\'s missing, loading and failed state on its own', () => {
@@ -167,7 +187,8 @@ describe('StoryOverview read sections', () => {
 
   it('shows the loading line per section and the shape\'s failed line', () => {
     render(StoryOverview, { props: { title: 'B4P', premise: { kind: 'loading' }, structure: { kind: 'failed', message: 'boom' }, coverage: { kind: 'loading' }, journeys: loaded([]), relationships: loaded([]) } })
-    expect(screen.getAllByText("Reading this story's analyses…")).toHaveLength(2)
+    // Premise, and coverage with the two panels drawn from it, Characters and Production.
+    expect(screen.getAllByText("Reading this story's analyses…")).toHaveLength(4)
     expect(screen.getByText("Khaos couldn't read this story's shape.")).toBeVisible()
   })
 })
@@ -202,7 +223,7 @@ describe('StoryOverview run actions', () => {
       premise: { kind: 'offer', paid: true, maxCalls: 3 },
     }, { onrun })
     expect(within(region('Shape')).getByText('Uses up to 3 text calls.')).toBeVisible()
-    expect(within(region('Coverage')).getByText('Uses up to 1 text call.')).toBeVisible()
+    expect(within(panel('Coverage')).getByText('Uses up to 1 text call.')).toBeVisible()
     expect(within(region('Premise')).getByText('Uses up to 3 text calls.')).toBeVisible()
     await fireEvent.click(screen.getByRole('button', { name: 'Name the turning points' }))
     await fireEvent.click(screen.getByRole('button', { name: 'Write coverage' }))
@@ -220,7 +241,7 @@ describe('StoryOverview run actions', () => {
   it('asks for a budget in place of the action when the story has none', async () => {
     const onsetbudget = vi.fn()
     draw({ coverage: { kind: 'needs-budget' } }, { onsetbudget })
-    const coverage = region('Coverage')
+    const coverage = panel('Coverage')
     expect(within(coverage).getByText('No budget set.')).toBeVisible()
     expect(within(coverage).queryByRole('button', { name: 'Write coverage' })).toBeNull()
     await fireEvent.click(within(coverage).getByRole('button', { name: 'Set budget…' }))

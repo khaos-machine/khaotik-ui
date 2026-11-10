@@ -186,6 +186,7 @@ import PlaceAreas from '@khaos-machine/khaotik-ui/components/svelte/PlaceAreas.s
 import PlaceDetail from '@khaos-machine/khaotik-ui/components/svelte/PlaceDetail.svelte'
 import StoryOverview from '@khaos-machine/khaotik-ui/components/svelte/StoryOverview.svelte'
 import StoryOverviewOutline from '@khaos-machine/khaotik-ui/components/svelte/StoryOverviewOutline.svelte'
+import StoryOverviewScreen from '@khaos-machine/khaotik-ui/components/svelte/StoryOverviewScreen.svelte'
 import StoryOverviewSide from '@khaos-machine/khaotik-ui/components/svelte/StoryOverviewSide.svelte'
 import StoryOverviewStrip from '@khaos-machine/khaotik-ui/components/svelte/StoryOverviewStrip.svelte'
 import ReadingReadiness from '@khaos-machine/khaotik-ui/components/svelte/ReadingReadiness.svelte'
@@ -1424,6 +1425,19 @@ const placePanes = [
       { label: 'Coverage running (illustrative)', props: { ...overviewReads, runs: { coverage: { kind: 'running' } }, onjump: () => {}, showRunning: true } },
       { label: 'Mixed states', props: { premise: { kind: 'missing' }, structure: { kind: 'loaded', data: overviewUnnamed }, coverage: { kind: 'failed', message: 'x' }, onjump: () => {} } },
       { label: 'Reading', props: {} },
+    ],
+  },
+  {
+    // The Overview as one screen (operator, 2026-11-10: "New kit component"): the strip, the
+    // outline, the document and the side pane, as khaos-app draws them. Select in the document and
+    // the side pane follows; choose in the outline and the document jumps. The verdict and reads
+    // are B4P's capture; the strip's spend, review count and next step are illustrative.
+    id: 'story-overview-screen', name: 'StoryOverviewScreen', kind: 'screen', section: 'screens', group: 'drafts', component: StoryOverviewScreen,
+    examples: [
+      { label: 'B4P (captured), strip spend and next step (illustrative)', props: { title: 'B4P', ...overviewReads, strip: overviewStrip, onRevealScene: () => {}, onProjectSettings: () => {} } },
+      { label: 'B4P, a character selected (captured)', props: { title: 'B4P', ...overviewReads, strip: overviewStrip, selected: { kind: 'character', index: storyOverview['coverage/report'].characters.findIndex((c) => c.name === 'DESMOND') } } },
+      { label: 'Reading', props: { title: 'B4P', strip: overviewStrip } },
+      { label: 'Empty', props: {} },
     ],
   },
   {
@@ -3871,9 +3885,11 @@ export const fixtures = [
       { ...shellDestination('characters', 'Characters'), label: 'Story update failed (illustrative message)', props: { ...shellWindow('characters', 'Characters'), snapshotError: 'khaosd is not running.', onRetrySnapshot: () => {} } },
       { ...shellDestination('characters', 'Characters'), label: 'Story update failed, with Project Settings (illustrative message)', props: { ...shellWindow('characters', 'Characters'), snapshotError: 'khaosd is not running.', onRetrySnapshot: () => {}, onProjectSettings: () => {} } },
       {
-        label: 'Overview (captured verdict, illustrative spend)',
+        // The full Overview screen in the window (operator, 2026-11-10: "let's assemble the full
+        // overview screen with sidebar, header and such for review in catalog").
+        label: 'Overview (captured reads and verdict, illustrative spend)',
         props: { ...shellWindow('characters', 'Characters'), modes: [{ value: 'overview', label: 'Overview' }, ...shellWindow('characters', 'Characters').modes], presentation: 'overview', budget: overviewStrip.budget, onProjectSettings: () => {} },
-        snippets: { overview: [{ component: StoryOverviewStrip, props: overviewStrip }] },
+        snippets: { overview: [{ component: StoryOverviewScreen, props: { title: 'B4P', ...overviewReads, strip: overviewStrip, onRevealScene: () => {} } }] },
       },
       { label: 'Empty', props: { title: 'Untitled', layout: dockStory, panels: dockPanels, sections: [], workspace: 'story', destination: 'characters' } },
     ],

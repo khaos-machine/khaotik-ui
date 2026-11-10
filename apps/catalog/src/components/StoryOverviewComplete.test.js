@@ -29,6 +29,8 @@ const pairs = [
   { pairKey: 'skipped', characters: [characters[1], characters[0]], analysis: { skip } },
 ]
 const region = (name) => within(screen.getByRole('region', { name }))
+// Opens a dashboard panel's full detail beneath the grid (operator, 2026-11-10: "Expand in place").
+const showAll = (name) => fireEvent.click(screen.getByRole('button', { name: `Show all: ${name}` }))
 const pillRow = (name) => screen.getByRole('button', { name }).closest('.ui-story-outline__row')
 
 async function revealEvery(scope, callback) {
@@ -59,8 +61,9 @@ describe('complete Overview results', () => {
     await revealEvery(region('Evidence scenes'), onRevealScene)
   })
 
-  it('gap 4a: renders coverage acts including zero values and optional omissions', () => {
+  it('gap 4a: renders coverage acts including zero values and optional omissions', async () => {
     render(StoryOverview, { coverage: loaded({ ...report, structure: { ...report.structure, acts: [{ name: 'Opening', percentage: 0, sceneCount: 0, durationMs: 0 }, { name: 'Ending' }] } }), showCoverageActs: true })
+    await showAll('Coverage')
     const acts = region('Acts')
     expect(acts.getByText('Opening')).toBeVisible()
     expect(acts.getByText('Ending')).toBeVisible()
@@ -70,13 +73,14 @@ describe('complete Overview results', () => {
     expect(acts.getAllByRole('group')).toHaveLength(3)
   })
 
-  it('gap 4b: renders every coverage scene entry and its supplied fields', () => {
+  it('gap 4b: renders every coverage scene entry and its supplied fields', async () => {
     const sourced = (value) => ({ value, source: 'derived', confidence: 'high' })
     const scenes = [
       { index: 0, slugline: 'INT. WORKSHOP - DAY', summary: sourced('She asks for help.'), narrativeRole: sourced('Setup'), characters: ['MAYA', 'THEO'], durationMs: sourced(90000) },
       { slugline: 'EXT. ROAD - NIGHT', summary: sourced('They leave together.'), narrativeRole: sourced('Resolution'), durationMs: sourced(0) },
     ]
     render(StoryOverview, { coverage: loaded({ ...report, scenes }), showSceneEntries: true })
+    await showAll('Coverage')
     const entries = region('Scene entries')
     for (const text of ['INT. WORKSHOP - DAY', 'She asks for help.', 'Setup', 'MAYA, THEO', 'EXT. ROAD - NIGHT', 'They leave together.', 'Resolution']) expect(entries.getByText(text)).toBeVisible()
     expect(entries.getByRole('group', { name: 'Scene index' })).toHaveAccessibleDescription('0')
@@ -95,6 +99,7 @@ describe('complete Overview results', () => {
   it('gap 6: selects a skipped pair with its original list index and inspects its reason', async () => {
     const onselect = vi.fn()
     const view = render(StoryOverview, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 1 }, onselect, showSkippedPairs: true })
+    await showAll('Relationships')
     const row = region('Relationships').getByRole('button', { name: 'THEO and MAYA' })
     expect(row).toHaveAttribute('aria-current', 'true')
     await fireEvent.click(row)

@@ -17,11 +17,15 @@ describe('StoryOverviewStrip', () => {
     expect([oncoverage, onbudget, onreview, onnext].map((f) => f.mock.calls.length)).toEqual([1, 1, 1, 1])
   })
 
-  it('puts the next step first, as the primary action', () => {
-    render(StoryOverviewStrip, { props: { review: 2, next: { label: 'Find relationships' } } })
-    const [first] = screen.getAllByRole('button')
-    expect(first.textContent.trim()).toBe('Find relationships')
-    expect(first.dataset.variant).toBe('primary')
+  // Operator, 2026-11-10: "Figures lead, step beside" — the figures first, the next step a
+  // normal-size primary action at the row's end.
+  it('leads with the figures and puts the next step last, as the primary action', () => {
+    render(StoryOverviewStrip, { props: { coverage: { verdict: 'consider' }, review: 2, next: { label: 'Find relationships' } } })
+    const buttons = screen.getAllByRole('button')
+    expect(buttons[0]).toHaveAccessibleName('Coverage: Consider')
+    const last = buttons.at(-1)
+    expect(last.textContent.trim()).toBe('Find relationships')
+    expect(last.dataset.variant).toBe('primary')
   })
 
   it('offers Set budget… when the story has none', () => {

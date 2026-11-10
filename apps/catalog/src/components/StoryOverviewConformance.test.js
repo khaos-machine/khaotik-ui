@@ -14,15 +14,21 @@ import cloudEmpty from './fixtures/khaos-cloud-coverage-empty.json'
 const loaded = (data) => ({ kind: 'loaded', data })
 const report = captured['coverage/report']
 const region = (name) => within(screen.getByRole('region', { name }))
+// Opens a dashboard panel's full detail beneath the grid (operator, 2026-11-10: "Expand in place").
+const showAll = (name) => fireEvent.click(screen.getByRole('button', { name: `Show all: ${name}` }))
+// Characters is a panel of the dashboard; still drawn when another part of coverage fails.
+const charactersPanel = () => screen.getByRole('group', { name: 'Characters' })
 const none = { value: null, source: 'none', confidence: 'none' }
 const withAssessment = (over) => ({ ...report, assessment: { ...report.assessment, ...over } })
 const withMeasured = (measured) => ({ ...report, structure: { ...report.structure, measured } })
 
 describe('Overview on conforming coverage', () => {
-  it('renders Khaos Cloud engine golden "empty" without throwing', () => {
+  it('renders Khaos Cloud engine golden "empty" without throwing', async () => {
     render(StoryOverview, { coverage: loaded(cloudEmpty.report), showEmptyResults: true, showMeasuredStructure: true })
+    // The verdict heads the dashboard; the rest is Coverage's detail.
+    expect(screen.getByText('No verdict')).toBeVisible()
+    await showAll('Coverage')
     const coverage = region('Coverage')
-    expect(coverage.getByText('No verdict')).toBeVisible()
     expect(coverage.queryByRole('region', { name: 'Strengths' })).toBeNull()
     expect(coverage.queryByRole('region', { name: 'Concerns' })).toBeNull()
     expect(region('Rubric').getByText('No dimension was scored.')).toBeVisible()
@@ -36,45 +42,51 @@ describe('Overview on conforming coverage', () => {
     expect(screen.getByText(/Select a turning point/)).toBeVisible()
   })
 
-  it('null strengths render as nothing and keep the rest of the report', () => {
+  it('null strengths render as nothing and keep the rest of the report', async () => {
     render(StoryOverview, { coverage: loaded(withAssessment({ strengths: none })) })
+    await showAll('Coverage')
     expect(screen.queryByRole('region', { name: 'Strengths' })).toBeNull()
     expect(screen.getByRole('region', { name: 'Concerns' })).toBeVisible()
   })
 
-  it('null concerns render as nothing and keep the rest of the report', () => {
+  it('null concerns render as nothing and keep the rest of the report', async () => {
     render(StoryOverview, { coverage: loaded(withAssessment({ concerns: none })) })
+    await showAll('Coverage')
     expect(screen.queryByRole('region', { name: 'Concerns' })).toBeNull()
     expect(screen.getByRole('region', { name: 'Strengths' })).toBeVisible()
   })
 
-  it('absent rubric dimensions say none were scored', () => {
+  it('absent rubric dimensions say none were scored', async () => {
     const { dimensions: _dimensions, ...rubric } = report.rubric
     render(StoryOverview, { coverage: loaded({ ...report, rubric }), showEmptyResults: true })
+    await showAll('Coverage')
     expect(region('Rubric').getByText('No dimension was scored.')).toBeVisible()
-    expect(screen.getByRole('region', { name: 'Characters' })).toBeVisible()
+    expect(charactersPanel()).toBeVisible()
   })
 
-  it('draws structure.measured with the document it read', () => {
+  it('draws structure.measured with the document it read', async () => {
     render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'inferred', reason: 'Three-Act Structure fits.', document: 'analysis/structure/structure.json' })), showMeasuredStructure: true })
+    await showAll('Coverage')
     const measured = region('Structure measured')
     expect(measured.getByText('Fits one structure')).toBeVisible()
     expect(measured.getByText('Three-Act Structure fits.')).toBeVisible()
     expect(measured.getByRole('group', { name: 'Read from' })).toHaveAccessibleDescription('analysis/structure/structure.json')
   })
 
-  it('draws structure.measured without a document', () => {
+  it('draws structure.measured without a document', async () => {
     render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'not-measured', reason: 'No story structure has been measured for this package.' })), showMeasuredStructure: true })
+    await showAll('Coverage')
     const measured = region('Structure measured')
     expect(measured.getByText('Not measured')).toBeVisible()
     expect(measured.getByText('No story structure has been measured for this package.')).toBeVisible()
     expect(measured.queryByRole('group', { name: 'Read from' })).toBeNull()
   })
 
-  it('an unknown measured outcome fails only its own block', () => {
+  it('an unknown measured outcome fails only its own block', async () => {
     render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'toString', reason: 'x' })), showMeasuredStructure: true })
+    await showAll('Coverage')
     expect(region('Structure measured').getByText("Khaos couldn't read how this story's structure was measured.")).toBeVisible()
-    expect(screen.getByRole('region', { name: 'Characters' })).toBeVisible()
+    expect(charactersPanel()).toBeVisible()
   })
 
   it('unscored lenses and named turns without points render', async () => {

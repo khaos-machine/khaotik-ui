@@ -1,5 +1,5 @@
 {
-  "_provenance": "khaosd GET /api/v1/premise, /structure (less profile), /coverage/status, /coverage/report (less scenes and sourcePath) and /story-analysis/preflight — B4P — verbatim.",
+  "_provenance": "khaosd GET /api/v1/premise, /structure, /coverage/status, /coverage/report (less scenes and sourcePath) and /story-analysis/preflight — B4P — verbatim.",
   "premise": {
     "premise": {
       "logline": {
@@ -490,6 +490,668 @@
           }
         }
       }
+    },
+    "profile": {
+      "sources": [
+        {
+          "thread": "character",
+          "analysed": 27,
+          "total": 27
+        },
+        {
+          "thread": "scene-role",
+          "analysed": 57,
+          "total": 57
+        }
+      ],
+      "weights": {
+        "uncalibrated": true,
+        "characterRole": {
+          "main": 1,
+          "minor": 0.3,
+          "supporting": 0.6
+        },
+        "sceneRole": {
+          "complication": 0.2,
+          "resolution": 0.2,
+          "revelation": 0.2,
+          "reversal": 0.2
+        }
+      },
+      "scenes": [
+        {
+          "sceneId": "scene_01M5MJB4BP6MAW126BF1RDZ6PX",
+          "index": 1,
+          "position": 0.00470551734836341,
+          "strength": 0.8999999999999999,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPHQCEV0DPRV1YA90K",
+              "weight": 0.3,
+              "kind": "reversal"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPJKEQ6MM5R90R15NM",
+              "weight": 0.6,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP226JPB65702JZ0N2",
+          "index": 2,
+          "position": 0.011427684988882568,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP226JPB65702JZ0N2",
+              "weight": 0.2,
+              "kind": "complication"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPE03PC70EQPBFP49D",
+          "index": 3,
+          "position": 0.01928745023010497,
+          "strength": 0.5,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPE03PC70EQPBFP49D",
+              "weight": 0.2,
+              "kind": "complication"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPH2JJKQX8PZ6B1TTK",
+              "weight": 0.3,
+              "kind": "reversal"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPA97JK3E91BBF8SVV",
+          "index": 5,
+          "position": 0.036247996276953305,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPA97JK3E91BBF8SVV",
+              "weight": 0.2,
+              "kind": "complication"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPP6FZV3CSFRK0JSCX",
+          "index": 6,
+          "position": 0.06949687160659807,
+          "strength": 0.3,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP24HT24BC5WGY6CC8",
+              "weight": 0.3,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPY8ENJ024E2NXAJVK",
+          "index": 7,
+          "position": 0.07528827757381457,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPY8ENJ024E2NXAJVK",
+              "weight": 0.2,
+              "kind": "resolution"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPG644DWN1QMQCCDH3",
+          "index": 9,
+          "position": 0.11107089301411655,
+          "strength": 1.5,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPG644DWN1QMQCCDH3",
+              "weight": 0.2,
+              "kind": "reversal"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP213E38VE49DE53VG",
+              "weight": 0.3,
+              "kind": "reversal"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPS07S51DY5TX630JA",
+              "weight": 1,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP89CQ2RW5C500K95X",
+          "index": 10,
+          "position": 0.14799110605512178,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP89CQ2RW5C500K95X",
+              "weight": 0.2,
+              "kind": "reversal"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPMH6BG9S4W5BKDAVX",
+          "index": 11,
+          "position": 0.15280004136718547,
+          "strength": 0.6,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPJKEQ6MM5R90R15NM",
+              "weight": 0.6,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPWEC1JRY49NNEFE8Z",
+          "index": 15,
+          "position": 0.19220228553699778,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPWEC1JRY49NNEFE8Z",
+              "weight": 0.2,
+              "kind": "revelation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPSSDQ0W6QE18MWZ2D",
+          "index": 18,
+          "position": 0.2191943740627747,
+          "strength": 0.5,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPSSDQ0W6QE18MWZ2D",
+              "weight": 0.2,
+              "kind": "complication"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPKM2W7N1Z0MVTBZKQ",
+              "weight": 0.3,
+              "kind": "reversal"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPE6GAZHH16BR3E82Z",
+          "index": 20,
+          "position": 0.24566937277005016,
+          "strength": 1.8,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPE6GAZHH16BR3E82Z",
+              "weight": 0.2,
+              "kind": "revelation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPJKEQ6MM5R90R15NM",
+              "weight": 0.6,
+              "kind": "realisation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPS07S51DY5TX630JA",
+              "weight": 1,
+              "kind": "realisation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP7RXFDRCDSSDJQ20H",
+          "index": 24,
+          "position": 0.3288691245669373,
+          "strength": 0.8,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP7RXFDRCDSSDJQ20H",
+              "weight": 0.2,
+              "kind": "reversal"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP8SHSBR4A4FJ5BQJ0",
+              "weight": 0.3,
+              "kind": "decision"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPKGFXJB272HWPWPHT",
+              "weight": 0.3,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP6ZZTMBF5G4P9ZJ8D",
+          "index": 25,
+          "position": 0.36149749211438026,
+          "strength": 0.8,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP6ZZTMBF5G4P9ZJ8D",
+              "weight": 0.2,
+              "kind": "complication"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPRXJ5EC4VGYCJZXZ9",
+              "weight": 0.6,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP30913DAXDB5XGQR3",
+          "index": 26,
+          "position": 0.39226433631521795,
+          "strength": 1.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP30913DAXDB5XGQR3",
+              "weight": 0.2,
+              "kind": "revelation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGX566CWF5PN9W4K3",
+              "weight": 1,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPGS768N4DEAFHQK59",
+          "index": 29,
+          "position": 0.4968198976162159,
+          "strength": 0.3,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPG4A91Z0VA31YZTYB",
+              "weight": 0.3,
+              "kind": "reversal"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP7MF2W8H661EVP1DG",
+          "index": 30,
+          "position": 0.5091783442784011,
+          "strength": 0.8,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP7MF2W8H661EVP1DG",
+              "weight": 0.2,
+              "kind": "revelation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP8NXM2482P1MHX4FQ",
+              "weight": 0.6,
+              "kind": "gain"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP4HDPHPPJN1595PS2",
+          "index": 34,
+          "position": 0.588758467345778,
+          "strength": 1.8,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP4HDPHPPJN1595PS2",
+              "weight": 0.2,
+              "kind": "revelation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGFVQWR993THE9VDV",
+              "weight": 0.6,
+              "kind": "realisation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGX566CWF5PN9W4K3",
+              "weight": 1,
+              "kind": "realisation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPKAD71RCZHMMHZS0V",
+          "index": 35,
+          "position": 0.6315735043177,
+          "strength": 0.6,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPYFZ9HQ214BN6D035",
+              "weight": 0.6,
+              "kind": "gain"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPSQ25E3Q3QKPQSPT9",
+          "index": 36,
+          "position": 0.6416050467966286,
+          "strength": 0.6,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP8NXM2482P1MHX4FQ",
+              "weight": 0.6,
+              "kind": "gain"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPM1YGQJNK2JZ72QQ5",
+          "index": 37,
+          "position": 0.6462588551631419,
+          "strength": 0.6,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPYFZ9HQ214BN6D035",
+              "weight": 0.6,
+              "kind": "realisation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPJWQACS02XXT1FCKD",
+          "index": 39,
+          "position": 0.6634262371373908,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPJWQACS02XXT1FCKD",
+              "weight": 0.2,
+              "kind": "revelation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPFY1W1R50ARQP4Y1E",
+          "index": 40,
+          "position": 0.6720616371063654,
+          "strength": 1.2,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGFVQWR993THE9VDV",
+              "weight": 0.6,
+              "kind": "realisation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPRXJ5EC4VGYCJZXZ9",
+              "weight": 0.6,
+              "kind": "decision"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPHY3G5H2GJHVCD06Z",
+          "index": 41,
+          "position": 0.7063964010548632,
+          "strength": 1.6,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPS07S51DY5TX630JA",
+              "weight": 1,
+              "kind": "gain"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPYFZ9HQ214BN6D035",
+              "weight": 0.6,
+              "kind": "gain"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPM95AFS8SR1XWE25C",
+          "index": 44,
+          "position": 0.7639484978540773,
+          "strength": 0.6,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP8NXM2482P1MHX4FQ",
+              "weight": 0.6,
+              "kind": "gain"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPWK78147NGFDBY1FK",
+          "index": 45,
+          "position": 0.7815812606649775,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPWK78147NGFDBY1FK",
+              "weight": 0.2,
+              "kind": "revelation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPBJP4TDSZKMW1R5J7",
+          "index": 46,
+          "position": 0.8014375096954341,
+          "strength": 0.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPBJP4TDSZKMW1R5J7",
+              "weight": 0.2,
+              "kind": "complication"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPZNNBGFQT3E2C3898",
+          "index": 48,
+          "position": 0.816174569522726,
+          "strength": 1.2,
+          "contributors": [
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP8NXM2482P1MHX4FQ",
+              "weight": 0.6,
+              "kind": "reversal"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPJKEQ6MM5R90R15NM",
+              "weight": 0.6,
+              "kind": "reversal"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP9X7PPBMEAQM8K42K",
+          "index": 50,
+          "position": 0.848079011324267,
+          "strength": 1.1,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP9X7PPBMEAQM8K42K",
+              "weight": 0.2,
+              "kind": "revelation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGFVQWR993THE9VDV",
+              "weight": 0.6,
+              "kind": "gain"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGFY7MD20DGM8W6SY",
+              "weight": 0.3,
+              "kind": "gain"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPQJEVGGC16N46PWW5",
+          "index": 51,
+          "position": 0.861730182532706,
+          "strength": 1.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPQJEVGGC16N46PWW5",
+              "weight": 0.2,
+              "kind": "revelation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPS07S51DY5TX630JA",
+              "weight": 1,
+              "kind": "realisation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPQAAG31HT2H90DX2C",
+          "index": 52,
+          "position": 0.8874812554940793,
+          "strength": 1.7999999999999998,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPQAAG31HT2H90DX2C",
+              "weight": 0.2,
+              "kind": "reversal"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPS07S51DY5TX630JA",
+              "weight": 1,
+              "kind": "reversal"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPYFZ9HQ214BN6D035",
+              "weight": 0.6,
+              "kind": "reversal"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPG8MPRF1JCDGPRPB3",
+          "index": 54,
+          "position": 0.9685609390351104,
+          "strength": 1.2,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPG8MPRF1JCDGPRPB3",
+              "weight": 0.2,
+              "kind": "revelation"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGX566CWF5PN9W4K3",
+              "weight": 1,
+              "kind": "realisation"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BP67SM5CYWJGZJGTDK",
+          "index": 55,
+          "position": 0.9888825689022183,
+          "strength": 1.8,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BP67SM5CYWJGZJGTDK",
+              "weight": 0.2,
+              "kind": "resolution"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGFVQWR993THE9VDV",
+              "weight": 0.6,
+              "kind": "decision"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BPGX566CWF5PN9W4K3",
+              "weight": 1,
+              "kind": "reversal"
+            }
+          ]
+        },
+        {
+          "sceneId": "scene_01M5MJB4BPYF8G4E1S4KQEMJ0T",
+          "index": 56,
+          "position": 0.9949842287605357,
+          "strength": 0.8,
+          "contributors": [
+            {
+              "thread": "scene-role",
+              "ref": "scene_01M5MJB4BPYF8G4E1S4KQEMJ0T",
+              "weight": 0.2,
+              "kind": "resolution"
+            },
+            {
+              "thread": "character",
+              "ref": "character_01M5MJB4BP8NXM2482P1MHX4FQ",
+              "weight": 0.6,
+              "kind": "loss"
+            }
+          ]
+        }
+      ]
     },
     "fit": {
       "outcome": "ambiguous",

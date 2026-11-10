@@ -11,6 +11,13 @@ import StoryOverviewSide from '@khaos-machine/khaotik-ui/components/svelte/Story
 
 const loaded = (data) => ({ kind: 'loaded', data })
 const region = (name) => screen.getByRole('region', { name })
+// A dashboard panel's summary, and its full detail opened beneath the grid (operator, 2026-11-10:
+// "Expand in place").
+const panel = (name) => screen.getByRole('group', { name })
+const open = async (name) => {
+  await fireEvent.click(screen.getByRole('button', { name: `Show all: ${name}` }))
+  return region(name)
+}
 const MAYA = { id: 'character_a', name: 'MAYA' }
 const THEO = { id: 'character_b', name: 'THEO' }
 
@@ -50,25 +57,26 @@ describe('StoryOverview journeys', () => {
   it('lists each journey in engine order with its arc and where it ends, and selects one', async () => {
     const onselect = vi.fn()
     render(StoryOverview, { props: { ...base, onselect } })
-    const rows = within(region('Journeys')).getAllByRole('button')
+    const detail = await open('Journeys')
+    const rows = within(detail).getAllByRole('button')
     expect(rows.map((r) => r.getAttribute('aria-label'))).toEqual(['THEO', 'MAYA', 'A character no longer in this story'])
     expect(rows[0]).toHaveTextContent('Ends: He is still waiting.')
-    expect(within(region('Journeys')).getByText('Unfinished arc')).toBeVisible()
-    expect(within(region('Journeys')).getByText('Complete arc')).toBeVisible()
-    expect(within(region('Journeys')).getByText('Unclear arc')).toBeVisible()
+    expect(within(detail).getByText('Unfinished arc')).toBeVisible()
+    expect(within(detail).getByText('Complete arc')).toBeVisible()
+    expect(within(detail).getByText('Unclear arc')).toBeVisible()
     await fireEvent.click(rows[1])
     expect(onselect).toHaveBeenLastCalledWith({ kind: 'journey', index: 1 })
   })
 
   it('says when there are none, when the read failed, and fails on an arc it has no label for', () => {
     const { unmount } = render(StoryOverview, { props: { journeys: loaded([]), relationships: loaded([]) } })
-    expect(within(region('Journeys')).getByText('No character journeys yet.')).toBeVisible()
-    expect(within(region('Relationships')).getByText('No relationships have been read yet.')).toBeVisible()
+    expect(within(panel('Journeys')).getByText('No character journeys yet.')).toBeVisible()
+    expect(within(panel('Relationships')).getByText('No relationships have been read yet.')).toBeVisible()
     unmount()
     const odd = [{ character: MAYA, journey: journey({ arc_quality: 'heroic' }) }]
     render(StoryOverview, { props: { journeys: loaded(odd), relationships: { kind: 'failed', message: 'JOURNEYS_UNREADABLE' } } })
-    expect(within(region('Journeys')).getByText("Khaos couldn't read this story's journeys.")).toBeVisible()
-    expect(within(region('Relationships')).getByText("Khaos couldn't read this story's relationships.")).toBeVisible()
+    expect(within(panel('Journeys')).getByText("Khaos couldn't read this story's journeys.")).toBeVisible()
+    expect(within(panel('Relationships')).getByText("Khaos couldn't read this story's relationships.")).toBeVisible()
   })
 })
 
@@ -76,10 +84,11 @@ describe('StoryOverview relationships', () => {
   it('lists each read pair by its names with its type and trajectory; skipped pairs are selectable too', async () => {
     const onselect = vi.fn()
     render(StoryOverview, { props: { ...base, onselect, showSkippedPairs: true } })
-    const rows = within(region('Relationships')).getAllByRole('button')
+    const detail = await open('Relationships')
+    const rows = within(detail).getAllByRole('button')
     expect(rows.map((r) => r.getAttribute('aria-label'))).toEqual(['MAYA and THEO', 'MAYA and a character no longer in this story'])
     expect(rows[0]).toHaveTextContent('From resentment to trust.')
-    expect(within(region('Relationships')).getByText('siblings')).toBeVisible()
+    expect(within(detail).getByText('siblings')).toBeVisible()
     await fireEvent.click(rows[0])
     expect(onselect).toHaveBeenLastCalledWith({ kind: 'relationship', index: 0 })
   })
@@ -87,10 +96,12 @@ describe('StoryOverview relationships', () => {
   it('says so when every pair was skipped, and shows selectable skips and their reasons without Advanced', async () => {
     const skipped = loaded([relationships[1]])
     const { unmount } = render(StoryOverview, { props: { ...base, relationships: skipped, showSkippedPairs: true } })
-    expect(within(region('Relationships')).getByText('No pair of characters shares enough scenes to read yet.')).toBeVisible()
+    expect(within(panel('Relationships')).getByText('No pair of characters shares enough scenes to read yet.')).toBeVisible()
+    await open('Relationships')
     expect(screen.getByText(/below the minimum/)).toBeVisible()
     unmount()
     render(StoryOverview, { props: { ...base, relationships: skipped, advanced: true, showSkippedPairs: true } })
+    await open('Relationships')
     expect(screen.getByRole('button', { name: 'MAYA and a character no longer in this story' })).toBeVisible()
     expect(screen.getByText(/below the minimum/)).toBeVisible()
   })

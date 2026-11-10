@@ -1,9 +1,8 @@
 <script>
-  // The Overview's table pane: one row per section of StoryOverview, in document order, each with
-  // its state. Choosing a row asks the host to show that section. The states restate each
-  // section's own read; nothing is counted.
-  import SelectableRow from './SelectableRow.svelte'
-  import StatusPill from './StatusPill.svelte'
+  // The Overview's table pane: each section of StoryOverview with its state, grouped by the
+  // question it answers (operator, 2026-11-10: "Outline less listy", as "Grouped by question") —
+  // Story, Verdict, People — each a dot for its state rather than a pill. Choosing one asks the host
+  // to show that section. The states restate each section's own read; nothing is counted.
   import { coverageReads, journeysRead, namedPoints, productionFlags, relationshipsRead, shapeReads } from './lib/story-overview.js'
 
   /** @typedef {'premise' | 'shape' | 'turns' | 'coverage' | 'characters' | 'production' | 'journeys' | 'relationships'} OverviewSection */
@@ -27,6 +26,8 @@
 
   /** @type {Props} */
   let { premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, runs = {}, current = null, onjump = undefined, turnsTitle = 'Where the story turns', showIncompleteCoverage = false, showRunning = false, showPassStates = false, showEmptyResults = false } = $props()
+
+  const uid = $props.id()
 
   /** @type {Record<string, { text: string, tone: 'success' | 'neutral' | 'danger' | 'info' | 'warning' }>} */
   const PILLS = { running: { text: 'Running', tone: 'info' }, incomplete: { text: 'Incomplete', tone: 'warning' }, ready: { text: 'Ready', tone: 'success' }, missing: { text: 'Not ready', tone: 'neutral' }, failed: { text: "Couldn't read", tone: 'danger' }, unfinished: { text: "Didn't finish", tone: 'danger' } }
@@ -62,14 +63,84 @@
     { id: 'journeys', title: 'Journeys', state: listState(journeys, journeysRead, runs.journeys) },
     { id: 'relationships', title: 'Relationships', state: listState(relationships, relationshipsRead, runs.relationships) },
   ].map((row) => ({ ...row, state: showRunning && runs[({ shape: 'structure', turns: 'structure', characters: 'coverage', production: 'coverage' })[row.id] ?? row.id]?.kind === 'running' ? 'running' : row.state })))
+  /** The sections by the question they answer. */
+  const GROUPS = [{ name: 'Story', ids: ['premise', 'shape', 'turns'] }, { name: 'Verdict', ids: ['coverage', 'production'] }, { name: 'People', ids: ['characters', 'journeys', 'relationships'] }]
+  const groups = $derived(GROUPS.map((g) => ({ name: g.name, rows: g.ids.map((id) => rows.find((r) => r.id === id)).filter((r) => r !== undefined) })))
 </script>
 
 <div class="ui-story-outline" role="group" aria-label="Overview">
-  {#each rows as r (r.id)}
-    <div class="ui-story-outline__row">
-      <SelectableRow title={r.title} selected={current === r.id} onclick={() => onjump?.(/** @type {OverviewSection} */ (r.id))}>
-        {#snippet trailing()}{#if PILLS[r.state]}<StatusPill text={PILLS[r.state].text} tone={PILLS[r.state].tone} />{/if}{/snippet}
-      </SelectableRow>
+  {#each groups as g (g.name)}
+    <div class="ui-story-outline__group" role="group" aria-label={g.name}>
+      <p class="ui-story-outline__heading eyebrow" aria-hidden="true">{g.name}</p>
+      <ul class="ui-story-outline__items">
+        {#each g.rows as r (r.id)}
+          {@const pill = PILLS[r.state]}
+          <li class="ui-story-outline__row">
+            <button type="button" class="ui-story-outline__item" aria-label={r.title} aria-current={current === r.id ? 'true' : undefined} aria-describedby={pill ? `${uid}-${r.id}` : undefined} onclick={() => onjump?.(/** @type {OverviewSection} */ (r.id))}>
+              <span class="ui-story-outline__dot" data-tone={pill?.tone ?? 'none'} aria-hidden="true"></span>
+              <span aria-hidden="true">{r.title}</span>
+            </button>
+            {#if pill}<span id="{uid}-{r.id}" class="visually-hidden">{pill.text}</span>{/if}
+          </li>
+        {/each}
+      </ul>
     </div>
   {/each}
 </div>
+
+<style>
+  .ui-story-outline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+  .ui-story-outline__heading {
+    margin: 0 0 var(--spacing-2xs);
+  }
+  /* One section per line (operator, 2026-11-10: "One per line"). */
+  .ui-story-outline__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ui-story-outline__item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-2xs) var(--spacing-xs);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text-primary);
+    font: inherit;
+    font-size: var(--body-md-size);
+    cursor: pointer;
+  }
+  .ui-story-outline__item:hover,
+  .ui-story-outline__item[aria-current='true'] {
+    background: color-mix(in oklab, var(--text-primary) 8%, transparent);
+  }
+  .ui-story-outline__item:focus-visible {
+    outline: var(--size-stroke-focus) solid var(--border-focus);
+  }
+  /* A filled dot in the state's tone; not ready is an empty ring, and nothing read yet a faint one. */
+  .ui-story-outline__dot {
+    flex: none;
+    width: var(--spacing-xs);
+    height: var(--spacing-xs);
+    border-radius: 50%;
+    background: var(--dot);
+    box-shadow: inset 0 0 0 var(--size-stroke-hairline) var(--dot);
+  }
+  .ui-story-outline__dot[data-tone='success'] { --dot: var(--tone-success); }
+  .ui-story-outline__dot[data-tone='info'] { --dot: var(--tone-info); }
+  .ui-story-outline__dot[data-tone='warning'] { --dot: var(--tone-warning); }
+  .ui-story-outline__dot[data-tone='danger'] { --dot: var(--tone-danger); }
+  .ui-story-outline__dot[data-tone='neutral'] { --dot: var(--tone-neutral); background: none; }
+  .ui-story-outline__dot[data-tone='none'] { --dot: var(--border-default); background: none; }
+</style>

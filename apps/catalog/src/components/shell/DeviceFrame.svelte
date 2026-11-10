@@ -88,6 +88,7 @@
   class="frame"
   class:frame--sized={frame.width !== null}
   class:frame--fill={frame.width === null && fill}
+  class:frame--open={frame.width === null && !fill}
   class:frame--chassis={chassised}
   style={frameStyle}
   data-viewport={`${frame.device}:${frame.size}${frame.rotated ? ':landscape' : ''}`}
@@ -158,6 +159,21 @@
   .frame--fill {
     align-self: stretch;
     width: 100%;
+    /* The canvas's height, as a host gives a screen (operator, 2026-11-10: "Fill gives screens
+       height"): a screen sized to its host, with panes that scroll, no longer grows to its
+       content. A taller screen overflows into the canvas's own scroll. */
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* A COMPONENT at Fill spans the canvas too, but as a block, so an atom keeps
+     its own width (start-aligned) instead of being stretched. Shrink-wrapped and
+     centred, a component that is a size container (`container-type:
+     inline-size`) has no intrinsic width: StoryOverview measured 0px and wrapped
+     one word per line. */
+  .frame--open {
+    align-self: stretch;
+    display: block;
   }
 
   /* The chassis. 34px is the handset corner and 18px the tablet's — catalog-local

@@ -1,4 +1,60 @@
 /**
+ * The structure's turns in story order, placed by its profile; null when there is no profile to
+ * place them by. Heights are relative to the strongest turn because strength has no upper bound.
+ * @param {StoryStructure | null} s
+ * @returns {TimelineTurn[] | null}
+ */
+export function timelineTurns(s: StoryStructure | null): TimelineTurn[] | null;
+/**
+ * The structures whose expected beats the timeline draws: the primary when one fit (RFC 0111 §3.4,
+ * inferred); when the fit is ambiguous the protocol names no set, so the top two scored lenses by
+ * excess (operator, 2026-11-10: "Top two by excess"); none otherwise, since nothing fit.
+ * @param {StoryStructure | null} s
+ * @returns {{ id: string, name: string, beats: { name: string, position: number }[] }[]}
+ */
+export function fittingLenses(s: StoryStructure | null): {
+    id: string;
+    name: string;
+    beats: {
+        name: string;
+        position: number;
+    }[];
+}[];
+/**
+ * Where the story's turns cluster: a density per twentieth of the story (the count within a fifth
+ * around it, against the densest), and the busiest and quietest fifth, the earlier on a tie. Null
+ * with fewer than two turns, when there is no pacing to speak of.
+ * @param {readonly TimelineTurn[] | null} turns
+ * @returns {{ density: number[], busy: { from: number, to: number }, quiet: { from: number, to: number } } | null}
+ */
+export function pacing(turns: readonly TimelineTurn[] | null): {
+    density: number[];
+    busy: {
+        from: number;
+        to: number;
+    };
+    quiet: {
+        from: number;
+        to: number;
+    };
+} | null;
+/** @typedef {{ name: string, score: number | null, x: number, y: number, spokeX: number, spokeY: number, labelX: number, labelY: number, side: 'start' | 'middle' | 'end' }} RadarSpoke */
+/**
+ * The coverage rubric as a radar (operator, 2026-11-10: "Radar"): one spoke per dimension,
+ * clockwise from the top, a score its tenth of the way out. An unscored dimension
+ * (score.source "none") keeps its spoke and has no point. `side` says which way a label reads
+ * from its anchor: right of the centre "start", left "end", top and bottom "middle".
+ * @param {readonly { name: string, score: { value: number, source: string } }[]} dimensions
+ * @returns {RadarSpoke[]}
+ */
+export function rubricRadar(dimensions: readonly {
+    name: string;
+    score: {
+        value: number;
+        source: string;
+    };
+}[]): RadarSpoke[];
+/**
  * The production flags raised, labelled, and the contained-location share; null when a flag is
  * one the map has no label for, or is not a boolean, which fails the Production section only.
  * @param {Record<string, any> | null} r
@@ -9,25 +65,12 @@ export function productionFlags(r: Record<string, any> | null): {
     contained: Sourced | undefined;
 } | null;
 /**
- * A value the engine sends with where it came from.
- * @typedef {{ value: any, source: 'llm' | 'deterministic' | 'derived' | 'none', confidence: string, model?: string, evidence?: readonly { ref: string, citation: string }[] }} Sourced
+ * The structure lenses' names. Open: the lens catalog can grow, so an id missing here is shown as
+ * sent rather than failing the timeline.
+ * @type {Readonly<Record<string, string>>}
  */
-/**
- * One section's read.
- * @template T
- * @typedef {{ kind: 'loading' } | { kind: 'missing', reason?: string } | { kind: 'failed', message: string } | { kind: 'loaded', data: T }} SectionRead
- */
-/** @typedef {{ sceneId: string, name: string, turn: string }} TurnPoint */
-/**
- * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json:432 ($defs.act).
- * Indices are zero-based and endIndex is inclusive; fraction is the share of story words.
- * @typedef {{ name: string, startIndex: number, endIndex: number, fraction: number }} StructureAct
- */
-/**
- * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json: a lens's score and p are
- * absent when not scored (:371, :379); names.points is optional (:387).
- * @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score?: number, p?: number }[] }, names?: { state: string, points?: readonly TurnPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure
- */
+export const LENSES: Readonly<Record<string, string>>;
+export function lensName(id: string): string;
 /**
  * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:391 ($defs.measuredStructure).
  * document is absent when not-measured.
@@ -92,6 +135,8 @@ export const FLAGS: Readonly<Record<string, string>>;
  */
 export const MEASURED: Readonly<Record<string, string>>;
 export function namedPoints(s: StoryStructure | null): readonly TurnPoint[] | null;
+/** The radar's full-score radius, in percent of its square box; the labels sit outside it. */
+export const RADAR_RADIUS: 30;
 export function listItems(f: {
     value?: readonly string[] | null;
 } | null | undefined): readonly string[];
@@ -109,6 +154,17 @@ export function journeyName(c: NamedCharacter): string;
 export function pairName(pair: readonly NamedCharacter[]): string;
 export function journeysRead(list: unknown): boolean;
 export function relationshipsRead(list: unknown): boolean;
+export type RadarSpoke = {
+    name: string;
+    score: number | null;
+    x: number;
+    y: number;
+    spokeX: number;
+    spokeY: number;
+    labelX: number;
+    labelY: number;
+    side: "start" | "middle" | "end";
+};
 /**
  * A value the engine sends with where it came from.
  */
@@ -153,16 +209,42 @@ export type StructureAct = {
     fraction: number;
 };
 /**
+ * A place in the story where it turns. KSPD go/kspdprotocol/v0.136.1
+ * schemas/KSPD/analysis/structure.schema.json:193 ($defs.inflectionPoint): index is zero-based
+ * story order, position the share of the story's words before the scene, and strength only
+ * bounded below (:217).
+ */
+export type InflectionPoint = {
+    sceneId: string;
+    index: number;
+    position: number;
+    strength: number;
+    contributors: readonly {
+        thread: string;
+        ref: string;
+        weight: number;
+        kind: string;
+    }[];
+};
+/**
  * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json: a lens's score and p are
- * absent when not scored (:371, :379); names.points is optional (:387).
+ * absent when not scored (:371, :379); names.points is optional (:387). profile is required (:10)
+ * and read as optional, so a read without it still renders.
+ * A lens carries its beats as used (:330) and, when scored, its excess over the rotation null (:377).
  */
 export type StoryStructure = {
     fit: {
         outcome: string;
         reason: string;
+        primary?: string;
         lenses: readonly {
             id: string;
+            beats?: readonly {
+                name: string;
+                position: number;
+            }[];
             score?: number;
+            excess?: number;
             p?: number;
         }[];
     };
@@ -170,12 +252,28 @@ export type StoryStructure = {
         state: string;
         points?: readonly TurnPoint[];
     };
+    profile?: {
+        scenes: readonly InflectionPoint[];
+    };
     acts?: readonly StructureAct[];
     _provenance?: {
         made_by?: {
             model?: string;
         };
     };
+};
+/**
+ * A turn on the story timeline: where it falls (0–1), its height against the story's strongest
+ * turn (0–1], the named point it stands for by index, -1 and no name when it is not named, and
+ * whether it is one of the big turns the chart names.
+ */
+export type TimelineTurn = {
+    sceneId: string;
+    position: number;
+    height: number;
+    point: number;
+    name: string | null;
+    label: boolean;
 };
 /**
  * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:391 ($defs.measuredStructure).

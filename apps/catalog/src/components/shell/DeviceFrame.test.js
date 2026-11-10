@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/svelte'
+import fs from 'node:fs'
+import path from 'node:path'
 import DeviceFrame from './DeviceFrame.svelte'
 
 // The chassis is drawn from the resolved device, not from a caller's opinion of
@@ -52,6 +54,31 @@ describe('DeviceFrame', () => {
     expect(frame.getAttribute('style')).toBe('')
     expect(frame.className).not.toContain('frame--sized')
     expect(frame.className).not.toContain('frame--chassis')
+  })
+
+  // A component at Fill spans the canvas. Shrink-wrapped, a component that is a
+  // size container (`container-type: inline-size`: StoryOverview, StoryAtlas,
+  // Toolbar…) has no intrinsic width, measured at 0px, and wraps one word per
+  // line. The rule is read as source because jsdom lays nothing out.
+  it('spans the canvas when nothing is sized, so a size container has a width', () => {
+    const { container } = render(DeviceFrame, { props: { frame: at('web', 'fill') } })
+    expect(container.querySelector('.frame').className).toContain('frame--open')
+    const source = fs.readFileSync(path.resolve(import.meta.dirname, 'DeviceFrame.svelte'), 'utf8')
+    const rule = source.match(/\.frame--open\s*\{([^}]*)\}/)
+    expect(rule?.[1]).toMatch(/align-self:\s*stretch/)
+  })
+
+  // A screen at Fill gets the canvas's height, as a host gives it (operator, 2026-11-10: "Fill
+  // gives screens height"). Without it a screen sized to its host (height: 100%, panes that
+  // scroll) grows to its content: StoryOverviewScreen's outline foot fell below the fold. Shrinking
+  // to the canvas, a taller screen overflows into the canvas's own scroll instead.
+  it('gives a screen at Fill the canvas height', () => {
+    const { container } = render(DeviceFrame, { props: { frame: at('web', 'fill'), fill: true } })
+    expect(container.querySelector('.frame').className).toContain('frame--fill')
+    const source = fs.readFileSync(path.resolve(import.meta.dirname, 'DeviceFrame.svelte'), 'utf8')
+    const rule = source.match(/\.frame--fill\s*\{([^}]*)\}/)
+    expect(rule?.[1]).toMatch(/flex:\s*1 1 auto/)
+    expect(rule?.[1]).toMatch(/min-height:\s*0/)
   })
 
   it('takes the case off on request, keeping the size', () => {
