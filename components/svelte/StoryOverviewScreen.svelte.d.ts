@@ -48,6 +48,10 @@ declare const StoryOverviewScreen: import("svelte").Component<{
      * As StoryOverviewSide takes it.
      */
     onRevealScene?: (sceneId: string) => void;
+    /**
+     * Opens Project Settings, from the foot of the outline; without it, no button.
+     */
+    onProjectSettings?: () => void;
 }, {}, "selected">;
 type Props = {
     /**
@@ -94,5 +98,9 @@ type Props = {
      * As StoryOverviewSide takes it.
      */
     onRevealScene?: (sceneId: string) => void;
+    /**
+     * Opens Project Settings, from the foot of the outline; without it, no button.
+     */
+    onProjectSettings?: () => void;
 };
 import StoryOverviewStrip from './StoryOverviewStrip.svelte';

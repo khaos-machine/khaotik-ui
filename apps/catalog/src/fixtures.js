@@ -1434,7 +1434,7 @@ const placePanes = [
     // are B4P's capture; the strip's spend, review count and next step are illustrative.
     id: 'story-overview-screen', name: 'StoryOverviewScreen', kind: 'screen', section: 'screens', group: 'drafts', component: StoryOverviewScreen,
     examples: [
-      { label: 'B4P (captured), strip spend and next step (illustrative)', props: { title: 'B4P', ...overviewReads, strip: overviewStrip, onRevealScene: () => {} } },
+      { label: 'B4P (captured), strip spend and next step (illustrative)', props: { title: 'B4P', ...overviewReads, strip: overviewStrip, onRevealScene: () => {}, onProjectSettings: () => {} } },
       { label: 'B4P, a character selected (captured)', props: { title: 'B4P', ...overviewReads, strip: overviewStrip, selected: { kind: 'character', index: storyOverview['coverage/report'].characters.findIndex((c) => c.name === 'DESMOND') } } },
       { label: 'Reading', props: { title: 'B4P', strip: overviewStrip } },
       { label: 'Empty', props: {} },

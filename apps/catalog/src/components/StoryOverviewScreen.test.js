@@ -49,6 +49,32 @@ describe('StoryOverviewScreen', () => {
     expect(onselect).toHaveBeenLastCalledWith(null)
   })
 
+  // Operator, 2026-11-10: the outline, "make it hidable" — hidden, it leaves a rail with the one
+  // button that brings it back, and the document takes the width.
+  it('hides the outline and brings it back', async () => {
+    render(StoryOverviewScreen, { props: reads })
+    await fireEvent.click(screen.getByRole('button', { name: 'Hide outline' }))
+    expect(screen.queryByRole('group', { name: 'Overview' })).toBeNull()
+    expect(screen.getByRole('region', { name: 'Premise' })).toBeVisible()
+    await fireEvent.click(screen.getByRole('button', { name: 'Show outline' }))
+    expect(screen.getByRole('group', { name: 'Overview' })).toBeVisible()
+    expect(screen.queryByRole('button', { name: 'Show outline' })).toBeNull()
+  })
+
+  // Operator, 2026-11-10: "might as well make use of the sidebar and add project settings button
+  // at the bottom" — at the foot of the outline, and of its rail when hidden; none without a host.
+  it('offers Project Settings at the foot of the outline, shown or hidden', async () => {
+    const onProjectSettings = vi.fn()
+    const { unmount } = render(StoryOverviewScreen, { props: { ...reads, onProjectSettings } })
+    await fireEvent.click(screen.getByRole('button', { name: 'Project Settings' }))
+    await fireEvent.click(screen.getByRole('button', { name: 'Hide outline' }))
+    await fireEvent.click(screen.getByRole('button', { name: 'Project Settings' }))
+    expect(onProjectSettings).toHaveBeenCalledTimes(2)
+    unmount()
+    render(StoryOverviewScreen, { props: reads })
+    expect(screen.queryByRole('button', { name: 'Project Settings' })).toBeNull()
+  })
+
   it('leaves Esc alone outside the screen', async () => {
     render(StoryOverviewScreen, { props: { ...reads, selected: { kind: 'character', index: 0 } } })
     await fireEvent.keyDown(document.body, { key: 'Escape' })
