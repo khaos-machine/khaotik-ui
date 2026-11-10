@@ -39,6 +39,10 @@ declare const SourceList: import("svelte").Component<{
      * The `data-ui-id` prefix (audit §3.14).
      */
     uiId?: string;
+    /**
+     * Icons only, for a rail: each label, count and heading stays as the accessible name, and the label is the tooltip.
+     */
+    compact?: boolean;
 }, {}, "">;
 type Props = {
     /**
@@ -76,4 +80,8 @@ type Props = {
      * The `data-ui-id` prefix (audit §3.14).
      */
     uiId?: string;
+    /**
+     * Icons only, for a rail: each label, count and heading stays as the accessible name, and the label is the tooltip.
+     */
+    compact?: boolean;
 };

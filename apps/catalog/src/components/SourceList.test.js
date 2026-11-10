@@ -84,3 +84,28 @@ describe('structure', () => {
     expect(row('Scenes')).toHaveAttribute('data-ui-id', 'source.scenes')
   })
 })
+
+// The rail the Data window keeps while its source list is hidden (operator, 2026-11-10: "display
+// the icons for each entry in sidebar when collapsed"): icons only, each row still named and
+// still the same row, so the keys and the selection work as they do open.
+describe('compact', () => {
+  it('shows each row as its icon, keeping its name and giving it a tooltip', () => {
+    const { container } = render(SourceList, { props: { sections, active: 'characters', compact: true } })
+    expect(row('Characters')).toHaveAttribute('title', 'Characters')
+    for (const part of container.querySelectorAll('.source__label, .source__count, .source__heading')) expect(part).toHaveClass('visually-hidden')
+    expect(container.querySelector('.source')).toHaveClass('source--compact')
+  })
+
+  it('asks for a row on click, as the open list does', async () => {
+    const onselect = vi.fn()
+    render(SourceList, { props: { sections, active: 'characters', compact: true, onselect } })
+    await fireEvent.click(row('Scenes'))
+    expect(onselect).toHaveBeenCalledWith('scenes')
+  })
+
+  it('draws labels and no tooltips when open', () => {
+    const { container } = render(SourceList, { props: { sections, active: 'characters' } })
+    expect(row('Characters')).not.toHaveAttribute('title')
+    expect(container.querySelector('.source__label')).not.toHaveClass('visually-hidden')
+  })
+})
