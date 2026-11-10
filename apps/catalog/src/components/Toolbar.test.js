@@ -1,5 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
+import { createRawSnippet } from 'svelte'
+import fs from 'node:fs'
+import path from 'node:path'
 import Toolbar from '@khaos-machine/khaotik-ui/components/svelte/Toolbar.svelte'
 
 // Toolbar (data-layer plan K4; audit §1.4, §4.1). The window's one bar: a title, the
@@ -140,5 +143,19 @@ describe('the status group and the compact row', () => {
     await remeasure('BROKEN IN 4 PLACES')
     expect(shown()).toEqual(['Cast voice', 'Read scene'])
     expect(toolbar).not.toHaveClass('toolbar--compact')
+  })
+})
+
+// The lead (a workspace switch) is where you are, as the switcher is: it keeps its width, so a
+// row short of room overflows and folds the commands' labels, rather than crushing the lead to a
+// scrolling sliver. Measured 2026-11-10 at 768: the Shell's Story/Review sat 29px wide around
+// 119 of content, showing "ory" (operator: "Fix the 'ory' chip").
+describe('the lead', () => {
+  it('renders in a wrapper that keeps its width', () => {
+    const lead = createRawSnippet(() => ({ render: () => '<span data-mark="lead">lead</span>' }))
+    const { container } = render(Toolbar, { props: { title: 'T', lead } })
+    expect(container.querySelector('.toolbar__lead [data-mark="lead"]')).not.toBeNull()
+    const source = fs.readFileSync(path.resolve(import.meta.dirname, '../../../../components/svelte/Toolbar.svelte'), 'utf8')
+    expect(source.match(/\.toolbar__lead\s*\{([^}]*)\}/)?.[1]).toMatch(/flex:\s*none/)
   })
 })

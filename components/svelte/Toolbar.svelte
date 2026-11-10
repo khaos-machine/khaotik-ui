@@ -227,7 +227,7 @@
   {#if modes.length}
     <WorkspaceSwitcher {modes} value={mode} onselect={onmode} width={room} {compactBelow} uiId="{uiId}.workspace" />
   {/if}
-  {@render lead?.()}
+  {#if lead}<div class="toolbar__lead">{@render lead()}</div>{/if}
 
   <div class="toolbar__drag toolbar__spacer" data-tauri-drag-region></div>
 
@@ -400,6 +400,13 @@
   .toolbar__toggle:focus-visible,
   .toolbar__filter:focus-visible {
     outline: var(--size-stroke-focus) solid var(--border-focus);
+  }
+  /* The lead is where you are, as the switcher is: it keeps its width, so a row short of room
+     overflows and folds the commands' labels rather than crushing the lead (2026-11-10). */
+  .toolbar__lead {
+    display: flex;
+    align-items: center;
+    flex: none;
   }
   /* The reason is read through aria-describedby and shown as the tooltip. */
   .toolbar__why {
