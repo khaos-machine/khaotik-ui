@@ -1865,7 +1865,7 @@ const shellWindow = (destination, label) => ({
   panels: { ...dockPanels, table: { ...dockPanels.table, label } },
   sections: sourceSections,
   destination,
-  onPresentation: () => {}, onTogglePane: () => {}, onRun: () => {}, onFilter: () => {}, onWorkspace: () => {}, onLayoutChange: () => {}, onDestination: () => {},
+  onPresentation: () => {}, onTogglePane: () => {}, onRun: () => {}, onFilter: () => {}, onWorkspace: () => {}, onLayoutChange: () => {}, onDestination: () => {}, onProjectSettings: () => {},
 })
 const shellDestination = (destination, label) => {
   const pane = destination.replace(/s$/, '')
@@ -3881,9 +3881,10 @@ export const fixtures = [
       shellDestination('objects', 'Objects'),
       shellDestination('images', 'Images'),
       shellDestination('audio', 'Audio'),
+      { ...shellDestination('characters', 'Characters'), label: 'Source list hidden (captured panes)', props: { ...shellWindow('characters', 'Characters'), layout: { ...dockStory, collapsed: true } } },
+      { ...shellDestination('characters', 'Characters'), label: 'Nothing selected (captured panes)', props: { ...shellWindow('characters', 'Characters'), hasSelection: false } },
       { ...shellDestination('scenes', 'Scenes'), label: 'A job running', props: { ...shellWindow('scenes', 'Scenes'), jobs: [{ id: 'scenes', label: 'Analysing scenes', progress: { completed: 12, total: 57 } }] } },
       { ...shellDestination('characters', 'Characters'), label: 'Story update failed (illustrative message)', props: { ...shellWindow('characters', 'Characters'), snapshotError: 'khaosd is not running.', onRetrySnapshot: () => {} } },
-      { ...shellDestination('characters', 'Characters'), label: 'Story update failed, with Project Settings (illustrative message)', props: { ...shellWindow('characters', 'Characters'), snapshotError: 'khaosd is not running.', onRetrySnapshot: () => {}, onProjectSettings: () => {} } },
       {
         // The full Overview screen in the window (operator, 2026-11-10: "let's assemble the full
         // overview screen with sidebar, header and such for review in catalog").

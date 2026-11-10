@@ -5,6 +5,12 @@
   // (catalog app-coverage plan, T8). Every value is the host's, and every pane, layer and dialog
   // is the host's own view, passed as a snippet: the table, detail and side panes by name, any
   // other pane through `pane`.
+  //
+  // The Data window follows the Overview screen (operator, 2026-11-10: "Match the Overview"). The
+  // source list hides from a button at its top to a rail that brings it back, through the same
+  // `onTogglePane('source')` the toolbar toggle sent; Project Settings sits at its foot, not in the
+  // toolbar ("Sidebar foot, both"). The inspector is there only while something is selected ("Yes,
+  // host says when"): `hasSelection` closes it without touching the host's layout.
   import Button from './Button.svelte'
   import CommandPalette from './CommandPalette.svelte'
   import Dock from './Dock.svelte'
@@ -14,6 +20,7 @@
   import StatusBar from './StatusBar.svelte'
   import StoryAtlasToolbar from './StoryAtlasToolbar.svelte'
   import Toolbar from './Toolbar.svelte'
+  import { paneSplit, toggleSplit } from './lib/dock.js'
 
   /** @typedef {'overview' | 'data' | 'atlas' | 'player' | 'screenplay'} Presentation */
   /** @typedef {import('svelte').ComponentProps<typeof Toolbar>} ToolbarProps */
@@ -37,7 +44,7 @@
    * @property {(event: MouseEvent) => void} [onToolbarClick] A click anywhere in the toolbar row, so the host can say why a disabled command is disabled.
    * @property {string} [snapshotError] Why the shared story read failed; '' when it did not.
    * @property {() => void} [onRetrySnapshot] Retry was pressed after the story read failed.
-   * @property {() => void} [onProjectSettings] Opens the story's Project Settings, from the gear at the toolbar's trailing edge. Absent, no gear is drawn.
+   * @property {() => void} [onProjectSettings] Opens the story's Project Settings, from the foot of the source list, or its rail while the list is hidden. Absent, no button is drawn.
    * @property {string} [atlasLens] The atlas lens, shown while the atlas is.
    * @property {(lens: string) => void} [onAtlasLens] An atlas lens was chosen.
    * @property {string} [workspace] The data workspace: story or review.
@@ -48,6 +55,7 @@
    * @property {(layout: import('./lib/dock.js').DockNode) => void} [onLayoutChange] The panes were resized, moved or collapsed.
    * @property {import('svelte').ComponentProps<typeof SourceList>['sections']} [sections] The source list's destinations.
    * @property {string} [destination] The destination shown.
+   * @property {boolean} [hasSelection] Something is selected in the data. While nothing is, the inspector is closed; the host's layout keeps its own state for when it returns.
    * @property {(destination: string) => void} [onDestination] A destination was chosen in the source list.
    * @property {boolean} [builderOpen] A subject builder covers the window: everything else is hidden and inert.
    * @property {StatusBarProps['engine']} [engine] The status bar's engine line.
@@ -101,6 +109,7 @@
     sections = [],
     destination = '',
     onDestination = undefined,
+    hasSelection = true,
     builderOpen = false,
     engine = null,
     jobs = [],
@@ -132,6 +141,24 @@
   const canvasStatus = $derived(!builderOpen && !statusShown && Boolean(result || (jobs?.length ?? 0) > 0))
   /** @param {Presentation} layer */
   const hidden = (layer) => builderOpen || presentation !== layer
+
+  /** In the Data window the source list's toggle is in the pane; elsewhere (the player's composer sidebar) it stays in the toolbar. */
+  const toolbarPanes = $derived(presentation === 'data' ? panes.filter((p) => p.id !== 'source') : panes)
+  const sourceHidden = $derived(paneSplit(layout, 'source')?.collapsed ?? false)
+  /** The inspector's split, closed while nothing is selected and the inspector is the tab shown. */
+  const inspectorSplit = $derived.by(() => {
+    const split = paneSplit(layout, 'inspector')
+    if (!split || split.collapsed || hasSelection) return null
+    const fixed = split.fixed === 'start' ? split.children[0] : split.children[1]
+    return fixed.kind === 'group' && fixed.active === 'inspector' ? split : null
+  })
+  const dockLayout = $derived(layout && inspectorSplit ? toggleSplit(layout, inspectorSplit.id) : layout)
+
+  /** Hands the host back its own inspector state, so the closing stays the window's. @param {import('./lib/dock.js').DockNode} next */
+  function layoutChanged(next) {
+    const closed = inspectorSplit && paneSplit(next, 'inspector')
+    onLayoutChange?.(closed && closed.collapsed ? toggleSplit(next, closed.id) : next)
+  }
 </script>
 
 <div
@@ -157,16 +184,14 @@
       {modes}
       mode={presentation}
       onmode={(mode) => onPresentation?.(mode)}
-      {panes}
+      panes={toolbarPanes}
       ontogglepane={(id) => onTogglePane?.(id)}
       {commands}
       onrun={(id) => onRun?.(id)}
       {filter}
       {filterLabel}
       onfilter={(value) => onFilter?.(value)}
-      status={snapshotError ? snapshotStatus : undefined}
-      onsettings={onProjectSettings}
-      settingsLabel="Project Settings…">
+      status={snapshotError ? snapshotStatus : undefined}>
       {#snippet lead()}
         {#if presentation === 'data'}
           <SegmentedControl label="Data workspace" value={workspace} items={workspaces} onselect={(value) => onWorkspace?.(value)} />
@@ -197,11 +222,36 @@
     inert={hidden('data')}
     aria-hidden={hidden('data') ? 'true' : undefined}>
     <div class="ui-shell__dock">
+      {#if sourceHidden}
+        <div class="ui-shell__rail">
+          <Button variant="tool" icon="sidebar-simple" title="Show source list" onclick={() => onTogglePane?.('source')}><span class="visually-hidden">Show source list</span></Button>
+          <div class="ui-shell__source-list">
+            <SourceList {sections} active={destination} onselect={(d) => onDestination?.(d)} label="Story destinations" uiId="{workspace}.source" compact />
+          </div>
+          {#if onProjectSettings}
+            <div class="ui-shell__foot">
+              <Button variant="tool" icon="gear" title="Project Settings" onclick={() => onProjectSettings?.()}><span class="visually-hidden">Project Settings</span></Button>
+            </div>
+          {/if}
+        </div>
+      {/if}
       {#key workspace}
-        <Dock {layout} {panels} onlayoutchange={(next) => onLayoutChange?.(next)} uiId="{workspace}.dock">
+        <Dock layout={dockLayout} {panels} onlayoutchange={layoutChanged} uiId="{workspace}.dock">
           {#snippet panel(id)}
             {#if id === 'source'}
-              <SourceList {sections} active={destination} onselect={(d) => onDestination?.(d)} label="Story destinations" uiId="{workspace}.source" />
+              <div class="ui-shell__source">
+                <div class="ui-shell__toggle">
+                  <Button variant="tool" icon="sidebar-simple" title="Hide source list" onclick={() => onTogglePane?.('source')}><span class="visually-hidden">Hide source list</span></Button>
+                </div>
+                <div class="ui-shell__source-list">
+                  <SourceList {sections} active={destination} onselect={(d) => onDestination?.(d)} label="Story destinations" uiId="{workspace}.source" />
+                </div>
+                {#if onProjectSettings}
+                  <div class="ui-shell__foot">
+                    <Button variant="tool" icon="gear" onclick={() => onProjectSettings?.()}>Project Settings</Button>
+                  </div>
+                {/if}
+              </div>
             {:else if id === 'table'}
               {@render table?.()}
             {:else if id === 'detail'}
@@ -290,6 +340,16 @@
   .ui-shell__overview { position: absolute; inset: var(--ui-shell-toolbar-height) 0 var(--ui-shell-status-height); min-height: 0; overflow: auto; }
   .ui-shell__status { position: absolute; inset: auto 0 0; }
   .ui-shell__dock { display: flex; flex: 1; min-height: 0; }
+  .ui-shell__dock > :global(.dock) { flex: 1; min-width: 0; }
+  /* The source list as the Overview's outline: its toggle, the list scrolling, Project Settings
+     pinned to the foot. The rail keeps Show, each destination's icon and the gear while it is
+     hidden (operator, 2026-11-10: "display the icons for each entry in sidebar when collapsed"). */
+  .ui-shell__source { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+  .ui-shell__source-list { flex: 1; min-height: 0; }
+  .ui-shell__toggle { display: flex; justify-content: flex-end; padding: var(--spacing-xs) var(--spacing-xs) 0; }
+  .ui-shell__foot { margin-top: auto; padding: var(--spacing-xs); }
+  .ui-shell__rail { display: flex; flex-direction: column; flex: none; padding-top: var(--spacing-xs); border-right: var(--size-stroke-hairline) solid var(--border-default); }
+  .ui-shell__rail > :global(:first-child) { margin: 0 var(--spacing-xs); }
   .ui-shell__atlas { position: absolute; inset: 0; }
   .ui-shell__player { position: absolute; inset: var(--ui-shell-toolbar-height) 0 0; min-height: 0; opacity: 1; transition: opacity 200ms ease-out, visibility 0s; }
   .ui-shell__screenplay { position: absolute; inset: var(--ui-shell-toolbar-height) 0 0; min-height: 0; }

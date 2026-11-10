@@ -73,7 +73,7 @@ declare const Shell: import("svelte").Component<{
      */
     onRetrySnapshot?: () => void;
     /**
-     * Opens the story's Project Settings, from the gear at the toolbar's trailing edge. Absent, no gear is drawn.
+     * Opens the story's Project Settings, from the foot of the source list, or its rail while the list is hidden. Absent, no button is drawn.
      */
     onProjectSettings?: () => void;
     /**
@@ -119,6 +119,10 @@ declare const Shell: import("svelte").Component<{
      * The destination shown.
      */
     destination?: string;
+    /**
+     * Something is selected in the data. While nothing is, the inspector is closed; the host's layout keeps its own state for when it returns.
+     */
+    hasSelection?: boolean;
     /**
      * A destination was chosen in the source list.
      */
@@ -308,7 +312,7 @@ type Props = {
      */
     onRetrySnapshot?: () => void;
     /**
-     * Opens the story's Project Settings, from the gear at the toolbar's trailing edge. Absent, no gear is drawn.
+     * Opens the story's Project Settings, from the foot of the source list, or its rail while the list is hidden. Absent, no button is drawn.
      */
     onProjectSettings?: () => void;
     /**
@@ -354,6 +358,10 @@ type Props = {
      * The destination shown.
      */
     destination?: string;
+    /**
+     * Something is selected in the data. While nothing is, the inspector is closed; the host's layout keeps its own state for when it returns.
+     */
+    hasSelection?: boolean;
     /**
      * A destination was chosen in the source list.
      */
