@@ -32,6 +32,14 @@ declare const StoryOverviewSide: import("svelte").Component<{
      * Asked with any selected evidence scene's id.
      */
     onRevealScene?: (sceneId: string) => void;
+    /**
+     * A selected skipped pair shows its reason and weights. Off: nothing is shown for it, as in 0.178.5.
+     */
+    showSkippedPairs?: boolean;
+    /**
+     * Every evidence scene: each journey turning point's and relationship's, and the journey's and relationship's own Evidence scenes. Off: a journey turning point reveals its first scene only.
+     */
+    showEvidenceScenes?: boolean;
 }, {}, "">;
 type Props = {
     /**
@@ -62,4 +70,12 @@ type Props = {
      * Asked with any selected evidence scene's id.
      */
     onRevealScene?: (sceneId: string) => void;
+    /**
+     * A selected skipped pair shows its reason and weights. Off: nothing is shown for it, as in 0.178.5.
+     */
+    showSkippedPairs?: boolean;
+    /**
+     * Every evidence scene: each journey turning point's and relationship's, and the journey's and relationship's own Evidence scenes. Off: a journey turning point reveals its first scene only.
+     */
+    showEvidenceScenes?: boolean;
 };

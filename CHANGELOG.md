@@ -20,6 +20,42 @@ current pin.
 
 ## [Unreleased]
 
+## [0.186.0] — 2026-11-10
+
+### Changed
+
+- **The Story Overview's defaults return to 0.178.5's Overview** (#49). `StoryOverview`, `StoryOverviewOutline` and `StoryOverviewSide` draw what 0.178.5 drew unless a host opts in. Before this release, a host that bumped from 0.178.5 got the Khaos Cloud additions of 0.183.0 (#42), 0.183.1 (#43) and 0.184.0 (#44) without asking. Each addition is now its own prop, off by default. With no opt-in:
+  - skipped pairs are listed only under Advanced's Show details;
+  - the outline's turns row reads "Where the story turns";
+  - there is no Structure measured section, no structure or coverage acts, and no scene entries;
+  - coverage with unfinished sections reads Ready in the outline;
+  - `runs` draws no Running, Incomplete or Didn't finish in the outline, and no partial or failed pass note in Journeys or Relationships;
+  - failed naming, and named turns with no points, read "The turning points haven't been named yet." and Not ready;
+  - a journey turning point reveals its first scene only, and no Evidence scenes are drawn.
+- 0.183.1's fixes for KSPD-conforming input stay: null strengths or concerns, a rubric without `dimensions`, and a lens without `score` or `p` never throw. By default, the part 0.178.5 could not draw from such input is drawn as nothing: no Rubric section, or no row for that lens.
+
+### Added
+
+The opt-in props. Khaos Cloud turns on what it uses; each one restores that part of 0.185.1's drawing.
+
+- `StoryOverview`:
+  - `showSkippedPairs`: skipped pairs as selectable rows with their reasons, outside Advanced.
+  - `showStructureActs`: the structure's acts in Shape.
+  - `showCoverageActs`: coverage's acts.
+  - `showSceneEntries`: coverage's scene entries.
+  - `showMeasuredStructure`: the Structure measured section.
+  - `showPassStates`: a partial or failed `runs.journeys` / `runs.relationships`, and failed turn naming.
+  - `showEmptyResults`: "No dimension was scored.", a lens's "Not scored", "No turning points were named.".
+- `StoryOverviewOutline`:
+  - `turnsTitle`: the turns row's title; Cloud passes `'Turns'`.
+  - `showIncompleteCoverage`: Coverage, Characters and Production read Incomplete when coverage lists unfinished sections.
+  - `showRunning`: a running section reads Running.
+  - `showPassStates`: a partial or failed list pass reads Incomplete or Didn't finish, and failed naming reads Didn't finish.
+  - `showEmptyResults`: turns named with no points read Ready.
+- `StoryOverviewSide`:
+  - `showSkippedPairs`: a selected skipped pair's reason and weights.
+  - `showEvidenceScenes`: every evidence scene, and the journey's and relationship's Evidence scenes.
+
 ## [0.185.1] — 2026-11-09
 
 ### Fixed

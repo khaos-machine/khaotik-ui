@@ -14,7 +14,7 @@ const reads = { premise: loaded(captured.premise.premise), structure: loaded(cap
 
 describe('StoryOverviewOutline', () => {
   it('lists the sections in document order, each with its state', () => {
-    render(StoryOverviewOutline, { props: reads })
+    render(StoryOverviewOutline, { props: { ...reads, turnsTitle: 'Turns', showIncompleteCoverage: true } })
     const rows = screen.getAllByRole('button')
     expect(rows.map((r) => r.getAttribute('aria-label'))).toEqual(['Premise', 'Shape', 'Turns', 'Coverage', 'Characters', 'Production', 'Journeys', 'Relationships'])
     for (const r of rows.slice(0, 3)) expect(r.closest('.ui-story-outline__row')).toHaveTextContent('Ready')
@@ -23,7 +23,7 @@ describe('StoryOverviewOutline', () => {
 
   it('reads missing, failed and loading as the sections do', () => {
     const { names, ...unnamed } = captured.structure
-    render(StoryOverviewOutline, { props: { premise: { kind: 'missing' }, structure: loaded(unnamed), coverage: { kind: 'failed', message: 'x' } } })
+    render(StoryOverviewOutline, { props: { premise: { kind: 'missing' }, structure: loaded(unnamed), coverage: { kind: 'failed', message: 'x' }, turnsTitle: 'Turns' } })
     const pill = (name) => screen.getByRole('button', { name }).closest('.ui-story-outline__row')
     expect(pill('Premise')).toHaveTextContent('Not ready')
     expect(pill('Shape')).toHaveTextContent('Ready')
@@ -34,7 +34,7 @@ describe('StoryOverviewOutline', () => {
 
   it('fails Production alone on an unlabelled flag', () => {
     const viability = { ...report.viability, productionFlags: { ...report.viability.productionFlags, laserBattles: true } }
-    render(StoryOverviewOutline, { props: { ...reads, coverage: loaded({ ...report, viability }) } })
+    render(StoryOverviewOutline, { props: { ...reads, coverage: loaded({ ...report, viability }), showIncompleteCoverage: true } })
     expect(screen.getByRole('button', { name: 'Coverage' }).closest('.ui-story-outline__row')).toHaveTextContent('Incomplete')
     expect(screen.getByRole('button', { name: 'Production' }).closest('.ui-story-outline__row')).toHaveTextContent("Couldn't read")
   })

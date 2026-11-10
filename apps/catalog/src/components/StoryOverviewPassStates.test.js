@@ -24,59 +24,59 @@ const withNames = (names) => loaded({ ...captured.structure, names })
 
 describe('a partial or failed Journeys or Relationships pass', () => {
   it('reads a partial Journeys pass as Incomplete in the outline, not Ready', () => {
-    render(StoryOverviewOutline, { props: { journeys: saved, relationships: pairs, runs: { journeys: { kind: 'partial' } } } })
+    render(StoryOverviewOutline, { props: { journeys: saved, relationships: pairs, runs: { journeys: { kind: 'partial' } }, showPassStates: true } })
     expect(pill('Journeys')).toHaveTextContent('Incomplete')
     expect(pill('Journeys')).not.toHaveTextContent('Ready')
     expect(pill('Relationships')).toHaveTextContent('Ready')
   })
 
   it('shows the three saved journeys and says the pass is not finished', () => {
-    render(StoryOverview, { props: { journeys: saved, relationships: pairs, runs: { journeys: { kind: 'partial' } } } })
+    render(StoryOverview, { props: { journeys: saved, relationships: pairs, runs: { journeys: { kind: 'partial' } }, showPassStates: true } })
     expect(within(region('Journeys')).getAllByRole('button')).toHaveLength(3)
     expect(within(region('Journeys')).getByRole('note')).toHaveTextContent("This pass hasn't finished, so some results are missing.")
     expect(within(region('Relationships')).queryByRole('note')).toBeNull()
   })
 
   it('reads a failed Relationships pass as failed in the outline, not Ready', () => {
-    render(StoryOverviewOutline, { props: { journeys: saved, relationships: pairs, runs: { relationships: { kind: 'failed', message: 'PAIR_TIMEOUT' } } } })
+    render(StoryOverviewOutline, { props: { journeys: saved, relationships: pairs, runs: { relationships: { kind: 'failed', message: 'PAIR_TIMEOUT' } }, showPassStates: true } })
     expect(pill('Relationships')).toHaveTextContent("Didn't finish")
     expect(pill('Relationships')).not.toHaveTextContent('Ready')
     expect(pill('Journeys')).toHaveTextContent('Ready')
   })
 
   it('says a failed Relationships pass did not finish, with its message, beside what was saved', () => {
-    render(StoryOverview, { props: { journeys: saved, relationships: pairs, runs: { relationships: { kind: 'failed', message: 'PAIR_TIMEOUT' } } } })
+    render(StoryOverview, { props: { journeys: saved, relationships: pairs, runs: { relationships: { kind: 'failed', message: 'PAIR_TIMEOUT' } }, showPassStates: true } })
     expect(within(region('Relationships')).getByText("This analysis didn't finish.")).toBeVisible()
     expect(within(region('Relationships')).getByText('PAIR_TIMEOUT')).toBeVisible()
     expect(within(region('Relationships')).getByRole('button', { name: 'MAYA and THEO' })).toBeVisible()
   })
 
   it('still reads running over a partial result', () => {
-    render(StoryOverviewOutline, { props: { journeys: saved, relationships: pairs, runs: { journeys: { kind: 'running' } } } })
+    render(StoryOverviewOutline, { props: { journeys: saved, relationships: pairs, runs: { journeys: { kind: 'running' } }, showRunning: true } })
     expect(pill('Journeys')).toHaveTextContent('Running')
   })
 })
 
 describe('failed turn naming', () => {
   it('says naming failed, distinct from not yet named', () => {
-    const { unmount } = render(StoryOverview, { props: { structure: withNames({ state: 'failed' }) } })
+    const { unmount } = render(StoryOverview, { props: { structure: withNames({ state: 'failed' }), showPassStates: true } })
     expect(within(region('Shape')).getByText("Naming the turning points didn't finish.")).toBeVisible()
     expect(within(region('Shape')).queryByText("The turning points haven't been named yet.")).toBeNull()
     unmount()
-    render(StoryOverview, { props: { structure: withNames({ state: 'not-run' }) } })
+    render(StoryOverview, { props: { structure: withNames({ state: 'not-run' }), showPassStates: true } })
     expect(within(region('Shape')).getByText("The turning points haven't been named yet.")).toBeVisible()
     expect(within(region('Shape')).queryByText("Naming the turning points didn't finish.")).toBeNull()
   })
 
   it('reads failed naming as failed in the outline, not yet named as Not ready, named as Ready', () => {
-    const { unmount } = render(StoryOverviewOutline, { props: { structure: withNames({ state: 'failed' }) } })
+    const { unmount } = render(StoryOverviewOutline, { props: { structure: withNames({ state: 'failed' }), turnsTitle: 'Turns', showPassStates: true } })
     expect(pill('Turns')).toHaveTextContent("Didn't finish")
     expect(pill('Shape')).toHaveTextContent('Ready')
     unmount()
-    const second = render(StoryOverviewOutline, { props: { structure: withNames({ state: 'not-run' }) } })
+    const second = render(StoryOverviewOutline, { props: { structure: withNames({ state: 'not-run' }), turnsTitle: 'Turns', showPassStates: true } })
     expect(pill('Turns')).toHaveTextContent('Not ready')
     second.unmount()
-    render(StoryOverviewOutline, { props: { structure: loaded(captured.structure) } })
+    render(StoryOverviewOutline, { props: { structure: loaded(captured.structure), turnsTitle: 'Turns', showPassStates: true } })
     expect(pill('Turns')).toHaveTextContent('Ready')
   })
 })
