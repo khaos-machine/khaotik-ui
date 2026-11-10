@@ -219,6 +219,41 @@ export function pacing(turns) {
   return { density: counts.map((c) => c / top), busy: { from: busy.from, to: busy.to }, quiet: { from: quiet.from, to: quiet.to } }
 }
 
+/** The radar's full-score radius, in percent of its square box; the labels sit outside it. */
+export const RADAR_RADIUS = 30
+const RADAR_LABEL = 36
+
+/** @typedef {{ name: string, score: number | null, x: number, y: number, spokeX: number, spokeY: number, labelX: number, labelY: number, side: 'start' | 'middle' | 'end' }} RadarSpoke */
+
+/**
+ * The coverage rubric as a radar (operator, 2026-11-10: "Radar"): one spoke per dimension,
+ * clockwise from the top, a score its tenth of the way out. An unscored dimension
+ * (score.source "none") keeps its spoke and has no point. `side` says which way a label reads
+ * from its anchor: right of the centre "start", left "end", top and bottom "middle".
+ * @param {readonly { name: string, score: { value: number, source: string } }[]} dimensions
+ * @returns {RadarSpoke[]}
+ */
+export function rubricRadar(dimensions) {
+  return dimensions.map((d, i) => {
+    const a = -Math.PI / 2 + (2 * Math.PI * i) / dimensions.length
+    const cos = Math.cos(a)
+    const sin = Math.sin(a)
+    const score = d.score.source === 'none' ? null : d.score.value
+    const out = ((score ?? 0) / 10) * RADAR_RADIUS
+    return {
+      name: d.name,
+      score,
+      x: 50 + out * cos,
+      y: 50 + out * sin,
+      spokeX: 50 + RADAR_RADIUS * cos,
+      spokeY: 50 + RADAR_RADIUS * sin,
+      labelX: 50 + RADAR_LABEL * cos,
+      labelY: 50 + RADAR_LABEL * sin,
+      side: cos > 0.2 ? 'start' : cos < -0.2 ? 'end' : 'middle',
+    }
+  })
+}
+
 /**
  * An attributed list's items; null is valid and means none (KSPD coverage-report.schema.json:280,
  * $defs.attributedStringList).

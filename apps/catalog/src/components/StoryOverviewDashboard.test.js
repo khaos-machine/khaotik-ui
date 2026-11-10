@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent, within } from '@testing-library/svelte'
 import StoryOverview from '@khaos-machine/khaotik-ui/components/svelte/StoryOverview.svelte'
+import { rubricRadar, RADAR_RADIUS } from '@khaos-machine/khaotik-ui/components/svelte/lib/story-overview.js'
 import captured from '../data/story-overview.json'
 
 // The Overview as one screen (operator, 2026-11-10): "One-screen dashboard", laid out
@@ -65,6 +66,38 @@ describe('StoryOverview dashboard', () => {
     expect(within(c).getByText('27 characters')).toBeVisible()
     await fireEvent.click(within(c).getByRole('button', { name: 'JETTA' }))
     expect(onselect).toHaveBeenCalledWith({ kind: 'character', index: report.characters.findIndex((x) => x.name === 'JETTA') })
+  })
+
+  // Operator, 2026-11-10: "Coverage as a chart", then "Radar" — not bars, which made it
+  // "indifferent from Characters panel". One spoke per dimension, clockwise from the top; a score
+  // sits its tenth of the way out; an unscored dimension keeps its spoke and has no point.
+  it('places each rubric score on its spoke, out of ten, clockwise from the top', () => {
+    const dims = [
+      { name: 'A', score: { value: 10, source: 'llm' } },
+      { name: 'B', score: { value: 5, source: 'llm' } },
+      { name: 'C', score: { value: 0, source: 'none' } },
+      { name: 'D', score: { value: 0, source: 'llm' } },
+    ]
+    const r = rubricRadar(dims)
+    const near = (a, b) => expect(a).toBeCloseTo(b, 6)
+    near(r[0].x, 50); near(r[0].y, 50 - RADAR_RADIUS)
+    near(r[1].x, 50 + RADAR_RADIUS / 2); near(r[1].y, 50)
+    expect(r[2].score).toBeNull()
+    near(r[2].spokeX, 50); near(r[2].spokeY, 50 + RADAR_RADIUS)
+    near(r[3].x, 50); near(r[3].y, 50)
+    expect(r.map((d) => d.side)).toEqual(['middle', 'start', 'middle', 'end'])
+  })
+
+  it('draws the rubric as a radar, each dimension named with its score', () => {
+    render(StoryOverview, { props: base })
+    const c = panel('Coverage')
+    expect(within(c).getByRole('img', { name: 'Rubric scores' })).toBeInTheDocument()
+    expect(c.querySelector('.ui-story-overview__bar')).toBeNull()
+    const scored = report.rubric.dimensions.filter((d) => d.score.source !== 'none')
+    expect(c.querySelector('polygon.ui-rubric-radar__shape').getAttribute('points').trim().split(/\s+/)).toHaveLength(scored.length)
+    for (const d of report.rubric.dimensions) {
+      expect(within(c).getByRole('group', { name: d.name })).toHaveTextContent(d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`)
+    }
   })
 
   // Operator, 2026-11-10: "Characters as a chart". Each bar's length is the character's dialogue

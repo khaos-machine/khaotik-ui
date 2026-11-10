@@ -11,8 +11,9 @@
   import SectionHeader from './SectionHeader.svelte'
   import SelectableRow from './SelectableRow.svelte'
   import StatusPill from './StatusPill.svelte'
-  import { ARCS, MEASURED, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, listItems, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads, timelineTurns, fittingLenses, pacing } from './lib/story-overview.js'
+  import { ARCS, MEASURED, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, listItems, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads, timelineTurns, fittingLenses, pacing, rubricRadar } from './lib/story-overview.js'
   import StoryTimeline from './internal/StoryTimeline.svelte'
+  import RubricRadar from './internal/RubricRadar.svelte'
   import { dollars } from './lib/budget.js'
 
   /** @typedef {import('./lib/story-overview.js').Sourced} Sourced */
@@ -327,11 +328,13 @@
 
 {#snippet coverageSummary()}
   {@const dimensions = report?.rubric.dimensions ?? []}
-  {#each dimensions as d (d.name)}
-    <PropertyRow label={d.name} value={d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`} />
-  {:else}
-    {#if showEmptyResults}{@render none('No dimension was scored.')}{/if}
-  {/each}
+  <!-- Operator, 2026-11-10: "Coverage as a chart", then "Radar" — bars made it "indifferent
+       from Characters panel". -->
+  {#if dimensions.length}
+    <RubricRadar spokes={rubricRadar(dimensions)} />
+  {:else if showEmptyResults}
+    {@render none('No dimension was scored.')}
+  {/if}
 {/snippet}
 
 {#snippet coverageDetail()}
