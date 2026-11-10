@@ -120,6 +120,7 @@
   let query = $state('')
   let sortMode = $state('group') // 'group' | 'name'
   let settingsOpen = $state(false)
+  let sidebarHidden = $state(false)
   // The canvas frame. Held here rather than in Canvas because it must SURVIVE a
   // change of fixture — the question a viewport answers is "does this hold up
   // at 390?", and you ask it of one component after another. Resetting on
@@ -139,8 +140,10 @@
   // BrandKit is the palette, type, shape and token screens — documentation of
   // the system rather than product surfaces, with no responsive behaviour to
   // playtest. Framing them at 390 would be a control doing something pointless
-  // rather than nothing, so the whole feature switches off there.
-  const framing = $derived(section !== 'brandkit')
+  // rather than nothing, so the whole feature switches off there. Read off what
+  // is SHOWN, not the rail: search reaches every section, and a component opened
+  // from it while the rail says BrandKit still needs its frame.
+  const framing = $derived((shown?.section ?? section) !== 'brandkit')
 
   function pickDevice(d) {
     device = d
@@ -401,7 +404,7 @@
   })
 </script>
 
-<div class="catalog">
+<div class="catalog" class:catalog--no-sidebar={sidebarHidden}>
   <!-- App chrome: identity, and only identity.
 
        Search was here, on the argument that a filter over the whole registry
@@ -458,10 +461,14 @@
     ontheme={(t) => (theme = t)}
     onsortmode={(m) => (sortMode = m)}
     onopensettings={() => (settingsOpen = true)}
+    {sidebarHidden}
+    onsidebar={(h) => (sidebarHidden = h)}
   />
 
-  <!-- Unconditional, identical, in both modes — the chrome. What varies is the
-       FUNCTION available from a row (oninsert/canInsert), never the row itself. -->
+  <!-- Identical in both modes — the chrome. What varies is the FUNCTION
+       available from a row (oninsert/canInsert), never the row itself. Hidden
+       only on request from the rail, to give the canvas the width. -->
+  {#if !sidebarHidden}
   <Sidebar
     {matches}
     {selected}
@@ -478,6 +485,7 @@
     {canInsert}
     {editingSlug}
   />
+  {/if}
   {#if editingFlow}
     <FlowCanvas
       flow={editingFlow}
@@ -560,6 +568,10 @@
     grid-template-rows: auto 1fr;
     height: 100vh;
     overflow: hidden;
+  }
+
+  .catalog--no-sidebar {
+    grid-template-columns: 56px 1fr;
   }
 
   .appbar {

@@ -25,6 +25,8 @@
     ontheme,
     onsortmode,
     onopensettings,
+    sidebarHidden = false,
+    onsidebar,
     /** The destinations to rail. Defaults to all of them; Compose passes fewer. */
     sections = undefined,
   } = $props()
@@ -91,6 +93,16 @@
   </div>
 
   <div class="rail__group rail__group--foot">
+    <button
+      type="button"
+      class="rail__item focus-ring focus-ring--inset hover-fill"
+      aria-label={sidebarHidden ? 'Show sidebar' : 'Hide sidebar'}
+      title={sidebarHidden ? 'Show sidebar' : 'Hide sidebar'}
+      onclick={() => onsidebar?.(!sidebarHidden)}
+    >
+      <Icon name="sidebar-simple" />
+    </button>
+
     <button
       type="button"
       class="rail__item focus-ring focus-ring--inset hover-fill"
