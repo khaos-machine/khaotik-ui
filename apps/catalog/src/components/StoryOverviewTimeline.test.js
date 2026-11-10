@@ -113,6 +113,16 @@ describe('StoryOverview story timeline', () => {
     expect(onselect).toHaveBeenCalledWith({ kind: 'turn', index: t.point })
   })
 
+  // Operator, 2026-11-10: "Fold it". The list is the timeline's detail, opened on request.
+  it('folds the turns list under the timeline', async () => {
+    render(StoryOverview, { props: base })
+    const toggle = screen.getByRole('button', { name: /Where the story turns/ })
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.queryByRole('region', { name: /Where the story turns/ })).not.toBeInTheDocument()
+    await fireEvent.click(toggle)
+    expect(screen.getByRole('region', { name: /Where the story turns/ })).toBeVisible()
+  })
+
   it('marks the selected turn as pressed', () => {
     const t = timelineTurns(structure)[3]
     render(StoryOverview, { props: { ...base, selected: { kind: 'turn', index: t.point } } })

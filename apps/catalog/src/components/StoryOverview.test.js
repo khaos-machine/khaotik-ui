@@ -46,6 +46,8 @@ describe('StoryOverview read sections', () => {
   it('lists where the story turns in engine order and selects a turn', async () => {
     const onselect = vi.fn()
     render(StoryOverview, { props: { ...base, onselect } })
+    // Folded under the timeline (operator, 2026-11-10: "Fold it"); opened as a writer opens it.
+    await fireEvent.click(screen.getByRole('button', { name: /Where the story turns/ }))
     const turns = within(region('Where the story turns')).getAllByRole('button')
     const points = captured.structure.names.points
     expect(turns).toHaveLength(points.length)

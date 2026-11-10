@@ -206,7 +206,8 @@
         </InspectorSection>
       {/if}
       {#if showEmptyResults ? points?.length : points}
-        <InspectorSection title="Where the story turns" count={points.length} uiId="story.overview.turns">
+        <!-- Folded under the timeline, which draws these same turns (operator, 2026-11-10: "Fold it"). -->
+        <InspectorSection title="Where the story turns" count={points.length} collapsed={!!turns} uiId="story.overview.turns">
           {#each points as p, i (i)}
             <SelectableRow title={p.name} subtitle={p.turn} selected={selected?.kind === 'turn' && selected.index === i} onclick={() => onselect?.({ kind: 'turn', index: i })} />
           {/each}
