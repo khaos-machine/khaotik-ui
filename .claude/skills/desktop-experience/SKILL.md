@@ -22,6 +22,13 @@ behind it does not belong here.
 | 2026-11-10 | StoryOverview | The timeline answers **"Where my big turns are"**, **"Beats a structure expects"** and **"Pacing"** — reworked, not dropped. |
 | 2026-11-10 | StoryOverview | Beats: **"Every structure that fits"**, one row each. When the outcome is ambiguous the protocol names no fit set, so: **"Top two by excess"**. |
 | 2026-11-10 | StoryOverview | Pacing: **"Both"** — a shaded density band, and words naming the quietest and busiest stretch. |
+| 2026-11-10 | StoryOverview | Reworked timeline, asked "Does it now tell you something?": **"Yes, keep going"**. |
+| 2026-11-10 | StoryOverview | The turns list under the timeline: **"Fold it"**. |
+| 2026-11-10 | StoryOverview | Rollout: **"On for everyone"** — part of the component, no opt-in prop. |
+| 2026-11-10 | StoryOverview | Next: **"Dashboard layout"** — arrange the one screen before adding panels. |
+| 2026-11-10 | StoryOverview | Layout: **"Header, band, grid"** — verdict in the header, premise and Shape as full-width bands, the rest as summary panels in a grid. |
+| 2026-11-10 | StoryOverview | A panel's full list: **"Expand in place"** — "Show all" opens it beneath the grid, one panel at a time. |
+| 2026-11-10 | StoryOverview | **"Build it"**. |
 
 ## Working rules — proposed, not yet ruled
 
