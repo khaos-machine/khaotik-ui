@@ -29,6 +29,8 @@ behind it does not belong here.
 | 2026-11-10 | StoryOverview | Layout: **"Header, band, grid"** — verdict in the header, premise and Shape as full-width bands, the rest as summary panels in a grid. |
 | 2026-11-10 | StoryOverview | A panel's full list: **"Expand in place"** — "Show all" opens it beneath the grid, one panel at a time. |
 | 2026-11-10 | StoryOverview | **"Build it"**. |
+| 2026-11-10 | StoryOverview | On the dashboard preview: "The current preview was incomplete, especially relative to character journeys". The Journeys panel answers **"Who changes"**, **"Where they turn"** and **"Who's connected"** — **"Wait for real data"** before building them. |
+| 2026-11-10 | StoryOverview | Placing a journey's turning points: **"Pass all positions"** — every scene's word position comes in as an input, on Shape's axis. |
 
 ## Working rules — proposed, not yet ruled
 
