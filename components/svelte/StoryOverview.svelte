@@ -6,9 +6,7 @@
   // unfinished section the protocol does not declare, which is shown exactly as sent.
   import Button from './Button.svelte'
   import InspectorSection from './InspectorSection.svelte'
-  import LabeledPill from './LabeledPill.svelte'
   import MeasureTable from './MeasureTable.svelte'
-  import MetricCard from './MetricCard.svelte'
   import PropertyRow from './PropertyRow.svelte'
   import SectionHeader from './SectionHeader.svelte'
   import SelectableRow from './SelectableRow.svelte'
@@ -73,6 +71,30 @@
   const pairList = $derived(relationships.kind === 'loaded' && relationshipsRead(relationships.data) ? relationships.data : null)
   const readPairs = $derived((pairList ?? []).map((/** @type {Record<string, any>} */ r, /** @type {number} */ index) => ({ ...r, index })).filter((r) => r.analysis.synthesis))
   const skippedPairs = $derived((pairList ?? []).map((/** @type {Record<string, any>} */ r, /** @type {number} */ index) => ({ ...r, index })).filter((r) => r.analysis.skip))
+  /** @typedef {'coverage' | 'characters' | 'production' | 'journeys' | 'relationships'} Panel */
+  /** The panels in grid order, by their titles; the titles the outline names them by. @type {Readonly<Record<Panel, string>>} */
+  const PANELS = { coverage: 'Coverage', characters: 'Characters', production: 'Production', journeys: 'Journeys', relationships: 'Relationships' }
+  /** The panel whose detail is open beneath the grid; one at a time. */
+  let open = $state(/** @type {Panel | null} */ (null))
+  const uid = $props.id()
+  /** Whether a panel has more than its summary to show. */
+  const hasDetail = $derived({
+    coverage: !!report,
+    characters: characters.length > 0,
+    production: !!(report && flags),
+    journeys: !!journeyList?.length,
+    relationships: !!pairList?.length && (readPairs.length > 0 || showSkippedPairs || advanced),
+  })
+  /** The characters' summary: the five with the most dialogue. */
+  const topCharacters = $derived([...characters].sort((a, b) => (b.dialogueWeight ?? 0) - (a.dialogueWeight ?? 0)).slice(0, 5))
+  /** The journeys' summary: how many of each arc, in the arcs' order, e.g. "2 complete arcs · 1 unfinished arc". */
+  const arcTally = $derived(
+    Object.keys(ARCS)
+      .map((arc) => ({ n: (journeyList ?? []).filter((j) => j.journey.arc_quality === arc).length, label: ARCS[arc].toLowerCase() }))
+      .filter((a) => a.n > 0)
+      .map((a) => `${a.n} ${a.label}${a.n === 1 ? '' : 's'}`)
+      .join(' · '),
+  )
   const madeOn = $derived(
     report?.generatedAt ? new Date(report.generatedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }) : '',
   )
@@ -97,6 +119,10 @@
 {#snippet line(/** @type {string} */ text, /** @type {string} */ detail = '')}
   <p class="ui-story-overview__line">{text}</p>
   {#if detail}<p class="ui-story-overview__detail">{detail}</p>{/if}
+{/snippet}
+
+{#snippet fact(/** @type {string} */ label, /** @type {string | number} */ value)}
+  <div class="ui-story-overview__fact" role="group" aria-label={label}><span class="ui-story-overview__label">{label}</span> {value}</div>
 {/snippet}
 
 {#snippet none(/** @type {string} */ text, /** @type {string} */ detail = '')}
@@ -171,19 +197,34 @@
 
 <div class="ui-story-overview__host"><div class="ui-story-overview">
   <SectionHeader eyebrow="Story" {title}>
-    {#snippet trailing()}{#if madeOn}<span class="ui-story-overview__made">Coverage made {madeOn}</span>{/if}{/snippet}
+    {#snippet trailing()}
+      {#if report}<span class="ui-story-overview__verdict" title={report.rubric.verdict.evidence?.[0]?.citation ?? ''}><StatusPill text={VERDICTS[report.rubric.verdict.value].text} tone={VERDICTS[report.rubric.verdict.value].tone} /></span>{/if}
+      {#if madeOn}<span class="ui-story-overview__made">Coverage made {madeOn}</span>{/if}
+    {/snippet}
   </SectionHeader>
 
-  <InspectorSection title="Premise" uiId="story.overview.premise">
+  <!-- The header's body: the logline, the story's numbers, the synopsis folded. -->
+  <section class="ui-story-overview__premise" aria-label="Premise" data-ui-id="story.overview.premise">
     {#if premise.kind === 'loading'}{@render none(LOADING)}
     {:else if premise.kind === 'missing'}{@render none('This story has no premise yet.', premise.reason)}
     {:else if premise.kind === 'failed'}{@render line(premise.message)}
     {:else}
       {@render sourced('', premise.data.logline)}
-      {@render sourced('', premise.data.synopsis)}
+    {/if}
+    {#if report}
+      <div class="ui-story-overview__facts">
+        {@render fact('Genre', report.genre.value)}
+        {@render fact('Tone', report.tone.value)}
+        {@render fact('Runtime', `${Math.round(report.structure.estimatedRuntimeMs.value / 60000)} min`)}
+        {@render fact('Pages', report.structure.pageCount.value)}
+        {@render fact('Scenes', report.structure.sceneCount.value)}
+      </div>
+    {/if}
+    {#if premise.kind === 'loaded'}
+      <InspectorSection title="Synopsis" collapsed>{@render sourced('', premise.data.synopsis)}</InspectorSection>
     {/if}
     {@render run('premise')}
-  </InspectorSection>
+  </section>
 
   <InspectorSection title="Shape" uiId="story.overview.shape">
     {#if structure.kind === 'loading'}{@render none(LOADING)}
@@ -232,160 +273,235 @@
     {@render run('structure')}
   </InspectorSection>
 
-  <InspectorSection title="Coverage" uiId="story.overview.coverage">
-    {#if coverage.kind === 'loading'}{@render none(LOADING)}
-    {:else if coverage.kind === 'missing'}{@render none("There's no coverage for this story yet.", coverage.reason)}
-    {:else if coverage.kind === 'failed' || !report}{@render line(coverage.kind === 'failed' ? coverage.message : "Khaos couldn't read this story's coverage.")}
-    {:else}
-      {#if report.incompleteSections?.length}<p class="ui-story-overview__note" role="note">Part of this coverage wasn't finished: {report.incompleteSections.map(incompleteLabel).join(', ')}.</p>{/if}
-      <span class="ui-story-overview__verdict" title={report.rubric.verdict.evidence?.[0]?.citation ?? ''}><StatusPill text={VERDICTS[report.rubric.verdict.value].text} tone={VERDICTS[report.rubric.verdict.value].tone} /></span>
-      <div class="ui-story-overview__metrics">
-        <MetricCard label="Runtime" value="{Math.round(report.structure.estimatedRuntimeMs.value / 60000)} min" />
-        <MetricCard label="Pages" value={report.structure.pageCount.value} />
-        <MetricCard label="Scenes" value={report.structure.sceneCount.value} />
-      </div>
-      <div class="ui-story-overview__pills">
-        <LabeledPill label="Genre" value={report.genre.value} />
-        <LabeledPill label="Tone" value={report.tone.value} />
-      </div>
-      {@render sourced('Coverage logline', report.logline)}
-      {@render sourced('Coverage synopsis', report.synopsis)}
-      {#if report.structure.pacingNotes?.value}{@render sourced('Pacing', report.structure.pacingNotes)}{/if}
-      {@render list('Strengths', listItems(report.assessment.strengths))}
-      {@render list('Concerns', listItems(report.assessment.concerns))}
-      {@render sourced('Notes', report.assessment.notes)}
-      {#if showEmptyResults || report.rubric.dimensions}
-        {@const dimensions = report.rubric.dimensions ?? []}
-        <InspectorSection title="Rubric" count={dimensions.length} uiId="story.overview.rubric">
-          {#each dimensions as d (d.name)}
-            <PropertyRow label={d.name} value={d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`} />
-            {#if d.summary?.value}<p class="ui-story-overview__detail">{d.summary.value}</p>{/if}
-          {:else}
-            {#if showEmptyResults}{@render none('No dimension was scored.')}{/if}
-          {/each}
-        </InspectorSection>
-      {/if}
-      {#if showMeasuredStructure && report.structure.measured}
-        {@const m = report.structure.measured}
-        <InspectorSection title="Structure measured" uiId="story.overview.coverage.measured">
-          {#if Object.hasOwn(MEASURED, m.outcome)}
-            <StatusPill text={MEASURED[m.outcome]} tone="info" />
-            {@render line(m.reason)}
-            {#if m.document}<PropertyRow label="Read from" value={m.document} />{/if}
-          {:else}
-            {@render line("Khaos couldn't read how this story's structure was measured.")}
-          {/if}
-        </InspectorSection>
-      {/if}
-      {#if showCoverageActs && report.structure.acts?.length}
-        <InspectorSection title="Acts" count={report.structure.acts.length} uiId="story.overview.coverage.acts">
-          {#each report.structure.acts as act (act)}
-            <InspectorSection title={act.name}>
-              {#if act.percentage !== undefined}<PropertyRow label="Word share" value="{Math.round(act.percentage * 100)}%" />{/if}
-              {#if act.sceneCount !== undefined}<PropertyRow label="Scenes" value={act.sceneCount} />{/if}
-              {#if act.durationMs !== undefined}<PropertyRow label="Runtime" value="{act.durationMs / 60000} min" />{/if}
-            </InspectorSection>
-          {/each}
-        </InspectorSection>
-      {/if}
-      {#if showSceneEntries && report.scenes?.length}
-        <InspectorSection title="Scene entries" count={report.scenes.length} uiId="story.overview.coverage.scenes">
-          {#each report.scenes as scene (scene)}
-            <InspectorSection title={scene.slugline}>
-              {#if scene.index !== undefined}<PropertyRow label="Scene index" value={scene.index} />{/if}
-              {@render sourced('Summary', scene.summary)}
-              {@render sourced('Narrative role', scene.narrativeRole)}
-              {#if scene.characters?.length}<PropertyRow label="Characters" value={scene.characters.join(', ')} />{/if}
-              <PropertyRow label="Runtime" value="{scene.durationMs.value / 60000} min" source={sourceLabel(scene.durationMs)} />
-            </InspectorSection>
-          {/each}
-        </InspectorSection>
-      {/if}
-      <InspectorSection title="Characters" count={characters.length} uiId="story.overview.characters">
-        <MeasureTable
-          rows={characters}
-          labelKey="name"
-          sortKey=""
-          measures={[{ key: 'sceneCount', label: 'Scenes' }, { key: 'dialogueWeight', label: 'Dialogue weight', format: (v) => `${Math.round(v * 100)}%` }]}
-          selectedKey={selected?.kind === 'character' ? characters[selected.index]?.name : undefined}
-          onSelect={(row) => onselect?.({ kind: 'character', index: row.index })} />
-      </InspectorSection>
-      <InspectorSection title="Production" uiId="story.overview.production">
-        {#if !flags}
-          {@render line("Khaos couldn't read this coverage's production notes.")}
-        {:else}
-          <PropertyRow label="Locations" value={report.viability.uniqueLocations} />
-          <PropertyRow label="Cast size" value={report.viability.castSize} />
-          <PropertyRow label="Speaking roles" value={report.viability.speakingRoles} />
-          <PropertyRow label="Complexity" value={report.viability.complexityTier?.value} />
-          {#if flags.contained}
-            <div class="ui-story-overview__sourced" title={flags.contained.evidence?.[0]?.citation ?? ''}>
-              <p>Scenes in the three main places: {Math.round(flags.contained.value * 100)}%</p>
-              {#if sourceLabel(flags.contained)}<StatusPill text={sourceLabel(flags.contained)} />{/if}
-            </div>
-          {/if}
-          <p class="ui-story-overview__label">Flagged</p>
-          {#if flags.raised.length}
-            <div class="ui-story-overview__pills">{#each flags.raised as f (f)}<StatusPill text={f} tone="warning" />{/each}</div>
-          {:else}
-            {@render line('Nothing flagged.')}
-          {/if}
-        {/if}
-      </InspectorSection>
-      {#if advanced && report.warnings?.length}
-        <InspectorSection title="Show details" collapsed uiId="story.overview.coverage-details">
-          <ul class="ui-story-overview__list">{#each report.warnings as w, i (i)}<li>{w}</li>{/each}</ul>
-        </InspectorSection>
-      {/if}
-    {/if}
-    {@render run('coverage')}
-  </InspectorSection>
+  <!-- The panels: a summary each; "Show all" opens one panel's full detail beneath the grid
+       (operator, 2026-11-10: "Header, band, grid", "Expand in place"). Each keeps the data-ui-id
+       a host's outline jumps to. -->
+  <div class="ui-story-overview__grid">
+    {@render panel('coverage', report ? coverageSummary : coverageAbsent)}
+    {@render panel('characters', report ? charactersSummary : fromCoverage)}
+    {@render panel('production', report ? productionSummary : fromCoverage)}
+    {@render panel('journeys', journeysSummary)}
+    {@render panel('relationships', relationshipsSummary)}
+  </div>
 
-  <InspectorSection title="Journeys" uiId="story.overview.journeys">
-    {@render pass('journeys')}
-    {#if journeys.kind === 'loading'}{@render none(LOADING)}
-    {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render none('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
-    {:else if journeys.kind === 'failed' || !journeyList}{@render line("Khaos couldn't read this story's journeys.", journeys.kind === 'failed' ? journeys.message : '')}
-    {:else}
-      {#each journeyList as j, i (j.character.id)}
-        <SelectableRow title={journeyName(j.character)} subtitle="Ends: {j.journey.final_state}" selected={selected?.kind === 'journey' && selected.index === i} onclick={() => onselect?.({ kind: 'journey', index: i })}>
-          {#snippet trailing()}<StatusPill text={ARCS[j.journey.arc_quality]} />{/snippet}
-        </SelectableRow>
-      {/each}
-    {/if}
-  </InspectorSection>
-
-  <InspectorSection title="Relationships" uiId="story.overview.relationships">
-    {@render pass('relationships')}
-    {#if relationships.kind === 'loading'}{@render none(LOADING)}
-    {:else if relationships.kind === 'missing' || (pairList && !pairList.length)}{@render none('No relationships have been read yet.', relationships.kind === 'missing' ? relationships.reason : '')}
-    {:else if relationships.kind === 'failed' || !pairList}{@render line("Khaos couldn't read this story's relationships.", relationships.kind === 'failed' ? relationships.message : '')}
-    {:else}
-      {#each readPairs as r (r.pairKey)}
-        <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.synthesis.trajectory} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
-          {#snippet trailing()}<StatusPill text={r.analysis.synthesis.relationship_type} />{/snippet}
-        </SelectableRow>
-      {:else}
-        {@render line('No pair of characters shares enough scenes to read yet.')}
-      {/each}
-      {#if showSkippedPairs}
-        {#each skippedPairs as r (r.pairKey)}
-          <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.skip.reason} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
-            {#snippet trailing()}<StatusPill text="Skipped" tone="skipped" />{/snippet}
-          </SelectableRow>
-        {/each}
-      {:else if advanced && skippedPairs.length}
-        <InspectorSection title="Show details" collapsed uiId="story.overview.relationships-details">
-          <ul class="ui-story-overview__list">{#each skippedPairs as r (r.pairKey)}<li>{pairName(r.characters)}: {r.analysis.skip.reason}</li>{/each}</ul>
-        </InspectorSection>
-      {/if}
-    {/if}
-  </InspectorSection>
+  {#if open && hasDetail[open]}
+    <section id="{uid}-{open}" class="ui-story-overview__expanded" aria-label={PANELS[open]}>
+      <h3 class="ui-story-overview__panel-title">{PANELS[open]}</h3>
+      {#if open === 'coverage'}{@render coverageDetail()}
+      {:else if open === 'characters'}{@render charactersDetail()}
+      {:else if open === 'production'}{@render productionDetail()}
+      {:else if open === 'journeys'}{@render journeysDetail()}
+      {:else}{@render relationshipsDetail()}{/if}
+    </section>
+  {/if}
 </div></div>
 
+{#snippet panel(/** @type {Panel} */ id, /** @type {import('svelte').Snippet} */ summary)}
+  <div class="ui-story-overview__panel" class:ui-story-overview__panel--open={open === id} role="group" aria-label={PANELS[id]} data-ui-id="story.overview.{id}">
+    <div class="ui-story-overview__panel-head">
+      <h3 class="ui-story-overview__panel-title">{PANELS[id]}</h3>
+      {#if hasDetail[id]}
+        <button type="button" class="ui-story-overview__more" aria-label="Show all: {PANELS[id]}" aria-expanded={open === id} aria-controls="{uid}-{id}" onclick={() => (open = open === id ? null : id)}>Show all</button>
+      {/if}
+    </div>
+    {@render summary()}
+  </div>
+{/snippet}
+
+{#snippet coverageAbsent()}
+  {#if coverage.kind === 'loading'}{@render none(LOADING)}
+  {:else if coverage.kind === 'missing'}{@render none("There's no coverage for this story yet.", coverage.reason)}
+  {:else}{@render line(coverage.kind === 'failed' ? coverage.message : "Khaos couldn't read this story's coverage.")}{/if}
+  <!-- With no coverage to open, its run is the panel's whole point, so it is not behind Show all. -->
+  {@render run('coverage')}
+{/snippet}
+
+<!-- Characters and Production come from coverage: they say its state, and leave its message and its
+     action to the Coverage panel rather than repeating them. -->
+{#snippet fromCoverage()}
+  {#if coverage.kind === 'loading'}{@render none(LOADING)}
+  {:else if coverage.kind === 'missing'}{@render none("There's no coverage for this story yet.")}
+  {:else}{@render line("Khaos couldn't read this story's coverage.")}{/if}
+{/snippet}
+
+{#snippet coverageSummary()}
+  {@const dimensions = report?.rubric.dimensions ?? []}
+  {#each dimensions as d (d.name)}
+    <PropertyRow label={d.name} value={d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`} />
+  {:else}
+    {#if showEmptyResults}{@render none('No dimension was scored.')}{/if}
+  {/each}
+{/snippet}
+
+{#snippet coverageDetail()}
+  {#if report}
+    {#if report.incompleteSections?.length}<p class="ui-story-overview__note" role="note">Part of this coverage wasn't finished: {report.incompleteSections.map(incompleteLabel).join(', ')}.</p>{/if}
+    {@render sourced('Coverage logline', report.logline)}
+    {@render sourced('Coverage synopsis', report.synopsis)}
+    {#if report.structure.pacingNotes?.value}{@render sourced('Pacing', report.structure.pacingNotes)}{/if}
+    {@render list('Strengths', listItems(report.assessment.strengths))}
+    {@render list('Concerns', listItems(report.assessment.concerns))}
+    {@render sourced('Notes', report.assessment.notes)}
+    {#if showEmptyResults || report.rubric.dimensions}
+      {@const dimensions = report.rubric.dimensions ?? []}
+      <InspectorSection title="Rubric" count={dimensions.length} uiId="story.overview.rubric">
+        {#each dimensions as d (d.name)}
+          <PropertyRow label={d.name} value={d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`} />
+          {#if d.summary?.value}<p class="ui-story-overview__detail">{d.summary.value}</p>{/if}
+        {:else}
+          {#if showEmptyResults}{@render none('No dimension was scored.')}{/if}
+        {/each}
+      </InspectorSection>
+    {/if}
+    {#if showMeasuredStructure && report.structure.measured}
+      {@const m = report.structure.measured}
+      <InspectorSection title="Structure measured" uiId="story.overview.coverage.measured">
+        {#if Object.hasOwn(MEASURED, m.outcome)}
+          <StatusPill text={MEASURED[m.outcome]} tone="info" />
+          {@render line(m.reason)}
+          {#if m.document}<PropertyRow label="Read from" value={m.document} />{/if}
+        {:else}
+          {@render line("Khaos couldn't read how this story's structure was measured.")}
+        {/if}
+      </InspectorSection>
+    {/if}
+    {#if showCoverageActs && report.structure.acts?.length}
+      <InspectorSection title="Acts" count={report.structure.acts.length} uiId="story.overview.coverage.acts">
+        {#each report.structure.acts as act (act)}
+          <InspectorSection title={act.name}>
+            {#if act.percentage !== undefined}<PropertyRow label="Word share" value="{Math.round(act.percentage * 100)}%" />{/if}
+            {#if act.sceneCount !== undefined}<PropertyRow label="Scenes" value={act.sceneCount} />{/if}
+            {#if act.durationMs !== undefined}<PropertyRow label="Runtime" value="{act.durationMs / 60000} min" />{/if}
+          </InspectorSection>
+        {/each}
+      </InspectorSection>
+    {/if}
+    {#if showSceneEntries && report.scenes?.length}
+      <InspectorSection title="Scene entries" count={report.scenes.length} uiId="story.overview.coverage.scenes">
+        {#each report.scenes as scene (scene)}
+          <InspectorSection title={scene.slugline}>
+            {#if scene.index !== undefined}<PropertyRow label="Scene index" value={scene.index} />{/if}
+            {@render sourced('Summary', scene.summary)}
+            {@render sourced('Narrative role', scene.narrativeRole)}
+            {#if scene.characters?.length}<PropertyRow label="Characters" value={scene.characters.join(', ')} />{/if}
+            <PropertyRow label="Runtime" value="{scene.durationMs.value / 60000} min" source={sourceLabel(scene.durationMs)} />
+          </InspectorSection>
+        {/each}
+      </InspectorSection>
+    {/if}
+    {#if advanced && report.warnings?.length}
+      <InspectorSection title="Show details" collapsed uiId="story.overview.coverage-details">
+        <ul class="ui-story-overview__list">{#each report.warnings as w, i (i)}<li>{w}</li>{/each}</ul>
+      </InspectorSection>
+    {/if}
+  {/if}
+  {@render run('coverage')}
+{/snippet}
+
+{#snippet charactersSummary()}
+  <ul class="ui-story-overview__picks">
+    {#each topCharacters as c (c.index)}
+      <li>
+        <button type="button" class="ui-story-overview__pick" aria-label={c.name} aria-pressed={selected?.kind === 'character' && selected.index === c.index} onclick={() => onselect?.({ kind: 'character', index: c.index })}>
+          <span>{c.name}</span>{#if c.dialogueWeight !== undefined}<span class="ui-story-overview__detail">{Math.round(c.dialogueWeight * 100)}%</span>{/if}
+        </button>
+      </li>
+    {/each}
+  </ul>
+  <p class="ui-story-overview__detail">{characters.length} {characters.length === 1 ? 'character' : 'characters'}</p>
+{/snippet}
+
+{#snippet charactersDetail()}
+  <MeasureTable
+    rows={characters}
+    labelKey="name"
+    sortKey=""
+    measures={[{ key: 'sceneCount', label: 'Scenes' }, { key: 'dialogueWeight', label: 'Dialogue weight', format: (v) => `${Math.round(v * 100)}%` }]}
+    selectedKey={selected?.kind === 'character' ? characters[selected.index]?.name : undefined}
+    onSelect={(row) => onselect?.({ kind: 'character', index: row.index })} />
+{/snippet}
+
+{#snippet productionSummary()}
+  {#if !flags || !report}
+    {@render line("Khaos couldn't read this coverage's production notes.")}
+  {:else}
+    <PropertyRow label="Cast size" value={report.viability.castSize} />
+    <PropertyRow label="Locations" value={report.viability.uniqueLocations} />
+    <PropertyRow label="Complexity" value={report.viability.complexityTier?.value} />
+    <p class="ui-story-overview__label">Flagged</p>
+    {#if flags.raised.length}
+      <div class="ui-story-overview__pills">{#each flags.raised as f (f)}<StatusPill text={f} tone="warning" />{/each}</div>
+    {:else}
+      {@render line('Nothing flagged.')}
+    {/if}
+  {/if}
+{/snippet}
+
+{#snippet productionDetail()}
+  {#if flags && report}
+    <PropertyRow label="Speaking roles" value={report.viability.speakingRoles} />
+    {#if flags.contained}
+      <div class="ui-story-overview__sourced" title={flags.contained.evidence?.[0]?.citation ?? ''}>
+        <p>Scenes in the three main places: {Math.round(flags.contained.value * 100)}%</p>
+        {#if sourceLabel(flags.contained)}<StatusPill text={sourceLabel(flags.contained)} />{/if}
+      </div>
+    {/if}
+  {/if}
+{/snippet}
+
+{#snippet journeysSummary()}
+  {@render pass('journeys')}
+  {#if journeys.kind === 'loading'}{@render none(LOADING)}
+  {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render none('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
+  {:else if journeys.kind === 'failed' || !journeyList}{@render line("Khaos couldn't read this story's journeys.", journeys.kind === 'failed' ? journeys.message : '')}
+  {:else}
+    <p class="ui-story-overview__line">{arcTally}</p>
+  {/if}
+{/snippet}
+
+{#snippet journeysDetail()}
+  {#each journeyList ?? [] as j, i (j.character.id)}
+    <SelectableRow title={journeyName(j.character)} subtitle="Ends: {j.journey.final_state}" selected={selected?.kind === 'journey' && selected.index === i} onclick={() => onselect?.({ kind: 'journey', index: i })}>
+      {#snippet trailing()}<StatusPill text={ARCS[j.journey.arc_quality]} />{/snippet}
+    </SelectableRow>
+  {/each}
+{/snippet}
+
+{#snippet relationshipsSummary()}
+  {@render pass('relationships')}
+  {#if relationships.kind === 'loading'}{@render none(LOADING)}
+  {:else if relationships.kind === 'missing' || (pairList && !pairList.length)}{@render none('No relationships have been read yet.', relationships.kind === 'missing' ? relationships.reason : '')}
+  {:else if relationships.kind === 'failed' || !pairList}{@render line("Khaos couldn't read this story's relationships.", relationships.kind === 'failed' ? relationships.message : '')}
+  {:else if readPairs.length}
+    <p class="ui-story-overview__line">{readPairs.length} {readPairs.length === 1 ? 'pair' : 'pairs'} read</p>
+  {:else}
+    {@render line('No pair of characters shares enough scenes to read yet.')}
+  {/if}
+{/snippet}
+
+{#snippet relationshipsDetail()}
+  {#each readPairs as r (r.pairKey)}
+    <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.synthesis.trajectory} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
+      {#snippet trailing()}<StatusPill text={r.analysis.synthesis.relationship_type} />{/snippet}
+    </SelectableRow>
+  {/each}
+  {#if showSkippedPairs}
+    {#each skippedPairs as r (r.pairKey)}
+      <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.skip.reason} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
+        {#snippet trailing()}<StatusPill text="Skipped" tone="skipped" />{/snippet}
+      </SelectableRow>
+    {/each}
+  {:else if advanced && skippedPairs.length}
+    <InspectorSection title="Show details" collapsed uiId="story.overview.relationships-details">
+      <ul class="ui-story-overview__list">{#each skippedPairs as r (r.pairKey)}<li>{pairName(r.characters)}: {r.analysis.skip.reason}</li>{/each}</ul>
+    </InspectorSection>
+  {/if}
+{/snippet}
+
 <style>
+  /* Wide enough for the band and a row of panels on a desktop pane; a document column was 760. */
   .ui-story-overview {
-    max-width: 760px;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
@@ -433,12 +549,101 @@
   .ui-story-overview__verdict {
     display: inline-flex;
   }
-  .ui-story-overview__metrics,
   .ui-story-overview__pills {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-sm);
     margin: var(--spacing-sm) 0;
+  }
+  .ui-story-overview__premise {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xs);
+  }
+  /* The story's numbers on one wrapping line, each labelled. */
+  .ui-story-overview__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2xs) var(--spacing-md);
+    font-size: var(--body-md-size);
+  }
+  .ui-story-overview__fact .ui-story-overview__label {
+    margin: 0;
+  }
+  /* As many panels to a row as fit at a readable width; one column on a phone. */
+  .ui-story-overview__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(var(--spacing-2xl) * 5), 1fr));
+    gap: var(--spacing-sm);
+  }
+  .ui-story-overview__panel,
+  .ui-story-overview__expanded {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xs);
+    padding: var(--spacing-sm);
+    border: var(--size-stroke-hairline) solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--surface-raised);
+  }
+  .ui-story-overview__panel--open {
+    border-color: var(--text-secondary);
+  }
+  .ui-story-overview__panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--spacing-xs);
+  }
+  .ui-story-overview__panel-title {
+    margin: 0;
+    font-size: var(--label-md-size);
+    line-height: var(--label-md-line);
+    font-weight: var(--label-md-weight);
+    color: var(--text-primary);
+  }
+  .ui-story-overview__more {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: var(--caption-size);
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+  .ui-story-overview__more:hover,
+  .ui-story-overview__more[aria-expanded='true'] {
+    color: var(--text-primary);
+  }
+  .ui-story-overview__more:focus-visible,
+  .ui-story-overview__pick:focus-visible {
+    outline: var(--size-stroke-focus) solid var(--border-focus);
+    outline-offset: 2px;
+  }
+  .ui-story-overview__picks {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ui-story-overview__pick {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-2xs) 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: var(--body-md-size);
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+  }
+  .ui-story-overview__pick .ui-story-overview__detail {
+    margin: 0;
+  }
+  .ui-story-overview__pick[aria-pressed='true'] {
+    font-weight: var(--label-md-weight);
   }
   .ui-story-overview__list {
     margin: 0;

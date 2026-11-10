@@ -14,6 +14,10 @@ import cloudEmpty from './fixtures/khaos-cloud-coverage-empty.json'
 const loaded = (data) => ({ kind: 'loaded', data })
 const report = captured['coverage/report']
 const region = (name) => within(screen.getByRole('region', { name }))
+// Opens a dashboard panel's full detail beneath the grid (operator, 2026-11-10: "Expand in place").
+const showAll = (name) => fireEvent.click(screen.getByRole('button', { name: `Show all: ${name}` }))
+// A dashboard panel: its summary, and the pass note when a host opts in.
+const panel = (name) => within(screen.getByRole('group', { name }))
 const pill = (name) => screen.getByRole('button', { name }).closest('.ui-story-outline__row')
 const MAYA = { id: 'character_a', name: 'MAYA' }
 const THEO = { id: 'character_b', name: 'THEO' }
@@ -50,14 +54,16 @@ const side = (over = {}) =>
   render(StoryOverviewSide, { structure: loaded(captured.structure), coverage: loaded(report), journeys, relationships: pairs, advanced: false, selected: null, onRevealScene: vi.fn(), ...over })
 
 describe('desktop Overview: skipped pairs only in Advanced', () => {
-  it('draws no skipped pair outside Advanced', () => {
+  it('draws no skipped pair outside Advanced', async () => {
     overview()
+    await showAll('Relationships')
     expect(region('Relationships').getAllByRole('button').map((b) => b.getAttribute('aria-label'))).toEqual(['MAYA and THEO'])
     expect(screen.queryByText(/below the minimum/)).toBeNull()
   })
 
   it('lists skips with their reasons under Show details in Advanced, not as rows', async () => {
     overview({ advanced: true })
+    await showAll('Relationships')
     expect(screen.queryByRole('button', { name: 'THEO and MAYA' })).toBeNull()
     const details = region('Relationships').getByRole('button', { name: 'Show details' })
     await fireEvent.click(details)
@@ -125,12 +131,13 @@ describe('desktop Overview: the document', () => {
 })
 
 describe('desktop Overview: conforming input 0.178.5 could not draw draws nothing for that part', () => {
-  it('absent rubric dimensions draw no Rubric section and keep the rest', () => {
+  it('absent rubric dimensions draw no Rubric section and keep the rest', async () => {
     const { dimensions: _dimensions, ...rubric } = report.rubric
     overview({ coverage: loaded({ ...report, rubric }) })
+    await showAll('Coverage')
     expect(screen.queryByRole('region', { name: 'Rubric' })).toBeNull()
     expect(screen.queryByText('No dimension was scored.')).toBeNull()
-    expect(screen.getByRole('region', { name: 'Characters' })).toBeVisible()
+    expect(screen.getByRole('group', { name: 'Characters' })).toBeVisible()
   })
 
   it('an unscored lens draws no row in Advanced; a scored one draws as before', async () => {
@@ -142,9 +149,10 @@ describe('desktop Overview: conforming input 0.178.5 could not draw draws nothin
     expect(screen.getByRole('group', { name: 'spine' })).toHaveAccessibleDescription('score 0.50 · p 0.010')
   })
 
-  it('the Khaos Cloud "empty" golden renders without throwing and without the Cloud additions', () => {
+  it('the Khaos Cloud "empty" golden renders without throwing and without the Cloud additions', async () => {
     overview({ coverage: loaded(cloudEmpty.report) })
-    expect(region('Coverage').getByText('No verdict')).toBeVisible()
+    expect(screen.getByText('No verdict')).toBeVisible()
+    await showAll('Coverage')
     expect(screen.queryByRole('region', { name: 'Structure measured' })).toBeNull()
     expect(screen.queryByText('No dimension was scored.')).toBeNull()
   })
@@ -160,8 +168,10 @@ describe('desktop Overview: runs alone change nothing 0.178.5 drew', () => {
     for (const name of ['Shape', 'Where the story turns', 'Coverage', 'Characters', 'Production', 'Journeys', 'Relationships']) expect(pill(name)).toHaveTextContent('Ready')
   })
 
-  it('the journeys and relationships sections say nothing about their pass', () => {
+  it('the journeys and relationships sections say nothing about their pass', async () => {
     overview({ runs })
+    await showAll('Journeys')
+    expect(panel('Journeys').queryByRole('note')).toBeNull()
     expect(region('Journeys').queryByRole('note')).toBeNull()
     expect(screen.queryByText('PAIR_TIMEOUT')).toBeNull()
   })

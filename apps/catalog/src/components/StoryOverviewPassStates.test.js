@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen, within } from '@testing-library/svelte'
+import { render, screen, fireEvent, within } from '@testing-library/svelte'
 import StoryOverview from '@khaos-machine/khaotik-ui/components/svelte/StoryOverview.svelte'
 import StoryOverviewOutline from '@khaos-machine/khaotik-ui/components/svelte/StoryOverviewOutline.svelte'
 import captured from '../data/story-overview.json'
@@ -11,6 +11,9 @@ import captured from '../data/story-overview.json'
 
 const loaded = (data) => ({ kind: 'loaded', data })
 const region = (name) => screen.getByRole('region', { name })
+// The dashboard: a panel's summary carries the pass note; Show all opens its rows beneath the grid.
+const panel = (name) => screen.getByRole('group', { name })
+const showAll = (name) => fireEvent.click(screen.getByRole('button', { name: `Show all: ${name}` }))
 const pill = (name) => screen.getByRole('button', { name }).closest('.ui-story-outline__row')
 
 const journey = (id, name) => ({
@@ -30,11 +33,12 @@ describe('a partial or failed Journeys or Relationships pass', () => {
     expect(pill('Relationships')).toHaveTextContent('Ready')
   })
 
-  it('shows the three saved journeys and says the pass is not finished', () => {
+  it('shows the three saved journeys and says the pass is not finished', async () => {
     render(StoryOverview, { props: { journeys: saved, relationships: pairs, runs: { journeys: { kind: 'partial' } }, showPassStates: true } })
+    expect(within(panel('Journeys')).getByRole('note')).toHaveTextContent("This pass hasn't finished, so some results are missing.")
+    expect(within(panel('Relationships')).queryByRole('note')).toBeNull()
+    await showAll('Journeys')
     expect(within(region('Journeys')).getAllByRole('button')).toHaveLength(3)
-    expect(within(region('Journeys')).getByRole('note')).toHaveTextContent("This pass hasn't finished, so some results are missing.")
-    expect(within(region('Relationships')).queryByRole('note')).toBeNull()
   })
 
   it('reads a failed Relationships pass as failed in the outline, not Ready', () => {
@@ -44,10 +48,11 @@ describe('a partial or failed Journeys or Relationships pass', () => {
     expect(pill('Journeys')).toHaveTextContent('Ready')
   })
 
-  it('says a failed Relationships pass did not finish, with its message, beside what was saved', () => {
+  it('says a failed Relationships pass did not finish, with its message, beside what was saved', async () => {
     render(StoryOverview, { props: { journeys: saved, relationships: pairs, runs: { relationships: { kind: 'failed', message: 'PAIR_TIMEOUT' } }, showPassStates: true } })
-    expect(within(region('Relationships')).getByText("This analysis didn't finish.")).toBeVisible()
-    expect(within(region('Relationships')).getByText('PAIR_TIMEOUT')).toBeVisible()
+    expect(within(panel('Relationships')).getByText("This analysis didn't finish.")).toBeVisible()
+    expect(within(panel('Relationships')).getByText('PAIR_TIMEOUT')).toBeVisible()
+    await showAll('Relationships')
     expect(within(region('Relationships')).getByRole('button', { name: 'MAYA and THEO' })).toBeVisible()
   })
 
