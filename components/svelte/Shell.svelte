@@ -19,10 +19,10 @@
   // pop-up, the commands named in a More menu, the filter under the stack's Back row, and no pane
   // toggles, which the stack replaces ("i don't know what mic + play buttons are").
   import Button from './Button.svelte'
+  import CommandMenu from './CommandMenu.svelte'
   import CommandPalette from './CommandPalette.svelte'
   import Dock from './Dock.svelte'
   import FilterField from './FilterField.svelte'
-  import Icon from './Icon.svelte'
   import ProjectStatusHUD from './ProjectStatusHUD.svelte'
   import SegmentedControl from './SegmentedControl.svelte'
   import SourceList from './SourceList.svelte'
@@ -45,7 +45,7 @@
    * @property {(mode: string) => void} [onPresentation] A presentation was chosen.
    * @property {ToolbarProps['panes']} [panes] The pane toggles.
    * @property {(id: string) => void} [onTogglePane] A pane toggle was pressed.
-   * @property {ToolbarProps['commands']} [commands] The toolbar's commands.
+   * @property {import('./lib/commands.js').Command[]} [commands] The toolbar's commands.
    * @property {(id: string) => void} [onRun] An enabled command was chosen.
    * @property {string | null} [filter] The filter text; null hides the field.
    * @property {string} [filterLabel] The filter's accessible name.
@@ -202,14 +202,6 @@
   const view = $derived(atSource ? 'source' : hasSelection && stacked.length > 1 ? 'selection' : 'list')
   const destinationLabel = $derived(sections.flatMap((s) => s.items).find((i) => i.id === destination)?.label ?? '')
   const phone = $derived(mode === 'phone')
-  const uid = $props.id()
-
-  /** Runs a command chosen in the phone's More menu and closes it; one that cannot run says why and stays. @param {MouseEvent} event @param {import('./lib/commands.js').Command} command */
-  function runFromMenu(event, command) {
-    if (command.disabledReason) return
-    /** @type {HTMLElement} */ (event.currentTarget).closest('[popover]')?.hidePopover?.()
-    onRun?.(command.id)
-  }
   const workspaceLabel = $derived(workspaces.find((w) => w.value === workspace)?.label ?? 'Sources')
 </script>
 
@@ -256,22 +248,7 @@
       {/snippet}
       {#snippet tools()}
         {#if phone && commands.length > 0}
-          <button type="button" class="ui-shell__more-trigger" popovertarget="{uid}-more" aria-label="More" title="More"><Icon name="dots-three" /></button>
-          <div class="ui-shell__more" id="{uid}-more" popover>
-            {#each commands as command (command.id)}
-              <button
-                type="button"
-                class="ui-shell__more-item"
-                data-command={command.id}
-                aria-disabled={command.disabledReason ? 'true' : undefined}
-                aria-describedby={command.disabledReason ? `${uid}-why-${command.id}` : undefined}
-                onclick={(event) => runFromMenu(event, command)}>
-                {#if command.icon}<Icon name={command.icon} />{/if}
-                <span class="ui-shell__more-label">{command.label}</span>
-                {#if command.disabledReason}<span class="ui-shell__more-why" id="{uid}-why-{command.id}" aria-hidden="true">{command.disabledReason}</span>{/if}
-              </button>
-            {/each}
-          </div>
+          <CommandMenu {commands} onrun={(id) => onRun?.(id)} uiId="{workspace}.more" />
         {/if}
         {#if presentation === 'atlas'}
           <div class="ui-shell__atlas-tools" aria-label="Atlas controls">
@@ -467,29 +444,6 @@
   .ui-shell__stack-body { flex: 1; min-height: 0; overflow: auto; }
   .ui-shell__stack-pane + .ui-shell__stack-pane { border-top: var(--size-stroke-hairline) solid var(--border-default); }
   .ui-shell__stack-filter { flex: none; padding: var(--spacing-xs); border-bottom: var(--size-stroke-hairline) solid var(--border-default); }
-  /* The phone's More: a tool button, and its menu anchored under it in the top layer. */
-  .ui-shell__more-trigger { anchor-name: --ui-shell-more; display: inline-flex; align-items: center; justify-content: center; flex: none; padding: 5px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); cursor: pointer; }
-  .ui-shell__more-trigger:hover { color: var(--text-primary); }
-  .ui-shell__more-trigger:focus-visible { outline: var(--size-stroke-focus) solid var(--border-focus); }
-  .ui-shell__more {
-    position-anchor: --ui-shell-more;
-    inset: auto;
-    top: anchor(bottom);
-    right: anchor(right);
-    margin: var(--spacing-2xs) 0 0;
-    min-width: 180px;
-    padding: var(--spacing-2xs);
-    border: var(--size-stroke-hairline) solid var(--border-default);
-    border-radius: var(--radius-md);
-    background: var(--surface-raised);
-    color: var(--text-primary);
-  }
-  .ui-shell__more-item { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: var(--spacing-xs); width: 100%; padding: var(--spacing-2xs) var(--spacing-xs); border: 0; border-radius: var(--radius-sm); background: transparent; color: inherit; font: inherit; font-size: var(--body-md-size); text-align: left; cursor: pointer; }
-  .ui-shell__more-item:hover:not([aria-disabled="true"]) { background: color-mix(in oklab, var(--text-primary) 8%, transparent); }
-  .ui-shell__more-item:focus-visible { outline: var(--size-stroke-focus) solid var(--border-focus); }
-  .ui-shell__more-item[aria-disabled='true'] { color: var(--text-secondary); cursor: default; }
-  .ui-shell__more-label { grid-column: 2; }
-  .ui-shell__more-why { grid-column: 2; font-size: var(--caption-size); color: var(--text-secondary); }
   .ui-shell__atlas { position: absolute; inset: 0; }
   .ui-shell__player { position: absolute; inset: var(--ui-shell-toolbar-height) 0 0; min-height: 0; opacity: 1; transition: opacity 200ms ease-out, visibility 0s; }
   .ui-shell__screenplay { position: absolute; inset: var(--ui-shell-toolbar-height) 0 0; min-height: 0; }

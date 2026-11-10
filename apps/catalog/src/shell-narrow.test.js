@@ -86,7 +86,7 @@ describe('the Data window\'s toolbar on a phone', () => {
     const more = screen.getByRole('button', { name: 'More' })
     const menu = container.querySelector(`#${more.getAttribute('popovertarget')}`)
     expect(menu).not.toBeNull()
-    expect(bar(container).querySelector('[data-command]:not(.ui-shell__more-item)')).toBeNull()
+    expect(bar(container).querySelector('[data-command]:not(.ui-command-menu__item)')).toBeNull()
     await fireEvent.click(within(menu).getByRole('button', { name: 'Cast voice', hidden: true }))
     expect(onRun).toHaveBeenCalledWith('cast')
   })

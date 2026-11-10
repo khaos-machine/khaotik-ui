@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/svelte'
+import { render, screen, fireEvent, within } from '@testing-library/svelte'
 import { createRawSnippet } from 'svelte'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -108,31 +108,41 @@ describe('the status group and the compact row', () => {
     expect(screen.queryByRole('button', { name: 'Project Settings…' })).toBeNull()
   })
 
-  // A fake layout: the row needs 1000px plus 150px for each label still shown. Folding every
-  // label at once freed 450px where 150 was needed (#617 live pass); labels fold one at a time,
-  // from the last command, only as far as the row needs.
-  it('folds labels one at a time from the last, only until the row fits, then turns compact', async () => {
-    const { container, rerender } = render(Toolbar, { props: { ...base, filter: '' } })
+  // A fake layout: the row needs 1000px plus 150px for each command still in it. Short of room,
+  // commands move into a named More menu one at a time, from the last, only as far as the row
+  // needs: no command is ever a bare icon (operator, 2026-11-10: "i don't know what mic + play
+  // buttons are"; "More menu on tablet too", for "Every toolbar, any width").
+  it('moves commands into More one at a time from the last, only until the row fits, then turns compact', async () => {
+    const onrun = vi.fn()
+    const { container, rerender } = render(Toolbar, { props: { ...base, filter: '', onrun } })
     const toolbar = /** @type {HTMLElement} */ (container.querySelector('.toolbar'))
     // Groups one and two take any overflow, so it is measured there; the status sits outside.
     const row = /** @type {HTMLElement} */ (container.querySelector('.toolbar__main'))
     let room = 1200
-    Object.defineProperty(row, 'scrollWidth', { get: () => 1000 + 150 * row.querySelectorAll('.toolbar__label:not(.toolbar__label--folded)').length })
+    Object.defineProperty(row, 'scrollWidth', { get: () => 1000 + 150 * row.querySelectorAll('.toolbar__button').length })
     Object.defineProperty(row, 'clientWidth', { get: () => room })
-    const shown = () => [...row.querySelectorAll('.toolbar__label:not(.toolbar__label--folded)')].map((l) => l.textContent)
+    const inRow = () => [...row.querySelectorAll('.toolbar__button')].map((b) => b.textContent.trim())
+    const more = () => screen.queryByRole('button', { name: 'More' })
+    const inMore = () => {
+      const menu = more() && container.querySelector(`#${more().getAttribute('popovertarget')}`)
+      return menu ? [...menu.querySelectorAll('button')].map((b) => b.querySelector('.ui-command-menu__label').textContent) : []
+    }
     const remeasure = async (title) => {
-      await rerender({ ...base, filter: '', title })
+      await rerender({ ...base, filter: '', onrun, title })
       await new Promise((r) => setTimeout(r))
     }
 
     await remeasure('B4P')
-    expect(shown()).toEqual(['Cast voice'])
+    expect(inRow()).toEqual(['Cast voice'])
+    expect(inMore()).toEqual(['Read scene'])
     expect(toolbar).not.toHaveClass('toolbar--compact')
-    expect(screen.getByRole('button', { name: 'Read scene' })).toBeInTheDocument()
 
     room = 1000
     await remeasure('BROKEN IN 4 PLACES')
-    expect(shown()).toEqual([])
+    expect(inRow()).toEqual([])
+    expect(inMore()).toEqual(['Cast voice', 'Read scene'])
+    await fireEvent.click(within(container.querySelector('[popover]')).getByRole('button', { name: 'Cast voice', hidden: true }))
+    expect(onrun).toHaveBeenCalledWith('character.cast')
     expect(toolbar).not.toHaveClass('toolbar--compact')
 
     room = 900
@@ -141,13 +151,19 @@ describe('the status group and the compact row', () => {
 
     room = 1400
     await remeasure('BROKEN IN 4 PLACES')
-    expect(shown()).toEqual(['Cast voice', 'Read scene'])
+    expect(inRow()).toEqual(['Cast voice', 'Read scene'])
+    expect(more()).toBeNull()
     expect(toolbar).not.toHaveClass('toolbar--compact')
+  })
+
+  it('never draws a command as a bare icon: a command in the row shows its label', () => {
+    const source = fs.readFileSync(path.resolve(import.meta.dirname, '../../../../components/svelte/Toolbar.svelte'), 'utf8')
+    expect(source).not.toMatch(/toolbar__label--folded/)
   })
 })
 
 // The lead (a workspace switch) is where you are, as the switcher is: it keeps its width, so a
-// row short of room overflows and folds the commands' labels, rather than crushing the lead to a
+// row short of room overflows and moves its commands into More, rather than crushing the lead to a
 // scrolling sliver. Measured 2026-11-10 at 768: the Shell's Story/Review sat 29px wide around
 // 119 of content, showing "ory" (operator: "Fix the 'ory' chip").
 describe('the lead', () => {
