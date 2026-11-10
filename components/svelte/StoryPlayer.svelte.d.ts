@@ -52,6 +52,24 @@ declare const StoryPlayer: import("svelte").Component<{
      */
     showInspector?: boolean;
     /**
+     * Draw only the transport: no lanes and no text panel. The unreadable notice still shows.
+     */
+    timelineHidden?: boolean;
+    /**
+     * Pane toggles in the transport row, as the Toolbar's: an icon, named by its label, pressed while its pane shows. `at: 'start'` puts one at the row's left end; the rest sit at its right end. None, no toggles.
+     */
+    panes?: readonly {
+        id: string;
+        label: string;
+        icon?: string;
+        shown: boolean;
+        at?: "start" | "end";
+    }[];
+    /**
+     * A pane toggle was pressed, with its id.
+     */
+    onTogglePane?: (id: string) => void;
+    /**
      * Saved read waveforms keyed by scene id. Each recording starts at zero locally; its scene supplies its position on the story timeline. Pending and failed media keep a seekable read block.
      */
     waveforms?: Record<string, {
@@ -256,6 +274,24 @@ type Props = {
      * Render the built-in text panel. False when the host provides its own inspector.
      */
     showInspector?: boolean;
+    /**
+     * Draw only the transport: no lanes and no text panel. The unreadable notice still shows.
+     */
+    timelineHidden?: boolean;
+    /**
+     * Pane toggles in the transport row, as the Toolbar's: an icon, named by its label, pressed while its pane shows. `at: 'start'` puts one at the row's left end; the rest sit at its right end. None, no toggles.
+     */
+    panes?: readonly {
+        id: string;
+        label: string;
+        icon?: string;
+        shown: boolean;
+        at?: "start" | "end";
+    }[];
+    /**
+     * A pane toggle was pressed, with its id.
+     */
+    onTogglePane?: (id: string) => void;
     /**
      * Saved read waveforms keyed by scene id. Each recording starts at zero locally; its scene supplies its position on the story timeline. Pending and failed media keep a seekable read block.
      */

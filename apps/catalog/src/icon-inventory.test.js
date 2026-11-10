@@ -96,6 +96,8 @@ describe('the icon inventory harvests what the kit actually renders', () => {
       // StoryOverviewStrip joined with khaos-app#617: `next.icon` is the host's Phosphor name
       // for the next step's button.
       'StoryOverviewStrip',
+      // StoryPlayer joined with the Player's pane toggles: `panes[].icon`, as the Toolbar's.
+      'StoryPlayer',
       // Toolbar joined with the data-layer plan's K4: `Command.icon` and `ToolbarPane.icon`
       // are host Phosphor names inside the `commands` and `panes` collection props.
       'Toolbar',
