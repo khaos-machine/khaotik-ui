@@ -28,6 +28,14 @@ export function resizeSplit(tree: DockNode, id: string, size: number, panels: Re
  */
 export function toggleSplit(tree: DockNode, id: string): DockNode;
 /**
+ * The split whose fixed child is the group holding `panel`: the one that collapses it.
+ *
+ * @param {DockNode | null} tree
+ * @param {string} panel
+ * @returns {DockSplit | null}
+ */
+export function paneSplit(tree: DockNode | null, panel: string): DockSplit | null;
+/**
  * The group with `id` showing `panel`. A panel the group does not hold changes nothing.
  *
  * @param {DockNode} tree

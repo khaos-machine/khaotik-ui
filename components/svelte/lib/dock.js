@@ -112,6 +112,20 @@ export function toggleSplit(tree, id) {
 }
 
 /**
+ * The split whose fixed child is the group holding `panel`: the one that collapses it.
+ *
+ * @param {DockNode | null} tree
+ * @param {string} panel
+ * @returns {DockSplit | null}
+ */
+export function paneSplit(tree, panel) {
+  if (!tree || tree.kind === 'group') return null
+  const fixed = tree.fixed === 'start' ? tree.children[0] : tree.children[1]
+  if (fixed.kind === 'group' && fixed.panels.includes(panel)) return tree
+  return paneSplit(tree.children[0], panel) ?? paneSplit(tree.children[1], panel)
+}
+
+/**
  * The group with `id` showing `panel`. A panel the group does not hold changes nothing.
  *
  * @param {DockNode} tree
