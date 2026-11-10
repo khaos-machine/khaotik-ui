@@ -28,6 +28,7 @@ is stated; nothing here is repeated in them.
 | `TOOLS.md` | Toolchain, validation commands, tokens, catalog, data capture, release and publishing. | Before building, running, capturing or releasing. |
 | `WORKSPACE.md` | The filesystem map — what each path is and what may be edited where. | Before touching an unfamiliar path. |
 | `IDENTITY.md` | Attribution, commit voice, what reaches a user. | Before committing or opening a PR. |
+| `PRODUCT.md` | Product truth for design work — users, purpose, the brand commitments design must keep — drawn from the workspace's vision and product documents, which win. | Before design work on a component or screen. |
 | `apps/catalog/AGENTS.md` | **Authoritative for that subtree** — Svelte 5, Vite, tests, data capture, the web build. | Before touching `apps/catalog/`. |
 | `docs/design/README.md` | **Designer start page** — the catalog, running it, where tokens, components and the design rules live. Ships in the npm package. | First, when working for a designer. |
 | `docs/design/changing-the-kit.md` | **A kit change, end to end** — brief, catalog entry, failing test, pull request, review, release, the app's version bump. Ships in the npm package. | Before proposing or making a kit change. |

@@ -9,6 +9,7 @@ import {
   serializeLayout,
   parseLayout,
   minExtent,
+  paneSplit,
 } from '@khaos-machine/khaotik-ui/components/svelte/lib/dock.js'
 
 // Dock (audit §3.2, §4.1). The layout is plain data: a split or a tab group, nested.
@@ -110,6 +111,14 @@ describe('resizing', () => {
     expect(minExtent(story(), panels, 'row')).toBe(180 + 320 + 280 + 260)
     const collapsed = toggleSplit(story(), 'right')
     expect(minExtent(collapsed, panels, 'row')).toBe(180 + 320 + 280)
+  })
+
+  it('finds the split that collapses a panel: the one whose fixed side holds it', () => {
+    const tree = story()
+    expect(paneSplit(tree, 'source')?.id).toBe('root')
+    expect(paneSplit(tree, 'activity')?.id).toBe('right')
+    expect(paneSplit(tree, 'missing')).toBeNull()
+    expect(paneSplit(null, 'source')).toBeNull()
   })
 
   it('selecting a tab changes only that group', () => {

@@ -1,4 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
+import fs from 'node:fs'
+import path from 'node:path'
 import { render, screen, fireEvent, within } from '@testing-library/svelte'
 import Player from '@khaos-machine/khaotik-ui/components/svelte/Player.svelte'
 import Composer from '@khaos-machine/khaotik-ui/components/svelte/Composer.svelte'
@@ -63,6 +65,86 @@ describe('the Player', () => {
   })
 })
 
+// The Player's panes (operator, 2026-11-10: "Inspector on demand", "Timeline hides", "While a
+// scene is selected", "In the transport row").
+describe('the Player\'s panes', () => {
+  const nav = () => screen.getByRole('navigation', { name: 'Scenes' })
+
+  // operator, 2026-11-10: "instead of a collapsable sidebar-like ui in player, let's may it
+  // togglable from the transport like we do with timeline.. we can use icons for these instead of
+  // the chevron".
+  const toggle = (name) => within(screen.getByRole('group', { name: 'Playback controls' })).getByRole('button', { name })
+
+  // operator, 2026-11-10: "scenes should be clapper icon and moved to left end of the toolbar
+  // where the view is toggled"; asked which toolbar: "Transport row, left end".
+  it('toggles Scenes from the transport row, leaving no rail', async () => {
+    const { container } = render(Player, { props: loaded })
+    expect(toggle('Scenes')).toHaveAttribute('aria-pressed', 'true')
+    expect(toggle('Scenes').querySelector('.ph-film-slate')).not.toBeNull()
+    expect(within(screen.getByRole('group', { name: 'Playback controls' })).getAllByRole('button')[0]).toBe(toggle('Scenes'))
+    await fireEvent.click(toggle('Scenes'))
+    expect(screen.queryByRole('navigation', { name: 'Scenes' })).toBeNull()
+    expect(container.querySelector('.ui-player__panes').style.gridTemplateColumns).toBe('minmax(0, 1fr) minmax(220px, 320px)')
+    expect(toggle('Scenes')).toHaveAttribute('aria-pressed', 'false')
+    await fireEvent.click(toggle('Scenes'))
+    expect(screen.getByRole('navigation', { name: 'Scenes' })).toBeTruthy()
+  })
+
+  it('draws no inspector while no scene is selected, and the stage takes the width', () => {
+    const { container } = render(Player, { props: { ...loaded, inspected: null, selectedSceneIndex: -1 } })
+    expect(screen.queryByRole('complementary', { name: 'Scene inspector' })).toBeNull()
+    expect(container.querySelector('.ui-player__panes').style.gridTemplateColumns).toBe('minmax(180px, 240px) minmax(0, 1fr)')
+  })
+
+  it('closes the inspector by clearing the selection, from Close or Esc', async () => {
+    const onSelectScene = vi.fn()
+    const { container } = render(Player, { props: { ...loaded, onSelectScene } })
+    expect(container.querySelector('.ui-player__panes').style.gridTemplateColumns).toBe('minmax(180px, 240px) minmax(0, 1fr) minmax(220px, 320px)')
+    await fireEvent.click(within(screen.getByRole('complementary', { name: 'Scene inspector' })).getByRole('button', { name: 'Close' }))
+    expect(onSelectScene).toHaveBeenLastCalledWith(-1)
+    onSelectScene.mockClear()
+    await fireEvent.keyDown(within(nav()).getAllByRole('button')[0], { key: 'Escape' })
+    expect(onSelectScene).toHaveBeenCalledWith(-1)
+  })
+
+  // operator, 2026-11-10: "inspector opens on even selection in timeline".
+  it('opens the inspector on a beat chosen on the timeline, with that beat\'s scene', async () => {
+    const onSelectScene = vi.fn(), onSelect = vi.fn()
+    render(Player, { props: { ...loaded, inspected: null, selectedSceneIndex: -1, selectedElementId: 'e3', onSelectScene, onSelect } })
+    const inspector = screen.getByRole('complementary', { name: 'Scene inspector' })
+    expect(within(inspector).getByText('EXT. STREET - NIGHT')).toBeTruthy()
+    await fireEvent.click(within(inspector).getByRole('button', { name: 'Close' }))
+    expect(onSelect).toHaveBeenCalledWith('')
+    expect(onSelectScene).toHaveBeenCalledWith(-1)
+  })
+
+  it('ignores Esc from outside the player', async () => {
+    const onSelectScene = vi.fn()
+    render(Player, { props: { ...loaded, onSelectScene } })
+    await fireEvent.keyDown(document.body, { key: 'Escape' })
+    expect(onSelectScene).not.toHaveBeenCalled()
+  })
+
+  // The stage and the inspector show the beat; StoryPlayer's text panel repeated it under the
+  // lanes (operator, 2026-11-10: "Remove it").
+  it('draws no text panel under the lanes', () => {
+    const { container } = render(Player, { props: { ...loaded, total: 6 } })
+    expect(container.querySelector('.player__stage')).not.toBeNull()
+    expect(container.querySelector('.player__panel')).toBeNull()
+  })
+
+  it('toggles the timeline from the transport row, keeping the transport', async () => {
+    const { container } = render(Player, { props: { ...loaded, total: 6 } })
+    expect(container.querySelector('.player__stage')).not.toBeNull()
+    expect(toggle('Timeline').querySelector('.ph-film-strip')).not.toBeNull()
+    await fireEvent.click(toggle('Timeline'))
+    expect(container.querySelector('.player__stage')).toBeNull()
+    expect(toggle('Timeline')).toHaveAttribute('aria-pressed', 'false')
+    await fireEvent.click(toggle('Timeline'))
+    expect(container.querySelector('.player__stage')).not.toBeNull()
+  })
+})
+
 describe('the Composer', () => {
   it('reports the image filtering chosen, and shows progress, in tools', async () => {
     const onchange = vi.fn()
@@ -75,5 +157,35 @@ describe('the Composer', () => {
   it('draws nothing on the stage without a shot under the playhead', () => {
     const { container } = render(Composer, { props: { part: 'stage', stage: null } })
     expect(container.textContent?.trim()).toBe('')
+  })
+})
+
+// The layout follows the player's own width, not the window's (operator, 2026-11-10: "Fix the rule
+// first"). A window media query stacked the panes in a 1280 catalog frame inside a 685px browser.
+// The phone and tablet layouts themselves are player-touch.test.js. Read as source: jsdom lays
+// nothing out.
+describe('the layout source', () => {
+  const source = fs.readFileSync(path.resolve(import.meta.dirname, '../../../../components/svelte/Player.svelte'), 'utf8')
+  it('reads no window width', () => {
+    expect(source).not.toMatch(/@media \(max-width/)
+    expect(source).not.toMatch(/@container viewport/)
+  })
+  // StoryPlayer's phone transport is an unnamed container query: the player is its container, so
+  // the transport turns phone by the player's width as the layout does.
+  it('is the container StoryPlayer\'s transport answers to', () => {
+    expect(source.match(/\.ui-player\s*\{([^}]*)\}/)?.[1]).toMatch(/container:\s*ui-player\s*\/\s*inline-size/)
+  })
+  // Measured 2026-11-10 at 390 and 768 wide: a two-class column rule outranked the stacked
+  // layout and left the stage 26px wide. The columns are the script's now, in one place.
+  it('sets no column rule in CSS', () => {
+    const css = source.slice(source.indexOf('<style>'))
+    expect(css).not.toMatch(/grid-template-columns/)
+  })
+  // 100vh is the window: in a shorter host or frame the player overflowed it (operator: "Height
+  // reads the window").
+  it('fills its container, not the window', () => {
+    const root = source.match(/\.ui-player\s*\{([^}]*)\}/)?.[1] ?? ''
+    expect(root).toMatch(/height:\s*100%/)
+    expect(root).not.toMatch(/100vh/)
   })
 })

@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import { createRawSnippet } from 'svelte'
+import fs from 'node:fs'
+import path from 'node:path'
 import Shell from '@khaos-machine/khaotik-ui/components/svelte/Shell.svelte'
 
 // The data-layer window routes each docked pane to the host's view, and shows one layer at a
@@ -69,19 +71,119 @@ describe('the toolbar\'s three groups', () => {
   const workspaces = [{ value: 'story', label: 'Story' }, { value: 'review', label: 'Review' }]
   const commands = [{ id: 'character.new', label: 'New Character', icon: 'user-plus' }]
 
-  it('puts the workspace switch with the modes, before the commands, and the status and gear last', async () => {
-    const onProjectSettings = vi.fn()
-    const { container } = shell({ modes, workspaces, commands, presentation: 'data', snapshotError: 'khaosd is not running.', onProjectSettings })
-    const order = [screen.getByRole('radiogroup', { name: 'Data workspace' }), screen.getByRole('button', { name: 'New Character' }), screen.getByText('Story update failed'), screen.getByRole('button', { name: 'Project Settings…' })]
+  it('puts the workspace switch with the modes, before the commands, and the status last', () => {
+    const { container } = shell({ modes, workspaces, commands, presentation: 'data', snapshotError: 'khaosd is not running.' })
+    const order = [screen.getByRole('radiogroup', { name: 'Data workspace' }), screen.getByRole('button', { name: 'New Character' }), screen.getByText('Story update failed')]
     for (let i = 1; i < order.length; i += 1) expect(order[i - 1].compareDocumentPosition(order[i]) & Node.DOCUMENT_POSITION_FOLLOWING, i).toBeTruthy()
     expect(container.querySelector('.toolbar__status')).toContainElement(screen.getByRole('button', { name: 'Retry' }))
-    await fireEvent.click(screen.getByRole('button', { name: 'Project Settings…' }))
+  })
+
+  // Project Settings moved to the foot of the source list (operator, 2026-11-10: "Sidebar foot, both").
+  it('draws no settings gear in the toolbar', () => {
+    const { container } = shell({ modes, commands, onProjectSettings: vi.fn() })
+    expect(container.querySelector('.ui-shell__toolbar [data-ui-id$=".settings"]')).toBeNull()
+  })
+})
+
+// The Data window follows the Overview screen (operator, 2026-11-10: "Match the Overview"): the
+// source list hides to a rail and has Project Settings at its foot, and the inspector is there
+// only while something is selected.
+describe('the Data window\'s panes', () => {
+  const source = { kind: 'split', id: 'root', direction: 'row', fixed: 'start', size: 220, children: [group('source'), {
+    kind: 'split', id: 'right', direction: 'row', fixed: 'end', size: 300,
+    children: [group('table'), { kind: 'group', id: 'g-inspector', panels: ['inspector', 'activity'], active: 'inspector' }],
+  }] }
+  const sourcePanels = { source: { label: 'Story' }, table: { label: 'Table' }, inspector: { label: 'Inspector' }, activity: { label: 'Activity' } }
+  const collapsed = (tree, id) => (tree.id === id ? { ...tree, collapsed: true } : tree.kind === 'split' ? { ...tree, children: tree.children.map((c) => collapsed(c, id)) } : tree)
+  const sourcePanes = [{ id: 'source', label: 'Source list', icon: 'sidebar-simple', shown: true }, { id: 'inspector', label: 'Inspector', icon: 'sidebar', shown: true }]
+  const data = (props = {}) => shell({ layout: source, panels: sourcePanels, presentation: 'data', ...props })
+  const sourcePane = (container) => container.querySelector('[data-ui-id="story.dock.pane.source"]')
+
+  it('puts Project Settings at the foot of the source list', async () => {
+    const onProjectSettings = vi.fn()
+    const { container } = data({ onProjectSettings })
+    const button = screen.getByRole('button', { name: 'Project Settings' })
+    expect(sourcePane(container)).toContainElement(button)
+    await fireEvent.click(button)
     expect(onProjectSettings).toHaveBeenCalledOnce()
   })
 
-  it('draws no gear without onProjectSettings', () => {
-    shell({ modes, commands })
-    expect(screen.queryByRole('button', { name: 'Project Settings…' })).toBeNull()
+  it('draws no Project Settings without onProjectSettings', () => {
+    data()
+    expect(screen.queryByRole('button', { name: 'Project Settings' })).toBeNull()
+  })
+
+  it('hides the source list from a button at its top', async () => {
+    const onTogglePane = vi.fn()
+    const { container } = data({ onTogglePane })
+    const hide = screen.getByRole('button', { name: 'Hide source list' })
+    expect(sourcePane(container)).toContainElement(hide)
+    await fireEvent.click(hide)
+    expect(onTogglePane).toHaveBeenCalledWith('source')
+  })
+
+  it('leaves a rail with Show and Project Settings while the source list is hidden', async () => {
+    const onTogglePane = vi.fn()
+    const { container } = data({ layout: collapsed(source, 'root'), onTogglePane, onProjectSettings: vi.fn() })
+    const rail = container.querySelector('.ui-shell__rail')
+    expect(rail).not.toBeNull()
+    expect(rail).toContainElement(screen.getByRole('button', { name: 'Project Settings' }))
+    await fireEvent.click(screen.getByRole('button', { name: 'Show source list' }))
+    expect(onTogglePane).toHaveBeenCalledWith('source')
+  })
+
+  it('shows each destination\'s icon on the rail, and goes there on click', async () => {
+    const onDestination = vi.fn()
+    const sections = [{ id: 'story', label: 'Story', items: [{ id: 'characters', label: 'Characters', icon: 'user' }, { id: 'scenes', label: 'Scenes', icon: 'film-slate' }] }]
+    const { container } = data({ layout: collapsed(source, 'root'), sections, destination: 'characters', onDestination })
+    const rail = container.querySelector('.ui-shell__rail')
+    const scenes = screen.getByRole('button', { name: 'Scenes' })
+    expect(rail).toContainElement(scenes)
+    await fireEvent.click(scenes)
+    expect(onDestination).toHaveBeenCalledWith('scenes')
+  })
+
+  it('draws no rail while the source list shows', () => {
+    const { container } = data()
+    expect(container.querySelector('.ui-shell__rail')).toBeNull()
+  })
+
+  // The toggle is in the pane now; the player's composer sidebar still toggles from the toolbar.
+  it('drops the toolbar\'s source list toggle in the Data window only', () => {
+    const { unmount } = data({ panes: sourcePanes })
+    expect(screen.queryByRole('button', { name: 'Source list' })).toBeNull()
+    expect(screen.getByRole('button', { name: 'Inspector' })).not.toBeNull()
+    unmount()
+    shell({ panes: sourcePanes, presentation: 'player' })
+    expect(screen.getByRole('button', { name: 'Source list' })).not.toBeNull()
+  })
+
+  it('closes the inspector while nothing is selected', () => {
+    const { container } = data({ hasSelection: false })
+    expect(within(container, '.ui-shell__data', 'side')).toBeNull()
+    expect(within(container, '.ui-shell__data', 'table')).not.toBeNull()
+  })
+
+  it('opens the inspector while something is selected, and by default', () => {
+    const { container } = data()
+    expect(within(container, '.ui-shell__data', 'side')).not.toBeNull()
+  })
+
+  it('keeps Activity open while nothing is selected', () => {
+    const activity = { ...source, children: [source.children[0], { ...source.children[1], children: [group('table'), { kind: 'group', id: 'g-inspector', panels: ['inspector', 'activity'], active: 'activity' }] }] }
+    const { container } = data({ layout: activity, hasSelection: false, pane: paneMark })
+    expect(within(container, '.ui-shell__data', 'pane:activity')).not.toBeNull()
+  })
+
+  // The closing is the window's, not the host's layout: a resize while it is closed hands the
+  // host its own inspector state back, so the inspector returns with the next selection.
+  it('hands the host its own inspector state back when the panes change', async () => {
+    const onLayoutChange = vi.fn()
+    data({ hasSelection: false, onLayoutChange })
+    const gutter = screen.getAllByRole('separator')[0]
+    await fireEvent.keyDown(gutter, { key: 'ArrowRight' })
+    const next = onLayoutChange.mock.calls.at(-1)[0]
+    expect(next.children[1].collapsed ?? false).toBe(false)
   })
 })
 
@@ -112,5 +214,17 @@ describe('the refusal notice', () => {
   it('takes no layer when there is nothing to offer', () => {
     const { container } = shell()
     expect(container.querySelector('.ui-shell__notice')).toBeNull()
+  })
+})
+
+// 100vh is the window: in a shorter host or a catalog frame the window overflowed it, as the
+// Player's did (operator, 2026-11-10: "Height reads the window"; for the Shell, "Fix Shell's
+// 100vh"). Read as source: jsdom lays nothing out.
+describe('the window\'s height', () => {
+  it('fills its container, not the window', () => {
+    const source = fs.readFileSync(path.resolve(import.meta.dirname, '../../../components/svelte/Shell.svelte'), 'utf8')
+    const root = source.match(/\.ui-shell\s*\{([^}]*)\}/)?.[1] ?? ''
+    expect(root).toMatch(/height:\s*100%/)
+    expect(root).not.toMatch(/100vh/)
   })
 })

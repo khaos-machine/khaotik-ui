@@ -81,6 +81,26 @@ describe('DeviceFrame', () => {
     expect(rule?.[1]).toMatch(/min-height:\s*0/)
   })
 
+  // A web breakpoint is a width, so a screen in one takes the canvas height as at Fill (operator,
+  // 2026-11-10: "Breakpoints give height"). Measured: Player, filling its host, grew to 3775px at
+  // md with nothing to scroll inside it. A component keeps its own height.
+  it('gives a screen at a web breakpoint the canvas height, and a component none', () => {
+    const { container, unmount } = render(DeviceFrame, { props: { frame: at('web', 'md'), fill: true } })
+    expect(container.querySelector('.frame').className).toContain('frame--tall')
+    unmount()
+    const component = render(DeviceFrame, { props: { frame: at('web', 'md') } })
+    expect(component.container.querySelector('.frame').className).not.toContain('frame--tall')
+    const source = fs.readFileSync(path.resolve(import.meta.dirname, 'DeviceFrame.svelte'), 'utf8')
+    const rule = source.match(/\.frame--tall\s*\{([^}]*)\}/)
+    expect(rule?.[1]).toMatch(/flex:\s*1 1 auto/)
+    expect(rule?.[1]).toMatch(/min-height:\s*0/)
+  })
+
+  it('leaves a sized device its own height', () => {
+    const { container } = render(DeviceFrame, { props: { frame: at('mobile', 'base'), fill: true } })
+    expect(container.querySelector('.frame').className).not.toContain('frame--tall')
+  })
+
   it('takes the case off on request, keeping the size', () => {
     const { container } = render(DeviceFrame, { props: { frame: at('mobile', 'base'), chassis: false } })
     const frame = container.querySelector('.frame')

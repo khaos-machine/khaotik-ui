@@ -35,10 +35,11 @@
    * @property {(id: string) => void} [onselect] Asked with a row's id on click and on ↑ ↓ Home End.
    * @property {string} [label] The navigation landmark's name.
    * @property {string} [uiId] The `data-ui-id` prefix (audit §3.14).
+   * @property {boolean} [compact] Icons only, for a rail: each label, count and heading stays as the accessible name, and the label is the tooltip.
    */
 
   /** @type {Props} */
-  let { sections = [], active = '', onselect = undefined, label = 'Sources', uiId = 'source' } = $props()
+  let { sections = [], active = '', onselect = undefined, label = 'Sources', uiId = 'source', compact = false } = $props()
 
   const order = $derived(sections.flatMap((s) => s.items.map((i) => i.id)))
 
@@ -59,9 +60,9 @@
   }
 </script>
 
-<nav class="source" aria-label={label} data-ui-id={uiId}>
+<nav class="source" class:source--compact={compact} aria-label={label} data-ui-id={uiId}>
   {#each sections as section (section.id)}
-    <h3 class="source__heading">{section.label}</h3>
+    <h3 class="source__heading" class:visually-hidden={compact}>{section.label}</h3>
     <ul class="source__list">
       {#each section.items as item (item.id)}
         <li>
@@ -73,11 +74,12 @@
             aria-current={item.id === active ? 'page' : undefined}
             tabindex={item.id === active || (!order.includes(active) && item.id === order[0]) ? 0 : -1}
             data-ui-id="{uiId}.{item.id}"
+            title={compact ? item.label : undefined}
             onclick={() => onselect?.(item.id)}
             onkeydown={(e) => key(e, item.id)}>
             {#if item.icon}<span class="source__icon"><Icon name={item.icon} /></span>{/if}
-            <span class="source__label">{item.label}</span>
-            {#if typeof item.count === 'number'}<span class="source__count">{item.count}</span>{/if}
+            <span class="source__label" class:visually-hidden={compact}>{item.label}</span>
+            {#if typeof item.count === 'number'}<span class="source__count" class:visually-hidden={compact}>{item.count}</span>{/if}
           </button>
         </li>
       {/each}
@@ -143,5 +145,10 @@
     color: var(--text-secondary);
     /* D57's tabular numeral token has not landed (harvest gap 7). */
     font-variant-numeric: tabular-nums;
+  }
+  /* A rail: each row its icon, centred, at the row height. */
+  .source--compact .source__row {
+    justify-content: center;
+    padding: 0 var(--spacing-xs);
   }
 </style>

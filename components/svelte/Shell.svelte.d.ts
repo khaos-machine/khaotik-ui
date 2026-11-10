@@ -43,7 +43,7 @@ declare const Shell: import("svelte").Component<{
     /**
      * The toolbar's commands.
      */
-    commands?: import("./lib/commands").Command[] | undefined;
+    commands?: import("./lib/commands.js").Command[] | undefined;
     /**
      * An enabled command was chosen.
      */
@@ -73,7 +73,7 @@ declare const Shell: import("svelte").Component<{
      */
     onRetrySnapshot?: () => void;
     /**
-     * Opens the story's Project Settings, from the gear at the toolbar's trailing edge. Absent, no gear is drawn.
+     * Opens the story's Project Settings, from the foot of the source list, or its rail while the list is hidden. Absent, no button is drawn.
      */
     onProjectSettings?: () => void;
     /**
@@ -120,9 +120,17 @@ declare const Shell: import("svelte").Component<{
      */
     destination?: string;
     /**
+     * Something is selected in the data. While nothing is, the inspector is closed; the host's layout keeps its own state for when it returns.
+     */
+    hasSelection?: boolean;
+    /**
      * A destination was chosen in the source list.
      */
     onDestination?: (destination: string) => void;
+    /**
+     * On a phone, Back from the selection: the host clears it.
+     */
+    onDeselect?: () => void;
     /**
      * A subject builder covers the window: everything else is hidden and inert.
      */
@@ -278,7 +286,7 @@ type Props = {
     /**
      * The toolbar's commands.
      */
-    commands?: import("./lib/commands").Command[] | undefined;
+    commands?: import("./lib/commands.js").Command[] | undefined;
     /**
      * An enabled command was chosen.
      */
@@ -308,7 +316,7 @@ type Props = {
      */
     onRetrySnapshot?: () => void;
     /**
-     * Opens the story's Project Settings, from the gear at the toolbar's trailing edge. Absent, no gear is drawn.
+     * Opens the story's Project Settings, from the foot of the source list, or its rail while the list is hidden. Absent, no button is drawn.
      */
     onProjectSettings?: () => void;
     /**
@@ -355,9 +363,17 @@ type Props = {
      */
     destination?: string;
     /**
+     * Something is selected in the data. While nothing is, the inspector is closed; the host's layout keeps its own state for when it returns.
+     */
+    hasSelection?: boolean;
+    /**
      * A destination was chosen in the source list.
      */
     onDestination?: (destination: string) => void;
+    /**
+     * On a phone, Back from the selection: the host clears it.
+     */
+    onDeselect?: () => void;
     /**
      * A subject builder covers the window: everything else is hidden and inert.
      */

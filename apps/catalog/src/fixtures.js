@@ -1865,7 +1865,7 @@ const shellWindow = (destination, label) => ({
   panels: { ...dockPanels, table: { ...dockPanels.table, label } },
   sections: sourceSections,
   destination,
-  onPresentation: () => {}, onTogglePane: () => {}, onRun: () => {}, onFilter: () => {}, onWorkspace: () => {}, onLayoutChange: () => {}, onDestination: () => {},
+  onPresentation: () => {}, onTogglePane: () => {}, onRun: () => {}, onFilter: () => {}, onWorkspace: () => {}, onLayoutChange: () => {}, onDestination: () => {}, onProjectSettings: () => {},
 })
 const shellDestination = (destination, label) => {
   const pane = destination.replace(/s$/, '')
@@ -3064,6 +3064,8 @@ export const fixtures = [
       { label: 'The opening scene (captured)', props: { ...playerProps } },
       { label: 'Another scene inspected while the opening plays', props: { ...playerProps, selectedSceneIndex: 1, inspected: playerTimeline.segments[1] ?? null, sceneText: { kind: 'loading' } } },
       { label: 'Between beats', props: { ...playerProps, focus: null, activeCharacterName: '' } },
+      { label: 'Nothing selected (captured)', props: { ...playerProps, inspected: null, selectedSceneIndex: -1, selectedElementId: '' } },
+      { label: 'A beat chosen on the timeline (captured)', props: { ...playerProps, inspected: null, selectedSceneIndex: -1, selectedElementId: playerTimeline.segments[2]?.events[0]?.elementId ?? '', sceneText: { kind: 'idle' } } },
       { label: 'No composition yet', props: { state: { kind: 'uncomposed' } } },
       { label: 'Could not read (illustrative message)', props: { state: { kind: 'failed', message: 'khaosd is not running.' } } },
       { label: 'Loading', props: { state: { kind: 'loading' } } },
@@ -3881,9 +3883,13 @@ export const fixtures = [
       shellDestination('objects', 'Objects'),
       shellDestination('images', 'Images'),
       shellDestination('audio', 'Audio'),
+      { ...shellDestination('characters', 'Characters'), label: 'Source list hidden (captured panes)', props: { ...shellWindow('characters', 'Characters'), layout: { ...dockStory, collapsed: true } } },
+      { ...shellDestination('characters', 'Characters'), label: 'Nothing selected (captured panes)', props: { ...shellWindow('characters', 'Characters'), hasSelection: false } },
+      // Khaos Cloud has no voice or media yet, and its client passes no such commands (operator,
+      // 2026-11-10: "mobile=cloud"; "Host decides"). On a phone the bar then draws no More.
+      { ...shellDestination('characters', 'Characters'), label: 'On Cloud: no voice commands yet (captured panes)', props: { ...shellWindow('characters', 'Characters'), commands: [], hasSelection: false } },
       { ...shellDestination('scenes', 'Scenes'), label: 'A job running', props: { ...shellWindow('scenes', 'Scenes'), jobs: [{ id: 'scenes', label: 'Analysing scenes', progress: { completed: 12, total: 57 } }] } },
       { ...shellDestination('characters', 'Characters'), label: 'Story update failed (illustrative message)', props: { ...shellWindow('characters', 'Characters'), snapshotError: 'khaosd is not running.', onRetrySnapshot: () => {} } },
-      { ...shellDestination('characters', 'Characters'), label: 'Story update failed, with Project Settings (illustrative message)', props: { ...shellWindow('characters', 'Characters'), snapshotError: 'khaosd is not running.', onRetrySnapshot: () => {}, onProjectSettings: () => {} } },
       {
         // The full Overview screen in the window (operator, 2026-11-10: "let's assemble the full
         // overview screen with sidebar, header and such for review in catalog").

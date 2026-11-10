@@ -88,6 +88,7 @@
   class="frame"
   class:frame--sized={frame.width !== null}
   class:frame--fill={frame.width === null && fill}
+  class:frame--tall={frame.width !== null && frame.height === null && fill}
   class:frame--open={frame.width === null && !fill}
   class:frame--chassis={chassised}
   style={frameStyle}
@@ -162,6 +163,15 @@
     /* The canvas's height, as a host gives a screen (operator, 2026-11-10: "Fill gives screens
        height"): a screen sized to its host, with panes that scroll, no longer grows to its
        content. A taller screen overflows into the canvas's own scroll. */
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* A web breakpoint is a width, not a machine, so a SCREEN in one takes the canvas height as
+     at Fill (operator, 2026-11-10: "Breakpoints give height"). Measured: Player, filling its
+     host, grew to 3775px at md with nothing to scroll inside it. After `.frame--sized`, whose
+     `flex-shrink: 0` it overrides. */
+  .frame--tall {
     flex: 1 1 auto;
     min-height: 0;
   }

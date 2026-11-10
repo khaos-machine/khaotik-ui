@@ -5,15 +5,31 @@
   // (catalog app-coverage plan, T8). Every value is the host's, and every pane, layer and dialog
   // is the host's own view, passed as a snippet: the table, detail and side panes by name, any
   // other pane through `pane`.
+  //
+  // The Data window follows the Overview screen (operator, 2026-11-10: "Match the Overview"). The
+  // source list hides from a button at its top to a rail that brings it back, through the same
+  // `onTogglePane('source')` the toolbar toggle sent; Project Settings sits at its foot, not in the
+  // toolbar ("Sidebar foot, both"). The inspector is there only while something is selected ("Yes,
+  // host says when"): `hasSelection` closes it without touching the host's layout.
+  //
+  // Narrow, by the window's own width (operator, 2026-11-10, the window measured unusable below
+  // 900): a phone is a "Drill-down stack" — the source list, the destination's table, then the
+  // selection — and a tablet is "Rail + two columns", the source list held to its rail. The
+  // phone's toolbar is "Title + pop-up + More": one row that never scrolls, the presentations as a
+  // pop-up, the commands named in a More menu, the filter under the stack's Back row, and no pane
+  // toggles, which the stack replaces ("i don't know what mic + play buttons are").
   import Button from './Button.svelte'
   import CommandPalette from './CommandPalette.svelte'
   import Dock from './Dock.svelte'
+  import FilterField from './FilterField.svelte'
+  import Icon from './Icon.svelte'
   import ProjectStatusHUD from './ProjectStatusHUD.svelte'
   import SegmentedControl from './SegmentedControl.svelte'
   import SourceList from './SourceList.svelte'
   import StatusBar from './StatusBar.svelte'
   import StoryAtlasToolbar from './StoryAtlasToolbar.svelte'
   import Toolbar from './Toolbar.svelte'
+  import { paneSplit, shownPanels, toggleSplit } from './lib/dock.js'
 
   /** @typedef {'overview' | 'data' | 'atlas' | 'player' | 'screenplay'} Presentation */
   /** @typedef {import('svelte').ComponentProps<typeof Toolbar>} ToolbarProps */
@@ -37,7 +53,7 @@
    * @property {(event: MouseEvent) => void} [onToolbarClick] A click anywhere in the toolbar row, so the host can say why a disabled command is disabled.
    * @property {string} [snapshotError] Why the shared story read failed; '' when it did not.
    * @property {() => void} [onRetrySnapshot] Retry was pressed after the story read failed.
-   * @property {() => void} [onProjectSettings] Opens the story's Project Settings, from the gear at the toolbar's trailing edge. Absent, no gear is drawn.
+   * @property {() => void} [onProjectSettings] Opens the story's Project Settings, from the foot of the source list, or its rail while the list is hidden. Absent, no button is drawn.
    * @property {string} [atlasLens] The atlas lens, shown while the atlas is.
    * @property {(lens: string) => void} [onAtlasLens] An atlas lens was chosen.
    * @property {string} [workspace] The data workspace: story or review.
@@ -48,7 +64,9 @@
    * @property {(layout: import('./lib/dock.js').DockNode) => void} [onLayoutChange] The panes were resized, moved or collapsed.
    * @property {import('svelte').ComponentProps<typeof SourceList>['sections']} [sections] The source list's destinations.
    * @property {string} [destination] The destination shown.
+   * @property {boolean} [hasSelection] Something is selected in the data. While nothing is, the inspector is closed; the host's layout keeps its own state for when it returns.
    * @property {(destination: string) => void} [onDestination] A destination was chosen in the source list.
+   * @property {() => void} [onDeselect] On a phone, Back from the selection: the host clears it.
    * @property {boolean} [builderOpen] A subject builder covers the window: everything else is hidden and inert.
    * @property {StatusBarProps['engine']} [engine] The status bar's engine line.
    * @property {StatusBarProps['jobs']} [jobs] Running jobs.
@@ -101,6 +119,8 @@
     sections = [],
     destination = '',
     onDestination = undefined,
+    onDeselect = undefined,
+    hasSelection = true,
     builderOpen = false,
     engine = null,
     jobs = [],
@@ -132,6 +152,65 @@
   const canvasStatus = $derived(!builderOpen && !statusShown && Boolean(result || (jobs?.length ?? 0) > 0))
   /** @param {Presentation} layer */
   const hidden = (layer) => builderOpen || presentation !== layer
+
+  /** In the Data window the source list's toggle is in the pane; elsewhere (the player's composer sidebar) it stays in the toolbar. */
+  const toolbarPanes = $derived(presentation === 'data' ? panes.filter((p) => p.id !== 'source') : panes)
+  /** The window's width; 0 until measured, which counts as wide, so a host that never lays it out sees no change. */
+  let width = $state(0)
+  const mode = $derived(width === 0 || width > 900 ? 'wide' : width < 600 ? 'phone' : 'tablet')
+  /** On a tablet the source list keeps to its rail unless opened from it; the host's layout is not touched. */
+  let sourceOpen = $state(false)
+  /** On a phone, the stack is back at the source list. */
+  let atSource = $state(false)
+
+  /** The inspector's split, closed while nothing is selected and the inspector is the tab shown. */
+  const inspectorClosed = $derived.by(() => {
+    const split = paneSplit(layout, 'inspector')
+    if (!split || split.collapsed || hasSelection) return false
+    const fixed = split.fixed === 'start' ? split.children[0] : split.children[1]
+    return fixed.kind === 'group' && fixed.active === 'inspector'
+  })
+  const sourceClosed = $derived.by(() => {
+    const split = paneSplit(layout, 'source')
+    return mode === 'tablet' && !sourceOpen && !!split && !split.collapsed
+  })
+  /** The panes the window closes for itself, whatever the host's layout says. */
+  const closedHere = $derived([inspectorClosed && 'inspector', sourceClosed && 'source'].filter((p) => typeof p === 'string'))
+  const dockLayout = $derived(closedHere.reduce((tree, p) => (tree ? toggleSplit(tree, paneSplit(tree, p)?.id ?? '') : tree), layout))
+  const sourceHidden = $derived(paneSplit(dockLayout, 'source')?.collapsed ?? false)
+
+  /** Hands the host back its own state for the panes the window closed, so the closing stays the window's. @param {import('./lib/dock.js').DockNode} next */
+  function layoutChanged(next) {
+    onLayoutChange?.(closedHere.reduce((tree, p) => {
+      const split = paneSplit(tree, p)
+      return split?.collapsed ? toggleSplit(tree, split.id) : tree
+    }, next))
+  }
+
+  /** The source list's own Hide and the rail's Show: on a tablet the window's, elsewhere the host's. */
+  function toggleSource() {
+    if (mode !== 'tablet') return onTogglePane?.('source')
+    if (paneSplit(layout, 'source')?.collapsed) {
+      sourceOpen = true
+      onTogglePane?.('source')
+    } else sourceOpen = sourceHidden
+  }
+
+  /** The phone's stack: the table first, then the rest with the selection, the inspector at its top ("Inspector first"). */
+  const stacked = $derived(shownPanels(layout).filter((p) => p !== 'source'))
+  const selection = $derived(stacked.slice(1).sort((a, b) => Number(b === 'inspector') - Number(a === 'inspector')))
+  const view = $derived(atSource ? 'source' : hasSelection && stacked.length > 1 ? 'selection' : 'list')
+  const destinationLabel = $derived(sections.flatMap((s) => s.items).find((i) => i.id === destination)?.label ?? '')
+  const phone = $derived(mode === 'phone')
+  const uid = $props.id()
+
+  /** Runs a command chosen in the phone's More menu and closes it; one that cannot run says why and stays. @param {MouseEvent} event @param {import('./lib/commands.js').Command} command */
+  function runFromMenu(event, command) {
+    if (command.disabledReason) return
+    /** @type {HTMLElement} */ (event.currentTarget).closest('[popover]')?.hidePopover?.()
+    onRun?.(command.id)
+  }
+  const workspaceLabel = $derived(workspaces.find((w) => w.value === workspace)?.label ?? 'Sources')
 </script>
 
 <div
@@ -139,9 +218,12 @@
   class:ui-shell--canvas-status={canvasStatus}
   data-ui-id="shell"
   data-presentation={presentation}
+  data-mode={mode}
+  bind:clientWidth={width}
   style:--ui-shell-toolbar-height={`${toolbarHeight}px`}
   style:--ui-shell-status-height={`${statusHeight}px`}>
-  <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -- the toolbar's buttons take the keys; a key on one is a click here -->
+  <!-- The toolbar's buttons take the keys; a key on one is a click here. -->
+  <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
   <div
     class="ui-shell__toolbar"
     class:ui-shell__toolbar--hidden={builderOpen}
@@ -153,26 +235,44 @@
     <Toolbar
       {title}
       {context}
-      compactBelow={0}
+      compactBelow={phone ? 600 : 0}
+      width={phone ? width : 0}
       {modes}
       mode={presentation}
       onmode={(mode) => onPresentation?.(mode)}
-      {panes}
+      panes={phone ? [] : toolbarPanes}
       ontogglepane={(id) => onTogglePane?.(id)}
-      {commands}
+      commands={phone ? [] : commands}
       onrun={(id) => onRun?.(id)}
-      {filter}
+      filter={phone ? null : filter}
       {filterLabel}
       onfilter={(value) => onFilter?.(value)}
-      status={snapshotError ? snapshotStatus : undefined}
-      onsettings={onProjectSettings}
-      settingsLabel="Project Settings…">
+      status={snapshotError ? snapshotStatus : undefined}>
       {#snippet lead()}
-        {#if presentation === 'data'}
+        <!-- Not on a phone ("Drop it on phone"): Review is in the source list. -->
+        {#if presentation === 'data' && !phone}
           <SegmentedControl label="Data workspace" value={workspace} items={workspaces} onselect={(value) => onWorkspace?.(value)} />
         {/if}
       {/snippet}
       {#snippet tools()}
+        {#if phone && commands.length > 0}
+          <button type="button" class="ui-shell__more-trigger" popovertarget="{uid}-more" aria-label="More" title="More"><Icon name="dots-three" /></button>
+          <div class="ui-shell__more" id="{uid}-more" popover>
+            {#each commands as command (command.id)}
+              <button
+                type="button"
+                class="ui-shell__more-item"
+                data-command={command.id}
+                aria-disabled={command.disabledReason ? 'true' : undefined}
+                aria-describedby={command.disabledReason ? `${uid}-why-${command.id}` : undefined}
+                onclick={(event) => runFromMenu(event, command)}>
+                {#if command.icon}<Icon name={command.icon} />{/if}
+                <span class="ui-shell__more-label">{command.label}</span>
+                {#if command.disabledReason}<span class="ui-shell__more-why" id="{uid}-why-{command.id}" aria-hidden="true">{command.disabledReason}</span>{/if}
+              </button>
+            {/each}
+          </div>
+        {/if}
         {#if presentation === 'atlas'}
           <div class="ui-shell__atlas-tools" aria-label="Atlas controls">
             <StoryAtlasToolbar lens={atlasLens} onLensChange={(value) => onAtlasLens?.(value)} />
@@ -187,6 +287,40 @@
     <Button icon="arrow-clockwise" onclick={() => onRetrySnapshot?.()}>Retry</Button>
   {/snippet}
 
+  <!-- Each pane by id, for the Dock and the phone's stack alike. -->
+  {#snippet panelBody(/** @type {string} */ id)}
+    {#if id === 'source'}
+      {@render sourceColumn(true)}
+    {:else if id === 'table'}
+      {@render table?.()}
+    {:else if id === 'detail'}
+      {@render detail?.()}
+    {:else if id === 'inspector'}
+      {@render side?.()}
+    {:else}
+      {@render pane?.(id)}
+    {/if}
+  {/snippet}
+
+  <!-- The source list with Project Settings at its foot; docked, it hides from a button at its top. -->
+  {#snippet sourceColumn(/** @type {boolean} */ docked)}
+    <div class="ui-shell__source">
+      {#if docked}
+        <div class="ui-shell__toggle">
+          <Button variant="tool" icon="sidebar-simple" title="Hide source list" onclick={toggleSource}><span class="visually-hidden">Hide source list</span></Button>
+        </div>
+      {/if}
+      <div class="ui-shell__source-list">
+        <SourceList {sections} active={destination} onselect={(d) => { atSource = false; onDestination?.(d) }} label="Story destinations" uiId="{workspace}.source" />
+      </div>
+      {#if onProjectSettings}
+        <div class="ui-shell__foot">
+          <Button variant="tool" icon="gear" onclick={() => onProjectSettings?.()}>Project Settings</Button>
+        </div>
+      {/if}
+    </div>
+  {/snippet}
+
   {#if overview}
     <div class="ui-shell__overview" hidden={hidden('overview')} inert={hidden('overview')}>{@render overview()}</div>
   {/if}
@@ -197,23 +331,47 @@
     inert={hidden('data')}
     aria-hidden={hidden('data') ? 'true' : undefined}>
     <div class="ui-shell__dock">
-      {#key workspace}
-        <Dock {layout} {panels} onlayoutchange={(next) => onLayoutChange?.(next)} uiId="{workspace}.dock">
-          {#snippet panel(id)}
-            {#if id === 'source'}
-              <SourceList {sections} active={destination} onselect={(d) => onDestination?.(d)} label="Story destinations" uiId="{workspace}.source" />
-            {:else if id === 'table'}
-              {@render table?.()}
-            {:else if id === 'detail'}
-              {@render detail?.()}
-            {:else if id === 'inspector'}
-              {@render side?.()}
-            {:else}
-              {@render pane?.(id)}
+      {#if mode === 'phone'}
+        <div class="ui-shell__stack">
+          {#if view === 'source'}
+            {@render sourceColumn(false)}
+          {:else}
+            <div class="ui-shell__stack-head">
+              {#if view === 'list'}
+                <Button variant="tool" icon="caret-left" onclick={() => (atSource = true)}>{workspaceLabel}</Button>
+                <h2 class="ui-shell__stack-title">{destinationLabel}</h2>
+              {:else}
+                <Button variant="tool" icon="caret-left" onclick={() => onDeselect?.()}>{destinationLabel}</Button>
+              {/if}
+            </div>
+            {#if view === 'list' && filter !== null}
+              <div class="ui-shell__stack-filter"><FilterField value={filter} label={filterLabel} oninput={(value) => onFilter?.(value)} /></div>
             {/if}
-          {/snippet}
-        </Dock>
-      {/key}
+            <div class="ui-shell__stack-body">
+              {#each view === 'list' ? stacked.slice(0, 1) : selection as id (id)}
+                <section class="ui-shell__stack-pane" aria-label={panels[id]?.label ?? id}>{@render panelBody(id)}</section>
+              {/each}
+            </div>
+          {/if}
+        </div>
+      {:else}
+        {#if sourceHidden}
+          <div class="ui-shell__rail">
+            <Button variant="tool" icon="sidebar-simple" title="Show source list" onclick={toggleSource}><span class="visually-hidden">Show source list</span></Button>
+            <div class="ui-shell__source-list">
+              <SourceList {sections} active={destination} onselect={(d) => onDestination?.(d)} label="Story destinations" uiId="{workspace}.source" compact />
+            </div>
+            {#if onProjectSettings}
+              <div class="ui-shell__foot">
+                <Button variant="tool" icon="gear" title="Project Settings" onclick={() => onProjectSettings?.()}><span class="visually-hidden">Project Settings</span></Button>
+              </div>
+            {/if}
+          </div>
+        {/if}
+        {#key workspace}
+          <Dock layout={dockLayout} {panels} onlayoutchange={layoutChanged} uiId="{workspace}.dock" panel={panelBody} />
+        {/key}
+      {/if}
     </div>
   </div>
   <!-- One status bar, under whichever of the overview and the data is shown. -->
@@ -268,7 +426,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    /* Its container's height, not the window's: the host gives it one. */
+    height: 100%;
+    min-height: 0;
     overflow: hidden;
     background: var(--surface-base);
     color: var(--text-primary);
@@ -290,6 +450,46 @@
   .ui-shell__overview { position: absolute; inset: var(--ui-shell-toolbar-height) 0 var(--ui-shell-status-height); min-height: 0; overflow: auto; }
   .ui-shell__status { position: absolute; inset: auto 0 0; }
   .ui-shell__dock { display: flex; flex: 1; min-height: 0; }
+  .ui-shell__dock > :global(.dock) { flex: 1; min-width: 0; }
+  /* The source list as the Overview's outline: its toggle, the list scrolling, Project Settings
+     pinned to the foot. The rail keeps Show, each destination's icon and the gear while it is
+     hidden (operator, 2026-11-10: "display the icons for each entry in sidebar when collapsed"). */
+  .ui-shell__source { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+  .ui-shell__source-list { flex: 1; min-height: 0; }
+  .ui-shell__toggle { display: flex; justify-content: flex-end; padding: var(--spacing-xs) var(--spacing-xs) 0; }
+  .ui-shell__foot { margin-top: auto; padding: var(--spacing-xs); }
+  .ui-shell__rail { display: flex; flex-direction: column; flex: none; padding-top: var(--spacing-xs); border-right: var(--size-stroke-hairline) solid var(--border-default); }
+  .ui-shell__rail > :global(:first-child) { margin: 0 var(--spacing-xs); }
+  /* The phone's stack: one level at a time, under a row with Back and the level's name. */
+  .ui-shell__stack { display: flex; flex-direction: column; flex: 1; min-width: 0; min-height: 0; }
+  .ui-shell__stack-head { display: flex; align-items: center; gap: var(--spacing-xs); flex: none; padding: var(--spacing-2xs) var(--spacing-xs); border-bottom: var(--size-stroke-hairline) solid var(--border-default); }
+  .ui-shell__stack-title { margin: 0; font-size: var(--body-md-size); font-weight: 600; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .ui-shell__stack-body { flex: 1; min-height: 0; overflow: auto; }
+  .ui-shell__stack-pane + .ui-shell__stack-pane { border-top: var(--size-stroke-hairline) solid var(--border-default); }
+  .ui-shell__stack-filter { flex: none; padding: var(--spacing-xs); border-bottom: var(--size-stroke-hairline) solid var(--border-default); }
+  /* The phone's More: a tool button, and its menu anchored under it in the top layer. */
+  .ui-shell__more-trigger { anchor-name: --ui-shell-more; display: inline-flex; align-items: center; justify-content: center; flex: none; padding: 5px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); cursor: pointer; }
+  .ui-shell__more-trigger:hover { color: var(--text-primary); }
+  .ui-shell__more-trigger:focus-visible { outline: var(--size-stroke-focus) solid var(--border-focus); }
+  .ui-shell__more {
+    position-anchor: --ui-shell-more;
+    inset: auto;
+    top: anchor(bottom);
+    right: anchor(right);
+    margin: var(--spacing-2xs) 0 0;
+    min-width: 180px;
+    padding: var(--spacing-2xs);
+    border: var(--size-stroke-hairline) solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--surface-raised);
+    color: var(--text-primary);
+  }
+  .ui-shell__more-item { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: var(--spacing-xs); width: 100%; padding: var(--spacing-2xs) var(--spacing-xs); border: 0; border-radius: var(--radius-sm); background: transparent; color: inherit; font: inherit; font-size: var(--body-md-size); text-align: left; cursor: pointer; }
+  .ui-shell__more-item:hover:not([aria-disabled="true"]) { background: color-mix(in oklab, var(--text-primary) 8%, transparent); }
+  .ui-shell__more-item:focus-visible { outline: var(--size-stroke-focus) solid var(--border-focus); }
+  .ui-shell__more-item[aria-disabled='true'] { color: var(--text-secondary); cursor: default; }
+  .ui-shell__more-label { grid-column: 2; }
+  .ui-shell__more-why { grid-column: 2; font-size: var(--caption-size); color: var(--text-secondary); }
   .ui-shell__atlas { position: absolute; inset: 0; }
   .ui-shell__player { position: absolute; inset: var(--ui-shell-toolbar-height) 0 0; min-height: 0; opacity: 1; transition: opacity 200ms ease-out, visibility 0s; }
   .ui-shell__screenplay { position: absolute; inset: var(--ui-shell-toolbar-height) 0 0; min-height: 0; }
