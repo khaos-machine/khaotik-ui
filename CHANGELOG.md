@@ -20,6 +20,21 @@ current pin.
 
 ## [Unreleased]
 
+## [0.187.0] — 2026-11-10
+
+### Added
+
+- **`StoryOverviewScreen`** (#51): the Overview as one screen, as khaos-app draws it. It shows the strip, then the outline, the document and the side pane. A selection in the document opens the side pane. Close, or Esc from inside the screen, clears the selection and closes the pane; `onselect` is told `null`. The outline hides to a rail, and `onProjectSettings` draws Project Settings at its foot. The screen takes its host's height and each pane scrolls on its own.
+
+### Changed
+
+- **`StoryOverview` is a one-screen dashboard** (#51):
+  - **Header:** the verdict sits in the header.
+  - **Bands:** Premise and Shape are full-width bands. Shape draws the story as a timeline: each turn marked where it falls, as tall as its strength, the four strongest numbered and named in a key, with the beats of each structure that fits and a pacing band. The turns list folds under it.
+  - **Panels:** Coverage, Characters, Production, Journeys and Relationships are summary panels in a grid, and Show all opens one panel's detail beneath it. Characters is drawn as dialogue-share bars, and the Coverage rubric as a radar.
+- **`StoryOverviewStrip`** leads with its figures, with the next step as a normal-size primary action at the row's end (#51). The next step was previously drawn first.
+- **`StoryOverviewOutline`** groups its sections as Story, Verdict and People, one per line, each with a dot for its state in place of a pill (#51). The state word is still each item's accessible description.
+
 ## [0.186.0] — 2026-11-10
 
 ### Changed
