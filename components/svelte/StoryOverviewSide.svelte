@@ -18,10 +18,12 @@
    * @property {boolean} [advanced] Advanced mode: a relationship's confidence.
    * @property {import('./lib/story-overview.js').OverviewSelection | null} [selected] The selected turn, character, journey or relationship, including skipped pairs.
    * @property {(sceneId: string) => void} [onRevealScene] Asked with any selected evidence scene's id.
+   * @property {boolean} [showSkippedPairs] A selected skipped pair shows its reason and weights. Off: nothing is shown for it, as in 0.178.5.
+   * @property {boolean} [showEvidenceScenes] Every evidence scene: each journey turning point's and relationship's, and the journey's and relationship's own Evidence scenes. Off: a journey turning point reveals its first scene only.
    */
 
   /** @type {Props} */
-  let { structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onRevealScene = undefined } = $props()
+  let { structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onRevealScene = undefined, showSkippedPairs = false, showEvidenceScenes = false } = $props()
 
   const turn = $derived(
     selected?.kind === 'turn' && structure.kind === 'loaded' && shapeReads(structure.data) ? namedPoints(structure.data)?.[selected.index] : undefined,
@@ -75,26 +77,31 @@
     <InspectorSection title="Turning points" count={j.turning_points.length}>
       {#each j.turning_points as t, i (i)}
         <p class="ui-story-side__text">{t.description}</p>
-        {@render evidence(t.evidence_scene_ids)}
+        {#if showEvidenceScenes}{@render evidence(t.evidence_scene_ids)}
+        {:else if t.evidence_scene_ids?.[0]}<Button variant="secondary" icon="film-slate" onclick={() => onRevealScene?.(t.evidence_scene_ids[0])}>Show in Scenes</Button>{/if}
       {/each}
     </InspectorSection>
   {/if}
   {#if j.relationship_evolution.length}
     <InspectorSection title="Relationships" count={j.relationship_evolution.length}>
       {#each j.relationship_evolution as r, i (i)}
-        <p class="ui-story-side__text">{r.counterpart}</p>
-        <p class="ui-story-side__text">{r.trajectory}</p>
-        {@render evidence(r.evidence_scene_ids)}
+        {#if showEvidenceScenes}
+          <p class="ui-story-side__text">{r.counterpart}</p>
+          <p class="ui-story-side__text">{r.trajectory}</p>
+          {@render evidence(r.evidence_scene_ids)}
+        {:else}
+          <PropertyRow label={r.counterpart} value={r.trajectory} />
+        {/if}
       {/each}
     </InspectorSection>
   {/if}
   <!-- KSPD go/kspdprotocol/v0.136.1 analysis/character-journey.schema.json:83: the journey's own evidence. -->
-  {#if j.evidence_scene_ids?.length}
+  {#if showEvidenceScenes && j.evidence_scene_ids?.length}
     <InspectorSection title="Evidence scenes" count={j.evidence_scene_ids.length}>
       {@render evidence(j.evidence_scene_ids)}
     </InspectorSection>
   {/if}
-{:else if pair?.analysis.skip}
+{:else if showSkippedPairs && pair?.analysis.skip}
   <InspectorSection title={pairName(pair.characters)} uiId="story.overview.side.relationship">
     <StatusPill text="Skipped" tone="skipped" />
     <p class="ui-story-side__text">{pair.analysis.skip.reason}</p>
@@ -125,7 +132,7 @@
       </InspectorSection>
     {/if}
   {/each}
-  {#if s.evidence_scene_ids?.length}
+  {#if showEvidenceScenes && s.evidence_scene_ids?.length}
     <InspectorSection title="Evidence scenes" count={s.evidence_scene_ids.length}>
       {@render evidence(s.evidence_scene_ids)}
     </InspectorSection>

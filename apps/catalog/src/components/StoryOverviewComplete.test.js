@@ -41,13 +41,13 @@ async function revealEvery(scope, callback) {
 describe('complete Overview results', () => {
   it('gap 1: reveals every evidence scene for a journey turning point', async () => {
     const onRevealScene = vi.fn()
-    render(StoryOverviewSide, { journeys: loaded([{ character: characters[0], journey }]), selected: { kind: 'journey', index: 0 }, onRevealScene })
+    render(StoryOverviewSide, { journeys: loaded([{ character: characters[0], journey }]), selected: { kind: 'journey', index: 0 }, onRevealScene, showEvidenceScenes: true })
     await revealEvery(region('Turning points'), onRevealScene)
   })
 
   it('gap 2: renders each relationship evolution with all its evidence', async () => {
     const onRevealScene = vi.fn()
-    render(StoryOverviewSide, { journeys: loaded([{ character: characters[0], journey }]), selected: { kind: 'journey', index: 0 }, onRevealScene })
+    render(StoryOverviewSide, { journeys: loaded([{ character: characters[0], journey }]), selected: { kind: 'journey', index: 0 }, onRevealScene, showEvidenceScenes: true })
     expect(region('Relationships').getByText('THEO')).toBeVisible()
     expect(region('Relationships').getByText('Rivals to partners')).toBeVisible()
     await revealEvery(region('Relationships'), onRevealScene)
@@ -55,12 +55,12 @@ describe('complete Overview results', () => {
 
   it('gap 3: reveals every synthesis evidence scene even without turning points', async () => {
     const onRevealScene = vi.fn()
-    render(StoryOverviewSide, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 0 }, onRevealScene })
+    render(StoryOverviewSide, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 0 }, onRevealScene, showEvidenceScenes: true })
     await revealEvery(region('Evidence scenes'), onRevealScene)
   })
 
   it('gap 4a: renders coverage acts including zero values and optional omissions', () => {
-    render(StoryOverview, { coverage: loaded({ ...report, structure: { ...report.structure, acts: [{ name: 'Opening', percentage: 0, sceneCount: 0, durationMs: 0 }, { name: 'Ending' }] } }) })
+    render(StoryOverview, { coverage: loaded({ ...report, structure: { ...report.structure, acts: [{ name: 'Opening', percentage: 0, sceneCount: 0, durationMs: 0 }, { name: 'Ending' }] } }), showCoverageActs: true })
     const acts = region('Acts')
     expect(acts.getByText('Opening')).toBeVisible()
     expect(acts.getByText('Ending')).toBeVisible()
@@ -76,7 +76,7 @@ describe('complete Overview results', () => {
       { index: 0, slugline: 'INT. WORKSHOP - DAY', summary: sourced('She asks for help.'), narrativeRole: sourced('Setup'), characters: ['MAYA', 'THEO'], durationMs: sourced(90000) },
       { slugline: 'EXT. ROAD - NIGHT', summary: sourced('They leave together.'), narrativeRole: sourced('Resolution'), durationMs: sourced(0) },
     ]
-    render(StoryOverview, { coverage: loaded({ ...report, scenes }) })
+    render(StoryOverview, { coverage: loaded({ ...report, scenes }), showSceneEntries: true })
     const entries = region('Scene entries')
     for (const text of ['INT. WORKSHOP - DAY', 'She asks for help.', 'Setup', 'MAYA, THEO', 'EXT. ROAD - NIGHT', 'They leave together.', 'Resolution']) expect(entries.getByText(text)).toBeVisible()
     expect(entries.getByRole('group', { name: 'Scene index' })).toHaveAccessibleDescription('0')
@@ -84,7 +84,7 @@ describe('complete Overview results', () => {
   })
 
   it('gap 5: renders every structure act with its inclusive range and word share', () => {
-    render(StoryOverview, { structure: loaded({ ...captured.structure, acts: [{ name: 'Opening', startIndex: 0, endIndex: 3, fraction: 0.25 }, { name: 'Ending', startIndex: 4, endIndex: 9, fraction: 0.75 }] }) })
+    render(StoryOverview, { structure: loaded({ ...captured.structure, acts: [{ name: 'Opening', startIndex: 0, endIndex: 3, fraction: 0.25 }, { name: 'Ending', startIndex: 4, endIndex: 9, fraction: 0.75 }] }), showStructureActs: true })
     const acts = region('Acts')
     expect(acts.getByText('Opening')).toBeVisible()
     expect(acts.getByText('Ending')).toBeVisible()
@@ -94,13 +94,13 @@ describe('complete Overview results', () => {
 
   it('gap 6: selects a skipped pair with its original list index and inspects its reason', async () => {
     const onselect = vi.fn()
-    const view = render(StoryOverview, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 1 }, onselect })
+    const view = render(StoryOverview, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 1 }, onselect, showSkippedPairs: true })
     const row = region('Relationships').getByRole('button', { name: 'THEO and MAYA' })
     expect(row).toHaveAttribute('aria-current', 'true')
     await fireEvent.click(row)
     expect(onselect).toHaveBeenLastCalledWith({ kind: 'relationship', index: 1 })
     view.unmount()
-    render(StoryOverviewSide, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 1 } })
+    render(StoryOverviewSide, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 1 }, showSkippedPairs: true })
     expect(screen.getByRole('heading', { name: 'THEO and MAYA' })).toBeVisible()
     expect(screen.getByText(skip.reason)).toBeVisible()
     expect(screen.getByRole('group', { name: 'Co-appearance weight' })).toHaveAccessibleDescription('1')
@@ -108,19 +108,19 @@ describe('complete Overview results', () => {
   })
 
   it('gap 7a: names the outline section Turns', () => {
-    render(StoryOverviewOutline)
+    render(StoryOverviewOutline, { turnsTitle: 'Turns' })
     expect(screen.getByRole('button', { name: 'Turns' })).toBeVisible()
   })
 
   it('gap 7b: shows running sections over previous results and updates when the run finishes', async () => {
-    const view = render(StoryOverviewOutline, { coverage: loaded(report), runs: { coverage: { kind: 'running' } } })
+    const view = render(StoryOverviewOutline, { coverage: loaded(report), runs: { coverage: { kind: 'running' } }, showRunning: true })
     for (const name of ['Coverage', 'Characters', 'Production']) expect(pillRow(name)).toHaveTextContent('Running')
     await view.rerender({ coverage: loaded({ ...report, incompleteSections: [] }), runs: {} })
     expect(pillRow('Coverage')).toHaveTextContent('Ready')
   })
 
   it('gap 7c: marks incomplete coverage honestly and preserves its results', () => {
-    render(StoryOverviewOutline, { coverage: loaded({ ...report, incompleteSections: ['scene-analysis', 'future-layer'] }) })
+    render(StoryOverviewOutline, { coverage: loaded({ ...report, incompleteSections: ['scene-analysis', 'future-layer'] }), showIncompleteCoverage: true })
     expect(pillRow('Coverage')).toHaveTextContent('Incomplete')
     expect(pillRow('Coverage')).not.toHaveTextContent('Ready')
   })

@@ -52,6 +52,26 @@ declare const StoryOverviewOutline: import("svelte").Component<{
      * Asked with the section chosen.
      */
     onjump?: (section: "characters" | "coverage" | "premise" | "shape" | "turns" | "production" | "journeys" | "relationships") => void;
+    /**
+     * The turns row's title. Defaults to "Where the story turns", as in 0.178.5.
+     */
+    turnsTitle?: string;
+    /**
+     * Coverage, Characters and Production read Incomplete when coverage lists unfinished sections. Off: Ready.
+     */
+    showIncompleteCoverage?: boolean;
+    /**
+     * A section whose run (`runs`) is running reads Running.
+     */
+    showRunning?: boolean;
+    /**
+     * A partial or failed journeys or relationships pass (`runs`) reads Incomplete or Didn't finish, and failed turn naming reads Didn't finish. Off: Not ready.
+     */
+    showPassStates?: boolean;
+    /**
+     * Turns named with no points read Ready. Off: Not ready, as in 0.178.5.
+     */
+    showEmptyResults?: boolean;
 }, {}, "">;
 type Props = {
     /**
@@ -102,4 +122,24 @@ type Props = {
      * Asked with the section chosen.
      */
     onjump?: (section: "characters" | "coverage" | "premise" | "shape" | "turns" | "production" | "journeys" | "relationships") => void;
+    /**
+     * The turns row's title. Defaults to "Where the story turns", as in 0.178.5.
+     */
+    turnsTitle?: string;
+    /**
+     * Coverage, Characters and Production read Incomplete when coverage lists unfinished sections. Off: Ready.
+     */
+    showIncompleteCoverage?: boolean;
+    /**
+     * A section whose run (`runs`) is running reads Running.
+     */
+    showRunning?: boolean;
+    /**
+     * A partial or failed journeys or relationships pass (`runs`) reads Incomplete or Didn't finish, and failed turn naming reads Didn't finish. Off: Not ready.
+     */
+    showPassStates?: boolean;
+    /**
+     * Turns named with no points read Ready. Off: Not ready, as in 0.178.5.
+     */
+    showEmptyResults?: boolean;
 };

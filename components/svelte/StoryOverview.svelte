@@ -44,17 +44,25 @@
    * @property {{ premise?: Run, structure?: Run, coverage?: Run, journeys?: ListRun, relationships?: ListRun }} [runs] Each section's run action, one click each; the story budget bounds paid runs, so nothing asks first. Journeys and relationships have no action: their run only says when the pass is partial or failed, beside whatever was saved.
    * @property {(pass: Pass) => void} [onrun] Starts a pass: `structure` (free), `structureNaming`, `coverage` or `premise`.
    * @property {() => void} [onsetbudget] Opens this story's budget.
+   * @property {boolean} [showSkippedPairs] Skipped pairs as selectable rows with their reasons, outside Advanced. Off: they are listed only under Advanced's Show details, as in 0.178.5.
+   * @property {boolean} [showStructureActs] The structure's acts in Shape.
+   * @property {boolean} [showCoverageActs] Coverage's acts.
+   * @property {boolean} [showSceneEntries] Coverage's scene entries.
+   * @property {boolean} [showMeasuredStructure] Coverage's Structure measured section.
+   * @property {boolean} [showPassStates] A partial or failed journeys or relationships pass (`runs.journeys`, `runs.relationships`), and failed turn naming, each said in its section.
+   * @property {boolean} [showEmptyResults] Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
    */
 
   /** @type {Props} */
-  let { title = '', premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onselect = undefined, runs = {}, onrun = undefined, onsetbudget = undefined } = $props()
+  let { title = '', premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onselect = undefined, runs = {}, onrun = undefined, onsetbudget = undefined, showSkippedPairs = false, showStructureActs = false, showCoverageActs = false, showSceneEntries = false, showMeasuredStructure = false, showPassStates = false, showEmptyResults = false } = $props()
 
   const LOADING = "Reading this story's analyses…"
   /** @param {Sourced | undefined} f */
   const sourceLabel = (f) => (!f || f.source === 'none' ? '' : f.source === 'llm' ? (advanced ? `AI · ${f.confidence}` : 'AI') : 'Counted')
 
   const shape = $derived(structure.kind === 'loaded' && shapeReads(structure.data) ? structure.data : null)
-  const points = $derived(namedPoints(shape))
+  // Off, named with no points reads as not named yet, as 0.178.5 drew it.
+  const points = $derived(showEmptyResults ? namedPoints(shape) : shape?.names?.state === 'named' ? shape.names.points : null)
 
   const report = $derived(coverage.kind === 'loaded' && coverageReads(coverage.data) ? /** @type {import('./lib/story-overview.js').StoryCoverage} */ (coverage.data) : null)
   const flags = $derived(productionFlags(report))
@@ -143,7 +151,7 @@
 {/snippet}
 
 {#snippet pass(/** @type {'journeys' | 'relationships'} */ section)}
-  {@const r = runs[section]}
+  {@const r = showPassStates ? runs[section] : undefined}
   {#if r?.kind === 'partial'}
     <p class="ui-story-overview__note" role="note">This pass hasn't finished, so some results are missing.</p>
   {:else if r?.kind === 'failed'}
@@ -182,7 +190,7 @@
     {:else}
       <p class="ui-story-overview__headline">{shape.fit.reason}</p>
       <StatusPill text={OUTCOMES[shape.fit.outcome]} tone="info" />
-      {#if shape.acts?.length}
+      {#if showStructureActs && shape.acts?.length}
         <InspectorSection title="Acts" count={shape.acts.length} uiId="story.overview.shape.acts">
           {#each shape.acts as act (act)}
             <InspectorSection title={act.name}>
@@ -192,7 +200,7 @@
           {/each}
         </InspectorSection>
       {/if}
-      {#if points?.length}
+      {#if showEmptyResults ? points?.length : points}
         <InspectorSection title="Where the story turns" count={points.length} uiId="story.overview.turns">
           {#each points as p, i (i)}
             <SelectableRow title={p.name} subtitle={p.turn} selected={selected?.kind === 'turn' && selected.index === i} onclick={() => onselect?.({ kind: 'turn', index: i })} />
@@ -200,14 +208,17 @@
         </InspectorSection>
       {:else if points}
         {@render line('No turning points were named.')}
-      {:else if shape.names?.state === 'failed'}
+      {:else if showPassStates && shape.names?.state === 'failed'}
         {@render line("Naming the turning points didn't finish.")}
       {:else}
         {@render line("The turning points haven't been named yet.")}
       {/if}
       {#if advanced}
         <InspectorSection title="Show details" collapsed uiId="story.overview.shape-details">
-          {#each shape.fit.lenses as l (l.id)}<PropertyRow label={l.id} value={[l.score === undefined ? '' : `score ${l.score.toFixed(2)}`, l.p === undefined ? '' : `p ${l.p.toFixed(3)}`].filter(Boolean).join(' · ') || 'Not scored'} />{/each}
+          {#each shape.fit.lenses as l (l.id)}
+            {#if showEmptyResults}<PropertyRow label={l.id} value={[l.score === undefined ? '' : `score ${l.score.toFixed(2)}`, l.p === undefined ? '' : `p ${l.p.toFixed(3)}`].filter(Boolean).join(' · ') || 'Not scored'} />
+            {:else if l.score !== undefined && l.p !== undefined}<PropertyRow label={l.id} value="score {l.score.toFixed(2)} · p {l.p.toFixed(3)}" />{/if}
+          {/each}
           {#if shape._provenance?.made_by?.model}<PropertyRow label="Turns named by" value={shape._provenance.made_by.model} />{/if}
         </InspectorSection>
       {/if}
@@ -237,16 +248,18 @@
       {@render list('Strengths', listItems(report.assessment.strengths))}
       {@render list('Concerns', listItems(report.assessment.concerns))}
       {@render sourced('Notes', report.assessment.notes)}
-      {@const dimensions = report.rubric.dimensions ?? []}
-      <InspectorSection title="Rubric" count={dimensions.length} uiId="story.overview.rubric">
-        {#each dimensions as d (d.name)}
-          <PropertyRow label={d.name} value={d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`} />
-          {#if d.summary?.value}<p class="ui-story-overview__detail">{d.summary.value}</p>{/if}
-        {:else}
-          {@render none('No dimension was scored.')}
-        {/each}
-      </InspectorSection>
-      {#if report.structure.measured}
+      {#if showEmptyResults || report.rubric.dimensions}
+        {@const dimensions = report.rubric.dimensions ?? []}
+        <InspectorSection title="Rubric" count={dimensions.length} uiId="story.overview.rubric">
+          {#each dimensions as d (d.name)}
+            <PropertyRow label={d.name} value={d.score.source === 'none' ? 'No score' : `${d.score.value} / 10`} />
+            {#if d.summary?.value}<p class="ui-story-overview__detail">{d.summary.value}</p>{/if}
+          {:else}
+            {#if showEmptyResults}{@render none('No dimension was scored.')}{/if}
+          {/each}
+        </InspectorSection>
+      {/if}
+      {#if showMeasuredStructure && report.structure.measured}
         {@const m = report.structure.measured}
         <InspectorSection title="Structure measured" uiId="story.overview.coverage.measured">
           {#if Object.hasOwn(MEASURED, m.outcome)}
@@ -258,7 +271,7 @@
           {/if}
         </InspectorSection>
       {/if}
-      {#if report.structure.acts?.length}
+      {#if showCoverageActs && report.structure.acts?.length}
         <InspectorSection title="Acts" count={report.structure.acts.length} uiId="story.overview.coverage.acts">
           {#each report.structure.acts as act (act)}
             <InspectorSection title={act.name}>
@@ -269,7 +282,7 @@
           {/each}
         </InspectorSection>
       {/if}
-      {#if report.scenes?.length}
+      {#if showSceneEntries && report.scenes?.length}
         <InspectorSection title="Scene entries" count={report.scenes.length} uiId="story.overview.coverage.scenes">
           {#each report.scenes as scene (scene)}
             <InspectorSection title={scene.slugline}>
@@ -349,11 +362,17 @@
       {:else}
         {@render line('No pair of characters shares enough scenes to read yet.')}
       {/each}
-      {#each skippedPairs as r (r.pairKey)}
-        <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.skip.reason} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
-          {#snippet trailing()}<StatusPill text="Skipped" tone="skipped" />{/snippet}
-        </SelectableRow>
-      {/each}
+      {#if showSkippedPairs}
+        {#each skippedPairs as r (r.pairKey)}
+          <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.skip.reason} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
+            {#snippet trailing()}<StatusPill text="Skipped" tone="skipped" />{/snippet}
+          </SelectableRow>
+        {/each}
+      {:else if advanced && skippedPairs.length}
+        <InspectorSection title="Show details" collapsed uiId="story.overview.relationships-details">
+          <ul class="ui-story-overview__list">{#each skippedPairs as r (r.pairKey)}<li>{pairName(r.characters)}: {r.analysis.skip.reason}</li>{/each}</ul>
+        </InspectorSection>
+      {/if}
     {/if}
   </InspectorSection>
 </div></div>

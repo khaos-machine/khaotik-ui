@@ -20,7 +20,7 @@ const withMeasured = (measured) => ({ ...report, structure: { ...report.structur
 
 describe('Overview on conforming coverage', () => {
   it('renders Khaos Cloud engine golden "empty" without throwing', () => {
-    render(StoryOverview, { coverage: loaded(cloudEmpty.report) })
+    render(StoryOverview, { coverage: loaded(cloudEmpty.report), showEmptyResults: true, showMeasuredStructure: true })
     const coverage = region('Coverage')
     expect(coverage.getByText('No verdict')).toBeVisible()
     expect(coverage.queryByRole('region', { name: 'Strengths' })).toBeNull()
@@ -50,13 +50,13 @@ describe('Overview on conforming coverage', () => {
 
   it('absent rubric dimensions say none were scored', () => {
     const { dimensions: _dimensions, ...rubric } = report.rubric
-    render(StoryOverview, { coverage: loaded({ ...report, rubric }) })
+    render(StoryOverview, { coverage: loaded({ ...report, rubric }), showEmptyResults: true })
     expect(region('Rubric').getByText('No dimension was scored.')).toBeVisible()
     expect(screen.getByRole('region', { name: 'Characters' })).toBeVisible()
   })
 
   it('draws structure.measured with the document it read', () => {
-    render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'inferred', reason: 'Three-Act Structure fits.', document: 'analysis/structure/structure.json' })) })
+    render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'inferred', reason: 'Three-Act Structure fits.', document: 'analysis/structure/structure.json' })), showMeasuredStructure: true })
     const measured = region('Structure measured')
     expect(measured.getByText('Fits one structure')).toBeVisible()
     expect(measured.getByText('Three-Act Structure fits.')).toBeVisible()
@@ -64,7 +64,7 @@ describe('Overview on conforming coverage', () => {
   })
 
   it('draws structure.measured without a document', () => {
-    render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'not-measured', reason: 'No story structure has been measured for this package.' })) })
+    render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'not-measured', reason: 'No story structure has been measured for this package.' })), showMeasuredStructure: true })
     const measured = region('Structure measured')
     expect(measured.getByText('Not measured')).toBeVisible()
     expect(measured.getByText('No story structure has been measured for this package.')).toBeVisible()
@@ -72,14 +72,14 @@ describe('Overview on conforming coverage', () => {
   })
 
   it('an unknown measured outcome fails only its own block', () => {
-    render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'toString', reason: 'x' })) })
+    render(StoryOverview, { coverage: loaded(withMeasured({ outcome: 'toString', reason: 'x' })), showMeasuredStructure: true })
     expect(region('Structure measured').getByText("Khaos couldn't read how this story's structure was measured.")).toBeVisible()
     expect(screen.getByRole('region', { name: 'Characters' })).toBeVisible()
   })
 
   it('unscored lenses and named turns without points render', async () => {
     const fit = { ...captured.structure.fit, lenses: [{ id: 'three-act' }] }
-    render(StoryOverview, { structure: loaded({ ...captured.structure, fit, names: { state: 'named' } }), advanced: true })
+    render(StoryOverview, { structure: loaded({ ...captured.structure, fit, names: { state: 'named' } }), advanced: true, showEmptyResults: true })
     expect(region('Shape').getByText('No turning points were named.')).toBeVisible()
     await fireEvent.click(screen.getByRole('button', { name: 'Show details' }))
     expect(screen.getByRole('group', { name: 'three-act' })).toHaveAccessibleDescription('Not scored')
@@ -89,7 +89,7 @@ describe('Overview on conforming coverage', () => {
     const ids = ['scene_01AAAAAAAAAAAAAAAAAAAAAAAA', 'scene_01BBBBBBBBBBBBBBBBBBBBBBBB', 'scene_01CCCCCCCCCCCCCCCCCCCCCCCC']
     const journey = { beginning_state: 'Guarded', emotional_progression: 'Opens', final_state: 'Open', arc_quality: 'complete', turning_points: [], relationship_evolution: [], evidence_scene_ids: ids }
     const onRevealScene = vi.fn()
-    render(StoryOverviewSide, { journeys: loaded([{ character: { id: 'character_a', name: 'MAYA' }, journey }]), selected: { kind: 'journey', index: 0 }, onRevealScene })
+    render(StoryOverviewSide, { journeys: loaded([{ character: { id: 'character_a', name: 'MAYA' }, journey }]), selected: { kind: 'journey', index: 0 }, onRevealScene, showEvidenceScenes: true })
     const buttons = region('Evidence scenes').getAllByRole('button', { name: /Show in Scenes/ })
     expect(buttons).toHaveLength(3)
     for (const b of buttons) await fireEvent.click(b)

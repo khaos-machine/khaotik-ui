@@ -18,10 +18,15 @@
    * @property {{ premise?: { kind: string }, structure?: { kind: string }, coverage?: { kind: string }, journeys?: { kind: string }, relationships?: { kind: string } }} [runs] Current section runs, as StoryOverview takes them; running overrides a previous result. For journeys and relationships, partial reads Incomplete and failed reads Didn't finish, whatever was saved.
    * @property {OverviewSection | null} [current] The section shown.
    * @property {(section: OverviewSection) => void} [onjump] Asked with the section chosen.
+   * @property {string} [turnsTitle] The turns row's title. Defaults to "Where the story turns", as in 0.178.5.
+   * @property {boolean} [showIncompleteCoverage] Coverage, Characters and Production read Incomplete when coverage lists unfinished sections. Off: Ready.
+   * @property {boolean} [showRunning] A section whose run (`runs`) is running reads Running.
+   * @property {boolean} [showPassStates] A partial or failed journeys or relationships pass (`runs`) reads Incomplete or Didn't finish, and failed turn naming reads Didn't finish. Off: Not ready.
+   * @property {boolean} [showEmptyResults] Turns named with no points read Ready. Off: Not ready, as in 0.178.5.
    */
 
   /** @type {Props} */
-  let { premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, runs = {}, current = null, onjump = undefined } = $props()
+  let { premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, runs = {}, current = null, onjump = undefined, turnsTitle = 'Where the story turns', showIncompleteCoverage = false, showRunning = false, showPassStates = false, showEmptyResults = false } = $props()
 
   /** @type {Record<string, { text: string, tone: 'success' | 'neutral' | 'danger' | 'info' | 'warning' }>} */
   const PILLS = { running: { text: 'Running', tone: 'info' }, incomplete: { text: 'Incomplete', tone: 'warning' }, ready: { text: 'Ready', tone: 'success' }, missing: { text: 'Not ready', tone: 'neutral' }, failed: { text: "Couldn't read", tone: 'danger' }, unfinished: { text: "Didn't finish", tone: 'danger' } }
@@ -40,21 +45,23 @@
    * @param {{ kind: string } | undefined} run
    */
   const listState = (read, reads, run) =>
-    run?.kind === 'failed' ? 'unfinished' : run?.kind === 'partial' ? 'incomplete' : read.kind === 'loaded' && reads(read.data) && !read.data.length ? 'missing' : state(read, reads)
+    showPassStates && run?.kind === 'failed' ? 'unfinished' : showPassStates && run?.kind === 'partial' ? 'incomplete' : read.kind === 'loaded' && reads(read.data) && !read.data.length ? 'missing' : state(read, reads)
 
   const shape = $derived(state(structure, shapeReads))
-  const naming = $derived(structure.kind === 'loaded' ? structure.data?.names?.state : undefined)
-  const cover = $derived(state(coverage, coverageReads) === 'ready' && coverage.kind === 'loaded' && coverage.data.incompleteSections?.length ? 'incomplete' : state(coverage, coverageReads))
+  const names = $derived(structure.kind === 'loaded' ? structure.data?.names : undefined)
+  // Off, named with no points reads Not ready, as 0.178.5 read it.
+  const named = $derived(showEmptyResults ? namedPoints(structure.kind === 'loaded' ? structure.data : null) : names?.state === 'named' ? names.points : null)
+  const cover = $derived(showIncompleteCoverage && state(coverage, coverageReads) === 'ready' && coverage.kind === 'loaded' && coverage.data.incompleteSections?.length ? 'incomplete' : state(coverage, coverageReads))
   const rows = $derived([
     { id: 'premise', title: 'Premise', state: state(premise, () => true) },
     { id: 'shape', title: 'Shape', state: shape },
-    { id: 'turns', title: 'Turns', state: shape === 'ready' ? (namedPoints(structure.kind === 'loaded' ? structure.data : null) ? 'ready' : naming === 'failed' ? 'unfinished' : 'missing') : shape },
+    { id: 'turns', title: turnsTitle, state: shape === 'ready' ? (named ? 'ready' : showPassStates && names?.state === 'failed' ? 'unfinished' : 'missing') : shape },
     { id: 'coverage', title: 'Coverage', state: cover },
     { id: 'characters', title: 'Characters', state: cover },
     { id: 'production', title: 'Production', state: cover === 'ready' || cover === 'incomplete' ? (productionFlags(coverage.kind === 'loaded' ? coverage.data : null) ? cover : 'failed') : cover },
     { id: 'journeys', title: 'Journeys', state: listState(journeys, journeysRead, runs.journeys) },
     { id: 'relationships', title: 'Relationships', state: listState(relationships, relationshipsRead, runs.relationships) },
-  ].map((row) => ({ ...row, state: runs[({ shape: 'structure', turns: 'structure', characters: 'coverage', production: 'coverage' })[row.id] ?? row.id]?.kind === 'running' ? 'running' : row.state })))
+  ].map((row) => ({ ...row, state: showRunning && runs[({ shape: 'structure', turns: 'structure', characters: 'coverage', production: 'coverage' })[row.id] ?? row.id]?.kind === 'running' ? 'running' : row.state })))
 </script>
 
 <div class="ui-story-outline" role="group" aria-label="Overview">

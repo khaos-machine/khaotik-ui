@@ -184,6 +184,34 @@ declare const StoryOverview: import("svelte").Component<{
      * Opens this story's budget.
      */
     onsetbudget?: () => void;
+    /**
+     * Skipped pairs as selectable rows with their reasons, outside Advanced. Off: they are listed only under Advanced's Show details, as in 0.178.5.
+     */
+    showSkippedPairs?: boolean;
+    /**
+     * The structure's acts in Shape.
+     */
+    showStructureActs?: boolean;
+    /**
+     * Coverage's acts.
+     */
+    showCoverageActs?: boolean;
+    /**
+     * Coverage's scene entries.
+     */
+    showSceneEntries?: boolean;
+    /**
+     * Coverage's Structure measured section.
+     */
+    showMeasuredStructure?: boolean;
+    /**
+     * A partial or failed journeys or relationships pass (`runs.journeys`, `runs.relationships`), and failed turn naming, each said in its section.
+     */
+    showPassStates?: boolean;
+    /**
+     * Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
+     */
+    showEmptyResults?: boolean;
 }, {}, "">;
 type Props = {
     /**
@@ -366,4 +394,32 @@ type Props = {
      * Opens this story's budget.
      */
     onsetbudget?: () => void;
+    /**
+     * Skipped pairs as selectable rows with their reasons, outside Advanced. Off: they are listed only under Advanced's Show details, as in 0.178.5.
+     */
+    showSkippedPairs?: boolean;
+    /**
+     * The structure's acts in Shape.
+     */
+    showStructureActs?: boolean;
+    /**
+     * Coverage's acts.
+     */
+    showCoverageActs?: boolean;
+    /**
+     * Coverage's scene entries.
+     */
+    showSceneEntries?: boolean;
+    /**
+     * Coverage's Structure measured section.
+     */
+    showMeasuredStructure?: boolean;
+    /**
+     * A partial or failed journeys or relationships pass (`runs.journeys`, `runs.relationships`), and failed turn naming, each said in its section.
+     */
+    showPassStates?: boolean;
+    /**
+     * Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
+     */
+    showEmptyResults?: boolean;
 };

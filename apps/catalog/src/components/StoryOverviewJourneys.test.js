@@ -75,7 +75,7 @@ describe('StoryOverview journeys', () => {
 describe('StoryOverview relationships', () => {
   it('lists each read pair by its names with its type and trajectory; skipped pairs are selectable too', async () => {
     const onselect = vi.fn()
-    render(StoryOverview, { props: { ...base, onselect } })
+    render(StoryOverview, { props: { ...base, onselect, showSkippedPairs: true } })
     const rows = within(region('Relationships')).getAllByRole('button')
     expect(rows.map((r) => r.getAttribute('aria-label'))).toEqual(['MAYA and THEO', 'MAYA and a character no longer in this story'])
     expect(rows[0]).toHaveTextContent('From resentment to trust.')
@@ -86,11 +86,11 @@ describe('StoryOverview relationships', () => {
 
   it('says so when every pair was skipped, and shows selectable skips and their reasons without Advanced', async () => {
     const skipped = loaded([relationships[1]])
-    const { unmount } = render(StoryOverview, { props: { ...base, relationships: skipped } })
+    const { unmount } = render(StoryOverview, { props: { ...base, relationships: skipped, showSkippedPairs: true } })
     expect(within(region('Relationships')).getByText('No pair of characters shares enough scenes to read yet.')).toBeVisible()
     expect(screen.getByText(/below the minimum/)).toBeVisible()
     unmount()
-    render(StoryOverview, { props: { ...base, relationships: skipped, advanced: true } })
+    render(StoryOverview, { props: { ...base, relationships: skipped, advanced: true, showSkippedPairs: true } })
     expect(screen.getByRole('button', { name: 'MAYA and a character no longer in this story' })).toBeVisible()
     expect(screen.getByText(/below the minimum/)).toBeVisible()
   })

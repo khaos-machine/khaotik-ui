@@ -1399,7 +1399,7 @@ const placePanes = [
     id: 'story-overview', name: 'StoryOverview', kind: 'component', section: 'screens', group: 'drafts', component: StoryOverview,
     examples: [
       { label: 'B4P (captured)', props: { title: 'B4P', ...overviewReads, onselect: () => {} } },
-      { label: 'Acts, scene entries and skipped pairs (illustrative schema projections)', props: { title: 'B4P', ...overviewStage3Reads, selected: { kind: 'relationship', index: 0 }, onselect: () => {} } },
+      { label: 'Acts, scene entries and skipped pairs (illustrative schema projections)', props: { title: 'B4P', ...overviewStage3Reads, selected: { kind: 'relationship', index: 0 }, onselect: () => {}, showStructureActs: true, showCoverageActs: true, showSceneEntries: true, showSkippedPairs: true } },
       { label: 'B4P, Advanced (captured)', props: { title: 'B4P', ...overviewReads, advanced: true, onselect: () => {} } },
       { label: 'A turn selected (captured)', props: { title: 'B4P', ...overviewReads, selected: { kind: 'turn', index: 0 }, onselect: () => {} } },
       { label: 'Turns not named yet (captured, names removed)', props: { title: 'B4P', ...overviewReads, structure: { kind: 'loaded', data: overviewUnnamed } } },
@@ -1421,7 +1421,7 @@ const placePanes = [
     id: 'story-overview-outline', name: 'StoryOverviewOutline', kind: 'component', section: 'screens', group: 'drafts', component: StoryOverviewOutline,
     examples: [
       { label: 'B4P (captured)', props: { ...overviewReads, current: 'coverage', onjump: () => {} } },
-      { label: 'Coverage running (illustrative)', props: { ...overviewReads, runs: { coverage: { kind: 'running' } }, onjump: () => {} } },
+      { label: 'Coverage running (illustrative)', props: { ...overviewReads, runs: { coverage: { kind: 'running' } }, onjump: () => {}, showRunning: true } },
       { label: 'Mixed states', props: { premise: { kind: 'missing' }, structure: { kind: 'loaded', data: overviewUnnamed }, coverage: { kind: 'failed', message: 'x' }, onjump: () => {} } },
       { label: 'Reading', props: {} },
     ],
@@ -1429,7 +1429,7 @@ const placePanes = [
   {
     id: 'story-overview-side', name: 'StoryOverviewSide', kind: 'component', section: 'screens', group: 'drafts', component: StoryOverviewSide,
     examples: [
-      { label: 'Skipped pair (illustrative)', props: { ...overviewStage3Reads, selected: { kind: 'relationship', index: 0 } } },
+      { label: 'Skipped pair (illustrative)', props: { ...overviewStage3Reads, selected: { kind: 'relationship', index: 0 }, showSkippedPairs: true } },
       { label: 'A turn (captured)', props: { ...overviewReads, selected: { kind: 'turn', index: 0 }, onRevealScene: () => {} } },
       { label: 'A character (captured)', props: { ...overviewReads, selected: { kind: 'character', index: storyOverview['coverage/report'].characters.findIndex((c) => c.strengths.value.length > 0) } } },
       { label: 'Empty', props: { ...overviewReads } },
