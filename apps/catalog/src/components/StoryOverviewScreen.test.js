@@ -23,12 +23,36 @@ const loading = { kind: 'loading' }
 afterEach(() => vi.restoreAllMocks())
 
 describe('StoryOverviewScreen', () => {
-  it('draws the strip over the outline, the document and the side pane', () => {
+  it('draws the strip over the outline and the document, with no side pane until something is selected', () => {
     render(StoryOverviewScreen, { props: { ...reads, strip } })
     expect(screen.getByRole('button', { name: 'Coverage: Consider' })).toBeVisible()
     expect(screen.getByRole('group', { name: 'Overview' })).toBeVisible()
     expect(screen.getByRole('region', { name: 'Premise' })).toBeVisible()
-    expect(screen.getByText('Select a turning point, a character, a journey or a relationship to see more here.')).toBeVisible()
+    expect(screen.queryByText('Select a turning point, a character, a journey or a relationship to see more here.')).toBeNull()
+    expect(screen.queryByRole('button', { name: 'Close' })).toBeNull()
+  })
+
+  // Operator, 2026-11-10: "Side pane on demand", as a "Column opens": a selection opens the side
+  // pane beside the document; Close or Esc clears the selection, which closes it.
+  it('opens the side pane on a selection and closes it with Close or Esc', async () => {
+    const onselect = vi.fn()
+    render(StoryOverviewScreen, { props: { ...reads, onselect } })
+    const pick = () => within(screen.getByRole('group', { name: 'Characters' })).getByRole('button', { name: 'JETTA' })
+    await fireEvent.click(pick())
+    await fireEvent.click(screen.getByRole('button', { name: 'Close' }))
+    expect(screen.queryByRole('heading', { name: 'JETTA' })).toBeNull()
+    expect(onselect).toHaveBeenLastCalledWith(null)
+    await fireEvent.click(pick())
+    expect(screen.getByRole('heading', { name: 'JETTA' })).toBeVisible()
+    await fireEvent.keyDown(pick(), { key: 'Escape' })
+    expect(screen.queryByRole('heading', { name: 'JETTA' })).toBeNull()
+    expect(onselect).toHaveBeenLastCalledWith(null)
+  })
+
+  it('leaves Esc alone outside the screen', async () => {
+    render(StoryOverviewScreen, { props: { ...reads, selected: { kind: 'character', index: 0 } } })
+    await fireEvent.keyDown(document.body, { key: 'Escape' })
+    expect(screen.getByRole('button', { name: 'Close' })).toBeVisible()
   })
 
   it('shows what is selected in the document in the side pane', async () => {

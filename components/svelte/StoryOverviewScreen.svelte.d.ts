@@ -41,9 +41,9 @@ declare const StoryOverviewScreen: import("svelte").Component<{
      */
     selected?: import("./lib/story-overview.js").OverviewSelection | null;
     /**
-     * Told what was selected.
+     * Told what was selected; null when the side pane is closed.
      */
-    onselect?: (item: import("./lib/story-overview.js").OverviewSelection) => void;
+    onselect?: (item: import("./lib/story-overview.js").OverviewSelection | null) => void;
     /**
      * As StoryOverviewSide takes it.
      */
@@ -87,9 +87,9 @@ type Props = {
      */
     selected?: import("./lib/story-overview.js").OverviewSelection | null;
     /**
-     * Told what was selected.
+     * Told what was selected; null when the side pane is closed.
      */
-    onselect?: (item: import("./lib/story-overview.js").OverviewSelection) => void;
+    onselect?: (item: import("./lib/story-overview.js").OverviewSelection | null) => void;
     /**
      * As StoryOverviewSide takes it.
      */

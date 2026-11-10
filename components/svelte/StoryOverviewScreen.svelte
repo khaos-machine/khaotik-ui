@@ -4,6 +4,11 @@
   // outline, the document and the side pane, as khaos-app draws them (khaos-app
   // src/ui/shell/Shell.svelte, overviewView). The outline jumps the document to a section; what is
   // selected in the document shows in the side pane. A host mounts it as the Shell's `overview`.
+  //
+  // The side pane is there only while something is selected (operator, 2026-11-10: "Side pane on
+  // demand", as a "Column opens"), so the document has the width otherwise. Close, or Esc from
+  // inside the screen, clears the selection, which closes it.
+  import Button from './Button.svelte'
   import EmptyState from './EmptyState.svelte'
   import StoryOverview from './StoryOverview.svelte'
   import StoryOverviewOutline from './StoryOverviewOutline.svelte'
@@ -25,7 +30,7 @@
    * @property {boolean} [advanced] Advanced mode, as StoryOverview and StoryOverviewSide take it.
    * @property {import('svelte').ComponentProps<typeof StoryOverviewStrip> | null} [strip] The strip's props; null draws no strip.
    * @property {OverviewSelection | null} [selected] The selected turn, character, journey or relationship. Bindable.
-   * @property {(item: OverviewSelection) => void} [onselect] Told what was selected.
+   * @property {(item: OverviewSelection | null) => void} [onselect] Told what was selected; null when the side pane is closed.
    * @property {(sceneId: string) => void} [onRevealScene] As StoryOverviewSide takes it.
    */
 
@@ -57,28 +62,41 @@
     documentPane?.querySelector(`[data-ui-id="story.overview.${section}"]`)?.scrollIntoView({ block: 'start', behavior: 'smooth' })
   }
 
-  /** @param {OverviewSelection} item */
+  /** @param {OverviewSelection | null} item */
   function select(item) {
     selected = item
     onselect?.(item)
   }
+
+  /** @type {HTMLElement | undefined} */
+  let root = $state()
+
+  /** @param {KeyboardEvent} event */
+  function escape(event) {
+    if (event.key === 'Escape' && selected && root?.contains(/** @type {Node} */ (event.target))) select(null)
+  }
 </script>
 
-<div class="ui-story-overview-screen">
+<svelte:window onkeydown={escape} />
+
+<div class="ui-story-overview-screen" bind:this={root}>
   {#if strip}<StoryOverviewStrip {...strip} />{/if}
   {#if reading}
     <EmptyState title="Reading this story's analyses…" description="The engine is reading this story's premise, shape and coverage." icon="hourglass" />
   {:else}
-    <div class="ui-story-overview-screen__panes">
+    <div class="ui-story-overview-screen__panes" class:ui-story-overview-screen__panes--side={!!selected}>
       <div class="ui-story-overview-screen__outline">
         <StoryOverviewOutline {premise} {structure} {coverage} {journeys} {relationships} {current} onjump={jump} />
       </div>
       <div class="ui-story-overview-screen__document" bind:this={documentPane}>
         <StoryOverview {title} {premise} {structure} {coverage} {journeys} {relationships} {advanced} {selected} onselect={select} />
       </div>
-      <div class="ui-story-overview-screen__side">
-        <StoryOverviewSide {structure} {coverage} {journeys} {relationships} {advanced} {selected} {onRevealScene} />
-      </div>
+      {#if selected}
+        <div class="ui-story-overview-screen__side">
+          <div class="ui-story-overview-screen__close"><Button variant="tool" icon="x" onclick={() => select(null)}>Close</Button></div>
+          <StoryOverviewSide {structure} {coverage} {journeys} {relationships} {advanced} {selected} {onRevealScene} />
+        </div>
+      {/if}
     </div>
   {/if}
 </div>
@@ -95,8 +113,11 @@
     flex: 1;
     min-height: 0;
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr) 320px;
+    grid-template-columns: 260px minmax(0, 1fr);
     border-top: var(--size-stroke-hairline) solid var(--border-default);
+  }
+  .ui-story-overview-screen__panes--side {
+    grid-template-columns: 260px minmax(0, 1fr) 320px;
   }
   .ui-story-overview-screen__panes > div {
     min-height: 0;
@@ -107,5 +128,10 @@
   }
   .ui-story-overview-screen__side {
     border-left: var(--size-stroke-hairline) solid var(--border-default);
+  }
+  .ui-story-overview-screen__close {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--spacing-xs) var(--spacing-xs) 0;
   }
 </style>
