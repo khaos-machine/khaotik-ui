@@ -38,6 +38,7 @@ behind it does not belong here.
 | 2026-11-10 | StoryOverviewScreen | Side pane on demand: **"Column opens"** — a selection opens it, Close or Esc closes it; asked if it works: **"Works, commit it"**. Outline: **"Grouped by question"**. |
 | 2026-11-10 | StoryOverviewScreen | The grouped outline: **"One per line"**, then **"make it hidable"**, then "might as well make use of the sidebar and add project settings button at the bottom" — "no ellipsis.. wtf is that?", "no horizontal rule above it either". |
 | 2026-11-10 | StoryOverviewScreen | "height of the sidebar should be fixed to assuring the settings button is visible, the content section is what scrolls when required"; the catalog: **"Fill gives screens height"**; asked if it works: **"Works, commit it"**. |
+| 2026-11-10 | Shell (Data) | The window frame: **"Pane layout"**, **"Match the Overview"**. Project Settings: **"Sidebar foot, both"**. The source list: **"Same as Overview"** (hides to a rail from its top; the toolbar toggle goes). The inspector: **"Yes, host says when"** (`hasSelection`). The rail: "display the icons for each entry in sidebar when collapsed"; asked if it works: **"Works, commit it"**. |
 
 ## Working rules — proposed, not yet ruled
 
