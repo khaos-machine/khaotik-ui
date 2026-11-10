@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 import { createRawSnippet } from 'svelte'
+import fs from 'node:fs'
+import path from 'node:path'
 import Shell from '@khaos-machine/khaotik-ui/components/svelte/Shell.svelte'
 
 // The data-layer window routes each docked pane to the host's view, and shows one layer at a
@@ -212,5 +214,17 @@ describe('the refusal notice', () => {
   it('takes no layer when there is nothing to offer', () => {
     const { container } = shell()
     expect(container.querySelector('.ui-shell__notice')).toBeNull()
+  })
+})
+
+// 100vh is the window: in a shorter host or a catalog frame the window overflowed it, as the
+// Player's did (operator, 2026-11-10: "Height reads the window"; for the Shell, "Fix Shell's
+// 100vh"). Read as source: jsdom lays nothing out.
+describe('the window\'s height', () => {
+  it('fills its container, not the window', () => {
+    const source = fs.readFileSync(path.resolve(import.meta.dirname, '../../../components/svelte/Shell.svelte'), 'utf8')
+    const root = source.match(/\.ui-shell\s*\{([^}]*)\}/)?.[1] ?? ''
+    expect(root).toMatch(/height:\s*100%/)
+    expect(root).not.toMatch(/100vh/)
   })
 })

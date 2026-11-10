@@ -426,7 +426,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    /* Its container's height, not the window's: the host gives it one. */
+    height: 100%;
+    min-height: 0;
     overflow: hidden;
     background: var(--surface-base);
     color: var(--text-primary);
