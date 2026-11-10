@@ -36,6 +36,8 @@ behind it does not belong here.
 | 2026-11-10 | StoryOverview | "let's assemble the full overview screen with sidebar, header and such for review in catalog" — in the kit, **"New kit component"** (StoryOverviewScreen), not a catalog-only copy of khaos-app's layout; asked if it works: **"Works, commit it"**. |
 | 2026-11-10 | StoryOverviewScreen | "let's improve the StoryOverviewScreen itself": **Side pane on demand**, **Outline less listy**, **Strip hierarchy**. The strip: **"Figures lead, step beside"**; asked if it works: **"Works, commit it"**. |
 | 2026-11-10 | StoryOverviewScreen | Side pane on demand: **"Column opens"** — a selection opens it, Close or Esc closes it; asked if it works: **"Works, commit it"**. Outline: **"Grouped by question"**. |
+| 2026-11-10 | StoryOverviewScreen | The grouped outline: **"One per line"**, then **"make it hidable"**, then "might as well make use of the sidebar and add project settings button at the bottom" — "no ellipsis.. wtf is that?", "no horizontal rule above it either". |
+| 2026-11-10 | StoryOverviewScreen | "height of the sidebar should be fixed to assuring the settings button is visible, the content section is what scrolls when required"; the catalog: **"Fill gives screens height"**; asked if it works: **"Works, commit it"**. |
 
 ## Working rules — proposed, not yet ruled
 
