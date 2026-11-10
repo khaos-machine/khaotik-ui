@@ -288,6 +288,9 @@
 <style>
   /* Window-height layout: panes take what is left after the timeline. */
   .ui-player {
+    /* The rails stack by this width, not the window's: a host pane, or a catalog frame, can be
+       narrower or wider than the window (operator, 2026-11-10: "Fix the rule first"). */
+    container: ui-player / inline-size;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm, 0.75rem);
@@ -650,13 +653,7 @@
   /* Below three columns the rails stack under the stage rather than crushing it. The stage row
      keeps a floor: at minmax(0, 1fr) the rails took the whole height and the stage, the beat
      being played, collapsed to 2px. */
-  @media (max-width: 900px) {
-    .ui-player__panes {
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: auto minmax(160px, 1fr) auto;
-    }
-  }
-  @container viewport (max-width: 900px) {
+  @container ui-player (max-width: 900px) {
     .ui-player__panes {
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: auto minmax(160px, 1fr) auto;

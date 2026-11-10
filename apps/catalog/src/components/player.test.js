@@ -1,4 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
+import fs from 'node:fs'
+import path from 'node:path'
 import { render, screen, fireEvent, within } from '@testing-library/svelte'
 import Player from '@khaos-machine/khaotik-ui/components/svelte/Player.svelte'
 import Composer from '@khaos-machine/khaotik-ui/components/svelte/Composer.svelte'
@@ -75,5 +77,20 @@ describe('the Composer', () => {
   it('draws nothing on the stage without a shot under the playhead', () => {
     const { container } = render(Composer, { props: { part: 'stage', stage: null } })
     expect(container.textContent?.trim()).toBe('')
+  })
+})
+
+// The rails stack by the player's own width, not the window's (operator, 2026-11-10: "Fix the
+// rule first"). A window media query stacked them in a 1280 catalog frame inside a 685px browser,
+// and would in any host pane narrower than its window. Read as source: jsdom lays nothing out.
+describe('the narrow layout', () => {
+  const source = fs.readFileSync(path.resolve(import.meta.dirname, '../../../../components/svelte/Player.svelte'), 'utf8')
+  it('stacks the rails by the player\'s own width', () => {
+    expect(source.match(/\.ui-player\s*\{([^}]*)\}/)?.[1]).toMatch(/container:\s*ui-player\s*\/\s*inline-size/)
+    expect(source).toMatch(/@container ui-player \(max-width: 900px\)/)
+  })
+  it('reads no window width', () => {
+    expect(source).not.toMatch(/@media \(max-width/)
+    expect(source).not.toMatch(/@container viewport/)
   })
 })
