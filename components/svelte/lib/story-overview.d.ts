@@ -38,6 +38,22 @@ export function pacing(turns: readonly TimelineTurn[] | null): {
         to: number;
     };
 } | null;
+/** @typedef {{ name: string, score: number | null, x: number, y: number, spokeX: number, spokeY: number, labelX: number, labelY: number, side: 'start' | 'middle' | 'end' }} RadarSpoke */
+/**
+ * The coverage rubric as a radar (operator, 2026-11-10: "Radar"): one spoke per dimension,
+ * clockwise from the top, a score its tenth of the way out. An unscored dimension
+ * (score.source "none") keeps its spoke and has no point. `side` says which way a label reads
+ * from its anchor: right of the centre "start", left "end", top and bottom "middle".
+ * @param {readonly { name: string, score: { value: number, source: string } }[]} dimensions
+ * @returns {RadarSpoke[]}
+ */
+export function rubricRadar(dimensions: readonly {
+    name: string;
+    score: {
+        value: number;
+        source: string;
+    };
+}[]): RadarSpoke[];
 /**
  * The production flags raised, labelled, and the contained-location share; null when a flag is
  * one the map has no label for, or is not a boolean, which fails the Production section only.
@@ -119,6 +135,8 @@ export const FLAGS: Readonly<Record<string, string>>;
  */
 export const MEASURED: Readonly<Record<string, string>>;
 export function namedPoints(s: StoryStructure | null): readonly TurnPoint[] | null;
+/** The radar's full-score radius, in percent of its square box; the labels sit outside it. */
+export const RADAR_RADIUS: 30;
 export function listItems(f: {
     value?: readonly string[] | null;
 } | null | undefined): readonly string[];
@@ -136,6 +154,17 @@ export function journeyName(c: NamedCharacter): string;
 export function pairName(pair: readonly NamedCharacter[]): string;
 export function journeysRead(list: unknown): boolean;
 export function relationshipsRead(list: unknown): boolean;
+export type RadarSpoke = {
+    name: string;
+    score: number | null;
+    x: number;
+    y: number;
+    spokeX: number;
+    spokeY: number;
+    labelX: number;
+    labelY: number;
+    side: "start" | "middle" | "end";
+};
 /**
  * A value the engine sends with where it came from.
  */
