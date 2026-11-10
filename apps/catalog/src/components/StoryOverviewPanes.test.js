@@ -13,12 +13,19 @@ const loaded = (data) => ({ kind: 'loaded', data })
 const reads = { premise: loaded(captured.premise.premise), structure: loaded(captured.structure), coverage: loaded(report) }
 
 describe('StoryOverviewOutline', () => {
-  it('lists the sections in document order, each with its state', () => {
+  // Operator, 2026-11-10: "Outline less listy", as "Grouped by question" — Story, Verdict and
+  // People, each section a dot for its state rather than a pill; the state is still each item's
+  // description, and its text.
+  it('groups the sections by the question they answer, each with its state', () => {
     render(StoryOverviewOutline, { props: { ...reads, turnsTitle: 'Turns', showIncompleteCoverage: true } })
-    const rows = screen.getAllByRole('button')
-    expect(rows.map((r) => r.getAttribute('aria-label'))).toEqual(['Premise', 'Shape', 'Turns', 'Coverage', 'Characters', 'Production', 'Journeys', 'Relationships'])
-    for (const r of rows.slice(0, 3)) expect(r.closest('.ui-story-outline__row')).toHaveTextContent('Ready')
-    for (const r of rows.slice(3, 6)) expect(r.closest('.ui-story-outline__row')).toHaveTextContent('Incomplete')
+    const group = (name) => within(screen.getByRole('group', { name })).getAllByRole('button').map((b) => b.getAttribute('aria-label'))
+    expect(group('Story')).toEqual(['Premise', 'Shape', 'Turns'])
+    expect(group('Verdict')).toEqual(['Coverage', 'Production'])
+    expect(group('People')).toEqual(['Characters', 'Journeys', 'Relationships'])
+    for (const name of ['Premise', 'Shape', 'Turns']) expect(screen.getByRole('button', { name })).toHaveAccessibleDescription('Ready')
+    for (const name of ['Coverage', 'Production', 'Characters']) expect(screen.getByRole('button', { name })).toHaveAccessibleDescription('Incomplete')
+    expect(screen.getByRole('button', { name: 'Premise' }).querySelector('.ui-story-outline__dot[data-tone="success"]')).not.toBeNull()
+    expect(screen.queryByText('Ready', { selector: '.pill, .pill *' })).toBeNull()
   })
 
   it('reads missing, failed and loading as the sections do', () => {
