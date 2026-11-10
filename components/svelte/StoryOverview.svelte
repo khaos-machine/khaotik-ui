@@ -13,7 +13,8 @@
   import SectionHeader from './SectionHeader.svelte'
   import SelectableRow from './SelectableRow.svelte'
   import StatusPill from './StatusPill.svelte'
-  import { ARCS, MEASURED, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, listItems, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads } from './lib/story-overview.js'
+  import { ARCS, MEASURED, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, listItems, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads, timelineTurns, fittingLenses, pacing } from './lib/story-overview.js'
+  import StoryTimeline from './internal/StoryTimeline.svelte'
   import { dollars } from './lib/budget.js'
 
   /** @typedef {import('./lib/story-overview.js').Sourced} Sourced */
@@ -63,6 +64,7 @@
   const shape = $derived(structure.kind === 'loaded' && shapeReads(structure.data) ? structure.data : null)
   // Off, named with no points reads as not named yet, as 0.178.5 drew it.
   const points = $derived(showEmptyResults ? namedPoints(shape) : shape?.names?.state === 'named' ? shape.names.points : null)
+  const turns = $derived(timelineTurns(shape))
 
   const report = $derived(coverage.kind === 'loaded' && coverageReads(coverage.data) ? /** @type {import('./lib/story-overview.js').StoryCoverage} */ (coverage.data) : null)
   const flags = $derived(productionFlags(report))
@@ -190,6 +192,9 @@
     {:else}
       <p class="ui-story-overview__headline">{shape.fit.reason}</p>
       <StatusPill text={OUTCOMES[shape.fit.outcome]} tone="info" />
+      {#if turns}
+        <StoryTimeline {turns} lenses={fittingLenses(shape)} pacing={pacing(turns)} selected={selected?.kind === 'turn' ? selected.index : -1} onselect={(index) => onselect?.({ kind: 'turn', index })} />
+      {/if}
       {#if showStructureActs && shape.acts?.length}
         <InspectorSection title="Acts" count={shape.acts.length} uiId="story.overview.shape.acts">
           {#each shape.acts as act (act)}

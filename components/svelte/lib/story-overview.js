@@ -23,10 +23,40 @@
  */
 
 /**
- * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json: a lens's score and p are
- * absent when not scored (:371, :379); names.points is optional (:387).
- * @typedef {{ fit: { outcome: string, reason: string, lenses: readonly { id: string, score?: number, p?: number }[] }, names?: { state: string, points?: readonly TurnPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure
+ * A place in the story where it turns. KSPD go/kspdprotocol/v0.136.1
+ * schemas/KSPD/analysis/structure.schema.json:193 ($defs.inflectionPoint): index is zero-based
+ * story order, position the share of the story's words before the scene, and strength only
+ * bounded below (:217).
+ * @typedef {{ sceneId: string, index: number, position: number, strength: number, contributors: readonly { thread: string, ref: string, weight: number, kind: string }[] }} InflectionPoint
  */
+
+/**
+ * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/analysis/structure.schema.json: a lens's score and p are
+ * absent when not scored (:371, :379); names.points is optional (:387). profile is required (:10)
+ * and read as optional, so a read without it still renders.
+ * A lens carries its beats as used (:330) and, when scored, its excess over the rotation null (:377).
+ * @typedef {{ fit: { outcome: string, reason: string, primary?: string, lenses: readonly { id: string, beats?: readonly { name: string, position: number }[], score?: number, excess?: number, p?: number }[] }, names?: { state: string, points?: readonly TurnPoint[] }, profile?: { scenes: readonly InflectionPoint[] }, acts?: readonly StructureAct[], _provenance?: { made_by?: { model?: string } } }} StoryStructure
+ */
+
+/**
+ * A turn on the story timeline: where it falls (0–1), its height against the story's strongest
+ * turn (0–1], the named point it stands for by index, -1 and no name when it is not named, and
+ * whether it is one of the big turns the chart names.
+ * @typedef {{ sceneId: string, position: number, height: number, point: number, name: string | null, label: boolean }} TimelineTurn
+ */
+
+/** How many of the strongest turns the timeline names (operator, 2026-11-10: "Where my big turns are"). */
+const BIG_TURNS = 4
+
+/**
+ * The structure lenses' names. Open: the lens catalog can grow, so an id missing here is shown as
+ * sent rather than failing the timeline.
+ * @type {Readonly<Record<string, string>>}
+ */
+export const LENSES = { 'three-act': 'Three-Act Structure', 'story-spine': 'Story Spine', 'heros-journey': "Hero's Journey", 'save-the-cat': 'Save the Cat' }
+
+/** @param {string} id */
+export const lensName = (id) => (Object.hasOwn(LENSES, id) ? LENSES[id] : id)
 
 /**
  * KSPD go/kspdprotocol/v0.136.1 schemas/KSPD/coverage-report.schema.json:391 ($defs.measuredStructure).
@@ -128,6 +158,66 @@ export const MEASURED = { ...OUTCOMES, 'not-measured': 'Not measured' }
  * @param {StoryStructure | null} s
  */
 export const namedPoints = (s) => (s?.names?.state === 'named' ? (s.names.points ?? []) : null)
+
+/**
+ * The structure's turns in story order, placed by its profile; null when there is no profile to
+ * place them by. Heights are relative to the strongest turn because strength has no upper bound.
+ * @param {StoryStructure | null} s
+ * @returns {TimelineTurn[] | null}
+ */
+export function timelineTurns(s) {
+  const rows = s?.profile?.scenes
+  if (!rows) return null
+  const named = namedPoints(s) ?? []
+  const max = Math.max(...rows.map((r) => r.strength))
+  const ordered = [...rows].sort((a, b) => a.position - b.position)
+  // Strongest first; a tie goes to the earlier turn, so the same story always names the same four.
+  const big = new Set([...ordered].sort((a, b) => b.strength - a.strength).slice(0, BIG_TURNS).map((r) => r.sceneId))
+  return ordered.map((r) => {
+    const point = named.findIndex((p) => p.sceneId === r.sceneId)
+    const name = point === -1 ? null : named[point].name
+    return { sceneId: r.sceneId, position: r.position, height: r.strength / max, point, name, label: name !== null && big.has(r.sceneId) }
+  })
+}
+
+/**
+ * The structures whose expected beats the timeline draws: the primary when one fit (RFC 0111 §3.4,
+ * inferred); when the fit is ambiguous the protocol names no set, so the top two scored lenses by
+ * excess (operator, 2026-11-10: "Top two by excess"); none otherwise, since nothing fit.
+ * @param {StoryStructure | null} s
+ * @returns {{ id: string, name: string, beats: { name: string, position: number }[] }[]}
+ */
+export function fittingLenses(s) {
+  const lenses = s?.fit.lenses ?? []
+  const chosen =
+    s?.fit.outcome === 'inferred' ? lenses.filter((l) => l.id === s.fit.primary)
+    : s?.fit.outcome === 'ambiguous' ? lenses.filter((l) => l.excess !== undefined).sort((a, b) => /** @type {number} */ (b.excess) - /** @type {number} */ (a.excess)).slice(0, 2)
+    : []
+  return chosen.map((l) => ({ id: l.id, name: lensName(l.id), beats: [...(l.beats ?? [])].sort((a, b) => a.position - b.position) }))
+}
+
+/** The stretch pacing is counted over, and the step it slides by: a fifth of the story, by twentieths. */
+const STRETCH = 0.2
+const STEP = 0.05
+
+/**
+ * Where the story's turns cluster: a density per twentieth of the story (the count within a fifth
+ * around it, against the densest), and the busiest and quietest fifth, the earlier on a tie. Null
+ * with fewer than two turns, when there is no pacing to speak of.
+ * @param {readonly TimelineTurn[] | null} turns
+ * @returns {{ density: number[], busy: { from: number, to: number }, quiet: { from: number, to: number } } | null}
+ */
+export function pacing(turns) {
+  if (!turns || turns.length < 2) return null
+  const round = (/** @type {number} */ n) => Math.round(n * 100) / 100
+  const within = (/** @type {number} */ from, /** @type {number} */ to) => turns.filter((t) => t.position >= from && t.position < to).length
+  const counts = Array.from({ length: Math.round(1 / STEP) }, (_, i) => within((i + 0.5) * STEP - STRETCH / 2, (i + 0.5) * STEP + STRETCH / 2))
+  const top = Math.max(...counts)
+  const windows = Array.from({ length: Math.round((1 - STRETCH) / STEP) + 1 }, (_, i) => ({ from: round(i * STEP), to: round(i * STEP + STRETCH), n: within(i * STEP, i * STEP + STRETCH) }))
+  const busy = windows.reduce((a, b) => (b.n > a.n ? b : a))
+  const quiet = windows.reduce((a, b) => (b.n < a.n ? b : a))
+  return { density: counts.map((c) => c / top), busy: { from: busy.from, to: busy.to }, quiet: { from: quiet.from, to: quiet.to } }
+}
 
 /**
  * An attributed list's items; null is valid and means none (KSPD coverage-report.schema.json:280,
