@@ -33,6 +33,7 @@ behind it does not belong here.
 | 2026-11-10 | StoryOverview | Placing a journey's turning points: **"Pass all positions"** — every scene's word position comes in as an input, on Shape's axis. |
 | 2026-11-10 | StoryOverview | Next: **"Characters as a chart"** — dialogue-share bars, the lead filling the track; asked if it works: **"Works, commit it"**. |
 | 2026-11-10 | StoryOverview | Next: **"Coverage as a chart"**. Bars first, answered: "boring. making it indiffernt from Characters panel." — two panels must not share a form. Then **"Radar"**; asked if it works: **"Works, commit it"**. |
+| 2026-11-10 | StoryOverview | "let's assemble the full overview screen with sidebar, header and such for review in catalog" — in the kit, **"New kit component"** (StoryOverviewScreen), not a catalog-only copy of khaos-app's layout; asked if it works: **"Works, commit it"**. |
 
 ## Working rules — proposed, not yet ruled
 
