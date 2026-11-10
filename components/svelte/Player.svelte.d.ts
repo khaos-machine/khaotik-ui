@@ -73,7 +73,7 @@ declare const Player: import("svelte").Component<{
         }[];
     } | null;
     /**
-     * The selected scene.
+     * The selected scene. Null, with no beat selected either, closes the inspector.
      */
     inspected?: {
         sceneId?: string;
@@ -133,7 +133,7 @@ declare const Player: import("svelte").Component<{
      */
     active?: boolean;
     /**
-     * Reports a scene chosen for the inspector.
+     * Reports a scene chosen for the inspector; -1 when Close or Esc clears it.
      */
     onSelectScene?: (index: number) => void;
     /**
@@ -141,7 +141,7 @@ declare const Player: import("svelte").Component<{
      */
     onGoToScene?: (index: number) => void;
     /**
-     * Reports a beat chosen.
+     * Reports a beat chosen; '' when Close or Esc clears it.
      */
     onSelect?: (elementId: string) => void;
     /**
@@ -251,7 +251,7 @@ type Props = {
         }[];
     } | null;
     /**
-     * The selected scene.
+     * The selected scene. Null, with no beat selected either, closes the inspector.
      */
     inspected?: {
         sceneId?: string;
@@ -311,7 +311,7 @@ type Props = {
      */
     active?: boolean;
     /**
-     * Reports a scene chosen for the inspector.
+     * Reports a scene chosen for the inspector; -1 when Close or Esc clears it.
      */
     onSelectScene?: (index: number) => void;
     /**
@@ -319,7 +319,7 @@ type Props = {
      */
     onGoToScene?: (index: number) => void;
     /**
-     * Reports a beat chosen.
+     * Reports a beat chosen; '' when Close or Esc clears it.
      */
     onSelect?: (elementId: string) => void;
     /**

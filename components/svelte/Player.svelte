@@ -4,6 +4,15 @@
   // read scene 40 while scene 3 plays. The timeline, transport and lanes are StoryPlayer's.
   // Moved from Khaos App's Player (catalog app-coverage plan, T7); the host's model holds the
   // playhead, the selection and the scene text.
+  //
+  // The panes (operator, 2026-11-10): the inspector is there only while something is selected
+  // ("While a scene is selected"), a beat on the timeline included ("inspector opens on even
+  // selection in timeline"); Close or Esc clears the selection. Scenes and the timeline toggle
+  // from icons in the transport row ("let's may it togglable from the transport like we do with
+  // timeline.. we can use icons for these instead of the chevron"): Scenes, a clapperboard, at its
+  // left end ("scenes should be clapper icon and moved to left end"), the timeline at its right.
+  // Hidden, Scenes is gone and the timeline leaves the transport.
+  import Button from './Button.svelte'
   import EmptyState from './EmptyState.svelte'
   import Icon from './Icon.svelte'
   import SectionHeader from './SectionHeader.svelte'
@@ -23,7 +32,7 @@
    * @property {number} [selectedSceneIndex] The inspected scene's position, or -1.
    * @property {{ elementId: string, elementType: string, characterName?: string, text?: string } | null} [focus] The beat under the playhead, as the composition holds it.
    * @property {TimelineScene | null} [playingScene] The scene under the playhead.
-   * @property {TimelineScene | null} [inspected] The selected scene.
+   * @property {TimelineScene | null} [inspected] The selected scene. Null, with no beat selected either, closes the inspector.
    * @property {string} [activeCharacterName] The speaking character, or ''.
    * @property {{ kind: 'idle' } | { kind: 'loading' } | { kind: 'text', text: string } | { kind: 'none' } | { kind: 'failed', message: string }} [sceneText] The selected scene's text; 'none' when the engine has none.
    * @property {number} [currentTime] The playhead, in seconds.
@@ -32,9 +41,9 @@
    * @property {number} [scale] The timeline's zoom.
    * @property {string} [selectedElementId] The beat chosen on the timeline, or ''.
    * @property {boolean} [active] Whether the player is on screen; the keyboard waits while it is not.
-   * @property {(index: number) => void} [onSelectScene] Reports a scene chosen for the inspector.
+   * @property {(index: number) => void} [onSelectScene] Reports a scene chosen for the inspector; -1 when Close or Esc clears it.
    * @property {(index: number) => void} [onGoToScene] Asks to move the playhead to a scene (double-click).
-   * @property {(elementId: string) => void} [onSelect] Reports a beat chosen.
+   * @property {(elementId: string) => void} [onSelect] Reports a beat chosen; '' when Close or Esc clears it.
    * @property {(seconds: number) => void} [onSeek] Asks to move the playhead.
    * @property {() => void} [onTogglePlay] Asks to play or pause (Space).
    * @property {(scale: number) => void} [onScaleChange] Reports the timeline zoomed.
@@ -48,7 +57,8 @@
 
   /** @type {Props} */
   let {
-    state = { kind: 'loading' },
+    // Bound as `composition`: a local named `state` would shadow the `$state` rune.
+    state: composition = { kind: 'loading' },
     segments = [],
     timeline = { segments: [] },
     currentSceneIndex = -1,
@@ -78,7 +88,31 @@
     onToEnd = undefined,
   } = $props()
 
-  const timelineSegments = $derived(state.kind === 'loaded' ? segments : [])
+  const timelineSegments = $derived(composition.kind === 'loaded' ? segments : [])
+
+  let scenesHidden = $state(false)
+  let timelineHidden = $state(false)
+  const panes = $derived([
+    { id: 'scenes', label: 'Scenes', icon: 'film-slate', shown: !scenesHidden, at: /** @type {const} */ ('start') },
+    { id: 'timeline', label: 'Timeline', icon: 'film-strip', shown: !timelineHidden },
+  ])
+  /** @param {string} id */
+  function togglePane(id) {
+    if (id === 'scenes') scenesHidden = !scenesHidden
+    else timelineHidden = !timelineHidden
+  }
+  /** @type {HTMLElement | undefined} */
+  let root = $state()
+  /** The scene the inspector shows: the selected one, else the scene of the beat chosen on the timeline. */
+  const shown = $derived(
+    inspected ?? (selectedElementId ? (timeline.segments.find((s) => s.events.some((e) => e.elementId === selectedElementId)) ?? null) : null),
+  )
+
+  /** Clears every selection, which closes the inspector. */
+  function closeInspector() {
+    if (selectedElementId) onSelect?.('')
+    onSelectScene?.(-1)
+  }
 
   /**
    * Dialogue arrives as one string with any parenthetical folded in; the stage shows them apart.
@@ -100,6 +134,10 @@
     const target = /** @type {HTMLElement | null} */ (event.target)
     const tag = target?.tagName
     if (tag === 'INPUT' || tag === 'TEXTAREA' || target?.isContentEditable) return
+    if (event.key === 'Escape') {
+      if (shown && root?.contains(/** @type {Node} */ (target))) closeInspector()
+      return
+    }
     /** @type {Record<string, (() => void) | undefined>} */
     const handlers = {
       ArrowRight: onNextBeat,
@@ -121,25 +159,26 @@
      NOTHING — the scene duration was missing from the inspector header and the screenshot
      showed it, but no test could. -->
 {#snippet trailing()}
-  <StatusPill text={formatTimecode(inspected?.duration ?? 0)} tone="neutral" icon="clock" />
+  <StatusPill text={formatTimecode(shown?.duration ?? 0)} tone="neutral" icon="clock" />
 {/snippet}
 
 <svelte:window onkeydown={onKey} />
 
-<div class="ui-player">
-  {#if state.kind === 'loading'}
+<div class="ui-player" bind:this={root}>
+  {#if composition.kind === 'loading'}
     <EmptyState title="Loading composition…" icon="circle-notch" />
-  {:else if state.kind === 'uncomposed'}
+  {:else if composition.kind === 'uncomposed'}
     <!-- Distinct from "composed to nothing": nothing has composed this project at all. -->
     <EmptyState
       title="No composition yet"
       description="The engine has not composed this project. Run composition from khaos-tui or the existing GUI — khaos-app cannot dispatch composition yet."
       icon="film-strip" />
-  {:else if state.kind === 'failed'}
-    <EmptyState title="Could not load the composition" description={state.message} icon="warning" />
+  {:else if composition.kind === 'failed'}
+    <EmptyState title="Could not load the composition" description={composition.message} icon="warning" />
   {:else}
-    <div class="ui-player__panes">
+    <div class="ui-player__panes" class:ui-player__panes--no-scenes={scenesHidden} class:ui-player__panes--inspector={!!shown}>
       <!-- ── Navigator: every scene, with the playing one marked ───────────── -->
+      {#if !scenesHidden}
       <nav class="ui-player__pane ui-player__pane--nav" aria-label="Scenes">
         <!-- A plain count of what is here. It used to read "48 of 76" with an explanatory
              sentence under it whenever khaosd reported an omission (#85), and khaosd 0.9.7
@@ -186,6 +225,7 @@
           {/each}
         </ul>
       </nav>
+      {/if}
 
       <!-- ── Stage: the beat under the playhead, rendered large ────────────── -->
       <section class="ui-player__pane ui-player__pane--stage" aria-label="Stage">
@@ -236,15 +276,14 @@
       </section>
 
       <!-- ── Inspector: the SELECTED scene, not the playing one ────────────── -->
-      <aside class="ui-player__pane ui-player__pane--inspector" aria-label="Scene inspector">
-        {#if !inspected}
-          <EmptyState title="Select a scene" icon="sidebar" />
-        {:else}
-          <SectionHeader title={inspected.label} eyebrow="Scene" {trailing} />
+      {#if shown}
+        <aside class="ui-player__pane ui-player__pane--inspector" aria-label="Scene inspector">
+          <div class="ui-player__close"><Button variant="tool" icon="x" onclick={closeInspector}>Close</Button></div>
+          <SectionHeader title={shown.label} eyebrow="Scene" {trailing} />
 
-          <h3 class="ui-player__inspector-eyebrow">Beats · {inspected.events.length}</h3>
+          <h3 class="ui-player__inspector-eyebrow">Beats · {shown.events.length}</h3>
           <ul class="ui-player__beats">
-            {#each inspected.events as beat (beat.elementId)}
+            {#each shown.events as beat (beat.elementId)}
               <li>
                 <button
                   type="button"
@@ -267,8 +306,8 @@
           {:else if sceneText.kind === 'failed'}
             <p class="ui-player__inspector-note">Scene text unavailable — {sceneText.message}</p>
           {/if}
-        {/if}
-      </aside>
+        </aside>
+      {/if}
     </div>
 
     <!-- The timeline spans all three panes, as it does in an NLE. -->
@@ -281,7 +320,10 @@
       onSeek={(/** @type {number} */ t) => onSeek?.(t)}
       onSelect={(/** @type {string} */ id) => onSelect?.(id)}
       onTogglePlay={() => onTogglePlay?.()}
-      onScaleChange={(/** @type {number} */ s) => onScaleChange?.(s)} />
+      onScaleChange={(/** @type {number} */ s) => onScaleChange?.(s)}
+      {timelineHidden}
+      {panes}
+      onTogglePane={togglePane} />
   {/if}
 </div>
 
@@ -304,13 +346,28 @@
   .ui-player__panes {
     display: grid;
     /* Fixed rails, fluid stage — the stage is the thing you are watching. */
-    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) minmax(220px, 320px);
+    /* The inspector column is there only while something is selected; the stage takes its width otherwise. */
+    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
     /* minmax(0, 1fr), not the default `auto`. With `auto` the row sizes to content and
        the panes collapsed to 26px — measured in the running app. */
     grid-template-rows: minmax(0, 1fr);
     gap: var(--spacing-sm, 0.75rem);
     flex: 1 1 auto;
     min-height: 0;
+  }
+
+  .ui-player__panes--inspector {
+    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) minmax(220px, 320px);
+  }
+  .ui-player__panes--no-scenes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ui-player__panes--no-scenes.ui-player__panes--inspector {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  }
+  .ui-player__close {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .ui-player__pane {
@@ -658,5 +715,8 @@
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: auto minmax(160px, 1fr) auto;
     }
+    /* Placed by row, so the stage keeps the tall row while Scenes is hidden. */
+    .ui-player__pane--stage { grid-row: 2; }
+    .ui-player__pane--inspector { grid-row: 3; }
   }
 </style>

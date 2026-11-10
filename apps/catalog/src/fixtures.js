@@ -3064,6 +3064,8 @@ export const fixtures = [
       { label: 'The opening scene (captured)', props: { ...playerProps } },
       { label: 'Another scene inspected while the opening plays', props: { ...playerProps, selectedSceneIndex: 1, inspected: playerTimeline.segments[1] ?? null, sceneText: { kind: 'loading' } } },
       { label: 'Between beats', props: { ...playerProps, focus: null, activeCharacterName: '' } },
+      { label: 'Nothing selected (captured)', props: { ...playerProps, inspected: null, selectedSceneIndex: -1, selectedElementId: '' } },
+      { label: 'A beat chosen on the timeline (captured)', props: { ...playerProps, inspected: null, selectedSceneIndex: -1, selectedElementId: playerTimeline.segments[2]?.events[0]?.elementId ?? '', sceneText: { kind: 'idle' } } },
       { label: 'No composition yet', props: { state: { kind: 'uncomposed' } } },
       { label: 'Could not read (illustrative message)', props: { state: { kind: 'failed', message: 'khaosd is not running.' } } },
       { label: 'Loading', props: { state: { kind: 'loading' } } },

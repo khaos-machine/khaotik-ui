@@ -65,6 +65,78 @@ describe('the Player', () => {
   })
 })
 
+// The Player's panes (operator, 2026-11-10: "Inspector on demand", "Timeline hides", "While a
+// scene is selected", "In the transport row").
+describe('the Player\'s panes', () => {
+  const nav = () => screen.getByRole('navigation', { name: 'Scenes' })
+
+  // operator, 2026-11-10: "instead of a collapsable sidebar-like ui in player, let's may it
+  // togglable from the transport like we do with timeline.. we can use icons for these instead of
+  // the chevron".
+  const toggle = (name) => within(screen.getByRole('group', { name: 'Playback controls' })).getByRole('button', { name })
+
+  // operator, 2026-11-10: "scenes should be clapper icon and moved to left end of the toolbar
+  // where the view is toggled"; asked which toolbar: "Transport row, left end".
+  it('toggles Scenes from the transport row, leaving no rail', async () => {
+    const { container } = render(Player, { props: loaded })
+    expect(toggle('Scenes')).toHaveAttribute('aria-pressed', 'true')
+    expect(toggle('Scenes').querySelector('.ph-film-slate')).not.toBeNull()
+    expect(within(screen.getByRole('group', { name: 'Playback controls' })).getAllByRole('button')[0]).toBe(toggle('Scenes'))
+    await fireEvent.click(toggle('Scenes'))
+    expect(screen.queryByRole('navigation', { name: 'Scenes' })).toBeNull()
+    expect(container.querySelector('.ui-player__panes--no-scenes')).not.toBeNull()
+    expect(toggle('Scenes')).toHaveAttribute('aria-pressed', 'false')
+    await fireEvent.click(toggle('Scenes'))
+    expect(screen.getByRole('navigation', { name: 'Scenes' })).toBeTruthy()
+  })
+
+  it('draws no inspector while no scene is selected, and the stage takes the width', () => {
+    const { container } = render(Player, { props: { ...loaded, inspected: null, selectedSceneIndex: -1 } })
+    expect(screen.queryByRole('complementary', { name: 'Scene inspector' })).toBeNull()
+    expect(container.querySelector('.ui-player__panes--inspector')).toBeNull()
+  })
+
+  it('closes the inspector by clearing the selection, from Close or Esc', async () => {
+    const onSelectScene = vi.fn()
+    const { container } = render(Player, { props: { ...loaded, onSelectScene } })
+    expect(container.querySelector('.ui-player__panes--inspector')).not.toBeNull()
+    await fireEvent.click(within(screen.getByRole('complementary', { name: 'Scene inspector' })).getByRole('button', { name: 'Close' }))
+    expect(onSelectScene).toHaveBeenLastCalledWith(-1)
+    onSelectScene.mockClear()
+    await fireEvent.keyDown(within(nav()).getAllByRole('button')[0], { key: 'Escape' })
+    expect(onSelectScene).toHaveBeenCalledWith(-1)
+  })
+
+  // operator, 2026-11-10: "inspector opens on even selection in timeline".
+  it('opens the inspector on a beat chosen on the timeline, with that beat\'s scene', async () => {
+    const onSelectScene = vi.fn(), onSelect = vi.fn()
+    render(Player, { props: { ...loaded, inspected: null, selectedSceneIndex: -1, selectedElementId: 'e3', onSelectScene, onSelect } })
+    const inspector = screen.getByRole('complementary', { name: 'Scene inspector' })
+    expect(within(inspector).getByText('EXT. STREET - NIGHT')).toBeTruthy()
+    await fireEvent.click(within(inspector).getByRole('button', { name: 'Close' }))
+    expect(onSelect).toHaveBeenCalledWith('')
+    expect(onSelectScene).toHaveBeenCalledWith(-1)
+  })
+
+  it('ignores Esc from outside the player', async () => {
+    const onSelectScene = vi.fn()
+    render(Player, { props: { ...loaded, onSelectScene } })
+    await fireEvent.keyDown(document.body, { key: 'Escape' })
+    expect(onSelectScene).not.toHaveBeenCalled()
+  })
+
+  it('toggles the timeline from the transport row, keeping the transport', async () => {
+    const { container } = render(Player, { props: { ...loaded, total: 6 } })
+    expect(container.querySelector('.player__stage')).not.toBeNull()
+    expect(toggle('Timeline').querySelector('.ph-film-strip')).not.toBeNull()
+    await fireEvent.click(toggle('Timeline'))
+    expect(container.querySelector('.player__stage')).toBeNull()
+    expect(toggle('Timeline')).toHaveAttribute('aria-pressed', 'false')
+    await fireEvent.click(toggle('Timeline'))
+    expect(container.querySelector('.player__stage')).not.toBeNull()
+  })
+})
+
 describe('the Composer', () => {
   it('reports the image filtering chosen, and shows progress, in tools', async () => {
     const onchange = vi.fn()
