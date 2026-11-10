@@ -31,6 +31,7 @@ behind it does not belong here.
 | 2026-11-10 | StoryOverview | **"Build it"**. |
 | 2026-11-10 | StoryOverview | On the dashboard preview: "The current preview was incomplete, especially relative to character journeys". The Journeys panel answers **"Who changes"**, **"Where they turn"** and **"Who's connected"** — **"Wait for real data"** before building them. |
 | 2026-11-10 | StoryOverview | Placing a journey's turning points: **"Pass all positions"** — every scene's word position comes in as an input, on Shape's axis. |
+| 2026-11-10 | StoryOverview | Next: **"Characters as a chart"** — dialogue-share bars, the lead filling the track; asked if it works: **"Works, commit it"**. |
 
 ## Working rules — proposed, not yet ruled
 
