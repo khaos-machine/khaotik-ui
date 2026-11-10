@@ -43,7 +43,7 @@ declare const Shell: import("svelte").Component<{
     /**
      * The toolbar's commands.
      */
-    commands?: import("./lib/commands.js").Command[] | undefined;
+    commands?: import("./lib/commands.js").Command[];
     /**
      * An enabled command was chosen.
      */
@@ -286,7 +286,7 @@ type Props = {
     /**
      * The toolbar's commands.
      */
-    commands?: import("./lib/commands.js").Command[] | undefined;
+    commands?: import("./lib/commands.js").Command[];
     /**
      * An enabled command was chosen.
      */

@@ -14,14 +14,16 @@
   //
   // Three groups, left to right (khaos-app#617): where you are (title, switcher, `lead`), what
   // you can do (commands, filter, panes, `tools`), and status (`status`, the settings gear)
-  // at the trailing edge behind a hairline. When the row overflows, command labels fold to their
-  // icons one at a time, from the last, until it fits (the label stays the accessible name and
-  // the tooltip); then the filter narrows, and the title truncates last. At phone width the
+  // at the trailing edge behind a hairline. When the row overflows, commands move into a More
+  // menu one at a time, from the last, until it fits, each named there: no command is ever a bare
+  // icon (operator, 2026-11-10: "i don't know what mic + play buttons are"; "Every toolbar, any
+  // width"). Then the filter narrows, and the title truncates last. At phone width the
   // title keeps a floor and the row scrolls; where the status group and that floor cannot both
   // fit, the status gives way: the message the host marks `data-toolbar-message` truncates with
   // an ellipsis (keeping its accessible name and role), while everything else in it (Retry, the
   // gear, any wrapper) stays whole and reachable. Unmarked, nothing in the status truncates.
   import { flushSync } from 'svelte'
+  import CommandMenu from './CommandMenu.svelte'
   import Icon from './Icon.svelte'
   import WorkspaceSwitcher from './WorkspaceSwitcher.svelte'
 
@@ -86,28 +88,32 @@
   let measured = $state(0)
   const room = $derived(width > 0 ? width : measured)
 
-  // Folding is measured, not guessed from a width. Laid out in full, does the row overflow? If
-  // so, labels fold to their icons one at a time, from the last command, only until it fits;
-  // with every label folded and still no room, the row turns compact and the filter, then the
-  // title, give way. Re-measured on a resize and on any change to what the row holds. Folding
-  // only toggles classes, which the mutation observer does not watch, so it cannot retrigger
-  // itself. (#617 live pass: folding every label at once freed 450px where 150 was needed.)
-  let folded = $state(0)
+  // Overflow is measured, not guessed from a width. Laid out in full, does the row overflow? If
+  // so, commands move into More one at a time, from the last, only until it fits; with every
+  // command moved and still no room, the row turns compact and the filter, then the title, give
+  // way. Re-measured on a resize and on any change to what the row holds; a measure in progress
+  // ignores the changes its own moves make. (#617 live pass: moving everything at once freed
+  // 450px where 150 was needed.)
+  let moved = $state(0)
   let compact = $state(false)
-  const foldable = $derived(commands.filter((c) => c.icon).map((c) => c.id))
-  /** Folded, from the last foldable command back. @param {string} id */
-  const isFolded = (id) => foldable.indexOf(id) >= foldable.length - folded
+  const inRow = $derived(commands.slice(0, commands.length - moved))
+  const inMore = $derived(commands.slice(commands.length - moved))
   /** @param {HTMLElement} row */
   function fit(row) {
+    let measuring = false
     const measure = () => {
+      if (measuring) return
+      measuring = true
       const overflows = () => {
         flushSync()
         return row.scrollWidth > row.clientWidth
       }
       compact = false
-      folded = 0
-      while (overflows() && folded < foldable.length) folded += 1
+      moved = 0
+      while (overflows() && moved < commands.length) moved += 1
       compact = overflows()
+      changed.takeRecords()
+      measuring = false
     }
     const resized = new ResizeObserver(measure)
     const changed = new MutationObserver(measure)
@@ -216,7 +222,7 @@
 </script>
 
 <div class="toolbar" class:toolbar--compact={compact} role="toolbar" aria-label={title || 'Toolbar'} data-ui-id={uiId} bind:clientWidth={measured}>
-  <!-- Where you are and what you can do. It takes the overflow, folding and then scrolling; at
+  <!-- Where you are and what you can do. It takes the overflow, moving commands into More and then scrolling; at
        phone width the status gives way first, its marked message truncating, its controls whole. -->
   <div class="toolbar__main" {@attach fit} {@attach scrollRow}>
   <!-- No title, no cell: an empty one would hold a gap before the switcher. -->
@@ -231,7 +237,7 @@
 
   <div class="toolbar__drag toolbar__spacer" data-tauri-drag-region></div>
 
-  {#each commands as command (command.id)}
+  {#each inRow as command (command.id)}
     {@const disabled = !!command.disabledReason}
     <button
       type="button"
@@ -246,10 +252,11 @@
         if (!disabled) onrun?.(command.id)
       }}>
       {#if command.icon}<Icon name={command.icon} />{/if}
-      <span class="toolbar__label" class:toolbar__label--folded={isFolded(command.id)}>{command.label}</span>
+      <span class="toolbar__label">{command.label}</span>
     </button>
     {#if disabled}<span class="toolbar__why" id="{uiId}-why-{command.id}">{command.disabledReason}</span>{/if}
   {/each}
+  {#if inMore.length > 0}<CommandMenu commands={inMore} {onrun} uiId="{uiId}.more" />{/if}
 
   {#if filter !== null}
     <input
@@ -345,9 +352,6 @@
   .toolbar--compact .toolbar__title {
     flex-shrink: 1;
   }
-  .toolbar__label--folded {
-    display: none;
-  }
   /* The host's tools are one group, so the row never splits them. */
   .toolbar__tools {
     display: flex;
@@ -402,7 +406,7 @@
     outline: var(--size-stroke-focus) solid var(--border-focus);
   }
   /* The lead is where you are, as the switcher is: it keeps its width, so a row short of room
-     overflows and folds the commands' labels rather than crushing the lead (2026-11-10). */
+     overflows and moves its commands into More rather than crushing the lead (2026-11-10). */
   .toolbar__lead {
     display: flex;
     align-items: center;
@@ -435,7 +439,7 @@
     min-width: 96px;
   }
   /* Phone width: still one row, never wrapped. A wrapped row grows the bar past 52 and over
-     whatever the host draws below it. A row that overflows folds its labels, narrows the filter
+     whatever the host draws below it. A row that overflows moves its commands into More, narrows the filter
      and truncates the title to its floor, as at any width; still short, it scrolls, as the tools
      do, with a fade on the side cut off, so every command, the filter and the panes stay
      reachable. */
@@ -518,7 +522,7 @@
       display: none;
     }
     /* The filter takes the room the row has left, down to the compact floor; short of that the
-       row overflows, and the overflow folds labels first. In a row too narrow for the floor and a
+       row overflows, and the overflow moves commands into More first. In a row too narrow for the floor and a
        fade on each side, it narrows to fit between the fades, so focused it shows whole. */
     .toolbar__filter,
     .toolbar--compact .toolbar__filter {

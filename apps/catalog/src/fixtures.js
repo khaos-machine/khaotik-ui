@@ -111,6 +111,7 @@ import InspectorSection from '@khaos-machine/khaotik-ui/components/svelte/Inspec
 import PropertyRow from '@khaos-machine/khaotik-ui/components/svelte/PropertyRow.svelte'
 import DataTable from '@khaos-machine/khaotik-ui/components/svelte/DataTable.svelte'
 import Toolbar from '@khaos-machine/khaotik-ui/components/svelte/Toolbar.svelte'
+import CommandMenu from '@khaos-machine/khaotik-ui/components/svelte/CommandMenu.svelte'
 import SourceList from '@khaos-machine/khaotik-ui/components/svelte/SourceList.svelte'
 import WorkspaceSwitcher from '@khaos-machine/khaotik-ui/components/svelte/WorkspaceSwitcher.svelte'
 // The documents it renders live in their own module, and deliberately: a
@@ -3570,6 +3571,15 @@ export const fixtures = [
       { label: 'Phone row: picker and four lenses, no title', props: { modes: phoneModes, mode: 'data', compactBelow: 560, filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'character', items: [{ value: 'character', label: 'Characters' }, { value: 'scene', label: 'Scenes' }, { value: 'place', label: 'Places' }, { value: 'object', label: 'Objects' }] } }] } },
       { label: 'Phone row: picker and the Atlas lenses, no title', props: { modes: phoneModes, mode: 'atlas', compactBelow: 560, filter: null }, snippets: { tools: [{ component: SegmentedControl, props: { label: 'Lens', value: 'all', items: [{ value: 'all', label: 'Everything' }, { value: 'character', label: 'Characters' }, { value: 'place', label: 'Places' }, { value: 'scene', label: 'Scenes' }] } }] } },
       { label: 'Phone row: picker and the screenplay actions', props: { modes: phoneModes, mode: 'screenplay', compactBelow: 560, filter: null }, snippets: { tools: [{ component: ScreenplayActions, props: { dirty: 2, canUndo: true, iconOnly: true, part: 'edit', onscenes: () => {} } }] } },
+    ],
+  },
+  {
+    // CommandMenu: the commands a toolbar short of room holds, each named, never a bare icon
+    // (operator, 2026-11-10: "i don't know what mic + play buttons are"; "Every toolbar, any
+    // width"). Toolbar fills it with what does not fit; a phone's Shell with every command.
+    id: 'command-menu', name: 'CommandMenu', kind: 'component', section: 'components', group: 'shell', component: CommandMenu,
+    examples: [
+      { label: 'Toolbar commands, one that cannot run (captured)', props: { commands: toolbarCommands } },
     ],
   },
   {

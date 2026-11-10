@@ -165,7 +165,7 @@ describe('the props schema, read out of the components', () => {
       'SetupConnect.installNames',
       // The data-layer window's frame: what it passes to its Toolbar, Dock, SourceList, StatusBar
       // and CommandPalette, each the host's records or the layout's tree, never typed in.
-      'Shell.budget', 'Shell.commands', 'Shell.engine', 'Shell.jobs', 'Shell.layout', 'Shell.modes', 'Shell.onchangebudget',
+      'Shell.budget', 'Shell.engine', 'Shell.jobs', 'Shell.layout', 'Shell.modes', 'Shell.onchangebudget',
       'Shell.paletteCommands', 'Shell.panels', 'Shell.panes', 'Shell.result', 'Shell.sections',
       'ShotInspector.referenceImages',
       // A shot's plan: its blocking, place and object definitions from khaosd, and the host's names.
