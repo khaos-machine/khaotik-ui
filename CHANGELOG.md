@@ -20,6 +20,40 @@ current pin.
 
 ## [Unreleased]
 
+## [0.188.0] — 2026-11-10
+
+### Added
+
+- **`CommandMenu`** (#54): a More menu of commands, each one named, built on the platform's `popover`. A command that cannot run stays in the menu, with its reason under its label.
+- **`Shell` on a phone and a tablet** (#53). The Shell follows its own width.
+  - **Below 600:** a drill-down stack. First the source list, then the destination's table under Back, then the selection, with the inspector at its top. The bar is one row: the title, the presentations as a pop-up, and a More menu of the commands. The filter sits under the Back row. The pane toggles and the Story/Review switch are left out.
+  - **600 to 900:** the source list keeps to its icon rail, and the host's layout is not touched.
+- **`Shell`: `hasSelection`** (#53). While nothing is selected, the inspector is closed without changing the host's layout.
+- **`Shell`: `onDeselect`** (#53). On a phone, Back from the selection calls it; the host clears its selection.
+- **`Player` on a phone and a tablet** (#53).
+  - **Phone:** the stage fills the screen. Scenes and the selected scene open as bottom sheets from the transport. A scene tapped opens its detail with Play from here, and reading ahead does not move the playhead.
+  - **Tablet:** two columns, the stage and either Scenes or the inspector.
+- **`StoryPlayer`: `panes` and `onTogglePane`** (#53): pane toggles in the transport row. A pane with `at: 'start'` goes at the left end. Also **`timelineHidden`**, which hides the lanes, the phone's mini timeline and the text panel.
+- **`SourceList`: `compact`** (#53): icons only, for a rail.
+- **`dock.js`: `paneSplit` and `shownPanels`** (#53).
+
+### Changed
+
+- **Breaking:** `Shell` and `Player` fill their container instead of the window (#53). Each now reads `height: 100%`, not `100vh`, so the host must give it a bounded height.
+- **Breaking:** the Data window matches the Overview (#53). The source list hides to an icon rail from a button at its top. Project Settings (`onProjectSettings`) is drawn at the source list's foot, and the toolbar gear is gone.
+- **`Player`** (#53):
+  - **Panes:** Scenes and the timeline toggle from the transport row. The inspector opens on any selection, a timeline beat included. Close and Esc send `onSelectScene(-1)`, and `onSelect('')` when a beat was selected.
+  - **Text panel:** the text panel under the lanes is gone.
+  - **Play from here:** a tool button that calls `onGoToScene(index)`.
+- **`StoryPlayer`'s phone transport uses desktop density** (#53): no 44px touch minimums.
+- **`Toolbar`** (#54): a row short of room moves its commands into a named More menu, one at a time from the last, instead of folding their labels to icons. No command is drawn as a bare icon.
+
+### Fixed
+
+- **`Toolbar`'s `lead` keeps its width** (#53). A workspace switch passed as the lead was crushed to a scrolling sliver: at 768 the Shell's Story/Review was 29px wide around 119px of content.
+- **`Player` lays out by its own width, not the window's** (#53).
+- **`Shell`'s declaration imports `./lib/commands.js` with its extension** (#54), as the others do, so `NodeNext` consumers resolve it.
+
 ## [0.187.0] — 2026-11-10
 
 ### Added
