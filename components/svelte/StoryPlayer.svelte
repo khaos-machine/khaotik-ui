@@ -70,7 +70,7 @@
    * @property {string} [selectedReadingId] Intentionally selected reading scene id.
    * @property {(sceneId:string)=>void} [onSelectReading] Reading selection, separate from seeking.
    * @property {boolean} [showInspector] Render the built-in text panel. False when the host provides its own inspector.
-   * @property {boolean} [timelineHidden] Draw only the transport: no lanes and no text panel. The unreadable notice still shows.
+   * @property {boolean} [timelineHidden] Draw only the transport: no lanes, no phone mini timeline and no text panel. The unreadable notice still shows.
    * @property {readonly { id: string, label: string, icon?: string, shown: boolean, at?: 'start' | 'end' }[]} [panes] Pane toggles in the transport row, as the Toolbar's: an icon, named by its label, pressed while its pane shows. `at: 'start'` puts one at the row's left end; the rest sit at its right end. None, no toggles.
    * @property {(id: string) => void} [onTogglePane] A pane toggle was pressed, with its id.
    * @property {Record<string, {state: 'loading'|'ready'|'failed', peaks?: {version: number, channels: number, sample_rate: number, samples_per_pixel: number, bits: number, length: number, data: number[]}, message?: string}>} [waveforms] Saved read waveforms keyed by scene id. Each recording starts at zero locally; its scene supplies its position on the story timeline. Pending and failed media keep a seekable read block.
@@ -368,7 +368,7 @@
 <div class="player" class:player--audio={audioEmphasis}>
   <!-- Phone width only: the story fitted to the width, scenes and beats under a playhead, with
        the elapsed and total time beneath it. Wider, the ruler and the playhead scrub. -->
-  {#if total > 0}
+  {#if total > 0 && !timelineHidden}
     <div class="player__mini" class:player__mini--open={miniOpen}>
       <div class="player__mini-track" bind:this={mini} role="slider" tabindex="0" aria-label="Position"
         aria-valuemin={0} aria-valuemax={total} aria-valuenow={clamped} aria-valuetext={formatTimecode(clamped)}
@@ -1075,7 +1075,7 @@
   }
   /* Phone width: a media player. The fitted timeline (the scrub surface), then one centred row of scene skips around a
      large round play; the beat skips sit beside them. Stop, the ends, the zoom, the tools and
-     the tracks are desktop editing and do not show. Every target is at least 44pt. */
+     the tracks are desktop editing and do not show. Desktop density (operator: "Dense everywhere"). */
   @container (max-width: 599px) {
     .player__mini { display: flex; flex-direction: column; gap: 2px; }
     .player__mini-track { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 4px 0; touch-action: none; cursor: pointer; }
@@ -1097,10 +1097,10 @@
     .player__mini--open .player__mini-scene--on { color: var(--text-primary); }
     .player__mini--open .player__mini-lane { height: 14px; }
     .player__mini-times { display: flex; align-items: center; justify-content: space-between; font-family: ui-monospace, SFMono-Regular, monospace; font-size: var(--caption-size); font-variant-numeric: tabular-nums; color: var(--text-secondary); }
-    .player__mini-toggle { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 32px; border: 0; background: none; color: var(--text-secondary); cursor: pointer; }
+    .player__mini-toggle { display: inline-flex; align-items: center; justify-content: center; min-height: 32px; border: 0; background: none; color: var(--text-secondary); cursor: pointer; }
     .player__mini-toggle:focus-visible { outline: 2px solid var(--border-focus); border-radius: var(--radius-sm); }
     .player__transport { justify-content: center; gap: var(--spacing-xs); }
-    .player__transport > button:not(.player__play) { min-width: 44px; min-height: 44px; border-color: transparent; }
+    .player__transport > button:not(.player__play) { border-color: transparent; }
     .player__transport :global(.ph) { font-size: 22px; }
     .player__play { flex: none; width: 64px; height: 64px; border-radius: 50%; border: 0; background: var(--text-primary); color: var(--surface-base); }
     .player__play:hover { background: var(--text-primary); }

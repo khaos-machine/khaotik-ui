@@ -124,6 +124,8 @@ describe('the pane toggles', () => {
     const { container } = render(StoryPlayer, { props: { segments, timelineHidden: true } })
     expect(container.querySelector('.player__stage')).toBeNull()
     expect(container.querySelector('.player__panel')).toBeNull()
+    // The phone's mini timeline too: measured at 390, the toggle otherwise changed nothing visible.
+    expect(container.querySelector('.player__mini')).toBeNull()
     expect(transport()).toBeTruthy()
   })
 })

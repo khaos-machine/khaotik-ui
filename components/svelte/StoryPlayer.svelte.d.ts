@@ -52,7 +52,7 @@ declare const StoryPlayer: import("svelte").Component<{
      */
     showInspector?: boolean;
     /**
-     * Draw only the transport: no lanes and no text panel. The unreadable notice still shows.
+     * Draw only the transport: no lanes, no phone mini timeline and no text panel. The unreadable notice still shows.
      */
     timelineHidden?: boolean;
     /**
@@ -275,7 +275,7 @@ type Props = {
      */
     showInspector?: boolean;
     /**
-     * Draw only the transport: no lanes and no text panel. The unreadable notice still shows.
+     * Draw only the transport: no lanes, no phone mini timeline and no text panel. The unreadable notice still shows.
      */
     timelineHidden?: boolean;
     /**
