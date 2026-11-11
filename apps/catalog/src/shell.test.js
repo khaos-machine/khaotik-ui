@@ -158,6 +158,45 @@ describe('the Data window\'s panes', () => {
     expect(screen.getByRole('button', { name: 'Source list' })).not.toBeNull()
   })
 
+  // khaotik-ui#56: the source column is whatever the split the toolbar's `source` toggle collapses
+  // holds, not only a panel named `source` — a Review workspace's column is its own panel.
+  describe('when the source column is another panel, in the split `source`', () => {
+    const review = { ...source, id: 'source', children: [group('review.kinds'), source.children[1]] }
+    const reviewPanels = { ...sourcePanels, 'review.kinds': { label: 'Kinds' } }
+    const reviewData = (props = {}) => data({ layout: review, panels: reviewPanels, workspace: 'review', pane: paneMark, ...props })
+    const kindsPane = (container) => container.querySelector('[data-ui-id="review.dock.pane.review.kinds"]')
+
+    it('hides the column from a button at its top, around the host\'s own pane', async () => {
+      const onTogglePane = vi.fn()
+      const { container } = reviewData({ onTogglePane })
+      const hide = screen.getByRole('button', { name: 'Hide source list' })
+      expect(kindsPane(container)).toContainElement(hide)
+      expect(within(container, '[data-ui-id="review.dock.pane.review.kinds"]', 'pane:review.kinds')).not.toBeNull()
+      await fireEvent.click(hide)
+      expect(onTogglePane).toHaveBeenCalledWith('source')
+    })
+
+    it('puts Project Settings at the column\'s foot', () => {
+      const { container } = reviewData({ onProjectSettings: vi.fn() })
+      expect(kindsPane(container)).toContainElement(screen.getByRole('button', { name: 'Project Settings' }))
+    })
+
+    it('leaves a rail with Show and Project Settings while the column is hidden', async () => {
+      const onTogglePane = vi.fn()
+      const { container } = reviewData({ layout: collapsed(review, 'source'), onTogglePane, onProjectSettings: vi.fn() })
+      const rail = container.querySelector('.ui-shell__rail')
+      expect(rail).not.toBeNull()
+      expect(rail).toContainElement(screen.getByRole('button', { name: 'Project Settings' }))
+      await fireEvent.click(screen.getByRole('button', { name: 'Show source list' }))
+      expect(onTogglePane).toHaveBeenCalledWith('source')
+    })
+
+    it('puts no Hide button on the other panes', () => {
+      reviewData()
+      expect(screen.getAllByRole('button', { name: 'Hide source list' })).toHaveLength(1)
+    })
+  })
+
   it('closes the inspector while nothing is selected', () => {
     const { container } = data({ hasSelection: false })
     expect(within(container, '.ui-shell__data', 'side')).toBeNull()
