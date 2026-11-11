@@ -20,6 +20,12 @@ current pin.
 
 ## [Unreleased]
 
+## [0.188.1] — 2026-11-11
+
+### Fixed
+
+- **`Shell`: the source column's Hide, Show and Project Settings in every Data workspace** (#56). In 0.188.0 they drew only for a panel named `source`, and the toolbar's Source list toggle was already gone in the Data window, so a workspace whose source column was another panel (khaos-app's Review, `review.kinds`) had no way to hide or show that column and no Project Settings button. The source column is now the fixed side of the split with id `source` — the split the toolbar's `source` toggle names — or, where no split has that id, of the split holding the panel `source`. Whatever panel sits there gets the Hide button at its top and Project Settings at its foot, and the rail with Show and Project Settings while it is collapsed. No prop is added; a layout whose source panel is `source` behaves as before.
+
 ## [0.188.0] — 2026-11-10
 
 ### Added

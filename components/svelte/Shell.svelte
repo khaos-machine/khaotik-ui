@@ -7,9 +7,10 @@
   // other pane through `pane`.
   //
   // The Data window follows the Overview screen (operator, 2026-11-10: "Match the Overview"). The
-  // source list hides from a button at its top to a rail that brings it back, through the same
+  // source column hides from a button at its top to a rail that brings it back, through the same
   // `onTogglePane('source')` the toolbar toggle sent; Project Settings sits at its foot, not in the
-  // toolbar ("Sidebar foot, both"). The inspector is there only while something is selected ("Yes,
+  // toolbar ("Sidebar foot, both"). The source column is the fixed side of the split with id
+  // `source`, or else of the split holding the panel `source`, whichever panel that is (#56). The inspector is there only while something is selected ("Yes,
   // host says when"): `hasSelection` closes it without touching the host's layout.
   //
   // Narrow, by the window's own width (operator, 2026-11-10, the window measured unusable below
@@ -163,6 +164,25 @@
   /** On a phone, the stack is back at the source list. */
   let atSource = $state(false)
 
+  /**
+   * The split with `id`.
+   * @param {import('./lib/dock.js').DockNode | null} tree @param {string} id
+   * @returns {import('./lib/dock.js').DockSplit | null}
+   */
+  const splitById = (tree, id) => (!tree || tree.kind === 'group' ? null : tree.id === id ? tree : splitById(tree.children[0], id) ?? splitById(tree.children[1], id))
+  /**
+   * The source column's split: the one the toolbar's `source` toggle names (khaotik-ui#56) — the split
+   * with that id, or else the one holding the panel `source`. Its fixed side is the source column,
+   * whichever panel the host puts there.
+   * @param {import('./lib/dock.js').DockNode | null} tree
+   */
+  const sourceSplit = (tree) => splitById(tree, 'source') ?? paneSplit(tree, 'source')
+  const sourcePanels = $derived.by(() => {
+    const split = sourceSplit(layout)
+    const fixed = split && (split.fixed === 'start' ? split.children[0] : split.children[1])
+    return fixed?.kind === 'group' ? fixed.panels : []
+  })
+
   /** The inspector's split, closed while nothing is selected and the inspector is the tab shown. */
   const inspectorClosed = $derived.by(() => {
     const split = paneSplit(layout, 'inspector')
@@ -171,26 +191,23 @@
     return fixed.kind === 'group' && fixed.active === 'inspector'
   })
   const sourceClosed = $derived.by(() => {
-    const split = paneSplit(layout, 'source')
+    const split = sourceSplit(layout)
     return mode === 'tablet' && !sourceOpen && !!split && !split.collapsed
   })
-  /** The panes the window closes for itself, whatever the host's layout says. */
-  const closedHere = $derived([inspectorClosed && 'inspector', sourceClosed && 'source'].filter((p) => typeof p === 'string'))
-  const dockLayout = $derived(closedHere.reduce((tree, p) => (tree ? toggleSplit(tree, paneSplit(tree, p)?.id ?? '') : tree), layout))
-  const sourceHidden = $derived(paneSplit(dockLayout, 'source')?.collapsed ?? false)
+  /** The splits the window closes for itself, by id, whatever the host's layout says. */
+  const closedHere = $derived([inspectorClosed && paneSplit(layout, 'inspector')?.id, sourceClosed && sourceSplit(layout)?.id].filter((id) => typeof id === 'string'))
+  const dockLayout = $derived(closedHere.reduce((tree, id) => (tree ? toggleSplit(tree, id) : tree), layout))
+  const sourceHidden = $derived(sourceSplit(dockLayout)?.collapsed ?? false)
 
   /** Hands the host back its own state for the panes the window closed, so the closing stays the window's. @param {import('./lib/dock.js').DockNode} next */
   function layoutChanged(next) {
-    onLayoutChange?.(closedHere.reduce((tree, p) => {
-      const split = paneSplit(tree, p)
-      return split?.collapsed ? toggleSplit(tree, split.id) : tree
-    }, next))
+    onLayoutChange?.(closedHere.reduce((tree, id) => (splitById(tree, id)?.collapsed ? toggleSplit(tree, id) : tree), next))
   }
 
-  /** The source list's own Hide and the rail's Show: on a tablet the window's, elsewhere the host's. */
+  /** The source column's own Hide and the rail's Show: on a tablet the window's, elsewhere the host's. */
   function toggleSource() {
     if (mode !== 'tablet') return onTogglePane?.('source')
-    if (paneSplit(layout, 'source')?.collapsed) {
+    if (sourceSplit(layout)?.collapsed) {
       sourceOpen = true
       onTogglePane?.('source')
     } else sourceOpen = sourceHidden
@@ -266,8 +283,16 @@
 
   <!-- Each pane by id, for the Dock and the phone's stack alike. -->
   {#snippet panelBody(/** @type {string} */ id)}
+    {#if sourcePanels.includes(id)}
+      {@render sourceColumn(true, id)}
+    {:else}
+      {@render panelContent(id)}
+    {/if}
+  {/snippet}
+
+  {#snippet panelContent(/** @type {string} */ id)}
     {#if id === 'source'}
-      {@render sourceColumn(true)}
+      <SourceList {sections} active={destination} onselect={(d) => { atSource = false; onDestination?.(d) }} label="Story destinations" uiId="{workspace}.source" />
     {:else if id === 'table'}
       {@render table?.()}
     {:else if id === 'detail'}
@@ -279,8 +304,9 @@
     {/if}
   {/snippet}
 
-  <!-- The source list with Project Settings at its foot; docked, it hides from a button at its top. -->
-  {#snippet sourceColumn(/** @type {boolean} */ docked)}
+  <!-- The source column — the source list, or whichever pane the host docks there — with Project
+       Settings at its foot; docked, it hides from a button at its top. -->
+  {#snippet sourceColumn(/** @type {boolean} */ docked, /** @type {string} */ id = 'source')}
     <div class="ui-shell__source">
       {#if docked}
         <div class="ui-shell__toggle">
@@ -288,7 +314,7 @@
         </div>
       {/if}
       <div class="ui-shell__source-list">
-        <SourceList {sections} active={destination} onselect={(d) => { atSource = false; onDestination?.(d) }} label="Story destinations" uiId="{workspace}.source" />
+        {@render panelContent(id)}
       </div>
       {#if onProjectSettings}
         <div class="ui-shell__foot">
