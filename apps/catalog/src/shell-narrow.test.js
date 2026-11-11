@@ -69,6 +69,31 @@ describe('the Data window on a phone', () => {
     await fireEvent.click(screen.getByRole('button', { name: 'Characters' }))
     expect(onDeselect).toHaveBeenCalledOnce()
   })
+
+  // khaotik-ui#58: the stack leaves out the source column and puts the inspector column first by
+  // their splits, whichever panels the host docks there — khaos-app's Review shape.
+  describe('when the source and inspector columns are other panels, in their splits', () => {
+    const paneMark = createRawSnippet((id) => ({ render: () => `<p data-mark="pane:${id()}">${id()}</p>` }))
+    const review = { kind: 'split', id: 'source', direction: 'row', fixed: 'start', size: 180, children: [group('review.kinds'), {
+      kind: 'split', id: 'inspector', direction: 'row', fixed: 'end', size: 300,
+      children: [{ kind: 'split', id: 'list', direction: 'row', fixed: 'start', size: 420, children: [group('review.queue'), group('review.excerpts')] }, group('review.answer')],
+    }] }
+    const reviewPanels = { 'review.kinds': { label: 'Kinds' }, 'review.queue': { label: 'Queue' }, 'review.excerpts': { label: 'Occurrences' }, 'review.answer': { label: 'Answer' } }
+    const review390 = (props) => at(390, { layout: review, panels: reviewPanels, workspace: 'review', pane: paneMark, ...props })
+
+    it('begins the stack at the list, not the source column', () => {
+      const { container } = review390({ hasSelection: false })
+      expect(shown(container, 'pane:review.queue')).not.toBeNull()
+      expect(shown(container, 'pane:review.kinds')).toBeNull()
+    })
+
+    it('shows the selection with the inspector column above the detail', () => {
+      const { container } = review390()
+      const detail = shown(container, 'pane:review.excerpts'), answer = shown(container, 'pane:review.answer')
+      expect(shown(container, 'pane:review.queue')).toBeNull()
+      expect(answer.compareDocumentPosition(detail) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    })
+  })
 })
 
 // operator, 2026-11-10: "the top navbar on mobile odd + i don't know what mic + play buttons

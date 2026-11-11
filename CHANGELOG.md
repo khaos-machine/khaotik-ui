@@ -20,6 +20,12 @@ current pin.
 
 ## [Unreleased]
 
+## [0.188.2] — 2026-11-11
+
+### Fixed
+
+- **`Shell`: the inspector column and the phone stack in every Data workspace** (#58). The inspector closed while nothing was selected only where its panel was named `inspector`, so khaos-app's Review (`review.answer`) kept its inspector open with nothing to show; and the phone stack left out only a panel named `source`, so a Review stack began at `review.kinds` instead of the queue. The inspector column is now the fixed side of the split with id `inspector`, or, where no split has that id, of the split holding the panel `inspector` — found the same way as the source column since 0.188.1. It closes while nothing is selected and its own panel is the tab shown: `inspector` where the column holds one, else the column's first panel. The phone stack leaves out the source column's panels and puts the inspector column first. No prop is added; a layout whose panels are named `source` and `inspector` behaves as before.
+
 ## [0.188.1] — 2026-11-11
 
 ### Fixed

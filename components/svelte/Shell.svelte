@@ -10,7 +10,7 @@
   // source column hides from a button at its top to a rail that brings it back, through the same
   // `onTogglePane('source')` the toolbar toggle sent; Project Settings sits at its foot, not in the
   // toolbar ("Sidebar foot, both"). The source column is the fixed side of the split with id
-  // `source`, or else of the split holding the panel `source`, whichever panel that is (#56). The inspector is there only while something is selected ("Yes,
+  // `source`, or else of the split holding the panel `source`, whichever panel that is (#56); the inspector column and the phone's stack resolve by split the same way (#58). The inspector is there only while something is selected ("Yes,
   // host says when"): `hasSelection` closes it without touching the host's layout.
   //
   // Narrow, by the window's own width (operator, 2026-11-10, the window measured unusable below
@@ -177,25 +177,32 @@
    * @param {import('./lib/dock.js').DockNode | null} tree
    */
   const sourceSplit = (tree) => splitById(tree, 'source') ?? paneSplit(tree, 'source')
-  const sourcePanels = $derived.by(() => {
-    const split = sourceSplit(layout)
+  /** The inspector column's split, found the same way through the toolbar's `inspector` toggle (#58). @param {import('./lib/dock.js').DockNode | null} tree */
+  const inspectorSplit = (tree) => splitById(tree, 'inspector') ?? paneSplit(tree, 'inspector')
+  /** A split's fixed side, where it is one group. @param {import('./lib/dock.js').DockSplit | null} split */
+  const fixedGroup = (split) => {
     const fixed = split && (split.fixed === 'start' ? split.children[0] : split.children[1])
-    return fixed?.kind === 'group' ? fixed.panels : []
+    return fixed?.kind === 'group' ? fixed : null
+  }
+  const sourcePanels = $derived(fixedGroup(sourceSplit(layout))?.panels ?? [])
+  /** The inspector column's own panel: `inspector` where it holds one, else the host's first panel there. */
+  const inspectorPanel = $derived.by(() => {
+    const panels = fixedGroup(inspectorSplit(layout))?.panels ?? []
+    return panels.includes('inspector') ? 'inspector' : (panels[0] ?? 'inspector')
   })
 
   /** The inspector's split, closed while nothing is selected and the inspector is the tab shown. */
   const inspectorClosed = $derived.by(() => {
-    const split = paneSplit(layout, 'inspector')
+    const split = inspectorSplit(layout)
     if (!split || split.collapsed || hasSelection) return false
-    const fixed = split.fixed === 'start' ? split.children[0] : split.children[1]
-    return fixed.kind === 'group' && fixed.active === 'inspector'
+    return fixedGroup(split)?.active === inspectorPanel
   })
   const sourceClosed = $derived.by(() => {
     const split = sourceSplit(layout)
     return mode === 'tablet' && !sourceOpen && !!split && !split.collapsed
   })
   /** The splits the window closes for itself, by id, whatever the host's layout says. */
-  const closedHere = $derived([inspectorClosed && paneSplit(layout, 'inspector')?.id, sourceClosed && sourceSplit(layout)?.id].filter((id) => typeof id === 'string'))
+  const closedHere = $derived([inspectorClosed && inspectorSplit(layout)?.id, sourceClosed && sourceSplit(layout)?.id].filter((id) => typeof id === 'string'))
   const dockLayout = $derived(closedHere.reduce((tree, id) => (tree ? toggleSplit(tree, id) : tree), layout))
   const sourceHidden = $derived(sourceSplit(dockLayout)?.collapsed ?? false)
 
@@ -213,9 +220,9 @@
     } else sourceOpen = sourceHidden
   }
 
-  /** The phone's stack: the table first, then the rest with the selection, the inspector at its top ("Inspector first"). */
-  const stacked = $derived(shownPanels(layout).filter((p) => p !== 'source'))
-  const selection = $derived(stacked.slice(1).sort((a, b) => Number(b === 'inspector') - Number(a === 'inspector')))
+  /** The phone's stack, without the source column: the table first, then the rest with the selection, the inspector column at its top ("Inspector first"). */
+  const stacked = $derived(shownPanels(layout).filter((p) => !sourcePanels.includes(p)))
+  const selection = $derived(stacked.slice(1).sort((a, b) => Number(b === inspectorPanel) - Number(a === inspectorPanel)))
   const view = $derived(atSource ? 'source' : hasSelection && stacked.length > 1 ? 'selection' : 'list')
   const destinationLabel = $derived(sections.flatMap((s) => s.items).find((i) => i.id === destination)?.label ?? '')
   const phone = $derived(mode === 'phone')

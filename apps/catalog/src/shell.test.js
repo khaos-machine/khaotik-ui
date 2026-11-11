@@ -214,6 +214,35 @@ describe('the Data window\'s panes', () => {
     expect(within(container, '.ui-shell__data', 'pane:activity')).not.toBeNull()
   })
 
+  // khaotik-ui#58: the inspector column is the fixed side of the split `inspector`, whichever panel
+  // the host docks there — khaos-app's Review docks `review.answer`.
+  describe('when the inspector column is another panel, in the split `inspector`', () => {
+    const review = { kind: 'split', id: 'source', direction: 'row', fixed: 'start', size: 180, children: [group('review.kinds'), {
+      kind: 'split', id: 'inspector', direction: 'row', fixed: 'end', size: 300,
+      children: [row(group('review.queue'), group('review.excerpts')), group('review.answer')],
+    }] }
+    const reviewPanels = { 'review.kinds': { label: 'Kinds' }, 'review.queue': { label: 'Queue' }, 'review.excerpts': { label: 'Occurrences' }, 'review.answer': { label: 'Answer' } }
+    const reviewData = (props = {}) => data({ layout: review, panels: reviewPanels, workspace: 'review', pane: paneMark, ...props })
+
+    it('closes the column while nothing is selected', () => {
+      const { container } = reviewData({ hasSelection: false })
+      expect(within(container, '.ui-shell__data', 'pane:review.answer')).toBeNull()
+      expect(within(container, '.ui-shell__data', 'pane:review.queue')).not.toBeNull()
+    })
+
+    it('opens it while something is selected', () => {
+      const { container } = reviewData()
+      expect(within(container, '.ui-shell__data', 'pane:review.answer')).not.toBeNull()
+    })
+
+    it('hands the host its own column state back when the panes change', async () => {
+      const onLayoutChange = vi.fn()
+      reviewData({ hasSelection: false, onLayoutChange })
+      await fireEvent.keyDown(screen.getAllByRole('separator')[0], { key: 'ArrowRight' })
+      expect(onLayoutChange.mock.calls.at(-1)[0].children[1].collapsed ?? false).toBe(false)
+    })
+  })
+
   // The closing is the window's, not the host's layout: a resize while it is closed hands the
   // host its own inspector state back, so the inspector returns with the next selection.
   it('hands the host its own inspector state back when the panes change', async () => {
