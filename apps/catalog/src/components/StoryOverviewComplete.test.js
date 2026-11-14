@@ -96,14 +96,17 @@ describe('complete Overview results', () => {
     acts.getAllByRole('group', { name: 'Word share' }).forEach((row, i) => expect(row).toHaveAccessibleDescription(['25%', '75%'][i]))
   })
 
-  it('gap 6: selects a skipped pair with its original list index and inspects its reason', async () => {
-    const onselect = vi.fn()
-    const view = render(StoryOverview, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 1 }, onselect, showSkippedPairs: true })
+  // Operator, 2026-11-14: skipped pairs fold beneath the list, and a row is chosen in the card.
+  it('gap 6: chooses a skipped pair from the folded list and shows its reason in the card', async () => {
+    const view = render(StoryOverview, { relationships: loaded(pairs), showSkippedPairs: true })
     await showAll('Relationships')
+    await fireEvent.click(region('Relationships').getByRole('button', { name: /^Skipped/ }))
     const row = region('Relationships').getByRole('button', { name: 'THEO and MAYA' })
-    expect(row).toHaveAttribute('aria-current', 'true')
     await fireEvent.click(row)
-    expect(onselect).toHaveBeenLastCalledWith({ kind: 'relationship', index: 1 })
+    expect(row).toHaveAttribute('aria-current', 'true')
+    const card = within(screen.getByRole('group', { name: 'Relationships' }))
+    expect(card.getByRole('heading', { name: 'THEO and MAYA' })).toBeVisible()
+    expect(card.getByRole('group', { name: 'Co-appearance weight' })).toHaveAccessibleDescription('1')
     view.unmount()
     render(StoryOverviewSide, { relationships: loaded(pairs), selected: { kind: 'relationship', index: 1 }, showSkippedPairs: true })
     expect(screen.getByRole('heading', { name: 'THEO and MAYA' })).toBeVisible()

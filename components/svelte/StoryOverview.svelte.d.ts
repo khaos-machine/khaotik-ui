@@ -209,6 +209,10 @@ declare const StoryOverview: import("svelte").Component<{
      */
     showPassStates?: boolean;
     /**
+     * Every scene id in story order, so the journeys can be drawn across the story. Empty: the Journeys card shows its arc count only.
+     */
+    sceneOrder?: readonly string[];
+    /**
      * Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
      */
     showEmptyResults?: boolean;
@@ -418,6 +422,10 @@ type Props = {
      * A partial or failed journeys or relationships pass (`runs.journeys`, `runs.relationships`), and failed turn naming, each said in its section.
      */
     showPassStates?: boolean;
+    /**
+     * Every scene id in story order, so the journeys can be drawn across the story. Empty: the Journeys card shows its arc count only.
+     */
+    sceneOrder?: readonly string[];
     /**
      * Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
      */

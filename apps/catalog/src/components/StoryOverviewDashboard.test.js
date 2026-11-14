@@ -116,7 +116,8 @@ describe('StoryOverview dashboard', () => {
     expect(within(panel('Production')).getByRole('group', { name: 'Cast size' })).toHaveTextContent(String(report.viability.castSize))
     expect(within(panel('Production')).getByRole('group', { name: 'Locations' })).toHaveTextContent(String(report.viability.uniqueLocations))
     expect(within(panel('Journeys')).getByText('2 complete arcs · 1 unfinished arc')).toBeVisible()
-    expect(within(panel('Relationships')).getByText('1 pair read')).toBeVisible()
+    // Operator, 2026-11-14: the Relationships card shows stats by default.
+    expect(within(panel('Relationships')).getByRole('group', { name: 'Pairs read' })).toHaveAccessibleDescription('1')
   })
 
   it('expands one panel\'s full detail beneath the grid, one at a time', async () => {
