@@ -11,9 +11,11 @@
   import SectionHeader from './SectionHeader.svelte'
   import SelectableRow from './SelectableRow.svelte'
   import StatusPill from './StatusPill.svelte'
-  import { ARCS, MEASURED, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, listItems, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads, timelineTurns, fittingLenses, pacing, rubricRadar } from './lib/story-overview.js'
+  import { ARCS, MEASURED, OUTCOMES, VERDICTS, coverageReads, incompleteLabel, journeyName, journeysRead, listItems, namedPoints, pairName, productionFlags, relationshipsRead, shapeReads, timelineTurns, fittingLenses, pacing, journeyLanes, relationshipGraph, rubricRadar } from './lib/story-overview.js'
   import StoryTimeline from './internal/StoryTimeline.svelte'
   import RubricRadar from './internal/RubricRadar.svelte'
+  import RelationshipGraph from './internal/RelationshipGraph.svelte'
+  import JourneyLanes from './internal/JourneyLanes.svelte'
   import { dollars } from './lib/budget.js'
 
   /** @typedef {import('./lib/story-overview.js').Sourced} Sourced */
@@ -50,11 +52,12 @@
    * @property {boolean} [showSceneEntries] Coverage's scene entries.
    * @property {boolean} [showMeasuredStructure] Coverage's Structure measured section.
    * @property {boolean} [showPassStates] A partial or failed journeys or relationships pass (`runs.journeys`, `runs.relationships`), and failed turn naming, each said in its section.
+   * @property {readonly string[]} [sceneOrder] Every scene id in story order, so the journeys can be drawn across the story. Empty: the Journeys card shows its arc count only.
    * @property {boolean} [showEmptyResults] Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
    */
 
   /** @type {Props} */
-  let { title = '', premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onselect = undefined, runs = {}, onrun = undefined, onsetbudget = undefined, showSkippedPairs = false, showStructureActs = false, showCoverageActs = false, showSceneEntries = false, showMeasuredStructure = false, showPassStates = false, showEmptyResults = false } = $props()
+  let { title = '', premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onselect = undefined, runs = {}, onrun = undefined, onsetbudget = undefined, showSkippedPairs = false, showStructureActs = false, showCoverageActs = false, showSceneEntries = false, showMeasuredStructure = false, showPassStates = false, showEmptyResults = false, sceneOrder = [] } = $props()
 
   const LOADING = "Reading this story's analyses…"
   /** @param {Sourced | undefined} f */
@@ -71,6 +74,35 @@
   const journeyList = $derived(journeys.kind === 'loaded' && journeysRead(journeys.data) ? journeys.data : null)
   const pairList = $derived(relationships.kind === 'loaded' && relationshipsRead(relationships.data) ? relationships.data : null)
   const readPairs = $derived((pairList ?? []).map((/** @type {Record<string, any>} */ r, /** @type {number} */ index) => ({ ...r, index })).filter((r) => r.analysis.synthesis))
+  const pairGraph = $derived(relationshipGraph(pairList ?? []))
+  /** The pair whose detail the Relationships card shows, by its index in the list; -1 shows the stats. */
+  let shownPair = $state(-1)
+  const togglePair = (/** @type {number} */ index) => (shownPair = shownPair === index ? -1 : index)
+  /** A row in the drawer: choose its pair, then bring the panel showing it into view. @param {number} index */
+  function showRow(index) {
+    togglePair(index)
+    document.getElementById(`${uid}-pair`)?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' })
+  }
+  const lanes = $derived(journeyList ? journeyLanes(journeyList, sceneOrder) : [])
+  /** The journey whose detail the Journeys card shows, by its index in the list; -1 shows the stats. */
+  let shownJourney = $state(-1)
+  const toggleJourney = (/** @type {number} */ index) => (shownJourney = shownJourney === index ? -1 : index)
+  // Operator, 2026-11-14: "hide unfinished by default"; the Arcs stat's unfinished count shows them.
+  let showUnfinished = $state(false)
+  const drawnLanes = $derived(showUnfinished ? lanes : lanes.filter((l) => l.arc !== 'incomplete'))
+  const unfinishedCount = $derived((journeyList ?? []).filter((j) => j.journey.arc_quality === 'incomplete').length)
+  /** A row in the drawer: choose its journey, showing its lane if hidden, then bring the panel showing it into view. @param {number} index */
+  function showJourneyRow(index) {
+    if (journeyList?.[index]?.journey.arc_quality === 'incomplete') showUnfinished = true
+    toggleJourney(index)
+    document.getElementById(`${uid}-journey`)?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' })
+  }
+  const mostTurns = $derived(lanes.reduce((/** @type {import('./lib/story-overview.js').JourneyLane | null} */ a, l) => (!a || l.points.length > a.points.length ? l : a), null))
+  const longest = $derived(lanes.reduce((/** @type {import('./lib/story-overview.js').JourneyLane | null} */ a, l) => (!a || l.to - l.from > a.to - a.from ? l : a), null))
+  /** The cards whose list opens as a drawer inside them, toggled at their foot. */
+  const DRAWERS = ['journeys', 'relationships']
+  /** The read pair with the most evidence scenes. */
+  const strongest = $derived(pairGraph.edges.reduce((/** @type {import('./lib/story-overview.js').GraphEdge | null} */ a, e) => (!a || e.scenes > a.scenes ? e : a), null))
   const skippedPairs = $derived((pairList ?? []).map((/** @type {Record<string, any>} */ r, /** @type {number} */ index) => ({ ...r, index })).filter((r) => r.analysis.skip))
   /** @typedef {'coverage' | 'characters' | 'production' | 'journeys' | 'relationships'} Panel */
   /** The panels in grid order, by their titles; the titles the outline names them by. @type {Readonly<Record<Panel, string>>} */
@@ -90,13 +122,13 @@
   const topCharacters = $derived([...characters].sort((a, b) => (b.dialogueWeight ?? 0) - (a.dialogueWeight ?? 0)).slice(0, 5))
   const topWeight = $derived(topCharacters[0]?.dialogueWeight ?? 0)
   /** The journeys' summary: how many of each arc, in the arcs' order, e.g. "2 complete arcs · 1 unfinished arc". */
-  const arcTally = $derived(
+  const arcCounts = $derived(
     Object.keys(ARCS)
-      .map((arc) => ({ n: (journeyList ?? []).filter((j) => j.journey.arc_quality === arc).length, label: ARCS[arc].toLowerCase() }))
+      .map((arc) => ({ arc, n: (journeyList ?? []).filter((j) => j.journey.arc_quality === arc).length, label: ARCS[arc].toLowerCase() }))
       .filter((a) => a.n > 0)
-      .map((a) => `${a.n} ${a.label}${a.n === 1 ? '' : 's'}`)
-      .join(' · '),
+      .map((a) => ({ arc: a.arc, text: `${a.n} ${a.label}${a.n === 1 ? '' : 's'}` })),
   )
+  const arcTally = $derived(arcCounts.map((a) => a.text).join(' · '))
   const madeOn = $derived(
     report?.generatedAt ? new Date(report.generatedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }) : '',
   )
@@ -286,7 +318,7 @@
     {@render panel('relationships', relationshipsSummary)}
   </div>
 
-  {#if open && hasDetail[open]}
+  {#if open && !DRAWERS.includes(open) && hasDetail[open]}
     <section id="{uid}-{open}" class="ui-story-overview__expanded" aria-label={PANELS[open]}>
       <h3 class="ui-story-overview__panel-title">{PANELS[open]}</h3>
       {#if open === 'coverage'}{@render coverageDetail()}
@@ -299,14 +331,20 @@
 </div></div>
 
 {#snippet panel(/** @type {Panel} */ id, /** @type {import('svelte').Snippet} */ summary)}
-  <div class="ui-story-overview__panel" class:ui-story-overview__panel--open={open === id} role="group" aria-label={PANELS[id]} data-ui-id="story.overview.{id}">
+  <div class="ui-story-overview__panel ui-story-overview__panel--{id}" class:ui-story-overview__panel--open={open === id} role="group" aria-label={PANELS[id]} data-ui-id="story.overview.{id}">
     <div class="ui-story-overview__panel-head">
       <h3 class="ui-story-overview__panel-title">{PANELS[id]}</h3>
-      {#if hasDetail[id]}
+      {#if hasDetail[id] && !DRAWERS.includes(id)}
         <button type="button" class="ui-story-overview__more" aria-label="Show all: {PANELS[id]}" aria-expanded={open === id} aria-controls="{uid}-{id}" onclick={() => (open = open === id ? null : id)}>Show all</button>
       {/if}
     </div>
     {@render summary()}
+    <!-- Operator, 2026-11-14: the list is part of the Relationships card, a drawer Show all opens and closes, closed by default. -->
+    {#if DRAWERS.includes(id) && open === id}<div id="{uid}-{id}" class="ui-story-overview__drawer" role="region" aria-label={PANELS[id]}>{#if id === 'journeys'}{@render journeysDetail()}{:else}{@render relationshipsDetail()}{/if}</div>{/if}
+    <!-- Operator, 2026-11-14: its toggle sits at the bottom of the card and says what it will do. -->
+    {#if DRAWERS.includes(id) && hasDetail[id]}
+      <button type="button" class="ui-story-overview__more ui-story-overview__more--foot" aria-label="{open === id ? 'Hide all' : 'Show all'}: {PANELS[id]}" aria-expanded={open === id} aria-controls="{uid}-{id}" onclick={() => (open = open === id ? null : id)}>{open === id ? 'Hide all' : 'Show all'}</button>
+    {/if}
   </div>
 {/snippet}
 
@@ -464,14 +502,51 @@
   {#if journeys.kind === 'loading'}{@render none(LOADING)}
   {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render none('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
   {:else if journeys.kind === 'failed' || !journeyList}{@render line("Khaos couldn't read this story's journeys.", journeys.kind === 'failed' ? journeys.message : '')}
-  {:else}
+  {:else if !lanes.length}
     <p class="ui-story-overview__line">{arcTally}</p>
+  {:else}
+    <!-- Operator, 2026-11-14: Journeys as Relationships: its own row, the lanes beside a panel that
+         shows the stats by default and the chosen journey's detail. -->
+    {@const shown = journeyList[shownJourney]}
+    <div class="ui-story-overview__split ui-story-overview__split--wide">
+      <div class="ui-story-overview__split-figure"><JourneyLanes lanes={drawnLanes} selected={shownJourney} onselect={toggleJourney} /></div>
+      <div id="{uid}-journey" class="ui-story-overview__split-side" aria-live="polite">
+        {#if shown}
+          {@const j = shown.journey}
+          <h4 class="ui-story-overview__pair-name">{journeyName(shown.character)}</h4>
+          <StatusPill text={ARCS[j.arc_quality]} />
+          {#each [['Starts', j.beginning_state], ['Changes', j.emotional_progression], ['Ends', j.final_state]] as [label, text] (label)}
+            <div class="ui-story-overview__arc" role="group" aria-label={label}><span class="ui-story-overview__label">{label}</span><p class="ui-story-overview__line">{text}</p></div>
+          {/each}
+          {@render list('Turning points', j.turning_points.map((/** @type {{ description: string }} */ t) => t.description))}
+          {@render list('Relationships', j.relationship_evolution.map((/** @type {{ counterpart: string, trajectory: string }} */ r) => `${r.counterpart}: ${r.trajectory}`))}
+        {:else}
+          <div class="ui-story-overview__stats">
+            {#if unfinishedCount}
+              <PropertyRow label="Arcs">
+                <span class="ui-story-overview__arcs">
+                  {#each arcCounts as a, i (a.arc)}
+                    {#if i}<span aria-hidden="true">·</span>{/if}
+                    {#if a.arc === 'incomplete'}
+                      <Button variant="secondary" title={showUnfinished ? 'Hide unfinished lanes' : 'Show unfinished lanes'} onclick={() => (showUnfinished = !showUnfinished)}>{a.text}</Button>
+                    {:else}<span>{a.text}</span>{/if}
+                  {/each}
+                </span>
+              </PropertyRow>
+            {:else}<PropertyRow label="Arcs" value={arcTally} />{/if}
+            <PropertyRow label="Journeys read" value={journeyList.length} />
+            {#if mostTurns}<PropertyRow label="Most turning points" value="{mostTurns.name} · {mostTurns.points.length}" />{/if}
+            {#if longest}<PropertyRow label="Longest journey" value={longest.name} />{/if}
+          </div>
+        {/if}
+      </div>
+    </div>
   {/if}
 {/snippet}
 
 {#snippet journeysDetail()}
   {#each journeyList ?? [] as j, i (j.character.id)}
-    <SelectableRow title={journeyName(j.character)} subtitle="Ends: {j.journey.final_state}" selected={selected?.kind === 'journey' && selected.index === i} onclick={() => onselect?.({ kind: 'journey', index: i })}>
+    <SelectableRow title={journeyName(j.character)} subtitle="Ends: {j.journey.final_state}" selected={shownJourney === i} onclick={() => showJourneyRow(i)}>
       {#snippet trailing()}<StatusPill text={ARCS[j.journey.arc_quality]} />{/snippet}
     </SelectableRow>
   {/each}
@@ -483,7 +558,41 @@
   {:else if relationships.kind === 'missing' || (pairList && !pairList.length)}{@render none('No relationships have been read yet.', relationships.kind === 'missing' ? relationships.reason : '')}
   {:else if relationships.kind === 'failed' || !pairList}{@render line("Khaos couldn't read this story's relationships.", relationships.kind === 'failed' ? relationships.message : '')}
   {:else if readPairs.length}
-    <p class="ui-story-overview__line">{readPairs.length} {readPairs.length === 1 ? 'pair' : 'pairs'} read</p>
+    <!-- Operator, 2026-11-14: the card takes its own row, the graph beside a panel that shows the
+         stats by default and the detail of the relationship once a line is chosen. -->
+    {@const shown = [...readPairs, ...skippedPairs].find((r) => r.index === shownPair)}
+    <div class="ui-story-overview__split">
+      <div class="ui-story-overview__split-figure"><RelationshipGraph graph={pairGraph} selected={shownPair} onselect={togglePair} /></div>
+      <div id="{uid}-pair" class="ui-story-overview__split-side" aria-live="polite">
+        {#if shown?.analysis.skip}
+          <h4 class="ui-story-overview__pair-name">{pairName(shown.characters)}</h4>
+          <StatusPill text="Skipped" tone="skipped" />
+          <p class="ui-story-overview__line">{shown.analysis.skip.reason}</p>
+          <div class="ui-story-overview__stats">
+            <PropertyRow label="Co-appearance weight" value={shown.analysis.skip.weight} />
+            <PropertyRow label="Minimum weight" value={shown.analysis.skip.min_weight} />
+          </div>
+        {:else if shown}
+          {@const s = shown.analysis.synthesis}
+          <h4 class="ui-story-overview__pair-name">{pairName(shown.characters)}</h4>
+          <StatusPill text={s.relationship_type} />
+          <p class="ui-story-overview__line">{s.trajectory}</p>
+          {#each [['Beginning', s.relationship_arc.beginning], ['Middle', s.relationship_arc.middle], ['End', s.relationship_arc.end]] as [label, text] (label)}
+            <div class="ui-story-overview__arc" role="group" aria-label={label}><span class="ui-story-overview__label">{label}</span><p class="ui-story-overview__line">{text}</p></div>
+          {/each}
+          {@render list('Emotional dynamics', s.emotional_dynamics)}
+          {@render list('Conflict patterns', s.conflict_patterns)}
+        {:else}
+          <div class="ui-story-overview__stats">
+            <PropertyRow label="Pairs read" value={readPairs.length} />
+            {#if skippedPairs.length}<PropertyRow label="Skipped" value={skippedPairs.length} />{/if}
+            <PropertyRow label="Characters paired" value={pairGraph.nodes.length} />
+            <PropertyRow label="Most connected" value="{pairGraph.nodes[0].name} · {pairGraph.nodes[0].pairs} {pairGraph.nodes[0].pairs === 1 ? 'pair' : 'pairs'}" />
+            {#if strongest}<PropertyRow label="Most evidence" value="{strongest.name} · {strongest.scenes}" />{/if}
+          </div>
+        {/if}
+      </div>
+    </div>
   {:else}
     {@render line('No pair of characters shares enough scenes to read yet.')}
   {/if}
@@ -491,16 +600,16 @@
 
 {#snippet relationshipsDetail()}
   {#each readPairs as r (r.pairKey)}
-    <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.synthesis.trajectory} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
-      {#snippet trailing()}<StatusPill text={r.analysis.synthesis.relationship_type} />{/snippet}
-    </SelectableRow>
+    <!-- The type is free text and often long, so it is the row's second line, not a pill; the trajectory is in the panel. -->
+    <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.synthesis.relationship_type} selected={shownPair === r.index} onclick={() => showRow(r.index)} />
   {/each}
-  {#if showSkippedPairs}
-    {#each skippedPairs as r (r.pairKey)}
-      <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.skip.reason} selected={selected?.kind === 'relationship' && selected.index === r.index} onclick={() => onselect?.({ kind: 'relationship', index: r.index })}>
-        {#snippet trailing()}<StatusPill text="Skipped" tone="skipped" />{/snippet}
-      </SelectableRow>
-    {/each}
+  {#if showSkippedPairs && skippedPairs.length}
+    <!-- Operator, 2026-11-14: skipped pairs out of the list, folded beneath it by default. -->
+    <InspectorSection title="Skipped" count={skippedPairs.length} collapsed uiId="story.overview.relationships-skipped">
+      {#each skippedPairs as r (r.pairKey)}
+        <SelectableRow title={pairName(r.characters)} subtitle={r.analysis.skip.reason} selected={shownPair === r.index} onclick={() => showRow(r.index)} />
+      {/each}
+    </InspectorSection>
   {:else if advanced && skippedPairs.length}
     <InspectorSection title="Show details" collapsed uiId="story.overview.relationships-details">
       <ul class="ui-story-overview__list">{#each skippedPairs as r (r.pairKey)}<li>{pairName(r.characters)}: {r.analysis.skip.reason}</li>{/each}</ul>
@@ -586,6 +695,63 @@
     grid-template-columns: repeat(auto-fill, minmax(calc(var(--spacing-2xl) * 5), 1fr));
     gap: var(--spacing-sm);
   }
+  /* Relationships takes a row of its own: the graph, and beside it the stats or the chosen pair. */
+  .ui-story-overview__arcs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-2xs);
+  }
+  .ui-story-overview__panel--journeys,
+  .ui-story-overview__panel--relationships {
+    grid-column: 1 / -1;
+  }
+  .ui-story-overview__split {
+    display: grid;
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+    gap: var(--spacing-md);
+    align-items: start;
+  }
+  /* Lanes read across the story, so they take the wider share. */
+  .ui-story-overview__split--wide {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+  .ui-story-overview__drawer {
+    margin-top: var(--spacing-xs);
+    padding-top: var(--spacing-xs);
+    border-top: var(--size-stroke-hairline) solid var(--border-default);
+  }
+  .ui-story-overview__split-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-2xs);
+    min-width: 0;
+  }
+  .ui-story-overview__stats {
+    align-self: stretch;
+  }
+  .ui-story-overview__pair-name {
+    margin: 0;
+    font-size: var(--body-md-size);
+    font-weight: var(--label-md-weight);
+    color: var(--text-primary);
+  }
+  .ui-story-overview__arc .ui-story-overview__label {
+    display: block;
+    margin: var(--spacing-2xs) 0 0;
+    font-size: var(--caption-size);
+    color: var(--text-secondary);
+  }
+  .ui-story-overview__arc .ui-story-overview__line {
+    margin: 0;
+  }
+  /* On a narrow panel the stats or pair sit under the graph. */
+  @container (max-width: 640px) {
+    .ui-story-overview__split {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
   .ui-story-overview__panel,
   .ui-story-overview__expanded {
     display: flex;
@@ -611,6 +777,10 @@
     line-height: var(--label-md-line);
     font-weight: var(--label-md-weight);
     color: var(--text-primary);
+  }
+  .ui-story-overview__more--foot {
+    align-self: center;
+    margin-top: var(--spacing-xs);
   }
   .ui-story-overview__more {
     padding: 0;

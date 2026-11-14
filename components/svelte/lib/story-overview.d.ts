@@ -64,6 +64,31 @@ export function productionFlags(r: Record<string, any> | null): {
     raised: string[];
     contained: Sourced | undefined;
 } | null;
+/** @typedef {{ id: string, name: string, x: number, y: number, labelX: number, labelY: number, side: 'start' | 'middle' | 'end', pairs: number }} GraphNode */
+/** @typedef {{ index: number, name: string, type: string, from: GraphNode, to: GraphNode, scenes: number }} GraphEdge */
+/**
+ * The read pairs as a graph (operator, 2026-11-14: "Graph in the card"): each character in a read
+ * pair is a node on one ring, clockwise from the top, the most connected first; each read pair is
+ * an edge, whose `scenes` is its evidence scene count. Skipped pairs draw nothing. `index` is the
+ * pair's place in the relationships list, as `OverviewSelection` takes it.
+ * @param {readonly Record<string, any>[]} pairs The relationships list, read or skipped.
+ * @returns {{ nodes: GraphNode[], edges: GraphEdge[] }}
+ */
+export function relationshipGraph(pairs: readonly Record<string, any>[]): {
+    nodes: GraphNode[];
+    edges: GraphEdge[];
+};
+/** @typedef {{ index: number, name: string, arc: string, from: number, to: number, points: number[] }} JourneyLane */
+/**
+ * Each journey as a lane across the story (operator, 2026-11-14: "Story lanes"): from its first
+ * evidence scene to its last, as fractions of the story, with a point at each turning point's
+ * first scene. Scenes `order` does not hold are left out; a journey with none has no lane.
+ * `index` is the journey's place in the list, as `OverviewSelection` takes it.
+ * @param {readonly Record<string, any>[]} journeys The journeys list, in the order drawn.
+ * @param {readonly string[]} order Every scene id, in story order.
+ * @returns {JourneyLane[]}
+ */
+export function journeyLanes(journeys: readonly Record<string, any>[], order: readonly string[]): JourneyLane[];
 /**
  * The structure lenses' names. Open: the lens catalog can grow, so an id missing here is shown as
  * sent rather than failing the timeline.
@@ -164,6 +189,32 @@ export type RadarSpoke = {
     labelX: number;
     labelY: number;
     side: "start" | "middle" | "end";
+};
+export type GraphNode = {
+    id: string;
+    name: string;
+    x: number;
+    y: number;
+    labelX: number;
+    labelY: number;
+    side: "start" | "middle" | "end";
+    pairs: number;
+};
+export type GraphEdge = {
+    index: number;
+    name: string;
+    type: string;
+    from: GraphNode;
+    to: GraphNode;
+    scenes: number;
+};
+export type JourneyLane = {
+    index: number;
+    name: string;
+    arc: string;
+    from: number;
+    to: number;
+    points: number[];
 };
 /**
  * A value the engine sends with where it came from.

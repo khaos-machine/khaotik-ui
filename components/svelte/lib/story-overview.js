@@ -319,3 +319,76 @@ export const journeysRead = (list) => Array.isArray(list) && list.every((j) => j
  * @param {unknown} list
  */
 export const relationshipsRead = (list) => Array.isArray(list) && list.every((r) => Array.isArray(r?.characters) && r.characters.length === 2 && (!!r.analysis?.synthesis !== !!r.analysis?.skip))
+
+/** The relationship graph's ring radius and label radius, in percent of its box. */
+const GRAPH_RADIUS = 30
+const GRAPH_LABEL = 34
+
+/** @typedef {{ id: string, name: string, x: number, y: number, labelX: number, labelY: number, side: 'start' | 'middle' | 'end', pairs: number }} GraphNode */
+/** @typedef {{ index: number, name: string, type: string, from: GraphNode, to: GraphNode, scenes: number }} GraphEdge */
+
+/**
+ * The read pairs as a graph (operator, 2026-11-14: "Graph in the card"): each character in a read
+ * pair is a node on one ring, clockwise from the top, the most connected first; each read pair is
+ * an edge, whose `scenes` is its evidence scene count. Skipped pairs draw nothing. `index` is the
+ * pair's place in the relationships list, as `OverviewSelection` takes it.
+ * @param {readonly Record<string, any>[]} pairs The relationships list, read or skipped.
+ * @returns {{ nodes: GraphNode[], edges: GraphEdge[] }}
+ */
+export function relationshipGraph(pairs) {
+  const read = pairs.map((p, index) => ({ p, index })).filter(({ p }) => p.analysis?.synthesis)
+  /** @type {Map<string, { id: string, name: string, pairs: number }>} */
+  const people = new Map()
+  for (const { p } of read)
+    for (const c of p.characters) {
+      const known = people.get(c.id) ?? { id: c.id, name: journeyName(c), pairs: 0 }
+      known.pairs += 1
+      people.set(c.id, known)
+    }
+  const ordered = [...people.values()].sort((a, b) => b.pairs - a.pairs || a.name.localeCompare(b.name))
+  const round = (/** @type {number} */ n) => Math.round(n * 100) / 100
+  /** @type {Map<string, GraphNode>} */
+  const nodes = new Map(
+    ordered.map((c, i) => {
+      const a = -Math.PI / 2 + (2 * Math.PI * i) / ordered.length
+      const cos = Math.cos(a)
+      const sin = Math.sin(a)
+      const side = Math.abs(cos) < 0.2 ? 'middle' : cos > 0 ? 'start' : 'end'
+      return [c.id, { ...c, x: round(50 + GRAPH_RADIUS * cos), y: round(50 + GRAPH_RADIUS * sin), labelX: round(50 + GRAPH_LABEL * cos), labelY: round(50 + GRAPH_LABEL * sin), side }]
+    }),
+  )
+  const edges = read.map(({ p, index }) => ({
+    index,
+    name: pairName(p.characters),
+    type: p.analysis.synthesis.relationship_type,
+    from: /** @type {GraphNode} */ (nodes.get(p.characters[0].id)),
+    to: /** @type {GraphNode} */ (nodes.get(p.characters[1].id)),
+    scenes: p.analysis.synthesis.evidence_scene_ids?.length ?? 0,
+  }))
+  return { nodes: [...nodes.values()], edges }
+}
+
+/** @typedef {{ index: number, name: string, arc: string, from: number, to: number, points: number[] }} JourneyLane */
+
+/**
+ * Each journey as a lane across the story (operator, 2026-11-14: "Story lanes"): from its first
+ * evidence scene to its last, as fractions of the story, with a point at each turning point's
+ * first scene. Scenes `order` does not hold are left out; a journey with none has no lane.
+ * `index` is the journey's place in the list, as `OverviewSelection` takes it.
+ * @param {readonly Record<string, any>[]} journeys The journeys list, in the order drawn.
+ * @param {readonly string[]} order Every scene id, in story order.
+ * @returns {JourneyLane[]}
+ */
+export function journeyLanes(journeys, order) {
+  const at = new Map(order.map((id, i) => [id, order.length > 1 ? i / (order.length - 1) : 0]))
+  const place = (/** @type {readonly string[] | undefined} */ ids) => (ids ?? []).map((id) => at.get(id)).filter((p) => p !== undefined)
+  return journeys.flatMap((j, index) => {
+    const turns = j.journey.turning_points.map((/** @type {{ evidence_scene_ids: string[] }} */ t) => place(t.evidence_scene_ids)[0]).filter((p) => p !== undefined)
+    const all = [...turns, ...place(j.journey.evidence_scene_ids), ...j.journey.relationship_evolution.flatMap((/** @type {{ evidence_scene_ids: string[] }} */ r) => place(r.evidence_scene_ids))]
+    const from = Math.min(...all), to = Math.max(...all)
+    // Operator, 2026-11-14: a journey with nothing to draw (no turning point, one place or none) is
+    // left out of the lanes; the list keeps it.
+    if (!turns.length && !(to > from)) return []
+    return [{ index, name: journeyName(j.character), arc: j.journey.arc_quality, from, to, points: turns }]
+  })
+}

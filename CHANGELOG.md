@@ -20,6 +20,19 @@ current pin.
 
 ## [Unreleased]
 
+## [0.189.0] — 2026-11-14
+
+### Changed
+
+- **`StoryOverview`: Journeys and Relationships each take a full row, with a figure beside a panel** (operator, 2026-11-14). The panel shows the section's stats until something is chosen, then the chosen item's detail; choosing it again shows the stats. Each list moves into a drawer under the card, closed by default, opened and closed by a toggle at the card's foot that reads "Show all" or "Hide all". A row in the drawer chooses its item in the card instead of calling `onselect`.
+  - **Relationships** draws every read pair as a line between two characters on a ring, the most connected first, each line weighted by its evidence scenes. Its stats are pairs read, pairs skipped, characters paired, the most connected character and the pair with the most evidence. Skipped pairs leave the list for a `Skipped` section beneath it, collapsed by default.
+  - **Journeys** draws each journey as a lane across the story, from its first evidence scene to its last, with a point at each turning point; a complete arc's line is solid, an unfinished one faint, an unclear one dashed. Unfinished lanes are hidden until the Arcs stat's unfinished count is pressed, and choosing an unfinished journey in the list shows them. A journey with nothing to draw (no turning point and one place in the story) has no lane and stays in the list. Its stats are arcs, journeys read, the most turning points and the longest journey.
+
+### Added
+
+- **`StoryOverview` `sceneOrder`**: every scene id in story order, which places the journey lanes. Without it the Journeys card shows its arc count only.
+- **`journeyLanes` and `relationshipGraph`** in `lib/story-overview.js`, the pure layouts the two figures draw.
+
 ## [0.188.2] — 2026-11-11
 
 ### Fixed
