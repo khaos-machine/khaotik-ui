@@ -530,14 +530,15 @@
   {#if journeys.kind === 'loading'}{@render none(LOADING)}
   {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render none('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
   {:else if journeys.kind === 'failed' || !journeyList}{@render line("Khaos couldn't read this story's journeys.", journeys.kind === 'failed' ? journeys.message : '')}
-  {:else if !lanes.length}
+  {:else if !lanes.length && shownJourney === -1}
     <p class="ui-story-overview__line">{arcTally}</p>
   {:else}
     <!-- Operator, 2026-11-14: Journeys as Relationships: its own row, the lanes beside a panel that
-         shows the stats by default and the chosen journey's detail. -->
+         shows the stats by default and the chosen journey's detail. With no lane to draw, a journey
+         chosen in the list still shows its detail, alone. -->
     {@const shown = journeyList[shownJourney]}
-    <div class="ui-story-overview__split ui-story-overview__split--wide">
-      <div class="ui-story-overview__split-figure"><JourneyLanes lanes={drawnLanes} selected={shownJourney} onselect={toggleJourney} /></div>
+    <div class="ui-story-overview__split" class:ui-story-overview__split--wide={lanes.length} class:ui-story-overview__split--alone={!lanes.length}>
+      {#if lanes.length}<div class="ui-story-overview__split-figure"><JourneyLanes lanes={drawnLanes} selected={shownJourney} onselect={toggleJourney} /></div>{/if}
       <div id="{uid}-journey" class="ui-story-overview__split-side" aria-live="polite">
         {#if shown}
           {@const j = shown.journey}
@@ -746,6 +747,9 @@
   /* Lanes read across the story, so they take the wider share. */
   .ui-story-overview__split--wide {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+  .ui-story-overview__split--alone {
+    grid-template-columns: minmax(0, 1fr);
   }
   .ui-story-overview__drawer {
     margin-top: var(--spacing-xs);

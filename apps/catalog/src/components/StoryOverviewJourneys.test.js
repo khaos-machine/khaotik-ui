@@ -267,3 +267,14 @@ describe('StoryOverview evidence scenes in the card', () => {
     expect(within(panel('Relationships')).getAllByRole('button', { name: /^Show in Scenes/ })).toHaveLength(2)
   })
 })
+
+describe('StoryOverview Journeys card with no lane to draw', () => {
+  it('shows the arc count, and a journey chosen in the list shows its detail', async () => {
+    render(StoryOverview, { props: base })
+    const card = within(panel('Journeys'))
+    expect(card.getByText('1 complete arc · 1 unfinished arc · 1 unclear arc')).toBeVisible()
+    await fireEvent.click(within(await open('Journeys')).getByRole('button', { name: 'MAYA' }))
+    expect(card.getByRole('heading', { name: 'MAYA' })).toBeVisible()
+    expect(card.getByText('A mechanic who trusts no one.')).toBeVisible()
+  })
+})
