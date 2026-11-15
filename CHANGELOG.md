@@ -20,6 +20,16 @@ current pin.
 
 ## [Unreleased]
 
+## [0.190.0] — 2026-11-14
+
+### Added
+
+- **`StoryOverview`: evidence scenes open from the Journeys and Relationships cards** (operator, 2026-11-14: "Buttons in the card"). Since 0.189.0 a journey or pair is chosen in its card, whose detail had no way to open a scene; the inspector's did. The card's detail now has the inspector's Show in Scenes buttons: each journey turning point's first scene, or with `showEvidenceScenes` every scene of each turning point and relationship, plus the journey's own Evidence scenes. A pair's detail gains its turning points, each with its scene, and with `showEvidenceScenes` its Evidence scenes. New props `onRevealScene` and `showEvidenceScenes`, as `StoryOverviewSide` takes them; `StoryOverviewScreen` passes its `onRevealScene` through.
+
+### Fixed
+
+- **`StoryOverview`: a journey chosen in the list shows its detail when no journey has a lane** (no `sceneOrder`, or nothing to draw). Since 0.189.0 the card then showed its arc count only, and choosing a row showed nothing; the detail now shows alone, and choosing the row again goes back to the arc count.
+
 ## [0.189.0] — 2026-11-14
 
 ### Changed

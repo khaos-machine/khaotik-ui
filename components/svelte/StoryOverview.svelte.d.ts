@@ -213,6 +213,14 @@ declare const StoryOverview: import("svelte").Component<{
      */
     sceneOrder?: readonly string[];
     /**
+     * Asked with an evidence scene's id from the chosen journey's or pair's detail in its card.
+     */
+    onRevealScene?: (sceneId: string) => void;
+    /**
+     * Every evidence scene in that detail, as StoryOverviewSide takes it. Off: a journey turning point reveals its first scene only.
+     */
+    showEvidenceScenes?: boolean;
+    /**
      * Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
      */
     showEmptyResults?: boolean;
@@ -426,6 +434,14 @@ type Props = {
      * Every scene id in story order, so the journeys can be drawn across the story. Empty: the Journeys card shows its arc count only.
      */
     sceneOrder?: readonly string[];
+    /**
+     * Asked with an evidence scene's id from the chosen journey's or pair's detail in its card.
+     */
+    onRevealScene?: (sceneId: string) => void;
+    /**
+     * Every evidence scene in that detail, as StoryOverviewSide takes it. Off: a journey turning point reveals its first scene only.
+     */
+    showEvidenceScenes?: boolean;
     /**
      * Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
      */

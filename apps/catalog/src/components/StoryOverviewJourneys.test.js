@@ -230,3 +230,51 @@ describe('StoryOverview relationship graph', () => {
     expect(graph.edges.map((e) => [e.name, e.type, e.scenes])).toEqual([['MAYA and THEO', 'siblings', 1]])
   })
 })
+
+// Operator, 2026-11-14: "Buttons in the card": the chosen journey or pair opens its evidence scenes from
+// its card's detail, as StoryOverviewSide does.
+describe('StoryOverview evidence scenes in the card', () => {
+  const reveals = () => within(panel('Journeys')).queryAllByRole('button', { name: /^Show in Scenes/ })
+
+  it('reveals a journey turning point\'s first scene, and with every evidence scene shown, all of them', async () => {
+    const onRevealScene = vi.fn()
+    const { unmount } = render(StoryOverview, { props: { ...base, sceneOrder: SCENES, onRevealScene } })
+    await fireEvent.click(screen.getByRole('button', { name: /^MAYA,/ }))
+    expect(reveals()).toHaveLength(1)
+    await fireEvent.click(reveals()[0])
+    expect(onRevealScene).toHaveBeenLastCalledWith('scene_3')
+    unmount()
+    render(StoryOverview, { props: { ...base, sceneOrder: SCENES, onRevealScene, showEvidenceScenes: true } })
+    await fireEvent.click(screen.getByRole('button', { name: /^MAYA,/ }))
+    // The turning point's scene, the relationship's, and the journey's own two.
+    expect(reveals()).toHaveLength(4)
+    expect(within(panel('Journeys')).getByRole('button', { name: /^Evidence scenes/ })).toBeVisible()
+    await fireEvent.click(reveals()[1])
+    expect(onRevealScene).toHaveBeenLastCalledWith('scene_5')
+  })
+
+  it('shows a pair\'s turning points and reveals each one\'s scene, and its evidence scenes when shown', async () => {
+    const onRevealScene = vi.fn()
+    const { unmount } = render(StoryOverview, { props: { ...base, onRevealScene } })
+    await fireEvent.click(screen.getByRole('button', { name: 'MAYA and THEO: siblings' }))
+    const card = within(panel('Relationships'))
+    expect(card.getByText('He covers for her.')).toBeVisible()
+    await fireEvent.click(card.getByRole('button', { name: 'Show in Scenes' }))
+    expect(onRevealScene).toHaveBeenLastCalledWith('scene_7')
+    unmount()
+    render(StoryOverview, { props: { ...base, onRevealScene, showEvidenceScenes: true } })
+    await fireEvent.click(screen.getByRole('button', { name: 'MAYA and THEO: siblings' }))
+    expect(within(panel('Relationships')).getAllByRole('button', { name: /^Show in Scenes/ })).toHaveLength(2)
+  })
+})
+
+describe('StoryOverview Journeys card with no lane to draw', () => {
+  it('shows the arc count, and a journey chosen in the list shows its detail', async () => {
+    render(StoryOverview, { props: base })
+    const card = within(panel('Journeys'))
+    expect(card.getByText('1 complete arc · 1 unfinished arc · 1 unclear arc')).toBeVisible()
+    await fireEvent.click(within(await open('Journeys')).getByRole('button', { name: 'MAYA' }))
+    expect(card.getByRole('heading', { name: 'MAYA' })).toBeVisible()
+    expect(card.getByText('A mechanic who trusts no one.')).toBeVisible()
+  })
+})

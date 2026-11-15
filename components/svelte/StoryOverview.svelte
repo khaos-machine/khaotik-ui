@@ -53,11 +53,13 @@
    * @property {boolean} [showMeasuredStructure] Coverage's Structure measured section.
    * @property {boolean} [showPassStates] A partial or failed journeys or relationships pass (`runs.journeys`, `runs.relationships`), and failed turn naming, each said in its section.
    * @property {readonly string[]} [sceneOrder] Every scene id in story order, so the journeys can be drawn across the story. Empty: the Journeys card shows its arc count only.
+   * @property {(sceneId: string) => void} [onRevealScene] Asked with an evidence scene's id from the chosen journey's or pair's detail in its card.
+   * @property {boolean} [showEvidenceScenes] Every evidence scene in that detail, as StoryOverviewSide takes it. Off: a journey turning point reveals its first scene only.
    * @property {boolean} [showEmptyResults] Says when nothing was scored or named: "No dimension was scored.", a lens's "Not scored", "No turning points were named.". Off: those parts draw nothing, or "haven't been named yet", as in 0.178.5.
    */
 
   /** @type {Props} */
-  let { title = '', premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onselect = undefined, runs = {}, onrun = undefined, onsetbudget = undefined, showSkippedPairs = false, showStructureActs = false, showCoverageActs = false, showSceneEntries = false, showMeasuredStructure = false, showPassStates = false, showEmptyResults = false, sceneOrder = [] } = $props()
+  let { title = '', premise = { kind: 'loading' }, structure = { kind: 'loading' }, coverage = { kind: 'loading' }, journeys = { kind: 'loading' }, relationships = { kind: 'loading' }, advanced = false, selected = null, onselect = undefined, runs = {}, onrun = undefined, onsetbudget = undefined, showSkippedPairs = false, showStructureActs = false, showCoverageActs = false, showSceneEntries = false, showMeasuredStructure = false, showPassStates = false, showEmptyResults = false, sceneOrder = [], onRevealScene = undefined, showEvidenceScenes = false } = $props()
 
   const LOADING = "Reading this story's analyses…"
   /** @param {Sourced | undefined} f */
@@ -218,6 +220,32 @@
     <p class="ui-story-overview__note" role="note">This pass hasn't finished, so some results are missing.</p>
   {:else if r?.kind === 'failed'}
     {@render line("This analysis didn't finish.", r.message)}
+  {/if}
+{/snippet}
+
+<!-- Operator, 2026-11-14: "Buttons in the card": the chosen journey or pair opens its evidence scenes
+     from the card, as the inspector did. -->
+{#snippet scenes(/** @type {readonly string[] | undefined} */ ids)}
+  {#if ids?.length}
+    <div class="ui-story-overview__scenes">
+      {#each ids as sceneId, i (`${sceneId}:${i}`)}
+        <Button variant="secondary" icon="film-slate" onclick={() => onRevealScene?.(sceneId)}>Show in Scenes{ids.length > 1 ? ` · ${i + 1}` : ''}</Button>
+      {/each}
+    </div>
+  {/if}
+{/snippet}
+
+{#snippet entries(/** @type {string} */ name, /** @type {readonly { text: string, scenes: readonly string[] }[]} */ items)}
+  {#if items.length}
+    <InspectorSection title={name} count={items.length}>
+      {#each items as e, i (i)}<p class="ui-story-overview__line">{e.text}</p>{@render scenes(e.scenes)}{/each}
+    </InspectorSection>
+  {/if}
+{/snippet}
+
+{#snippet evidenceScenes(/** @type {readonly string[] | undefined} */ ids)}
+  {#if showEvidenceScenes && ids?.length}
+    <InspectorSection title="Evidence scenes" count={ids.length}>{@render scenes(ids)}</InspectorSection>
   {/if}
 {/snippet}
 
@@ -502,14 +530,15 @@
   {#if journeys.kind === 'loading'}{@render none(LOADING)}
   {:else if journeys.kind === 'missing' || (journeyList && !journeyList.length)}{@render none('No character journeys yet.', journeys.kind === 'missing' ? journeys.reason : '')}
   {:else if journeys.kind === 'failed' || !journeyList}{@render line("Khaos couldn't read this story's journeys.", journeys.kind === 'failed' ? journeys.message : '')}
-  {:else if !lanes.length}
+  {:else if !lanes.length && shownJourney === -1}
     <p class="ui-story-overview__line">{arcTally}</p>
   {:else}
     <!-- Operator, 2026-11-14: Journeys as Relationships: its own row, the lanes beside a panel that
-         shows the stats by default and the chosen journey's detail. -->
+         shows the stats by default and the chosen journey's detail. With no lane to draw, a journey
+         chosen in the list still shows its detail, alone. -->
     {@const shown = journeyList[shownJourney]}
-    <div class="ui-story-overview__split ui-story-overview__split--wide">
-      <div class="ui-story-overview__split-figure"><JourneyLanes lanes={drawnLanes} selected={shownJourney} onselect={toggleJourney} /></div>
+    <div class="ui-story-overview__split" class:ui-story-overview__split--wide={lanes.length} class:ui-story-overview__split--alone={!lanes.length}>
+      {#if lanes.length}<div class="ui-story-overview__split-figure"><JourneyLanes lanes={drawnLanes} selected={shownJourney} onselect={toggleJourney} /></div>{/if}
       <div id="{uid}-journey" class="ui-story-overview__split-side" aria-live="polite">
         {#if shown}
           {@const j = shown.journey}
@@ -518,8 +547,9 @@
           {#each [['Starts', j.beginning_state], ['Changes', j.emotional_progression], ['Ends', j.final_state]] as [label, text] (label)}
             <div class="ui-story-overview__arc" role="group" aria-label={label}><span class="ui-story-overview__label">{label}</span><p class="ui-story-overview__line">{text}</p></div>
           {/each}
-          {@render list('Turning points', j.turning_points.map((/** @type {{ description: string }} */ t) => t.description))}
-          {@render list('Relationships', j.relationship_evolution.map((/** @type {{ counterpart: string, trajectory: string }} */ r) => `${r.counterpart}: ${r.trajectory}`))}
+          {@render entries('Turning points', j.turning_points.map((/** @type {{ description: string, evidence_scene_ids?: string[] }} */ t) => ({ text: t.description, scenes: showEvidenceScenes ? (t.evidence_scene_ids ?? []) : (t.evidence_scene_ids ?? []).slice(0, 1) })))}
+          {@render entries('Relationships', j.relationship_evolution.map((/** @type {{ counterpart: string, trajectory: string, evidence_scene_ids?: string[] }} */ r) => ({ text: `${r.counterpart}: ${r.trajectory}`, scenes: showEvidenceScenes ? (r.evidence_scene_ids ?? []) : [] })))}
+          {@render evidenceScenes(j.evidence_scene_ids)}
         {:else}
           <div class="ui-story-overview__stats">
             {#if unfinishedCount}
@@ -580,8 +610,10 @@
           {#each [['Beginning', s.relationship_arc.beginning], ['Middle', s.relationship_arc.middle], ['End', s.relationship_arc.end]] as [label, text] (label)}
             <div class="ui-story-overview__arc" role="group" aria-label={label}><span class="ui-story-overview__label">{label}</span><p class="ui-story-overview__line">{text}</p></div>
           {/each}
+          {@render entries('Turning points', s.turning_points.map((/** @type {{ scene_id: string, description: string }} */ t) => ({ text: t.description, scenes: [t.scene_id] })))}
           {@render list('Emotional dynamics', s.emotional_dynamics)}
           {@render list('Conflict patterns', s.conflict_patterns)}
+          {@render evidenceScenes(s.evidence_scene_ids)}
         {:else}
           <div class="ui-story-overview__stats">
             <PropertyRow label="Pairs read" value={readPairs.length} />
@@ -716,6 +748,9 @@
   .ui-story-overview__split--wide {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   }
+  .ui-story-overview__split--alone {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .ui-story-overview__drawer {
     margin-top: var(--spacing-xs);
     padding-top: var(--spacing-xs);
@@ -841,6 +876,12 @@
   }
   .ui-story-overview__pick[aria-pressed='true'] {
     font-weight: var(--label-md-weight);
+  }
+  .ui-story-overview__scenes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
   }
   .ui-story-overview__list {
     margin: 0;
