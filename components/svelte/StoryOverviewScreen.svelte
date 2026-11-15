@@ -110,7 +110,7 @@
         {/if}
       </div>
       <div class="ui-story-overview-screen__document" bind:this={documentPane}>
-        <StoryOverview {title} {premise} {structure} {coverage} {journeys} {relationships} {advanced} {selected} onselect={select} />
+        <StoryOverview {title} {premise} {structure} {coverage} {journeys} {relationships} {advanced} {selected} onselect={select} {onRevealScene} />
       </div>
       {#if selected}
         <div class="ui-story-overview-screen__side">
