@@ -48,7 +48,7 @@ looks entirely plausible. The rows are also not in id order, so the numeric sort
 is doing the work, not `tail`.
 
 **A citation to `RULES.md` or `TOOLS.md` without a qualifier means the file in
-this repository.** The workspace root one level up has files of the same names,
+this repository.** khaos-home, the home repo, has files of the same names,
 and a bare line-number citation into one of them now resolves to a real local
 file with no such line — the citation gets *worse* by landing somewhere,
 because the reader finds a real file instead of nothing. **Cite a cross-repository
@@ -76,9 +76,10 @@ This repository is in the **Outer** ring. Work proceeds core outward: a ring mus
 be able to serve the ring outside it before that ring adopts, so Outer adopts
 last, after every ring inside it is ready to serve it.
 
-The ruling and the full ring membership live in the **workspace** ADR-0004,
+The ruling and the full ring membership live in khaos-home's ADR-0004,
 "Delivery rings, and the documents that own them" (operator-ruled 2026-08-30),
-one level up in `khaos.machine/docs/adr/`. **Deliberately not copied here.** A
+at `docs/adr/ADR-0004-delivery-rings-and-doc-ownership.md` in
+`khaos-machine/khaos-home`. **Deliberately not copied here.** A
 branch from 2026-08-30 seeded a 185-line copy of it into this repository and
 carried two re-sync commits in a single afternoon; measured 2026-09-09, the copy
 had diverged from the root source again. That is the failure the workspace rule
@@ -199,9 +200,9 @@ The catalog has no version of its own to ask for: it reports the library's.
 This block once said "catalog 0.15.0" while `v0.15.0` was sitting as an
 unpublished **draft**, invisible to `gh release view` and to every consumer, so
 the claim was false in both halves at once. Every `lib-*` tag is a Release, and
-the **workspace** `RULES.md` — one level up, section "Releases and version
-pins" — is why: publish a Release for anything another component consumes, and
-pin by version. A bare tag is not a release, and a draft is not published.
+khaos-home's `RULES.md` — section "Releases" — is why: publish a Release for
+anything another component consumes, and pin by version. A bare tag is not a
+release, and a draft is not published.
 
 **The newest `lib-*` release holds `latest`.** While the desktop catalog
 existed, the library and the catalog each owned a tag prefix (`lib-*` and
