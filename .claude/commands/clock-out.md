@@ -1,21 +1,22 @@
 ---
-description: End a khaotik-ui session — clean up what it made, update CURRENT.md, and commit the workspace handoff
+description: End a khaotik-ui session — clean up what it made, update CURRENT.md, and commit the handoff to the khaos-home wiki
 argument-hint: [what the next session should pick up]
 ---
 
 # Purpose
 
 Leave khaotik-ui and the machine as you found them, and leave the next session a
-handoff. Clean up **only what this session made**; list anything else for K's
-approval (`../TOOLS.md`, "Worktrees, scratch and disk"; `../USER.md`, "Two
-things are never yours").
+handoff. Clean up **only what this session made**; list anything else for the
+operator's approval (`$home/TOOLS.md`, "Worktrees, scratch and disk — leave the
+machine clean"; `$home/USER.md`, "Two things are never yours").
 
-`CURRENT.md` is this repository's. The handoff is the workspace's: never put a
-`HANDOFF.md` inside a submodule (`../RULES.md`, "Commits and pull requests").
+`CURRENT.md` is this repository's. The handoff is a khaos-home wiki page, never a
+file in this repository (`$home/RULES.md`, "Commits and pull requests"). Run the
+discovery block in `clock-in.md` first.
 
 ## Steps
 
-1. **Live agents.** Run the check in `../AGENTS.md`, "Concurrent agents".
+1. **Live agents.** Run the check in `$home/AGENTS.md`, "Concurrent agents".
 2. **Land or name unfinished work.** `main` is protected, so work lands by PR.
    Uncommitted or unpushed work is never discarded: push it, or list it under
    **Not landed**.
@@ -37,16 +38,22 @@ things are never yours").
 6. **Update `CURRENT.md`.** Replace sections, never append; set **Last verified**.
    Change only what this session measured. `main` is protected, so commit it
    on a branch in a lease and open a PR.
-7. **Write the handoff** as a new top section of `../HANDOFF.md`:
-   `## Handoff: <role>, <topic> (<date>)`. Cover the goal, what is done, what
-   is in flight, what is next (`$ARGUMENTS`), open questions for K, and key
-   files. Cite only paths a new session can open, never the scratchpad.
-8. **Commit the handoff at the root, by name.** Never `-a`, which would sweep
-   in submodule pins:
+7. **Write the handoff.** Update `$home/wiki/in-flight.md` and write the
+   handoff as a new page `$home/wiki/handoffs/<YYYY-MM-DD>-<role>-<topic>.md`,
+   titled `# Handoff: <role>, <topic> (<date>)`, linked at the top of the
+   Handoffs table in `$home/wiki/index.md`. Cover the goal, what is done, what
+   is in flight, what is next (`$ARGUMENTS`), open questions for the operator,
+   and key files. Cite only paths a new session can open, never the scratchpad.
+8. **Lint and commit the handoff in khaos-home, by name.** Run
+   `(cd "$home" && just wiki-lint)`. khaos-home's `main` takes direct commits
+   (`$home/RULES.md`, "Commits and pull requests"). Check
+   `git -C "$home" diff --cached --name-only` first; if unrelated changes are
+   staged, stop and coordinate. Never `-a`, which would sweep in another
+   session's work:
 
    ```sh
-   git -C .. add HANDOFF.md
-   git -C .. commit -m "docs: <role> handoff, <topic>"
+   git -C "$home" add wiki/in-flight.md wiki/index.md wiki/handoffs/<page>
+   git -C "$home" commit -m "docs(wiki): handoff <role>, <topic>"
    ```
 
 ## Report
@@ -54,5 +61,5 @@ things are never yours").
 - **Cleaned**
 - **Not landed**
 - **Leftovers**, each with its `du -sh` size, or "none"
-- **Committed**: the `CURRENT.md` PR, the root handoff SHA, and whether it is
+- **Committed**: the `CURRENT.md` PR, the khaos-home handoff SHA, and whether it is
   pushed
