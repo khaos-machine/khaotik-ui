@@ -4,10 +4,12 @@
 
 Product truth for design work on the kit. Confirmed by K on 2026-11-10 ("read
 the latest documentation and plans at the Khaos Machine workspace"); Andrew
-Gatto owns product (`USER.md`) and is to review it. Each fact below is drawn
-from the workspace document named beside it, one level up in `khaos.machine`.
-**That document wins** when the two disagree; this file is the bug. Workspace
-documents are cited by section name, never by line.
+Gatto owns product (`USER.md`) and is to review it. Each fact below cites the
+khaos-home document it is drawn from (`khaos-machine/khaos-home`):
+`wiki/Platform.md` or `DESIGN.md`. Where khaos-home has no page for a fact, the
+citation names the khaos.machine document it was drawn from, at a commit, as a
+dated source; that repository is read-only and does not govern. Documents are
+cited by section name, never by line.
 
 ## Platform
 
@@ -20,23 +22,26 @@ through Khaos Cloud, in a browser. A native wrapper around a web view is still
 ## Users
 
 Storytellers. The beachhead is narrow on purpose: screenwriters, film students,
-indie filmmakers, and collaborators reacting to shared playback (workspace
-VISION, "The audio-first wedge"). Basic is meant to serve non-technical
-storytellers without provider, model or git setup (workspace VISION, "Basic,
-Advanced and the cloud milestone"). Advanced serves those who want local
-generation, provider control and integrations with production tools.
+indie filmmakers, and collaborators reacting to shared playback (khaos.machine
+`docs/VISION.md` at `b1b760c`, "1. The audio-first wedge (product proof)").
+Basic is meant to serve non-technical storytellers without provider, model or
+git setup (khaos-home `wiki/Platform.md`, "Basic and Advanced"). Advanced
+serves those who want local generation, provider control and integrations with
+production tools.
 
 ## Product Purpose
 
 Khaos Machine is a story-intelligence platform. It treats a story as structured
 data, not a static document, so creation, playback, production and distribution
-all work from one narrative source of truth (workspace VISION, "One-paragraph
-summary").
+all work from one narrative source of truth (khaos.machine `docs/VISION.md` at
+`b1b760c`, "One-paragraph summary").
 
 The near-term product proof is the audio-first wedge: _upload a screenplay →
 press play → hear a story-aware performance grounded in character, scene,
-timing, and composition context_. Success is repeat usage and small-circle
-sharing, not broad reach (workspace VISION, "The audio-first wedge").
+timing, and composition context_ (khaos-home `wiki/Platform.md`, "The two
+near-term proofs"). Success is repeat usage and small-circle sharing, not broad
+reach (khaos.machine `docs/VISION.md` at `b1b760c`, "1. The audio-first wedge
+(product proof)").
 
 This kit exists so every Khaos app draws its screens from one hand-authored
 design system (`AGENTS.md`, `docs/design/README.md`).
@@ -45,17 +50,20 @@ design system (`AGENTS.md`, `docs/design/README.md`).
 
 Story-aware performance built on structured narrative context — KSPD character
 and scene structure, composition timing, voice casting — rather than generic
-screenplay-to-audio, which already exists elsewhere (workspace VISION, "The
-audio-first wedge"; "Strategic position").
+screenplay-to-audio, which already exists elsewhere (khaos.machine
+`docs/VISION.md` at `b1b760c`, "1. The audio-first wedge (product proof)";
+"Strategic position").
 
 ## Operating Context
 
 The creator journey runs IMAGINE → CAPTURE → CREATE → PERFORM → VISUALIZE →
-PRODUCE → DISTRIBUTE → MONETIZE; its honest per-stage status is in workspace
-VISION, "The creator journey".
+PRODUCE → DISTRIBUTE → MONETIZE; its honest per-stage status is in
+khaos.machine `docs/VISION.md` at `b1b760c`, "The creator journey (honest
+status mapping)".
 
-Two interface layers (workspace product note, "Two interface layers",
-2026-10-09):
+Two interface layers (khaos.machine
+`docs/product/2026-10-09-two-layer-interface.md` at `b1b760c`, "Two interface
+layers: a data layer and storyteller layers"):
 
 - **The data layer** — the desktop shell: panes, tables, inspectors, command
   palette, review by group. It makes the data and the functions over it clear,
@@ -69,7 +77,7 @@ Two interface layers (workspace product note, "Two interface layers",
 
 - Khaos is **not an editing suite** and not a rendering engine: NLEs edit,
   Blender and Unreal render; Khaos supplies the story data and timeline exports
-  (workspace VISION, "What the platform is not").
+  (khaos-home `wiki/Platform.md`, "What the platform is not").
 - Demo and catalog data are real, fetched from the khaosd daemon; gaps are
   reported, never fabricated (`AGENTS.md`, Conventions).
 
