@@ -264,7 +264,7 @@ test:
 # finds walking up, so `just dev` run from inside this repo resolves here and
 # never reaches khaos-home's `dev` dispatcher. Without it the command fails
 # with a missing-recipe error that reads like a broken workspace rather than a
-# recipe that lives one directory up.
+# recipe in khaos-home (two levels up, at <khaos-home>/justfile).
 #
 # Launch a dev agent in THIS repository -- alias for cld
 dev *args:
