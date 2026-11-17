@@ -219,7 +219,7 @@ cldmm:
   claude --model opus --dangerously-skip-permissions --maintenance "/maintenance"
 
 # ============================================================================
-# Library gates — the workspace fan-out's entry points (#58)
+# Library gates — khaos-home's fan-out entry points (#58)
 # ============================================================================
 #
 # These exist so `just build` and `just test` in khaos-home stop
