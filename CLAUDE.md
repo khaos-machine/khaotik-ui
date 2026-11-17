@@ -67,4 +67,4 @@ The five defaults: `needs-triage`, `needs-info`, `ready-for-agent`,
 ### Domain docs
 
 Single-context. Decisions live in `docs/decisions.md`, and the glossary and
-ADRs are the workspace's, one level up. See `docs/agents/domain.md`.
+ADRs are khaos-home's (`khaos-machine/khaos-home`). See `docs/agents/domain.md`.

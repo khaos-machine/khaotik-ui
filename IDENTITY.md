@@ -40,7 +40,7 @@ both.
 machine, not the actor**, and with no runtime marker anywhere nothing in the
 artifact names it either. Attribution comes from the branch, the pull request
 that carried the work, the dispatch window, or asking K — never from the author
-field. The workspace `khaos.machine/IDENTITY.md` is the canonical statement of
+field. khaos-home's `IDENTITY.md` (`khaos-machine/khaos-home`), "Attribution", is the canonical statement of
 this rule; if this file and that one ever disagree, that one wins and this copy
 is the bug.
 - Use semantic subjects such as `docs:`, `feat:`, `fix:`, `chore:`,
