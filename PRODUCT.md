@@ -6,10 +6,8 @@ Product truth for design work on the kit. Confirmed by K on 2026-11-10 ("read
 the latest documentation and plans at the Khaos Machine workspace"); Andrew
 Gatto owns product (`USER.md`) and is to review it. Each fact below cites the
 khaos-home document it is drawn from (`khaos-machine/khaos-home`):
-`wiki/Platform.md` or `DESIGN.md`. Where khaos-home has no page for a fact, the
-citation names the khaos.machine document it was drawn from, at a commit, as a
-dated source; that repository is read-only and does not govern. Documents are
-cited by section name, never by line.
+`wiki/Platform.md` or `wiki/Product.md`. Documents are cited by section name,
+never by line.
 
 ## Platform
 
@@ -22,8 +20,8 @@ through Khaos Cloud, in a browser. A native wrapper around a web view is still
 ## Users
 
 Storytellers. The beachhead is narrow on purpose: screenwriters, film students,
-indie filmmakers, and collaborators reacting to shared playback (khaos.machine
-`docs/VISION.md` at `b1b760c`, "1. The audio-first wedge (product proof)").
+indie filmmakers, and collaborators reacting to shared playback (khaos-home
+`wiki/Product.md`, "The audio-first wedge").
 Basic is meant to serve non-technical storytellers without provider, model or
 git setup (khaos-home `wiki/Platform.md`, "Basic and Advanced"). Advanced
 serves those who want local generation, provider control and integrations with
@@ -33,15 +31,14 @@ production tools.
 
 Khaos Machine is a story-intelligence platform. It treats a story as structured
 data, not a static document, so creation, playback, production and distribution
-all work from one narrative source of truth (khaos.machine `docs/VISION.md` at
-`b1b760c`, "One-paragraph summary").
+all work from one narrative source of truth (khaos-home `wiki/Product.md`,
+"One-paragraph summary").
 
 The near-term product proof is the audio-first wedge: _upload a screenplay →
 press play → hear a story-aware performance grounded in character, scene,
 timing, and composition context_ (khaos-home `wiki/Platform.md`, "The two
 near-term proofs"). Success is repeat usage and small-circle sharing, not broad
-reach (khaos.machine `docs/VISION.md` at `b1b760c`, "1. The audio-first wedge
-(product proof)").
+reach (khaos-home `wiki/Product.md`, "The audio-first wedge").
 
 This kit exists so every Khaos app draws its screens from one hand-authored
 design system (`AGENTS.md`, `docs/design/README.md`).
@@ -50,20 +47,16 @@ design system (`AGENTS.md`, `docs/design/README.md`).
 
 Story-aware performance built on structured narrative context — KSPD character
 and scene structure, composition timing, voice casting — rather than generic
-screenplay-to-audio, which already exists elsewhere (khaos.machine
-`docs/VISION.md` at `b1b760c`, "1. The audio-first wedge (product proof)";
-"Strategic position").
+screenplay-to-audio, which already exists elsewhere (khaos-home
+`wiki/Product.md`, "The audio-first wedge"; "Strategic position").
 
 ## Operating Context
 
 The creator journey runs IMAGINE → CAPTURE → CREATE → PERFORM → VISUALIZE →
-PRODUCE → DISTRIBUTE → MONETIZE; its honest per-stage status is in
-khaos.machine `docs/VISION.md` at `b1b760c`, "The creator journey (honest
-status mapping)".
+PRODUCE → DISTRIBUTE → MONETIZE; its honest per-stage status is in khaos-home
+`wiki/Product.md`, "The creator journey".
 
-Two interface layers (khaos.machine
-`docs/product/2026-10-09-two-layer-interface.md` at `b1b760c`, "Two interface
-layers: a data layer and storyteller layers"):
+Two interface layers (khaos-home `wiki/Product.md`, "Two interface layers"):
 
 - **The data layer** — the desktop shell: panes, tables, inspectors, command
   palette, review by group. It makes the data and the functions over it clear,
