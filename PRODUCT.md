@@ -70,7 +70,7 @@ Two interface layers (khaos-home `wiki/Product.md`, "Two interface layers"):
 
 - Khaos is **not an editing suite** and not a rendering engine: NLEs edit,
   Blender and Unreal render; Khaos supplies the story data and timeline exports
-  (khaos-home `wiki/Platform.md`, "What the platform is not").
+  (khaos-home `wiki/Product.md`, "What the platform is not").
 - Demo and catalog data are real, fetched from the khaosd daemon; gaps are
   reported, never fabricated (`AGENTS.md`, Conventions).
 
