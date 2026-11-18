@@ -216,7 +216,7 @@ cldit:
 
 # Agentic codebase maintenance
 cldmm:
-  claude --model opus --dangerously-skip-permissions --maintenance "/maintenance"
+  claude --model opus --permission-mode auto --maintenance "/maintenance"
 
 # ============================================================================
 # Library gates — khaos-home's fan-out entry points (#58)
