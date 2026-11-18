@@ -7,32 +7,32 @@ system_msg := justfile_directory() / "opus_system_message.md"
 
 # Launch Claude: opus, medium effort, permissions skipped (usage: just cld [extra args...])
 cld *args:
-  claude --dangerously-skip-permissions --model opus --effort medium \
+  claude --permission-mode auto --model opus --effort medium \
     --append-system-prompt-file {{quote(system_msg)}} {{args}}
 
 # Claude setup with Opus model (full capabilities)
 cld-super:
-  claude --model opus --dangerously-skip-permissions --init
+  claude --model opus --permission-mode auto --init
 
 # Deterministic workspace setup (fast, CI-friendly)
 cld-init:
-  claude --model haiku --dangerously-skip-permissions --init
+  claude --model haiku --permission-mode auto --init
 
 # Deterministic workspace maintenance
 cld-maintain:
-  claude --model haiku --dangerously-skip-permissions --maintenance
+  claude --model haiku --permission-mode auto --maintenance
 
 # Agentic workspace setup (with agent analysis)
 cld-init-agent:
-  claude --model haiku --dangerously-skip-permissions --init "/install"
+  claude --model haiku --permission-mode auto --init "/install"
 
 # Agentic workspace setup (interactive)
 cld-init-interactive:
-  claude --model haiku --dangerously-skip-permissions --init "/install true"
+  claude --model haiku --permission-mode auto --init "/install true"
 
 # Agentic workspace maintenance
 cld-maintain-agent:
-  claude --model haiku --dangerously-skip-permissions --maintenance "/maintenance"
+  claude --model haiku --permission-mode auto --maintenance "/maintenance"
 
 # ============================================================================
 # OpenAI Codex Commands
@@ -200,19 +200,19 @@ all:
 
 # Deterministic codebase setup
 cldi:
-  claude --model opus --effort medium --dangerously-skip-permissions
+  claude --model opus --effort medium --permission-mode auto
 
 # Deterministic codebase maintenance
 cldm:
-  claude --model opus --dangerously-skip-permissions --maintenance
+  claude --model opus --permission-mode auto --maintenance
 
 # Agentic codebase setup
 cldii:
-  claude --model opus --dangerously-skip-permissions --init "/install"
+  claude --model opus --permission-mode auto --init "/install"
 
 # Agentic codebase setup interactive
 cldit:
-  claude --model opus --dangerously-skip-permissions --init "/install true"
+  claude --model opus --permission-mode auto --init "/install true"
 
 # Agentic codebase maintenance
 cldmm:
