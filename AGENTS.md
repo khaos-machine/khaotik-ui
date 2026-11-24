@@ -67,7 +67,7 @@ and it never checks that the cited line says what the prose claims.
 | `assets/placeholders/` | Pre-production artwork the kit ships so components have something honest to render before real imagery exists — twelve character silhouettes and the story cover. WebP, and the size matters: every consumer pays for them. Real art always wins; see the directory's README. |
 | `apps/catalog/` | The component catalog — a Svelte + Vite web app for playtesting atoms and compositions on device frames against real KSPD data, published to GitHub Pages on each `lib-*` tag. |
 | `docs/` | The live reference: `decisions.md` (the decision register — its highest id is a measurement, never a number written here — the command is in “The document set” above), `harvest-khaos-machine-tokens.md`, `tokens-to-ui.md`; and `design/`, the designer pages, which ship in the npm package. |
-| `scripts/` | The gates — `check-catalog-coverage.sh` (`npm run check-catalog`), `check-taxonomy.mjs` (`npm run check-taxonomy`) and `check-consumer.mjs` (`npm run check-consumer`), all run by `npm run check-coverage` along with the catalog's build and `check-export-count.mjs`. And `build-types.mjs` — the shipped TypeScript declarations (`npm run build-types` writes, `npm run check-types` fails on drift). `release-lib.sh` cuts a `lib-*` Release. Publishing the catalog site is `.github/workflows/catalog-pages.yml`, not a script. |
+| `scripts/` | The gates — `check-catalog-coverage.sh` (`npm run check-catalog`), `check-taxonomy.mjs` (`npm run check-taxonomy`) and `check-consumer.mjs` (`npm run check-consumer`), all run by `npm run check-coverage` along with the catalog's build. `check-export-count.mjs` (`npm run check-export-count`) runs on its own, after it, because it reads the documents. And `build-types.mjs` — the shipped TypeScript declarations (`npm run build-types` writes, `npm run check-types` fails on drift). `release-lib.sh` cuts a `lib-*` Release. Publishing the catalog site is `.github/workflows/catalog-pages.yml`, not a script. |
 | `.claude/` | The agent toolkit for this repo — roles under `agents/`, plus `skills/` for svelte, tokens, publishing, design and MCP routing. Pruned to what a component library actually uses. |
 
 ## Delivery ring — Outer
@@ -105,11 +105,12 @@ stale version, and an agent cites it with full confidence.
 
 ```sh
 # the gates (0 clean / 1 gaps / 2 CANNOT RUN — a 2 is a red)
-npm run check-coverage                # every check below, in order (package.json)
+npm run check-coverage                # the four checks below, in order (package.json)
 npm run check-catalog                 # every export has a catalog fixture
 npm run check-taxonomy                # every export is filed in a declared, labelled group
 npm run check-consumer                # the package loads the way a consumer loads it
 npm run check-compile                 # the catalog's build — it imports every export
+
 npm run check-export-count            # every document stating an export count states the real one
 
 # the component catalog (a web app; drive it in a browser, see .claude/skills/mcp-steering)

@@ -42,7 +42,8 @@ published with each library release.
 npm ci
 npm run dev --workspace apps/catalog    # the catalog in a browser
 npm test --workspace apps/catalog       # the test suite
-npm run check-coverage                  # catalog, taxonomy, consumer, compile, export count
+npm run check-coverage                  # catalog, taxonomy, consumer, compile
+npm run check-export-count              # every stated export count is the real one
 npm run check-types                     # shipped .d.ts are current
 ```
 

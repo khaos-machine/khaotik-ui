@@ -27,11 +27,12 @@ the one `package.json` defines for that script.
 npm ci                              # reproducible workspace install
 npm test --workspace apps/catalog   # complete Vitest suite
 
-npm run check-coverage      # all five checks below, in order
+npm run check-coverage      # the four checks below, in order
 npm run check-catalog       # every export has a catalog fixture
 npm run check-taxonomy      # every export is filed in a declared, labelled group
 npm run check-consumer      # package loads and type-checks like a consumer
 npm run check-compile       # catalog production build; imports every fixture export
+
 npm run check-export-count  # every document stating an export count states the real one
 
 npm run check-types                 # generated declarations match components
@@ -69,7 +70,7 @@ cross-repository document by section name, not by line.
 The custom coverage scripts report 0 clean, 1 named gaps, and 2 could not run.
 Treat 2 as failure. CI runs every command in the block above through
 `.github/workflows/gates.yml`, in that order: `npm ci`, the catalog tests,
-`check-coverage`, `check-types`, `check-icons`, `check-citations`, then the
+`check-coverage`, `check-export-count`, `check-types`, `check-icons`, `check-citations`, then the
 `check-issue-refs` self-check and the gate itself. `ci.yml` calls it on every
 pull request, and `catalog-pages.yml` calls it before every Pages deploy.
 
