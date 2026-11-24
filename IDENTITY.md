@@ -8,7 +8,7 @@ this file owns the outward record.
 
 Work belongs to K. Agents do not add personal signatures to commits.
 
-- Commit author: `K Mills <k@khaos.studio>`.
+- Commit author: `K Mills <mustkre8@gmail.com>`.
 - Do not add `Co-Authored-By` trailers unless K explicitly requests one.
 - **No agent attribution in a pull request body either** — no
   `🤖 Generated with [Claude Code]` footer, no `Claude-Session` line, and
