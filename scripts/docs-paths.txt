@@ -1,3 +1,0 @@
-^(CLAUDE|IDENTITY|MEMORY|PRODUCT|RULES|SOUL|TOOLS|USER|WORKSPACE|opus_system_message)\.md$
-^\.claude/.*\.(md|json)$
-^apps/catalog/[^/]+\.md$
