@@ -255,29 +255,25 @@ build:
 #
 # Each line goes through scripts/gate, which hands it to khaos-home's gate
 # runner when `git config khaos.gateRun` names one, and otherwise runs it as
-# written (CI, a standalone clone). The runner skips a check when every path
-# changed since `git merge-base HEAD origin/main` matches
-# scripts/docs-paths.txt, and reuses a recorded pass on identical inputs.
-# check-export-count reads the root and docs/ Markdown, so it has no unread
-# file and always runs. check-coverage never reuses a pass: check-consumer
-# runs `npm install` from the network. The reuse key sees only the tools named
+# written (CI, a standalone clone). A check with --reuse reuses a recorded pass
+# on identical inputs; any change, docs included, runs it. check-export-count
+# has no --reuse, so it always runs. check-coverage never reuses a pass:
+# check-consumer runs `npm install` from the network. The reuse key sees only the tools named
 # with --key-tool and the variables named with --key-env, so each check that
 # can reuse a pass names every binary it finds through PATH (measured with a
 # logging wrapper for every PATH executable): npm and the sh it runs scripts
 # in, and, for the catalog suite, the bash, perl, sed, grep, sort, tr, comm
 # and dirname that check-catalog-gate.test.js runs through
 # scripts/check-catalog-coverage.sh. sort, comm, grep and Intl depend on the
-# locale and TZ, so the catalog suite keys those variables too. It reads
-# README.md, AGENTS.md, CHANGELOG.md, CURRENT.md and docs/, which docs-paths.txt
-# therefore leaves out, so a change to any of them runs every check here.
+# locale and TZ, so the catalog suite keys those variables too.
 # GATE_FULL=1 runs every check in full.
 
 # Run the four coverage gates, the export count, the declaration check, and the catalog suite
 test:
-  scripts/gate check-coverage --unread-file scripts/docs-paths.txt --no-reuse -- npm run check-coverage
+  scripts/gate check-coverage --no-reuse -- npm run check-coverage
   scripts/gate check-export-count -- npm run check-export-count
-  scripts/gate check-types --unread-file scripts/docs-paths.txt --key-tool npm --key-tool sh -- npm run check-types
-  scripts/gate catalog-tests --unread-file scripts/docs-paths.txt \
+  scripts/gate check-types --reuse --key-tool npm --key-tool sh -- npm run check-types
+  scripts/gate catalog-tests --reuse \
     --key-tool npm --key-tool sh --key-tool bash --key-tool perl --key-tool sed --key-tool grep \
     --key-tool sort --key-tool tr --key-tool comm --key-tool dirname \
     --key-env LANG --key-env LC_ALL --key-env LC_COLLATE --key-env LC_CTYPE --key-env LC_MESSAGES --key-env TZ \
