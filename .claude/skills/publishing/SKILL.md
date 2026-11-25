@@ -28,7 +28,8 @@ tag.
 
 ```bash
 npm test --workspace apps/catalog   # vitest, the only test surface in this repo
-npm run check-coverage              # fixture, taxonomy, consumer, compile, export count
+npm run check-coverage              # fixture, taxonomy, consumer, compile
+npm run check-export-count          # every stated export count is the real one
 npm run check-types                 # the shipped .d.ts have not drifted
 npm run check-icons                 # the shipped icon stylesheet matches Phosphor
 ```

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Gate shim, copied from khaos-home scripts/gate. Usage: scripts/gate <check> [flags] -- <command...>. With `git config khaos.gateRun` naming an executable runner, the check goes through it; otherwise (CI, a standalone clone) the command runs as-is.
+r=$(git config --get khaos.gateRun 2> /dev/null) && [ -x "$r" ] && exec "$r" "$@"
+while [ $# -gt 0 ] && [ "$1" != "--" ]; do shift; done
+[ $# -gt 1 ] || { echo "scripts/gate: no command after '--'" >&2; exit 2; }
+shift && exec "$@"

@@ -56,14 +56,20 @@ jobs:
       - name: Gate — tests
         run: npm test --workspace apps/catalog
 
-      # Five sub-gates, the chain package.json's check-coverage runs: every
+      # Four sub-gates, the chain package.json's check-coverage runs: every
       # export has a catalog fixture (the playtest surface), is filed in a
       # category the catalog declares and labels, loads the way a consumer
-      # loads it, and compiles; and every document stating an export count
-      # states the real one. 0 = clean, 1 = named gaps, 2 = the check could
+      # loads it, and compiles. 0 = clean, 1 = named gaps, 2 = the check could
       # not run — which is a red, not a pass.
-      - name: Gate — catalog coverage, taxonomy, consumer load, compile, export count
+      - name: Gate — catalog coverage, taxonomy, consumer load, compile
         run: npm run check-coverage
+
+      # Every document stating an export count states the real one. It reads
+      # the root and docs/ Markdown, so it runs on every pull request,
+      # documentation-only ones included; it was the last link of
+      # check-coverage until that chain became code-only.
+      - name: Gate — export count
+        run: npm run check-export-count
 
       # The shipped .d.ts files are generated from the components and committed,
       # so the repository and the npm package carry the same files. Committed output is only safe if it

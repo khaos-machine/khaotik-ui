@@ -11,7 +11,7 @@
     "check-taxonomy": "node scripts/check-taxonomy.mjs",
     "check-consumer": "node scripts/check-consumer.mjs",
     "check-compile": "npm run build --workspace apps/catalog",
-    "check-coverage": "npm run check-catalog && npm run check-taxonomy && npm run check-consumer && npm run check-compile && npm run check-export-count",
+    "check-coverage": "npm run check-catalog && npm run check-taxonomy && npm run check-consumer && npm run check-compile",
     "check-citations": "node scripts/check-citations.mjs",
     "check-issue-refs": "node scripts/check-issue-refs.mjs",
     "build-types": "node scripts/build-types.mjs",
